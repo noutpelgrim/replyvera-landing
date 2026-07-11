@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReplyVera – Auto-Reply to Google Reviews with AI</title>
+  <meta name="description" content="ReplyVera helps businesses automatically respond to Google reviews with smart, on-brand AI replies. Save time, build trust, and protect your reputation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="logo">
+        <span class="logo-icon"><i class="fa-solid fa-reply"></i></span>
+        Reply<span class="logo-accent">Vera</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="#" class="btn btn-ghost">Log In</a>
+        <a href="#" class="btn btn-primary">Start Free Trial</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-blobs">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+    <div class="container hero-inner">
+      <div class="hero-badge">
+        <i class="fa-brands fa-google"></i>
+        <span>Google Reviews Automation</span>
+      </div>
+      <h1 class="hero-headline">
+        Auto-Reply to Google Reviews <br />
+        <span class="gradient-text">Without Lifting a Finger</span>
+      </h1>
+      <p class="hero-sub">
+        ReplyVera writes smart, on-brand responses to every Google review instantly — so your business stays engaged, builds trust, and saves hours every week.
+      </p>
+      <div class="hero-cta">
+        <a href="#" class="btn btn-primary btn-lg">
+          <i class="fa-solid fa-rocket"></i> Start Free Trial
+        </a>
+        <a href="#how-it-works" class="btn btn-outline btn-lg">
+          <i class="fa-solid fa-play"></i> See How It Works
+        </a>
+      </div>
+      <p class="hero-note"><i class="fa-solid fa-circle-check"></i> No credit card required &nbsp;·&nbsp; <i class="fa-solid fa-circle-check"></i> 14-day free trial &nbsp;·&nbsp; <i class="fa-solid fa-circle-check"></i> Cancel anytime</p>
+
+      <!-- Hero Card Preview -->
+      <div class="hero-card-preview">
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-avatar">S</div>
+            <div class="reviewer-info">
+              <strong>Sarah Mitchell</strong>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+            <div class="google-logo"><i class="fa-brands fa-google"></i></div>
+          </div>
+          <p class="review-text">"Amazing service! The team was super helpful and went above and beyond. Definitely coming back!"</p>
+          <div class="reply-box">
+            <div class="reply-label">
+              <span class="vera-badge"><i class="fa-solid fa-reply"></i> ReplyVera</span>
+              <span class="typing-dot typing-done"></span>
+            </div>
+            <p class="reply-text" id="typedReply"></p>
+          </div>
+        </div>
+        <div class="card-stat card-stat-1">
+          <i class="fa-solid fa-bolt"></i>
+          <div>
+            <strong>Replied in 3s</strong>
+            <span>Instant AI reply</span>
+          </div>
+        </div>
+        <div class="card-stat card-stat-2">
+          <i class="fa-solid fa-thumbs-up"></i>
+          <div>
+            <strong>98% Satisfaction</strong>
+            <span>Customer approval</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social Proof Bar -->
+      <div class="social-proof">
+        <p>Trusted by <strong>2,400+</strong> businesses worldwide</p>
+        <div class="avatar-stack">
+          <div class="av av1">J</div>
+          <div class="av av2">M</div>
+          <div class="av av3">R</div>
+          <div class="av av4">K</div>
+          <div class="av av5">+</div>
+        </div>
+        <div class="proof-stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <span>4.9 / 5</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LOGO BAR ===== -->
+  <section class="logo-bar">
+    <div class="container">
+      <p>Powering review responses for businesses in every industry</p>
+      <div class="logo-row">
+        <div class="logo-chip"><i class="fa-solid fa-utensils"></i> Restaurants</div>
+        <div class="logo-chip"><i class="fa-solid fa-hotel"></i> Hotels</div>
+        <div class="logo-chip"><i class="fa-solid fa-store"></i> Retail</div>
+        <div class="logo-chip"><i class="fa-solid fa-stethoscope"></i> Healthcare</div>
+        <div class="logo-chip"><i class="fa-solid fa-wrench"></i> Home Services</div>
+        <div class="logo-chip"><i class="fa-solid fa-dumbbell"></i> Fitness</div>
+        <div class="logo-chip"><i class="fa-solid fa-car"></i> Automotive</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== KEY BENEFITS ===== -->
+  <section class="benefits" id="features">
+    <div class="container">
+      <div class="section-label">Why ReplyVera</div>
+      <h2 class="section-title">Everything you need to <br /><span class="gradient-text">master your Google reviews</span></h2>
+      <p class="section-sub">Built for businesses that value reputation, time, and real customer connections.</p>
+
+      <div class="benefits-grid">
+        <div class="benefit-card benefit-card-featured">
+          <div class="benefit-icon"><i class="fa-solid fa-bolt"></i></div>
+          <h3>Respond 24/7, Instantly</h3>
+          <p>Never miss a review again. ReplyVera auto-replies in real time — even at 2 AM, even on weekends. Every customer feels heard, every time.</p>
+          <div class="benefit-stat">
+            <strong>3x</strong>
+            <span>faster than manual replies</span>
+          </div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fa-solid fa-paint-brush"></i></div>
+          <h3>Always On-Brand</h3>
+          <p>Train ReplyVera with your tone, style, and voice. Every reply feels authentic and professional — like it was written by you.</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3>Protect Your Reputation</h3>
+          <p>Handle negative reviews with empathy and professionalism. Defuse tension and show future customers you care about every experience.</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <h3>Improve Your Rankings</h3>
+          <p>Google rewards businesses that actively respond to reviews. More replies means better local SEO and higher visibility in search results.</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fa-solid fa-sliders"></i></div>
+          <h3>Full Control & Review</h3>
+          <p>Approve replies before they go live, or go fully automatic. Set rules for star ratings, keywords, and sentiment. You decide the flow.</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fa-solid fa-chart-pie"></i></div>
+          <h3>Insights & Analytics</h3>
+          <p>Get a bird's-eye view of your review trends, sentiment scores, response rates, and reputation health all in one clean dashboard.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-label">Simple Setup</div>
+      <h2 class="section-title">Up and running in <span class="gradient-text">under 5 minutes</span></h2>
+      <p class="section-sub">No complicated setup. No technical skills needed. Just connect, customize, and go.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <div class="step-icon"><i class="fa-brands fa-google"></i></div>
+            <h3>Connect Your Google Business</h3>
+            <p>Link your Google Business Profile with a single click. ReplyVera instantly syncs all your incoming reviews.</p>
+          </div>
+        </div>
+        <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        <div class="step">
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <div class="step-icon"><i class="fa-solid fa-sliders"></i></div>
+            <h3>Customize Your Voice</h3>
+            <p>Tell ReplyVera your business name, tone, and style preferences. Set up reply rules for 5-star, 3-star, and negative reviews.</p>
+          </div>
+        </div>
+        <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        <div class="step">
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <div class="step-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <h3>Let ReplyVera Do the Work</h3>
+            <p>Sit back while ReplyVera writes and sends thoughtful, personalized replies to every review — automatically.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== REVIEW EXAMPLES ===== -->
+  <section class="examples">
+    <div class="container">
+      <div class="section-label">Real Replies. Real Results.</div>
+      <h2 class="section-title">See ReplyVera in <span class="gradient-text">action</span></h2>
+      <p class="section-sub">Smart, human-sounding replies generated in seconds for reviews of every kind.</p>
+
+      <div class="examples-grid">
+
+        <div class="example-card">
+          <div class="example-rating five-star">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <span>5-Star Review</span>
+          </div>
+          <div class="example-review">
+            <div class="ex-reviewer"><div class="ex-av">T</div><strong>Tom R.</strong></div>
+            <p>"Best pizza I've ever had in the city. The staff was incredibly friendly and the atmosphere was perfect for a date night. Will 100% be back!"</p>
+          </div>
+          <div class="example-reply">
+            <div class="reply-tag"><i class="fa-solid fa-reply"></i> ReplyVera Response</div>
+            <p>"Thank you so much, Tom! 🍕 We're thrilled you enjoyed your evening with us — creating the perfect date night vibe is something our whole team takes pride in. We can't wait to welcome you back! See you soon."</p>
+          </div>
+        </div>
+
+        <div class="example-card">
+          <div class="example-rating three-star">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <span>3-Star Review</span>
+          </div>
+          <div class="example-review">
+            <div class="ex-reviewer"><div class="ex-av">A</div><strong>Ava L.</strong></div>
+            <p>"Food was good but wait time was a bit long. The server was nice though. Might come back on a less busy day."</p>
+          </div>
+          <div class="example-reply">
+            <div class="reply-tag"><i class="fa-solid fa-reply"></i> ReplyVera Response</div>
+            <p>"Hi Ava, thank you for your honest feedback! We're glad you enjoyed the food and had a positive experience with our team. We're actively working on improving our wait times, especially during peak hours. We hope to give you a much smoother visit next time!"</p>
+          </div>
+        </div>
+
+        <div class="example-card">
+          <div class="example-rating one-star">
+            <i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <span>1-Star Review</span>
+          </div>
+          <div class="example-review">
+            <div class="ex-reviewer"><div class="ex-av">M</div><strong>Mark T.</strong></div>
+            <p>"Order was wrong and it took forever. Very disappointed with the experience."</p>
+          </div>
+          <div class="example-reply">
+            <div class="reply-tag"><i class="fa-solid fa-reply"></i> ReplyVera Response</div>
+            <p>"Hi Mark, we're truly sorry to hear about your experience — this is not the standard we hold ourselves to. We'd love to make it right. Please reach out to us directly at [email] so we can look into this and ensure it doesn't happen again. Your feedback means a lot to us."</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-label">What Our Customers Say</div>
+      <h2 class="section-title">Businesses love <span class="gradient-text">ReplyVera</span></h2>
+
+      <div class="testi-grid">
+        <div class="testi-card testi-featured">
+          <div class="testi-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <p>"ReplyVera has completely transformed how we handle customer feedback. We used to spend hours every week replying to reviews. Now it's fully automated and the replies sound better than what we were writing ourselves."</p>
+          <div class="testi-author">
+            <div class="testi-av ta1">J</div>
+            <div>
+              <strong>James Caldwell</strong>
+              <span>Owner, The Grillhouse Restaurant</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <p>"Our Google rating went from 4.1 to 4.6 in just two months. Customers notice when you respond. ReplyVera made that effortless for us."</p>
+          <div class="testi-author">
+            <div class="testi-av ta2">L</div>
+            <div>
+              <strong>Lisa Park</strong>
+              <span>Manager, Bloom Day Spa</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <p>"As a small business owner, I don't have time to manage everything. ReplyVera handles our Google reviews automatically and we've gotten so many compliments on how responsive we are."</p>
+          <div class="testi-author">
+            <div class="testi-av ta3">R</div>
+            <div>
+              <strong>Ray Andres</strong>
+              <span>Owner, Andres Auto Repair</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <p>"The tone customization is brilliant. ReplyVera sounds exactly like us — warm, professional, and personal. Our customers can't even tell it's automated."</p>
+          <div class="testi-author">
+            <div class="testi-av ta4">N</div>
+            <div>
+              <strong>Nina Choi</strong>
+              <span>Marketing Director, FreshMart</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS BANNER ===== -->
+  <section class="stats-banner">
+    <div class="container stats-grid">
+      <div class="stat-item">
+        <div class="stat-num" data-target="2400">0</div>
+        <p>Businesses Using ReplyVera</p>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="4200000">0</div>
+        <p>Reviews Auto-Replied</p>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="98">0</div>
+        <p>% Customer Satisfaction</p>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="3">0</div>
+        <p>Seconds Average Reply Time</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRICING ===== -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-label">Simple Pricing</div>
+      <h2 class="section-title">One plan for every <span class="gradient-text">business size</span></h2>
+      <p class="section-sub">No hidden fees. Cancel anytime. Start free.</p>
+
+      <div class="pricing-toggle">
+        <span class="toggle-label">Monthly</span>
+        <label class="switch">
+          <input type="checkbox" id="billingToggle" />
+          <span class="slider"></span>
+        </label>
+        <span class="toggle-label">Annual <span class="save-badge">Save 30%</span></span>
+      </div>
+
+      <div class="pricing-grid">
+
+        <div class="price-card">
+          <div class="plan-name">Starter</div>
+          <div class="plan-price">
+            <span class="currency">$</span>
+            <span class="amount monthly-price">29</span>
+            <span class="amount annual-price" style="display:none;">20</span>
+            <span class="period">/mo</span>
+          </div>
+          <p class="plan-desc">Perfect for small businesses just getting started with review management.</p>
+          <ul class="plan-features">
+            <li><i class="fa-solid fa-check"></i> 1 Google Business Location</li>
+            <li><i class="fa-solid fa-check"></i> Up to 100 auto-replies/month</li>
+            <li><i class="fa-solid fa-check"></i> Basic tone customization</li>
+            <li><i class="fa-solid fa-check"></i> Email notifications</li>
+            <li><i class="fa-solid fa-check"></i> Review dashboard</li>
+            <li class="disabled"><i class="fa-solid fa-xmark"></i> Multi-location support</li>
+            <li class="disabled"><i class="fa-solid fa-xmark"></i> Advanced analytics</li>
+          </ul>
+          <a href="#" class="btn btn-outline btn-full">Get Started</a>
+        </div>
+
+        <div class="price-card price-card-featured">
+          <div class="popular-badge">Most Popular</div>
+          <div class="plan-name">Growth</div>
+          <div class="plan-price">
+            <span class="currency">$</span>
+            <span class="amount monthly-price">79</span>
+            <span class="amount annual-price" style="display:none;">55</span>
+            <span class="period">/mo</span>
+          </div>
+          <p class="plan-desc">For growing businesses ready to scale their reputation management.</p>
+          <ul class="plan-features">
+            <li><i class="fa-solid fa-check"></i> Up to 5 Locations</li>
+            <li><i class="fa-solid fa-check"></i> Unlimited auto-replies</li>
+            <li><i class="fa-solid fa-check"></i> Advanced tone & voice setup</li>
+            <li><i class="fa-solid fa-check"></i> Negative review alerts</li>
+            <li><i class="fa-solid fa-check"></i> Review analytics dashboard</li>
+            <li><i class="fa-solid fa-check"></i> Approval workflow</li>
+            <li class="disabled"><i class="fa-solid fa-xmark"></i> White-label reports</li>
+          </ul>
+          <a href="#" class="btn btn-primary btn-full">Start Free Trial</a>
+        </div>
+
+        <div class="price-card">
+          <div class="plan-name">Agency</div>
+          <div class="plan-price">
+            <span class="currency">$</span>
+            <span class="amount monthly-price">199</span>
+            <span class="amount annual-price" style="display:none;">139</span>
+            <span class="period">/mo</span>
+          </div>
+          <p class="plan-desc">For agencies and enterprises managing reviews at scale across many clients.</p>
+          <ul class="plan-features">
+            <li><i class="fa-solid fa-check"></i> Unlimited Locations</li>
+            <li><i class="fa-solid fa-check"></i> Unlimited auto-replies</li>
+            <li><i class="fa-solid fa-check"></i> Full brand voice control</li>
+            <li><i class="fa-solid fa-check"></i> Priority support</li>
+            <li><i class="fa-solid fa-check"></i> Advanced analytics & reporting</li>
+            <li><i class="fa-solid fa-check"></i> Approval workflows</li>
+            <li><i class="fa-solid fa-check"></i> White-label reports</li>
+          </ul>
+          <a href="#" class="btn btn-outline btn-full">Contact Sales</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="faq">
+    <div class="container faq-inner">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">
+            How does ReplyVera connect to my Google Reviews?
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>ReplyVera connects securely via the Google Business Profile API. You simply authenticate with your Google account and select which locations to manage. Setup takes less than 5 minutes.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Will the replies sound robotic or AI-generated?
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>No. ReplyVera is trained on your business's tone and voice. We use advanced AI to write replies that sound natural, warm, and specific to each review. Many customers report their customers can't tell the difference from manual replies.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Can I review replies before they're posted?
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Absolutely. You can enable an approval workflow where all replies are sent to you for review before being posted. You can also go fully automatic for hands-free operation — it's your choice.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            How does ReplyVera handle negative reviews?
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>ReplyVera detects negative sentiment and crafts empathetic, professional responses designed to de-escalate and show accountability. You can also set up instant alerts for low-star reviews so you can take personal action if needed.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Is there a free trial available?
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Yes! Every plan includes a 14-day free trial with no credit card required. You get full access to all features in your chosen plan during the trial period.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BANNER ===== -->
+  <section class="cta-banner">
+    <div class="cta-blob cta-blob-1"></div>
+    <div class="cta-blob cta-blob-2"></div>
+    <div class="container cta-inner">
+      <div class="cta-icon"><i class="fa-solid fa-reply"></i></div>
+      <h2>Start replying to every Google review <span class="gradient-text">today</span></h2>
+      <p>Join 2,400+ businesses saving time and building stronger reputations with ReplyVera.</p>
+      <div class="cta-buttons">
+        <a href="#" class="btn btn-primary btn-lg">
+          <i class="fa-solid fa-rocket"></i> Start Free Trial — No Card Needed
+        </a>
+        <a href="#" class="btn btn-ghost-white btn-lg">
+          <i class="fa-solid fa-calendar"></i> Book a Demo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <span class="logo-icon"><i class="fa-solid fa-reply"></i></span>
+          Reply<span class="logo-accent">Vera</span>
+        </a>
+        <p>Smart, on-brand auto-replies for every Google review. Trusted by thousands of businesses worldwide.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="#">Features</a>
+          <a href="#">How It Works</a>
+          <a href="#">Pricing</a>
+          <a href="#">Changelog</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#">About Us</a>
+          <a href="#">Blog</a>
+          <a href="#">Careers</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="#">Help Center</a>
+          <a href="#">Documentation</a>
+          <a href="#">Status</a>
+          <a href="#">Book a Demo</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 ReplyVera. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReplyVera – Auto-Reply to Google Reviews with AI</title>
+  <meta name="description" content="ReplyVera helps businesses automatically respond to Google reviews with smart, on-brand AI replies. Save time, build trust, and protect your reputation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="logo">
+        <span class="logo-icon"><i class="fa-solid fa-reply"></i></span>
+        Reply<span class="logo-accent">Vera</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="#" class="btn btn-ghost">Log In</a>
+        <a href="#" class="btn btn-primary">Start Free Trial</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-blobs">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+    <div class="container hero-inner">
+      <div class="hero-badge">
+        <i class="fa-brands fa-google"></i>
+        <span>Google Review Automation</span>
+      </div>
+      <h1 class="hero-headline">
+        Google Reviews Handled. <br />
+        <span class="gradient-text">Automatically. In Your Voice.</span>
+      </h1>
+      <p class="hero-sub">
+        ReplyVera generates smart, on-brand responses to every review you receive — posted instantly, or held for your approval before anything goes live. Connect your Google Business Profile and you're up in minutes.
+      </p>
+      <div class="hero-cta">
+        <a href="#" class="btn btn-primary btn-lg">
+          <i class="fa-solid fa-rocket"></i> Start Free Trial
+        </a>
+        <a href="#how-it-works" class="btn btn-outline btn-lg">
+          <i class="fa-solid fa-play"></i> See How It Works
+        </a>
+      </div>
+      <p class="hero-note"><i class="fa-solid fa-circle-check"></i> No credit card required &nbsp;·&nbsp; <i class="fa-solid fa-circle-check"></i> 14-day free trial &nbsp;·&nbsp; <i class="fa-solid fa-circle-check"></i> Cancel anytime</p>
+
+      <!-- Hero Card Preview -->
+      <div class="hero-card-preview">
+        <div class="review-card">
+          <div class="card-biz-bar">
+            <span><i class="fa-solid fa-store"></i> The Grillhouse</span>
+            <span class="card-new-badge">3 new reviews</span>
+          </div>
+          <div class="review-header">
+            <div class="reviewer-avatar">J</div>
+            <div class="reviewer-info">
+              <strong>James R.</strong>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+            <div class="google-logo"><i class="fa-brands fa-google"></i></div>
+          </div>
+          <p class="review-text">"The staff went out of their way to make our anniversary dinner special. Best meal we've had in months."</p>
+          <div class="reply-box">
+            <div class="reply-label">
+              <span class="vera-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Draft</span>
+              <span class="voice-tag">Warm &amp; Professional</span>
+              <span class="typing-dot typing-done"></span>
+            </div>
+            <p class="reply-text" id="typedReply"></p>
+            <div class="approval-bar">
+              <span class="approval-status"><i class="fa-solid fa-clock"></i> Awaiting your approval</span>
+              <div class="approval-actions">
+                <button class="action-approve">Approve</button>
+                <button class="action-edit">Edit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-stat card-stat-1">
+          <i class="fa-solid fa-shield-halved"></i>
+          <div>
+            <strong>Approval Mode</strong>
+            <span>Review before posting</span>
+          </div>
+        </div>
+        <div class="card-stat card-stat-2">
+          <i class="fa-solid fa-bolt"></i>
+          <div>
+            <strong>Draft in 1.8s</strong>
+            <span>Auto-generated</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social Proof Bar -->
+      <div class="social-proof">
+        <p>Trusted by <strong>2,400+</strong> businesses &nbsp;&middot;&nbsp; <strong>4.9/5</strong> avg. rating &nbsp;&middot;&nbsp; Replies sent in under <strong>30 seconds</strong></p>
+        <div class="avatar-stack">
+          <div class="av av1">J</div>
+          <div class="av av2">M</div>
+          <div class="av av3">R</div>
+          <div class="av av4">K</div>
+          <div class="av av5">+</div>
+        </div>
+        <div class="proof-stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <span>4.9 / 5</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LOGO BAR ===== -->
+  <section class="logo-bar" style="padding: 3rem 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); background-color: var(--bg-alt);">
+    <div class="container" style="text-align: center;">
+      <h3 style="font-size: 1.125rem; font-weight: 600; color: var(--text-color); margin-bottom: 0.5rem;">The review engine behind fast-growing teams.</h3>
+      <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 2rem;">Modern companies use ReplyVera to drop response times from days to minutes.</p>
+      
+      <div class="logo-row" style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; align-items: center; opacity: 0.6; transition: opacity 0.3s ease;">
+        <!-- Monochromatic SaaS/Product-Led brand representations -->
+        <div class="logo-item" style="font-size: 1.5rem; font-weight: 700; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem;"><i class="fa-brands fa-hubspot"></i> HubSpot</div>
+        <div class="logo-item" style="font-size: 1.5rem; font-weight: 700; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem;"><i class="fa-brands fa-intercom"></i> Intercom</div>
+        <div class="logo-item" style="font-size: 1.5rem; font-weight: 700; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem;"><i class="fa-brands fa-shopify"></i> Shopify</div>
+        <div class="logo-item" style="font-size: 1.5rem; font-weight: 700; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem;"><i class="fa-brands fa-slack"></i> Slack</div>
+        <div class="logo-item" style="font-size: 1.5rem; font-weight: 700; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem;"><i class="fa-brands fa-figma"></i> Figma</div>
+        <div class="logo-item" style="font-size: 1.5rem; font-weight: 700; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem;"><i class="fa-brands fa-stripe"></i> Stripe</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== KEY BENEFITS ===== -->
+  <section class="benefits" id="features">
+    <div class="container">
+      <div class="section-label">Why ReplyVera</div>
+      <h2 class="section-title">Built around how real <br /><span class="gradient-text">businesses manage reviews</span></h2>
+      <p class="section-sub">Each feature is designed to cut response time, protect your brand, and keep your team in full control.</p>
+
+      <div class="benefits-grid">
+        <div class="benefit-card benefit-card-featured">
+          <div class="benefit-icon"><i class="fa-solid fa-bolt"></i></div>
+          <h3>Reply to every review within minutes</h3>
+          <p>New reviews trigger an instant draft — no queue, no delay. Whether it's Monday morning or 2 AM on Sunday, every customer gets a timely, thoughtful response.</p>
+          <div class="benefit-stat">
+            <strong>&lt;3 min</strong>
+            <span>average time to first draft</span>
+          </div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fa-solid fa-pen-nib"></i></div>
+          <h3>Every reply sounds like you</h3>
+          <p>Set your tone, preferred phrases, and brand personality once. ReplyVera applies them consistently — whether you're on your 10th review or your 1,000th.</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3>Negative reviews handled carefully</h3>
+          <p>ReplyVera detects low-star reviews and drafts measured, professional responses — never defensive. Set instant alerts so you can step in personally when it matters most.</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fa-solid fa-sliders"></i></div>
+          <h3>You control what gets posted</h3>
+          <p>Run fully automatic or require approval before anything goes live. Set different rules by star rating — auto-approve 5-stars, manually review 1-stars. Your workflow, your rules.</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fa-solid fa-chart-pie"></i></div>
+          <h3>A clear view of your review activity</h3>
+          <p>Track reply rates, response times, sentiment trends, and review volume over time — all in one dashboard. Know where you're improving and where to focus next.</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fa-solid fa-clock"></i></div>
+          <h3>Hours back every month</h3>
+          <p>Most businesses spend hours each month writing review replies manually. ReplyVera reduces that to near zero — without sacrificing quality or making customers feel ignored.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRODUCT UI SHOWCASE ===== -->
+  <section class="product-showcase">
+    <div class="container">
+      <div class="section-label">Intelligent Workflow</div>
+      <h2 class="section-title">Intelligent automation. <span class="gradient-text">Absolute oversight.</span></h2>
+      <p class="section-sub">Deliver instant, on-brand responses at scale while maintaining strict final approval over sensitive feedback.</p>
+      
+      <div class="ui-mockup-wrapper">
+        <div class="ui-mockup">
+          <!-- Left Sidebar: Inbox -->
+          <div class="ui-mockup-sidebar">
+            <div class="ui-sidebar-header">Review Inbox</div>
+            <div class="ui-msg-item approved">
+              <div class="ui-msg-top"><span>Sarah M.</span><span style="color: var(--success);"><i class="fa-solid fa-check-circle"></i></span></div>
+              <div class="ui-msg-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              <div class="ui-badge green">Auto-Posted</div>
+            </div>
+            <div class="ui-msg-item active">
+              <div class="ui-msg-top"><span>David R.</span><span style="color: var(--warning);"><i class="fa-solid fa-circle-exclamation"></i></span></div>
+              <div class="ui-msg-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></div>
+              <div class="ui-badge orange">Needs Approval</div>
+            </div>
+            <div class="ui-msg-item approved">
+              <div class="ui-msg-top"><span>Emma L.</span><span style="color: var(--success);"><i class="fa-solid fa-check-circle"></i></span></div>
+              <div class="ui-msg-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              <div class="ui-badge green">Auto-Posted</div>
+            </div>
+          </div>
+          <!-- Right Pane: Active Review -->
+          <div class="ui-mockup-main">
+            <div class="ui-main-header">
+              <div>
+                <strong style="color: var(--text-color);">Review from David R.</strong>
+                <div class="ui-msg-stars" style="margin-top:4px;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></div>
+              </div>
+              <div style="color: #4285F4; font-size: 1.25rem;"><i class="fa-brands fa-google"></i></div>
+            </div>
+            <div class="ui-customer-text">
+              "Brought my car in for a brake job. Took two days longer than quoted and I had to call three times for updates. Very frustrating experience."
+            </div>
+            <div class="ui-draft-box">
+              <div class="ui-draft-label"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Drafted Reply</div>
+              <div class="ui-draft-text" contenteditable="true">
+                Hi David, we sincerely apologize for the delay and the lack of proactive updates — that's not the standard we hold ourselves to. We'd like to make this right. Please contact us directly at management@replyvera.com so we can address this personally.
+              </div>
+              <div class="ui-draft-actions">
+                <button class="btn btn-primary btn-sm">Approve & Post</button>
+                <button class="btn btn-outline btn-sm">Edit Draft</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Callouts -->
+        <div class="ui-callout callout-1">
+          <strong>Smart Routing</strong>
+          <p>Auto-post 5-star reviews. Flag negative reviews for human oversight.</p>
+        </div>
+        <div class="ui-callout callout-2">
+          <strong>Context-Aware Drafts</strong>
+          <p>AI drafts a calm, professional de-escalation in under 2 seconds.</p>
+        </div>
+        <div class="ui-callout callout-3">
+          <strong>One-Click Publishing</strong>
+          <p>Approve, edit, or reject drafts before anything goes live.</p>
+        </div>
+      </div>
+      
+      <div style="max-width: 800px; margin: 3rem auto 0; text-align: center;">
+        <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6;">
+          ReplyVera doesn't just guess what you want to say. Our intelligent routing lets you build custom rules tailored to your comfort level. Let the engine instantly handle routine 5-star praise, while safely holding critical 1-star feedback in a secure queue for your final blessing. You get the speed of AI with the safety of a human manager.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-label">Simple Setup</div>
+      <h2 class="section-title">Up and running in <span class="gradient-text">under 5 minutes</span></h2>
+      <p class="section-sub">No developer required. No complex configuration. Three steps and you're live.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <div class="step-icon"><i class="fa-brands fa-google"></i></div>
+            <h3>Connect Your Google Business Profile</h3>
+            <p>Authenticate with your Google account and select which locations to manage. ReplyVera syncs your reviews instantly — no manual import needed.</p>
+          </div>
+        </div>
+        <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        <div class="step">
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <div class="step-icon"><i class="fa-solid fa-sliders"></i></div>
+            <h3>Set Your Brand Voice and Reply Rules</h3>
+            <p>Define your tone, preferred phrases, and how ReplyVera handles reviews by star rating. Auto-approve 5-stars, flag 1-stars for manual review — or mix and match.</p>
+          </div>
+        </div>
+        <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        <div class="step">
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <div class="step-icon"><i class="fa-solid fa-circle-check"></i></div>
+            <h3>Automate Replies. Stay in Control.</h3>
+            <p>ReplyVera drafts and sends replies on your schedule — or routes them to an approval queue first. You can override, edit, or pause anything, anytime.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== REVIEW EXAMPLES ===== -->
+  <section class="examples">
+    <div class="container">
+      <div class="section-label">Product in Action</div>
+      <h2 class="section-title">See how ReplyVera replies <span class="gradient-text">across every vertical</span></h2>
+      <p class="section-sub">ReplyVera adapts its tone and style to your business. Each reply below is generated from your brand voice settings — no two businesses sound the same.</p>
+
+      <div class="examples-grid">
+
+        <div class="example-card">
+          <div class="example-biz-header">
+            <span class="ex-biz-label"><i class="fa-solid fa-utensils"></i> La Terraza Kitchen</span>
+            <div class="ex-meta-tags">
+              <span class="ex-tone-tag">Warm &amp; Friendly</span>
+              <span class="ex-approval-tag ex-auto"><i class="fa-solid fa-circle-check"></i> Auto-published</span>
+            </div>
+          </div>
+          <div class="example-rating five-star">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <span>5-Star Review</span>
+          </div>
+          <div class="example-review">
+            <div class="ex-reviewer"><div class="ex-av">M</div><strong>Maria G.</strong></div>
+            <p>"Best tacos I've had outside of Mexico. The staff remembered my name on my second visit — that kind of hospitality is rare."</p>
+          </div>
+          <div class="example-reply">
+            <div class="reply-tag"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Draft</div>
+            <p>"Maria, that means everything to us! Making each guest feel at home is exactly what we aim for. We'll have your usual ready for visit three — see you soon! 🌮"</p>
+          </div>
+        </div>
+
+        <div class="example-card">
+          <div class="example-biz-header">
+            <span class="ex-biz-label"><i class="fa-solid fa-car"></i> Garcia's Auto Repair</span>
+            <div class="ex-meta-tags">
+              <span class="ex-tone-tag">Formal &amp; Empathetic</span>
+              <span class="ex-approval-tag ex-review"><i class="fa-solid fa-clock"></i> Sent for review</span>
+            </div>
+          </div>
+          <div class="example-rating one-star">
+            <i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <span>1-Star Review</span>
+          </div>
+          <div class="example-review">
+            <div class="ex-reviewer"><div class="ex-av">K</div><strong>Kevin P.</strong></div>
+            <p>"Brought my car in for a brake job. Took two days longer than quoted and I had to call three times for updates."</p>
+          </div>
+          <div class="example-reply">
+            <div class="reply-tag"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Draft</div>
+            <p>"Kevin, we sincerely apologize for the delay and the lack of proactive updates — that's not the standard we hold ourselves to. We'd like to make this right. Please contact us at service@garciasauto.com and we'll address this personally."</p>
+          </div>
+        </div>
+
+        <div class="example-card">
+          <div class="example-biz-header">
+            <span class="ex-biz-label"><i class="fa-solid fa-stethoscope"></i> Riverfront Medical</span>
+            <div class="ex-meta-tags">
+              <span class="ex-tone-tag">HIPAA-Compliant</span>
+              <span class="ex-approval-tag ex-review" style="color: var(--warning); background: rgba(245,166,35,0.1); border-color: rgba(245,166,35,0.3);"><i class="fa-solid fa-hand"></i> Requires Approval</span>
+            </div>
+          </div>
+          <div class="example-rating one-star">
+            <i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <span>1-Star Review</span>
+          </div>
+          <div class="example-review">
+            <div class="ex-reviewer"><div class="ex-av">J</div><strong>James T.</strong></div>
+            <p>"I waited 45 minutes past my scheduled appointment time. When I finally saw the doctor, he seemed rushed and didn't clearly explain the out-of-pocket costs for my procedure. Left feeling very frustrated."</p>
+          </div>
+          <div class="example-reply">
+            <div class="reply-tag"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Draft</div>
+            <p>"Hi James, we sincerely apologize for the longer-than-usual wait time and your frustration regarding the breakdown of your treatment costs. Your time and peace of mind are extremely important to us. Due to patient privacy regulations, we cannot discuss specific medical files publicly, but our practice manager wants to personally review your bill and experience with you. Please call our office directly at 555-0198 so we can make this right."</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-label">From Our Customers</div>
+      <h2 class="section-title">What operators say after <span class="gradient-text">switching to ReplyVera</span></h2>
+      <p class="section-sub" style="margin-bottom: 48px;">No scripts, no prompting — just what real business owners and managers told us.</p>
+
+      <div class="testi-grid">
+        <!-- Mini Case Study -->
+        <div class="case-study-card">
+          <div class="cs-context">
+            <div class="cs-logo"><i class="fa-solid fa-tooth"></i> Precision Dental Group</div>
+            <h3>Scaling a 5-star reputation across 12 locations—without hiring a social manager.</h3>
+            <p class="cs-quote">"We rescued 30 hours a month and went from ignoring reviews to a 100% response rate in under 7 days."</p>
+            <div class="testi-author">
+              <div class="testi-av ta1">S</div>
+              <div>
+                <strong>Sandra Vega</strong>
+                <span>Operations Director</span>
+              </div>
+            </div>
+          </div>
+          <div class="cs-story">
+            <div class="cs-block">
+              <strong>The Challenge:</strong>
+              <p>Managing 12 separate profiles cost the team over 8 hours a week. To save time, staff relied on generic, repetitive replies—and during busy cycles, a growing backlog of incoming reviews was left completely ignored.</p>
+            </div>
+            <div class="cs-block">
+              <strong>The Solution:</strong>
+              <p>Connected all 12 clinics to a unified dashboard. 5-star reviews are instantly auto-replied in a warm, patient-friendly tone, while critical feedback routes to an approval queue for the Director.</p>
+            </div>
+            <div class="cs-metrics">
+              <div class="cs-metric">
+                <strong>100%</strong>
+                <span>Response Rate</span>
+              </div>
+              <div class="cs-metric">
+                <strong>30+ hrs</strong>
+                <span>Saved Monthly</span>
+              </div>
+              <div class="cs-metric">
+                <strong>0</strong>
+                <span>Copies/Scripts</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <p>"I was skeptical about the tone — I have a specific way I talk to customers. But after adjusting the brand voice settings, the replies actually sound like me. I've had regulars comment on how quick I am to respond now."</p>
+          <div class="testi-author">
+            <div class="testi-av ta2">D</div>
+            <div>
+              <strong>Daniel Osei</strong>
+              <span>Owner, Osei's Barbershop</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <p>"What sold me was the approval queue. I wanted automation but wasn't ready to hand over full posting access. Being able to review flagged replies before they go live gave us the confidence to actually commit to it."</p>
+          <div class="testi-author">
+            <div class="testi-av ta3">C</div>
+            <div>
+              <strong>Claire Hutchins</strong>
+              <span>Marketing Coordinator, Brightway Dental Group</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS BANNER ===== -->
+  <section class="stats-banner">
+    <div class="container stats-grid">
+      <div class="stat-item">
+        <div class="stat-num">2,400+</div>
+        <p>Businesses active on ReplyVera</p>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">&lt;30s</div>
+        <p>Average time to first reply draft</p>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5 min</div>
+        <p>Average setup time, start to live</p>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4.9/5</div>
+        <p>Average rating from active users</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHO IT'S FOR ===== -->
+  <section class="who-its-for">
+    <div class="container">
+      <div class="section-label">Who We Serve</div>
+      <h2 class="section-title">Built for your <span class="gradient-text">exact operational scale.</span></h2>
+      <p class="section-sub">Whether you oversee a single busy storefront or manage a portfolio of fifty enterprise brands, ReplyVera’s review workflow automatically adapts to fit your footprint.</p>
+      
+      <div class="wif-grid">
+        <div class="wif-card">
+          <div class="wif-icon"><i class="fa-solid fa-shop"></i></div>
+          <div class="wif-label">Local Shops</div>
+          <h3>Single-Location Businesses</h3>
+          <ul class="wif-list">
+            <li><strong>The Reality:</strong> You wear every hat, and dropping everything to reply isn't always possible.</li>
+            <li><strong>The Core Need:</strong> Managing unpredictable review volumes without sacrificing hours.</li>
+            <li><strong>Why ReplyVera Fits:</strong> Safely automates responses to 5-star feedback so your business always looks highly responsive, while placing critical reviews into a secure, manual approval queue.</li>
+          </ul>
+        </div>
+
+        <div class="wif-card wif-featured">
+          <div class="wif-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+          <div class="wif-label">Growing Brands</div>
+          <h3>Multi-Store Franchises</h3>
+          <ul class="wif-list">
+            <li><strong>The Reality:</strong> Relying on five local store managers means ending up with five completely different brand voices.</li>
+            <li><strong>The Core Need:</strong> Ensuring quality control and brand consistency across regions.</li>
+            <li><strong>Why ReplyVera Fits:</strong> Unified dashboards and Approval Queues. HQ can auto-clear 5-star praise locally while safely quarantining 1-star escalations for central review.</li>
+          </ul>
+        </div>
+
+        <div class="wif-card">
+          <div class="wif-icon"><i class="fa-solid fa-briefcase"></i></div>
+          <div class="wif-label">Marketing Agencies</div>
+          <h3>Agencies & Operators</h3>
+          <ul class="wif-list">
+            <li><strong>The Reality:</strong> Scaling reputation management usually means manually juggling passwords or hiring dedicated staff.</li>
+            <li><strong>The Core Need:</strong> Delivering high-volume management to diverse client brands simultaneously.</li>
+            <li><strong>Why ReplyVera Fits:</strong> Powerful multi-tenant infrastructure. It allows your team to manage dozens of distinct client profiles from one seat.</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div style="text-align: center; margin-top: 48px;">
+        <p style="color: var(--text-muted); font-size: 1.05rem;">
+          Ready to put your reputation on autopilot? <a href="#pricing" style="color: var(--primary-light); font-weight: 600; text-decoration: underline; text-underline-offset: 4px;">See how our plans compare.</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRICING ===== -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-label">Simple Pricing</div>
+      <h2 class="section-title">Simple pricing for <span class="gradient-text">world-class reputation management.</span></h2>
+      <p class="section-sub">Select a plan designed for your current scale. Whether you operate one local shop or a multi-brand agency, ReplyVera slashes manual review management while keeping your responses fast, thoughtful, and perfectly on-brand.</p>
+
+      <div class="pricing-toggle">
+        <span class="toggle-label">Monthly</span>
+        <label class="switch">
+          <input type="checkbox" id="billingToggle" />
+          <span class="slider"></span>
+        </label>
+        <span class="toggle-label">Annual <span class="save-badge">Save 30%</span></span>
+      </div>
+
+      <div class="pricing-grid">
+
+        <div class="price-card">
+          <div style="font-size: 0.75rem; font-weight: 700; color: var(--primary-light); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">Best for: Local Shops & Solopreneurs</div>
+          <div class="plan-name">Starter</div>
+          <div class="plan-price">
+            <span class="currency">$</span>
+            <span class="amount monthly-price">29</span>
+            <span class="amount annual-price" style="display:none;">20</span>
+            <span class="period">/mo</span>
+          </div>
+          <p class="plan-desc">Perfect for single-location businesses looking to reclaim their time and guarantee every review gets a warm, professional response.</p>
+          <ul class="plan-features">
+            <li><i class="fa-solid fa-check"></i> 1 Google Business Location</li>
+            <li><i class="fa-solid fa-check"></i> Up to 100 auto-replies/month</li>
+            <li><i class="fa-solid fa-check"></i> Basic Tone Configuration</li>
+            <li><i class="fa-solid fa-check"></i> Email Notifications</li>
+            <li><i class="fa-solid fa-check"></i> Review Dashboard</li>
+          </ul>
+          <a href="#" class="btn btn-outline btn-full">Get Started</a>
+        </div>
+
+        <div class="price-card price-card-featured">
+          <div class="popular-badge">Most Popular</div>
+          <div style="font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">Best for: Growing Brands & Franchises</div>
+          <div class="plan-name">Professional</div>
+          <div class="plan-price">
+            <span class="currency">$</span>
+            <span class="amount monthly-price">79</span>
+            <span class="amount annual-price" style="display:none;">55</span>
+            <span class="period">/mo</span>
+          </div>
+          <p class="plan-desc">Designed for multi-location businesses that need Centralized oversight and absolute brand consistency across several storefronts.</p>
+          <ul class="plan-features">
+            <li style="border-bottom: none; padding-bottom: 4px; padding-top: 0; color: var(--primary-light);"><strong>Everything in Starter, plus:</strong></li>
+            <li><i class="fa-solid fa-plus" style="color: var(--primary-light);"></i> Up to 5 Locations</li>
+            <li><i class="fa-solid fa-plus" style="color: var(--primary-light);"></i> Unlimited Auto-Replies</li>
+            <li><i class="fa-solid fa-plus" style="color: var(--primary-light);"></i> Approval Workflows</li>
+            <li><i class="fa-solid fa-plus" style="color: var(--primary-light);"></i> Competitor Sentiment Analytics</li>
+          </ul>
+          <a href="#" class="btn btn-primary btn-full">Start Free Trial</a>
+        </div>
+
+        <div class="price-card">
+          <div style="font-size: 0.75rem; font-weight: 700; color: var(--primary-light); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">Best for: Marketing Agencies & Operators</div>
+          <div class="plan-name">Agency</div>
+          <div class="plan-price">
+            <span class="currency">$</span>
+            <span class="amount monthly-price">199</span>
+            <span class="amount annual-price" style="display:none;">139</span>
+            <span class="period">/mo</span>
+          </div>
+          <p class="plan-desc">Built for agencies scaling reputation management across diverse client portfolios with advanced, client-ready reporting.</p>
+          <ul class="plan-features">
+            <li style="border-bottom: none; padding-bottom: 4px; padding-top: 0; color: var(--primary-light);"><strong>Everything in Professional, plus:</strong></li>
+            <li><i class="fa-solid fa-plus" style="color: var(--primary-light);"></i> Unlimited Locations</li>
+            <li><i class="fa-solid fa-plus" style="color: var(--primary-light);"></i> Multi-Tenant Dashboard</li>
+            <li><i class="fa-solid fa-plus" style="color: var(--primary-light);"></i> White-Label Reports</li>
+            <li><i class="fa-solid fa-plus" style="color: var(--primary-light);"></i> Dedicated Support Manager</li>
+          </ul>
+          <a href="#" class="btn btn-outline btn-full">Contact Sales</a>
+        </div>
+
+      </div>
+
+      <div class="pricing-footer" style="text-align: center; margin-top: 3rem; color: var(--text-muted); font-size: 0.95rem;">
+        <p>Managing a large-scale network? <a href="#cta" style="color: var(--primary); text-decoration: underline; font-weight: 600;">Contact us</a> for a custom high-volume plan tailored to your enterprise requirements.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="faq">
+    <div class="container faq-inner">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Got questions? <span class="gradient-text">We've got answers.</span></h2>
+      <p class="section-sub">Clear answers about how ReplyVera helps you manage your reputation with confidence.</p>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">
+            What permissions does ReplyVera require?
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>We connect via Google’s secure API, requiring only the standard "manage your business listings" permission. We never see or store your password, and you can revoke access instantly from your Google account settings at any time.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Can I choose to only auto-reply to certain star ratings?
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. You have full granular control. You can set the system to auto-post replies for 4- and 5-star reviews while holding 1- to 3-star reviews for your manual approval before they go live.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Can I manage multiple locations with different brand voices?
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Definitely. ReplyVera allows you to set unique tone-of-voice profiles for every location. You can customize the language and personality for each storefront individually, ensuring every response feels local and authentic.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Does ReplyVera support Yelp, Facebook, or other platforms?
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Currently, we focus exclusively on Google Business Profiles. This specialization allows us to provide the most reliable automation and the best results for the platform that drives the most visibility for local businesses.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Is there a way for agencies to manage multiple client brands?
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Absolutely. Our Agency plan is built specifically for scale. It includes a multi-brand dashboard that allows operators to manage separate client portfolios with independent workflows and branding from a single account.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            What happens to my replies if I decide to cancel?
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>You are never locked into a long-term contract. If you cancel, every reply already posted stands — your responses stay live on Google forever. We simply stop monitoring your profile and drafting new replies at the end of your billing cycle.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TRUST & SECURITY ===== -->
+  <section class="trust-security">
+    <div class="container">
+      <div class="section-label" style="color: var(--primary-light);">Enterprise-Grade Privacy</div>
+      <h2 class="section-title">Built for speed. <span class="gradient-text">Engineered for safety.</span></h2>
+      <p class="section-sub">Giving software access to your reputation is a big deal. We respect the keys to your storefront by designing ReplyVera to protect your brand voice, your customer data, and your Google Profile from day one.</p>
+      
+      <div class="trust-grid">
+        <div class="trust-card">
+          <div class="trust-icon"><i class="fa-brands fa-google"></i></div>
+          <h3>Official Google API</h3>
+          <p>We connect securely via Google’s official, approved API. No password sharing, no risky browser extensions, and zero unauthorized access.</p>
+        </div>
+        <div class="trust-card">
+          <div class="trust-icon"><i class="fa-solid fa-key"></i></div>
+          <h3>You Keep the Keys</h3>
+          <p>We use standard OAuth tokens. We cannot change your business hours, edit your listing, or intercept messages. Revoke our access in exactly one click.</p>
+        </div>
+        <div class="trust-card">
+          <div class="trust-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3>Strict Data Privacy</h3>
+          <p>We only read the public review data required to draft a response. Your private customer data is never sold, shared, or exploited.</p>
+        </div>
+      </div>
+      
+      <div class="trust-footer">
+        <p>Have deeper technical questions? Read our full <a href="#">Security & Privacy Standards</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BANNER ===== -->
+  <section class="cta-banner">
+    <div class="cta-blob cta-blob-1"></div>
+    <div class="cta-blob cta-blob-2"></div>
+    <div class="container cta-inner">
+      <div class="cta-icon"><i class="fa-solid fa-reply"></i></div>
+      <h2>Put your reputation on autopilot. <span class="gradient-text">Keep your hands on the wheel.</span></h2>
+      <p>ReplyVera instantly drafts contextual, on-brand responses to every review. Let the engine auto-publish the routine praise, while you securely hold critical feedback in an approval queue.</p>
+      <div class="cta-buttons">
+        <a href="#pricing" class="btn btn-primary btn-lg">
+          <i class="fa-solid fa-link"></i> Connect Your Google Profile
+        </a>
+        <a href="#how-it-works" class="btn btn-ghost-white btn-lg">
+          <i class="fa-solid fa-play"></i> See an Interactive Demo
+        </a>
+      </div>
+      <div class="cta-trust" style="margin-top: 2rem; display: flex; gap: 2rem; justify-content: center; opacity: 0.8; font-size: 0.9rem;">
+        <span><i class="fa-solid fa-check"></i> No credit card required</span>
+        <span><i class="fa-solid fa-check"></i> Setup takes exactly 3 minutes</span>
+        <span><i class="fa-solid fa-check"></i> 14-day free trial</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <span class="logo-icon"><i class="fa-solid fa-reply"></i></span>
+          Reply<span class="logo-accent">Vera</span>
+        </a>
+        <p>The review autopilot trusted by 2,400+ storefronts, franchises, and agencies. Save 30+ hours a month while ensuring every customer receives a perfect, professional response.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#how-it-works">How It Works</a>
+          <a href="#">Roadmap</a>
+          <a href="#">Release Notes</a>
+        </div>
+        <div class="footer-col">
+          <h4>Solutions</h4>
+          <a href="#">Single Locations</a>
+          <a href="#">Multi-Location</a>
+          <a href="#">Agencies</a>
+          <a href="#">Hospitality</a>
+          <a href="#">Healthcare</a>
+        </div>
+        <div class="footer-col">
+          <h4>Ecosystem</h4>
+          <a href="#">Agency Program</a>
+          <a href="#">Partner Portal</a>
+          <a href="#">API Documentation</a>
+          <a href="#">Integrations</a>
+          <a href="#">System Status</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="#faq">Help Center</a>
+          <a href="#">Success Stories</a>
+          <a href="#">Blog</a>
+          <a href="#">Contact Support</a>
+        </div>
+        <div class="footer-col">
+          <h4>Trust & Company</h4>
+          <a href="#">Security Overview</a>
+          <a href="#">Data Privacy</a>
+          <a href="#">About Us</a>
+          <a href="#">Careers</a>
+          <a href="#">Press Kit</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 ReplyVera. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Cookie Policy</a>
+        <a href="#">Sub-processors</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
