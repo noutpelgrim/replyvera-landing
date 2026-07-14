@@ -28,14 +28,18 @@
     <header class="hero">
         <div class="hero-bg-glow"></div>
         <div class="container hero-container">
-            <div class="section-label" style="margin-bottom: 24px;">✨ 14-Day Free Trial - No Credit Card Required</div>
+            <div class="section-label" style="margin-bottom: 24px;">🚀 Join the Waitlist for Early Access</div>
             <h1 class="hero-title">Automate Google Review Replies with <span class="text-gradient">Intelligent AI</span></h1>
             <p class="hero-subtitle">Instantly craft and post brand-perfect responses to every customer review. Save hours of manual work and build an online reputation that drives revenue.</p>
             
-            <div style="display: flex; gap: 16px; margin: 32px 0; justify-content: center; flex-wrap: wrap;">
-                <a href="https://replyvera-dashboard.vercel.app/login" class="btn btn-primary" style="padding: 14px 28px; font-weight: 700; font-size: 1rem; text-decoration: none;">Start 14-Day Free Trial</a>
-                <a href="#demo" class="btn btn-secondary" style="padding: 14px 28px; font-weight: 700; font-size: 1rem; text-decoration: none;">Try Live Demo</a>
-            </div>
+            <form id="waitlist-form-1" class="waitlist-form" style="margin: 32px auto 60px auto;">
+                <div class="input-group">
+                    <i class="fa-solid fa-envelope input-icon"></i>
+                    <input type="email" id="email-1" placeholder="Enter your business email" required>
+                    <button type="submit" class="btn btn-primary" style="border-radius: 50px; white-space: nowrap;">Join Waitlist</button>
+                </div>
+                <p class="form-hint">✨ Be the first to automate your Google reviews</p>
+            </form>
             
             <div class="hero-visual" id="demo">
                 <div class="mockup-window glass-panel" style="text-align: left; max-width: 600px; margin: 0 auto;">
@@ -264,7 +268,7 @@
                             <li><i class="fa-solid fa-circle-check" style="color: #00C9A7; margin-right: 8px;"></i> Email support</li>
                         </ul>
                     </div>
-                    <a href="https://replyvera-dashboard.vercel.app/login" class="btn btn-secondary" style="width: 100%; margin-top: 32px; text-align: center; display: block; text-decoration: none;">Start 14-Day Free Trial</a>
+                    <a href="#signup" class="btn btn-secondary" style="width: 100%; margin-top: 32px; text-align: center; display: block; text-decoration: none;">Join Waitlist</a>
                 </div>
 
                 <!-- Pro Plan -->
@@ -285,7 +289,7 @@
                             <li><i class="fa-solid fa-circle-check" style="color: #00C9A7; margin-right: 8px;"></i> Priority support</li>
                         </ul>
                     </div>
-                    <a href="https://replyvera-dashboard.vercel.app/login" class="btn btn-primary" style="width: 100%; margin-top: 32px; text-align: center; display: block; text-decoration: none;">Start 14-Day Free Trial</a>
+                    <a href="#signup" class="btn btn-primary" style="width: 100%; margin-top: 32px; text-align: center; display: block; text-decoration: none;">Join Waitlist</a>
                 </div>
 
                 <!-- Enterprise Plan -->
@@ -316,8 +320,15 @@
         <div class="container cta-container glass-panel" style="text-align: center; padding: 48px 32px;">
             <h2>Don't let another review go unanswered.</h2>
             <p>Ensure every customer receives a perfect response. Start saving time and boosting your local SEO today.</p>
-            <a href="https://replyvera-dashboard.vercel.app/login" class="btn btn-primary" style="margin-top: 24px; padding: 14px 40px; font-weight: 700; font-size: 1.1rem; display: inline-block; text-decoration: none;">Get Started Instantly</a>
-            <p style="margin-top: 16px; font-size: 0.85rem; color: var(--text-dim);">Have questions? Contact us at <a href="mailto:info@replyvera.com" style="color: var(--primary-light); text-decoration: none; font-weight: 600;">info@replyvera.com</a></p>
+            <form id="waitlist-form-2" class="waitlist-form" style="margin: 24px auto 0 auto;">
+                <div class="input-group">
+                    <i class="fa-solid fa-envelope input-icon"></i>
+                    <input type="email" id="email-2" placeholder="Enter your business email" required>
+                    <button type="submit" class="btn btn-primary" style="border-radius: 50px; white-space: nowrap;">Join Waitlist</button>
+                </div>
+                <div id="success-msg" class="success-message" style="display: none;"></div>
+            </form>
+            <p style="margin-top: 24px; font-size: 0.85rem; color: var(--text-dim);">Have questions? Contact us at <a href="mailto:info@replyvera.com" style="color: var(--primary-light); text-decoration: none; font-weight: 600;">info@replyvera.com</a></p>
         </div>
     </section>
 
