@@ -32,13 +32,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin" style="margin-right: 6px;"></i> Joining...';
                 btn.disabled = true;
 
-                // Send silently to our PHP script
-                fetch('mailer.php', {
+                // Send to Node.js backend waitlist API
+                fetch('https://replyvera-backend.onrender.com/api/leads/waitlist', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Content-Type': 'application/json',
                     },
-                    body: `email=${encodeURIComponent(email)}`
+                    body: JSON.stringify({ email: email })
                 })
                 .then(response => {
                     // Show success
@@ -80,13 +80,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 const originalText = btn.innerHTML;
                 btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Processing...';
 
-                // Send silently to our PHP script
-                fetch('mailer.php', {
+                // Send to Node.js backend waitlist API
+                fetch('https://replyvera-backend.onrender.com/api/leads/waitlist', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Content-Type': 'application/json',
                     },
-                    body: `email=${encodeURIComponent(email)}`
+                    body: JSON.stringify({ email: email })
                 })
                 .then(response => {
                     btn.innerHTML = originalText;
