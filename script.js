@@ -12,22 +12,56 @@ document.addEventListener('DOMContentLoaded', () => {
         const content = wrapper.querySelector('.nav-dropdown-content');
         if (!btn || !content) return;
 
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const isOpen = wrapper.classList.contains('open');
-            dropdownWrappers.forEach(w => {
-                w.classList.remove('open');
-                const b = w.querySelector('.nav-dropdown-btn');
-                if (b) b.setAttribute('aria-expanded', 'false');
-            });
-            if (!isOpen) {
+        let closeTimeout;
+
+        const openDropdown = () => {
+            clearTimeout(closeTimeout);
+            if (!wrapper.classList.contains('open')) {
+                dropdownWrappers.forEach(w => {
+                    w.classList.remove('open');
+                    const b = w.querySelector('.nav-dropdown-btn');
+                    if (b) b.setAttribute('aria-expanded', 'false');
+                });
                 wrapper.classList.add('open');
                 btn.setAttribute('aria-expanded', 'true');
+            }
+        };
+
+        const closeDropdown = () => {
+            closeTimeout = setTimeout(() => {
+                wrapper.classList.remove('open');
+                btn.setAttribute('aria-expanded', 'false');
+            }, 200);
+        };
+
+        // Hover events
+        wrapper.addEventListener('mouseenter', openDropdown);
+        wrapper.addEventListener('mouseleave', closeDropdown);
+
+        // Keyboard focus
+        btn.addEventListener('focus', openDropdown);
+        content.addEventListener('focusin', openDropdown);
+        wrapper.addEventListener('focusout', (e) => {
+            if (!wrapper.contains(e.relatedTarget)) {
+                closeDropdown();
+            }
+        });
+
+        // Click toggle
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (wrapper.classList.contains('open')) {
+                clearTimeout(closeTimeout);
+                wrapper.classList.remove('open');
+                btn.setAttribute('aria-expanded', 'false');
+            } else {
+                openDropdown();
             }
         });
 
         content.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
+                clearTimeout(closeTimeout);
                 wrapper.classList.remove('open');
                 btn.setAttribute('aria-expanded', 'false');
             });
