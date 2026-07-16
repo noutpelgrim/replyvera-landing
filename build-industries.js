@@ -114,7 +114,7 @@ function renderReviews(examples) {
 }
 
 function renderTopics(topics) {
-    return topics.map(t => `<span class="topic-tag">${t}</span>`).join('');
+    return topics.map(t => `<span class="topic-tag industry-tag">${t}</span>`).join('');
 }
 
 function renderFAQ(items) {
@@ -248,7 +248,7 @@ function renderIndustryPage(ind) {
         <div class="container">
             <div class="hero-inner">
                 <div class="hero-text">
-                    <div class="eyebrow">
+                    <div class="eyebrow industry-eyebrow">
                         <i data-lucide="google" style="width:12px;height:12px;color:#DB4437;"></i>
                         Google Review Automation
                     </div>
@@ -961,6 +961,10 @@ industryPages.forEach(ind => {
     let header = baseHeader
         .replace(/<title>[^<]+<\/title>/, `<title>${ind.metaTitle}</title>`)
         .replace(/<meta name="description" content="[^"]+">/, `<meta name="description" content="${ind.metaDescription}">`);
+
+    // Highlight active industry
+    header = header.replace(`href="/industries/${ind.slug}" class="dropdown-item"`, `href="/industries/${ind.slug}" class="dropdown-item active"`);
+    header = header.replace(`href="/industries/${ind.slug}" class="mobile-industry-item"`, `href="/industries/${ind.slug}" class="mobile-industry-item active"`);
 
     const fullPage = header + '\n<body>\n' + bodyContent + '\n' + baseFooter;
 
