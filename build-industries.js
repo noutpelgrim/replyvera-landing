@@ -28,29 +28,29 @@ const rawFooter = '<!-- Footer -->' + footerSplit[1];
 
 // Reformat headers and footers for industries/[id]/index.html (depth of 2)
 let baseHeader = rawHeader;
-baseHeader = baseHeader.replace(/href="index\.html"/g, 'href="../../index.html"');
-baseHeader = baseHeader.replace(/href="pricing\.html"/g, 'href="../../pricing.html"');
-baseHeader = baseHeader.replace(/href="industries\/restaurants"/g, 'href="../restaurants"');
-baseHeader = baseHeader.replace(/href="industries\/dentists"/g, 'href="../dentists"');
-baseHeader = baseHeader.replace(/href="industries\/agencies"/g, 'href="../agencies"');
-baseHeader = baseHeader.replace(/href="industries\/martial-arts"/g, 'href="../martial-arts"');
-baseHeader = baseHeader.replace(/href="industries\/childcare"/g, 'href="../childcare"');
-baseHeader = baseHeader.replace(/href="industries\/tutoring"/g, 'href="../tutoring"');
-baseHeader = baseHeader.replace(/href="industries\/pet-care"/g, 'href="../pet-care"');
-baseHeader = baseHeader.replace(/href="industries\/car-washes"/g, 'href="../car-washes"');
-baseHeader = baseHeader.replace(/href="industries\/laundromats"/g, 'href="../laundromats"');
-baseHeader = baseHeader.replace(/href="style\.css"/g, 'href="../../style.css"');
-baseHeader = baseHeader.replace(/href="#features"/g, 'href="../../index.html#features"');
-baseHeader = baseHeader.replace(/href="#how-it-works"/g, 'href="../../index.html#how-it-works"');
+baseHeader = baseHeader.replace(/href="index\.html"/g, 'href="/index.html"');
+baseHeader = baseHeader.replace(/href="pricing\.html"/g, 'href="/pricing.html"');
+baseHeader = baseHeader.replace(/href="industries\/restaurants"/g, 'href="/industries/restaurants"');
+baseHeader = baseHeader.replace(/href="industries\/dentists"/g, 'href="/industries/dentists"');
+baseHeader = baseHeader.replace(/href="industries\/agencies"/g, 'href="/industries/agencies"');
+baseHeader = baseHeader.replace(/href="industries\/martial-arts"/g, 'href="/industries/martial-arts"');
+baseHeader = baseHeader.replace(/href="industries\/childcare"/g, 'href="/industries/childcare"');
+baseHeader = baseHeader.replace(/href="industries\/tutoring"/g, 'href="/industries/tutoring"');
+baseHeader = baseHeader.replace(/href="industries\/pet-care"/g, 'href="/industries/pet-care"');
+baseHeader = baseHeader.replace(/href="industries\/car-washes"/g, 'href="/industries/car-washes"');
+baseHeader = baseHeader.replace(/href="industries\/laundromats"/g, 'href="/industries/laundromats"');
+baseHeader = baseHeader.replace(/href="style\.css"/g, 'href="/style.css"');
+baseHeader = baseHeader.replace(/href="#features"/g, 'href="/index.html#features"');
+baseHeader = baseHeader.replace(/href="#how-it-works"/g, 'href="/index.html#how-it-works"');
 baseHeader = baseHeader.replace(/href="https:\/\/replyvera-dashboard\.vercel\.app\/login"/g, 'href="https://replyvera-dashboard.vercel.app/login"');
 
 let baseFooter = rawFooter;
-baseFooter = baseFooter.replace(/href="index\.html/g, 'href="../../index.html');
-baseFooter = baseFooter.replace(/href="pricing\.html/g, 'href="../../pricing.html');
-baseFooter = baseFooter.replace(/href="terms\.html"/g, 'href="../../terms.html"');
-baseFooter = baseFooter.replace(/href="privacy\.html"/g, 'href="../../privacy.html"');
-baseFooter = baseFooter.replace(/href="cookie\.html"/g, 'href="../../cookie.html"');
-baseFooter = baseFooter.replace(/src="script\.js"/g, 'src="../../script.js"');
+baseFooter = baseFooter.replace(/href="index\.html/g, 'href="/index.html');
+baseFooter = baseFooter.replace(/href="pricing\.html/g, 'href="/pricing.html');
+baseFooter = baseFooter.replace(/href="terms\.html"/g, 'href="/terms.html"');
+baseFooter = baseFooter.replace(/href="privacy\.html"/g, 'href="/privacy.html"');
+baseFooter = baseFooter.replace(/href="cookie\.html"/g, 'href="/cookie.html"');
+baseFooter = baseFooter.replace(/src="script\.js"/g, 'src="/script.js"');
 
 const industryPages = [
     {
@@ -777,7 +777,7 @@ function buildCategoryBody(ind) {
 
     // Generate Related Industries Links
     const relatedHtml = ind.related.map(rel => `
-        <a href="../${rel.id}" style="color:var(--primary-light); text-decoration:none; font-weight:600; font-size:0.92rem; border: 1px solid rgba(99, 102, 241, 0.15); background:rgba(99,102,241,0.02); padding:8px 16px; border-radius:50px; transition:all var(--transition-fast);" onmouseover="this.style.borderColor='var(--primary-light)';this.style.background='rgba(99,102,241,0.08)';" onmouseout="this.style.borderColor='rgba(99, 102, 241, 0.15)';this.style.background='rgba(99,102,241,0.02)';">
+        <a href="/industries/${rel.id}" style="color:var(--primary-light); text-decoration:none; font-weight:600; font-size:0.92rem; border: 1px solid rgba(99, 102, 241, 0.15); background:rgba(99,102,241,0.02); padding:8px 16px; border-radius:50px; transition:all var(--transition-fast);" onmouseover="this.style.borderColor='var(--primary-light)';this.style.background='rgba(99,102,241,0.08)';" onmouseout="this.style.borderColor='rgba(99, 102, 241, 0.15)';this.style.background='rgba(99,102,241,0.02)';">
             ${rel.title} <i data-lucide="arrow-right" style="width:12px; height:12px; display:inline-block; vertical-align:middle; margin-left:4px;"></i>
         </a>
     `).join('');
@@ -795,7 +795,7 @@ function buildCategoryBody(ind) {
                 <p class="hero-sub" style="font-size:1.1rem; color:var(--text-secondary-current); margin-bottom:32px; line-height:1.6;">${ind.heroSub}</p>
                 <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center; margin-bottom:24px;">
                     <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent" style="padding:14px 28px; font-size:0.95rem;">Start Your Free Trial</a>
-                    <a href="../../pricing.html" class="btn btn-secondary" style="padding:14px 28px; font-size:0.95rem;">Start for $39 per Month</a>
+                    <a href="/pricing.html" class="btn btn-secondary" style="padding:14px 28px; font-size:0.95rem;">Start for $39 per Month</a>
                 </div>
                 <p style="font-size:0.82rem; color:var(--text-secondary-current); font-weight:500;">Try ReplyVera free. 14-day free trial. No credit card required.</p>
             </div>
@@ -962,7 +962,7 @@ function buildCategoryBody(ind) {
 
                 <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; align-items: center;">
                     <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent" style="padding: 14px 28px; font-size: 0.95rem; flex:1; text-align:center;">Start Your Free Trial</a>
-                    <a href="../../pricing.html" class="btn btn-secondary" style="padding: 14px 28px; font-size: 0.95rem; flex:1; text-align:center;">View All Plans</a>
+                    <a href="/pricing.html" class="btn btn-secondary" style="padding: 14px 28px; font-size: 0.95rem; flex:1; text-align:center;">View All Plans</a>
                 </div>
             </div>
             
@@ -995,7 +995,7 @@ function buildCategoryBody(ind) {
             
             <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-bottom:32px; align-items:center;">
                 <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent" style="padding: 14px 28px; font-size:0.95rem;">Start Your Free Trial</a>
-                <a href="../../pricing.html#comparison" style="color: #94A3B8; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color var(--transition-fast);" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94A3B8'">Compare Plans</a>
+                <a href="/pricing.html#comparison" style="color: #94A3B8; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color var(--transition-fast);" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94A3B8'">Compare Plans</a>
             </div>
         </div>
     </section>
