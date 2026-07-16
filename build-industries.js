@@ -187,7 +187,7 @@ function renderPricingSection(isAgency, ind) {
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> English and Spanish</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Negative-review alerts</li>
                     </ul>
-                    <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-secondary" style="text-align:center;justify-content:center;">Start Free</a>
+                    <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-secondary" style="text-align:center;justify-content:center;">Start Free Trial</a>
                 </div>
                 <div class="pricing-card featured">
                     <div class="pricing-popular">Most Popular</div>
@@ -197,13 +197,13 @@ function renderPricingSection(isAgency, ind) {
                     <p class="pricing-tagline">Safe replies publish automatically. Sensitive reviews stay under your approval.</p>
                     <ul class="pricing-features">
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> One location</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Unlimited replies</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Unlimited review responses*</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Automatic publishing for safe reviews</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Sensitive-review detection</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Custom brand voice</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Review history</li>
                     </ul>
-                    <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent" style="text-align:center;justify-content:center;">Start Free</a>
+                    <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent" style="text-align:center;justify-content:center;">Start Free Trial</a>
                 </div>
                 <div class="pricing-card">
                     <div class="pricing-name">Multi-Location</div>
@@ -217,7 +217,7 @@ function renderPricingSection(isAgency, ind) {
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Team access</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Additional locations available</li>
                     </ul>
-                    <a href="/pricing.html" class="btn btn-secondary" style="text-align:center;justify-content:center;">View Multi-Location Pricing</a>
+                    <a href="/pricing.html" class="btn btn-secondary" style="text-align:center;justify-content:center;">Start Multi-Location Trial</a>
                 </div>
             </div>
             <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:24px;">14-day free trial. Cancel anytime.</p>
@@ -410,7 +410,7 @@ function renderIndustryPage(ind) {
                 <h2 class="mb-4">${ind.finalCtaHeadline}</h2>
                 <p class="lead mb-8">${ind.finalCtaDescription}</p>
                 <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
-                    <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent btn-lg">Start Your Free Trial</a>
+                    <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent btn-lg">Start Free Trial</a>
                     <a href="/pricing.html" class="btn btn-secondary btn-lg">View Pricing</a>
                 </div>
             </div>
@@ -439,7 +439,7 @@ const industryPages = [
             { icon: 'shield-alert', title: 'Protect the Brand', text: 'Allergy, illness, injury, and serious cleanliness complaints require manager approval before any response is published.' }
         ],
         step2Text: 'Set your preferred tone, your approval rules, and which staff roles to recognize. ReplyVera handles each review accordingly.',
-        step3Text: 'Routine reviews are answered. Food-safety and serious service complaints are held for manager approval and never published automatically.',
+        step3Text: 'Routine reviews are answered. Food-safety and allergy reviews are blocked from automatic publishing under your configured approval rules.',
         reviewsHeadline: 'From Anniversary Praise to Allergy Complaints',
         reviewsSubhead: 'See how ReplyVera handles the full range of restaurant reviews.',
         reviewExamples: [
@@ -473,7 +473,7 @@ const industryPages = [
             { q: 'Are food-safety reviews blocked from auto-publishing?', a: 'Yes. Reviews containing allergy, illness, contamination, or similar keywords are immediately blocked from automatic publishing and routed to your approval inbox.' },
             { q: 'Can ReplyVera manage multiple restaurant locations?', a: 'Yes. The Multi-Location plan lets you manage separate Google Business Profiles for each location from one central dashboard.' },
             { q: 'Does ReplyVera respond in Spanish?', a: 'Yes. ReplyVera can draft responses in both English and Spanish based on your configuration.' },
-            { q: 'Which review platforms does ReplyVera support?', a: 'Currently supported: Google Reviews. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
+            { q: 'Which review platforms does ReplyVera support?', a: 'ReplyVera currently supports Google Reviews through Google Business Profile. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
         ],
         finalCtaHeadline: 'Stop Leaving Restaurant Reviews Unanswered',
         finalCtaDescription: 'Let ReplyVera handle routine replies and protect your reputation while your team focuses on serving great food.'
@@ -495,7 +495,7 @@ const industryPages = [
             { icon: 'shield-alert', title: 'Escalate Clinical Concerns', text: 'Pain, injury, billing, and treatment complaints require approval before any response is published.' }
         ],
         step2Text: 'Set your practice tone and approval rules. ReplyVera identifies clinical, billing, and privacy-sensitive reviews and routes them for manual review.',
-        step3Text: 'Routine positive reviews go live after your configured delay. Clinical, billing, and sensitive reviews are held and never published without approval.',
+        step3Text: 'Routine positive reviews go live after your configured delay. Clinical, privacy, and billing concerns are held for approval under your configured rules.',
         reviewsHeadline: 'Professional Responses for Every Patient Experience',
         reviewsSubhead: 'From positive feedback to clinical concerns, each review is handled appropriately.',
         reviewExamples: [
@@ -526,10 +526,10 @@ const industryPages = [
         sensitiveTopics: ['Pain', 'Injury', 'Treatment outcomes', 'Medication', 'Diagnosis', 'Insurance', 'Billing disputes', 'Privacy complaints'],
         faqItems: [
             { q: 'How does ReplyVera handle patient privacy?', a: 'Responses are designed to avoid confirming patient status or referencing any clinical details. Replies focus on general appreciation without disclosing private information.' },
-            { q: 'Are clinical and billing complaints blocked from auto-publishing?', a: 'Yes. Reviews mentioning pain, injury, billing disputes, or treatment outcomes are immediately held for approval and never published automatically.' },
+            { q: 'Are clinical and billing complaints blocked from auto-publishing?', a: 'Yes. Reviews mentioning pain, injury, billing disputes, or treatment outcomes are immediately held for approval and blocked from automatic publishing under your configured approval rules.' },
             { q: 'Can ReplyVera recognize hygienists and staff mentioned by name?', a: 'Yes. When a reviewer mentions a specific staff member, ReplyVera includes them naturally in the response.' },
             { q: 'Does ReplyVera support multiple practice locations?', a: 'Yes. The Multi-Location plan supports multiple Google Business Profiles with separate rules for each location.' },
-            { q: 'Which review platforms does ReplyVera support?', a: 'Currently supported: Google Reviews. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
+            { q: 'Which review platforms does ReplyVera support?', a: 'ReplyVera currently supports Google Reviews through Google Business Profile. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
         ],
         finalCtaHeadline: 'Respond Professionally Without Risking Patient Privacy',
         finalCtaDescription: 'Let ReplyVera handle routine replies consistently while your team focuses on patient care.'
@@ -583,9 +583,9 @@ const industryPages = [
         faqItems: [
             { q: 'Can each client have their own tone and approval rules?', a: 'Yes. Each client location is configured independently with its own tone profile, brand voice, and approval settings.' },
             { q: 'Can clients approve their own reviews?', a: 'Yes. You can grant client-level access so the business owner can review and approve sensitive responses themselves.' },
-            { q: 'How many client locations can I manage?', a: 'The Agency plan starts at $149 per month for up to five locations, with additional locations available at an added rate.' },
+            { q: 'How many client locations can I manage?', a: 'The Agency plan starts at $149 per month for 10 client locations, with additional locations available at an added rate.' },
             { q: 'Does ReplyVera support sensitive-review detection per industry?', a: 'Yes. Each client location can have its own sensitive-topic rules configured to match their specific industry.' },
-            { q: 'Which review platforms does ReplyVera support?', a: 'Currently supported: Google Reviews. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
+            { q: 'Which review platforms does ReplyVera support?', a: 'ReplyVera currently supports Google Reviews through Google Business Profile. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
         ],
         finalCtaHeadline: 'Turn Review Management Into a Scalable Agency Service',
         finalCtaDescription: 'Add Google review automation to your agency\'s service offering without adding headcount.'
@@ -607,7 +607,7 @@ const industryPages = [
             { icon: 'shield-alert', title: 'Protect Students and the School', text: 'Safety incidents, membership disputes, and bullying concerns require owner review before any response is published.' }
         ],
         step2Text: 'Set your school\'s tone and approval rules. ReplyVera identifies safety, injury, and membership complaints and routes them to you before publishing.',
-        step3Text: 'Routine parent and student reviews are answered automatically. Safety and membership concerns are held for your approval and never published without it.',
+        step3Text: 'Routine parent and student reviews are answered automatically. Safety and membership concerns are held for your approval and blocked from automatic publishing under your configured rules.',
         reviewsHeadline: 'From Progress Praise to Safety Concerns',
         reviewsSubhead: 'Each type of martial arts review is handled with the right level of care.',
         reviewExamples: [
@@ -641,7 +641,7 @@ const industryPages = [
             { q: 'Are injury and safety reviews blocked from auto-publishing?', a: 'Yes. Any review mentioning injury, child safety, bullying, or staff conduct is immediately held for owner approval.' },
             { q: 'Can membership complaints be routed for approval?', a: 'Yes. Membership cancellation issues, billing disputes, and contract concerns are held for your review before any reply is published.' },
             { q: 'Does ReplyVera support multiple school locations?', a: 'Yes. The Multi-Location plan lets you manage separate Google Business Profiles for each location from one account.' },
-            { q: 'Which review platforms does ReplyVera support?', a: 'Currently supported: Google Reviews. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
+            { q: 'Which review platforms does ReplyVera support?', a: 'ReplyVera currently supports Google Reviews through Google Business Profile. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
         ],
         finalCtaHeadline: 'Spend More Time Teaching and Less Time Writing Replies',
         finalCtaDescription: 'Let ReplyVera handle routine reviews while you stay in full control of anything involving student safety or membership disputes.'
@@ -663,7 +663,7 @@ const industryPages = [
             { icon: 'shield-alert', title: 'Protect Families and the Center', text: 'Safety and privacy concerns require director approval before any response is published.' }
         ],
         step2Text: 'Set your center\'s tone and approval rules. ReplyVera identifies safety, allergy, and privacy concerns and routes them for director review.',
-        step3Text: 'Routine parent feedback is handled consistently. Safety and privacy concerns are held for your approval and never published without it.',
+        step3Text: 'Routine parent feedback is handled consistently. Safety and privacy concerns are held for your approval and blocked from automatic publishing under your configured rules.',
         reviewsHeadline: 'From Teacher Praise to Safety Concerns',
         reviewsSubhead: 'Each type of childcare review is handled with the appropriate level of care and protection.',
         reviewExamples: [
@@ -693,11 +693,11 @@ const industryPages = [
         sensitiveHeadline: 'Child Safety and Privacy Reviews Always Require Approval',
         sensitiveTopics: ['Injury', 'Supervision', 'Allergy', 'Medication', 'Abuse', 'Neglect', 'Privacy', 'Licensing'],
         faqItems: [
-            { q: 'Are allergy and injury reviews blocked from auto-publishing?', a: 'Yes. Any review mentioning allergy, injury, supervision, medication, or child safety is immediately held for director approval and never published automatically.' },
+            { q: 'Are allergy and injury reviews blocked from auto-publishing?', a: 'Yes. Any review mentioning allergy, injury, supervision, medication, or child safety is immediately held for director approval and blocked from automatic publishing under your configured approval rules.' },
             { q: 'Can ReplyVera recognize teacher names mentioned in reviews?', a: 'Yes. When a parent mentions a specific teacher or staff member, the reply includes that recognition naturally.' },
             { q: 'How does ReplyVera handle child privacy?', a: 'Responses are designed to avoid referencing specific children, personal information, or details that should remain private.' },
             { q: 'Does ReplyVera support multiple center locations?', a: 'Yes. The Multi-Location plan lets you manage separate profiles for each location from one account.' },
-            { q: 'Which review platforms does ReplyVera support?', a: 'Currently supported: Google Reviews. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
+            { q: 'Which review platforms does ReplyVera support?', a: 'ReplyVera currently supports Google Reviews through Google Business Profile. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
         ],
         finalCtaHeadline: 'Protect Your Reputation Without Overloading Center Directors',
         finalCtaDescription: 'Let ReplyVera handle routine parent feedback while your team focuses on providing exceptional care every day.'
@@ -719,7 +719,7 @@ const industryPages = [
             { icon: 'shield-alert', title: 'Avoid Risky Claims', text: 'Academic guarantees, refund requests, and student-safety concerns require approval before any response is published.' }
         ],
         step2Text: 'Set your center\'s tone and approval rules. ReplyVera identifies academic-claim, billing, and safety concerns and routes them for manual review.',
-        step3Text: 'Routine parent praise is answered automatically. Refund, billing, and academic-guarantee concerns are held for your approval and never published without it.',
+        step3Text: 'Routine parent praise is answered automatically. Refund, billing, and academic-guarantee concerns are held for your approval and blocked from automatic publishing under your configured rules.',
         reviewsHeadline: 'From Progress Praise to Billing Disputes',
         reviewsSubhead: 'Each parent review is handled with the right level of professionalism and protection.',
         reviewExamples: [
@@ -753,7 +753,7 @@ const industryPages = [
             { q: 'Can ReplyVera recognize tutor names in reviews?', a: 'Yes. When a parent mentions a specific tutor, the reply includes that recognition naturally.' },
             { q: 'How does ReplyVera handle academic-guarantee claims?', a: 'Any review making specific outcome claims or requesting compensation is routed for manual approval before any reply is drafted or published.' },
             { q: 'Does ReplyVera support multiple tutoring center locations?', a: 'Yes. The Multi-Location plan lets you manage multiple Google Business Profiles from one account.' },
-            { q: 'Which review platforms does ReplyVera support?', a: 'Currently supported: Google Reviews. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
+            { q: 'Which review platforms does ReplyVera support?', a: 'ReplyVera currently supports Google Reviews through Google Business Profile. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
         ],
         finalCtaHeadline: 'Build Parent Trust Without Adding Administrative Work',
         finalCtaDescription: 'Let ReplyVera handle routine replies while your team focuses on helping students succeed.'
@@ -775,7 +775,7 @@ const industryPages = [
             { icon: 'shield-alert', title: 'Protect Pets and the Business', text: 'Injury, illness, lost-pet, and animal-safety complaints require approval before any response is published.' }
         ],
         step2Text: 'Set your business tone and approval rules. ReplyVera identifies animal-safety, injury, and missing-pet concerns and routes them for your review.',
-        step3Text: 'Routine positive reviews are answered automatically. Safety and injury concerns are held for your approval and never published without it.',
+        step3Text: 'Routine positive reviews are answered automatically. Safety and injury concerns are held for your approval and blocked from automatic publishing under your configured rules.',
         reviewsHeadline: 'From Happy Pets to Safety Complaints',
         reviewsSubhead: 'Every type of pet-care review is handled with warmth and the right level of protection.',
         reviewExamples: [
@@ -802,14 +802,14 @@ const industryPages = [
                 alertText: 'Auto-publishing blocked. Owner notified immediately for manual review.'
             }
         ],
-        sensitiveHeadline: 'Animal Safety Concerns Are Never Published Automatically',
+        sensitiveHeadline: 'Animal Safety Concerns Require Manual Approval',
         sensitiveTopics: ['Injury', 'Illness', 'Lost pet', 'Animal safety', 'Medication', 'Neglect', 'Staff conduct'],
         faqItems: [
-            { q: 'Are animal injury or illness reviews blocked from auto-publishing?', a: 'Yes. Any review mentioning injury, illness, a missing pet, or animal safety is immediately held for owner approval and never published automatically.' },
+            { q: 'Are animal injury or illness reviews blocked from auto-publishing?', a: 'Yes. Any review mentioning injury, illness, a missing pet, or animal safety is immediately held for owner approval and blocked from automatic publishing under your configured approval rules.' },
             { q: 'Can ReplyVera recognize groomer and handler names in reviews?', a: 'Yes. When a customer mentions a specific team member, the reply includes that recognition naturally.' },
             { q: 'Does ReplyVera support multiple pet-care locations?', a: 'Yes. The Multi-Location plan lets you manage separate Google Business Profiles for each location from one account.' },
             { q: 'Can I set different approval rules for grooming vs. boarding reviews?', a: 'Yes. You can configure separate rules for different types of reviews and services within your account.' },
-            { q: 'Which review platforms does ReplyVera support?', a: 'Currently supported: Google Reviews. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
+            { q: 'Which review platforms does ReplyVera support?', a: 'ReplyVera currently supports Google Reviews through Google Business Profile. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
         ],
         finalCtaHeadline: 'Protect Your Reputation While You Care for Their Pets',
         finalCtaDescription: 'Let ReplyVera handle routine replies so your team can focus on providing exceptional care every day.'
@@ -831,7 +831,7 @@ const industryPages = [
             { icon: 'shield-alert', title: 'Escalate High-Risk Complaints', text: 'Vehicle damage, billing disputes, and membership cancellation issues require approval before any response is published.' }
         ],
         step2Text: 'Set your tone and approval rules. ReplyVera identifies vehicle-damage, billing, and membership complaints and routes them for approval.',
-        step3Text: 'Routine reviews are answered automatically. Damage and billing complaints are held for your approval and never published without it.',
+        step3Text: 'Routine reviews are answered automatically. Damage and billing complaints are held for your approval and blocked from automatic publishing under your configured rules.',
         reviewsHeadline: 'From Happy Customers to Vehicle Damage Claims',
         reviewsSubhead: 'Each car wash review is handled with the right level of care and business protection.',
         reviewExamples: [
@@ -861,11 +861,11 @@ const industryPages = [
         sensitiveHeadline: 'Damage and Billing Complaints Require Owner Approval',
         sensitiveTopics: ['Vehicle damage', 'Billing disputes', 'Membership cancellations', 'Safety concerns', 'Equipment failures', 'Theft claims'],
         faqItems: [
-            { q: 'Are vehicle damage complaints blocked from auto-publishing?', a: 'Yes. Any review mentioning vehicle damage, scratches, or property concerns is immediately held for owner approval and never published automatically.' },
+            { q: 'Are vehicle damage complaints blocked from auto-publishing?', a: 'Yes. Any review mentioning vehicle damage, scratches, or property concerns is immediately held for owner approval and blocked from automatic publishing under your configured approval rules.' },
             { q: 'Can membership cancellation issues be routed for approval?', a: 'Yes. Membership billing and cancellation disputes are held for your review before any reply is published.' },
             { q: 'Can ReplyVera manage multiple car wash locations?', a: 'Yes. The Multi-Location plan lets you manage separate Google Business Profiles for each location from one dashboard.' },
             { q: 'Can ReplyVera recognize employee names in positive reviews?', a: 'Yes. When a customer mentions a team member by name, the reply includes that recognition naturally.' },
-            { q: 'Which review platforms does ReplyVera support?', a: 'Currently supported: Google Reviews. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
+            { q: 'Which review platforms does ReplyVera support?', a: 'ReplyVera currently supports Google Reviews through Google Business Profile. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
         ],
         finalCtaHeadline: 'Keep Every Car Wash Location Responsive',
         finalCtaDescription: 'Let ReplyVera handle routine replies while your team manages the locations and protects the brand.'
@@ -917,11 +917,11 @@ const industryPages = [
         sensitiveHeadline: 'Missing Items and Refund Requests Require Your Approval',
         sensitiveTopics: ['Missing items', 'Refund disputes', 'Safety concerns', 'Theft', 'Equipment damage', 'Health concerns'],
         faqItems: [
-            { q: 'Are missing-item and refund complaints blocked from auto-publishing?', a: 'Yes. Any review mentioning missing clothing, theft, or refund requests is immediately held for owner approval and never published automatically.' },
+            { q: 'Are missing-item and refund complaints blocked from auto-publishing?', a: 'Yes. Any review mentioning missing clothing, theft, or refund requests is immediately held for owner approval and blocked from automatic publishing under your configured approval rules.' },
             { q: 'Can I use ReplyVera to track which locations have the most machine complaints?', a: 'Reviews are organized by location, so you can quickly see patterns in machine or cleanliness complaints per site.' },
             { q: 'Can ReplyVera manage multiple laundromat locations?', a: 'Yes. The Multi-Location plan lets you manage separate Google Business Profiles for each location from one account.' },
             { q: 'Does ReplyVera respond in Spanish?', a: 'Yes. ReplyVera can draft responses in both English and Spanish based on your configuration.' },
-            { q: 'Which review platforms does ReplyVera support?', a: 'Currently supported: Google Reviews. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
+            { q: 'Which review platforms does ReplyVera support?', a: 'ReplyVera currently supports Google Reviews through Google Business Profile. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
         ],
         finalCtaHeadline: 'Keep Every Location Clean, Responsive, and Trusted',
         finalCtaDescription: 'Let ReplyVera handle routine replies so you can focus on keeping machines running and customers happy.'
