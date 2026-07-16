@@ -87,16 +87,16 @@ function renderReviews(examples) {
             <div class="review-alert-box">
                 <div class="review-alert-title">
                     <i data-lucide="alert-triangle" style="width:13px;height:13px;"></i>
-                    ${ex.alertTitle}
+                    Sensitive topic detected
                 </div>
-                <p class="review-alert-sub">${ex.alertText}</p>
+                <p class="review-alert-sub">A manager must review this before publishing.</p>
             </div>
             <span class="review-badge badge-blocked" style="align-self:flex-start;">Auto-Publishing Blocked</span>
         </div>`;
         }
         const badgeClass  = ex.needsApproval ? 'badge-approval' : 'badge-auto';
         const badgeLabel  = ex.needsApproval ? 'Needs Approval'  : 'Safe to Auto-Publish';
-        const responseLabel = ex.needsApproval ? 'Draft Response' : 'AI Response';
+        const responseLabel = 'ReplyVera response';
         return `
         <div class="review-card">
             <div class="review-card-top">
@@ -138,12 +138,12 @@ function renderPricingSection(isAgency) {
                 <h2>Agency Pricing</h2>
                 <p>One account. Multiple clients. One affordable monthly fee.</p>
             </div>
-            <div style="max-width:480px;margin:0 auto;">
-                <div class="pricing-card featured" style="padding:36px;">
+            <div style="max-width:460px;margin:0 auto;">
+                <div class="pricing-card featured" style="padding:32px 28px;">
                     <div class="pricing-name">Agency Plan</div>
                     <div class="pricing-price" style="font-size:2rem;">From $149</div>
                     <div class="pricing-period">per month</div>
-                    <p class="pricing-desc">For agencies managing Google review replies across multiple client locations.</p>
+                    <p class="pricing-tagline">Manage Google review replies across all your clients from one account.</p>
                     <ul class="pricing-features">
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Up to 5 client locations included</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Additional locations available</li>
@@ -174,10 +174,10 @@ function renderPricingSection(isAgency) {
                     <div class="pricing-name">Starter</div>
                     <div class="pricing-price">$29</div>
                     <div class="pricing-period">per month</div>
-                    <p class="pricing-desc">For businesses that want AI-generated replies with manual approval before publishing.</p>
+                    <p class="pricing-tagline">You approve every reply before it is published.</p>
                     <ul class="pricing-features">
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> One location</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Up to 30 responses per month</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Up to 30 replies per month</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Manual approval for all reviews</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Custom tone</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> English and Spanish</li>
@@ -190,10 +190,10 @@ function renderPricingSection(isAgency) {
                     <div class="pricing-name">Autopilot</div>
                     <div class="pricing-price">$39</div>
                     <div class="pricing-period">per month</div>
-                    <p class="pricing-desc">For businesses that want routine reviews handled automatically without daily involvement.</p>
+                    <p class="pricing-tagline">Safe replies publish automatically. Sensitive reviews stay under your approval.</p>
                     <ul class="pricing-features">
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> One location</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Unlimited responses</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Unlimited replies</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Automatic publishing for safe reviews</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Sensitive-review detection</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Custom brand voice</li>
@@ -203,9 +203,9 @@ function renderPricingSection(isAgency) {
                 </div>
                 <div class="pricing-card">
                     <div class="pricing-name">Multi-Location</div>
-                    <div class="pricing-price" style="font-size:1.8rem;">From $79</div>
+                    <div class="pricing-price" style="font-size:1.85rem;">From $79</div>
                     <div class="pricing-period">per month</div>
-                    <p class="pricing-desc">For businesses managing several locations from one central account.</p>
+                    <p class="pricing-tagline">Manage all your locations from one account with location-level rules.</p>
                     <ul class="pricing-features">
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Three locations included</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Central dashboard</li>

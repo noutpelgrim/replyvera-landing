@@ -5,38 +5,102 @@ document.addEventListener('DOMContentLoaded', () => {
         lucide.createIcons();
     }
 
-    // --- Industries Dropdown Toggle ---
+    // --- Industries Dropdown Toggle (desktop) ---
     const dropdownWrappers = document.querySelectorAll('.nav-dropdown');
     dropdownWrappers.forEach(wrapper => {
         const btn = wrapper.querySelector('.nav-dropdown-btn');
         const content = wrapper.querySelector('.nav-dropdown-content');
         if (!btn || !content) return;
 
-        // Click the button → toggle open/closed
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
             const isOpen = wrapper.classList.contains('open');
-            // Close all other dropdowns first
-            dropdownWrappers.forEach(w => w.classList.remove('open'));
+            dropdownWrappers.forEach(w => {
+                w.classList.remove('open');
+                const b = w.querySelector('.nav-dropdown-btn');
+                if (b) b.setAttribute('aria-expanded', 'false');
+            });
             if (!isOpen) {
                 wrapper.classList.add('open');
+                btn.setAttribute('aria-expanded', 'true');
             }
         });
 
-        // Clicking a link inside closes the dropdown
         content.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => wrapper.classList.remove('open'));
+            link.addEventListener('click', () => {
+                wrapper.classList.remove('open');
+                btn.setAttribute('aria-expanded', 'false');
+            });
         });
     });
 
-    // Click anywhere outside → close all dropdowns
     document.addEventListener('click', () => {
-        dropdownWrappers.forEach(w => w.classList.remove('open'));
+        dropdownWrappers.forEach(w => {
+            w.classList.remove('open');
+            const b = w.querySelector('.nav-dropdown-btn');
+            if (b) b.setAttribute('aria-expanded', 'false');
+        });
     });
-    // Escape key → close all dropdowns
+
+    // --- Mobile Navigation ---
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileNav     = document.getElementById('mobile-nav');
+
+    if (mobileMenuBtn && mobileNav) {
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = mobileNav.classList.contains('open');
+            mobileNav.classList.toggle('open', !isOpen);
+            mobileMenuBtn.setAttribute('aria-expanded', String(!isOpen));
+            mobileMenuBtn.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+        });
+
+        // Close mobile nav on outside click
+        document.addEventListener('click', (e) => {
+            if (!mobileNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileNav.classList.remove('open');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                mobileMenuBtn.setAttribute('aria-label', 'Open navigation menu');
+            }
+        });
+
+        // Close mobile nav when a link inside it is clicked
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('open');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
+
+    // --- Mobile Industries Accordion ---
+    const mobileIndToggle = document.getElementById('mobile-ind-toggle');
+    const mobileIndList   = document.getElementById('mobile-ind-list');
+
+    if (mobileIndToggle && mobileIndList) {
+        mobileIndToggle.addEventListener('click', () => {
+            const isOpen = mobileIndToggle.classList.contains('open');
+            mobileIndToggle.classList.toggle('open', !isOpen);
+            mobileIndList.classList.toggle('open', !isOpen);
+            mobileIndToggle.setAttribute('aria-expanded', String(!isOpen));
+        });
+    }
+
+    // Escape key closes all overlays
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            dropdownWrappers.forEach(w => w.classList.remove('open'));
+            dropdownWrappers.forEach(w => {
+                w.classList.remove('open');
+                const b = w.querySelector('.nav-dropdown-btn');
+                if (b) b.setAttribute('aria-expanded', 'false');
+            });
+            if (mobileNav) {
+                mobileNav.classList.remove('open');
+                if (mobileMenuBtn) {
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                    mobileMenuBtn.setAttribute('aria-label', 'Open navigation menu');
+                }
+            }
         }
     });
 

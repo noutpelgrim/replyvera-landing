@@ -18,7 +18,11 @@
         <div class="container nav-container">
             <a href="/index.html" class="nav-logo">
                 <div class="nav-logo-icon">
-                    <i data-lucide="reply" style="width:17px;height:17px;"></i>
+                    <!-- Speech-bubble with check — brand mark, not a back-button -->
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        <polyline points="9 11 12 14 15 9"/>
+                    </svg>
                 </div>
                 <span class="nav-logo-text">Reply<span>Vera</span></span>
             </a>
@@ -27,8 +31,9 @@
                 <a href="/index.html#product">Product</a>
                 <a href="/index.html#how-it-works">How It Works</a>
                 <div class="nav-dropdown">
-                    <button class="nav-dropdown-btn">
-                        Industries <i data-lucide="chevron-down" style="width:13px;height:13px;"></i>
+                    <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">
+                        Industries
+                        <span class="chevron-icon"><i data-lucide="chevron-down" style="width:12px;height:12px;"></i></span>
                     </button>
                     <div class="nav-dropdown-content">
                         <div class="nav-dropdown-grid">
@@ -105,6 +110,13 @@
             <div class="nav-actions">
                 <a href="https://replyvera-dashboard.vercel.app/login" class="nav-login">Log In</a>
                 <a href="/index.html#pricing" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Start Free</a>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
             </div>
         </div>
     </nav>
@@ -234,7 +246,7 @@
             </div>
             <p class="review-quote">"Best car wash in the area. My car always comes out spotless."</p>
             <div class="review-response-box">
-                <div class="review-response-label">AI Response</div>
+                <div class="review-response-label">ReplyVera response</div>
                 <p class="review-response-text">"Thank you for the great feedback! We're glad you keep coming back, and we look forward to seeing you again soon."</p>
             </div>
             <span class="review-badge badge-auto" style="align-self:flex-start;">Safe to Auto-Publish</span>
@@ -246,7 +258,7 @@
             </div>
             <p class="review-quote">"The equipment was broken and my car was not fully cleaned."</p>
             <div class="review-response-box">
-                <div class="review-response-label">Draft Response</div>
+                <div class="review-response-label">ReplyVera response</div>
                 <p class="review-response-text">"Thank you for letting us know. We're sorry the equipment didn't perform as expected. Please contact us directly and we'll make this right."</p>
             </div>
             <span class="review-badge badge-approval" style="align-self:flex-start;">Needs Approval</span>
@@ -260,9 +272,9 @@
             <div class="review-alert-box">
                 <div class="review-alert-title">
                     <i data-lucide="alert-triangle" style="width:13px;height:13px;"></i>
-                    Vehicle damage complaint detected
+                    Sensitive topic detected
                 </div>
-                <p class="review-alert-sub">Auto-publishing blocked. Manager notified immediately for manual review.</p>
+                <p class="review-alert-sub">A manager must review this before publishing.</p>
             </div>
             <span class="review-badge badge-blocked" style="align-self:flex-start;">Auto-Publishing Blocked</span>
         </div>
@@ -313,10 +325,10 @@
                     <div class="pricing-name">Starter</div>
                     <div class="pricing-price">$29</div>
                     <div class="pricing-period">per month</div>
-                    <p class="pricing-desc">For businesses that want AI-generated replies with manual approval before publishing.</p>
+                    <p class="pricing-tagline">You approve every reply before it is published.</p>
                     <ul class="pricing-features">
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> One location</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Up to 30 responses per month</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Up to 30 replies per month</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Manual approval for all reviews</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Custom tone</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> English and Spanish</li>
@@ -329,10 +341,10 @@
                     <div class="pricing-name">Autopilot</div>
                     <div class="pricing-price">$39</div>
                     <div class="pricing-period">per month</div>
-                    <p class="pricing-desc">For businesses that want routine reviews handled automatically without daily involvement.</p>
+                    <p class="pricing-tagline">Safe replies publish automatically. Sensitive reviews stay under your approval.</p>
                     <ul class="pricing-features">
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> One location</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Unlimited responses</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Unlimited replies</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Automatic publishing for safe reviews</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Sensitive-review detection</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Custom brand voice</li>
@@ -342,9 +354,9 @@
                 </div>
                 <div class="pricing-card">
                     <div class="pricing-name">Multi-Location</div>
-                    <div class="pricing-price" style="font-size:1.8rem;">From $79</div>
+                    <div class="pricing-price" style="font-size:1.85rem;">From $79</div>
                     <div class="pricing-period">per month</div>
-                    <p class="pricing-desc">For businesses managing several locations from one central account.</p>
+                    <p class="pricing-tagline">Manage all your locations from one account with location-level rules.</p>
                     <ul class="pricing-features">
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Three locations included</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Central dashboard</li>
@@ -423,8 +435,11 @@
             <div class="footer-grid">
                 <div class="footer-brand-box">
                     <a href="/index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;margin-bottom:14px;">
-                        <div style="width:30px;height:30px;background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;">
-                            <i data-lucide="reply" style="width:15px;height:15px;"></i>
+                        <div style="width:30px;height:30px;background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%);border-radius:8px;display:flex;align-items:center;justify-content:center;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                <polyline points="9 11 12 14 15 9"/>
+                            </svg>
                         </div>
                         <span style="font-size:1.2rem;font-weight:800;letter-spacing:-0.03em;color:#FFF;">ReplyVera</span>
                     </a>
