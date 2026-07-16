@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReplyVera Pricing – Simple, Transparent Pricing</title>
+    <meta name="description" content="Choose the plan that fits your business needs. Upgrade or downgrade anytime. Starter, Autopilot, Multi-Location, and Agency options for Google Reviews.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+                <div style="width:36px;height:36px;background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;">
+                    <i data-lucide="reply" style="width:18px;height:18px;"></i>
+                </div>
+                <span style="font-size:1.45rem;font-weight:800;letter-spacing:-0.03em;color:#FFF;">Reply<span style="color:var(--primary-light);">Vera</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html#features">Features</a>
+                <a href="index.html#how-it-works">How It Works</a>
+                <a href="#comparison">Comparison</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-btn">
+                        Industries <i data-lucide="chevron-down" style="width:14px;height:14px;"></i>
+                    </button>
+                    <div class="nav-dropdown-content">
+                        <div class="nav-dropdown-grid">
+                            <!-- Column 1 -->
+                            <a href="restaurants" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper restaurant-icon">
+                                    <i data-lucide="utensils" style="width:16px;height:16px;"></i>
+                                </div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Restaurants</div>
+                                    <div class="dropdown-desc">Dining & hospitality</div>
+                                </div>
+                            </a>
+                            <a href="dentists" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper dentist-icon">
+                                    <i data-lucide="activity" style="width:16px;height:16px;"></i>
+                                </div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Dentists & Clinics</div>
+                                    <div class="dropdown-desc">HIPAA-ready responses</div>
+                                </div>
+                            </a>
+                            <a href="agencies" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper agency-icon">
+                                    <i data-lucide="briefcase" style="width:16px;height:16px;"></i>
+                                </div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Marketing Agencies</div>
+                                    <div class="dropdown-desc">Multi-location scale</div>
+                                </div>
+                            </a>
+                            <!-- Column 2 -->
+                            <a href="martial-arts" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper martial-arts-icon">
+                                    <i data-lucide="swords" style="width:16px;height:16px;"></i>
+                                </div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Martial-Art Schools</div>
+                                    <div class="dropdown-desc">Student trust & sign-ups</div>
+                                </div>
+                            </a>
+                            <a href="childcare" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper childcare-icon">
+                                    <i data-lucide="baby" style="width:16px;height:16px;"></i>
+                                </div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Childcare & Preschool</div>
+                                    <div class="dropdown-desc">Empathetic parenting tone</div>
+                                </div>
+                            </a>
+                            <a href="tutoring" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper tutoring-icon">
+                                    <i data-lucide="graduation-cap" style="width:16px;height:16px;"></i>
+                                </div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Tutoring & Learning</div>
+                                    <div class="dropdown-desc">Pedagogical trust</div>
+                                </div>
+                            </a>
+                            <!-- Column 3 -->
+                            <a href="pet-care" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper petcare-icon">
+                                    <i data-lucide="dog" style="width:16px;height:16px;"></i>
+                                </div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Pet Care & Boarding</div>
+                                    <div class="dropdown-desc">Caring owner feedback</div>
+                                </div>
+                            </a>
+                            <a href="car-wash" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper carwash-icon">
+                                    <i data-lucide="car" style="width:16px;height:16px;"></i>
+                                </div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Car-Wash Operators</div>
+                                    <div class="dropdown-desc">Fast-paced local service</div>
+                                </div>
+                            </a>
+                            <a href="laundromats" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper laundromat-icon">
+                                    <i data-lucide="washing-machine" style="width:16px;height:16px;"></i>
+                                </div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Laundromats</div>
+                                    <div class="dropdown-desc">Clean-clothes reputation</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <a href="#pricing">Pricing</a>
+                <a href="#faq">FAQ</a>
+            </div>
+            <div class="nav-actions">
+                <a href="https://replyvera-dashboard.vercel.app/login" style="color:#94A3B8;text-decoration:none;font-weight:500;font-size:0.95rem;transition:color var(--transition-fast);" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94A3B8'">Log In</a>
+                <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-secondary" style="padding: 10px 20px; font-size: 0.9rem;">Start Free</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Pricing Hero Section -->
+    <header class="hero theme-dark" style="padding: 160px 0 60px;">
+        <div class="hero-glow-layer"></div>
+        <div class="container hero-content" style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <div class="label-pill">
+                <i data-lucide="credit-card" style="width:14px;height:14px;"></i>
+                Simple & Transparent
+            </div>
+            <h1>Pricing Plans for Businesses of <span class="text-gradient">All Sizes</span></h1>
+            <p class="lead-text" style="margin-bottom: 24px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                Try ReplyVera free before choosing a plan. 14-day free trial. No credit card required. Cancel anytime.
+            </p>
+        </div>
+    </header>
+
+    <!-- Pricing Cards Grid Section -->
+    <section class="section theme-dark" id="pricing" style="padding: 40px 0 80px;">
+        <div class="container">
+            <div class="pricing-tiers-grid mb-16">
+                <!-- Starter Card -->
+                <div class="pricing-tier-card" id="pricing-starter" style="display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--border-current); background: var(--bg-card-current); padding: 32px; border-radius: var(--radius-lg); transition: border var(--transition-fast);">
+                    <div>
+                        <div class="tier-header" style="margin-bottom: 24px; border-bottom: 1px solid var(--border-current); padding-bottom: 20px;">
+                            <span style="font-size: 0.72rem; font-weight: 700; color: var(--primary-light); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 8px;">Best for lower review volume</span>
+                            <h4 style="color:var(--text-primary-current); font-size:1.5rem; font-weight:700; margin-bottom: 8px;">Starter</h4>
+                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height:40px; margin-bottom: 16px; line-height: 1.4;">For small businesses that want faster, more consistent Google review responses.</p>
+                            <div class="tier-price-box" style="display:flex; flex-direction:column; gap:4px; align-items:flex-start;">
+                                <div style="display:flex; align-items:baseline;">
+                                    <span style="font-size: 2.8rem; font-weight: 800; color: #FFF;">$29</span>
+                                    <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;">/ month</span>
+                                </div>
+                                <div style="font-size: 0.82rem; color: var(--accent); font-weight: 600;">
+                                    or $290 / annually <span style="font-size:0.75rem; color:var(--text-secondary-current); font-weight:normal;">(2 months free)</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <ul class="pricing-feature-list" style="list-style:none; padding:0; display:flex; flex-direction:column; gap:12px; font-size:0.9rem;">
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 1 Business Location</li>
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Up to 30 review responses/mo</li>
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> AI Google review replies</li>
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Manual approval workflow</li>
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Custom business tone</li>
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> English and Spanish responses</li>
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Negative-review alerts</li>
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Email support</li>
+                            <li style="display:flex; align-items:center; gap:8px; color: var(--text-secondary-current); font-size: 0.85rem;"><i data-lucide="info" style="color: var(--primary-light); width: 14px; height: 14px;"></i> Google Reviews supported</li>
+                        </ul>
+                    </div>
+                    <div style="margin-top:32px;">
+                        <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-secondary" style="width: 100%;">Start Free Trial</a>
+                    </div>
+                </div>
+
+                <!-- Autopilot Card (Visual Centerpiece) -->
+                <div class="pricing-tier-card recommended" id="pricing-autopilot" style="display: flex; flex-direction: column; justify-content: space-between; border: 2px solid var(--accent); background: rgba(16, 185, 129, 0.02); padding: 32px; border-radius: var(--radius-lg); transform: scale(1.03); box-shadow: var(--shadow-premium), 0 0 30px rgba(16, 185, 129, 0.1); position: relative; z-index: 2;">
+                    <span style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #07070B; font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 12px; border-radius: 20px;">Most Popular</span>
+                    <div>
+                        <div class="tier-header" style="margin-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 20px;">
+                            <span style="font-size: 0.72rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 8px;">Routine replies on autopilot</span>
+                            <h4 style="color:var(--text-primary-current); font-size:1.5rem; font-weight:700; margin-bottom: 8px;">Autopilot</h4>
+                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height:40px; margin-bottom: 16px; line-height: 1.4;">For businesses that want routine Google review responses handled automatically.</p>
+                            <div class="tier-price-box" style="display:flex; flex-direction:column; gap:4px; align-items:flex-start;">
+                                <div style="display:flex; align-items:baseline;">
+                                    <span style="font-size: 2.8rem; font-weight: 800; color: #FFF;">$39</span>
+                                    <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;">/ month</span>
+                                </div>
+                                <div style="font-size: 0.82rem; color: var(--accent); font-weight: 600;">
+                                    or $390 / annually <span style="font-size:0.75rem; color:var(--text-secondary-current); font-weight:normal;">(2 months free)</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <ul class="pricing-feature-list" style="list-style:none; padding:0; display:flex; flex-direction:column; gap:12px; font-size:0.9rem;">
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 1 Business Location</li>
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Unlimited review responses</li>
+                            <li style="display:flex; align-items:center; gap:8px; cursor:help;" class="tooltip-trigger" data-tooltip="Routine positive reviews are posted instantly based on your autopilot rules.">
+                                <i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Automatic publishing <i data-lucide="info" style="width:12px; height:12px; color:var(--text-secondary-current);"></i>
+                            </li>
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Manual approval for negatives</li>
+                            <li style="display:flex; align-items:center; gap:8px; cursor:help;" class="tooltip-trigger" data-tooltip="Flag reviews mentioning safety, hygiene, or specific complaints for manual review.">
+                                <i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Sensitive-review detection <i data-lucide="info" style="width:12px; height:12px; color:var(--text-secondary-current);"></i>
+                            </li>
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Custom brand voice</li>
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> English and Spanish responses</li>
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Employee-name recognition</li>
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Review history</li>
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Priority email support</li>
+                            <li style="display:flex; align-items:center; gap:8px; color: var(--text-secondary-current); font-size: 0.85rem;"><i data-lucide="info" style="color: var(--primary-light); width: 14px; height: 14px;"></i> Google Reviews supported</li>
+                        </ul>
+                    </div>
+                    <div style="margin-top:32px;">
+                        <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent" style="width: 100%;">Start Free Trial</a>
+                    </div>
+                </div>
+
+                <!-- Multi-Location Card -->
+                <div class="pricing-tier-card" id="pricing-multi-location" style="display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--border-current); background: var(--bg-card-current); padding: 32px; border-radius: var(--radius-lg); transition: border var(--transition-fast);">
+                    <div>
+                        <div class="tier-header" style="margin-bottom: 24px; border-bottom: 1px solid var(--border-current); padding-bottom: 20px;">
+                            <span style="font-size: 0.72rem; font-weight: 700; color: var(--primary-light); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 8px;">For multiple branches</span>
+                            <h4 style="color:var(--text-primary-current); font-size:1.5rem; font-weight:700; margin-bottom: 8px;">Multi-Location</h4>
+                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height:40px; margin-bottom: 16px; line-height: 1.4;">For businesses managing several storefront locations.</p>
+                            <div class="tier-price-box" style="display:flex; flex-direction:column; gap:4px; align-items:flex-start;">
+                                <div style="display:flex; align-items:baseline;">
+                                    <span style="font-size: 2.8rem; font-weight: 800; color: #FFF;">$79</span>
+                                    <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;">/ month</span>
+                                </div>
+                                <div style="font-size: 0.82rem; color: var(--accent); font-weight: 600;">
+                                    or $790 / annually <span style="font-size:0.75rem; color:var(--text-secondary-current); font-weight:normal;">(2 months free)</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <ul class="pricing-feature-list" style="list-style:none; padding:0; display:flex; flex-direction:column; gap:12px; font-size:0.9rem;">
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 3 Locations included</li>
+                            <li style="display:flex; align-items:center; gap:8px; cursor:help;" class="tooltip-trigger" data-tooltip="Add more locations to your plan for $15/location per month.">
+                                <i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> $15/additional location <i data-lucide="info" style="width:12px; height:12px; color:var(--text-secondary-current);"></i>
+                            </li>
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Central review dashboard</li>
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Unlimited review responses</li>
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Location-specific tones</li>
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Location approval rules</li>
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Team access</li>
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Negative escalation rules</li>
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Cross-location reporting</li>
+                            <li style="display:flex; align-items:center; gap:8px; color: var(--text-secondary-current); font-size: 0.85rem;"><i data-lucide="info" style="color: var(--primary-light); width: 14px; height: 14px;"></i> Google Reviews supported</li>
+                        </ul>
+                    </div>
+                    <div style="margin-top:32px;">
+                        <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-secondary" style="width: 100%;">View Multi-Location Pricing</a>
+                    </div>
+                </div>
+
+                <!-- Agency Card -->
+                <div class="pricing-tier-card" id="pricing-agency" style="display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--border-current); background: var(--bg-card-current); padding: 32px; border-radius: var(--radius-lg); transition: border var(--transition-fast);">
+                    <div>
+                        <div class="tier-header" style="margin-bottom: 24px; border-bottom: 1px solid var(--border-current); padding-bottom: 20px;">
+                            <span style="font-size: 0.72rem; font-weight: 700; color: var(--primary-light); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 8px;">For marketing agencies</span>
+                            <h4 style="color:var(--text-primary-current); font-size:1.5rem; font-weight:700; margin-bottom: 8px;">Agency</h4>
+                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height:40px; margin-bottom: 16px; line-height: 1.4;">For marketing agencies managing Google reviews for multiple clients.</p>
+                            <div class="tier-price-box" style="display:flex; flex-direction:column; gap:4px; align-items:flex-start;">
+                                <div style="display:flex; align-items:baseline;">
+                                    <span style="font-size: 2.8rem; font-weight: 800; color: #FFF;">$149</span>
+                                    <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;">/ month</span>
+                                </div>
+                                <div style="font-size: 0.82rem; color: var(--accent); font-weight: 600;">
+                                    or $1,490 / annually <span style="font-size:0.75rem; color:var(--text-secondary-current); font-weight:normal;">(2 months free)</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <ul class="pricing-feature-list" style="list-style:none; padding:0; display:flex; flex-direction:column; gap:12px; font-size:0.9rem;">
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 10 Client Locations included</li>
+                            <li style="display:flex; align-items:center; gap:8px; cursor:help;" class="tooltip-trigger" data-tooltip="Manage more client locations for $12 to $19 per location per month (volume discounts apply).">
+                                <i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> $12-$19/client location <i data-lucide="info" style="width:12px; height:12px; color:var(--text-secondary-current);"></i>
+                            </li>
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Central client dashboard</li>
+                            <li style="display:flex; align-items:center; gap:8px; cursor:help;" class="tooltip-trigger" data-tooltip="Subject to fair usage guidelines to prevent system abuse.">
+                                <i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Unlimited review responses <i data-lucide="info" style="width:12px; height:12px; color:var(--text-secondary-current);"></i>
+                            </li>
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Client-specific brand voices</li>
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Client approval links</li>
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Team member access</li>
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Agency reporting</li>
+                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Optional branded reports</li>
+                            <li style="display:flex; align-items:center; gap:8px; color: var(--text-secondary-current); font-size: 0.85rem;"><i data-lucide="info" style="color: var(--primary-light); width: 14px; height: 14px;"></i> Google Reviews supported</li>
+                        </ul>
+                    </div>
+                    <div style="margin-top:32px;">
+                        <a href="mailto:info@replyvera.com?subject=Agency%20Plan%20Inquiry" class="btn btn-secondary" style="width: 100%;">View Agency Pricing</a>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="font-size: 0.85rem; color: var(--text-secondary-current); font-weight: 500; text-align: center;">
+                ReplyVera currently supports Google Reviews. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.
+            </p>
+        </div>
+    </section>
+
+    <!-- Pricing Comparison Section -->
+    <section class="section theme-light" id="comparison" style="border-bottom: 1px solid var(--border-current); padding: 60px 0;">
+        <div class="container">
+            <div class="text-center mb-8">
+                <h3 style="font-size:1.8rem; letter-spacing:-0.02em;">Compare plans & features</h3>
+            </div>
+            
+            <div style="width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border-current); border-radius:12px; background:var(--bg-card-current);">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid var(--border-current); background: rgba(255,255,255,0.01);">
+                            <th style="padding: 16px 24px; color: var(--text-primary-current); font-weight:700;">Features</th>
+                            <th style="padding: 16px 24px; color: var(--text-primary-current); font-weight:700;">Starter</th>
+                            <th style="padding: 16px 24px; color: var(--text-primary-current); font-weight:700;">Autopilot</th>
+                            <th style="padding: 16px 24px; color: var(--text-primary-current); font-weight:700;">Multi-Location</th>
+                            <th style="padding: 16px 24px; color: var(--text-primary-current); font-weight:700;">Agency</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid var(--border-current);">
+                            <td style="padding: 16px 24px; font-weight: 600;">Business locations</td>
+                            <td style="padding: 16px 24px; color:var(--text-secondary-current);">1 Location</td>
+                            <td style="padding: 16px 24px; color:var(--text-secondary-current);">1 Location</td>
+                            <td style="padding: 16px 24px; color:var(--text-secondary-current);">3 Locations included</td>
+                            <td style="padding: 16px 24px; color:var(--text-secondary-current);">10 Client locations</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-current);">
+                            <td style="padding: 16px 24px; font-weight: 600;">Monthly review-response limit</td>
+                            <td style="padding: 16px 24px; color:var(--text-secondary-current);">30 responses / mo</td>
+                            <td style="padding: 16px 24px; color:var(--text-secondary-current);">Unlimited responses</td>
+                            <td style="padding: 16px 24px; color:var(--text-secondary-current);">Unlimited responses</td>
+                            <td style="padding: 16px 24px; color:var(--text-secondary-current);">Unlimited responses</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-current);">
+                            <td style="padding: 16px 24px; font-weight: 600;">Manual approval</td>
+                            <td style="padding: 16px 24px;"><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
+                            <td style="padding: 16px 24px;"><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
+                            <td style="padding: 16px 24px;"><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
+                            <td style="padding: 16px 24px;"><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-current);">
+                            <td style="padding: 16px 24px; font-weight: 600;">Automatic publishing</td>
+                            <td style="padding: 16px 24px; color:var(--text-secondary-current); font-size:0.85rem;">—</td>
+                            <td style="padding: 16px 24px;"><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
+                            <td style="padding: 16px 24px;"><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
+                            <td style="padding: 16px 24px;"><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-current);">
+                            <td style="padding: 16px 24px; font-weight: 600;">Sensitive-review detection</td>
+                            <td style="padding: 16px 24px; color:var(--text-secondary-current); font-size:0.85rem;">—</td>
+                            <td style="padding: 16px 24px;"><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
+                            <td style="padding: 16px 24px;"><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
+                            <td style="padding: 16px 24px;"><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-current);">
+                            <td style="padding: 16px 24px; font-weight: 600;">Custom tone</td>
+                            <td style="padding: 16px 24px; color:var(--text-secondary-current);">1 Tone</td>
+                            <td style="padding: 16px 24px;"><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
+                            <td style="padding: 16px 24px;"><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
+                            <td style="padding: 16px 24px;"><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-current);">
+                            <td style="padding: 16px 24px; font-weight: 600;">English and Spanish</td>
+                            <td style="padding: 16px 24px;"><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
+                            <td style="padding: 16px 24px;"><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
+                            <td style="padding: 16px 24px;"><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
+                            <td style="padding: 16px 24px;"><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-current);">
+                            <td style="padding: 16px 24px; font-weight: 600;">Employee-name recognition</td>
+                            <td style="padding: 16px 24px; color:var(--text-secondary-current); font-size:0.85rem;">—</td>
+                            <td style="padding: 16px 24px;"><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
+                            <td style="padding: 16px 24px;"><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
+                            <td style="padding: 16px 24px;"><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-current);">
+                            <td style="padding: 16px 24px; font-weight: 600;">Team access</td>
+                            <td style="padding: 16px 24px; color:var(--text-secondary-current); font-size:0.85rem;">—</td>
+                            <td style="padding: 16px 24px; color:var(--text-secondary-current); font-size:0.85rem;">—</td>
+                            <td style="padding: 16px 24px;"><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
+                            <td style="padding: 16px 24px;"><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-current);">
+                            <td style="padding: 16px 24px; font-weight: 600;">Multi-location reporting</td>
+                            <td style="padding: 16px 24px; color:var(--text-secondary-current); font-size:0.85rem;">—</td>
+                            <td style="padding: 16px 24px; color:var(--text-secondary-current); font-size:0.85rem;">—</td>
+                            <td style="padding: 16px 24px;"><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
+                            <td style="padding: 16px 24px;"><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-current);">
+                            <td style="padding: 16px 24px; font-weight: 600;">Client dashboard</td>
+                            <td style="padding: 16px 24px; color:var(--text-secondary-current); font-size:0.85rem;">—</td>
+                            <td style="padding: 16px 24px; color:var(--text-secondary-current); font-size:0.85rem;">—</td>
+                            <td style="padding: 16px 24px; color:var(--text-secondary-current); font-size:0.85rem;">—</td>
+                            <td style="padding: 16px 24px;"><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 16px 24px; font-weight: 600;">Priority support</td>
+                            <td style="padding: 16px 24px; color:var(--text-secondary-current); font-size:0.85rem;">Standard</td>
+                            <td style="padding: 16px 24px; color:var(--text-secondary-current); font-size:0.85rem;">Standard</td>
+                            <td style="padding: 16px 24px; color:var(--text-secondary-current); font-size:0.85rem;">Priority</td>
+                            <td style="padding: 16px 24px; color:var(--text-secondary-current); font-size:0.85rem;">Dedicated</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section theme-white" id="faq">
+        <div class="container" style="max-width: 800px;">
+            <div class="text-center mb-12">
+                <div class="label-pill"><i data-lucide="help-circle" style="width:12px; height:12px;"></i> FAQ</div>
+                <h2 class="mb-4">Frequently Asked Questions</h2>
+                <p>Everything you need to know about ReplyVera pricing, plans, and capabilities.</p>
+            </div>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I cancel at any time?</span>
+                        <div class="faq-icon-wrapper"><i data-lucide="chevron-down"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes. ReplyVera is billed monthly, and you can cancel before your next billing date.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is there a setup fee?</span>
+                        <div class="faq-icon-wrapper"><i data-lucide="chevron-down"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No. There is no setup fee for standard plans.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Does each location need its own plan?</span>
+                        <div class="faq-icon-wrapper"><i data-lucide="chevron-down"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Starter and Autopilot include one location. Multi-location plans include several locations and allow additional locations to be added.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Are review responses unlimited?</span>
+                        <div class="faq-icon-wrapper"><i data-lucide="chevron-down"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The Starter plan includes a monthly response allowance (30 replies). Autopilot, Multi-Location, and Agency plans include unlimited responses subject to reasonable-use limits.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Which review platforms are included?</span>
+                        <div class="faq-icon-wrapper"><i data-lucide="chevron-down"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>ReplyVera currently supports Google Reviews. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I approve responses before they are published?</span>
+                        <div class="faq-icon-wrapper"><i data-lucide="chevron-down"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes. Manual approval is included, and Autopilot users can decide which types of reviews may be published automatically.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I change plans later?</span>
+                        <div class="faq-icon-wrapper"><i data-lucide="chevron-down"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes. Customers can upgrade or downgrade their plan as their review volume or number of locations changes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="section theme-dark" style="border-top: 1px solid rgba(255, 255, 255, 0.04);">
+        <div class="container text-center" style="max-width: 650px;">
+            <h2 class="mb-4">Start Answering Every Google Review</h2>
+            <p class="mb-8">Choose a plan, connect your Google Business Profile, and let ReplyVera handle routine responses while you stay in control of sensitive feedback.</p>
+            
+            <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-bottom:32px; align-items:center;">
+                <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent" style="padding: 14px 28px; font-size:0.95rem;">Start Your Free Trial</a>
+                <a href="#comparison" style="color: #94A3B8; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color var(--transition-fast);" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94A3B8'">Compare Plans</a>
+            </div>
+            
+            <!-- Secondary lead collection form -->
+            <form id="waitlist-form-2" class="waitlist-form" style="display: flex; gap: 12px; margin-top: 24px;">
+                <div class="input-group" style="flex: 1; position:relative;">
+                    <i data-lucide="mail" style="position:absolute; left:20px; top:50%; transform:translateY(-50%); color:#5A5A7A; width:18px; height:18px;"></i>
+                    <input type="email" id="email-2" placeholder="Or enter business email to join waitlist" required style="width: 100%; padding: 18px 24px 18px 54px; border-radius: var(--radius-full); border: 1px solid var(--border-highlight-current); background: var(--bg-card-current); color: white; font-size: 1rem; outline: none; transition: border var(--transition-fast);">
+                </div>
+                <button type="submit" class="btn btn-primary" style="flex-shrink:0;">Join Waitlist</button>
+            </form>
+            <div id="success-msg" style="display: none; align-items:center; justify-content:center; gap:8px; color: var(--accent); margin-top: 16px; font-weight: 600;"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand-box">
+                    <a href="index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none; margin-bottom:20px;">
+                        <div style="width:30px;height:30px;background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;">
+                            <i data-lucide="reply" style="width:16px;height:16px;"></i>
+                        </div>
+                        <span style="font-size:1.25rem;font-weight:800;letter-spacing:-0.03em;color:#FFF;">ReplyVera</span>
+                    </a>
+                    <p style="color:#94A3B8;">The review autopilot trusted by storefronts, franchises, and agencies to protect their online reputation.</p>
+                    <p style="color:#64748B; font-size:0.8rem; margin-top:12px;">Currently supporting Google Reviews. Additional platforms are planned.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-col-title">Product</div>
+                    <ul class="footer-links">
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="index.html#how-it-works">How It Works</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-col-title">Company</div>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@replyvera.com">Contact Us</a></li>
+                        <li><a href="https://replyvera-dashboard.vercel.app/login">Login</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-col-title">Legal</div>
+                    <ul class="footer-links">
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="cookie.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div>&copy; 2026 ReplyVera. All rights reserved.</div>
+                <div class="social-links">
+                    <a href="#"><i data-lucide="twitter" style="width:18px; height:18px;"></i></a>
+                    <a href="#"><i data-lucide="linkedin" style="width:18px; height:18px;"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

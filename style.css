@@ -1141,3 +1141,63 @@ p {
         animation: none !important;
     }
 }
+
+/* Tooltip Styling */
+.tooltip-trigger {
+    position: relative;
+    cursor: help;
+}
+
+.tooltip-trigger::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: #0F0F1A;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #F8FAFC;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.78rem;
+    white-space: normal;
+    width: 220px;
+    box-shadow: var(--shadow-premium);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+    z-index: 1000;
+    pointer-events: none;
+    line-height: 1.4;
+    text-align: center;
+    font-weight: 500;
+}
+
+.tooltip-trigger:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.pricing-tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    align-items: stretch;
+}
+
+@media (max-width: 1200px) {
+    .pricing-tiers-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+    #pricing-autopilot {
+        transform: scale(1) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .pricing-tiers-grid {
+        grid-template-columns: 1fr;
+    }
+}
