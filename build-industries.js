@@ -119,6 +119,10 @@ const industryPages = [
             'Weekend service complaints peak between 7:00 and 9:00 p.m.',
             'The truffle pasta is the most praised menu item'
         ],
+        insightsHeadline: 'Turn Guest Feedback Into Dining Experience Upgrades',
+        sensitiveReviewHeadline: 'Escalate Food Safety and Serious Cleanliness Reviews',
+        employeeRecognitionHeadline: 'Celebrate the Floor Staff Guest Reviews Praise',
+        multiLocationHeadline: 'Unify Brand Tone Across Every Bistro and Location',
         multiLocationCopy: 'Whether you manage a single neighborhood bistro or a growing regional hospitality group, ReplyVera scale settings let general managers oversee location-level approvals while preserving a unified brand voice.',
         pricingOffer: { label: 'Early-access offer', text: 'Founding customers receive $29 per month for the first 12 months. Standard Autopilot pricing is $39 per month after the promotional period.' },
         faqItems: [
@@ -202,6 +206,10 @@ const industryPages = [
             'One location has multiple wait-time complaints',
             'Two clinical reviews require follow-up'
         ],
+        insightsHeadline: 'Monitor Patient Sentiment and Treatment Feedback',
+        sensitiveReviewHeadline: 'Escalate Clinical Pain and HIPAA Privacy Concerns',
+        employeeRecognitionHeadline: 'Track Hygienist and Office Staff Patient Appreciation',
+        multiLocationHeadline: 'Maintain Clinical Consistency Across Dental Locations',
         multiLocationCopy: 'Manage reputation and review logs across multiple dental clinics. Set location-level access permissions so office managers can review drafts while corporate compliance tracks overall sentiment.',
         pricingOffer: { label: 'Early-access offer', text: 'Founding clinics receive $29 per month for the first 12 months. Standard Autopilot pricing is $39 per month after the promotional period.' },
         faqItems: [
@@ -283,6 +291,11 @@ const industryPages = [
             'Average client response rate is 98.4%',
             'Client satisfaction scores average 4.8★'
         ],
+        featureHeadline: 'Review Automation Architected for Digital Agency Retainers',
+        insightsHeadline: 'Report Location-Level Review Volume and Rating Growth',
+        sensitiveReviewHeadline: 'Escalate Serious Disputes to Your Client Approval Link',
+        employeeRecognitionHeadline: 'Track Account Executive and Specialist Mention Metrics',
+        multiLocationHeadline: 'Manage Unlimited Client Portfolios and Brands Globally',
         multiLocationCopy: 'Our Multi-Client dashboard is architected specifically for agencies managing portfolios of local brands. Give account managers selective permissions to supervise assigned clients without accessing other partner data.',
         pricingOffer: { label: 'Founding agency package', text: 'Introductory pricing of $149 per month applies for the first 12 months. Standard Agency pricing is $179 per month after the promotional period.' },
         faqItems: [
@@ -365,6 +378,11 @@ const industryPages = [
             'One location has recurring cleanliness concerns',
             'Two safety reviews need attention'
         ],
+        featureHeadline: 'Review Automation Built for Dojo Growth',
+        insightsHeadline: 'Monitor Parent Satisfaction and Confidence Praise',
+        sensitiveReviewHeadline: 'Escalate Injury, Bullying, or Child Safety Concerns',
+        employeeRecognitionHeadline: 'Highlight the Instructors Parent Reviews Praise',
+        multiLocationHeadline: 'Keep Review Operations Consistent Across Academy Branches',
         multiLocationCopy: 'Manage reputation and review metrics across multiple academy branches. Set location-level access rules so managers can respond while school owners track overall student satisfaction.',
         pricingOffer: { label: 'Early-access offer', text: 'Founding schools receive $29 per month for the first 12 months. Standard Autopilot pricing is $39 per month after the promotional period.' },
         faqItems: [
@@ -394,7 +412,7 @@ const industryPages = [
         heroPrimaryCta: 'Start Your Free Trial',
         heroSecondaryCta: 'Start for $39 per Month',
         businessTypes: ['Daycares', 'Preschools', 'Early learning centers', 'Montessori schools', 'Childcare franchises', 'Before-and-after school programs'],
-        problemHeadline: 'Supervise Parent Feedback Safely Without Sacrificing Director Focus',
+        problemHeadline: 'Parent Reviews Require More Than a Generic Response',
         problems: [
             { icon: 'baby', title: 'Busy daycare directors', text: 'Directors spend their days managing children, teacher ratios, and licensing compliance, with zero time for computer tasks.' },
             { icon: 'heart', title: 'Parent trust is critical', text: 'Early education centers require warm, reassuring, and highly professional responses to maintain parent confidence.' },
@@ -405,6 +423,7 @@ const industryPages = [
         ],
         step2Text: 'ReplyVera identifies parent sentiment, teacher mentions, communication topics, and potential safety or privacy concerns.',
         step3Text: 'Routine positive reviews can be published automatically, while supervision, injury, allergy, and privacy concerns trigger immediate alerts.',
+        featureHeadline: 'Safety-Aware Review Automation for Childcare Centers',
         features: [
             { name: 'Teacher Recognition', text: 'Scans parent reviews for educator names, tracking top performance mentions.', verdictType: 'positive' },
             { name: 'Privacy-Conscious Responses', text: 'Ensures responses thank the parents politely without confirming children\'s class schedules or private details.', verdictType: 'positive' },
@@ -446,6 +465,10 @@ const industryPages = [
             'One allergy-related concern requires attention',
             'Cleanliness feedback improved this month'
         ],
+        insightsHeadline: 'Understand What Families Are Saying Across Every Center',
+        sensitiveReviewHeadline: 'Know When a Director Must Take Over',
+        employeeRecognitionHeadline: 'Recognize the Teachers Parents Appreciate',
+        multiLocationHeadline: 'Consistent, Careful Responses Across Every Location',
         multiLocationCopy: 'Our Multi-Location dashboard helps franchise operators monitor licensing compliance, response rates, and ratings across childcare centers from one corporate panel.',
         pricingOffer: { label: 'Early-access offer', text: 'Founding schools receive $29 per month for the first 12 months. Standard Autopilot pricing is $39 per month after the promotional period.' },
         faqItems: [
@@ -486,6 +509,7 @@ const industryPages = [
         ],
         step2Text: 'ReplyVera identifies parent or student sentiment, tutor mentions, scheduling or billing topics, and potential academic-claim risks.',
         step3Text: 'Routine positive parent feedback goes live after a configurable delay, while academic guarantees and refunds require academic coach approval.',
+        featureHeadline: 'Academic-Aware Review Automation for Tutoring Centers',
         features: [
             { name: 'Tutor Recognition', text: 'Extracts mentions of tutoring staff (like Emily) from positive parent feedback.', verdictType: 'positive' },
             { name: 'Academic-Claim Detection', text: 'Locks reviews containing grade score claims or score improvement guarantees for admin drafts.', verdictType: 'sensitive' },
@@ -527,6 +551,10 @@ const industryPages = [
             'Refund concerns are concentrated at one location',
             'Test-preparation reviews have the highest satisfaction'
         ],
+        insightsHeadline: 'Track Parent Satisfaction and Subject Improvement Praise',
+        sensitiveReviewHeadline: 'Escalate Academic Claims and Tuition Refund Concerns',
+        employeeRecognitionHeadline: 'Recognize the Tutors and Academic Coaches Parents Love',
+        multiLocationHeadline: 'Manage Review Responses Across All Tutoring Centers',
         multiLocationCopy: 'Monitor tutor reviews and parent sentiment across multiple regional learning centers. Set location-level access rules so directors manage local feedback while owners track overall score improvements.',
         pricingOffer: { label: 'Early-access offer', text: 'Founding centers receive $29 per month for the first 12 months. Standard Autopilot pricing is $39 per month after the promotional period.' },
         faqItems: [
@@ -567,6 +595,7 @@ const industryPages = [
         ],
         step2Text: 'ReplyVera identifies customer sentiment, staff mentions, service type, and potential animal-safety concerns.',
         step3Text: 'Routine positive reviews are posted automatically after a delay, while grooming cuts or boarding safety alerts require manager approval.',
+        featureHeadline: 'Review Automation Built for Pet Groomers and Boarders',
         features: [
             { name: 'Groomer and Staff Recognition', text: 'Scans customer reviews for groomer or handler names, logging positive employee mentions.', verdictType: 'positive' },
             { name: 'Boarding, Daycare, and Grooming Detection', text: 'Identify reviews mentioning specific service types (like drop-off daycare, boarding, or nail trims).', verdictType: 'positive' },
@@ -608,6 +637,10 @@ const industryPages = [
             'Customers frequently praise photo updates',
             'Two safety-related reviews require follow-up'
         ],
+        insightsHeadline: 'Spot Wait-Time Issues and Kennel Cleanliness Feedback',
+        sensitiveReviewHeadline: 'Escalate Animal Safety and Medical Neglect Concerns',
+        employeeRecognitionHeadline: 'Highlight the Handlers and Groomers Pet Parents Praise',
+        multiLocationHeadline: 'Supervise Review Channels Across Every Boarding Location',
         multiLocationCopy: 'Manage review profiles across all boarding resorts or grooming locations. Let facility managers oversee local feedback while regional owners track overall pet satisfaction levels.',
         pricingOffer: { label: 'Early-access offer', text: 'Founding pet resorts receive $29 per month for the first 12 months. Standard Autopilot pricing is $39 per month after the promotional period.' },
         faqItems: [
@@ -648,6 +681,7 @@ const industryPages = [
         ],
         step2Text: 'ReplyVera identifies customer sentiment, employee mentions, equipment issues, membership topics, and possible vehicle-damage concerns.',
         step3Text: 'Routine wash reviews go live automatically, while vehicle damage and billing complaints are sent directly to site managers.',
+        featureHeadline: 'Review Automation Built for Express Car Washes',
         features: [
             { name: 'Vehicle-Damage Escalation', text: 'Identifies claims of scratches, mirror issues, or body damage, holding responses for management.', verdictType: 'sensitive' },
             { name: 'Membership and Billing Detection', text: 'Flags reviews complaining about monthly passes, card charges, or refunds.', verdictType: 'sensitive' },
@@ -689,6 +723,10 @@ const industryPages = [
             'Weekend wait-time complaints are rising',
             'Two damage-related reviews require action'
         ],
+        insightsHeadline: 'Detect Equipment and Queue Wait-Time Bottlenecks',
+        sensitiveReviewHeadline: 'Escalate Vehicle Damage and Membership Billing Concerns',
+        employeeRecognitionHeadline: 'Acknowledge the Wash Kiosk Attendants Customers Praise',
+        multiLocationHeadline: 'Maintain Consistent Service Standards Across Every Wash Site',
         multiLocationCopy: 'Our Multi-Location dashboard allows express car wash groups and franchise owners to connect all Business Profiles, track kiosk rating trends, and manage local permissions.',
         pricingOffer: { label: 'Early-access offer', text: 'Founding operators receive $29 per month for the first 12 months. Standard Autopilot pricing is $39 per month after the promotional period.' },
         faqItems: [
@@ -718,7 +756,7 @@ const industryPages = [
         heroPrimaryCta: 'Start Your Free Trial',
         heroSecondaryCta: 'Start for $39 per Month',
         businessTypes: ['Independent Laundromats', 'Laundry franchises', 'Wash-and-fold services', 'Dry cleaners', 'Pickup-and-delivery laundry services'],
-        problemHeadline: 'Maintain Coin-Op Trust Without Spending Hours Checking Google Maps',
+        problemHeadline: 'Broken Machines and Service Problems Should Not Go Unnoticed',
         problems: [
             { icon: 'washing-machine', title: 'Owners busy fixing equipment', text: 'Owners spend their days maintaining machinery, empty coins, and managing utility services, leaving zero computer time.' },
             { icon: 'alert-triangle', title: 'Broken machine complaints', text: 'Reviews complaining about out-of-order washers or dryers can turn away customers looking for open bays.' },
@@ -729,6 +767,7 @@ const industryPages = [
         ],
         step2Text: 'ReplyVera identifies customer sentiment, employee mentions, machine issues, cleanliness topics, refund requests, and missing-item concerns.',
         step3Text: 'Positive feedback is posted automatically after a delay, while broken machine alerts and missing item claims are held in drafts.',
+        featureHeadline: 'Review Automation Built for Laundry Businesses',
         features: [
             { name: 'Broken-Machine Detection', text: 'Scans reviews for keywords like broken, out of order, or coin jam, alerting maintenance.', verdictType: 'complaint' },
             { name: 'Refund Complaint Routing', text: 'Detects card charge errors or lost coin disputes, routing them to store manager drafts.', verdictType: 'sensitive' },
@@ -770,6 +809,10 @@ const industryPages = [
             'Customers frequently praise cleanliness',
             'Two missing-item complaints require follow-up'
         ],
+        insightsHeadline: 'Turn Customer Reviews Into Location-Level Improvements',
+        sensitiveReviewHeadline: 'Escalate Refund, Missing-Item, and Safety Complaints',
+        employeeRecognitionHeadline: 'Recognize the Employees Customers Appreciate',
+        multiLocationHeadline: 'Monitor Every Laundry Location From One Dashboard',
         multiLocationCopy: 'Manage review profiles across all coin-ops, dry cleaners, or wash-and-fold hubs. Let managers coordinate local approvals while regional owners track overall cleanliness ratings.',
         pricingOffer: { label: 'Early-access offer', text: 'Founding laundry owners receive $29 per month for the first 12 months. Standard Autopilot pricing is $39 per month after the promotional period.' },
         faqItems: [
@@ -788,6 +831,63 @@ const industryPages = [
         mockupLocationName: 'FreshFold Laundry'
     }
 ];
+
+// Validation check for required configuration fields
+function validateConfigurations(pages) {
+    const requiredFields = [
+        'heroHeadline',
+        'heroDescription',
+        'problemHeadline',
+        'problems',
+        'featureHeadline',
+        'features',
+        'reviewExamples',
+        'insightsHeadline',
+        'insightExamples',
+        'sensitiveReviewHeadline',
+        'employeeRecognitionHeadline',
+        'multiLocationHeadline',
+        'faqItems',
+        'finalCtaHeadline',
+        'finalCtaDescription',
+        'metaTitle',
+        'metaDescription'
+    ];
+
+    let errorsFound = false;
+
+    pages.forEach(ind => {
+        const missing = [];
+        requiredFields.forEach(field => {
+            if (ind[field] === undefined || ind[field] === null || ind[field] === '') {
+                missing.push(field);
+            }
+        });
+        
+        // Also validate arrays are not empty
+        ['problems', 'features', 'reviewExamples', 'insightExamples', 'faqItems'].forEach(arrField => {
+            if (ind[arrField] && ind[arrField].length === 0) {
+                missing.push(`${arrField} (empty array)`);
+            }
+        });
+
+        if (missing.length > 0) {
+            console.error(`Error: Industry category "${ind.slug}" is missing required configuration fields:`);
+            missing.forEach(m => console.error(`  - ${m}`));
+            errorsFound = true;
+        }
+    });
+
+    if (errorsFound) {
+        console.error('\nConfiguration validation failed. Aborting compilation.');
+        process.exit(1);
+    } else {
+        console.log('Configuration validation passed successfully.\n');
+    }
+}
+
+// Run validation before proceeding
+validateConfigurations(industryPages);
 
 // Reusable IndustryLandingPage Component
 function renderIndustryPage(ind) {
@@ -1083,20 +1183,33 @@ function renderIndustryPage(ind) {
         `;
     }
 
-    return `
+    // 1. Hero Block
+    const heroBadgeHtml = ind.heroEyebrow ? `
+        <div class="hero-badge" style="display:inline-flex; align-items:center; gap:6px; background:rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.2); padding: 6px 12px; border-radius: 50px; color: var(--primary-light); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 24px;">
+            <i data-lucide="sparkles" style="width:12px; height:12px;"></i> ${ind.heroEyebrow}
+        </div>
+    ` : '';
+    
+    const heroHeadlineHtml = ind.heroHeadline ? `
+        <h1 class="hero-headline" style="font-size:2.8rem; font-weight:800; line-height:1.1; margin-bottom:20px; color:#FFF;">${ind.heroHeadline}</h1>
+    ` : '';
+    
+    const heroDescriptionHtml = ind.heroDescription ? `
+        <p class="hero-sub" style="font-size:1.1rem; color:var(--text-secondary-current); margin-bottom:32px; line-height:1.6;">${ind.heroDescription}</p>
+    ` : '';
+
+    const heroHtml = `
     <!-- Hero Section -->
     <header class="hero theme-dark" style="padding: 160px 0 80px;">
         <div class="hero-glow-layer"></div>
         <div class="container" style="display:grid; grid-template-columns:1.2fr 1fr; gap:40px; align-items:center;">
             <div class="hero-content" style="text-align:left; max-width:100%;">
-                <div class="hero-badge" style="display:inline-flex; align-items:center; gap:6px; background:rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.2); padding: 6px 12px; border-radius: 50px; color: var(--primary-light); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 24px;">
-                    <i data-lucide="sparkles" style="width:12px; height:12px;"></i> ${ind.heroEyebrow}
-                </div>
-                <h1 class="hero-headline" style="font-size:2.8rem; font-weight:800; line-height:1.1; margin-bottom:20px; color:#FFF;">${ind.heroHeadline}</h1>
-                <p class="hero-sub" style="font-size:1.1rem; color:var(--text-secondary-current); margin-bottom:32px; line-height:1.6;">${ind.heroDescription}</p>
+                ${heroBadgeHtml}
+                ${heroHeadlineHtml}
+                ${heroDescriptionHtml}
                 <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center; margin-bottom:24px;">
-                    <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent" style="padding:14px 28px; font-size:0.95rem;">${ind.heroPrimaryCta}</a>
-                    <a href="/pricing.html" class="btn btn-secondary" style="padding:14px 28px; font-size:0.95rem;">${ind.heroSecondaryCta}</a>
+                    <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent" style="padding:14px 28px; font-size:0.95rem;">${ind.heroPrimaryCta || 'Start Your Free Trial'}</a>
+                    <a href="/pricing.html" class="btn btn-secondary" style="padding:14px 28px; font-size:0.95rem;">${ind.heroSecondaryCta || 'View Pricing'}</a>
                 </div>
                 <p style="font-size:0.82rem; color:var(--text-secondary-current); font-weight:500;">Try ReplyVera free. 14-day free trial. No credit card required.</p>
             </div>
@@ -1104,34 +1217,52 @@ function renderIndustryPage(ind) {
             ${mockupLayoutHtml}
         </div>
     </header>
+    `;
 
-    <!-- Problems Section -->
-    <section class="section theme-light" style="padding: 80px 0;">
-        <div class="container text-center" style="max-width: 700px; margin-bottom: 56px;">
-            <div class="label-pill"><i data-lucide="alert-circle" style="width:12px; height:12px;"></i> Core Challenges</div>
+    // 2. Problems Section
+    let problemsSection = '';
+    if (ind.problems && ind.problems.length > 0) {
+        const problemHeadlineHtml = ind.problemHeadline ? `
             <h2 class="mb-4" style="color:#FFF;">${ind.problemHeadline}</h2>
-            <p class="lead-text" style="color:var(--text-secondary-current);">Managing reviews shouldn't eat into your day. Here are the core issues we solve.</p>
-        </div>
-        
-        <div class="container">
-            <div class="grid-3" style="gap:24px;">
-                ${problemsHtml}
+        ` : '';
+        problemsSection = `
+        <!-- Problems Section -->
+        <section class="section theme-light" style="padding: 80px 0;">
+            <div class="container text-center" style="max-width: 700px; margin-bottom: 56px;">
+                <div class="label-pill"><i data-lucide="alert-circle" style="width:12px; height:12px;"></i> Core Challenges</div>
+                ${problemHeadlineHtml}
+                <p class="lead-text" style="color:var(--text-secondary-current);">Managing reviews shouldn't eat into your day. Here are the core issues we solve.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Target Business Types Segment -->
-    <section class="section theme-gray" style="padding: 60px 0; border-top:1px solid var(--border-current); border-bottom:1px solid var(--border-current);">
-        <div class="container text-center" style="max-width: 600px; margin-bottom: 32px;">
-            <h3 style="font-size:1.4rem; font-weight:700; color:#FFF;">Designed for:</h3>
-        </div>
-        <div class="container">
-            <div style="display:flex; justify-content:center; gap:24px; flex-wrap:wrap; max-width:800px; margin:0 auto;">
-                ${businessTypesHtml}
+            
+            <div class="container">
+                <div class="grid-3" style="gap:24px;">
+                    ${problemsHtml}
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+        `;
+    }
 
+    // 3. Target Business Types Segment
+    let businessTypesSection = '';
+    if (ind.businessTypes && ind.businessTypes.length > 0) {
+        businessTypesSection = `
+        <!-- Target Business Types Segment -->
+        <section class="section theme-gray" style="padding: 60px 0; border-top:1px solid var(--border-current); border-bottom:1px solid var(--border-current);">
+            <div class="container text-center" style="max-width: 600px; margin-bottom: 32px;">
+                <h3 style="font-size:1.4rem; font-weight:700; color:#FFF;">Designed for:</h3>
+            </div>
+            <div class="container">
+                <div style="display:flex; justify-content:center; gap:24px; flex-wrap:wrap; max-width:800px; margin:0 auto;">
+                    ${businessTypesHtml}
+                </div>
+            </div>
+        </section>
+        `;
+    }
+
+    // 4. Setup Section
+    const setupSection = `
     <!-- 3-Step Workflow -->
     <section class="section theme-white" style="padding: 80px 0;" id="how-it-works">
         <div class="container text-center" style="max-width: 700px; margin-bottom: 56px;">
@@ -1149,112 +1280,179 @@ function renderIndustryPage(ind) {
                 <div style="background:rgba(255,255,255,0.01); border:1px solid var(--border-current); padding:32px; border-radius:12px;">
                     <div style="width:40px; height:40px; background:rgba(99,102,241,0.08); color:var(--primary-light); border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem; margin-bottom:20px;">2</div>
                     <h3 style="font-size:1.2rem; font-weight:700; color:#FFF; margin-bottom:12px;">ReplyVera understands the review</h3>
-                    <p style="font-size:0.9rem; color:var(--text-secondary-current); line-height:1.5;">${step2Text}</p>
+                    <p style="font-size:0.9rem; color:var(--text-secondary-current); line-height:1.5;">${step2Text || ''}</p>
                 </div>
                 <div style="background:rgba(255,255,255,0.01); border:1px solid var(--border-current); padding:32px; border-radius:12px;">
                     <div style="width:40px; height:40px; background:rgba(99,102,241,0.08); color:var(--primary-light); border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem; margin-bottom:20px;">3</div>
                     <h3 style="font-size:1.2rem; font-weight:700; color:#FFF; margin-bottom:12px;">Auto-publish or request approval</h3>
-                    <p style="font-size:0.9rem; color:var(--text-secondary-current); line-height:1.5;">${step3Text}</p>
+                    <p style="font-size:0.9rem; color:var(--text-secondary-current); line-height:1.5;">${step3Text || ''}</p>
                 </div>
             </div>
         </div>
     </section>
+    `;
 
-    <!-- Industry Specific Features -->
-    <section class="section theme-dark" style="padding: 80px 0;">
-        <div class="container">
-            <div class="text-center mb-12">
-                <div class="label-pill"><i data-lucide="sliders" style="width:12px; height:12px;"></i> Core Features</div>
-                <h2 class="mb-4" style="color:#FFF;">${ind.featureHeadline}</h2>
+    // 5. Features Section
+    let featuresSection = '';
+    if (ind.features && ind.features.length > 0) {
+        const featureHeadlineHtml = ind.featureHeadline ? `
+            <h2 class="mb-4" style="color:#FFF;">${ind.featureHeadline}</h2>
+        ` : '';
+
+        featuresSection = `
+        <!-- Industry Specific Features -->
+        <section class="section theme-dark" style="padding: 80px 0;">
+            <div class="container">
+                <div class="text-center mb-12">
+                    <div class="label-pill"><i data-lucide="sliders" style="width:12px; height:12px;"></i> Core Features</div>
+                    ${featureHeadlineHtml}
+                </div>
+                ${featuresHtml}
             </div>
-            ${featuresHtml}
-        </div>
-    </section>
+        </section>
+        `;
+    }
 
-    <!-- Realistic Review Examples -->
-    <section class="section theme-light" style="padding: 80px 0;">
-        <div class="container text-center" style="max-width: 700px; margin-bottom: 56px;">
-            <div class="label-pill"><i data-lucide="eye" style="width:12px; height:12px;"></i> Interactive Examples</div>
-            <h2 class="mb-4" style="color:#FFF;">Realistic Review Response Examples</h2>
-            <p class="lead-text" style="color:var(--text-secondary-current);">See how our autopilot safely logs positive experiences, routes minor complaints, and flags serious liabilities.</p>
-        </div>
-        <div class="container">
-            <div class="grid-3" style="gap:24px;">
-                ${reviewsHtml}
+    // 6. Review Examples
+    let reviewsSection = '';
+    if (ind.reviewExamples && ind.reviewExamples.length > 0) {
+        reviewsSection = `
+        <!-- Realistic Review Examples -->
+        <section class="section theme-light" style="padding: 80px 0;">
+            <div class="container text-center" style="max-width: 700px; margin-bottom: 56px;">
+                <div class="label-pill"><i data-lucide="eye" style="width:12px; height:12px;"></i> Interactive Examples</div>
+                <h2 class="mb-4" style="color:#FFF;">Realistic Review Response Examples</h2>
+                <p class="lead-text" style="color:var(--text-secondary-current);">See how our autopilot safely logs positive experiences, routes minor complaints, and flags serious liabilities.</p>
             </div>
-        </div>
-    </section>
+            <div class="container">
+                <div class="grid-3" style="gap:24px;">
+                    ${reviewsHtml}
+                </div>
+            </div>
+        </section>
+        `;
+    }
 
-    <!-- Supervision & Escalation Section -->
-    <section class="section theme-gray" style="padding: 80px 0; border-top:1px solid var(--border-current); border-bottom:1px solid var(--border-current);">
-        <div class="container" style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
+    // 7. Sensitive & Employee Columns
+    let sensitiveColumnHtml = '';
+    if (ind.sensitiveTopics && ind.sensitiveTopics.length > 0) {
+        const sensitiveHeadlineHtml = ind.sensitiveReviewHeadline ? `
+            <h2 style="font-size:1.8rem; font-weight:800; color:#FFF; margin-bottom:16px;">${ind.sensitiveReviewHeadline}</h2>
+        ` : '';
+
+        sensitiveColumnHtml = `
             <div style="text-align:left;">
                 <div class="label-pill" style="margin-bottom:16px;"><i data-lucide="shield-alert" style="width:12px; height:12px;"></i> Sensitive-Review Escalation</div>
-                <h2 style="font-size:1.8rem; font-weight:800; color:#FFF; margin-bottom:16px;">Supervision Guardrails & Safety Warnings</h2>
+                ${sensitiveHeadlineHtml}
                 <p style="color:var(--text-secondary-current); margin-bottom:24px; line-height:1.6;">ReplyVera never auto-posts blindly. Our scanners scan incoming feedback for potential liability risks, contract disputes, safety complaints, or discrimination claims. Auto-publishing is blocked, reviews are locked in draft state, and email alerts are sent to managers immediately.</p>
                 <div style="font-size:0.8rem; font-weight:700; color:var(--text-secondary-current); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:12px;">Monitored sensitive topics:</div>
                 <div style="display:flex; flex-wrap:wrap; gap:8px;">
                     ${sensitiveTopicsHtml}
                 </div>
             </div>
-            
+        `;
+    }
+
+    let employeeColumnHtml = '';
+    if (ind.employeeRoles && ind.employeeRoles.length > 0) {
+        const employeeHeadlineHtml = ind.employeeRecognitionHeadline ? `
+            <h2 style="font-size:1.8rem; font-weight:800; color:#FFF; margin-bottom:16px;">${ind.employeeRecognitionHeadline}</h2>
+        ` : '';
+
+        employeeColumnHtml = `
             <div style="text-align:left;">
                 <div class="label-pill" style="margin-bottom:16px;"><i data-lucide="award" style="width:12px; height:12px;"></i> Employee Recognition</div>
-                <h2 style="font-size:1.8rem; font-weight:800; color:#FFF; margin-bottom:16px;">Employee Recognition & Mentions</h2>
+                ${employeeHeadlineHtml}
                 <p style="color:var(--text-secondary-current); margin-bottom:24px; line-height:1.6;">Build staff morale and reward your team. ReplyVera identifies and extracts employee names mentioned in customer reviews, logging positive mentions on your staff leaderboard dashboard.</p>
                 <div style="font-size:0.8rem; font-weight:700; color:var(--text-secondary-current); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:12px;">Tracked staff roles:</div>
                 <div style="display:flex; flex-wrap:wrap; gap:8px;">
                     ${employeeRolesHtml}
                 </div>
             </div>
-        </div>
-    </section>
+        `;
+    }
 
-    <!-- Operational-insights Dashboard -->
-    <section class="section theme-light" style="padding: 80px 0;">
-        <div class="container" style="display:grid; grid-template-columns:1fr 1.2fr; gap:40px; align-items:center;">
-            <div style="text-align:left;">
-                <div class="label-pill" style="margin-bottom:16px;"><i data-lucide="bar-chart-2" style="width:12px; height:12px;"></i> Reputation Analytics</div>
-                <h2 style="font-size:1.8rem; font-weight:800; color:#FFF; margin-bottom:16px;">Operational Insights & Sentiment Trends</h2>
-                <p style="color:var(--text-secondary-current); margin-bottom:16px; line-height:1.6;">Identify recurring service bottlenecks, track rating trends, and spot clean/dirty mentions. Our metrics help you take action before ratings fall.</p>
-                <p style="color:var(--text-secondary-current); line-height:1.6; margin:0;">Receive weekly email reports summarising rating logs, mentions, and response progress directly to your inbox.</p>
+    let supervisionSectionHtml = '';
+    if (sensitiveColumnHtml || employeeColumnHtml) {
+        const gridColumns = (sensitiveColumnHtml && employeeColumnHtml) ? 'grid-template-columns:1fr 1fr;' : 'grid-template-columns:1fr;';
+        supervisionSectionHtml = `
+        <!-- Supervision & Escalation Section -->
+        <section class="section theme-gray" style="padding: 80px 0; border-top:1px solid var(--border-current); border-bottom:1px solid var(--border-current);">
+            <div class="container" style="display:grid; ${gridColumns} gap:40px; align-items:start;">
+                ${sensitiveColumnHtml}
+                ${employeeColumnHtml}
             </div>
-            <div style="background:var(--bg-card-current); border:1px solid var(--border-current); padding:32px; border-radius:16px; text-align:left; position:relative;">
-                <span style="position:absolute; top:12px; right:16px; font-size:0.65rem; color:#64748B; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; pointer-events:none;">Example dashboard data</span>
-                <div style="font-size:0.8rem; font-weight:700; color:var(--primary-light); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px;">Live Client Insights Stream</div>
-                <div style="display:flex; flex-direction:column; gap:12px;">
-                    ${insightsHtml}
+        </section>
+        `;
+    }
+
+    // 8. Insights Section
+    let insightsSectionHtml = '';
+    if (ind.insightExamples && ind.insightExamples.length > 0) {
+        const insightsHeadlineHtml = ind.insightsHeadline ? `
+            <h2 style="font-size:1.8rem; font-weight:800; color:#FFF; margin-bottom:16px;">${ind.insightsHeadline}</h2>
+        ` : '';
+
+        insightsSectionHtml = `
+        <!-- Operational-insights Dashboard -->
+        <section class="section theme-light" style="padding: 80px 0;">
+            <div class="container" style="display:grid; grid-template-columns:1fr 1.2fr; gap:40px; align-items:center;">
+                <div style="text-align:left;">
+                    <div class="label-pill" style="margin-bottom:16px;"><i data-lucide="bar-chart-2" style="width:12px; height:12px;"></i> Reputation Analytics</div>
+                    ${insightsHeadlineHtml}
+                    <p style="color:var(--text-secondary-current); margin-bottom:16px; line-height:1.6;">Identify recurring service bottlenecks, track rating trends, and spot clean/dirty mentions. Our metrics help you take action before ratings fall.</p>
+                    <p style="color:var(--text-secondary-current); line-height:1.6; margin:0;">Receive weekly email reports summarising rating logs, mentions, and response progress directly to your inbox.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Multi-Location/Client Section -->
-    <section class="section theme-white" style="padding: 80px 0; border-top:1px solid var(--border-current); border-bottom:1px solid var(--border-current);">
-        <div class="container" style="display:grid; grid-template-columns:1.2fr 1fr; gap:40px; align-items:center;">
-            <div style="text-align:left;">
-                <div class="label-pill" style="margin-bottom:16px;"><i data-lucide="map" style="width:12px; height:12px;"></i> Scalable Administration</div>
-                <h2 style="font-size:1.8rem; font-weight:800; color:#FFF; margin-bottom:16px;">Scale Across Locations and Portfolios</h2>
-                <p style="color:var(--text-secondary-current); line-height:1.6; margin-bottom:24px;">${ind.multiLocationCopy}</p>
-                <div style="background:#05050C; padding:20px; border-radius:12px; border:1px solid var(--border-current); display:flex; flex-direction:column; gap:12px;">
-                    <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.88rem;">
-                        <span style="color:#FFF; font-weight:600;"><i data-lucide="users" style="width:14px; height:14px; vertical-align:middle; margin-right:6px; color:var(--primary-light);"></i> ${isAgency ? 'Multi-Client Settings' : 'Multi-Location Settings'}</span>
-                        <span style="color:var(--accent); font-weight:700;">Active</span>
+                <div style="background:var(--bg-card-current); border:1px solid var(--border-current); padding:32px; border-radius:16px; text-align:left; position:relative;">
+                    <span style="position:absolute; top:12px; right:16px; font-size:0.65rem; color:#64748B; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; pointer-events:none;">Example dashboard data</span>
+                    <div style="font-size:0.8rem; font-weight:700; color:var(--primary-light); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px;">Live Client Insights Stream</div>
+                    <div style="display:flex; flex-direction:column; gap:12px;">
+                        ${insightsHtml}
                     </div>
-                    <p style="font-size:0.82rem; color:var(--text-secondary-current); line-height:1.4; margin:0;">${isAgency ? 'Allow account managers or clients to manage individual locations with secure settings.' : 'Allow regional managers or corporate leads to oversee location responses with selective permissions.'}</p>
                 </div>
             </div>
-            <div style="background:rgba(255,255,255,0.01); border:1px solid var(--border-current); padding:32px; border-radius:16px; text-align:left; display:flex; flex-direction:column; gap:16px;">
-                <div style="font-size:0.8rem; color:var(--text-secondary-current);">Connection status:</div>
-                <div style="display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.02); border:1px solid var(--border-current); padding:12px; border-radius:8px;">
-                    <span style="font-weight:600; color:#FFF; display:flex; align-items:center; gap:6px;"><i data-lucide="google" style="color:#DB4437; width:16px; height:16px;"></i> Google Business Profiles</span>
-                    <span style="font-size:0.75rem; font-weight:700; color:var(--accent); background:rgba(16, 185, 129, 0.08); padding:2px 8px; border-radius:4px;">Connected</span>
-                </div>
-                <p style="font-size:0.85rem; color:var(--text-secondary-current); line-height:1.5; margin:0;">Securely connect and authorize multiple locations in one central, OAuth-verified dashboard.</p>
-            </div>
-        </div>
-    </section>
+        </section>
+        `;
+    }
 
+    // 9. Multi Location Section
+    let multiLocationSectionHtml = '';
+    if (ind.multiLocationCopy) {
+        const multiLocationHeadlineHtml = ind.multiLocationHeadline ? `
+            <h2 style="font-size:1.8rem; font-weight:800; color:#FFF; margin-bottom:16px;">${ind.multiLocationHeadline}</h2>
+        ` : '';
+
+        multiLocationSectionHtml = `
+        <!-- Multi-Location/Client Section -->
+        <section class="section theme-white" style="padding: 80px 0; border-top:1px solid var(--border-current); border-bottom:1px solid var(--border-current);">
+            <div class="container" style="display:grid; grid-template-columns:1.2fr 1fr; gap:40px; align-items:center;">
+                <div style="text-align:left;">
+                    <div class="label-pill" style="margin-bottom:16px;"><i data-lucide="map" style="width:12px; height:12px;"></i> Scalable Administration</div>
+                    ${multiLocationHeadlineHtml}
+                    <p style="color:var(--text-secondary-current); line-height:1.6; margin-bottom:24px;">${ind.multiLocationCopy}</p>
+                    <div style="background:#05050C; padding:20px; border-radius:12px; border:1px solid var(--border-current); display:flex; flex-direction:column; gap:12px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.88rem;">
+                            <span style="color:#FFF; font-weight:600;"><i data-lucide="users" style="width:14px; height:14px; vertical-align:middle; margin-right:6px; color:var(--primary-light);"></i> ${isAgency ? 'Multi-Client Settings' : 'Multi-Location Settings'}</span>
+                            <span style="color:var(--accent); font-weight:700;">Active</span>
+                        </div>
+                        <p style="font-size:0.82rem; color:var(--text-secondary-current); line-height:1.4; margin:0;">${isAgency ? 'Allow account managers or clients to manage individual locations with secure settings.' : 'Allow regional managers or corporate leads to oversee location responses with selective permissions.'}</p>
+                    </div>
+                </div>
+                <div style="background:rgba(255,255,255,0.01); border:1px solid var(--border-current); padding:32px; border-radius:16px; text-align:left; display:flex; flex-direction:column; gap:16px;">
+                    <div style="font-size:0.8rem; color:var(--text-secondary-current);">Connection status:</div>
+                    <div style="display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.02); border:1px solid var(--border-current); padding:12px; border-radius:8px;">
+                        <span style="font-weight:600; color:#FFF; display:flex; align-items:center; gap:6px;"><i data-lucide="google" style="color:#DB4437; width:16px; height:16px;"></i> Google Business Profiles</span>
+                        <span style="font-size:0.75rem; font-weight:700; color:var(--accent); background:rgba(16, 185, 129, 0.08); padding:2px 8px; border-radius:4px;">Connected</span>
+                    </div>
+                    <p style="font-size:0.85rem; color:var(--text-secondary-current); line-height:1.5; margin:0;">Securely connect and authorize multiple locations in one central, OAuth-verified dashboard.</p>
+                </div>
+            </div>
+        </section>
+        `;
+    }
+
+    // 10. Pricing Section
+    const pricingSection = `
     <!-- Pricing Preview Block -->
     <section class="section theme-dark" id="pricing" style="padding: 80px 0;">
         <div class="container text-center" style="max-width: 700px;">
@@ -1266,7 +1464,7 @@ function renderIndustryPage(ind) {
                 <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:16px; margin-bottom:20px;">
                     <div>
                         <div style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary-light); font-weight: 700;">Autopilot Plan</div>
-                        <div style="font-size: 0.82rem; color:var(--accent); font-weight:700; margin-top:2px;">${ind.pricingOffer.label}</div>
+                        <div style="font-size: 0.82rem; color:var(--accent); font-weight:700; margin-top:2px;">${ind.pricingOffer.label || ''}</div>
                     </div>
                     <div style="text-align:right;">
                         <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;">${planRate}</span>
@@ -1289,44 +1487,82 @@ function renderIndustryPage(ind) {
             </p>
         </div>
     </section>
+    `;
 
-    <!-- Industry Specific FAQ -->
-    <section class="section theme-white" id="faq" style="padding: 80px 0;">
-        <div class="container" style="max-width: 800px;">
-            <div class="text-center mb-12">
-                <div class="label-pill"><i data-lucide="help-circle" style="width:12px; height:12px;"></i> FAQ</div>
-                <h2 class="mb-4">Frequently Asked Questions</h2>
-                <p>Everything you need to know about ReplyVera for ${ind.navigationLabel}.</p>
+    // 11. FAQ Section
+    let faqSection = '';
+    if (ind.faqItems && ind.faqItems.length > 0) {
+        faqSection = `
+        <!-- Industry Specific FAQ -->
+        <section class="section theme-white" id="faq" style="padding: 80px 0;">
+            <div class="container" style="max-width: 800px;">
+                <div class="text-center mb-12">
+                    <div class="label-pill"><i data-lucide="help-circle" style="width:12px; height:12px;"></i> FAQ</div>
+                    <h2 class="mb-4">Frequently Asked Questions</h2>
+                    <p>Everything you need to know about ReplyVera for ${ind.navigationLabel || ''}.</p>
+                </div>
+                
+                <div class="faq-list" style="display:flex; flex-direction:column; gap:4px;">
+                    ${faqsHtml}
+                </div>
             </div>
-            
-            <div class="faq-list" style="display:flex; flex-direction:column; gap:4px;">
-                ${faqsHtml}
-            </div>
-        </div>
-    </section>
+        </section>
+        `;
+    }
 
-    <!-- Final Call to Action -->
-    <section class="section theme-dark" style="border-top: 1px solid rgba(255, 255, 255, 0.04); padding: 80px 0;">
-        <div class="container text-center" style="max-width: 650px;">
-            <h2 class="mb-4" style="color:#FFF;">${ind.finalCtaHeadline}</h2>
+    // 12. Final CTA Section
+    let finalCtaSectionHtml = '';
+    if (ind.finalCtaHeadline) {
+        const finalCtaDescriptionHtml = ind.finalCtaDescription ? `
             <p class="mb-8" style="color:var(--text-secondary-current);">${ind.finalCtaDescription}</p>
-            
-            <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-bottom:32px; align-items:center;">
-                <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent" style="padding: 14px 28px; font-size:0.95rem;">Start Your Free Trial</a>
-                <a href="/pricing.html#comparison" style="color: #94A3B8; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color var(--transition-fast);" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94A3B8'">Compare Plans</a>
-            </div>
-        </div>
-    </section>
+        ` : '';
 
-    <!-- Related Industries links section -->
-    <section class="section theme-gray" style="padding: 40px 0; border-top:1px solid var(--border-current);">
-        <div class="container text-center">
-            <div style="font-size:0.8rem; font-weight:700; color:var(--text-secondary-current); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px;">Related Industries</div>
-            <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap; align-items:center;">
-                ${relatedHtml}
+        finalCtaSectionHtml = `
+        <!-- Final Call to Action -->
+        <section class="section theme-dark" style="border-top: 1px solid rgba(255, 255, 255, 0.04); padding: 80px 0;">
+            <div class="container text-center" style="max-width: 650px;">
+                <h2 class="mb-4" style="color:#FFF;">${ind.finalCtaHeadline}</h2>
+                ${finalCtaDescriptionHtml}
+                
+                <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-bottom:32px; align-items:center;">
+                    <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent" style="padding: 14px 28px; font-size:0.95rem;">Start Your Free Trial</a>
+                    <a href="/pricing.html#comparison" style="color: #94A3B8; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color var(--transition-fast);" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94A3B8'">Compare Plans</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+        `;
+    }
+
+    // 13. Related Industries Section
+    let relatedSection = '';
+    if (ind.relatedIndustries && ind.relatedIndustries.length > 0) {
+        relatedSection = `
+        <!-- Related Industries links section -->
+        <section class="section theme-gray" style="padding: 40px 0; border-top:1px solid var(--border-current);">
+            <div class="container text-center">
+                <div style="font-size:0.8rem; font-weight:700; color:var(--text-secondary-current); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px;">Related Industries</div>
+                <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap; align-items:center;">
+                    ${relatedHtml}
+                </div>
+            </div>
+        </section>
+        `;
+    }
+
+    return `
+        ${heroHtml}
+        ${problemsSection}
+        ${businessTypesSection}
+        ${setupSection}
+        ${featuresSection}
+        ${reviewsSection}
+        ${supervisionSectionHtml}
+        ${insightsSectionHtml}
+        ${multiLocationSectionHtml}
+        ${pricingSection}
+        ${faqSection}
+        ${finalCtaSectionHtml}
+        ${relatedSection}
     `;
 }
 
