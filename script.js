@@ -373,4 +373,62 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // --- Roadmap Poll Form Handling ---
+    const pollForm = document.getElementById('roadmap-poll-form');
+    if (pollForm) {
+        const otherRadio = document.getElementById('poll-option-other');
+        const otherContainer = document.getElementById('other-input-container');
+        const otherInput = document.getElementById('poll-option-other-text');
+        
+        pollForm.addEventListener('change', (e) => {
+            if (e.target.name === 'poll_option') {
+                if (e.target.id === 'poll-option-other') {
+                    otherContainer.style.display = 'block';
+                    otherInput.required = true;
+                    otherInput.focus();
+                } else {
+                    otherContainer.style.display = 'none';
+                    otherInput.required = false;
+                }
+            }
+        });
+        
+        pollForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const emailInput = document.getElementById('poll-email');
+            const selectedOption = pollForm.querySelector('input[name="poll_option"]:checked').value;
+            const finalValue = selectedOption === 'Other' ? otherInput.value : selectedOption;
+            const btn = pollForm.querySelector('button');
+            const successMsg = document.getElementById('poll-success-msg');
+            
+            if (emailInput.value && finalValue) {
+                btn.disabled = true;
+                const originalText = btn.innerHTML;
+                btn.innerHTML = 'Submitting...';
+                
+                // Submit to waitlist/leads backend API with platform details
+                fetch('https://replyvera-backend.onrender.com/api/leads/waitlist', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ 
+                        email: emailInput.value,
+                        platform: finalValue,
+                        source: 'roadmap_poll'
+                    })
+                })
+                .then(response => {
+                    pollForm.style.display = 'none';
+                    successMsg.style.display = 'flex';
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+                })
+                .catch(error => {
+                    btn.disabled = false;
+                    btn.innerHTML = originalText;
+                });
+            }
+        });
+    }
 });
