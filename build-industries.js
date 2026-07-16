@@ -128,10 +128,10 @@ function renderFAQ(items) {
         </div>`).join('');
 }
 
-function renderPricingSection(isAgency) {
+function renderPricingSection(isAgency, ind) {
     if (isAgency) {
         return `
-    <!-- Pricing -->
+    ${ind.theme.divider === 'glow' ? '<div class=\"industry-divider-glow\"></div>' : '<div class=\"industry-divider-line\"></div>'}\n    <!-- Pricing -->
     <section class="section section-dark" id="pricing">
         <div class="container">
             <div class="section-header">
@@ -167,7 +167,7 @@ function renderPricingSection(isAgency) {
     }
 
     return `
-    <!-- Pricing -->
+    ${ind.theme.divider === 'glow' ? '<div class=\"industry-divider-glow\"></div>' : '<div class=\"industry-divider-line\"></div>'}\n    <!-- Pricing -->
     <section class="section section-dark" id="pricing">
         <div class="container">
             <div class="section-header">
@@ -229,6 +229,17 @@ function renderPricingSection(isAgency) {
 // ─── Main render function ─────────────────────────────────────────────────────
 function renderIndustryPage(ind) {
     const isAgency = ind.slug === 'agencies';
+    const themeStyles = `
+    <style>
+        :root {
+            --industry-accent: ${ind.theme.accent};
+            --industry-accent-soft: ${ind.theme.accent}20;
+            --industry-icon-bg: ${ind.theme.accent}15;
+            --industry-accent-glow: ${ind.theme.accent}33;
+        }
+    </style>
+    `;
+
 
     const heroSection = `
     <!-- Hero -->
@@ -256,7 +267,7 @@ function renderIndustryPage(ind) {
                     <div class="mockup-header">
                         <div class="mockup-dots"><span></span><span></span><span></span></div>
                         <div class="mockup-url"><i data-lucide="lock" style="width:10px;height:10px;"></i> replyvera.com/dashboard</div>
-                        <div style="font-size:0.7rem;font-weight:700;color:var(--accent);display:flex;align-items:center;gap:5px;">
+                        <div style="font-size:0.7rem;font-weight:700;color:var(--industry-accent, var(--accent));display:flex;align-items:center;gap:5px;">
                             <span style="width:6px;height:6px;background:var(--accent);border-radius:50%;display:inline-block;"></span>Active
                         </div>
                     </div>
@@ -290,7 +301,7 @@ function renderIndustryPage(ind) {
     </header>`;
 
     const benefitsSection = `
-    <!-- Three Benefits -->
+    ${ind.theme.divider === 'glow' ? '<div class=\"industry-divider-glow\"></div>' : '<div class=\"industry-divider-line\"></div>'}\n    <!-- Three Benefits -->
     <section class="section section-light">
         <div class="container">
             <div class="section-header">
@@ -303,7 +314,7 @@ function renderIndustryPage(ind) {
     </section>`;
 
     const howItWorksSection = `
-    <!-- How It Works -->
+    ${ind.theme.divider === 'glow' ? '<div class=\"industry-divider-glow\"></div>' : '<div class=\"industry-divider-line\"></div>'}\n    <!-- How It Works -->
     <section class="section section-dark" id="how-it-works">
         <div class="container">
             <div class="section-header">
@@ -330,7 +341,7 @@ function renderIndustryPage(ind) {
     </section>`;
 
     const reviewsSection = `
-    <!-- Review Examples -->
+    ${ind.theme.divider === 'glow' ? '<div class=\"industry-divider-glow\"></div>' : '<div class=\"industry-divider-line\"></div>'}\n    <!-- Review Examples -->
     <section class="section section-light">
         <div class="container">
             <div class="section-header">
@@ -344,7 +355,7 @@ function renderIndustryPage(ind) {
     </section>`;
 
     const sensitiveSection = `
-    <!-- Sensitive Review Protection -->
+    ${ind.theme.divider === 'glow' ? '<div class=\"industry-divider-glow\"></div>' : '<div class=\"industry-divider-line\"></div>'}\n    <!-- Sensitive Review Protection -->
     <section class="section section-dark">
         <div class="container">
             <div class="sensitive-inner">
@@ -377,10 +388,10 @@ function renderIndustryPage(ind) {
         </div>
     </section>`;
 
-    const pricingSection = renderPricingSection(isAgency);
+    const pricingSection = renderPricingSection(isAgency, ind);
 
     const faqSection = `
-    <!-- FAQ -->
+    ${ind.theme.divider === 'glow' ? '<div class=\"industry-divider-glow\"></div>' : '<div class=\"industry-divider-line\"></div>'}\n    <!-- FAQ -->
     <section class="section section-light" id="faq">
         <div class="container" style="max-width:760px;">
             <div class="section-header">
@@ -407,13 +418,14 @@ function renderIndustryPage(ind) {
         </div>
     </section>`;
 
-    return `${heroSection}${benefitsSection}${howItWorksSection}${reviewsSection}${sensitiveSection}${pricingSection}${faqSection}${ctaSection}`;
+    return `${themeStyles}${heroSection}${benefitsSection}${howItWorksSection}${reviewsSection}${sensitiveSection}${pricingSection}${faqSection}${ctaSection}`;
 }
 
 // ─── Industry data ────────────────────────────────────────────────────────────
 const industryPages = [
     {
         slug: 'restaurants',
+        theme: { accent: '#F59E0B', motif: 'radial', divider: 'glow' },
         metaTitle: 'Google Review Automation for Restaurants | ReplyVera',
         metaDescription: 'ReplyVera automatically responds to restaurant Google reviews, recognizes standout staff, and escalates food-safety, allergy, and serious service complaints.',
         heroHeadline: 'Every Restaurant Review Answered Automatically',
@@ -469,6 +481,7 @@ const industryPages = [
     },
     {
         slug: 'dentists',
+        theme: { accent: '#3B82F6', motif: 'grid', divider: 'line' },
         metaTitle: 'Google Review Automation for Dental Practices | ReplyVera',
         metaDescription: 'ReplyVera writes professional, privacy-conscious Google review responses for dentists while escalating clinical, billing, and sensitive patient concerns.',
         heroHeadline: 'Professional Google Review Responses for Dental Practices',
@@ -524,6 +537,7 @@ const industryPages = [
     },
     {
         slug: 'agencies',
+        theme: { accent: '#8B5CF6', motif: 'nodes', divider: 'glow' },
         metaTitle: 'Google Review Management for Marketing Agencies | ReplyVera',
         metaDescription: 'ReplyVera helps marketing agencies manage Google review replies for every client from one dashboard, with separate brand voices and approval rules.',
         heroHeadline: 'Manage Every Client\'s Google Review Replies From One Dashboard',
@@ -579,6 +593,7 @@ const industryPages = [
     },
     {
         slug: 'martial-arts',
+        theme: { accent: '#DC2626', motif: 'diagonal', divider: 'line' },
         metaTitle: 'Google Review Automation for Martial Arts Schools | ReplyVera',
         metaDescription: 'ReplyVera handles routine parent and student reviews for martial arts schools while escalating safety, injury, bullying, and membership complaints.',
         heroHeadline: 'Every Martial Arts Review Answered Automatically',
@@ -634,6 +649,7 @@ const industryPages = [
     },
     {
         slug: 'childcare',
+        theme: { accent: '#14B8A6', motif: 'rounded', divider: 'glow' },
         metaTitle: 'Google Review Automation for Childcare Centers | ReplyVera',
         metaDescription: 'ReplyVera handles routine parent reviews for childcare centers and preschools while escalating concerns involving supervision, injury, allergies, and child privacy.',
         heroHeadline: 'Every Childcare Review Answered With Care',
@@ -689,6 +705,7 @@ const industryPages = [
     },
     {
         slug: 'tutoring',
+        theme: { accent: '#6366F1', motif: 'dots', divider: 'line' },
         metaTitle: 'Google Review Automation for Tutoring Centers | ReplyVera',
         metaDescription: 'ReplyVera writes professional Google review responses for tutoring centers while keeping refund, billing, academic-claim, and student-safety concerns under approval.',
         heroHeadline: 'Turn Every Parent Review Into Trust',
@@ -744,6 +761,7 @@ const industryPages = [
     },
     {
         slug: 'pet-care',
+        theme: { accent: '#22C55E', motif: 'paws', divider: 'glow' },
         metaTitle: 'Google Review Automation for Pet Care Businesses | ReplyVera',
         metaDescription: 'ReplyVera writes warm Google review responses for pet care businesses while immediately holding injury, illness, lost-pet, and animal-safety complaints for approval.',
         heroHeadline: 'Every Pet-Care Review Answered Automatically',
@@ -799,6 +817,7 @@ const industryPages = [
     },
     {
         slug: 'car-washes',
+        theme: { accent: '#06B6D4', motif: 'waves', divider: 'line' },
         metaTitle: 'Google Review Automation for Car Wash Operators | ReplyVera',
         metaDescription: 'ReplyVera handles routine car wash reviews automatically while escalating vehicle-damage, billing, membership, and safety complaints for owner approval.',
         heroHeadline: 'Every Car Wash Review Answered Automatically',
@@ -854,6 +873,7 @@ const industryPages = [
     },
     {
         slug: 'laundromats',
+        theme: { accent: '#2DD4BF', motif: 'bubbles', divider: 'glow' },
         metaTitle: 'Google Review Automation for Laundromats | ReplyVera',
         metaDescription: 'ReplyVera responds to routine laundromat reviews and alerts owners when customers report broken machines, refunds, missing items, cleanliness, or safety concerns.',
         heroHeadline: 'Keep Every Laundry Review Clean and Professional',
