@@ -15,11 +15,10 @@
     --bg-card-hover: #141424;
     --bg-section: #0B0B16;
 
-    /* Brighter secondary keeps dark feel but improves readability */
     --text-primary: #F8FAFC;
     --text-secondary: #B0BBCC;
     --text-body: #94A3B8;
-    --text-muted: #64748B;
+    --text-muted: #7A8A9E; /* Brightened slightly for better contrast on trust lines */
 
     --border: rgba(255, 255, 255, 0.07);
     --border-light: rgba(255, 255, 255, 0.12);
@@ -65,6 +64,16 @@ body {
     font-family: var(--font-sans);
     font-size: 16px;
     line-height: 1.6;
+    animation: pageFadeIn 150ms ease-out forwards;
+}
+
+@keyframes pageFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body { animation: none; }
 }
 
 img, svg { display: block; max-width: 100%; }
@@ -517,14 +526,14 @@ p { color: var(--text-secondary); line-height: 1.65; }
 .nav-dropdown-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 4px;
+    gap: 8px 4px;
 }
 
 .dropdown-item {
     display: flex;
     align-items: flex-start;
     gap: 12px;
-    padding: 14px 16px;
+    padding: 16px 16px;
     border-radius: var(--radius-md);
     text-decoration: none;
     transition: background var(--transition-fast);
@@ -578,7 +587,7 @@ p { color: var(--text-secondary); line-height: 1.65; }
 
 /* ─── Hero ─── */
 .hero {
-    padding: 128px 0 72px;
+    padding: 128px 0 96px; /* increased bottom padding */
     position: relative;
     overflow: hidden;
 }
@@ -600,8 +609,8 @@ p { color: var(--text-secondary); line-height: 1.65; }
 
 .hero-inner {
     display: grid;
-    grid-template-columns: 1.15fr 0.85fr;   /* text column wider */
-    gap: 48px;
+    grid-template-columns: 1.05fr 0.95fr; /* Give mockup ~10% more space */
+    gap: 40px;
     align-items: center;
     position: relative;
     z-index: 1;
@@ -610,9 +619,9 @@ p { color: var(--text-secondary); line-height: 1.65; }
 .hero-content { position: relative; z-index: 1; }
 .hero-text { text-align: left; }
 
-/* Constrain h1 so it breaks at 2–3 lines not 4 */
+/* Constrain h1 so it breaks cleanly */
 .hero-text h1 {
-    max-width: 520px;
+    max-width: 620px; /* increased from 520px to fit agency headline better */
 }
 
 .hero-actions {
@@ -624,8 +633,8 @@ p { color: var(--text-secondary); line-height: 1.65; }
 }
 
 .hero-trust {
-    font-size: 0.8rem;
-    color: var(--text-muted);
+    font-size: 0.85rem;
+    color: #8294AD; /* Brighter for contrast */
     display: flex;
     align-items: center;
     gap: 6px;
@@ -1272,11 +1281,14 @@ footer  { border-top: 1px solid var(--border); padding: 44px 0 24px; }
 
 /* ─── Responsive: 1024px tablet landscape ─── */
 @media (max-width: 1024px) {
+    .hero {
+        padding: 100px 0 50px;
+    }
     .hero-inner {
         grid-template-columns: 1fr 1fr;
-        gap: 40px;
+        gap: 32px;
     }
-    .hero-text h1 { max-width: 100%; }
+    .hero-text h1 { max-width: 100%; font-size: clamp(2rem, 4vw, 2.5rem); }
 
     /* Shift dropdown so it doesn't overflow right */
     .nav-dropdown-content {
