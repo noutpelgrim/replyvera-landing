@@ -33,7 +33,7 @@ function patchHeader(h) {
         .replace(/href="industries\/pet-care"/g,     'href="/industries/pet-care"')
         .replace(/href="industries\/car-washes"/g,   'href="/industries/car-washes"')
         .replace(/href="industries\/laundromats"/g,  'href="/industries/laundromats"')
-        .replace(/href="style\.css"/g,               'href="/style.css"')
+        .replace(/href="style\.css"/g,               'href="/style.css?v=2"')
         .replace(/href="#product"/g,                 'href="/index.html#product"')
         .replace(/href="#how-it-works"/g,            'href="/index.html#how-it-works"')
         .replace(/href="#pricing"/g,                 'href="/index.html#pricing"')
