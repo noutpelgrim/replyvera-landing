@@ -291,12 +291,12 @@
                 <div style="background:rgba(255,255,255,0.01); border:1px solid var(--border-current); padding:32px; border-radius:12px;">
                     <div style="width:40px; height:40px; background:rgba(99,102,241,0.08); color:var(--primary-light); border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem; margin-bottom:20px;">2</div>
                     <h3 style="font-size:1.2rem; font-weight:700; color:#FFF; margin-bottom:12px;">ReplyVera understands the review</h3>
-                    <p style="font-size:0.9rem; color:var(--text-secondary-current); line-height:1.5;">ReplyVera scans incoming Google Business feedback, identifying student/diner/patient sentiment, mentioned tutors, and potential liability risks.</p>
+                    <p style="font-size:0.9rem; color:var(--text-secondary-current); line-height:1.5;">ReplyVera identifies parent or student sentiment, tutor mentions, scheduling or billing topics, and potential academic-claim risks.</p>
                 </div>
                 <div style="background:rgba(255,255,255,0.01); border:1px solid var(--border-current); padding:32px; border-radius:12px;">
                     <div style="width:40px; height:40px; background:rgba(99,102,241,0.08); color:var(--primary-light); border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem; margin-bottom:20px;">3</div>
                     <h3 style="font-size:1.2rem; font-weight:700; color:#FFF; margin-bottom:12px;">Auto-publish or request approval</h3>
-                    <p style="font-size:0.9rem; color:var(--text-secondary-current); line-height:1.5;">Publish routine replies immediately using a configurable publishing delay, while keeping sensitive reviews locked in drafts for manager confirmation.</p>
+                    <p style="font-size:0.9rem; color:var(--text-secondary-current); line-height:1.5;">Routine positive parent feedback goes live after a configurable delay, while academic guarantees and refunds require academic coach approval.</p>
                 </div>
             </div>
         </div>
@@ -328,10 +328,13 @@
                             <span>Topic Extracted:</span> <span style="color:#FFF;">"Tutor Recognition"</span>
                         </div>
                         <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
-                            <span>Safety Verdict:</span> <span style="color:var(--accent);">Safe to Publish</span>
+                            <span>Safety Verdict:</span> <span style="color:var(--accent); font-weight:700;">No Risk Detected</span>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                            <span>Status:</span> <span style="color:var(--accent); font-weight:700;">Safe to Auto-Publish</span>
                         </div>
                         <div style="display:flex; justify-content:space-between;">
-                            <span>Status:</span> <span style="color:var(--primary-light);">Draft Ready</span>
+                            <span>Autopilot Action:</span> <span style="color:var(--accent); font-weight:700;">Auto-Published</span>
                         </div>
                     </div>
                 </div>
@@ -355,10 +358,13 @@
                             <span>Topic Extracted:</span> <span style="color:#FFF;">"Academic-Claim Detection"</span>
                         </div>
                         <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
-                            <span>Safety Verdict:</span> <span style="color:var(--accent);">Safe to Publish</span>
+                            <span>Safety Verdict:</span> <span style="color:#EF4444; font-weight:700;">Sensitive Topic Detected</span>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                            <span>Status:</span> <span style="color:#EF4444; font-weight:700;">Approval Required</span>
                         </div>
                         <div style="display:flex; justify-content:space-between;">
-                            <span>Status:</span> <span style="color:var(--primary-light);">Draft Ready</span>
+                            <span>Autopilot Action:</span> <span style="color:#EF4444; font-weight:700;">Auto-Publishing Blocked</span>
                         </div>
                     </div>
                 </div>
@@ -382,10 +388,13 @@
                             <span>Topic Extracted:</span> <span style="color:#FFF;">"Refund and Billing Escalation"</span>
                         </div>
                         <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
-                            <span>Safety Verdict:</span> <span style="color:var(--accent);">Safe to Publish</span>
+                            <span>Safety Verdict:</span> <span style="color:#EF4444; font-weight:700;">Sensitive Topic Detected</span>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                            <span>Status:</span> <span style="color:#EF4444; font-weight:700;">Approval Required</span>
                         </div>
                         <div style="display:flex; justify-content:space-between;">
-                            <span>Status:</span> <span style="color:var(--primary-light);">Draft Ready</span>
+                            <span>Autopilot Action:</span> <span style="color:#EF4444; font-weight:700;">Auto-Publishing Blocked</span>
                         </div>
                     </div>
                 </div>
@@ -409,10 +418,13 @@
                             <span>Topic Extracted:</span> <span style="color:#FFF;">"Student Privacy Protection"</span>
                         </div>
                         <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
-                            <span>Safety Verdict:</span> <span style="color:var(--accent);">Safe to Publish</span>
+                            <span>Safety Verdict:</span> <span style="color:var(--accent); font-weight:700;">No Risk Detected</span>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                            <span>Status:</span> <span style="color:var(--accent); font-weight:700;">Safe to Auto-Publish</span>
                         </div>
                         <div style="display:flex; justify-content:space-between;">
-                            <span>Status:</span> <span style="color:var(--primary-light);">Draft Ready</span>
+                            <span>Autopilot Action:</span> <span style="color:var(--accent); font-weight:700;">Auto-Published</span>
                         </div>
                     </div>
                 </div>
@@ -436,10 +448,13 @@
                             <span>Topic Extracted:</span> <span style="color:#FFF;">"Parent-Friendly Language"</span>
                         </div>
                         <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
-                            <span>Safety Verdict:</span> <span style="color:var(--accent);">Safe to Publish</span>
+                            <span>Safety Verdict:</span> <span style="color:var(--accent); font-weight:700;">No Risk Detected</span>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                            <span>Status:</span> <span style="color:var(--accent); font-weight:700;">Safe to Auto-Publish</span>
                         </div>
                         <div style="display:flex; justify-content:space-between;">
-                            <span>Status:</span> <span style="color:var(--primary-light);">Draft Ready</span>
+                            <span>Autopilot Action:</span> <span style="color:var(--accent); font-weight:700;">Auto-Published</span>
                         </div>
                     </div>
                 </div>
@@ -463,10 +478,13 @@
                             <span>Topic Extracted:</span> <span style="color:#FFF;">"Multi-Location Controls"</span>
                         </div>
                         <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
-                            <span>Safety Verdict:</span> <span style="color:var(--accent);">Safe to Publish</span>
+                            <span>Safety Verdict:</span> <span style="color:var(--accent); font-weight:700;">No Risk Detected</span>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                            <span>Status:</span> <span style="color:var(--accent); font-weight:700;">Safe to Auto-Publish</span>
                         </div>
                         <div style="display:flex; justify-content:space-between;">
-                            <span>Status:</span> <span style="color:var(--primary-light);">Draft Ready</span>
+                            <span>Autopilot Action:</span> <span style="color:var(--accent); font-weight:700;">Auto-Published</span>
                         </div>
                     </div>
                 </div>
@@ -708,7 +726,7 @@
         <div class="container text-center" style="max-width: 700px;">
             <div class="label-pill"><i data-lucide="credit-card" style="width:12px; height:12px;"></i> Simple Pricing</div>
             <h2 class="mb-4">Plans start at $29 per month</h2>
-            <p class="lead-text mb-8">Choose the plan that fits your business footprint. Lock in your rate today.</p>
+            <p class="lead-text mb-8">Choose the plan that fits your business footprint. Start your free trial today.</p>
             
             <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-current); padding: 40px; border-radius: 20px; box-shadow: var(--shadow-premium); margin-bottom: 32px; backdrop-filter: blur(20px); text-align:left; max-width:600px; margin-left:auto; margin-right:auto;">
                 <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:16px; margin-bottom:20px;">

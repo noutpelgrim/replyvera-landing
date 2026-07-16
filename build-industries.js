@@ -75,14 +75,16 @@ const industryPages = [
             { icon: 'award', title: 'Employee praise gets missed', text: 'Standout service feedback from servers, hosts, and bartenders is rarely logged to reward top performers.' },
             { icon: 'map', title: 'Locations respond inconsistently', text: 'Multi-location groups struggle to keep a consistent brand tone across different storefronts.' }
         ],
+        step2Text: 'ReplyVera identifies guest sentiment, food and service topics, employee mentions, location, and potential food-safety risks.',
+        step3Text: 'Publish routine replies automatically after your configurable delay, while food safety and serious service complaints are held for manager approval.',
         featureHeadline: 'Smarter Reputation Management Designed for the Hospitality Floor',
         features: [
-            { name: 'Food Quality Detection', text: 'Identify praise or complaints involving meals, ingredients, temperature, presentation, and consistency.' },
-            { name: 'Wait-Time Monitoring', text: 'Detect complaints involving queues, slow service, delayed food, or long waits.' },
-            { name: 'Employee Recognition', text: 'Recognize servers, hosts, bartenders, chefs, and managers mentioned by name.' },
-            { name: 'Food-Safety Escalation', text: 'Require approval for allergy, contamination, illness, or food-safety concerns.' },
-            { name: 'Service-Type Detection', text: 'Distinguish dine-in, takeout, delivery, reservations, and catering feedback.' },
-            { name: 'Location Insights', text: 'Compare service, cleanliness, food, and employee trends across locations.' }
+            { name: 'Food Quality Detection', text: 'Identify praise or complaints involving meals, ingredients, temperature, presentation, and consistency.', verdictType: 'positive' },
+            { name: 'Wait-Time Monitoring', text: 'Detect complaints involving queues, slow service, delayed food, or long waits.', verdictType: 'complaint' },
+            { name: 'Employee Recognition', text: 'Recognize servers, hosts, bartenders, chefs, and managers mentioned by name.', verdictType: 'positive' },
+            { name: 'Food-Safety Escalation', text: 'Require approval for allergy, contamination, illness, or food-safety concerns.', verdictType: 'sensitive' },
+            { name: 'Service-Type Detection', text: 'Distinguish dine-in, takeout, delivery, reservations, and catering feedback.', verdictType: 'positive' },
+            { name: 'Location Insights', text: 'Compare service, cleanliness, food, and employee trends across locations.', verdictType: 'positive' }
         ],
         employeeRoles: ['Server', 'Host', 'Bartender', 'Chef', 'Shift manager', 'General manager'],
         sensitiveTopics: ['Food allergies', 'Food poisoning', 'Contamination', 'Discrimination', 'Injuries', 'Payment disputes', 'Threats', 'Serious cleanliness allegations'],
@@ -118,7 +120,7 @@ const industryPages = [
             'The truffle pasta is the most praised menu item'
         ],
         multiLocationCopy: 'Whether you manage a single neighborhood bistro or a growing regional hospitality group, ReplyVera scale settings let general managers oversee location-level approvals while preserving a unified brand voice.',
-        pricingOffer: { label: 'Early-access offer', text: 'Lock in your rate today.' },
+        pricingOffer: { label: 'Early-access offer', text: 'Founding customers receive $29 per month for the first 12 months. Standard Autopilot pricing is $39 per month after the promotional period.' },
         faqItems: [
             { q: 'Can ReplyVera manage multiple restaurant locations?', a: 'Yes. Our multi-location controls allow you to manage separate Google Business Profiles from one central dashboard, with unique configurations for each branch.' },
             { q: 'Can food-safety reviews be blocked from auto-publishing?', a: 'Absolutely. ReplyVera identifies words related to allergies, illness, or cleanliness, blocking auto-replies immediately and routing them to a manager approval inbox.' },
@@ -128,8 +130,8 @@ const industryPages = [
         ],
         relatedIndustries: [
             { id: 'agencies', title: 'Marketing Agencies' },
-            { id: 'car-washes', title: 'Car Wash Operators' },
-            { id: 'pet-care', title: 'Pet Care' }
+            { id: 'pet-care', title: 'Pet Care' },
+            { id: 'car-washes', title: 'Car Wash Operators' }
         ],
         finalCtaHeadline: 'Stop Letting Restaurant Reviews Go Unanswered',
         finalCtaDescription: 'Automate your Google reviews, recognize standout staff, and protect food safety ratings with zero administrative friction.',
@@ -156,14 +158,16 @@ const industryPages = [
             { icon: 'clock', title: 'Owners lack time to respond consistently', text: 'Practicing dentists spend their days in operatory chairs, leaving little time to write personalized responses.' },
             { icon: 'map', title: 'Multiple practices use inconsistent language', text: 'Multi-practice groups struggle to enforce a unified, professional tone across all clinical locations.' }
         ],
+        step2Text: 'ReplyVera identifies review sentiment, staff mentions, billing topics, location, and potential privacy or clinical concerns.',
+        step3Text: 'Routine positive reviews go live after your configured delay, while clinical, billing, and privacy-sensitive reviews require office approval.',
         featureHeadline: 'Privacy-Conscious Features Built Specifically for Medical Professionals',
         features: [
-            { name: 'Privacy-Conscious Responses', text: 'Avoid confirming patient status or discussing private treatment details.' },
-            { name: 'Clinical Complaint Detection', text: 'Flag pain, injury, medication, diagnosis, procedure, and treatment-outcome concerns.' },
-            { name: 'Billing and Insurance Escalation', text: 'Route unexpected charges, insurance complaints, and payment disputes for approval.' },
-            { name: 'Staff Recognition', text: 'Recognize dentists, hygienists, assistants, and front-desk staff.' },
-            { name: 'Safe Positive Automation', text: 'Automatically answer low-risk positive reviews.' },
-            { name: 'Practice-Level Controls', text: 'Set approval rules and tone by location.' }
+            { name: 'Privacy-Conscious Responses', text: 'Avoid confirming patient status or discussing private treatment details.', verdictType: 'positive' },
+            { name: 'Clinical Complaint Detection', text: 'Flag pain, injury, medication, diagnosis, procedure, and treatment-outcome concerns.', verdictType: 'sensitive' },
+            { name: 'Billing and Insurance Escalation', text: 'Route unexpected charges, insurance complaints, and payment disputes for approval.', verdictType: 'sensitive' },
+            { name: 'Staff Recognition', text: 'Recognize dentists, hygienists, assistants, and front-desk staff.', verdictType: 'positive' },
+            { name: 'Safe Positive Automation', text: 'Automatically answer low-risk positive reviews.', verdictType: 'positive' },
+            { name: 'Practice-Level Controls', text: 'Set approval rules and tone by location.', verdictType: 'positive' }
         ],
         employeeRoles: ['Dentist', 'Hygienist', 'Dental assistant', 'Orthodontist', 'Office manager', 'Front-desk coordinator'],
         sensitiveTopics: ['Pain', 'Injury', 'Treatment outcomes', 'Medication', 'Diagnosis', 'Insurance', 'Billing disputes', 'Privacy complaints', 'Discrimination'],
@@ -199,7 +203,7 @@ const industryPages = [
             'Two clinical reviews require follow-up'
         ],
         multiLocationCopy: 'Manage reputation and review logs across multiple dental clinics. Set location-level access permissions so office managers can review drafts while corporate compliance tracks overall sentiment.',
-        pricingOffer: { label: 'Early-access offer', text: 'Lock in your practice rate today.' },
+        pricingOffer: { label: 'Early-access offer', text: 'Founding clinics receive $29 per month for the first 12 months. Standard Autopilot pricing is $39 per month after the promotional period.' },
         faqItems: [
             { q: 'Does ReplyVera reveal patient information?', a: 'No. ReplyVera is programmed to draft privacy-conscious responses that never confirm active patient status or discuss clinical treatments.' },
             { q: 'Can clinical complaints be excluded from auto-publishing?', a: 'Yes. Any review mentioning pain, procedures, side effects, or clinical outcomes is flagged and held for manual review by your dental team.' },
@@ -232,17 +236,19 @@ const industryPages = [
             { icon: 'log-out', title: 'Teams switch manually between accounts', text: 'Wasting account manager hours logging in and out of different client Google Business Profile accounts.' },
             { icon: 'clock', title: 'Review responses consume staff time', text: 'Drafting standard responses for hundreds of 5-star reviews drains productive time from higher-value SEO campaigns.' },
             { icon: 'message-square', title: 'Every client needs a different tone', text: 'Maintaining a professional medical voice for one client and a playful restaurant voice for another is error-prone.' },
-            { icon: 'mail', title: 'Approvals are slow', text: 'Chasing clients to review response drafts for negative feedback delays resolutions and hurts SEO metrics.' },
+            { icon: 'mail', title: 'Approvals are slow', text: 'Chasing clients to review response drafts for negative feedback delays resolutions and hurts SEO rankings.' },
             { icon: 'bar-chart', title: 'Reporting is fragmented', text: 'Consolidating review data, response rates, and customer sentiment into reports is manual and tedious.' },
             { icon: 'dollar-sign', title: 'Agencies need room for healthy margins', text: 'SaaS licensing models can eat into retainer margins if pricing models don\'t scale cost-effectively.' }
         ],
+        step2Text: 'ReplyVera identifies the client, brand voice, review topic, risk level, and approval workflow.',
+        step3Text: 'Deploy client autopilot modes to auto-publish routine replies, while client approval links let business owners review sensitive drafts.',
         features: [
-            { name: 'Central Client Dashboard', text: 'Manage multiple businesses and locations from one account.' },
-            { name: 'Client-Specific Brand Voice', text: 'Give every client separate tone, rules, and business context.' },
-            { name: 'Approval Links', text: 'Allow clients to approve sensitive responses without full dashboard access.' },
-            { name: 'Team Permissions', text: 'Assign staff to specific clients or locations.' },
-            { name: 'Automated Safe Replies', text: 'Auto-publish routine responses according to each client’s rules.' },
-            { name: 'Agency Reporting', text: 'Show review volume, response status, and approval activity by client. (White-label reporting planned)' }
+            { name: 'Central Client Dashboard', text: 'Manage multiple businesses and locations from one account.', verdictType: 'positive' },
+            { name: 'Client-Specific Brand Voice', text: 'Give every client separate tone, rules, and business context.', verdictType: 'positive' },
+            { name: 'Approval Links', text: 'Allow clients to approve sensitive responses without full dashboard access.', verdictType: 'positive' },
+            { name: 'Team Permissions', text: 'Assign staff to specific clients or locations.', verdictType: 'positive' },
+            { name: 'Automated Safe Replies', text: 'Auto-publish routine responses according to each client’s rules.', verdictType: 'positive' },
+            { name: 'Agency Reporting', text: 'Show review volume, response status, and approval activity by client. (White-label reporting planned)', verdictType: 'positive' }
         ],
         employeeRoles: ['Account director', 'SEO specialist', 'Social manager', 'Copywriter', 'Agency partner', 'Support coordinator'],
         sensitiveTopics: ['Negative feedback', 'Billing issues', 'Clinical errors', 'Safety complaints', 'Equipment problems', 'Staff complaints'],
@@ -277,8 +283,8 @@ const industryPages = [
             'Average client response rate is 98.4%',
             'Client satisfaction scores average 4.8★'
         ],
-        multiLocationCopy: 'Our Multi-Client dashboard is architected specifically for agencies managing portfolios of local brands. Give account managers selective permissions to supervise assign clients without accessing other partner data.',
-        pricingOffer: { label: 'Founding agency package', text: 'Includes 10 locations. $12/mo for additional locations.' },
+        multiLocationCopy: 'Our Multi-Client dashboard is architected specifically for agencies managing portfolios of local brands. Give account managers selective permissions to supervise assigned clients without accessing other partner data.',
+        pricingOffer: { label: 'Founding agency package', text: 'Introductory pricing of $149 per month applies for the first 12 months. Standard Agency pricing is $179 per month after the promotional period.' },
         faqItems: [
             { q: 'Can every client have a different brand voice?', a: 'Yes. You configure independent tone settings, triggers, and approval workflows for every Google Business Profile profile connected.' },
             { q: 'Can clients approve responses without accessing the full dashboard?', a: 'Yes. ReplyVera generates secure client approval links where business owners can approve, edit, or reject drafts from their phones.' },
@@ -293,7 +299,7 @@ const industryPages = [
         ],
         finalCtaHeadline: 'Turn Review Management Into a Scalable Agency Service',
         finalCtaDescription: 'Automate positive drafts, send client approval notifications, and scale your reputation management services with healthy margins.',
-        mockupLocationName: 'Agency Client Hub'
+        mockupLocationName: 'Multi-client agency dashboard'
     },
     {
         slug: 'martial-arts',
@@ -316,13 +322,15 @@ const industryPages = [
             { icon: 'shield-alert', title: 'Child-safety concerns need immediate attention', text: 'Injury, bullying, or safety allegations require immediate owner reviews before any public response goes live.' },
             { icon: 'map', title: 'Multiple academies respond inconsistently', text: 'Multi-school operators struggle to keep a consistent brand voice across regional dojos.' }
         ],
+        step2Text: 'ReplyVera identifies parent or student sentiment, instructor mentions, membership topics, and potential safety concerns.',
+        step3Text: 'Routine positive parent feedback is published automatically after a delay, while membership and safety reviews are held for your approval.',
         features: [
-            { name: 'Instructor Recognition', text: 'Scans customer reviews for coach or Sensei names, tagging positive employee mentions.' },
-            { name: 'Parent-Friendly Tone', text: 'Generates warm, community-oriented responses highlighting confidence, respect, and discipline.' },
-            { name: 'Membership Cancellation Detection', text: 'Identifies keywords related to cancellations, billing, or contracts, sending them for owner approval.' },
-            { name: 'Injury Escalation', text: 'Routes reviews mentioning injuries, accidents, or safety concerns directly to a secure draft box.' },
-            { name: 'Bullying & Discrimination Detection', text: 'Locks reviews containing safety allegations, preventing auto-responses.' },
-            { name: 'Multi-School Dashboard', text: 'Monitor ratings, response times, and reviews across all dojo profiles in one panel.' }
+            { name: 'Instructor Recognition', text: 'Scans customer reviews for coach or Sensei names, tagging positive employee mentions.', verdictType: 'positive' },
+            { name: 'Parent-Friendly Tone', text: 'Generates warm, community-oriented responses highlighting confidence, respect, and discipline.', verdictType: 'positive' },
+            { name: 'Membership Cancellation Detection', text: 'Identifies keywords related to cancellations, billing, or contracts, sending them for owner approval.', verdictType: 'sensitive' },
+            { name: 'Injury Escalation', text: 'Routes reviews mentioning injuries, accidents, or safety concerns directly to a secure draft box.', verdictType: 'sensitive' },
+            { name: 'Bullying & Discrimination Detection', text: 'Locks reviews containing safety allegations, preventing auto-responses.', verdictType: 'sensitive' },
+            { name: 'Multi-School Dashboard', text: 'Monitor ratings, response times, and reviews across all dojo profiles in one panel.', verdictType: 'positive' }
         ],
         employeeRoles: ['Instructor', 'Coach', 'Sensei', 'School owner', 'Program director', 'Front-desk team member'],
         sensitiveTopics: ['Injuries', 'Child safety', 'Bullying', 'Discrimination', 'Staff conduct', 'Membership disputes', 'Cancellation issues'],
@@ -358,7 +366,7 @@ const industryPages = [
             'Two safety reviews need attention'
         ],
         multiLocationCopy: 'Manage reputation and review metrics across multiple academy branches. Set location-level access rules so managers can respond while school owners track overall student satisfaction.',
-        pricingOffer: { label: 'Early-access offer', text: 'Standard autopilot pricing at $39/mo per location.' },
+        pricingOffer: { label: 'Early-access offer', text: 'Founding schools receive $29 per month for the first 12 months. Standard Autopilot pricing is $39 per month after the promotional period.' },
         faqItems: [
             { q: 'Can ReplyVera manage multiple martial arts locations?', a: 'Yes. Connect multiple Google Business Profile locations and monitor ratings from one central screen.' },
             { q: 'Can safety reviews be blocked from auto-publishing?', a: 'Yes. Any review mentioning injuries, bullying, or child safety is immediately held in drafts, blocking auto-replies.' },
@@ -395,13 +403,15 @@ const industryPages = [
             { icon: 'shield-alert', title: 'Safety concerns require immediate manager attention', text: 'Reviews alleging injuries, child safety failures, or allergies must never be answered automatically.' },
             { icon: 'trending-up', title: 'Staff turnover feedback', text: 'Negative parent comments regarding staff changes can quickly impact school enrollment rates.' }
         ],
+        step2Text: 'ReplyVera identifies parent sentiment, teacher mentions, communication topics, and potential safety or privacy concerns.',
+        step3Text: 'Routine positive reviews can be published automatically, while supervision, injury, allergy, and privacy concerns trigger immediate alerts.',
         features: [
-            { name: 'Teacher Recognition', text: 'Scans parent reviews for educator names, tracking top performance mentions.' },
-            { name: 'Privacy-Conscious Responses', text: 'Ensures responses thank the parents politely without confirming children\'s class schedules or private details.' },
-            { name: 'Injury and Safety Escalation', text: 'Flags reviews containing words like hurt, fall, or accident, routing them to director drafts.' },
-            { name: 'Allergy and Medication Detection', text: 'Locks reviews mentioning food allergies or medication issues, preventing auto-replies.' },
-            { name: 'Supervision Concern Detection', text: 'Scans for allegations of children left unattended, locking responses for licensing reviews.' },
-            { name: 'Staff-Turnover Trend Tracking', text: 'Identifies public reviews highlighting staff changes to monitor institutional health.' }
+            { name: 'Teacher Recognition', text: 'Scans parent reviews for educator names, tracking top performance mentions.', verdictType: 'positive' },
+            { name: 'Privacy-Conscious Responses', text: 'Ensures responses thank the parents politely without confirming children\'s class schedules or private details.', verdictType: 'positive' },
+            { name: 'Injury and Safety Escalation', text: 'Flags reviews containing words like hurt, fall, or accident, routing them to director drafts.', verdictType: 'sensitive' },
+            { name: 'Allergy and Medication Detection', text: 'Locks reviews mentioning food allergies or medication issues, preventing auto-replies.', verdictType: 'sensitive' },
+            { name: 'Supervision Concern Detection', text: 'Scans for allegations of children left unattended, locking responses for licensing reviews.', verdictType: 'sensitive' },
+            { name: 'Staff-Turnover Trend Tracking', text: 'Identifies public reviews highlighting staff changes to monitor institutional health.', verdictType: 'complaint' }
         ],
         employeeRoles: ['Teacher', 'Center director', 'Classroom assistant', 'Administrator', 'Program coordinator'],
         sensitiveTopics: ['Injury', 'Supervision', 'Allergies', 'Medication', 'Abuse', 'Neglect', 'Staff conduct', 'Licensing', 'Child privacy'],
@@ -437,7 +447,7 @@ const industryPages = [
             'Cleanliness feedback improved this month'
         ],
         multiLocationCopy: 'Our Multi-Location dashboard helps franchise operators monitor licensing compliance, response rates, and ratings across childcare centers from one corporate panel.',
-        pricingOffer: { label: 'Early-access offer', text: 'Standard autopilot plan is $39/mo per location.' },
+        pricingOffer: { label: 'Early-access offer', text: 'Founding schools receive $29 per month for the first 12 months. Standard Autopilot pricing is $39 per month after the promotional period.' },
         faqItems: [
             { q: 'Does ReplyVera reveal child information?', a: 'No. ReplyVera drafts general, professional replies that thank the parents without confirming minor names, schedules, or classroom locations.' },
             { q: 'Can supervision or allergy reviews be blocked from auto-publishing?', a: 'Yes. Any reviews mentioning cuts, falls, unattended play, or dietary issues are immediately flagged, held in drafts, and alert the director.' },
@@ -474,13 +484,15 @@ const industryPages = [
             { icon: 'dollar-sign', title: 'Academic guarantee disputes', text: 'Reviews claiming promised grade improvements or score guarantees need careful, non-automated replies.' },
             { icon: 'credit-card', title: 'Billing and tuition disputes', text: 'Tuition disputes or refund demands can quickly escalate if auto-replied with generic copy.' }
         ],
+        step2Text: 'ReplyVera identifies parent or student sentiment, tutor mentions, scheduling or billing topics, and potential academic-claim risks.',
+        step3Text: 'Routine positive parent feedback goes live after a configurable delay, while academic guarantees and refunds require academic coach approval.',
         features: [
-            { name: 'Tutor Recognition', text: 'Extracts mentions of tutoring staff (like Emily) from positive parent feedback.' },
-            { name: 'Academic-Claim Detection', text: 'Locks reviews containing grade score claims or score improvement guarantees for admin drafts.' },
-            { name: 'Refund and Billing Escalation', text: 'Routes reviews regarding package billing or tuition refunds directly to the director.' },
-            { name: 'Student Privacy Protection', text: 'Ensures responses thank reviewers without disclosing minor student names or course grades.' },
-            { name: 'Parent-Friendly Language', text: 'Generates polite, academically encouraging, and community-focused replies.' },
-            { name: 'Multi-Location Controls', text: 'Oversee metrics, response rates, and ratings across tutoring locations in one panel.' }
+            { name: 'Tutor Recognition', text: 'Extracts mentions of tutoring staff (like Emily) from positive parent feedback.', verdictType: 'positive' },
+            { name: 'Academic-Claim Detection', text: 'Locks reviews containing grade score claims or score improvement guarantees for admin drafts.', verdictType: 'sensitive' },
+            { name: 'Refund and Billing Escalation', text: 'Routes reviews regarding package billing or tuition refunds directly to the director.', verdictType: 'sensitive' },
+            { name: 'Student Privacy Protection', text: 'Ensures responses thank reviewers without disclosing minor student names or course grades.', verdictType: 'positive' },
+            { name: 'Parent-Friendly Language', text: 'Generates polite, academically encouraging, and community-focused replies.', verdictType: 'positive' },
+            { name: 'Multi-Location Controls', text: 'Oversee metrics, response rates, and ratings across tutoring locations in one panel.', verdictType: 'positive' }
         ],
         employeeRoles: ['Tutor', 'Instructor', 'Center director', 'Academic coach', 'Administrator'],
         sensitiveTopics: ['Student safety', 'Academic guarantees', 'Refunds', 'Billing', 'Discrimination', 'Staff conduct', 'Private student information'],
@@ -516,7 +528,7 @@ const industryPages = [
             'Test-preparation reviews have the highest satisfaction'
         ],
         multiLocationCopy: 'Monitor tutor reviews and parent sentiment across multiple regional learning centers. Set location-level access rules so directors manage local feedback while owners track overall score improvements.',
-        pricingOffer: { label: 'Early-access offer', text: 'Standard autopilot plan starting at $39/mo per location.' },
+        pricingOffer: { label: 'Early-access offer', text: 'Founding centers receive $29 per month for the first 12 months. Standard Autopilot pricing is $39 per month after the promotional period.' },
         faqItems: [
             { q: 'Does ReplyVera reveal minor student information?', a: 'No. ReplyVera is programmed to write professional replies that thank parents without confirming student names or academic records.' },
             { q: 'Can academic guarantee complaints be blocked from auto-publishing?', a: 'Yes. Any reviews mentioning promises, score improvements, or refund demands are held in drafts, blocking auto-replies.' },
@@ -553,13 +565,15 @@ const industryPages = [
             { icon: 'shield-alert', title: 'Animal safety claims require care', text: 'Mentions of bites, illnesses, cuts, or escape demand immediate manager action to prevent liabilities.' },
             { icon: 'map', title: 'Inconsistent brand voice', text: 'Multi-location pet care chains struggle to enforce a consistent, pet-friendly tone across all daycares.' }
         ],
+        step2Text: 'ReplyVera identifies customer sentiment, staff mentions, service type, and potential animal-safety concerns.',
+        step3Text: 'Routine positive reviews are posted automatically after a delay, while grooming cuts or boarding safety alerts require manager approval.',
         features: [
-            { name: 'Groomer and Staff Recognition', text: 'Scans customer reviews for groomer or handler names, logging positive employee mentions.' },
-            { name: 'Boarding, Daycare, and Grooming Detection', text: 'Identify reviews mentioning specific service types (like drop-off daycare, boarding, or nail trims).' },
-            { name: 'Animal-Injury Escalation', text: 'Locks reviews containing words like hurt, cut, scratch, or vet, routing them directly to manager approval.' },
-            { name: 'Lost-Pet and Escaped-Pet Detection', text: 'Detects mentions of escaped dogs or missing collars, triggering immediate email notifications to the owner.' },
-            { name: 'Medication Concern Detection', text: 'Flags reviews alleging incorrect medicine administration or dietary errors.' },
-            { name: 'Service-Delay Detection', text: 'Identifies wait-time complaints or delayed grooming pickup reviews.' }
+            { name: 'Groomer and Staff Recognition', text: 'Scans customer reviews for groomer or handler names, logging positive employee mentions.', verdictType: 'positive' },
+            { name: 'Boarding, Daycare, and Grooming Detection', text: 'Identify reviews mentioning specific service types (like drop-off daycare, boarding, or nail trims).', verdictType: 'positive' },
+            { name: 'Animal-Injury Escalation', text: 'Locks reviews containing words like hurt, cut, scratch, or vet, routing them directly to manager approval.', verdictType: 'sensitive' },
+            { name: 'Lost-Pet and Escaped-Pet Detection', text: 'Detects mentions of escaped dogs or missing collars, triggering immediate email notifications to the owner.', verdictType: 'sensitive' },
+            { name: 'Medication Concern Detection', text: 'Flags reviews alleging incorrect medicine administration or dietary errors.', verdictType: 'sensitive' },
+            { name: 'Service-Delay Detection', text: 'Identifies wait-time complaints or delayed grooming pickup reviews.', verdictType: 'complaint' }
         ],
         employeeRoles: ['Groomer', 'Handler', 'Trainer', 'Kennel attendant', 'Front-desk employee', 'Facility manager'],
         sensitiveTopics: ['Animal injury', 'Illness', 'Escaped pets', 'Missing pets', 'Bites', 'Medication', 'Neglect', 'Grooming injuries'],
@@ -595,7 +609,7 @@ const industryPages = [
             'Two safety-related reviews require follow-up'
         ],
         multiLocationCopy: 'Manage review profiles across all boarding resorts or grooming locations. Let facility managers oversee local feedback while regional owners track overall pet satisfaction levels.',
-        pricingOffer: { label: 'Early-access offer', text: 'Standard autopilot plan starting at $39/mo per location.' },
+        pricingOffer: { label: 'Early-access offer', text: 'Founding pet resorts receive $29 per month for the first 12 months. Standard Autopilot pricing is $39 per month after the promotional period.' },
         faqItems: [
             { q: 'Can ReplyVera manage multiple locations?', a: 'Yes. Connect multiple pet boarding or grooming Business Profiles and manage ratings from one screen.' },
             { q: 'Can animal safety reviews be blocked from auto-publishing?', a: 'Yes. Any review mentioning cuts, scratches, illness, escape, or vet visits is flagged, held in drafts, and triggers email alerts.' },
@@ -632,13 +646,15 @@ const industryPages = [
             { icon: 'users', title: 'Attendant praise gets missed', text: 'Reviews praising helpful payment kiosk cashiers or detailers are lost without staff tracking.' },
             { icon: 'map-pin', title: 'Multiple locations respond inconsistently', text: 'Multi-site operations struggle to maintain a uniform brand voice across all local branches.' }
         ],
+        step2Text: 'ReplyVera identifies customer sentiment, employee mentions, equipment issues, membership topics, and possible vehicle-damage concerns.',
+        step3Text: 'Routine wash reviews go live automatically, while vehicle damage and billing complaints are sent directly to site managers.',
         features: [
-            { name: 'Vehicle-Damage Escalation', text: 'Identifies claims of scratches, mirror issues, or body damage, holding responses for management.' },
-            { name: 'Membership and Billing Detection', text: 'Flags reviews complaining about monthly passes, card charges, or refunds.' },
-            { name: 'Equipment-Issue Tracking', text: 'Detects comments regarding broken payment terminals, out-of-order vacuums, or tunnel errors.' },
-            { name: 'Wait-Time Detection', text: 'Identifies queue wait-time complaints to help managers monitor throughput.' },
-            { name: 'Employee Recognition', text: 'Recognizes lane prep attendants, detailers, and site staff mentioned by name.' },
-            { name: 'Location-Level Reporting', text: 'Compare rating metrics, review volumes, and staff praise across all wash sites.' }
+            { name: 'Vehicle-Damage Escalation', text: 'Identifies claims of scratches, mirror issues, or body damage, holding responses for management.', verdictType: 'sensitive' },
+            { name: 'Membership and Billing Detection', text: 'Flags reviews complaining about monthly passes, card charges, or refunds.', verdictType: 'sensitive' },
+            { name: 'Equipment-Issue Tracking', text: 'Detects comments regarding broken payment terminals, out-of-order vacuums, or tunnel errors.', verdictType: 'complaint' },
+            { name: 'Wait-Time Detection', text: 'Identifies queue wait-time complaints to help managers monitor throughput.', verdictType: 'complaint' },
+            { name: 'Employee Recognition', text: 'Recognizes lane prep attendants, detailers, and site staff mentioned by name.', verdictType: 'positive' },
+            { name: 'Location-Level Reporting', text: 'Compare rating metrics, review volumes, and staff praise across all wash sites.', verdictType: 'positive' }
         ],
         employeeRoles: ['Attendant', 'Site manager', 'Customer-service employee', 'Detailer', 'Membership specialist'],
         sensitiveTopics: ['Vehicle damage', 'Personal injury', 'Billing disputes', 'Membership cancellation', 'Safety', 'Staff conduct'],
@@ -674,7 +690,7 @@ const industryPages = [
             'Two damage-related reviews require action'
         ],
         multiLocationCopy: 'Our Multi-Location dashboard allows express car wash groups and franchise owners to connect all Business Profiles, track kiosk rating trends, and manage local permissions.',
-        pricingOffer: { label: 'Early-access offer', text: 'Standard autopilot plan is $39/mo per location.' },
+        pricingOffer: { label: 'Early-access offer', text: 'Founding operators receive $29 per month for the first 12 months. Standard Autopilot pricing is $39 per month after the promotional period.' },
         faqItems: [
             { q: 'Can ReplyVera handle multiple car wash locations?', a: 'Yes. Connect multiple car wash Business Profiles and oversee ratings across your regional footprint.' },
             { q: 'Can vehicle damage reviews be blocked from auto-publishing?', a: 'Yes. Any review containing words like scratch, dent, or mirror is held in drafts, blocking auto-replies.' },
@@ -711,13 +727,15 @@ const industryPages = [
             { icon: 'trash-2', title: 'Trash and cleanliness issues', text: 'Dirty folding tables or full trash cans can quickly pull down a laundromat\'s rating.' },
             { icon: 'users', title: 'Attendant praise gets missed', text: 'Praise for friendly drop-off staff or cleaners goes unnoticed and unlogged.' }
         ],
+        step2Text: 'ReplyVera identifies customer sentiment, employee mentions, machine issues, cleanliness topics, refund requests, and missing-item concerns.',
+        step3Text: 'Positive feedback is posted automatically after a delay, while broken machine alerts and missing item claims are held in drafts.',
         features: [
-            { name: 'Broken-Machine Detection', text: 'Scans reviews for keywords like broken, out of order, or coin jam, alerting maintenance.' },
-            { name: 'Refund Complaint Routing', text: 'Detects card charge errors or lost coin disputes, routing them to store manager drafts.' },
-            { name: 'Cleanliness Trend Tracking', text: 'Monitors comments regarding trash, floors, or folding tables to preserve store standards.' },
-            { name: 'Missing-Item Escalation', text: 'Identifies missing laundry or wash quality issues for drop-off orders, blocking auto-replies.' },
-            { name: 'Wash-and-Fold Quality Detection', text: 'Tracks feedback regarding detergent scents, folding consistency, or delivery delays.' },
-            { name: 'Staff Recognition', text: 'Recognizes helpful wash-and-fold attendants and cleaners mentioned by name.' }
+            { name: 'Broken-Machine Detection', text: 'Scans reviews for keywords like broken, out of order, or coin jam, alerting maintenance.', verdictType: 'complaint' },
+            { name: 'Refund Complaint Routing', text: 'Detects card charge errors or lost coin disputes, routing them to store manager drafts.', verdictType: 'sensitive' },
+            { name: 'Cleanliness Trend Tracking', text: 'Monitors comments regarding trash, floors, or folding tables to preserve store standards.', verdictType: 'complaint' },
+            { name: 'Missing-Item Escalation', text: 'Identifies missing laundry or wash quality issues for drop-off orders, blocking auto-replies.', verdictType: 'sensitive' },
+            { name: 'Wash-and-Fold Quality Detection', text: 'Tracks feedback regarding detergent scents, folding consistency, or delivery delays.', verdictType: 'positive' },
+            { name: 'Staff Recognition', text: 'Recognizes helpful wash-and-fold attendants and cleaners mentioned by name.', verdictType: 'positive' }
         ],
         employeeRoles: ['Attendant', 'Store manager', 'Driver', 'Wash-and-fold employee', 'Customer-service representative'],
         sensitiveTopics: ['Missing clothing', 'Property damage', 'Refund disputes', 'Safety', 'Theft allegations', 'Staff conduct'],
@@ -753,7 +771,7 @@ const industryPages = [
             'Two missing-item complaints require follow-up'
         ],
         multiLocationCopy: 'Manage review profiles across all coin-ops, dry cleaners, or wash-and-fold hubs. Let managers coordinate local approvals while regional owners track overall cleanliness ratings.',
-        pricingOffer: { label: 'Early-access offer', text: 'Standard autopilot plan is $39/mo per location.' },
+        pricingOffer: { label: 'Early-access offer', text: 'Founding laundry owners receive $29 per month for the first 12 months. Standard Autopilot pricing is $39 per month after the promotional period.' },
         faqItems: [
             { q: 'Can ReplyVera handle multiple laundromat locations?', a: 'Yes. Connect all your coin-op or laundry service profiles and oversee ratings across your regional footprint.' },
             { q: 'Can missing-item reviews be blocked from auto-publishing?', a: 'Yes. Any reviews mentioning lost items, clothing mix-ups, or refund demands are held in drafts, blocking auto-replies.' },
@@ -795,6 +813,24 @@ function renderIndustryPage(ind) {
     const featuresHtml = ind.features.map((feat, idx) => {
         // We alternate the flex-direction grid visual for high-end styling
         const isReversed = idx % 2 === 1;
+        
+        let safetyVerdict = 'No Risk Detected';
+        let safetyStatus = 'Safe to Auto-Publish';
+        let verdictColor = 'var(--accent)';
+        let thirdLine = 'Auto-Published';
+        
+        if (feat.verdictType === 'sensitive') {
+            safetyVerdict = 'Sensitive Topic Detected';
+            safetyStatus = 'Approval Required';
+            verdictColor = '#EF4444';
+            thirdLine = 'Auto-Publishing Blocked';
+        } else if (feat.verdictType === 'complaint') {
+            safetyVerdict = 'Complaint Detected';
+            safetyStatus = 'Review Recommended';
+            verdictColor = 'var(--primary-light)';
+            thirdLine = 'Manager Approval Recommended';
+        }
+
         return `
             <div class="feature-split" style="margin-bottom: 80px; ${isReversed ? 'flex-direction: row-reverse !important;' : ''}">
                 <div class="feature-content-box" style="flex:1;">
@@ -814,10 +850,13 @@ function renderIndustryPage(ind) {
                             <span>Topic Extracted:</span> <span style="color:#FFF;">"${feat.name}"</span>
                         </div>
                         <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
-                            <span>Safety Verdict:</span> <span style="color:var(--accent);">Safe to Publish</span>
+                            <span>Safety Verdict:</span> <span style="color:${verdictColor}; font-weight:700;">${safetyVerdict}</span>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                            <span>Status:</span> <span style="color:${verdictColor}; font-weight:700;">${safetyStatus}</span>
                         </div>
                         <div style="display:flex; justify-content:space-between;">
-                            <span>Status:</span> <span style="color:var(--primary-light);">Draft Ready</span>
+                            <span>Autopilot Action:</span> <span style="color:${verdictColor}; font-weight:700;">${thirdLine}</span>
                         </div>
                     </div>
                 </div>
@@ -932,15 +971,9 @@ function renderIndustryPage(ind) {
         </span>
     `).join('');
 
-    // Customize step-2 description based on industry type (Agencies gets different copy rules)
     const isAgency = ind.slug === 'agencies';
-    const step2Text = isAgency
-        ? 'ReplyVera automatically reviews each client review, extracting client tone rules, customer sentiment, employee mentions, and client safety warnings.'
-        : `ReplyVera scans incoming Google Business feedback, identifying student/diner/patient sentiment, mentioned ${ind.employeeRoles[0].toLowerCase()}s, and potential liability risks.`;
-
-    const step3Text = isAgency
-        ? 'Deploy client autopilot modes to auto-publish routine 5-star replies, routing billing or service disputes to client email approval queues.'
-        : `Publish routine replies immediately using a configurable publishing delay, while keeping sensitive reviews locked in drafts for manager confirmation.`;
+    const step2Text = ind.step2Text;
+    const step3Text = ind.step3Text;
 
     // Dynamic Mockup layout based on industry type
     let mockupLayoutHtml = '';
@@ -1227,7 +1260,7 @@ function renderIndustryPage(ind) {
         <div class="container text-center" style="max-width: 700px;">
             <div class="label-pill"><i data-lucide="credit-card" style="width:12px; height:12px;"></i> Simple Pricing</div>
             <h2 class="mb-4">Plans start at ${startPrice} per month</h2>
-            <p class="lead-text mb-8">Choose the plan that fits your business footprint. Lock in your rate today.</p>
+            <p class="lead-text mb-8">Choose the plan that fits your business footprint. Start your free trial today.</p>
             
             <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-current); padding: 40px; border-radius: 20px; box-shadow: var(--shadow-premium); margin-bottom: 32px; backdrop-filter: blur(20px); text-align:left; max-width:600px; margin-left:auto; margin-right:auto;">
                 <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:16px; margin-bottom:20px;">
