@@ -243,29 +243,40 @@ p { color: var(--text-secondary); line-height: 1.65; }
 .nav-logo {
     display: flex;
     align-items: center;
-    gap: 9px;
+    gap: 12px;
     text-decoration: none;
-    flex-shrink: 0;
+    z-index: 100;
 }
 
 .nav-logo-icon {
     width: 34px;
     height: 34px;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-    border-radius: 9px;
+    background: linear-gradient(135deg, #6C47FF 0%, #00C9A7 100%);
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #fff;
     flex-shrink: 0;
+    box-shadow: 0 4px 15px rgba(108, 71, 255, 0.4);
+}
+
+.nav-logo-icon i {
+    width: 17px;
+    height: 17px;
+    stroke-width: 2.5;
 }
 
 .nav-logo-text {
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     font-weight: 800;
-    letter-spacing: -0.03em;
-    color: #fff;
+    color: #F0F0FF;
+    letter-spacing: -0.02em;
 }
-.nav-logo-text span { color: var(--primary-light); }
+
+.nav-logo-text span {
+    color: #8B6FFF;
+}
 
 /* ─── Desktop Nav Links ─── */
 .nav-links {
