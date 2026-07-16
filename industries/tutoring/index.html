@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReplyVera for Tutoring Centers | Google Review Management</title>
+    <meta name="description" content="Automate Google review replies for tutoring and learning centers. Respond to parent praise, protect student privacy, and escalate academic score guarantee claims.">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <meta name="keywords" content="tutoring center review software, Google review replies for tutoring businesses, learning center reputation management, automatic tutoring review responses">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="../../index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+                <div style="width:36px;height:36px;background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;">
+                    <i data-lucide="reply" style="width:18px;height:18px;"></i>
+                </div>
+                <span style="font-size:1.45rem;font-weight:800;letter-spacing:-0.03em;color:#FFF;">Reply<span style="color:var(--primary-light);">Vera</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="../../index.html#features">Features</a>
+                <a href="../../index.html#how-it-works">How It Works</a>
+                <a href="#comparison">Comparison</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-btn">
+                        Industries <i data-lucide="chevron-down" style="width:14px;height:14px;"></i>
+                    </button>
+                    <div class="nav-dropdown-content">
+                        <div class="nav-dropdown-grid">
+                            <!-- Column 1 -->
+                            <a href="../restaurants" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper restaurant-icon">
+                                    <i data-lucide="utensils" style="width:16px;height:16px;"></i>
+                                </div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Restaurants</div>
+                                    <div class="dropdown-desc">Dining & hospitality</div>
+                                </div>
+                            </a>
+                            <a href="../dentists" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper dentist-icon">
+                                    <i data-lucide="activity" style="width:16px;height:16px;"></i>
+                                </div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Dentists & Clinics</div>
+                                    <div class="dropdown-desc">Privacy-conscious replies</div>
+                                </div>
+                            </a>
+                            <a href="../agencies" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper agency-icon">
+                                    <i data-lucide="briefcase" style="width:16px;height:16px;"></i>
+                                </div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Marketing Agencies</div>
+                                    <div class="dropdown-desc">Multi-location scale</div>
+                                </div>
+                            </a>
+                            <!-- Column 2 -->
+                            <a href="../martial-arts" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper martial-arts-icon">
+                                    <i data-lucide="swords" style="width:16px;height:16px;"></i>
+                                </div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Martial-Art Schools</div>
+                                    <div class="dropdown-desc">Student trust & sign-ups</div>
+                                </div>
+                            </a>
+                            <a href="../childcare" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper childcare-icon">
+                                    <i data-lucide="baby" style="width:16px;height:16px;"></i>
+                                </div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Childcare & Preschool</div>
+                                    <div class="dropdown-desc">Empathetic parenting tone</div>
+                                </div>
+                            </a>
+                            <a href="../tutoring" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper tutoring-icon">
+                                    <i data-lucide="graduation-cap" style="width:16px;height:16px;"></i>
+                                </div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Tutoring & Learning</div>
+                                    <div class="dropdown-desc">Pedagogical trust</div>
+                                </div>
+                            </a>
+                            <!-- Column 3 -->
+                            <a href="../pet-care" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper petcare-icon">
+                                    <i data-lucide="dog" style="width:16px;height:16px;"></i>
+                                </div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Pet Care & Boarding</div>
+                                    <div class="dropdown-desc">Caring owner feedback</div>
+                                </div>
+                            </a>
+                            <a href="../car-washes" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper carwash-icon">
+                                    <i data-lucide="car" style="width:16px;height:16px;"></i>
+                                </div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Car-Wash Operators</div>
+                                    <div class="dropdown-desc">Fast-paced local service</div>
+                                </div>
+                            </a>
+                            <a href="../laundromats" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper laundromat-icon">
+                                    <i data-lucide="washing-machine" style="width:16px;height:16px;"></i>
+                                </div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Laundromats</div>
+                                    <div class="dropdown-desc">Clean-clothes reputation</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <a href="#pricing">Pricing</a>
+                <a href="#faq">FAQ</a>
+            </div>
+            <div class="nav-actions">
+                <a href="https://replyvera-dashboard.vercel.app/login" style="color:#94A3B8;text-decoration:none;font-weight:500;font-size:0.95rem;transition:color var(--transition-fast);" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94A3B8'">Log In</a>
+                <a href="#pricing" class="btn btn-secondary" style="padding: 10px 20px; font-size: 0.9rem;">Start Free</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <header class="hero theme-dark" style="padding: 160px 0 80px;">
+        <div class="hero-glow-layer"></div>
+        <div class="container" style="display:grid; grid-template-columns:1.2fr 1fr; gap:40px; align-items:center;">
+            <div class="hero-content" style="text-align:left; max-width:100%;">
+                <div class="hero-badge" style="display:inline-flex; align-items:center; gap:6px; background:rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.2); padding: 6px 12px; border-radius: 50px; color: var(--primary-light); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 24px;">
+                    <i data-lucide="sparkles" style="width:12px; height:12px;"></i> Built for Tutoring & Learning
+                </div>
+                <h1 class="hero-headline" style="font-size:2.8rem; font-weight:800; line-height:1.1; margin-bottom:20px; color:#FFF;">Turn Every Parent Review<br />Into <span class="text-gradient">Student Trust</span></h1>
+                <p class="hero-sub" style="font-size:1.1rem; color:var(--text-secondary-current); margin-bottom:32px; line-height:1.6;">ReplyVera writes personalized Google review responses, recognizes outstanding tutors, and carefully handles concerns involving progress, refunds, billing, or student safety.</p>
+                <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center; margin-bottom:24px;">
+                    <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent" style="padding:14px 28px; font-size:0.95rem;">Start Your Free Trial</a>
+                    <a href="../../pricing.html" class="btn btn-secondary" style="padding:14px 28px; font-size:0.95rem;">Start for $39 per Month</a>
+                </div>
+                <p style="font-size:0.82rem; color:var(--text-secondary-current); font-weight:500;">Try ReplyVera free. 14-day free trial. No credit card required.</p>
+            </div>
+            
+            <!-- Static Product Mockup Graphic -->
+            <div style="background:rgba(255,255,255,0.01); border:1px solid var(--border-current); padding:32px; border-radius:20px; backdrop-filter:blur(20px); box-shadow:var(--shadow-premium); text-align:left;">
+                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:16px; margin-bottom:20px;">
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <div style="width:12px; height:12px; background:#EF4444; border-radius:50%;"></div>
+                        <div style="width:12px; height:12px; background:#F59E0B; border-radius:50%;"></div>
+                        <div style="width:12px; height:12px; background:#10B981; border-radius:50%;"></div>
+                    </div>
+                    <span style="font-size:0.75rem; font-weight:700; color:var(--primary-light); text-transform:uppercase;">ReplyVera Autopilot Panel</span>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:12px;">
+                    <div style="font-size:0.8rem; color:var(--text-secondary-current);">Connection status:</div>
+                    <div style="display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.02); border:1px solid var(--border-current); padding:12px; border-radius:8px;">
+                        <span style="font-weight:600; color:#FFF; display:flex; align-items:center; gap:6px;"><i data-lucide="google" style="color:#DB4437; width:16px; height:16px;"></i> Google Business Profile</span>
+                        <span style="font-size:0.75rem; font-weight:700; color:var(--accent); background:rgba(16, 185, 129, 0.08); padding:2px 8px; border-radius:4px;">Connected</span>
+                    </div>
+                    <div style="font-size:0.8rem; color:var(--text-secondary-current); margin-top:8px;">Recent Activity:</div>
+                    <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-current); padding:16px; border-radius:8px; font-family:monospace; font-size:0.82rem; color:#94A3B8;">
+                        <div style="margin-bottom:4px;">[12:24 PM] Google review scanned.</div>
+                        <div style="margin-bottom:4px; color:var(--accent);">[12:24 PM] Safe to Auto-Publish reply drafted.</div>
+                        <div style="color:var(--primary-light);">[12:25 PM] Autopilot response published successfully.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Problem Section -->
+    <section class="section theme-light" style="padding: 80px 0;">
+        <div class="container text-center" style="max-width: 700px; margin-bottom: 56px;">
+            <div class="label-pill"><i data-lucide="alert-circle" style="width:12px; height:12px;"></i> Core Challenges</div>
+            <h2 class="mb-4" style="color:#FFF;">Managing Reviews is Painful</h2>
+            <p class="lead-text" style="color:var(--text-secondary-current);">Here are the daily friction points businesses face without ReplyVera's review automation.</p>
+        </div>
+        
+        <div class="container">
+            <div class="grid-3" style="gap:24px;">
+                
+        <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-current); padding:24px; border-radius:12px; transition:transform var(--transition-fast);" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+            <div style="width:40px; height:40px; background:rgba(99, 102, 241, 0.08); color:var(--primary-light); border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+                <i data-lucide="book" style="width:20px; height:20px;"></i>
+            </div>
+            <h3 style="font-size:1.15rem; font-weight:700; color:#FFF; margin-bottom:8px;">Directors Teaching Classes</h3>
+            <p style="font-size:0.88rem; color:var(--text-secondary-current); line-height:1.5;">Learning center directors spend their afternoons teaching and enrolling students, leaving no time to monitor reviews.</p>
+        </div>
+    
+        <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-current); padding:24px; border-radius:12px; transition:transform var(--transition-fast);" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+            <div style="width:40px; height:40px; background:rgba(99, 102, 241, 0.08); color:var(--primary-light); border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+                <i data-lucide="smile" style="width:20px; height:20px;"></i>
+            </div>
+            <h3 style="font-size:1.15rem; font-weight:700; color:#FFF; margin-bottom:8px;">Parents Value Quick Feedback</h3>
+            <p style="font-size:0.88rem; color:var(--text-secondary-current); line-height:1.5;">Parents look closely at reviews when selecting educators, making prompt replies critical.</p>
+        </div>
+    
+        <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-current); padding:24px; border-radius:12px; transition:transform var(--transition-fast);" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+            <div style="width:40px; height:40px; background:rgba(99, 102, 241, 0.08); color:var(--primary-light); border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+                <i data-lucide="award" style="width:20px; height:20px;"></i>
+            </div>
+            <h3 style="font-size:1.15rem; font-weight:700; color:#FFF; margin-bottom:8px;">Uncollected Tutor Praise</h3>
+            <p style="font-size:0.88rem; color:var(--text-secondary-current); line-height:1.5;">Tutors who help children score high on tests deserve recognition, but positive feedback is rarely aggregated.</p>
+        </div>
+    
+        <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-current); padding:24px; border-radius:12px; transition:transform var(--transition-fast);" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+            <div style="width:40px; height:40px; background:rgba(99, 102, 241, 0.08); color:var(--primary-light); border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+                <i data-lucide="lock" style="width:20px; height:20px;"></i>
+            </div>
+            <h3 style="font-size:1.15rem; font-weight:700; color:#FFF; margin-bottom:8px;">Student Privacy Rules</h3>
+            <p style="font-size:0.88rem; color:var(--text-secondary-current); line-height:1.5;">Educators must be extremely careful to protect minor students' full names and academic records.</p>
+        </div>
+    
+        <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-current); padding:24px; border-radius:12px; transition:transform var(--transition-fast);" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+            <div style="width:40px; height:40px; background:rgba(99, 102, 241, 0.08); color:var(--primary-light); border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+                <i data-lucide="dollar-sign" style="width:20px; height:20px;"></i>
+            </div>
+            <h3 style="font-size:1.15rem; font-weight:700; color:#FFF; margin-bottom:8px;">Score Guarantees & Claims</h3>
+            <p style="font-size:0.88rem; color:var(--text-secondary-current); line-height:1.5;">Claims regarding promised test score improvements need careful review to avoid legal liabilities.</p>
+        </div>
+    
+        <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-current); padding:24px; border-radius:12px; transition:transform var(--transition-fast);" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+            <div style="width:40px; height:40px; background:rgba(99, 102, 241, 0.08); color:var(--primary-light); border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+                <i data-lucide="credit-card" style="width:20px; height:20px;"></i>
+            </div>
+            <h3 style="font-size:1.15rem; font-weight:700; color:#FFF; margin-bottom:8px;">Billing & Refund Disputes</h3>
+            <p style="font-size:0.88rem; color:var(--text-secondary-current); line-height:1.5;">Disputes over monthly tuition or package refunds must be handled quietly and offline.</p>
+        </div>
+    
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Customer Profile Preview Section -->
+    <section class="section theme-gray" style="padding: 60px 0; border-top:1px solid var(--border-current); border-bottom:1px solid var(--border-current);">
+        <div class="container text-center" style="max-width: 600px; margin-bottom: 32px;">
+            <h3 style="font-size:1.4rem; font-weight:700; color:#FFF;">Designed specifically for:</h3>
+        </div>
+        <div class="container">
+            <div style="display:flex; justify-content:center; gap:24px; flex-wrap:wrap; max-width:800px; margin:0 auto;">
+                
+        <div style="display:flex; align-items:center; gap:8px; color:var(--text-primary-current); font-size:0.95rem;">
+            <i data-lucide="check-circle" style="color:var(--accent); width:18px; height:18px; flex-shrink:0;"></i> Tutoring centers
+        </div>
+    
+        <div style="display:flex; align-items:center; gap:8px; color:var(--text-primary-current); font-size:0.95rem;">
+            <i data-lucide="check-circle" style="color:var(--accent); width:18px; height:18px; flex-shrink:0;"></i> Test prep academies
+        </div>
+    
+        <div style="display:flex; align-items:center; gap:8px; color:var(--text-primary-current); font-size:0.95rem;">
+            <i data-lucide="check-circle" style="color:var(--accent); width:18px; height:18px; flex-shrink:0;"></i> Learning franchises
+        </div>
+    
+        <div style="display:flex; align-items:center; gap:8px; color:var(--text-primary-current); font-size:0.95rem;">
+            <i data-lucide="check-circle" style="color:var(--accent); width:18px; height:18px; flex-shrink:0;"></i> STEM centers
+        </div>
+    
+        <div style="display:flex; align-items:center; gap:8px; color:var(--text-primary-current); font-size:0.95rem;">
+            <i data-lucide="check-circle" style="color:var(--accent); width:18px; height:18px; flex-shrink:0;"></i> Language schools
+        </div>
+    
+        <div style="display:flex; align-items:center; gap:8px; color:var(--text-primary-current); font-size:0.95rem;">
+            <i data-lucide="check-circle" style="color:var(--accent); width:18px; height:18px; flex-shrink:0;"></i> Private educators
+        </div>
+    
+            </div>
+        </div>
+    </section>
+
+    <!-- How ReplyVera Works -->
+    <section class="section theme-white" style="padding: 80px 0;" id="how-it-works">
+        <div class="container text-center" style="max-width: 700px; margin-bottom: 56px;">
+            <div class="label-pill"><i data-lucide="settings" style="width:12px; height:12px;"></i> Connection Setup</div>
+            <h2 class="mb-4">Reputation autopilot in 3 steps</h2>
+            <p class="lead-text">Connect your Google Business Profile and let ReplyVera take over the heavy lifting.</p>
+        </div>
+        <div class="container">
+            <div class="grid-3" style="gap:32px;">
+                <div style="background:rgba(255,255,255,0.01); border:1px solid var(--border-current); padding:32px; border-radius:12px;">
+                    <div style="width:40px; height:40px; background:rgba(99,102,241,0.08); color:var(--primary-light); border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem; margin-bottom:20px;">1</div>
+                    <h3 style="font-size:1.2rem; font-weight:700; color:#FFF; margin-bottom:12px;">Connect Google Profile</h3>
+                    <p style="font-size:0.9rem; color:var(--text-secondary-current); line-height:1.5;">Securely authorize your Google Business Profile in one click. No long integrations or setup fees.</p>
+                </div>
+                <div style="background:rgba(255,255,255,0.01); border:1px solid var(--border-current); padding:32px; border-radius:12px;">
+                    <div style="width:40px; height:40px; background:rgba(99,102,241,0.08); color:var(--primary-light); border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem; margin-bottom:20px;">2</div>
+                    <h3 style="font-size:1.2rem; font-weight:700; color:#FFF; margin-bottom:12px;">Configure Tone</h3>
+                    <p style="font-size:0.9rem; color:var(--text-secondary-current); line-height:1.5;">Choose a brand tone and set guardrails. Select which ratings autopost and which route to approval.</p>
+                </div>
+                <div style="background:rgba(255,255,255,0.01); border:1px solid var(--border-current); padding:32px; border-radius:12px;">
+                    <div style="width:40px; height:40px; background:rgba(99,102,241,0.08); color:var(--primary-light); border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem; margin-bottom:20px;">3</div>
+                    <h3 style="font-size:1.2rem; font-weight:700; color:#FFF; margin-bottom:12px;">Save Admin Hours</h3>
+                    <p style="font-size:0.9rem; color:var(--text-secondary-current); line-height:1.5;">Replies publish instantly. Enjoy consistent support coverage and improved local SEO map rankings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industry Specific Features -->
+    <section class="section theme-dark" style="padding: 80px 0;">
+        <div class="container">
+            
+        <div class="feature-split" style="margin-bottom: 80px; ">
+            <div class="feature-content-box" style="flex:1;">
+                <div class="label-pill"><i data-lucide="award" style="width:12px; height:12px;"></i> Tutor Praise Tracking</div>
+                <h2 class="mb-4" style="font-size:1.8rem; font-weight:800; color:#FFF;">Built for Tutoring & Learning</h2>
+                <p class="mb-6" style="font-size:1.05rem; color:var(--text-secondary-current);">Extracts references to specific educators (like Emily) and logs their positive review highlights.</p>
+                <ul class="feature-list" style="list-style:none; padding:0; display:flex; flex-direction:column; gap:12px;">
+                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Automated scanning and tags</li>
+                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Contextual brand voice replies</li>
+                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Safe draft queue routing</li>
+                </ul>
+            </div>
+            <div class="feature-visual-box" style="flex:1; background:rgba(255,255,255,0.01); border:1px solid var(--border-current); padding:32px; border-radius:16px; display:flex; flex-direction:column; justify-content:center; text-align:left;">
+                <div style="font-size:0.75rem; font-weight:700; color:var(--primary-light); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:12px;">Auto-Pilot Analysis</div>
+                <div style="background:#05050C; padding:20px; border-radius:8px; border:1px solid rgba(255,255,255,0.05); font-family:monospace; font-size:0.85rem; color:#94A3B8;">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                        <span>Topic Extracted:</span> <span style="color:#FFF;">"Tutor Praise Tracking"</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                        <span>Safety Verdict:</span> <span style="color:var(--accent);">Safe to Publish</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between;">
+                        <span>Status:</span> <span style="color:var(--primary-light);">Draft Ready</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="feature-split" style="margin-bottom: 80px; flex-direction: row-reverse !important;">
+            <div class="feature-content-box" style="flex:1;">
+                <div class="label-pill"><i data-lucide="lock" style="width:12px; height:12px;"></i> Privacy-Conscious Safeguards</div>
+                <h2 class="mb-4" style="font-size:1.8rem; font-weight:800; color:#FFF;">Built for Tutoring & Learning</h2>
+                <p class="mb-6" style="font-size:1.05rem; color:var(--text-secondary-current);">Ensures responses thank the reviewer without confirming minor student names or class grades.</p>
+                <ul class="feature-list" style="list-style:none; padding:0; display:flex; flex-direction:column; gap:12px;">
+                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Automated scanning and tags</li>
+                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Contextual brand voice replies</li>
+                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Safe draft queue routing</li>
+                </ul>
+            </div>
+            <div class="feature-visual-box" style="flex:1; background:rgba(255,255,255,0.01); border:1px solid var(--border-current); padding:32px; border-radius:16px; display:flex; flex-direction:column; justify-content:center; text-align:left;">
+                <div style="font-size:0.75rem; font-weight:700; color:var(--primary-light); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:12px;">Auto-Pilot Analysis</div>
+                <div style="background:#05050C; padding:20px; border-radius:8px; border:1px solid rgba(255,255,255,0.05); font-family:monospace; font-size:0.85rem; color:#94A3B8;">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                        <span>Topic Extracted:</span> <span style="color:#FFF;">"Privacy-Conscious Safeguards"</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                        <span>Safety Verdict:</span> <span style="color:var(--accent);">Safe to Publish</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between;">
+                        <span>Status:</span> <span style="color:var(--primary-light);">Draft Ready</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="feature-split" style="margin-bottom: 80px; ">
+            <div class="feature-content-box" style="flex:1;">
+                <div class="label-pill"><i data-lucide="alert-triangle" style="width:12px; height:12px;"></i> Academic Guarantee Scanners</div>
+                <h2 class="mb-4" style="font-size:1.8rem; font-weight:800; color:#FFF;">Built for Tutoring & Learning</h2>
+                <p class="mb-6" style="font-size:1.05rem; color:var(--text-secondary-current);">Identifies words like "guaranteed score", "pass", or "fail" and routes them to managers for approval.</p>
+                <ul class="feature-list" style="list-style:none; padding:0; display:flex; flex-direction:column; gap:12px;">
+                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Automated scanning and tags</li>
+                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Contextual brand voice replies</li>
+                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Safe draft queue routing</li>
+                </ul>
+            </div>
+            <div class="feature-visual-box" style="flex:1; background:rgba(255,255,255,0.01); border:1px solid var(--border-current); padding:32px; border-radius:16px; display:flex; flex-direction:column; justify-content:center; text-align:left;">
+                <div style="font-size:0.75rem; font-weight:700; color:var(--primary-light); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:12px;">Auto-Pilot Analysis</div>
+                <div style="background:#05050C; padding:20px; border-radius:8px; border:1px solid rgba(255,255,255,0.05); font-family:monospace; font-size:0.85rem; color:#94A3B8;">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                        <span>Topic Extracted:</span> <span style="color:#FFF;">"Academic Guarantee Scanners"</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                        <span>Safety Verdict:</span> <span style="color:var(--accent);">Safe to Publish</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between;">
+                        <span>Status:</span> <span style="color:var(--primary-light);">Draft Ready</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="feature-split" style="margin-bottom: 80px; flex-direction: row-reverse !important;">
+            <div class="feature-content-box" style="flex:1;">
+                <div class="label-pill"><i data-lucide="credit-card" style="width:12px; height:12px;"></i> Refund & Billing Filters</div>
+                <h2 class="mb-4" style="font-size:1.8rem; font-weight:800; color:#FFF;">Built for Tutoring & Learning</h2>
+                <p class="mb-6" style="font-size:1.05rem; color:var(--text-secondary-current);">Automatically blocks auto-publishing for billing issues, routing them to director drafts.</p>
+                <ul class="feature-list" style="list-style:none; padding:0; display:flex; flex-direction:column; gap:12px;">
+                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Automated scanning and tags</li>
+                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Contextual brand voice replies</li>
+                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Safe draft queue routing</li>
+                </ul>
+            </div>
+            <div class="feature-visual-box" style="flex:1; background:rgba(255,255,255,0.01); border:1px solid var(--border-current); padding:32px; border-radius:16px; display:flex; flex-direction:column; justify-content:center; text-align:left;">
+                <div style="font-size:0.75rem; font-weight:700; color:var(--primary-light); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:12px;">Auto-Pilot Analysis</div>
+                <div style="background:#05050C; padding:20px; border-radius:8px; border:1px solid rgba(255,255,255,0.05); font-family:monospace; font-size:0.85rem; color:#94A3B8;">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                        <span>Topic Extracted:</span> <span style="color:#FFF;">"Refund & Billing Filters"</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                        <span>Safety Verdict:</span> <span style="color:var(--accent);">Safe to Publish</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between;">
+                        <span>Status:</span> <span style="color:var(--primary-light);">Draft Ready</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="feature-split" style="margin-bottom: 80px; ">
+            <div class="feature-content-box" style="flex:1;">
+                <div class="label-pill"><i data-lucide="languages" style="width:12px; height:12px;"></i> Fluent Bilingual Support</div>
+                <h2 class="mb-4" style="font-size:1.8rem; font-weight:800; color:#FFF;">Built for Tutoring & Learning</h2>
+                <p class="mb-6" style="font-size:1.05rem; color:var(--text-secondary-current);">Responds naturally to parent reviews written in both English and Spanish.</p>
+                <ul class="feature-list" style="list-style:none; padding:0; display:flex; flex-direction:column; gap:12px;">
+                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Automated scanning and tags</li>
+                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Contextual brand voice replies</li>
+                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Safe draft queue routing</li>
+                </ul>
+            </div>
+            <div class="feature-visual-box" style="flex:1; background:rgba(255,255,255,0.01); border:1px solid var(--border-current); padding:32px; border-radius:16px; display:flex; flex-direction:column; justify-content:center; text-align:left;">
+                <div style="font-size:0.75rem; font-weight:700; color:var(--primary-light); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:12px;">Auto-Pilot Analysis</div>
+                <div style="background:#05050C; padding:20px; border-radius:8px; border:1px solid rgba(255,255,255,0.05); font-family:monospace; font-size:0.85rem; color:#94A3B8;">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                        <span>Topic Extracted:</span> <span style="color:#FFF;">"Fluent Bilingual Support"</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                        <span>Safety Verdict:</span> <span style="color:var(--accent);">Safe to Publish</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between;">
+                        <span>Status:</span> <span style="color:var(--primary-light);">Draft Ready</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="feature-split" style="margin-bottom: 80px; flex-direction: row-reverse !important;">
+            <div class="feature-content-box" style="flex:1;">
+                <div class="label-pill"><i data-lucide="map" style="width:12px; height:12px;"></i> Multi-Center Administration</div>
+                <h2 class="mb-4" style="font-size:1.8rem; font-weight:800; color:#FFF;">Built for Tutoring & Learning</h2>
+                <p class="mb-6" style="font-size:1.05rem; color:var(--text-secondary-current);">Allows learning center franchises to monitor local ratings and response times across all cities.</p>
+                <ul class="feature-list" style="list-style:none; padding:0; display:flex; flex-direction:column; gap:12px;">
+                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Automated scanning and tags</li>
+                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Contextual brand voice replies</li>
+                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Safe draft queue routing</li>
+                </ul>
+            </div>
+            <div class="feature-visual-box" style="flex:1; background:rgba(255,255,255,0.01); border:1px solid var(--border-current); padding:32px; border-radius:16px; display:flex; flex-direction:column; justify-content:center; text-align:left;">
+                <div style="font-size:0.75rem; font-weight:700; color:var(--primary-light); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:12px;">Auto-Pilot Analysis</div>
+                <div style="background:#05050C; padding:20px; border-radius:8px; border:1px solid rgba(255,255,255,0.05); font-family:monospace; font-size:0.85rem; color:#94A3B8;">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                        <span>Topic Extracted:</span> <span style="color:#FFF;">"Multi-Center Administration"</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                        <span>Safety Verdict:</span> <span style="color:var(--accent);">Safe to Publish</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between;">
+                        <span>Status:</span> <span style="color:var(--primary-light);">Draft Ready</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        </div>
+    </section>
+
+    <!-- Realistic Review Examples -->
+    <section class="section theme-light" style="padding: 80px 0;">
+        <div class="container text-center" style="max-width: 700px; margin-bottom: 56px;">
+            <div class="label-pill"><i data-lucide="eye" style="width:12px; height:12px;"></i> Interactive Examples</div>
+            <h2 class="mb-4" style="color:#FFF;">Review Response Workflows</h2>
+            <p class="lead-text" style="color:var(--text-secondary-current);">See how ReplyVera handles positive reviews automatically while escalating complex ones for manager draft approval.</p>
+        </div>
+        <div class="container">
+            <div class="grid-3" style="gap:24px;">
+                
+            <div style="background:var(--bg-card-current); border:1px solid var(--border-current); box-shadow:none; padding:28px; border-radius:16px; text-align:left; display:flex; flex-direction:column; justify-content:space-between;">
+                <div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+                        <div>
+                            <span style="font-weight:700; color:#FFF; font-size:0.95rem;">Jonathan Sterling</span>
+                            <div style="display:flex; gap:2px; margin-top:2px;">
+                                <i data-lucide="star" style="fill:#F59E0B; color:#F59E0B; width:12px; height:12px;"></i><i data-lucide="star" style="fill:#F59E0B; color:#F59E0B; width:12px; height:12px;"></i><i data-lucide="star" style="fill:#F59E0B; color:#F59E0B; width:12px; height:12px;"></i><i data-lucide="star" style="fill:#F59E0B; color:#F59E0B; width:12px; height:12px;"></i><i data-lucide="star" style="fill:#F59E0B; color:#F59E0B; width:12px; height:12px;"></i>
+                                
+                            </div>
+                        </div>
+                        <span style="font-size:0.75rem; color:var(--text-secondary-current);">Google Review</span>
+                    </div>
+                    <p style="font-style:italic; font-size:0.95rem; color:var(--text-primary-current); margin-bottom:20px; line-height:1.5;">"Emily helped my son understand algebra and become more confident."</p>
+                </div>
+                <div style="background:rgba(255,255,255,0.01); border:1px solid rgba(255,255,255,0.04); padding:16px; border-radius:10px; margin-top:auto;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; font-size:0.72rem; font-weight:800; letter-spacing:0.03em;">
+                        <span style="color:var(--primary-light); text-transform:uppercase;"><i data-lucide="cpu" style="width:12px; height:12px; vertical-align:middle; margin-right:4px;"></i> Autopilot Reply</span>
+                        <span style="color:var(--accent); background:rgba(16, 185, 129, 0.08); padding:2px 8px; border-radius:4px; text-transform:uppercase;">Safe to Auto-Publish</span>
+                    </div>
+                    <p style="font-size:0.88rem; color:#E2E8F0; line-height:1.5;">"Thank you for sharing your experience! We’re delighted that Emily helped make algebra more understandable and supported your son’s confidence. We’ll be sure to share your kind words with her."</p>
+                </div>
+            </div>
+        
+            <div style="background:var(--bg-card-current); border:1.5px solid #EF4444; box-shadow:0 0 15px rgba(239, 68, 68, 0.1); padding:28px; border-radius:16px; text-align:left; display:flex; flex-direction:column; justify-content:space-between;">
+                <div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+                        <div>
+                            <span style="font-weight:700; color:#FFF; font-size:0.95rem;">Claire Winters</span>
+                            <div style="display:flex; gap:2px; margin-top:2px;">
+                                <i data-lucide="star" style="fill:#F59E0B; color:#F59E0B; width:12px; height:12px;"></i><i data-lucide="star" style="fill:#F59E0B; color:#F59E0B; width:12px; height:12px;"></i>
+                                <i data-lucide="star" style="color:#CBD5E1; width:12px; height:12px;"></i><i data-lucide="star" style="color:#CBD5E1; width:12px; height:12px;"></i><i data-lucide="star" style="color:#CBD5E1; width:12px; height:12px;"></i>
+                            </div>
+                        </div>
+                        <span style="font-size:0.75rem; color:var(--text-secondary-current);">Google Review</span>
+                    </div>
+                    <p style="font-style:italic; font-size:0.95rem; color:var(--text-primary-current); margin-bottom:20px; line-height:1.5;">"We did not see the test score improvement we expected."</p>
+                </div>
+                <div style="background:rgba(255,255,255,0.01); border:1px solid rgba(255,255,255,0.04); padding:16px; border-radius:10px; margin-top:auto;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; font-size:0.72rem; font-weight:800; letter-spacing:0.03em;">
+                        <span style="color:var(--primary-light); text-transform:uppercase;"><i data-lucide="cpu" style="width:12px; height:12px; vertical-align:middle; margin-right:4px;"></i> Autopilot Reply</span>
+                        <span style="color:#EF4444; background:rgba(239, 68, 68, 0.08); padding:2px 8px; border-radius:4px; text-transform:uppercase;">Manager Approval Required</span>
+                    </div>
+                    <p style="font-size:0.88rem; color:#E2E8F0; line-height:1.5;">"Thank you for your feedback. We aim to help every student succeed. Please reach out to our center director so we can review your child's progress plan and support options."</p>
+                </div>
+            </div>
+        
+            <div style="background:var(--bg-card-current); border:1.5px solid #EF4444; box-shadow:0 0 15px rgba(239, 68, 68, 0.1); padding:28px; border-radius:16px; text-align:left; display:flex; flex-direction:column; justify-content:space-between;">
+                <div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+                        <div>
+                            <span style="font-weight:700; color:#FFF; font-size:0.95rem;">Michael Brody</span>
+                            <div style="display:flex; gap:2px; margin-top:2px;">
+                                <i data-lucide="star" style="fill:#F59E0B; color:#F59E0B; width:12px; height:12px;"></i>
+                                <i data-lucide="star" style="color:#CBD5E1; width:12px; height:12px;"></i><i data-lucide="star" style="color:#CBD5E1; width:12px; height:12px;"></i><i data-lucide="star" style="color:#CBD5E1; width:12px; height:12px;"></i><i data-lucide="star" style="color:#CBD5E1; width:12px; height:12px;"></i>
+                            </div>
+                        </div>
+                        <span style="font-size:0.75rem; color:var(--text-secondary-current);">Google Review</span>
+                    </div>
+                    <p style="font-style:italic; font-size:0.95rem; color:var(--text-primary-current); margin-bottom:20px; line-height:1.5;">"The center promised a specific test-score increase but refused a refund."</p>
+                </div>
+                <div style="background:rgba(255,255,255,0.01); border:1px solid rgba(255,255,255,0.04); padding:16px; border-radius:10px; margin-top:auto;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; font-size:0.72rem; font-weight:800; letter-spacing:0.03em;">
+                        <span style="color:var(--primary-light); text-transform:uppercase;"><i data-lucide="cpu" style="width:12px; height:12px; vertical-align:middle; margin-right:4px;"></i> Autopilot Reply</span>
+                        <span style="color:#EF4444; background:rgba(239, 68, 68, 0.08); padding:2px 8px; border-radius:4px; text-transform:uppercase;">Academic Claim Detected - Manual Review Required</span>
+                    </div>
+                    <p style="font-size:0.88rem; color:#E2E8F0; line-height:1.5;">"Guarantee concern detected. Response locked in drafts. Immediate email alert dispatched to learning center manager."</p>
+                </div>
+            </div>
+        
+            </div>
+        </div>
+    </section>
+
+    <!-- Escalation & Employee & Operational Insights Section -->
+    <section class="section theme-gray" style="padding: 80px 0; border-top:1px solid var(--border-current); border-bottom:1px solid var(--border-current);">
+        <div class="container" style="display:grid; grid-template-columns:1fr 1fr; gap:40px;">
+            <div style="text-align:left;">
+                <div class="label-pill" style="margin-bottom:16px;"><i data-lucide="shield-alert" style="width:12px; height:12px;"></i> Risk Control</div>
+                <h2 style="font-size:1.8rem; font-weight:800; color:#FFF; margin-bottom:16px;">Supervision & Escalation Guardrails</h2>
+                <p style="color:var(--text-secondary-current); margin-bottom:24px; line-height:1.6;">ReplyVera never auto-posts blindly. Our scanners flag safety hazards, injuries, cancellation disputes, or billing errors, alerting managers immediately and locking the reviews in drafts.</p>
+                <div style="background:#05050C; padding:20px; border-radius:12px; border:1px solid var(--border-current); display:flex; flex-direction:column; gap:12px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.88rem;">
+                        <span style="color:#FFF; font-weight:600;"><i data-lucide="search" style="width:14px; height:14px; vertical-align:middle; margin-right:6px; color:var(--primary-light);"></i> Auto-Draft Guardrails</span>
+                        <span style="color:var(--accent); font-weight:700;">Active</span>
+                    </div>
+                    <p style="font-size:0.82rem; color:var(--text-secondary-current); line-height:1.4; margin:0;">Reviews containing negative trigger words or ratings below 4 stars bypass automatic posting and are sent straight to your email alerts.</p>
+                </div>
+            </div>
+            
+            <div style="text-align:left; display:flex; flex-direction:column; justify-content:center;">
+                <div class="label-pill" style="margin-bottom:16px;"><i data-lucide="bar-chart-2" style="width:12px; height:12px;"></i> Reputation Analytics</div>
+                <h2 style="font-size:1.8rem; font-weight:800; color:#FFF; margin-bottom:16px;">Operational Insights & Staff Leaderboard</h2>
+                <p style="color:var(--text-secondary-current); margin-bottom:24px; line-height:1.6;">Track review volume, average ratings, and positive mentions of team members automatically extracted from Google customer feedback.</p>
+                <div style="display:flex; flex-direction:column; gap:12px;">
+                    
+        <div style="display:flex; align-items:center; gap:12px; background:rgba(255,255,255,0.02); border:1px solid var(--border-current); padding:16px 20px; border-radius:10px; color:#FFF; font-size:0.95rem; font-weight:500;">
+            <i data-lucide="trending-up" style="color:var(--accent); width:18px; height:18px; flex-shrink:0;"></i>
+            <span>Emily (Algebra Tutor) received 7 positive parent mentions</span>
+        </div>
+    
+        <div style="display:flex; align-items:center; gap:12px; background:rgba(255,255,255,0.02); border:1px solid var(--border-current); padding:16px 20px; border-radius:10px; color:#FFF; font-size:0.95rem; font-weight:500;">
+            <i data-lucide="trending-up" style="color:var(--accent); width:18px; height:18px; flex-shrink:0;"></i>
+            <span>Scheduling and session booking complaints increased this month</span>
+        </div>
+    
+        <div style="display:flex; align-items:center; gap:12px; background:rgba(255,255,255,0.02); border:1px solid var(--border-current); padding:16px 20px; border-radius:10px; color:#FFF; font-size:0.95rem; font-weight:500;">
+            <i data-lucide="trending-up" style="color:var(--accent); width:18px; height:18px; flex-shrink:0;"></i>
+            <span>Parents frequently praise confidence and score improvement</span>
+        </div>
+    
+        <div style="display:flex; align-items:center; gap:12px; background:rgba(255,255,255,0.02); border:1px solid var(--border-current); padding:16px 20px; border-radius:10px; color:#FFF; font-size:0.95rem; font-weight:500;">
+            <i data-lucide="trending-up" style="color:var(--accent); width:18px; height:18px; flex-shrink:0;"></i>
+            <span>Refund and billing complaints are concentrated at the Suburban location</span>
+        </div>
+    
+        <div style="display:flex; align-items:center; gap:12px; background:rgba(255,255,255,0.02); border:1px solid var(--border-current); padding:16px 20px; border-radius:10px; color:#FFF; font-size:0.95rem; font-weight:500;">
+            <i data-lucide="trending-up" style="color:var(--accent); width:18px; height:18px; flex-shrink:0;"></i>
+            <span>Test-preparation programs have the highest review satisfaction ratings</span>
+        </div>
+    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Preview Block -->
+    <section class="section theme-dark" id="pricing" style="padding: 80px 0;">
+        <div class="container text-center" style="max-width: 700px;">
+            <div class="label-pill"><i data-lucide="credit-card" style="width:12px; height:12px;"></i> Simple Pricing</div>
+            <h2 class="mb-4">Standard pricing starting at $29 per month</h2>
+            <p class="lead-text mb-8">Choose the plan that fits your business. All plans support Google Reviews.</p>
+            
+            <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-current); padding: 40px; border-radius: 20px; box-shadow: var(--shadow-premium); margin-bottom: 32px; backdrop-filter: blur(20px); text-align:left; max-width:600px; margin-left:auto; margin-right:auto;">
+                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:16px; margin-bottom:20px;">
+                    <div>
+                        <div style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary-light); font-weight: 700;">Autopilot Plan</div>
+                        <div style="font-size: 0.82rem; color:var(--accent); font-weight:700; margin-top:2px;">Most Popular</div>
+                    </div>
+                    <div style="text-align:right;">
+                        <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;">$39</span>
+                        <span style="color: var(--text-secondary-current); font-size: 0.88rem;">/ mo / location</span>
+                    </div>
+                </div>
+                
+                <ul style="list-style:none; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:12px; font-size:0.9rem; margin-bottom:32px;">
+                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Google review responses</li>
+                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Auto-publishing for safe reviews</li>
+                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Approval rules for negatives</li>
+                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Custom business tone</li>
+                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> English and Spanish</li>
+                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Employee-name recognition</li>
+                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Review history logs</li>
+                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Negative-review alerts</li>
+                </ul>
+
+                <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; align-items: center;">
+                    <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent" style="padding: 14px 28px; font-size: 0.95rem; flex:1; text-align:center;">Start Your Free Trial</a>
+                    <a href="../../pricing.html" class="btn btn-secondary" style="padding: 14px 28px; font-size: 0.95rem; flex:1; text-align:center;">View All Plans</a>
+                </div>
+            </div>
+            
+            <p style="font-size: 0.85rem; color: var(--text-secondary-current); font-weight: 500;">
+                Currently supported: Google Reviews. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.
+            </p>
+        </div>
+    </section>
+
+    <!-- Industry Specific FAQ -->
+    <section class="section theme-white" id="faq" style="padding: 80px 0;">
+        <div class="container" style="max-width: 800px;">
+            <div class="text-center mb-12">
+                <div class="label-pill"><i data-lucide="help-circle" style="width:12px; height:12px;"></i> FAQ</div>
+                <h2 class="mb-4">Frequently Asked Questions</h2>
+                <p>Everything you need to know about ReplyVera for Tutoring & Learning.</p>
+            </div>
+            
+            <div class="faq-list" style="display:flex; flex-direction:column; gap:4px;">
+                
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Does ReplyVera reveal minor student information?</span>
+                <div class="faq-icon-wrapper"><i data-lucide="chevron-down"></i></div>
+            </div>
+            <div class="faq-answer">
+                <p>No. ReplyVera is programmed to protect privacy. It drafts professional responses that thank the parents without referencing minor names or grades.</p>
+            </div>
+        </div>
+    
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Can score guarantee concerns be blocked from auto-publishing?</span>
+                <div class="faq-icon-wrapper"><i data-lucide="chevron-down"></i></div>
+            </div>
+            <div class="faq-answer">
+                <p>Yes. ReplyVera's academic claim scanners block auto-publishing for any reviews mentioning promises, guarantees, or grade scores, ensuring manager approval.</p>
+            </div>
+        </div>
+    
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Can multiple center locations be managed?</span>
+                <div class="faq-icon-wrapper"><i data-lucide="chevron-down"></i></div>
+            </div>
+            <div class="faq-answer">
+                <p>Yes. Franchise owners and regional managers can connect multiple Google Business Profile locations and monitor everything from one screen.</p>
+            </div>
+        </div>
+    
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Can instructors approve replies?</span>
+                <div class="faq-icon-wrapper"><i data-lucide="chevron-down"></i></div>
+            </div>
+            <div class="faq-answer">
+                <p>Yes. You can invite center directors, coordinators, or administrators to review and approve drafts.</p>
+            </div>
+        </div>
+    
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Which review platforms are supported?</span>
+                <div class="faq-icon-wrapper"><i data-lucide="chevron-down"></i></div>
+            </div>
+            <div class="faq-answer">
+                <p>ReplyVera currently automates Google Reviews. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future tutoring center rollouts.</p>
+            </div>
+        </div>
+    
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Call to Action -->
+    <section class="section theme-dark" style="border-top: 1px solid rgba(255, 255, 255, 0.04); padding: 80px 0;">
+        <div class="container text-center" style="max-width: 650px;">
+            <h2 class="mb-4" style="color:#FFF;">Start Answering Every Google Review</h2>
+            <p class="mb-8" style="color:var(--text-secondary-current);">Connect your Google Business Profile and let ReplyVera handle routine responses while you stay in control of sensitive feedback.</p>
+            
+            <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-bottom:32px; align-items:center;">
+                <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent" style="padding: 14px 28px; font-size:0.95rem;">Start Your Free Trial</a>
+                <a href="../../pricing.html#comparison" style="color: #94A3B8; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color var(--transition-fast);" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94A3B8'">Compare Plans</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Industries -->
+    <section class="section theme-gray" style="padding: 40px 0; border-top:1px solid var(--border-current);">
+        <div class="container text-center">
+            <div style="font-size:0.8rem; font-weight:700; color:var(--text-secondary-current); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px;">Related Industries</div>
+            <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap; align-items:center;">
+                
+        <a href="../childcare" style="color:var(--primary-light); text-decoration:none; font-weight:600; font-size:0.92rem; border: 1px solid rgba(99, 102, 241, 0.15); background:rgba(99,102,241,0.02); padding:8px 16px; border-radius:50px; transition:all var(--transition-fast);" onmouseover="this.style.borderColor='var(--primary-light)';this.style.background='rgba(99,102,241,0.08)';" onmouseout="this.style.borderColor='rgba(99, 102, 241, 0.15)';this.style.background='rgba(99,102,241,0.02)';">
+            Childcare <i data-lucide="arrow-right" style="width:12px; height:12px; display:inline-block; vertical-align:middle; margin-left:4px;"></i>
+        </a>
+    
+        <a href="../martial-arts" style="color:var(--primary-light); text-decoration:none; font-weight:600; font-size:0.92rem; border: 1px solid rgba(99, 102, 241, 0.15); background:rgba(99,102,241,0.02); padding:8px 16px; border-radius:50px; transition:all var(--transition-fast);" onmouseover="this.style.borderColor='var(--primary-light)';this.style.background='rgba(99,102,241,0.08)';" onmouseout="this.style.borderColor='rgba(99, 102, 241, 0.15)';this.style.background='rgba(99,102,241,0.02)';">
+            Martial Arts <i data-lucide="arrow-right" style="width:12px; height:12px; display:inline-block; vertical-align:middle; margin-left:4px;"></i>
+        </a>
+    
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand-box">
+                    <a href="#" style="display:flex;align-items:center;gap:12px;text-decoration:none; margin-bottom:20px;">
+                        <div style="width:30px;height:30px;background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;">
+                            <i data-lucide="reply" style="width:16px;height:16px;"></i>
+                        </div>
+                        <span style="font-size:1.25rem;font-weight:800;letter-spacing:-0.03em;color:#FFF;">ReplyVera</span>
+                    </a>
+                    <p style="color:#94A3B8;">The review autopilot trusted by storefronts, franchises, and agencies to protect their online reputation.</p>
+                    <p style="color:#64748B; font-size:0.8rem; margin-top:12px;">Currently supporting Google Reviews. Additional platforms are planned.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-col-title">Product</div>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-col-title">Company</div>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@replyvera.com">Contact Us</a></li>
+                        <li><a href="https://replyvera-dashboard.vercel.app/login">Login</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-col-title">Legal</div>
+                    <ul class="footer-links">
+                        <li><a href="../../terms.html">Terms of Service</a></li>
+                        <li><a href="../../privacy.html">Privacy Policy</a></li>
+                        <li><a href="../../cookie.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div>&copy; 2026 ReplyVera. All rights reserved.</div>
+                <div class="social-links">
+                    <a href="#"><i data-lucide="twitter" style="width:18px; height:18px;"></i></a>
+                    <a href="#"><i data-lucide="linkedin" style="width:18px; height:18px;"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>
