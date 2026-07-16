@@ -13,106 +13,86 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar scrolled" id="navbar">
+    <nav class="navbar" id="navbar">
         <div class="container nav-container">
-            <a href="index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
-                <div style="width:36px;height:36px;background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;">
-                    <i data-lucide="reply" style="width:18px;height:18px;"></i>
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <i data-lucide="undo-2"></i>
                 </div>
-                <span style="font-size:1.45rem;font-weight:800;letter-spacing:-0.03em;color:#FFF;">Reply<span style="color:var(--primary-light);">Vera</span></span>
+                <span class="nav-logo-text">Reply<span>Vera</span></span>
             </a>
+
             <div class="nav-links">
                 <a href="index.html#product">Product</a>
                 <a href="index.html#how-it-works">How It Works</a>
-                <a href="#comparison">Comparison</a>
                 <div class="nav-dropdown">
-                    <button class="nav-dropdown-btn">
-                        Industries <i data-lucide="chevron-down" style="width:14px;height:14px;"></i>
+                    <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="menu" aria-controls="industries-menu">
+                        Industries
+                        <span class="chevron-icon"><i data-lucide="chevron-down" style="width:12px;height:12px;"></i></span>
                     </button>
-                    <div class="nav-dropdown-content">
+                    <div class="nav-dropdown-content" id="industries-menu" role="menu">
                         <div class="nav-dropdown-grid">
-                            <!-- Column 1 -->
-                            <a href="/industries/restaurants" class="dropdown-item">
-                                <div class="dropdown-icon-wrapper restaurant-icon">
-                                    <i data-lucide="utensils" style="width:16px;height:16px;"></i>
-                                </div>
+                            <a href="industries/restaurants" class="dropdown-item" role="menuitem">
+                                <div class="dropdown-icon-wrapper restaurant-icon"><i data-lucide="utensils" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
                                     <div class="dropdown-title">Restaurants</div>
-                                    <div class="dropdown-desc">Handle routine reviews and escalate food-safety concerns.</div>
+                                    <div class="dropdown-desc">Routine replies with food-safety escalation.</div>
                                 </div>
                             </a>
-                            <a href="/industries/dentists" class="dropdown-item">
-                                <div class="dropdown-icon-wrapper dentist-icon">
-                                    <i data-lucide="activity" style="width:16px;height:16px;"></i>
-                                </div>
+                            <a href="industries/dentists" class="dropdown-item" role="menuitem">
+                                <div class="dropdown-icon-wrapper dentist-icon"><i data-lucide="activity" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Dentists & Clinics</div>
+                                    <div class="dropdown-title">Dentists &amp; Clinics</div>
                                     <div class="dropdown-desc">Privacy-conscious replies for patient reviews.</div>
                                 </div>
                             </a>
-                            <a href="/industries/agencies" class="dropdown-item">
-                                <div class="dropdown-icon-wrapper agency-icon">
-                                    <i data-lucide="briefcase" style="width:16px;height:16px;"></i>
-                                </div>
+                            <a href="industries/agencies" class="dropdown-item" role="menuitem">
+                                <div class="dropdown-icon-wrapper agency-icon"><i data-lucide="briefcase" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
                                     <div class="dropdown-title">Marketing Agencies</div>
                                     <div class="dropdown-desc">Manage Google review replies for every client.</div>
                                 </div>
                             </a>
-                            <!-- Column 2 -->
-                            <a href="/industries/martial-arts" class="dropdown-item">
-                                <div class="dropdown-icon-wrapper martial-arts-icon">
-                                    <i data-lucide="swords" style="width:16px;height:16px;"></i>
-                                </div>
+                            <a href="industries/martial-arts" class="dropdown-item" role="menuitem">
+                                <div class="dropdown-icon-wrapper martial-arts-icon"><i data-lucide="shield" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
                                     <div class="dropdown-title">Martial Arts Schools</div>
-                                    <div class="dropdown-desc">Parent-friendly replies with safety escalation.</div>
+                                    <div class="dropdown-desc">Parent-friendly replies with safety controls.</div>
                                 </div>
                             </a>
-                            <a href="/industries/childcare" class="dropdown-item">
-                                <div class="dropdown-icon-wrapper childcare-icon">
-                                    <i data-lucide="baby" style="width:16px;height:16px;"></i>
-                                </div>
+                            <a href="industries/childcare" class="dropdown-item" role="menuitem">
+                                <div class="dropdown-icon-wrapper childcare-icon"><i data-lucide="heart" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Childcare & Preschool</div>
-                                    <div class="dropdown-desc">Safety-aware responses for parent reviews.</div>
+                                    <div class="dropdown-title">Childcare &amp; Preschool</div>
+                                    <div class="dropdown-desc">Safety-aware responses for parent feedback.</div>
                                 </div>
                             </a>
-                            <a href="/industries/tutoring" class="dropdown-item">
-                                <div class="dropdown-icon-wrapper tutoring-icon">
-                                    <i data-lucide="graduation-cap" style="width:16px;height:16px;"></i>
-                                </div>
+                            <a href="industries/tutoring" class="dropdown-item" role="menuitem">
+                                <div class="dropdown-icon-wrapper tutoring-icon"><i data-lucide="book-open" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
                                     <div class="dropdown-title">Tutoring Centers</div>
-                                    <div class="dropdown-desc">Professional replies for parent and student feedback.</div>
+                                    <div class="dropdown-desc">Professional replies for parent and student reviews.</div>
                                 </div>
                             </a>
-                            <!-- Column 3 -->
-                            <a href="/industries/pet-care" class="dropdown-item">
-                                <div class="dropdown-icon-wrapper petcare-icon">
-                                    <i data-lucide="dog" style="width:16px;height:16px;"></i>
-                                </div>
+                            <a href="industries/pet-care" class="dropdown-item" role="menuitem">
+                                <div class="dropdown-icon-wrapper petcare-icon"><i data-lucide="dog" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
                                     <div class="dropdown-title">Pet Care</div>
                                     <div class="dropdown-desc">Warm replies with animal-safety escalation.</div>
                                 </div>
                             </a>
-                            <a href="/industries/car-washes" class="dropdown-item">
-                                <div class="dropdown-icon-wrapper carwash-icon">
-                                    <i data-lucide="car" style="width:16px;height:16px;"></i>
-                                </div>
+                            <a href="industries/car-washes" class="dropdown-item" role="menuitem">
+                                <div class="dropdown-icon-wrapper carwash-icon"><i data-lucide="car" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
                                     <div class="dropdown-title">Car Wash Operators</div>
-                                    <div class="dropdown-desc">Track damage, billing, equipment, and service reviews.</div>
+                                    <div class="dropdown-desc">Track damage, billing, and service complaints.</div>
                                 </div>
                             </a>
-                            <a href="/industries/laundromats" class="dropdown-item">
-                                <div class="dropdown-icon-wrapper laundromat-icon">
-                                    <i data-lucide="washing-machine" style="width:16px;height:16px;"></i>
-                                </div>
+                            <a href="industries/laundromats" class="dropdown-item" role="menuitem">
+                                <div class="dropdown-icon-wrapper laundromat-icon"><i data-lucide="wind" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
                                     <div class="dropdown-title">Laundromats</div>
-                                    <div class="dropdown-desc">Monitor cleanliness, equipment, refunds, and missing items.</div>
+                                    <div class="dropdown-desc">Monitor cleanliness, equipment, and refunds.</div>
                                 </div>
                             </a>
                         </div>
@@ -121,15 +101,80 @@
                 <a href="#pricing">Pricing</a>
                 <a href="#faq">FAQ</a>
             </div>
+
             <div class="nav-actions">
-                <a href="https://replyvera-dashboard.vercel.app/login" style="color:#94A3B8;text-decoration:none;font-weight:500;font-size:0.95rem;transition:color var(--transition-fast);" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94A3B8'">Log In</a>
-                <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-secondary" style="padding: 10px 20px; font-size: 0.9rem;">Start Free</a>
+                <a href="https://replyvera-dashboard.vercel.app/login" class="nav-login">Log In</a>
+                <a href="#pricing" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Start Free</a>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
             </div>
         </div>
     </nav>
 
-    
-    <!-- Mobile Plan Selector -->
+    <!-- Mobile Navigation Panel -->
+    <div class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+        <div class="mobile-nav-links">
+            <a href="index.html#product" class="mobile-nav-link">Product</a>
+            <a href="index.html#how-it-works" class="mobile-nav-link">How It Works</a>
+
+            <!-- Industries Accordion -->
+            <button class="mobile-industry-toggle" id="mobile-ind-toggle" aria-expanded="false">
+                Industries
+                <span class="mobile-industry-chevron">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+            </button>
+            <div class="mobile-industry-list" id="mobile-ind-list">
+                <a href="industries/restaurants" class="mobile-industry-item">
+                    <div class="mobile-ind-icon restaurant-icon"><i data-lucide="utensils" style="width:14px;height:14px;"></i></div>
+                    <div><div class="mobile-ind-name">Restaurants</div><div class="mobile-ind-desc">Food-safety escalation and staff recognition</div></div>
+                </a>
+                <a href="industries/dentists" class="mobile-industry-item">
+                    <div class="mobile-ind-icon dentist-icon"><i data-lucide="activity" style="width:14px;height:14px;"></i></div>
+                    <div><div class="mobile-ind-name">Dentists &amp; Clinics</div><div class="mobile-ind-desc">Privacy-conscious patient review replies</div></div>
+                </a>
+                <a href="industries/agencies" class="mobile-industry-item">
+                    <div class="mobile-ind-icon agency-icon"><i data-lucide="briefcase" style="width:14px;height:14px;"></i></div>
+                    <div><div class="mobile-ind-name">Marketing Agencies</div><div class="mobile-ind-desc">Manage multiple clients from one dashboard</div></div>
+                </a>
+                <a href="industries/martial-arts" class="mobile-industry-item">
+                    <div class="mobile-ind-icon martial-arts-icon"><i data-lucide="shield" style="width:14px;height:14px;"></i></div>
+                    <div><div class="mobile-ind-name">Martial Arts Schools</div><div class="mobile-ind-desc">Student safety and membership escalation</div></div>
+                </a>
+                <a href="industries/childcare" class="mobile-industry-item">
+                    <div class="mobile-ind-icon childcare-icon"><i data-lucide="heart" style="width:14px;height:14px;"></i></div>
+                    <div><div class="mobile-ind-name">Childcare &amp; Preschool</div><div class="mobile-ind-desc">Child safety and privacy protection</div></div>
+                </a>
+                <a href="industries/tutoring" class="mobile-industry-item">
+                    <div class="mobile-ind-icon tutoring-icon"><i data-lucide="book-open" style="width:14px;height:14px;"></i></div>
+                    <div><div class="mobile-ind-name">Tutoring Centers</div><div class="mobile-ind-desc">Academic claims and refund protection</div></div>
+                </a>
+                <a href="industries/pet-care" class="mobile-industry-item">
+                    <div class="mobile-ind-icon petcare-icon"><i data-lucide="dog" style="width:14px;height:14px;"></i></div>
+                    <div><div class="mobile-ind-name">Pet Care</div><div class="mobile-ind-desc">Warm replies with animal-safety escalation</div></div>
+                </a>
+                <a href="industries/car-washes" class="mobile-industry-item">
+                    <div class="mobile-ind-icon carwash-icon"><i data-lucide="car" style="width:14px;height:14px;"></i></div>
+                    <div><div class="mobile-ind-name">Car Wash Operators</div><div class="mobile-ind-desc">Vehicle damage and billing escalation</div></div>
+                </a>
+                <a href="industries/laundromats" class="mobile-industry-item">
+                    <div class="mobile-ind-icon laundromat-icon"><i data-lucide="wind" style="width:14px;height:14px;"></i></div>
+                    <div><div class="mobile-ind-name">Laundromats</div><div class="mobile-ind-desc">Machine, cleanliness, and refund reviews</div></div>
+                </a>
+            </div>
+
+            <a href="#pricing" class="mobile-nav-link">Pricing</a>
+            <a href="#faq" class="mobile-nav-link">FAQ</a>
+            <a href="https://replyvera-dashboard.vercel.app/login" class="mobile-nav-link">Log In</a>
+        </div>
+    </div>
+
+<!-- Mobile Plan Selector -->
     <div class="mobile-plan-selector theme-dark">
         <div class="mobile-plan-selector-inner container">
             <a href="#plan-starter" class="mobile-plan-btn">Starter</a>
