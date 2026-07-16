@@ -135,27 +135,32 @@ function renderPricingSection(isAgency) {
     <section class="section section-dark" id="pricing">
         <div class="container">
             <div class="section-header">
-                <h2>Agency Pricing</h2>
-                <p>One account. Multiple clients. One affordable monthly fee.</p>
+                <h2>Pricing Built for Agencies</h2>
+                <p>Manage Google review responses for multiple clients from one dashboard, with separate brand voices, approval rules, and team access.</p>
             </div>
             <div style="max-width:460px;margin:0 auto;">
-                <div class="pricing-card featured" style="padding:32px 28px;">
-                    <div class="pricing-name">Agency Plan</div>
-                    <div class="pricing-price" style="font-size:2rem;">From $149</div>
+                <div class="pricing-card featured" style="padding:36px 32px;">
+                    <div class="pricing-name" style="margin-bottom:8px;">Agency</div>
+                    <div class="pricing-price" style="font-size:2.2rem;">Starting at $149</div>
                     <div class="pricing-period">per month</div>
-                    <p class="pricing-tagline">Manage Google review replies across all your clients from one account.</p>
-                    <ul class="pricing-features">
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Up to 5 client locations included</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Additional locations available</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Separate brand voice per client</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Client-level approval access</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Team member access</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Central management dashboard</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Sensitive-review escalation per client</li>
+                    <p class="pricing-tagline" style="margin-bottom:28px;">For agencies managing Google review responses for multiple client locations.</p>
+                    <ul class="pricing-features" style="display:flex;flex-direction:column;gap:16px;">
+                        <li><i data-lucide="check" style="width:16px;height:16px;color:var(--accent);"></i> 10 client locations included</li>
+                        <li><i data-lucide="check" style="width:16px;height:16px;color:var(--accent);"></i> Central multi-client dashboard</li>
+                        <li><i data-lucide="check" style="width:16px;height:16px;color:var(--accent);"></i> Separate brand voice for every client</li>
+                        <li><i data-lucide="check" style="width:16px;height:16px;color:var(--accent);"></i> Client approval access</li>
+                        <li><i data-lucide="check" style="width:16px;height:16px;color:var(--accent);"></i> Team member access</li>
+                        <li><i data-lucide="check" style="width:16px;height:16px;color:var(--accent);"></i> Agency reporting</li>
                     </ul>
-                    <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent" style="text-align:center;justify-content:center;">Start Free Trial</a>
+                    <p style="font-size:0.85rem;color:var(--text-muted);margin:24px 0 28px;text-align:center;">Additional client locations available for a monthly fee.</p>
+                    <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent" style="text-align:center;justify-content:center;width:100%;">Start Agency Trial</a>
                 </div>
-                <p style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-top:16px;">14-day free trial. Cancel anytime.</p>
+            </div>
+            
+            <div class="text-center" style="margin-top:80px; max-width:540px; margin-left:auto; margin-right:auto; padding-top:40px; border-top:1px solid var(--border);">
+                <h3 style="font-size:1.3rem; margin-bottom:12px; color:var(--text-primary);">Need ReplyVera for Your Own Business?</h3>
+                <p style="font-size:0.95rem; color:var(--text-secondary); margin-bottom:24px;">Starter, Autopilot, and Multi-Location plans are also available for individual businesses.</p>
+                <a href="/pricing.html" class="btn btn-secondary" style="font-size:0.9rem;">View Small-Business Pricing</a>
             </div>
         </div>
     </section>`;
@@ -239,12 +244,12 @@ function renderIndustryPage(ind) {
                     <h1 class="mb-6">${ind.heroHeadline}</h1>
                     <p class="lead mb-8">${ind.heroDescription}</p>
                     <div class="hero-actions">
-                        <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent btn-lg">Start Your Free Trial</a>
+                        <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent btn-lg">${isAgency ? 'Start Agency Trial' : 'Start Your Free Trial'}</a>
                         <a href="/index.html#how-it-works" class="btn btn-secondary btn-lg">See How It Works</a>
                     </div>
                     <div class="hero-trust">
                         <i data-lucide="shield-check" style="width:13px;height:13px;color:var(--accent);"></i>
-                        Built for Google Reviews &nbsp;·&nbsp; Plans start at ${isAgency ? '$149' : '$29'} per month
+                        Built for Google Reviews &nbsp;·&nbsp; ${isAgency ? 'Agency plans start at $149 per month. Cancel anytime.' : 'Plans start at $29 per month'}
                     </div>
                 </div>
                 <div class="mockup-card">
@@ -522,7 +527,7 @@ const industryPages = [
         metaTitle: 'Google Review Management for Marketing Agencies | ReplyVera',
         metaDescription: 'ReplyVera helps marketing agencies manage Google review replies for every client from one dashboard, with separate brand voices and approval rules.',
         heroHeadline: 'Manage Every Client\'s Google Review Replies From One Dashboard',
-        heroDescription: 'ReplyVera helps agencies automate client review responses while preserving separate brand voices and approval rules for each business.',
+        heroDescription: 'ReplyVera helps agencies automate client review responses while preserving a separate brand voice, approval workflow, and account setup for every business.',
         mockupPositive: 'Best dining experience we\'ve had in years.',
         mockupNegative: 'Billing issue that was never resolved.',
         mockupSensitive: 'Animal was injured while in their care.',
