@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-// Ensure root is correct
+// Ensure index.html template exists
 const templatePath = path.join(__dirname, 'index.html');
 if (!fs.existsSync(templatePath)) {
     console.error('index.html template not found!');
@@ -10,7 +10,7 @@ if (!fs.existsSync(templatePath)) {
 
 const html = fs.readFileSync(templatePath, 'utf8');
 
-// Split layout
+// Extract nav header (up to </nav>)
 const navSplit = html.split('</nav>');
 if (navSplit.length < 2) {
     console.error('Navbar closing tag </nav> not found in index.html');
@@ -19,6 +19,7 @@ if (navSplit.length < 2) {
 const rawHeader = navSplit[0] + '</nav>';
 const restPart = navSplit[1];
 
+// Extract footer layout (starting from <!-- Footer -->)
 const footerSplit = restPart.split('<!-- Footer -->');
 if (footerSplit.length < 2) {
     console.error('Footer comment <!-- Footer --> not found in index.html');
@@ -26,7 +27,7 @@ if (footerSplit.length < 2) {
 }
 const rawFooter = '<!-- Footer -->' + footerSplit[1];
 
-// Reformat headers and footers for industries/[id]/index.html (depth of 2)
+// Reformat headers and footers to use absolute root-relative paths
 let baseHeader = rawHeader;
 baseHeader = baseHeader.replace(/href="index\.html"/g, 'href="/index.html"');
 baseHeader = baseHeader.replace(/href="pricing\.html"/g, 'href="/pricing.html"');
@@ -54,623 +55,732 @@ baseFooter = baseFooter.replace(/src="script\.js"/g, 'src="/script.js"');
 
 const industryPages = [
     {
-        id: 'restaurants',
-        title: 'Restaurants',
-        metaTitle: 'ReplyVera for Restaurants | Automatic Google Review Responses',
-        metaDesc: 'ReplyVera automatically drafts personalized Google review replies for restaurants, recognizes servers, and routes food safety or allergy reviews to your manager.',
-        seoKeywords: 'restaurant Google review management, automatic review replies for restaurants, AI review responses for restaurants, restaurant reputation software, multi-location restaurant reviews',
-        heroTitle: 'Every Restaurant Review<br />Answered <span class="text-gradient">Automatically</span>',
-        heroSub: 'ReplyVera writes personalized Google review responses, recognizes standout employees, and sends food-safety, allergy, and serious service complaints to your team before anything is published.',
-        targetCustomers: ['Independent restaurants', 'Restaurant groups', 'Cafés and Bars', 'Fast-casual brands', 'Franchise operators', 'Multi-location hospitality'],
+        slug: 'restaurants',
+        metaTitle: 'AI Google Review Replies for Restaurants | ReplyVera',
+        metaDescription: 'Automatically respond to restaurant Google reviews, recognize employees, and escalate allergy, food-safety, and serious service concerns.',
+        navigationLabel: 'Restaurants',
+        navigationDescription: 'Handle routine reviews and escalate food-safety concerns.',
+        heroEyebrow: 'Google Review Automation for Restaurants',
+        heroHeadline: 'Every Restaurant Review Answered Automatically',
+        heroDescription: 'ReplyVera writes personalized Google review responses, recognizes standout employees, and sends food-safety, allergy, and serious service complaints to your team before anything is published.',
+        heroPrimaryCta: 'Start Your Free Trial',
+        heroSecondaryCta: 'Start for $39 per Month',
+        businessTypes: ['Independent restaurants', 'Restaurant groups', 'Cafés', 'Bars', 'Fast-casual brands', 'Franchises'],
+        problemHeadline: 'Your Managers Should Run the Restaurant, Not Write Every Review Reply',
         problems: [
-            { icon: 'clock', title: 'Too Busy to Reply', text: 'Floor managers and chefs are too busy running shifts to write personalized responses to every Google review.' },
-            { icon: 'copy', title: 'Repetitive Drafts', text: 'Copied-and-pasted "Thanks for visiting!" replies look lazy to prospective diners looking at your profiles.' },
-            { icon: 'alert-triangle', title: 'Unanswered Complaints', text: 'Wait-time and slow service reviews remain unresolved, pulling down your local search rating.' },
-            { icon: 'shield-alert', title: 'Food Safety Hazards', text: 'Allergy or food-safety claims require delicate, direct human handling rather than generic automation.' },
-            { icon: 'map', title: 'Inconsistent Location Voice', text: 'Multi-location operators struggle to maintain a unified brand tone across downtown, suburban, or franchise branches.' },
-            { icon: 'award', title: 'Missed Server Praise', text: 'Valuable feedback praising specific servers, hosts, or bartenders goes uncollected and unrewarded.' }
+            { icon: 'clock', title: 'Positive reviews go unanswered', text: 'Floor managers are too busy running shifts to reply to happy diners, missing opportunities to build repeat business.' },
+            { icon: 'copy', title: 'Responses sound repetitive', text: 'Copying and pasting the same generic response looks lazy to new customers looking up your restaurant online.' },
+            { icon: 'alert-triangle', title: 'Wait-time complaints remain unresolved', text: 'Queues, slow service, and billing misunderstandings sit on your profile without professional context.' },
+            { icon: 'shield-alert', title: 'Food-safety issues require careful handling', text: 'Allergy or food poisoning claims require direct manager intervention to protect your brand and resolve concerns.' },
+            { icon: 'award', title: 'Employee praise gets missed', text: 'Standout service feedback from servers, hosts, and bartenders is rarely logged to reward top performers.' },
+            { icon: 'map', title: 'Locations respond inconsistently', text: 'Multi-location groups struggle to keep a consistent brand tone across different storefronts.' }
         ],
+        featureHeadline: 'Smarter Reputation Management Designed for the Hospitality Floor',
         features: [
-            { icon: 'utensils', title: 'Food & Quality Detection', text: 'Extracts mentions of specific dishes (like truffle pasta) or delivery issues (like cold food) to reply accurately.' },
-            { icon: 'clock', title: 'Service & Wait-Time Filters', text: 'Categorizes reviews flagging slow service or long weekend wait times and routes them for manager drafting.' },
-            { icon: 'alert-circle', title: 'Allergy & Safety Escalations', text: 'Instantly identifies keywords like "allergy", "sick", or "food poisoning" and locks them in draft state for immediate approval.' },
-            { icon: 'users', title: 'Server & Host Recognition', text: 'Automatically extracts names of servers or hosts mentioned, logging positive employee mentions on your analytics.' },
-            { icon: 'map-pin', title: 'Multi-Location Tone Rules', text: 'Configure distinct brand voices or manager approvals for each store, franchise, or regional location.' },
-            { icon: 'languages', title: 'Dine-In, Takeout, & Delivery Filters', text: 'Knows whether a review concerns a dine-in experience, takeout, or third-party delivery apps, adapting the response context.' }
+            { name: 'Food Quality Detection', text: 'Identify praise or complaints involving meals, ingredients, temperature, presentation, and consistency.' },
+            { name: 'Wait-Time Monitoring', text: 'Detect complaints involving queues, slow service, delayed food, or long waits.' },
+            { name: 'Employee Recognition', text: 'Recognize servers, hosts, bartenders, chefs, and managers mentioned by name.' },
+            { name: 'Food-Safety Escalation', text: 'Require approval for allergy, contamination, illness, or food-safety concerns.' },
+            { name: 'Service-Type Detection', text: 'Distinguish dine-in, takeout, delivery, reservations, and catering feedback.' },
+            { name: 'Location Insights', text: 'Compare service, cleanliness, food, and employee trends across locations.' }
         ],
-        reviews: [
+        employeeRoles: ['Server', 'Host', 'Bartender', 'Chef', 'Shift manager', 'General manager'],
+        sensitiveTopics: ['Food allergies', 'Food poisoning', 'Contamination', 'Discrimination', 'Injuries', 'Payment disputes', 'Threats', 'Serious cleanliness allegations'],
+        reviewExamples: [
             {
-                author: 'Sarah Jenkins',
+                reviewer: 'Sarah Jenkins',
                 rating: 5,
                 text: 'Maria made our anniversary dinner wonderful, and the pasta was excellent.',
-                status: 'Safe to Auto-Publish',
-                reply: 'Thank you for celebrating your anniversary with us! We’re delighted that Maria helped make the evening special and that you enjoyed the pasta. We’ll be sure to share your kind words with her.'
+                label: 'Safe to Auto-Publish',
+                reply: 'Thank you for celebrating your anniversary with us. We’re delighted that Maria helped make the evening special and that you enjoyed the pasta. We’ll be sure to share your kind words with her.'
             },
             {
-                author: 'David Vance',
+                reviewer: 'David Vance',
                 rating: 3,
                 text: 'The food was good, but we waited almost an hour.',
-                status: 'Manager Approval Recommended',
+                label: 'Manager Approval Recommended',
                 reply: 'Thank you for your honest feedback. We’re glad you enjoyed the food, but we’re sorry your wait was much longer than it should have been. We’re sharing this with our team so we can improve the experience during busy periods.'
             },
             {
-                author: 'Claire Montgomery',
+                reviewer: 'Claire Montgomery',
                 rating: 1,
                 text: 'I clearly explained my allergy, but the dish still contained the ingredient.',
-                status: 'Sensitive Review - Escalation Required',
-                reply: 'Critical Alert: Food-safety concern detected. Immediate manager approval required before publishing.'
+                label: 'Sensitive Review - Escalated',
+                alertTitle: 'Food-safety concern detected',
+                alertText: 'Immediate manager approval required. Auto-publishing blocked.'
             }
         ],
-        insights: [
-            'Wait-time complaints increased this month by 14%',
-            'Maria received 9 positive server mentions in reviews',
-            'Cleanliness concerns are concentrated at the Downtown location',
+        insightExamples: [
+            'Wait-time complaints increased this month',
+            'Maria received nine positive mentions',
+            'Cleanliness concerns are concentrated at one location',
             'Weekend service complaints peak between 7:00 and 9:00 p.m.',
-            'The truffle pasta is the most praised menu item across all branches'
+            'The truffle pasta is the most praised menu item'
         ],
-        faqs: [
-            { q: 'Can ReplyVera handle multiple restaurant locations?', a: 'Yes. Our Multi-Location and Agency plans allow you to manage multiple Google Business Profiles from a single dashboard, with distinct brand voice settings for each storefront.' },
-            { q: 'Can food-safety reviews be blocked from automatic publishing?', a: 'Absolutely. ReplyVera’s sensitive-review filters scan for safety, allergy, or liability keywords. These reviews are immediately flagged, auto-publishing is blocked, and an alert is sent for manual manager follow-up.' },
-            { q: 'Can ReplyVera recognize employees?', a: 'Yes. Our engine extracts staff names (like servers, bartenders, or hosts) and tags them. You can view employee leaderboard analytics to reward top-performing staff.' },
-            { q: 'Does it handle Spanish reviews?', a: 'Yes. ReplyVera detects the language of the review and drafts responses in the same language. We currently support natural, fluent English and Spanish responses.' },
-            { q: 'Does ReplyVera support Yelp or OpenTable?', a: 'ReplyVera currently supports Google Reviews, which represents the highest volume of local search actions. Integrations for Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
+        multiLocationCopy: 'Whether you manage a single neighborhood bistro or a growing regional hospitality group, ReplyVera scale settings let general managers oversee location-level approvals while preserving a unified brand voice.',
+        pricingOffer: { label: 'Early-access offer', text: 'Lock in your rate today.' },
+        faqItems: [
+            { q: 'Can ReplyVera manage multiple restaurant locations?', a: 'Yes. Our multi-location controls allow you to manage separate Google Business Profiles from one central dashboard, with unique configurations for each branch.' },
+            { q: 'Can food-safety reviews be blocked from auto-publishing?', a: 'Absolutely. ReplyVera identifies words related to allergies, illness, or cleanliness, blocking auto-replies immediately and routing them to a manager approval inbox.' },
+            { q: 'Can ReplyVera recognize employees?', a: 'Yes. It scans reviews for names and cross-references them with your staff roster, logging top mentions to help reward team performance.' },
+            { q: 'Can it respond in Spanish?', a: 'Yes. ReplyVera automatically detects the language of the review and drafts responses in both natural English and Spanish.' },
+            { q: 'Does ReplyVera support Yelp or OpenTable?', a: 'Currently supported: Google Reviews. Support for Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases. Yelp and OpenTable are not supported.' }
         ],
-        related: [
-            { id: 'agencies', title: 'Agencies' },
-            { id: 'pet-care', title: 'Pet Care' },
-            { id: 'car-washes', title: 'Car Washes' }
-        ]
+        relatedIndustries: [
+            { id: 'agencies', title: 'Marketing Agencies' },
+            { id: 'car-washes', title: 'Car Wash Operators' },
+            { id: 'pet-care', title: 'Pet Care' }
+        ],
+        finalCtaHeadline: 'Stop Letting Restaurant Reviews Go Unanswered',
+        finalCtaDescription: 'Automate your Google reviews, recognize standout staff, and protect food safety ratings with zero administrative friction.',
+        mockupLocationName: 'Harbor Table Downtown'
     },
     {
-        id: 'dentists',
-        title: 'Dentists & Clinics',
-        metaTitle: 'ReplyVera for Dentists & Clinics | Privacy-Conscious Google Review Replies',
-        metaDesc: 'ReplyVera creates privacy-conscious Google review responses for dental and medical practices. Safely automate positive reviews and manually approve clinical concerns.',
-        seoKeywords: 'dental review response software, Google review management for dentists, privacy-conscious dental review replies, automatic review replies for dental practices, dental reputation management',
-        heroTitle: 'Privacy-Conscious Google Review Replies for <span class="text-gradient">Clinics</span>',
-        heroSub: 'ReplyVera creates privacy-conscious Google review responses for your practice while sending billing, clinical, and sensitive patient concerns to your team for approval.',
-        targetCustomers: ['Independent dental practices', 'Dental groups', 'Orthodontists & Pediatric dentists', 'Cosmetic dental practices', 'Medical clinics', 'Multi-location healthcare groups'],
+        slug: 'dentists',
+        metaTitle: 'Privacy-Conscious Google Review Replies for Dentists | ReplyVera',
+        metaDescription: 'Respond professionally to dental Google reviews while keeping clinical, billing, and sensitive patient concerns under human control.',
+        navigationLabel: 'Dentists & Clinics',
+        navigationDescription: 'Privacy-conscious replies for patient reviews.',
+        heroEyebrow: 'Google Review Automation for Dental Practices',
+        heroHeadline: 'Professional Review Responses for Every Patient Experience',
+        heroDescription: 'ReplyVera creates privacy-conscious Google review responses for your practice while sending clinical, billing, and sensitive patient concerns to your team for approval.',
+        heroPrimaryCta: 'Start Your Free Trial',
+        heroSecondaryCta: 'Start for $39 per Month',
+        businessTypes: ['Independent dental practices', 'Dental groups', 'Orthodontists', 'Pediatric dentists', 'Cosmetic dental practices', 'Medical clinics'],
+        problemHeadline: 'Professional Online Reputation Management Without Patient Privacy Violations',
         problems: [
-            { icon: 'shield', title: 'Careful HIPAA Boundaries', text: 'Patient reviews require careful wording. Staff must avoid confirming clinical status or treatment details publicly.' },
-            { icon: 'alert-triangle', title: 'Accidental Disclosures', text: 'Untrained front-desk staff can accidentally confirm a patient\'s identity or diagnoses in response text.' },
-            { icon: 'shield-alert', title: 'Clinical Complaints', text: 'Clinical and treatment outcome complaints should never be auto-published and need specialist medical review.' },
-            { icon: 'credit-card', title: 'Insurance & Billing Disputes', text: 'Complex billing disputes require private offline resolutions rather than public back-and-forth arguments.' },
-            { icon: 'award', title: 'Missed Hygienist Praise', text: 'Praise for specific hygienists, assistants, or front-desk administrators is rarely collected to track performance.' },
-            { icon: 'clock', title: 'Owners Lack Admin Time', text: 'Practice owners are busy treating patients and lack the time to respond consistently to online feedback.' }
+            { icon: 'shield', title: 'Staff may accidentally confirm private information', text: 'Verifying a reviewer\'s active patient status or referencing their dental details online can lead to serious privacy concerns.' },
+            { icon: 'alert-triangle', title: 'Clinical complaints require careful wording', text: 'Negative reviews regarding dental procedures or treatment outcomes must be handled manually with specialized phrasing.' },
+            { icon: 'credit-card', title: 'Billing and insurance disputes can escalate', text: 'Financial disagreements need private offline follow-ups rather than public, emotional back-and-forth replies.' },
+            { icon: 'award', title: 'Positive staff mentions go unnoticed', text: 'Outstanding reviews praising hygienists, assistants, or receptionists are rarely tracked to reward performance.' },
+            { icon: 'clock', title: 'Owners lack time to respond consistently', text: 'Practicing dentists spend their days in operatory chairs, leaving little time to write personalized responses.' },
+            { icon: 'map', title: 'Multiple practices use inconsistent language', text: 'Multi-practice groups struggle to enforce a unified, professional tone across all clinical locations.' }
         ],
+        featureHeadline: 'Privacy-Conscious Features Built Specifically for Medical Professionals',
         features: [
-            { icon: 'eye-off', title: 'Diagnosis Redaction Filters', text: 'Scans and strips out direct medical words, preventing the assistant from confirming patient details.' },
-            { icon: 'check-square', title: 'Status De-identification', text: 'Ensures responses thank the reviewer generally without confirming that they are active patients of the clinic.' },
-            { icon: 'credit-card', title: 'Billing & Insurance Triggers', text: 'Identifies keywords like "bill", "insurance", "charge", or "overcharge" and automatically routes them to billing office approval.' },
-            { icon: 'heart', title: 'Praise Recognition', text: 'Tags and recognizes specific dentists, hygienists, or receptionists to build positive staff morale.' },
-            { icon: 'shield', title: 'Clinic Approval Workflows', text: 'Allows office managers or clinical directors to review drafts for negative reviews before going live on Google.' },
-            { icon: 'globe', title: 'Bilingual Patient Communication', text: 'Responds naturally to patient feedback in both English and Spanish based on their written review.' }
+            { name: 'Privacy-Conscious Responses', text: 'Avoid confirming patient status or discussing private treatment details.' },
+            { name: 'Clinical Complaint Detection', text: 'Flag pain, injury, medication, diagnosis, procedure, and treatment-outcome concerns.' },
+            { name: 'Billing and Insurance Escalation', text: 'Route unexpected charges, insurance complaints, and payment disputes for approval.' },
+            { name: 'Staff Recognition', text: 'Recognize dentists, hygienists, assistants, and front-desk staff.' },
+            { name: 'Safe Positive Automation', text: 'Automatically answer low-risk positive reviews.' },
+            { name: 'Practice-Level Controls', text: 'Set approval rules and tone by location.' }
         ],
-        reviews: [
+        employeeRoles: ['Dentist', 'Hygienist', 'Dental assistant', 'Orthodontist', 'Office manager', 'Front-desk coordinator'],
+        sensitiveTopics: ['Pain', 'Injury', 'Treatment outcomes', 'Medication', 'Diagnosis', 'Insurance', 'Billing disputes', 'Privacy complaints', 'Discrimination'],
+        reviewExamples: [
             {
-                author: 'Robert Lee',
+                reviewer: 'Robert Lee',
                 rating: 5,
                 text: 'Everyone was kind, and Jessica made me feel comfortable throughout the visit.',
-                status: 'Safe to Auto-Publish',
-                reply: 'Thank you for sharing your experience. We are pleased to hear that Jessica and our team helped create a comfortable and welcoming environment. We appreciate your feedback.'
+                label: 'Safe to Auto-Publish',
+                reply: 'Thank you for your kind feedback. We’re pleased to hear that Jessica and the team helped create a comfortable and welcoming experience. We’ll be sure to share your appreciation with them.'
             },
             {
-                author: 'Samantha Brooks',
+                reviewer: 'Samantha Brooks',
                 rating: 2,
                 text: 'I received a bill I was not expecting.',
-                status: 'Office Approval Required',
-                reply: 'Thank you for sharing your concern. We understand how frustrating an unexpected charge can be. Please contact our office manager directly so we can look into the billing details with you.'
+                label: 'Office Approval Required',
+                reply: 'Thank you for sharing your concern. We understand how frustrating an unexpected charge can be. Please contact our office directly so the appropriate team member can review the details with you.'
             },
             {
-                author: 'Marcus Vance',
+                reviewer: 'Marcus Vance',
                 rating: 1,
-                text: 'I had severe pain after the procedure and no one returned my call.',
-                status: 'Sensitive Review - Manual Review Required',
-                reply: 'Clinical concern detected. Manual review required before publishing. Response locked in draft state.'
+                text: 'I had severe pain after the procedure, and no one returned my call.',
+                label: 'Sensitive Review - Escalated',
+                alertTitle: 'Clinical concern detected',
+                alertText: 'Manual review required before publishing. Auto-reply blocked.'
             }
         ],
-        insights: [
-            'Front-desk communication received repeated praise in 8 reviews',
-            'Billing and unexpected fee complaints rose by 10% this month',
-            'Jessica (Hygienist) received 7 positive mentions',
-            'Wait-time complaints are concentrated at the Westside branch',
-            'Two clinical feedback reviews are locked in drafts pending board review'
+        insightExamples: [
+            'Front-desk communication received repeated praise',
+            'Billing concerns increased this month',
+            'Jessica received seven positive mentions',
+            'One location has multiple wait-time complaints',
+            'Two clinical reviews require follow-up'
         ],
-        faqs: [
-            { q: 'Does ReplyVera reveal patient information?', a: 'No. ReplyVera is built with privacy guardrails. It never confirms that the reviewer was a patient, never discloses clinical details, and drafts generic, polite, and safe responses.' },
-            { q: 'Can clinical complaints be excluded from auto-publishing?', a: 'Yes. Any review mentioning pain, procedures, clinical failures, or diagnoses is immediately flagged as a clinical concern and routed for manual staff review.' },
-            { q: 'Can multiple practice locations be managed?', a: 'Yes. You can manage multiple clinic locations, assign separate staff permissions, and track patient satisfaction trends across branches.' },
-            { q: 'Can staff members approve replies?', a: 'Yes. You can invite office managers, administrative coordinators, or practitioners to review and approve drafts before publication.' },
-            { q: 'Which review platforms are supported?', a: 'ReplyVera currently supports Google Reviews, as it is the most critical driver of local clinic search visibility. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
+        multiLocationCopy: 'Manage reputation and review logs across multiple dental clinics. Set location-level access permissions so office managers can review drafts while corporate compliance tracks overall sentiment.',
+        pricingOffer: { label: 'Early-access offer', text: 'Lock in your practice rate today.' },
+        faqItems: [
+            { q: 'Does ReplyVera reveal patient information?', a: 'No. ReplyVera is programmed to draft privacy-conscious responses that never confirm active patient status or discuss clinical treatments.' },
+            { q: 'Can clinical complaints be excluded from auto-publishing?', a: 'Yes. Any review mentioning pain, procedures, side effects, or clinical outcomes is flagged and held for manual review by your dental team.' },
+            { q: 'Can multiple practice locations be managed?', a: 'Yes. You can link all clinic Business Profiles to one central account and manage permission levels for office staff.' },
+            { q: 'Can staff members approve replies?', a: 'Yes. Roster dentists, coordinators, or clinic leads can log in and approve drafts with one click.' },
+            { q: 'Which review platforms are supported?', a: 'Currently supported: Google Reviews. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
         ],
-        related: [
-            { id: 'agencies', title: 'Agencies' }
-        ]
+        relatedIndustries: [
+            { id: 'agencies', title: 'Marketing Agencies' },
+            { id: 'childcare', title: 'Childcare & Preschool' }
+        ],
+        finalCtaHeadline: 'Respond Professionally Without Risking Patient Privacy',
+        finalCtaDescription: 'Automate safe patient review replies, log clinic hygiene praise, and route complex billing reviews to your staff.',
+        mockupLocationName: 'Brightline Dental'
     },
     {
-        id: 'agencies',
-        title: 'Marketing Agencies',
-        metaTitle: 'ReplyVera for Agencies | Multi-Client Google Review Reply Management',
-        metaDesc: 'Manage Google review replies across all your clients and locations from a single dashboard. Automated drafts, client approval links, and brand voice matching.',
-        seoKeywords: 'Google review software for agencies, agency review management platform, automatic review replies for agency clients, white-label Google review responses, multi-client reputation management',
-        heroTitle: 'Manage Every Client\'s Google Review Replies from <span class="text-gradient">One Dashboard</span>',
-        heroSub: 'ReplyVera helps agencies automate Google review responses, preserve each client\'s brand voice, and route sensitive reviews for client approval.',
-        targetCustomers: ['Local marketing agencies', 'SEO and Social Media agencies', 'Reputation management consultants', 'Web-design agencies', 'Franchise marketing teams'],
+        slug: 'agencies',
+        metaTitle: 'Google Review Automation for Marketing Agencies | ReplyVera',
+        metaDescription: 'Manage client Google review replies from one dashboard with separate brand voices, approval rules, and client workflows.',
+        navigationLabel: 'Marketing Agencies',
+        navigationDescription: 'Manage Google review replies for every client.',
+        heroEyebrow: 'Google Review Automation for Agencies',
+        heroHeadline: 'Manage Every Client’s Google Review Replies From One Dashboard',
+        heroDescription: 'ReplyVera helps agencies automate Google review responses, preserve every client’s brand voice, and route sensitive reviews for approval.',
+        heroPrimaryCta: 'Start Your Free Trial',
+        heroSecondaryCta: 'Start for $149 per Month',
+        businessTypes: ['Local marketing agencies', 'SEO agencies', 'Social-media agencies', 'Reputation-management consultants', 'Web-design agencies', 'Franchise marketing teams'],
+        problemHeadline: 'Scale Local SEO & Reputation Work Without Swelling Client Management Costs',
         problems: [
-            { icon: 'log-out', title: 'Manual Account Switching', text: 'Teams waste hours logging in and out of client Google Business Profiles every week.' },
-            { icon: 'clock', title: 'Staff Time Sink', text: 'Writing standard positive review replies drains high-value account manager hours.' },
-            { icon: 'languages', title: 'Unique Client Voices', text: 'Each client (e.g. restaurant vs. dental clinic) requires a completely different tone and policy.' },
-            { icon: 'mail', title: 'Slow Client Approvals', text: 'Chasing clients for negative review responses delays resolutions and ruins response speed.' },
-            { icon: 'bar-chart', title: 'Scattered Performance Reports', text: 'Consolidating reputation metrics for client review reports is painful and unautomated.' },
-            { icon: 'dollar-sign', title: 'Thin Reseller Margins', text: 'Agencies need a software pricing structure that leaves healthy margins for resale and markup.' }
+            { icon: 'log-out', title: 'Teams switch manually between accounts', text: 'Wasting account manager hours logging in and out of different client Google Business Profile accounts.' },
+            { icon: 'clock', title: 'Review responses consume staff time', text: 'Drafting standard responses for hundreds of 5-star reviews drains productive time from higher-value SEO campaigns.' },
+            { icon: 'message-square', title: 'Every client needs a different tone', text: 'Maintaining a professional medical voice for one client and a playful restaurant voice for another is error-prone.' },
+            { icon: 'mail', title: 'Approvals are slow', text: 'Chasing clients to review response drafts for negative feedback delays resolutions and hurts SEO metrics.' },
+            { icon: 'bar-chart', title: 'Reporting is fragmented', text: 'Consolidating review data, response rates, and customer sentiment into reports is manual and tedious.' },
+            { icon: 'dollar-sign', title: 'Agencies need room for healthy margins', text: 'SaaS licensing models can eat into retainer margins if pricing models don\'t scale cost-effectively.' }
         ],
         features: [
-            { icon: 'layout', title: 'Central Client Hub', text: 'Connect, monitor, and respond across unlimited client accounts from a single agency interface.' },
-            { icon: 'settings', title: 'Client Tone Profiles', text: 'Configure custom voice tones (e.g. professional clinic, friendly café) to match each client\'s brand.' },
-            { icon: 'link', title: 'Client Approval Links', text: 'Generate white-labeled external links for clients to approve negative review drafts without logging in.' },
-            { icon: 'users', title: 'Team Access Control', text: 'Assign team members to specific clients or locations, protecting account privacy.' },
-            { icon: 'shield-alert', title: 'Smart Escalation Rules', text: 'Safely auto-reply to positive reviews, while locking negative reviews in drafts for client confirmation.' },
-            { icon: 'file-text', title: 'Branded Analytics Reports', text: 'Export reputation performance data to share directly with clients (white-label reporting planned).' }
+            { name: 'Central Client Dashboard', text: 'Manage multiple businesses and locations from one account.' },
+            { name: 'Client-Specific Brand Voice', text: 'Give every client separate tone, rules, and business context.' },
+            { name: 'Approval Links', text: 'Allow clients to approve sensitive responses without full dashboard access.' },
+            { name: 'Team Permissions', text: 'Assign staff to specific clients or locations.' },
+            { name: 'Automated Safe Replies', text: 'Auto-publish routine responses according to each client’s rules.' },
+            { name: 'Agency Reporting', text: 'Show review volume, response status, and approval activity by client. (White-label reporting planned)' }
         ],
-        reviews: [
+        employeeRoles: ['Account director', 'SEO specialist', 'Social manager', 'Copywriter', 'Agency partner', 'Support coordinator'],
+        sensitiveTopics: ['Negative feedback', 'Billing issues', 'Clinical errors', 'Safety complaints', 'Equipment problems', 'Staff complaints'],
+        reviewExamples: [
             {
-                author: 'Client: The Mudhouse (Restaurant)',
+                reviewer: 'Client: Harbor Table (Restaurant)',
                 rating: 5,
                 text: 'The food was excellent and the server Maria was super helpful.',
-                status: 'Auto-Published (Tone: Friendly)',
-                reply: 'Thank you so much! We are glad you enjoyed the food and that Maria took such great care of you. We\'ll share this with her!'
+                label: 'Auto-Published (Tone: Friendly)',
+                reply: 'Thank you for celebrating with us. We’re delighted that Maria helped make the evening special and that you enjoyed the meals. We\'ll share this with her!'
             },
             {
-                author: 'Client: Oak Dental (Clinic)',
+                reviewer: 'Client: Brightline Dental (Clinic)',
                 rating: 2,
                 text: 'Billing was confusing, I got charged twice.',
-                status: 'Escalated - Sent to Oak Dental Manager',
-                reply: 'Thank you for your feedback. We understand billing issues are frustrating. Please contact our office manager directly so we can resolve this.'
+                label: 'Sent to Client Manager (Tone: Professional)',
+                reply: 'Thank you for sharing your concern. We understand unexpected charges can be frustrating. Please contact our office manager directly so we can look into the billing details.'
             },
             {
-                author: 'Client: Bark Lodge (Pet-Care)',
+                reviewer: 'Client: Happy Trails (Pet resort)',
                 rating: 1,
                 text: 'My dog came home with a scratch on his paw.',
-                status: 'Sensitive Review - Sent Alert to Owner',
-                reply: 'Animal-safety concern detected. Response locked in drafts. Immediate email alert dispatched to Bark Lodge owner.'
+                label: 'Sensitive Review - Auto-Draft Blocked',
+                alertTitle: 'Animal-safety concern detected',
+                alertText: 'Auto-publishing blocked. Emailed immediate alert notification to client owner.'
             }
         ],
-        insights: [
+        insightExamples: [
             '24 client locations connected across dashboard',
-            '5 reviews currently pending client approval',
-            '3 client accounts have unanswered negative reviews',
-            'Average response velocity is 4.2 hours across clients',
-            'Tones configured: 14 Friendly, 8 Professional, 2 Empathetic'
+            'Five reviews currently need client approval',
+            'Three clients have unanswered negative reviews',
+            'Average client response rate is 98.4%',
+            'Client satisfaction scores average 4.8★'
         ],
-        faqs: [
-            { q: 'Can every client have a different brand voice?', a: 'Yes. Every business location or profile has its own settings. You can configure a unique tone, automatic publish criteria, and approval workflows.' },
-            { q: 'Can clients approve responses without accessing the full dashboard?', a: 'Yes. ReplyVera generates secure client approval links. Clients can approve or edit drafts from their phone without full system access.' },
-            { q: 'Can team members manage assigned clients?', a: 'Yes. Our agency portal lets you assign specific staff members or account managers to specific client profiles.' },
-            { q: 'Can the agency resell ReplyVera?', a: 'Absolutely. You can package ReplyVera\'s review automation as a premium add-on to your local SEO or reputation services.' },
-            { q: 'Which platforms are supported?', a: 'We currently support Google Reviews. Integrations for Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future agency releases.' }
+        multiLocationCopy: 'Our Multi-Client dashboard is architected specifically for agencies managing portfolios of local brands. Give account managers selective permissions to supervise assign clients without accessing other partner data.',
+        pricingOffer: { label: 'Founding agency package', text: 'Includes 10 locations. $12/mo for additional locations.' },
+        faqItems: [
+            { q: 'Can every client have a different brand voice?', a: 'Yes. You configure independent tone settings, triggers, and approval workflows for every Google Business Profile profile connected.' },
+            { q: 'Can clients approve responses without accessing the full dashboard?', a: 'Yes. ReplyVera generates secure client approval links where business owners can approve, edit, or reject drafts from their phones.' },
+            { q: 'Can team members manage assigned clients?', a: 'Yes. Set specific user access permissions to assign account managers only to the client profiles they handle.' },
+            { q: 'Can the agency resell ReplyVera?', a: 'Absolutely. You can package ReplyVera\'s review automation tools as part of your reputation retainer or resell seat licenses with your own markup.' },
+            { q: 'Which review platforms are supported?', a: 'Currently supported: Google Reviews. Support for Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future agency packages.' }
         ],
-        related: [
+        relatedIndustries: [
             { id: 'restaurants', title: 'Restaurants' },
-            { id: 'dentists', title: 'Dentists' }
-        ]
+            { id: 'dentists', title: 'Dentists & Clinics' },
+            { id: 'pet-care', title: 'Pet Care' }
+        ],
+        finalCtaHeadline: 'Turn Review Management Into a Scalable Agency Service',
+        finalCtaDescription: 'Automate positive drafts, send client approval notifications, and scale your reputation management services with healthy margins.',
+        mockupLocationName: 'Agency Client Hub'
     },
     {
-        id: 'martial-arts',
-        title: 'Martial-Arts Schools',
-        metaTitle: 'ReplyVera for Martial Arts Schools | Google Review Auto-Replies',
-        metaDesc: 'Automate Google review replies for your martial arts dojo or academy. Respond to parent praise, track coach mentions, and escalate safety concerns.',
-        seoKeywords: 'martial arts review software, karate school Google review management, automatic review replies for martial arts, martial arts reputation management',
-        heroTitle: 'Every Martial Arts Review<br />Answered <span class="text-gradient">Automatically</span>',
-        heroSub: 'ReplyVera responds to routine parent and student reviews, recognizes outstanding instructors, and keeps safety, injury, bullying, and membership disputes under your control.',
-        targetCustomers: ['Karate dojos', 'Taekwondo schools', 'BJJ academies', 'Kickboxing gyms', 'MMA training centers', 'Multi-location franchise schools'],
+        slug: 'martial-arts',
+        metaTitle: 'Google Review Replies for Martial Arts Schools | ReplyVera',
+        metaDescription: 'Automatically respond to martial arts Google reviews, recognize instructors, and escalate safety, injury, and membership complaints.',
+        navigationLabel: 'Martial Arts Schools',
+        navigationDescription: 'Parent-friendly replies with safety escalation.',
+        heroEyebrow: 'Google Review Automation for Martial Arts Schools',
+        heroHeadline: 'Every Martial Arts Review Answered Automatically',
+        heroDescription: 'ReplyVera responds to routine parent and student reviews, recognizes outstanding instructors, and keeps safety, injury, bullying, and membership disputes under your control.',
+        heroPrimaryCta: 'Start Your Free Trial',
+        heroSecondaryCta: 'Start for $39 per Month',
+        businessTypes: ['Karate dojos', 'Taekwondo schools', 'BJJ academies', 'Kickboxing gyms', 'MMA training centers', 'Multi-location franchise schools'],
+        problemHeadline: 'Spend More Time on the Mat and Less Time at the Keyboard',
         problems: [
-            { icon: 'swords', title: 'Owners Busy on the Mats', text: 'Dojo owners are teaching classes and leading training, leaving zero time to manage Google reviews.' },
-            { icon: 'smile', title: 'Parents Expect Caring Replies', text: 'Parents trust you with their kids and expect personal, encouraging responses to their feedback.' },
-            { icon: 'award', title: 'Missed Instructor Praise', text: 'Review praise for specific coaches or Senseis goes untracked, missing great staff feedback.' },
-            { icon: 'dollar-sign', title: 'Public Billing Disputes', text: 'Membership cancellations or contract disputes can quickly blow up into negative public reviews.' },
-            { icon: 'shield-alert', title: 'Safety Concerns Publicized', text: 'Injury or safety complaints require immediate executive attention before a reply is posted.' },
-            { icon: 'map-pin', title: 'Inconsistent Multi-Gym Tone', text: 'Dojos with multiple branches struggle to ensure each manager replies professionally.' }
+            { icon: 'swords', title: 'Owners busy teaching classes', text: 'Instructors spend their afternoons and evenings on the mat, leaving zero admin time to reply to reviews.' },
+            { icon: 'smile', title: 'Parents expect encouraging replies', text: 'Parents look for thoughtful, community-focused responses when their children are enrolled.' },
+            { icon: 'award', title: 'Instructor praise goes unrecognized', text: 'Praise for specific coaches or Senseis is buried, missing opportunities to celebrate top team performance.' },
+            { icon: 'dollar-sign', title: 'Membership disputes can become public', text: 'Cancellation terms or billing conflicts can lead to negative reviews on your profile.' },
+            { icon: 'shield-alert', title: 'Child-safety concerns need immediate attention', text: 'Injury, bullying, or safety allegations require immediate owner reviews before any public response goes live.' },
+            { icon: 'map', title: 'Multiple academies respond inconsistently', text: 'Multi-school operators struggle to keep a consistent brand voice across regional dojos.' }
         ],
         features: [
-            { icon: 'award', title: 'Sensei & Coach Recognition', text: 'Identifies student praise for specific coaches and attributes them to employee leaderboard profiles.' },
-            { icon: 'users', title: 'Parent-Friendly Language', text: 'Drafts warm, community-oriented responses highlighting confidence, respect, and focus.' },
-            { icon: 'alert-triangle', title: 'Injury & Safety Escalations', text: 'Identifies keywords like "hurt", "injured", "accident", or "safety" and flags them for immediate owner review.' },
-            { icon: 'ban', title: 'Bullying & Harassment Scanners', text: 'Scans reviews for allegations of bullying or discrimination, ensuring zero auto-posting occurs.' },
-            { icon: 'credit-card', title: 'Membership & Cancellation Filters', text: 'Detects refund or contract-related disputes and routes them directly to admin drafts.' },
-            { icon: 'layout', title: 'Multi-Academy Controls', text: 'Oversee review responses, local SEO rankings, and metrics for all your schools in one panel.' }
+            { name: 'Instructor Recognition', text: 'Scans customer reviews for coach or Sensei names, tagging positive employee mentions.' },
+            { name: 'Parent-Friendly Tone', text: 'Generates warm, community-oriented responses highlighting confidence, respect, and discipline.' },
+            { name: 'Membership Cancellation Detection', text: 'Identifies keywords related to cancellations, billing, or contracts, sending them for owner approval.' },
+            { name: 'Injury Escalation', text: 'Routes reviews mentioning injuries, accidents, or safety concerns directly to a secure draft box.' },
+            { name: 'Bullying & Discrimination Detection', text: 'Locks reviews containing safety allegations, preventing auto-responses.' },
+            { name: 'Multi-School Dashboard', text: 'Monitor ratings, response times, and reviews across all dojo profiles in one panel.' }
         ],
-        reviews: [
+        employeeRoles: ['Instructor', 'Coach', 'Sensei', 'School owner', 'Program director', 'Front-desk team member'],
+        sensitiveTopics: ['Injuries', 'Child safety', 'Bullying', 'Discrimination', 'Staff conduct', 'Membership disputes', 'Cancellation issues'],
+        reviewExamples: [
             {
-                author: 'Jessica Miller',
+                reviewer: 'Jennifer Miller',
                 rating: 5,
                 text: 'My daughter has gained so much confidence. Coach Daniel is wonderful.',
-                status: 'Safe to Auto-Publish',
-                reply: 'Thank you for sharing this! We’re thrilled to hear that your daughter is becoming more confident and that Coach Daniel has made such a positive impact. We’ll be sure to share your kind words with him.'
+                label: 'Safe to Auto-Publish',
+                reply: 'Thank you for sharing this. We’re thrilled to hear that your daughter is becoming more confident and that Coach Daniel has made such a positive impact. We’ll be sure to share your kind words with him.'
             },
             {
-                author: 'Tom Harrison',
+                reviewer: 'Tom Harrison',
                 rating: 2,
-                text: 'They made it extremely difficult to cancel my membership.',
-                status: 'Owner Approval Required',
-                reply: 'Thank you for your feedback. We aim to make membership management clear. Please contact our school director directly so we can resolve your account cancellation details.'
+                text: 'They made it extremely difficult to cancel.',
+                label: 'Owner Approval Required',
+                reply: 'Thank you for your feedback. We aim to make membership management clear. Please contact our program director directly so we can review your account cancellation details.'
             },
             {
-                author: 'Amanda Sterling',
+                reviewer: 'Amanda Sterling',
                 rating: 1,
-                text: 'My child was injured on the mat, and no one contacted me.',
-                status: 'Child-Safety Concern - Immediate Escalation Required',
-                reply: 'Immediate escalation triggered. Review locked in drafts. Notification dispatched to school owner.'
+                text: 'My child was injured, and no one contacted me.',
+                label: 'Sensitive Review - Escalated',
+                alertTitle: 'Child-safety concern detected',
+                alertText: 'Immediate escalation required. Review locked in drafts.'
             }
         ],
-        insights: [
-            'Coach Daniel received 8 positive mentions in parent reviews',
-            'Membership and contract complaints increased by 5%',
-            'Confidence and discipline were mentioned in 12 reviews',
-            'One school location has repeated cleanliness mentions',
-            'Two student safety concerns require immediate owner review'
+        insightExamples: [
+            'Coach Daniel received eight positive mentions',
+            'Membership complaints increased',
+            'Parents frequently mention confidence and discipline',
+            'One location has recurring cleanliness concerns',
+            'Two safety reviews need attention'
         ],
-        faqs: [
-            { q: 'Can ReplyVera handle multiple martial arts locations?', a: 'Yes. Our platform allows multi-school owners and franchise directors to connect and manage all local profiles from one main screen.' },
-            { q: 'Can staff members approve replies?', a: 'Yes. You can configure permission levels so front-desk coordinators, program directors, or managers can approve replies.' },
-            { q: 'Does it recognize Spanish reviews?', a: 'Yes. ReplyVera reads and replies in the language of the reviewer, supporting both English and Spanish.' },
-            { q: 'How does it help with SEO?', a: 'Responding to Google Reviews quickly is a major ranking factor for local searches. ReplyVera helps you keep a 100% response rate to boost your search prominence.' },
-            { q: 'Which review platforms are supported?', a: 'ReplyVera currently automates Google Reviews. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future dojo packages.' }
+        multiLocationCopy: 'Manage reputation and review metrics across multiple academy branches. Set location-level access rules so managers can respond while school owners track overall student satisfaction.',
+        pricingOffer: { label: 'Early-access offer', text: 'Standard autopilot pricing at $39/mo per location.' },
+        faqItems: [
+            { q: 'Can ReplyVera manage multiple martial arts locations?', a: 'Yes. Connect multiple Google Business Profile locations and monitor ratings from one central screen.' },
+            { q: 'Can safety reviews be blocked from auto-publishing?', a: 'Yes. Any review mentioning injuries, bullying, or child safety is immediately held in drafts, blocking auto-replies.' },
+            { q: 'Can ReplyVera recognize employees?', a: 'Yes. The system tags mentions of specific Senseis or coaches to track staff performance.' },
+            { q: 'Does it support Spanish reviews?', a: 'Yes. It automatically translates and replies to parents in their written language (English or Spanish).' },
+            { q: 'Which review platforms are supported?', a: 'Currently supported: Google Reviews. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future dojo rollouts.' }
         ],
-        related: [
-            { id: 'childcare', title: 'Childcare' },
-            { id: 'tutoring', title: 'Tutoring' }
-        ]
+        relatedIndustries: [
+            { id: 'childcare', title: 'Childcare & Preschool' },
+            { id: 'tutoring', title: 'Tutoring Centers' }
+        ],
+        finalCtaHeadline: 'Spend More Time Teaching and Less Time Writing Replies',
+        finalCtaDescription: 'Keep parent trust high and automate positive review responses while holding sensitive safety concerns.',
+        mockupLocationName: 'Summit Martial Arts'
     },
     {
-        id: 'childcare',
-        title: 'Childcare & Preschool',
-        metaTitle: 'ReplyVera for Childcare & Preschool | Empathic Review Reply Management',
-        metaDesc: 'Automate Google review replies for daycares, childcare centers, and preschools. Safely reply to parents, tag teachers, and lock supervision reviews.',
-        seoKeywords: 'childcare review management, daycare Google review software, automatic review replies for preschools, childcare reputation management',
-        heroTitle: 'Every Childcare Review<br />Answered <span class="text-gradient">With Care</span>',
-        heroSub: 'ReplyVera safely handles routine parent reviews, recognizes great teachers, and immediately escalates concerns involving supervision, injuries, allergies, staff conduct, or child privacy.',
-        targetCustomers: ['Daycares', 'Preschools', 'Early learning centers', 'Montessori schools', 'Childcare franchises', 'Before-and-after school programs'],
+        slug: 'childcare',
+        metaTitle: 'Google Review Management for Childcare Centers | ReplyVera',
+        metaDescription: 'Safely automate routine childcare Google review responses while escalating supervision, injury, allergy, and privacy concerns.',
+        navigationLabel: 'Childcare & Preschool',
+        navigationDescription: 'Safety-aware responses for parent reviews.',
+        heroEyebrow: 'Google Review Automation for Childcare Centers',
+        heroHeadline: 'Every Childcare Review Answered With Care',
+        heroDescription: 'ReplyVera safely handles routine parent reviews, recognizes great teachers, and immediately escalates concerns involving supervision, injuries, allergies, staff conduct, or child privacy.',
+        heroPrimaryCta: 'Start Your Free Trial',
+        heroSecondaryCta: 'Start for $39 per Month',
+        businessTypes: ['Daycares', 'Preschools', 'Early learning centers', 'Montessori schools', 'Childcare franchises', 'Before-and-after school programs'],
+        problemHeadline: 'Supervise Parent Feedback Safely Without Sacrificing Director Focus',
         problems: [
-            { icon: 'baby', title: 'Busy Daycare Directors', text: 'Directors are overseeing classrooms, licensing, and parenting communications, leaving zero time for reviews.' },
-            { icon: 'heart', title: 'Parent Trust is Vital', text: 'Childcare is deeply personal. Parents require empathetic, professional, and clear communication.' },
-            { icon: 'award', title: 'Missed Teacher Kudos', text: 'Praise for outstanding early education teachers is easily buried in old online reviews.' },
-            { icon: 'lock', title: 'Strict Child Privacy', text: 'Replying to reviews requires care to avoid revealing children\'s names, schedules, or sensitive details.' },
-            { icon: 'shield-alert', title: 'Safety Complaints Escalation', text: 'Issues involving supervision, allergies, or injuries must never be answered automatically.' },
-            { icon: 'trending-up', title: 'Staff Turnover Alerts', text: 'Public concerns regarding staff turnover should be identified early to protect enrollment.' }
+            { icon: 'baby', title: 'Busy daycare directors', text: 'Directors spend their days managing children, teacher ratios, and licensing compliance, with zero time for computer tasks.' },
+            { icon: 'heart', title: 'Parent trust is critical', text: 'Early education centers require warm, reassuring, and highly professional responses to maintain parent confidence.' },
+            { icon: 'award', title: 'Teacher praise goes unrecognized', text: 'Excellent parent feedback praising teachers (like Ms. Ana) is rarely compiled to support staff retention.' },
+            { icon: 'lock', title: 'Child privacy rules', text: 'Replying to parents requires extreme care to avoid confirming minor enrollments, schedules, or classroom names.' },
+            { icon: 'shield-alert', title: 'Safety concerns require immediate manager attention', text: 'Reviews alleging injuries, child safety failures, or allergies must never be answered automatically.' },
+            { icon: 'trending-up', title: 'Staff turnover feedback', text: 'Negative parent comments regarding staff changes can quickly impact school enrollment rates.' }
         ],
         features: [
-            { icon: 'award', title: 'Teacher Mention Tracking', text: 'Extracts mentions of specific teachers (like Ms. Ana) and logs their positive reviews.' },
-            { icon: 'shield', title: 'Privacy-Aware Responses', text: 'Ensures replies never confirm children\'s enrollments, schedules, or private details.' },
-            { icon: 'alert-triangle', title: 'Supervision & Safety Flags', text: 'Locks reviews containing words like "alone", "injured", "fall", or "unattended" from auto-publishing.' },
-            { icon: 'coffee', title: 'Warm Parenting Tone', text: 'Generates warm, reassuring, and community-focused replies matching preschool values.' },
-            { icon: 'users', title: 'Staff Turnover Metrics', text: 'Identifies public reviews mentioning staff changes to help management monitor reputational trends.' },
-            { icon: 'map', title: 'Multi-Center Administration', text: 'Manage childcare centers across multiple cities from one dashboard with regional permissions.' }
+            { name: 'Teacher Recognition', text: 'Scans parent reviews for educator names, tracking top performance mentions.' },
+            { name: 'Privacy-Conscious Responses', text: 'Ensures responses thank the parents politely without confirming children\'s class schedules or private details.' },
+            { name: 'Injury and Safety Escalation', text: 'Flags reviews containing words like hurt, fall, or accident, routing them to director drafts.' },
+            { name: 'Allergy and Medication Detection', text: 'Locks reviews mentioning food allergies or medication issues, preventing auto-replies.' },
+            { name: 'Supervision Concern Detection', text: 'Scans for allegations of children left unattended, locking responses for licensing reviews.' },
+            { name: 'Staff-Turnover Trend Tracking', text: 'Identifies public reviews highlighting staff changes to monitor institutional health.' }
         ],
-        reviews: [
+        employeeRoles: ['Teacher', 'Center director', 'Classroom assistant', 'Administrator', 'Program coordinator'],
+        sensitiveTopics: ['Injury', 'Supervision', 'Allergies', 'Medication', 'Abuse', 'Neglect', 'Staff conduct', 'Licensing', 'Child privacy'],
+        reviewExamples: [
             {
-                author: 'Rebecca Thorne',
+                reviewer: 'Ms. Ana Fan',
                 rating: 5,
                 text: 'Ms. Ana is amazing, and our daughter loves going every morning.',
-                status: 'Safe to Auto-Publish',
-                reply: 'Thank you for your kind feedback! We’re so pleased to hear that Ms. Ana has helped create such a positive and welcoming experience for your daughter. We’ll be sure to share your appreciation with her.'
+                label: 'Safe to Auto-Publish',
+                reply: 'Thank you for your kind feedback. We’re so pleased to hear that Ms. Ana has helped create such a positive and welcoming experience. We’ll be sure to share your appreciation with her.'
             },
             {
-                author: 'Liam Patterson',
+                reviewer: 'Liam Patterson',
                 rating: 3,
                 text: 'Communication from the office has been inconsistent.',
-                status: 'Director Approval Recommended',
-                reply: 'Thank you for sharing your experience. We aim to keep communication clear and consistent. We\'ve shared your note with our admin team to improve our center alerts.'
+                label: 'Director Approval Recommended',
+                reply: 'Thank you for sharing your experience. We aim to keep communication clear and consistent. We\'ve shared your note with our team to improve our messaging tools.'
             },
             {
-                author: 'Rachel Albright',
+                reviewer: 'Rachel Albright',
                 rating: 1,
                 text: 'My child was injured, and I was not informed until pickup.',
-                status: 'Supervision Alert - Director Action Required',
-                reply: 'Serious safety concern detected. Auto-publishing blocked. Escalated immediately to childcare center director.'
+                label: 'Sensitive Review - Escalated',
+                alertTitle: 'Serious safety concern detected',
+                alertText: 'Immediately escalated to the center director. Auto-publishing blocked.'
             }
         ],
-        insights: [
-            'Communication and admin complaints increased at the Suburban center',
-            'Ms. Ana received 10 positive parent mentions this quarter',
-            '3 review comments mention staff turnover concern',
-            'One allergy or meal concern requires director check',
-            'Cleanliness feedback ratings improved by 12% this month'
+        insightExamples: [
+            'Communication complaints increased at one center',
+            'Ms. Ana received ten positive mentions',
+            'Three reviews mention staff turnover',
+            'One allergy-related concern requires attention',
+            'Cleanliness feedback improved this month'
         ],
-        faqs: [
-            { q: 'Does ReplyVera reveal child information?', a: 'No. ReplyVera is programmed to write warm but generic replies that never confirm child identity, enrollment status, or program details, keeping privacy safe.' },
-            { q: 'Can supervision or allergy complaints be blocked from auto-publishing?', a: 'Yes. Any review containing words related to injuries, supervision, medication, or food allergies is immediately locked in drafts for director review.' },
-            { q: 'Can multiple daycare locations be managed?', a: 'Yes. Our platform connects multiple daycare Business Profiles, allowing group operators or franchise directors to manage review feeds from one dashboard.' },
-            { q: 'Does it support Spanish reviews?', a: 'Yes. ReplyVera handles responses in both English and Spanish, replying to parents in their written language.' },
-            { q: 'Which review platforms are supported?', a: 'ReplyVera currently supports Google Reviews, which is key for local preschool search rankings. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
+        multiLocationCopy: 'Our Multi-Location dashboard helps franchise operators monitor licensing compliance, response rates, and ratings across childcare centers from one corporate panel.',
+        pricingOffer: { label: 'Early-access offer', text: 'Standard autopilot plan is $39/mo per location.' },
+        faqItems: [
+            { q: 'Does ReplyVera reveal child information?', a: 'No. ReplyVera drafts general, professional replies that thank the parents without confirming minor names, schedules, or classroom locations.' },
+            { q: 'Can supervision or allergy reviews be blocked from auto-publishing?', a: 'Yes. Any reviews mentioning cuts, falls, unattended play, or dietary issues are immediately flagged, held in drafts, and alert the director.' },
+            { q: 'Can multiple center locations be managed?', a: 'Yes. Connect multiple childcare profiles and manage director approve levels across branches.' },
+            { q: 'Does it support Spanish reviews?', a: 'Yes. It automatically replies to parent feedback in the language it was written.' },
+            { q: 'Which review platforms are supported?', a: 'Currently supported: Google Reviews. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future childcare releases.' }
         ],
-        related: [
-            { id: 'tutoring', title: 'Tutoring' },
-            { id: 'martial-arts', title: 'Martial Arts' }
-        ]
+        relatedIndustries: [
+            { id: 'tutoring', title: 'Tutoring Centers' },
+            { id: 'martial-arts', title: 'Martial Arts Schools' }
+        ],
+        finalCtaHeadline: 'Protect Your Reputation Without Overloading Center Directors',
+        finalCtaDescription: 'Keep childcare parent trust high, automate positive drafts, and secure immediate alerts for supervision concerns.',
+        mockupLocationName: 'Little Oaks Learning Center'
     },
     {
-        id: 'tutoring',
-        title: 'Tutoring & Learning',
-        metaTitle: 'ReplyVera for Tutoring Centers | Google Review Management',
-        metaDesc: 'Automate Google review replies for tutoring and learning centers. Respond to parent praise, protect student privacy, and escalate academic score guarantee claims.',
-        seoKeywords: 'tutoring center review software, Google review replies for tutoring businesses, learning center reputation management, automatic tutoring review responses',
-        heroTitle: 'Turn Every Parent Review<br />Into <span class="text-gradient">Student Trust</span>',
-        heroSub: 'ReplyVera writes personalized Google review responses, recognizes outstanding tutors, and carefully handles concerns involving progress, refunds, billing, or student safety.',
-        targetCustomers: ['Tutoring centers', 'Test prep academies', 'Learning franchises', 'STEM centers', 'Language schools', 'Private educators'],
+        slug: 'tutoring',
+        metaTitle: 'Google Review Replies for Tutoring Centers | ReplyVera',
+        metaDescription: 'Automatically respond to tutoring Google reviews, recognize instructors, and escalate progress, refund, billing, and student-safety concerns.',
+        navigationLabel: 'Tutoring Centers',
+        navigationDescription: 'Professional replies for parent and student feedback.',
+        heroEyebrow: 'Google Review Automation for Tutoring Centers',
+        heroHeadline: 'Turn Every Parent Review Into Trust',
+        heroDescription: 'ReplyVera writes personalized Google review responses, recognizes outstanding tutors, and carefully handles concerns involving progress, refunds, billing, or student safety.',
+        heroPrimaryCta: 'Start Your Free Trial',
+        heroSecondaryCta: 'Start for $39 per Month',
+        businessTypes: ['Tutoring centers', 'Test prep academies', 'Learning franchises', 'STEM centers', 'Language schools', 'Private educators'],
+        problemHeadline: 'Maintain Educational Trust Without Swelling Administrative Hours',
         problems: [
-            { icon: 'book', title: 'Directors Teaching Classes', text: 'Learning center directors spend their afternoons teaching and enrolling students, leaving no time to monitor reviews.' },
-            { icon: 'smile', title: 'Parents Value Quick Feedback', text: 'Parents look closely at reviews when selecting educators, making prompt replies critical.' },
-            { icon: 'award', title: 'Uncollected Tutor Praise', text: 'Tutors who help children score high on tests deserve recognition, but positive feedback is rarely aggregated.' },
-            { icon: 'lock', title: 'Student Privacy Rules', text: 'Educators must be extremely careful to protect minor students\' full names and academic records.' },
-            { icon: 'dollar-sign', title: 'Score Guarantees & Claims', text: 'Claims regarding promised test score improvements need careful review to avoid legal liabilities.' },
-            { icon: 'credit-card', title: 'Billing & Refund Disputes', text: 'Disputes over monthly tuition or package refunds must be handled quietly and offline.' }
+            { icon: 'book', title: 'Directors teaching classes', text: 'Academic directors are busy instructing students or advising parents, leaving no admin time to track reviews.' },
+            { icon: 'smile', title: 'Parents look for active reviews', text: 'Families research local learning centers closely online, making responsive and professional replies vital.' },
+            { icon: 'award', title: 'Tutor performance goes unlogged', text: 'Review praise celebrating algebra or SAT prep tutors is buried, missing staff reward metrics.' },
+            { icon: 'lock', title: 'Minor student privacy', text: 'Responses must protect student identities, avoiding references to grades or academic struggles.' },
+            { icon: 'dollar-sign', title: 'Academic guarantee disputes', text: 'Reviews claiming promised grade improvements or score guarantees need careful, non-automated replies.' },
+            { icon: 'credit-card', title: 'Billing and tuition disputes', text: 'Tuition disputes or refund demands can quickly escalate if auto-replied with generic copy.' }
         ],
         features: [
-            { icon: 'award', title: 'Tutor Praise Tracking', text: 'Extracts references to specific educators (like Emily) and logs their positive review highlights.' },
-            { icon: 'lock', title: 'Privacy-Conscious Safeguards', text: 'Ensures responses thank the reviewer without confirming minor student names or class grades.' },
-            { icon: 'alert-triangle', title: 'Academic Guarantee Scanners', text: 'Identifies words like "guaranteed score", "pass", or "fail" and routes them to managers for approval.' },
-            { icon: 'credit-card', title: 'Refund & Billing Filters', text: 'Automatically blocks auto-publishing for billing issues, routing them to director drafts.' },
-            { icon: 'languages', title: 'Fluent Bilingual Support', text: 'Responds naturally to parent reviews written in both English and Spanish.' },
-            { icon: 'map', title: 'Multi-Center Administration', text: 'Allows learning center franchises to monitor local ratings and response times across all cities.' }
+            { name: 'Tutor Recognition', text: 'Extracts mentions of tutoring staff (like Emily) from positive parent feedback.' },
+            { name: 'Academic-Claim Detection', text: 'Locks reviews containing grade score claims or score improvement guarantees for admin drafts.' },
+            { name: 'Refund and Billing Escalation', text: 'Routes reviews regarding package billing or tuition refunds directly to the director.' },
+            { name: 'Student Privacy Protection', text: 'Ensures responses thank reviewers without disclosing minor student names or course grades.' },
+            { name: 'Parent-Friendly Language', text: 'Generates polite, academically encouraging, and community-focused replies.' },
+            { name: 'Multi-Location Controls', text: 'Oversee metrics, response rates, and ratings across tutoring locations in one panel.' }
         ],
-        reviews: [
+        employeeRoles: ['Tutor', 'Instructor', 'Center director', 'Academic coach', 'Administrator'],
+        sensitiveTopics: ['Student safety', 'Academic guarantees', 'Refunds', 'Billing', 'Discrimination', 'Staff conduct', 'Private student information'],
+        reviewExamples: [
             {
-                author: 'Jonathan Sterling',
+                reviewer: 'Jonathan Sterling',
                 rating: 5,
                 text: 'Emily helped my son understand algebra and become more confident.',
-                status: 'Safe to Auto-Publish',
-                reply: 'Thank you for sharing your experience! We’re delighted that Emily helped make algebra more understandable and supported your son’s confidence. We’ll be sure to share your kind words with her.'
+                label: 'Safe to Auto-Publish',
+                reply: 'Thank you for sharing your experience. We’re delighted that Emily helped make algebra more understandable and supported your son’s confidence. We’ll be sure to share your kind words with her.'
             },
             {
-                author: 'Claire Winters',
+                reviewer: 'Claire Winters',
                 rating: 2,
-                text: 'We did not see the test score improvement we expected.',
-                status: 'Manager Approval Required',
-                reply: 'Thank you for your feedback. We aim to help every student succeed. Please reach out to our center director so we can review your child\'s progress plan and support options.'
+                text: 'We did not see the score improvement we expected.',
+                label: 'Manager Approval Required',
+                reply: 'Thank you for sharing your feedback. We aim to help every student succeed. Please contact our center director directly so we can review your child\'s learning plan and support options.'
             },
             {
-                author: 'Michael Brody',
+                reviewer: 'Michael Brody',
                 rating: 1,
-                text: 'The center promised a specific test-score increase but refused a refund.',
-                status: 'Academic Claim Detected - Manual Review Required',
-                reply: 'Guarantee concern detected. Response locked in drafts. Immediate email alert dispatched to learning center manager.'
+                text: 'The center promised a specific test-score increase.',
+                label: 'Sensitive Review - Escalated',
+                alertTitle: 'Potential academic guarantee detected',
+                alertText: 'Manual review required. Review held in drafts.'
             }
         ],
-        insights: [
-            'Emily (Algebra Tutor) received 7 positive parent mentions',
-            'Scheduling and session booking complaints increased this month',
-            'Parents frequently praise confidence and score improvement',
-            'Refund and billing complaints are concentrated at the Suburban location',
-            'Test-preparation programs have the highest review satisfaction ratings'
+        insightExamples: [
+            'Emily received seven positive mentions',
+            'Scheduling complaints increased',
+            'Parents frequently praise communication',
+            'Refund concerns are concentrated at one location',
+            'Test-preparation reviews have the highest satisfaction'
         ],
-        faqs: [
-            { q: 'Does ReplyVera reveal minor student information?', a: 'No. ReplyVera is programmed to protect privacy. It drafts professional responses that thank the parents without referencing minor names or grades.' },
-            { q: 'Can score guarantee concerns be blocked from auto-publishing?', a: 'Yes. ReplyVera\'s academic claim scanners block auto-publishing for any reviews mentioning promises, guarantees, or grade scores, ensuring manager approval.' },
-            { q: 'Can multiple center locations be managed?', a: 'Yes. Franchise owners and regional managers can connect multiple Google Business Profile locations and monitor everything from one screen.' },
-            { q: 'Can instructors approve replies?', a: 'Yes. You can invite center directors, coordinators, or administrators to review and approve drafts.' },
-            { q: 'Which review platforms are supported?', a: 'ReplyVera currently automates Google Reviews. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future tutoring center rollouts.' }
+        multiLocationCopy: 'Monitor tutor reviews and parent sentiment across multiple regional learning centers. Set location-level access rules so directors manage local feedback while owners track overall score improvements.',
+        pricingOffer: { label: 'Early-access offer', text: 'Standard autopilot plan starting at $39/mo per location.' },
+        faqItems: [
+            { q: 'Does ReplyVera reveal minor student information?', a: 'No. ReplyVera is programmed to write professional replies that thank parents without confirming student names or academic records.' },
+            { q: 'Can academic guarantee complaints be blocked from auto-publishing?', a: 'Yes. Any reviews mentioning promises, score improvements, or refund demands are held in drafts, blocking auto-replies.' },
+            { q: 'Can multiple tutoring locations be managed?', a: 'Yes. Connect multiple Google Business Profile accounts and manage separate staff access levels across branches.' },
+            { q: 'Does it support Spanish reviews?', a: 'Yes. The system reads and replies to parents in their written language (English or Spanish).' },
+            { q: 'Which review platforms are supported?', a: 'Currently supported: Google Reviews. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
         ],
-        related: [
-            { id: 'childcare', title: 'Childcare' },
-            { id: 'martial-arts', title: 'Martial Arts' }
-        ]
+        relatedIndustries: [
+            { id: 'childcare', title: 'Childcare & Preschool' },
+            { id: 'martial-arts', title: 'Martial Arts Schools' }
+        ],
+        finalCtaHeadline: 'Build Parent Trust Without Adding Administrative Work',
+        finalCtaDescription: 'Keep parent communication professional, log tutor praise, and secure immediate alerts for billing concerns.',
+        mockupLocationName: 'Northstar Learning Center'
     },
     {
-        id: 'pet-care',
-        title: 'Pet Care & Boarding',
-        metaTitle: 'ReplyVera for Pet Care | Google Review Auto-Replies for Groomers & daycares',
-        metaDesc: 'Automate Google review replies for dog daycares, pet boarding resorts, and grooming salons. Safely reply to owners, tag groomers, and escalate injuries.',
-        seoKeywords: 'pet boarding review management, Google review replies for dog daycare, grooming salon reputation management, pet-care review software',
-        heroTitle: 'Every Pet-Care Review<br />Answered <span class="text-gradient">Automatically</span>',
-        heroSub: 'ReplyVera writes warm Google review responses, recognizes outstanding staff, and immediately escalates concerns involving injuries, illness, lost pets, grooming incidents, or animal safety.',
-        targetCustomers: ['Dog daycares', 'Pet boarding resorts', 'Kennels', 'Grooming salons', 'Pet hotels', 'Multi-location pet care chains'],
+        slug: 'pet-care',
+        metaTitle: 'Google Review Automation for Pet-Care Businesses | ReplyVera',
+        metaDescription: 'Automatically respond to pet-care Google reviews and escalate injury, illness, lost-pet, and grooming concerns.',
+        navigationLabel: 'Pet Care',
+        navigationDescription: 'Warm replies with animal-safety escalation.',
+        heroEyebrow: 'Google Review Automation for Pet-Care Businesses',
+        heroHeadline: 'Every Pet-Care Review Answered Automatically',
+        heroDescription: 'ReplyVera writes warm Google review responses, recognizes outstanding staff, and immediately escalates concerns involving injuries, illness, lost pets, grooming incidents, or animal safety.',
+        heroPrimaryCta: 'Start Your Free Trial',
+        heroSecondaryCta: 'Start for $39 per Month',
+        businessTypes: ['Dog daycares', 'Pet boarding resorts', 'Kennels', 'Grooming salons', 'Pet hotels', 'Multi-location chains'],
+        problemHeadline: 'Keep Your Staff With the Animals, Not Replying to Google Reviews',
         problems: [
-            { icon: 'dog', title: 'Attendants Busy with Pets', text: 'Kennel attendants and play handlers are busy caring for animals, leaving no time to sit at a computer.' },
-            { icon: 'heart', title: 'Pet Owners Seek Reassurance', text: 'Pet owners consider their dogs and cats as family. They look for warm, personalized, and rapid replies.' },
-            { icon: 'award', title: 'Uncollected Groomer Praise', text: 'Praise for talented pet groomers or handlers gets buried, missing opportunities to reward staff.' },
-            { icon: 'clock', title: 'Grooming Appointment Delays', text: 'Delays in pickup or scheduling bottlenecks can lead to negative public feedback on Google.' },
-            { icon: 'shield-alert', title: 'Animal Safety Claims', text: 'Any review mentioning dog fights, injuries, escape, or sickness requires immediate executive drafting.' },
-            { icon: 'map', title: 'Inconsistent Franchise Voice', text: 'Group operators struggle to keep a consistent, pet-friendly tone across all daycares.' }
+            { icon: 'dog', title: 'Attendants busy with animals', text: 'Kennel play handlers and groomers are busy caring for dogs, leaving no time to sit at a desk computer.' },
+            { icon: 'heart', title: 'Pet owners seek reassurance', text: 'Pet owners treat their dogs as family and expect personal, warm, and prompt responses to their reviews.' },
+            { icon: 'award', title: 'Groomer praise goes unrecognized', text: 'Outstanding reviews praising specific groomers or trainers are lost, missing opportunities to celebrate staff.' },
+            { icon: 'clock', title: 'Appointment delays spark feedback', text: 'Grooming wait times or delayed pickups can draw complaints on your local business profile.' },
+            { icon: 'shield-alert', title: 'Animal safety claims require care', text: 'Mentions of bites, illnesses, cuts, or escape demand immediate manager action to prevent liabilities.' },
+            { icon: 'map', title: 'Inconsistent brand voice', text: 'Multi-location pet care chains struggle to enforce a consistent, pet-friendly tone across all daycares.' }
         ],
         features: [
-            { icon: 'scissors', title: 'Groomer & Staff Mentions', text: 'Identifies client praise for specific groomers or handlers (like Jordan) and highlights them.' },
-            { icon: 'clock', title: 'Appointment Delay Scanners', text: 'Identifies wait-time or delay complaints and routes them to location managers for follow-up.' },
-            { icon: 'alert-triangle', title: 'Animal Injury Lock', text: 'Detects keywords like "hurt", "injury", "cut", or "vet" and blocks auto-posting to prevent liability.' },
-            { icon: 'shield', title: 'Lost Pet Warnings', text: 'Identifies mentions of escape or lost pets, triggering immediate email alerts to the facility owner.' },
-            { icon: 'heart', title: 'Pet-Friendly Tone Engine', text: 'Generates warm, pet-loving, and reassuring responses referencing specific details from the review.' },
-            { icon: 'languages', title: 'Bilingual Owner Support', text: 'Responds naturally to client feedback in both English and Spanish.' }
+            { name: 'Groomer and Staff Recognition', text: 'Scans customer reviews for groomer or handler names, logging positive employee mentions.' },
+            { name: 'Boarding, Daycare, and Grooming Detection', text: 'Identify reviews mentioning specific service types (like drop-off daycare, boarding, or nail trims).' },
+            { name: 'Animal-Injury Escalation', text: 'Locks reviews containing words like hurt, cut, scratch, or vet, routing them directly to manager approval.' },
+            { name: 'Lost-Pet and Escaped-Pet Detection', text: 'Detects mentions of escaped dogs or missing collars, triggering immediate email notifications to the owner.' },
+            { name: 'Medication Concern Detection', text: 'Flags reviews alleging incorrect medicine administration or dietary errors.' },
+            { name: 'Service-Delay Detection', text: 'Identifies wait-time complaints or delayed grooming pickup reviews.' }
         ],
-        reviews: [
+        employeeRoles: ['Groomer', 'Handler', 'Trainer', 'Kennel attendant', 'Front-desk employee', 'Facility manager'],
+        sensitiveTopics: ['Animal injury', 'Illness', 'Escaped pets', 'Missing pets', 'Bites', 'Medication', 'Neglect', 'Grooming injuries'],
+        reviewExamples: [
             {
-                author: 'Mark Douglas',
+                reviewer: 'Mark Douglas',
                 rating: 5,
                 text: 'Bella loves daycare, and Jordan always greets her by name.',
-                status: 'Safe to Auto-Publish',
-                reply: 'Thank you for sharing this! We love hearing that Bella enjoys her daycare visits and that Jordan makes her feel so welcome. We’ll be sure to share your kind words with the team.'
+                label: 'Safe to Auto-Publish',
+                reply: 'Thank you for sharing this. We love hearing that Bella enjoys her daycare visits and that Jordan makes her feel so welcome. We’ll be sure to share your kind words with the team.'
             },
             {
-                author: 'Sandra Collins',
+                reviewer: 'Sandra Collins',
                 rating: 3,
                 text: 'Our grooming appointment took much longer than expected.',
-                status: 'Manager Approval Recommended',
-                reply: 'Thank you for your feedback. We\'re glad you chose us, but we\'re sorry the grooming took longer than planned. We\'re reviewing our schedule flow to improve our pickup times.'
+                label: 'Manager Approval Recommended',
+                reply: 'Thank you for your feedback. We\'re glad you chose us, but we\'re sorry your grooming appointment took longer than expected. We\'re sharing this with our groomers to improve scheduling.'
             },
             {
-                author: 'Philip Sterling',
+                reviewer: 'Philip Sterling',
                 rating: 1,
                 text: 'My dog was injured while staying at the facility.',
-                status: 'Animal-Safety Concern - Immediate Owner Action Required',
-                reply: 'Animal-safety concern detected. Response locked in drafts. Immediate alert dispatched to facility owner.'
+                label: 'Sensitive Review - Escalated',
+                alertTitle: 'Animal-safety concern detected',
+                alertText: 'Immediate management review required. Auto-publishing blocked.'
             }
         ],
-        insights: [
-            'Jordan received 9 positive staff mentions in client reviews',
-            'Grooming wait-time complaints rose by 8% this month',
-            'One boarding location has repeated cleanliness mentions',
-            'Clients frequently praise daycare photo updates',
-            'Two animal-injury complaints require immediate manager check'
+        insightExamples: [
+            'Jordan received nine positive mentions',
+            'Grooming wait-time complaints increased',
+            'One location has repeated cleanliness concerns',
+            'Customers frequently praise photo updates',
+            'Two safety-related reviews require follow-up'
         ],
-        faqs: [
-            { q: 'Can ReplyVera manage multiple locations?', a: 'Yes. Our Multi-Location plan lets you connect multiple Google Business Profiles to track boarding or grooming reviews across all centers.' },
-            { q: 'Can animal safety complaints be blocked from auto-publishing?', a: 'Yes. Any reviews mentioning cuts, injuries, escape, illnesses, or vet visits are immediately locked in drafts, blocking auto-replies.' },
-            { q: 'Can we reward staff members praised in reviews?', a: 'Yes. ReplyVera identifies employee names and aggregates their positive mentions in the dashboard leaderboard.' },
-            { q: 'Does it support Spanish reviews?', a: 'Yes. ReplyVera automatically translates and replies to pet owners in their native language.' },
-            { q: 'Which review platforms are supported?', a: 'ReplyVera currently automates Google Reviews. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
+        multiLocationCopy: 'Manage review profiles across all boarding resorts or grooming locations. Let facility managers oversee local feedback while regional owners track overall pet satisfaction levels.',
+        pricingOffer: { label: 'Early-access offer', text: 'Standard autopilot plan starting at $39/mo per location.' },
+        faqItems: [
+            { q: 'Can ReplyVera manage multiple locations?', a: 'Yes. Connect multiple pet boarding or grooming Business Profiles and manage ratings from one screen.' },
+            { q: 'Can animal safety reviews be blocked from auto-publishing?', a: 'Yes. Any review mentioning cuts, scratches, illness, escape, or vet visits is flagged, held in drafts, and triggers email alerts.' },
+            { q: 'Can we track praised employees?', a: 'Yes. ReplyVera tags groomer or handler names in reviews, logging positive performance Leaderboards.' },
+            { q: 'Does it support Spanish reviews?', a: 'Yes. It automatically detects Spanish reviews and drafts replies in fluent Spanish.' },
+            { q: 'Which review platforms are supported?', a: 'Currently supported: Google Reviews. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future pet packages.' }
         ],
-        related: [
-            { id: 'agencies', title: 'Agencies' },
-            { id: 'restaurants', title: 'Restaurants' },
-            { id: 'car-washes', title: 'Car Washes' }
-        ]
+        relatedIndustries: [
+            { id: 'agencies', title: 'Marketing Agencies' },
+            { id: 'restaurants', title: 'Restaurants' }
+        ],
+        finalCtaHeadline: 'Protect Your Reputation While You Care for Their Pets',
+        finalCtaDescription: 'Keep pet owner trust high, automate positive replies, and get immediate alerts for animal safety concerns.',
+        mockupLocationName: 'Happy Trails Pet Resort'
     },
     {
-        id: 'car-washes',
-        title: 'Car Washes',
-        metaTitle: 'ReplyVera for Car Washes | Automatic Google Review Responses',
-        metaDesc: 'Automate Google review replies for express car washes, detailing centers, and multi-location operators. Track damage claims and highlight membership complaints.',
-        seoKeywords: 'car wash review management, Google review replies for car washes, car wash reputation software, multi-location car wash reviews',
-        heroTitle: 'Every Car-Wash Review<br />Answered <span class="text-gradient">Automatically</span>',
-        heroSub: 'ReplyVera handles routine Google reviews, recognizes great employees, and sends vehicle-damage, billing, membership, and safety complaints to management.',
-        targetCustomers: ['Express car washes', 'Detailing centers', 'Self-serve bays', 'Multi-location wash chains', 'Franchise operators'],
+        slug: 'car-washes',
+        metaTitle: 'Google Review Management for Car Washes | ReplyVera',
+        metaDescription: 'Automatically respond to car-wash Google reviews and escalate vehicle-damage, billing, membership, and equipment complaints.',
+        navigationLabel: 'Car Wash Operators',
+        navigationDescription: 'Track damage, billing, equipment, and service reviews.',
+        heroEyebrow: 'Google Review Automation for Car Wash Operators',
+        heroHeadline: 'Every Car Wash Review Answered Automatically',
+        heroDescription: 'ReplyVera handles routine Google reviews, recognizes great employees, and sends vehicle-damage, billing, membership, and safety complaints to management.',
+        heroPrimaryCta: 'Start Your Free Trial',
+        heroSecondaryCta: 'Start for $39 per Month',
+        businessTypes: ['Express car washes', 'Detailing centers', 'Self-serve bays', 'Multi-location wash chains', 'Franchise operators'],
+        problemHeadline: 'Keep Your Site Attendants Attending, Not Replying to Google Reviews',
         problems: [
-            { icon: 'car', title: 'Operators Busy on Site', text: 'Managers are maintaining equipment, managing site attendants, and managing wash volume, leaving no time for reviews.' },
-            { icon: 'alert-triangle', title: 'Vehicle Damage Claims', text: 'Scratched paint or mirror damage complaints need instant owner alerts to verify cameras before replying.' },
-            { icon: 'credit-card', title: 'Membership Cancel Issues', text: 'Complex monthly wash pass cancellation issues can lead to angry, unresolved reviews on Google.' },
-            { icon: 'clock', title: 'Long Lines & Wait Times', text: 'Peak weekend traffic delays can draw negative reviews, pulling down your local search rating.' },
-            { icon: 'users', title: 'Attendant Praise Missed', text: 'Reviews thanking friendly payment or prep attendants are rarely logged to track employee performance.' },
-            { icon: 'map-pin', title: 'Franchise Consistency', text: 'Dozens of locations must maintain a consistent tone, which is hard to enforce manually.' }
+            { icon: 'car', title: 'Site managers busy on site', text: 'Managers spend their shifts clearing tunnel jams, restocking chemicals, and assisting lane traffic, leaving no computer time.' },
+            { icon: 'alert-triangle', title: 'Vehicle damage complaints', text: 'Allegations of scratches, broken mirrors, or dented rims require immediate review before posting a response.' },
+            { icon: 'credit-card', title: 'Membership cancellation issues', text: 'Customers cancel monthly wash passes and voice billing complaints publicly on your Google profile.' },
+            { icon: 'clock', title: 'Long lines and wait times', text: 'Weekend wash queues can draw complaints that lower your local map pack SEO rankings.' },
+            { icon: 'users', title: 'Attendant praise gets missed', text: 'Reviews praising helpful payment kiosk cashiers or detailers are lost without staff tracking.' },
+            { icon: 'map-pin', title: 'Multiple locations respond inconsistently', text: 'Multi-site operations struggle to maintain a uniform brand voice across all local branches.' }
         ],
         features: [
-            { icon: 'alert-triangle', title: 'Damage Claim Detection', text: 'Instantly identifies words like "scratch", "damage", "mirror", or "dent" and blocks auto-posting.' },
-            { icon: 'credit-card', title: 'Membership Filter Rules', text: 'Detects monthly pass cancel complaints, routing them directly to customer support drafts.' },
-            { icon: 'sliders', title: 'Equipment Failure Alarms', text: 'Identifies reviews mentioning broken payment terminals or broken vacuums for immediate action.' },
-            { icon: 'users', title: 'Attendant Praise Aggregator', text: 'Extracts names of detailing or prep staff mentioned, celebrating top performers.' },
-            { icon: 'map', title: 'Multi-Site Dashboard', text: 'Monitor ratings, review volumes, and response metrics across all locations in one panel.' },
-            { icon: 'globe', title: 'Bilingual Wash Responses', text: 'Automatically detects Spanish reviews and drafts replies in fluent Spanish.' }
+            { name: 'Vehicle-Damage Escalation', text: 'Identifies claims of scratches, mirror issues, or body damage, holding responses for management.' },
+            { name: 'Membership and Billing Detection', text: 'Flags reviews complaining about monthly passes, card charges, or refunds.' },
+            { name: 'Equipment-Issue Tracking', text: 'Detects comments regarding broken payment terminals, out-of-order vacuums, or tunnel errors.' },
+            { name: 'Wait-Time Detection', text: 'Identifies queue wait-time complaints to help managers monitor throughput.' },
+            { name: 'Employee Recognition', text: 'Recognizes lane prep attendants, detailers, and site staff mentioned by name.' },
+            { name: 'Location-Level Reporting', text: 'Compare rating metrics, review volumes, and staff praise across all wash sites.' }
         ],
-        reviews: [
+        employeeRoles: ['Attendant', 'Site manager', 'Customer-service employee', 'Detailer', 'Membership specialist'],
+        sensitiveTopics: ['Vehicle damage', 'Personal injury', 'Billing disputes', 'Membership cancellation', 'Safety', 'Staff conduct'],
+        reviewExamples: [
             {
-                author: 'Gordon Fisher',
+                reviewer: 'Gordon Fisher',
                 rating: 5,
                 text: 'Excellent wash, and Marcus helped me with the payment machine.',
-                status: 'Safe to Auto-Publish',
-                reply: 'Thank you for your review! We’re glad you had a great wash and that Marcus was able to help with the payment machine. We’ll be sure to share your kind words with him.'
+                label: 'Safe to Auto-Publish',
+                reply: 'Thank you for your review. We’re glad you had a great wash and that Marcus was able to help with the payment machine. We’ll be sure to share your kind words with him.'
             },
             {
-                author: 'Terry Cooper',
+                reviewer: 'Terry Cooper',
                 rating: 3,
                 text: 'The vacuums were not working, and the line was very long.',
-                status: 'Location Manager Review Required',
+                label: 'Location Manager Review',
                 reply: 'Thank you for letting us know. We\'re sorry the vacuums were out of service and that you experienced a delay. We\'re sharing this with our site team to inspect the equipment.'
             },
             {
-                author: 'Victor Grant',
+                reviewer: 'Victor Grant',
                 rating: 1,
                 text: 'The wash scratched the side of my vehicle.',
-                status: 'Damage Complaint - Immediate Manager Alert',
-                reply: 'Vehicle-damage complaint detected. Auto-reply blocked. Review escalated to site manager.'
+                label: 'Sensitive Review - Escalated',
+                alertTitle: 'Vehicle-damage complaint detected',
+                alertText: 'Escalated before publishing. Review held in drafts for manager check.'
             }
         ],
-        insights: [
-            'Vacuum out of service complaints increased by 10% at the Westside wash',
-            'Marcus received 6 positive attendant mentions this month',
-            'Membership cancel disputes rose slightly',
-            'Weekend wait-time complaints are peaking between 10 AM and 2 PM',
-            'Two vehicle damage complaints require camera review'
+        insightExamples: [
+            'Vacuum complaints increased at one location',
+            'Marcus received six positive mentions',
+            'Membership cancellation complaints increased',
+            'Weekend wait-time complaints are rising',
+            'Two damage-related reviews require action'
         ],
-        faqs: [
-            { q: 'Can ReplyVera handle multiple car wash locations?', a: 'Yes. Our platform connects multiple Google Business Profile locations, making it simple for group operators or franchise owners to manage feeds.' },
-            { q: 'Can vehicle damage complaints be blocked from auto-publishing?', a: 'Yes. ReplyVera\'s damage claim filters immediately flag and hold any reviews containing words like scratch, dent, mirror, or damage, blocking auto-replies.' },
-            { q: 'Does it recognize staff members?', a: 'Yes. The system parses attendant, detailer, or cashier names from positive reviews to log positive staff mentions.' },
-            { q: 'Does it support Spanish reviews?', a: 'Yes. ReplyVera responds to reviews in the language they were written, supporting both English and Spanish.' },
-            { q: 'Which review platforms are supported?', a: 'ReplyVera currently supports Google Reviews, which drives the local SEO maps search. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future wash packages.' }
+        multiLocationCopy: 'Our Multi-Location dashboard allows express car wash groups and franchise owners to connect all Business Profiles, track kiosk rating trends, and manage local permissions.',
+        pricingOffer: { label: 'Early-access offer', text: 'Standard autopilot plan is $39/mo per location.' },
+        faqItems: [
+            { q: 'Can ReplyVera handle multiple car wash locations?', a: 'Yes. Connect multiple car wash Business Profiles and oversee ratings across your regional footprint.' },
+            { q: 'Can vehicle damage reviews be blocked from auto-publishing?', a: 'Yes. Any review containing words like scratch, dent, or mirror is held in drafts, blocking auto-replies.' },
+            { q: 'Does it recognize staff members?', a: 'Yes. It tags detailers or prep attendants named in positive reviews to log performance leaderboards.' },
+            { q: 'Does it support Spanish reviews?', a: 'Yes. It automatically translates and replies to customers in both English and Spanish.' },
+            { q: 'Which review platforms are supported?', a: 'Currently supported: Google Reviews. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future wash packages.' }
         ],
-        related: [
-            { id: 'restaurants', title: 'Restaurants' },
-            { id: 'pet-care', title: 'Pet Care' },
+        relatedIndustries: [
+            { id: 'agencies', title: 'Marketing Agencies' },
             { id: 'laundromats', title: 'Laundromats' }
-        ]
+        ],
+        finalCtaHeadline: 'Keep Every Location Responsive',
+        finalCtaDescription: 'Automate positive review replies, log attendant prep praise, and route rim and damage complaints to site managers.',
+        mockupLocationName: 'ClearWave Express Wash'
     },
     {
-        id: 'laundromats',
-        title: 'Laundromats',
-        metaTitle: 'ReplyVera for Laundromats | Automatic Google Review Responses',
-        metaDesc: 'Automate Google review replies for laundromats, wash-and-fold services, and dry cleaners. Detect broken machines, handle refunds, and manage multi-location stores.',
-        seoKeywords: 'laundromat review management, Google review replies for laundromats, laundry business reputation software, automatic review responses for dry cleaners',
-        heroTitle: 'Keep Every Laundromat Review <span class="text-gradient">Clean and Professional</span>',
-        heroSub: 'ReplyVera automatically responds to routine Google reviews and alerts owners when customers report broken machines, refund problems, missing clothing, cleanliness issues, or safety concerns.',
-        targetCustomers: ['Independent Laundromats', 'Laundry franchises', 'Wash-and-fold services', 'Dry cleaners', 'Pickup and delivery laundry fleets'],
+        slug: 'laundromats',
+        metaTitle: 'Google Review Replies for Laundromats | ReplyVera',
+        metaDescription: 'Automatically respond to laundromat Google reviews and flag broken machines, refunds, missing items, cleanliness, and safety concerns.',
+        navigationLabel: 'Laundromats',
+        navigationDescription: 'Monitor cleanliness, equipment, refunds, and missing items.',
+        heroEyebrow: 'Google Review Automation for Laundromats',
+        heroHeadline: 'Keep Every Laundry Review Clean and Professional',
+        heroDescription: 'ReplyVera automatically responds to routine Google reviews and alerts owners when customers report broken machines, refund problems, missing clothing, cleanliness issues, or safety concerns.',
+        heroPrimaryCta: 'Start Your Free Trial',
+        heroSecondaryCta: 'Start for $39 per Month',
+        businessTypes: ['Independent Laundromats', 'Laundry franchises', 'Wash-and-fold services', 'Dry cleaners', 'Pickup-and-delivery laundry services'],
+        problemHeadline: 'Maintain Coin-Op Trust Without Spending Hours Checking Google Maps',
         problems: [
-            { icon: 'washing-machine', title: 'Owners Managing Equipment', text: 'Owners spend their days fixing machinery, emptying coin boxes, and coordinating utilities, leaving zero time for reviews.' },
-            { icon: 'alert-triangle', title: 'Broken Machine Complaints', text: 'Reviews about broken washers or out-of-service dryers can discourage new customers from visiting.' },
-            { icon: 'credit-card', title: 'Coin & Card Refund Issues', text: 'Lost money in coin slide or app errors can lead to angry, unresolved reviews on Google.' },
-            { icon: 'package', title: 'Missing Wash & Fold Items', text: 'Claims of lost laundry or mixed-up shirts require immediate manager review to prevent liability.' },
-            { icon: 'trash-2', title: 'Trash & Cleanliness Issues', text: 'Dirty folding tables or full trash cans can quickly pull down a laundromat\'s rating.' },
-            { icon: 'users', title: 'Attendant Praise Missed', text: 'Praise for friendly wash-and-fold attendants or cleaners goes unnoticed and unlogged.' }
+            { icon: 'washing-machine', title: 'Owners busy fixing equipment', text: 'Owners spend their days maintaining machinery, empty coins, and managing utility services, leaving zero computer time.' },
+            { icon: 'alert-triangle', title: 'Broken machine complaints', text: 'Reviews complaining about out-of-order washers or dryers can turn away customers looking for open bays.' },
+            { icon: 'credit-card', title: 'Coin & card refund disputes', text: 'Lost coins or mobile app transaction issues can lead to angry, public reviews on Google.' },
+            { icon: 'package', title: 'Missing wash-and-fold items', text: 'Claims of lost laundry or mixed-up shirts require immediate review to check security cameras.' },
+            { icon: 'trash-2', title: 'Trash and cleanliness issues', text: 'Dirty folding tables or full trash cans can quickly pull down a laundromat\'s rating.' },
+            { icon: 'users', title: 'Attendant praise gets missed', text: 'Praise for friendly drop-off staff or cleaners goes unnoticed and unlogged.' }
         ],
         features: [
-            { icon: 'washing-machine', title: 'Broken Machine Scanners', text: 'Scans reviews for keywords like "broken", "out of order", or "stolen coin", alerting maintenance.' },
-            { icon: 'dollar-sign', title: 'Refund Dispute Routing', text: 'Detects money or card charge errors, holding them in drafts for store manager check.' },
-            { icon: 'package', title: 'Wash & Fold Quality Logs', text: 'Identifies missing laundry or wash quality issues for drop-off orders.' },
-            { icon: 'trash-2', title: 'Cleanliness Alert Scanners', text: 'Monitors comments regarding trash, floors, or folding tables to preserve standards.' },
-            { icon: 'users', title: 'Linda & Attendant Praise', text: 'Attributes positive review praise to specific attendants (like Linda) to reward staff.' },
-            { icon: 'map-pin', title: 'Multi-Store Dashboards', text: 'Manage multiple coin-ops or laundry services from one centralized agency dashboard.' }
+            { name: 'Broken-Machine Detection', text: 'Scans reviews for keywords like broken, out of order, or coin jam, alerting maintenance.' },
+            { name: 'Refund Complaint Routing', text: 'Detects card charge errors or lost coin disputes, routing them to store manager drafts.' },
+            { name: 'Cleanliness Trend Tracking', text: 'Monitors comments regarding trash, floors, or folding tables to preserve store standards.' },
+            { name: 'Missing-Item Escalation', text: 'Identifies missing laundry or wash quality issues for drop-off orders, blocking auto-replies.' },
+            { name: 'Wash-and-Fold Quality Detection', text: 'Tracks feedback regarding detergent scents, folding consistency, or delivery delays.' },
+            { name: 'Staff Recognition', text: 'Recognizes helpful wash-and-fold attendants and cleaners mentioned by name.' }
         ],
-        reviews: [
+        employeeRoles: ['Attendant', 'Store manager', 'Driver', 'Wash-and-fold employee', 'Customer-service representative'],
+        sensitiveTopics: ['Missing clothing', 'Property damage', 'Refund disputes', 'Safety', 'Theft allegations', 'Staff conduct'],
+        reviewExamples: [
             {
-                author: 'Dorothy Miller',
+                reviewer: 'Dorothy Miller',
                 rating: 5,
                 text: 'The store was spotless, and Linda was extremely helpful.',
-                status: 'Safe to Auto-Publish',
-                reply: 'Thank you for your kind review! We’re glad you found the store clean and that Linda provided such helpful service. We’ll be sure to share your feedback with her.'
+                label: 'Safe to Auto-Publish',
+                reply: 'Thank you for your kind review. We’re glad you found the store clean and that Linda provided such helpful service. We’ll be sure to share your feedback with her.'
             },
             {
-                author: 'Arthur Vance',
+                reviewer: 'Arthur Vance',
                 rating: 3,
                 text: 'Three washers were out of service.',
-                status: 'Location Follow-Up Recommended',
+                label: 'Location Follow-Up Recommended',
                 reply: 'Thank you for letting us know. We’re sorry several machines were unavailable during your visit. We’re sharing this with the location team so the equipment can be reviewed.'
             },
             {
-                author: 'Gary Higgins',
+                reviewer: 'Gary Higgins',
                 rating: 1,
                 text: 'One of my items was missing from my wash-and-fold order.',
-                status: 'Missing-Item Dispute - Manager Review Required',
-                reply: 'Missing clothing claim detected. Response locked in drafts. Escales immediately to store manager.'
+                label: 'Sensitive Review - Escalated',
+                alertTitle: 'Missing-item complaint detected',
+                alertText: 'Manager approval required. Review held in drafts for verification.'
             }
         ],
-        insights: [
-            'Washing machine out-of-order complaints rose at the Westside store',
-            'Linda received 5 positive attendant mentions this month',
-            'Refund and coin complaints rose by 6%',
-            'Customers frequently praise clean folding tables and quick wash cycles',
-            'Two missing-clothing drop-off claims require immediate camera check'
+        insightExamples: [
+            'Machine complaints increased at one location',
+            'Linda received five positive mentions',
+            'Refund requests rose this month',
+            'Customers frequently praise cleanliness',
+            'Two missing-item complaints require follow-up'
         ],
-        faqs: [
-            { q: 'Does ReplyVera handle multiple laundromat locations?', a: 'Yes. Our dashboard connects multiple Google Business Profile locations, making it easy for multi-store owners to manage reviews.' },
-            { q: 'Can broken-machine reviews be blocked from auto-publishing?', a: 'Yes. Any reviews mentioning broken washers, dryers, app billing issues, or lost coins are held in drafts for manager follow-up.' },
-            { q: 'Can we reward laundry attendants who receive positive reviews?', a: 'Yes. The system tags attendant names (like Linda) and aggregates their positive mentions in the analytics.' },
-            { q: 'Does it support Spanish reviews?', a: 'Yes. ReplyVera responds to reviews in the language they were written, supporting both English and Spanish.' },
-            { q: 'Which review platforms are supported?', a: 'ReplyVera currently automates Google Reviews, which drives local laundromat maps SEO. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
+        multiLocationCopy: 'Manage review profiles across all coin-ops, dry cleaners, or wash-and-fold hubs. Let managers coordinate local approvals while regional owners track overall cleanliness ratings.',
+        pricingOffer: { label: 'Early-access offer', text: 'Standard autopilot plan is $39/mo per location.' },
+        faqItems: [
+            { q: 'Can ReplyVera handle multiple laundromat locations?', a: 'Yes. Connect all your coin-op or laundry service profiles and oversee ratings across your regional footprint.' },
+            { q: 'Can missing-item reviews be blocked from auto-publishing?', a: 'Yes. Any reviews mentioning lost items, clothing mix-ups, or refund demands are held in drafts, blocking auto-replies.' },
+            { q: 'Can we track praised employees?', a: 'Yes. The system tags laundry attendants or drop-off workers named in positive reviews to log performance leaderboards.' },
+            { q: 'Does it support Spanish reviews?', a: 'Yes. It automatically detects Spanish reviews and drafts replies in fluent Spanish.' },
+            { q: 'Which review platforms are supported?', a: 'Currently supported: Google Reviews. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future laundry rollouts.' }
         ],
-        related: [
-            { id: 'agencies', title: 'Agencies' },
-            { id: 'restaurants', title: 'Restaurants' },
-            { id: 'car-washes', title: 'Car Washes' }
-        ]
+        relatedIndustries: [
+            { id: 'car-washes', title: 'Car Wash Operators' },
+            { id: 'agencies', title: 'Marketing Agencies' }
+        ],
+        finalCtaHeadline: 'Keep Every Location Clean, Responsive, and Trusted',
+        finalCtaDescription: 'Automate positive review replies, log cleaning staff praise, and route billing or missing clothes complaints to managers.',
+        mockupLocationName: 'FreshFold Laundry'
     }
 ];
 
-// Helper to compile dynamic category body
-function buildCategoryBody(ind) {
-    // Generate Target Customers Block HTML
-    const customersHtml = ind.targetCustomers.map(cust => `
+// Reusable IndustryLandingPage Component
+function renderIndustryPage(ind) {
+    // Generate Business Types Eyebrow List
+    const businessTypesHtml = ind.businessTypes.map(type => `
         <div style="display:flex; align-items:center; gap:8px; color:var(--text-primary-current); font-size:0.95rem;">
-            <i data-lucide="check-circle" style="color:var(--accent); width:18px; height:18px; flex-shrink:0;"></i> ${cust}
+            <i data-lucide="check-circle" style="color:var(--accent); width:18px; height:18px; flex-shrink:0;"></i> ${type}
         </div>
     `).join('');
 
-    // Generate Customer Problems Block HTML
+    // Generate Customer Problems Cards
     const problemsHtml = ind.problems.map(prob => `
         <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-current); padding:24px; border-radius:12px; transition:transform var(--transition-fast);" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
             <div style="width:40px; height:40px; background:rgba(99, 102, 241, 0.08); color:var(--primary-light); border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
@@ -681,51 +791,84 @@ function buildCategoryBody(ind) {
         </div>
     `).join('');
 
-    // Generate Features Block HTML
-    const featuresHtml = ind.features.map((feat, idx) => `
-        <div class="feature-split" style="margin-bottom: 80px; ${idx % 2 === 1 ? 'flex-direction: row-reverse !important;' : ''}">
-            <div class="feature-content-box" style="flex:1;">
-                <div class="label-pill"><i data-lucide="${feat.icon}" style="width:12px; height:12px;"></i> ${feat.title}</div>
-                <h2 class="mb-4" style="font-size:1.8rem; font-weight:800; color:#FFF;">Built for ${ind.title}</h2>
-                <p class="mb-6" style="font-size:1.05rem; color:var(--text-secondary-current);">${feat.text}</p>
-                <ul class="feature-list" style="list-style:none; padding:0; display:flex; flex-direction:column; gap:12px;">
-                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Automated scanning and tags</li>
-                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Contextual brand voice replies</li>
-                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Safe draft queue routing</li>
-                </ul>
-            </div>
-            <div class="feature-visual-box" style="flex:1; background:rgba(255,255,255,0.01); border:1px solid var(--border-current); padding:32px; border-radius:16px; display:flex; flex-direction:column; justify-content:center; text-align:left;">
-                <div style="font-size:0.75rem; font-weight:700; color:var(--primary-light); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:12px;">Auto-Pilot Analysis</div>
-                <div style="background:#05050C; padding:20px; border-radius:8px; border:1px solid rgba(255,255,255,0.05); font-family:monospace; font-size:0.85rem; color:#94A3B8;">
-                    <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
-                        <span>Topic Extracted:</span> <span style="color:#FFF;">"${feat.title}"</span>
-                    </div>
-                    <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
-                        <span>Safety Verdict:</span> <span style="color:var(--accent);">Safe to Publish</span>
-                    </div>
-                    <div style="display:flex; justify-content:space-between;">
-                        <span>Status:</span> <span style="color:var(--primary-light);">Draft Ready</span>
+    // Generate Features Cards
+    const featuresHtml = ind.features.map((feat, idx) => {
+        // We alternate the flex-direction grid visual for high-end styling
+        const isReversed = idx % 2 === 1;
+        return `
+            <div class="feature-split" style="margin-bottom: 80px; ${isReversed ? 'flex-direction: row-reverse !important;' : ''}">
+                <div class="feature-content-box" style="flex:1;">
+                    <div class="label-pill"><i data-lucide="star" style="width:12px; height:12px;"></i> ${feat.name}</div>
+                    <h2 class="mb-4" style="font-size:1.8rem; font-weight:800; color:#FFF;">Built for ${ind.navigationLabel}</h2>
+                    <p class="mb-6" style="font-size:1.05rem; color:var(--text-secondary-current); line-height:1.6;">${feat.text}</p>
+                    <ul class="feature-list" style="list-style:none; padding:0; display:flex; flex-direction:column; gap:12px;">
+                        <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Automated scanning and tags</li>
+                        <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Contextual brand voice replies</li>
+                        <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Safe draft queue routing</li>
+                    </ul>
+                </div>
+                <div class="feature-visual-box" style="flex:1; background:rgba(255,255,255,0.01); border:1px solid var(--border-current); padding:32px; border-radius:16px; display:flex; flex-direction:column; justify-content:center; text-align:left;">
+                    <div style="font-size:0.75rem; font-weight:700; color:var(--primary-light); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:12px;">Auto-Pilot Analysis</div>
+                    <div style="background:#05050C; padding:20px; border-radius:8px; border:1px solid rgba(255,255,255,0.05); font-family:monospace; font-size:0.85rem; color:#94A3B8;">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                            <span>Topic Extracted:</span> <span style="color:#FFF;">"${feat.name}"</span>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                            <span>Safety Verdict:</span> <span style="color:var(--accent);">Safe to Publish</span>
+                        </div>
+                        <div style="display:flex; justify-content:space-between;">
+                            <span>Status:</span> <span style="color:var(--primary-light);">Draft Ready</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    `).join('');
+        `;
+    }).join('');
 
-    // Generate Review Examples Block HTML
-    const reviewsHtml = ind.reviews.map(rev => {
+    // Generate Review Cards (With Custom Auto-reply copy vs. blocked warning display)
+    const reviewsHtml = ind.reviewExamples.map(rev => {
         let labelColor = 'var(--accent)';
         let labelBg = 'rgba(16, 185, 129, 0.08)';
         let borderStyle = '1px solid var(--border-current)';
         let glow = 'none';
 
-        if (rev.status.includes('Escalation') || rev.status.includes('Required')) {
+        if (rev.alertTitle || rev.label.includes('Escalated')) {
             labelColor = '#EF4444';
             labelBg = 'rgba(239, 68, 68, 0.08)';
             borderStyle = '1.5px solid #EF4444';
             glow = '0 0 15px rgba(239, 68, 68, 0.1)';
-        } else if (rev.status.includes('Recommended') || rev.status.includes('Review')) {
+        } else if (rev.label.includes('Recommended') || rev.label.includes('Required') || rev.label.includes('Approval')) {
             labelColor = 'var(--primary-light)';
             labelBg = 'rgba(99, 102, 241, 0.08)';
+            borderStyle = '1px solid var(--border-current)';
+            glow = 'none';
+        }
+
+        const ratingStars = Array.from({ length: rev.rating }).map(() => `<i data-lucide="star" style="fill:#F59E0B; color:#F59E0B; width:12px; height:12px;"></i>`).join('');
+        const emptyStars = Array.from({ length: 5 - rev.rating }).map(() => `<i data-lucide="star" style="color:#CBD5E1; width:12px; height:12px;"></i>`).join('');
+
+        let innerContent = '';
+        if (rev.alertTitle) {
+            // This is a sensitive review that blocks publishing
+            innerContent = `
+                <div style="background:rgba(239,68,68,0.04); border:1px solid rgba(239,68,68,0.18); padding:16px; border-radius:10px; margin-top:auto; text-align:left;">
+                    <div style="display:flex; align-items:center; gap:8px; font-size:0.75rem; font-weight:800; color:#EF4444; text-transform:uppercase; margin-bottom:6px;">
+                        <i data-lucide="shield-alert" style="width:14px; height:14px;"></i> ${rev.alertTitle}
+                    </div>
+                    <p style="font-size:0.88rem; color:#EF4444; font-weight:600; line-height:1.4; margin:0;">${rev.alertText}</p>
+                </div>
+            `;
+        } else {
+            // Routine review response
+            innerContent = `
+                <div style="background:rgba(255,255,255,0.01); border:1px solid rgba(255,255,255,0.04); padding:16px; border-radius:10px; margin-top:auto;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; font-size:0.72rem; font-weight:800; letter-spacing:0.03em;">
+                        <span style="color:var(--primary-light); text-transform:uppercase;"><i data-lucide="cpu" style="width:12px; height:12px; vertical-align:middle; margin-right:4px;"></i> Autopilot Reply</span>
+                        <span style="color:${labelColor}; background:${labelBg}; padding:2px 8px; border-radius:4px; text-transform:uppercase;">${rev.label}</span>
+                    </div>
+                    <p style="font-size:0.88rem; color:#E2E8F0; line-height:1.5;">"${rev.reply}"</p>
+                </div>
+            `;
         }
 
         return `
@@ -733,37 +876,30 @@ function buildCategoryBody(ind) {
                 <div>
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
                         <div>
-                            <span style="font-weight:700; color:#FFF; font-size:0.95rem;">${rev.author}</span>
+                            <span style="font-weight:700; color:#FFF; font-size:0.95rem;">${rev.reviewer}</span>
                             <div style="display:flex; gap:2px; margin-top:2px;">
-                                ${Array.from({ length: rev.rating }).map(() => `<i data-lucide="star" style="fill:#F59E0B; color:#F59E0B; width:12px; height:12px;"></i>`).join('')}
-                                ${Array.from({ length: 5 - rev.rating }).map(() => `<i data-lucide="star" style="color:#CBD5E1; width:12px; height:12px;"></i>`).join('')}
+                                ${ratingStars}${emptyStars}
                             </div>
                         </div>
                         <span style="font-size:0.75rem; color:var(--text-secondary-current);">Google Review</span>
                     </div>
                     <p style="font-style:italic; font-size:0.95rem; color:var(--text-primary-current); margin-bottom:20px; line-height:1.5;">"${rev.text}"</p>
                 </div>
-                <div style="background:rgba(255,255,255,0.01); border:1px solid rgba(255,255,255,0.04); padding:16px; border-radius:10px; margin-top:auto;">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; font-size:0.72rem; font-weight:800; letter-spacing:0.03em;">
-                        <span style="color:var(--primary-light); text-transform:uppercase;"><i data-lucide="cpu" style="width:12px; height:12px; vertical-align:middle; margin-right:4px;"></i> Autopilot Reply</span>
-                        <span style="color:${labelColor}; background:${labelBg}; padding:2px 8px; border-radius:4px; text-transform:uppercase;">${rev.status}</span>
-                    </div>
-                    <p style="font-size:0.88rem; color:#E2E8F0; line-height:1.5;">"${rev.reply}"</p>
-                </div>
+                ${innerContent}
             </div>
         `;
     }).join('');
 
     // Generate Dashboard Insights Block HTML
-    const insightsHtml = ind.insights.map(ins => `
+    const insightsHtml = ind.insightExamples.map(ins => `
         <div style="display:flex; align-items:center; gap:12px; background:rgba(255,255,255,0.02); border:1px solid var(--border-current); padding:16px 20px; border-radius:10px; color:#FFF; font-size:0.95rem; font-weight:500;">
             <i data-lucide="trending-up" style="color:var(--accent); width:18px; height:18px; flex-shrink:0;"></i>
             <span>${ins}</span>
         </div>
     `).join('');
 
-    // Generate FAQs Block HTML
-    const faqsHtml = ind.faqs.map(faq => `
+    // Generate FAQs Accordion List
+    const faqsHtml = ind.faqItems.map(faq => `
         <div class="faq-item">
             <div class="faq-question">
                 <span>${faq.q}</span>
@@ -775,12 +911,144 @@ function buildCategoryBody(ind) {
         </div>
     `).join('');
 
-    // Generate Related Industries Links
-    const relatedHtml = ind.related.map(rel => `
+    // Generate Related Industry Footer links
+    const relatedHtml = ind.relatedIndustries.map(rel => `
         <a href="/industries/${rel.id}" style="color:var(--primary-light); text-decoration:none; font-weight:600; font-size:0.92rem; border: 1px solid rgba(99, 102, 241, 0.15); background:rgba(99,102,241,0.02); padding:8px 16px; border-radius:50px; transition:all var(--transition-fast);" onmouseover="this.style.borderColor='var(--primary-light)';this.style.background='rgba(99,102,241,0.08)';" onmouseout="this.style.borderColor='rgba(99, 102, 241, 0.15)';this.style.background='rgba(99,102,241,0.02)';">
             ${rel.title} <i data-lucide="arrow-right" style="width:12px; height:12px; display:inline-block; vertical-align:middle; margin-left:4px;"></i>
         </a>
     `).join('');
+
+    // Generate Employee list badge tags
+    const employeeRolesHtml = ind.employeeRoles.map(role => `
+        <span style="font-size:0.8rem; font-weight:600; color:var(--primary-light); background:rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.18); padding:6px 14px; border-radius:50px;">
+            ${role}
+        </span>
+    `).join('');
+
+    // Generate Sensitive Topics list badge tags
+    const sensitiveTopicsHtml = ind.sensitiveTopics.map(topic => `
+        <span style="font-size:0.8rem; font-weight:600; color:#EF4444; background:rgba(239,68,68,0.04); border: 1px solid rgba(239,68,68,0.15); padding:6px 14px; border-radius:50px;">
+            ${topic}
+        </span>
+    `).join('');
+
+    // Customize step-2 description based on industry type (Agencies gets different copy rules)
+    const isAgency = ind.slug === 'agencies';
+    const step2Text = isAgency
+        ? 'ReplyVera automatically reviews each client review, extracting client tone rules, customer sentiment, employee mentions, and client safety warnings.'
+        : `ReplyVera scans incoming Google Business feedback, identifying student/diner/patient sentiment, mentioned ${ind.employeeRoles[0].toLowerCase()}s, and potential liability risks.`;
+
+    const step3Text = isAgency
+        ? 'Deploy client autopilot modes to auto-publish routine 5-star replies, routing billing or service disputes to client email approval queues.'
+        : `Publish routine replies immediately using a configurable publishing delay, while keeping sensitive reviews locked in drafts for manager confirmation.`;
+
+    // Dynamic Mockup layout based on industry type
+    let mockupLayoutHtml = '';
+    if (isAgency) {
+        mockupLayoutHtml = `
+            <!-- Agency Client Dashboard Grid Mockup -->
+            <div style="background:rgba(255,255,255,0.01); border:1px solid var(--border-current); padding:32px; border-radius:20px; backdrop-filter:blur(20px); box-shadow:var(--shadow-premium); text-align:left; position:relative;">
+                <span style="position:absolute; top:12px; right:16px; font-size:0.65rem; color:#64748B; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; pointer-events:none;">Example dashboard data</span>
+                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:16px; margin-bottom:20px;">
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <div style="width:12px; height:12px; background:#EF4444; border-radius:50%;"></div>
+                        <div style="width:12px; height:12px; background:#F59E0B; border-radius:50%;"></div>
+                        <div style="width:12px; height:12px; background:#10B981; border-radius:50%;"></div>
+                    </div>
+                    <span style="font-size:0.75rem; font-weight:700; color:var(--primary-light); text-transform:uppercase;">Agency Client Hub</span>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:16px;">
+                    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; text-align:center;">
+                        <div style="background:rgba(255,255,255,0.02); padding:12px; border-radius:8px; border:1px solid var(--border-current);">
+                            <div style="font-size:0.7rem; color:var(--text-secondary-current); text-transform:uppercase;">Locations</div>
+                            <div style="font-size:1.2rem; font-weight:800; color:#FFF; margin-top:4px;">24</div>
+                        </div>
+                        <div style="background:rgba(255,255,255,0.02); padding:12px; border-radius:8px; border:1px solid var(--border-current);">
+                            <div style="font-size:0.7rem; color:var(--text-secondary-current); text-transform:uppercase;">Pending</div>
+                            <div style="font-size:1.2rem; font-weight:800; color:var(--primary-light); margin-top:4px;">5</div>
+                        </div>
+                        <div style="background:rgba(255,255,255,0.02); padding:12px; border-radius:8px; border:1px solid var(--border-current);">
+                            <div style="font-size:0.7rem; color:var(--text-secondary-current); text-transform:uppercase;">Avg Rating</div>
+                            <div style="font-size:1.2rem; font-weight:800; color:var(--accent); margin-top:4px;">4.8★</div>
+                        </div>
+                    </div>
+                    <div style="font-size:0.8rem; color:var(--text-secondary-current);">Connected Client Profiles:</div>
+                    <div style="display:flex; flex-direction:column; gap:8px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.02); border:1px solid var(--border-current); padding:10px 14px; border-radius:8px;">
+                            <span style="font-size:0.85rem; font-weight:600; color:#FFF;">Harbor Table (Restaurant)</span>
+                            <span style="font-size:0.72rem; color:var(--accent); font-weight:700;">Autopilot Active</span>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.02); border:1px solid var(--border-current); padding:10px 14px; border-radius:8px;">
+                            <span style="font-size:0.85rem; font-weight:600; color:#FFF;">Brightline Dental (Clinic)</span>
+                            <span style="font-size:0.72rem; color:var(--primary-light); font-weight:700;">Needs Approval (1)</span>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.02); border:1px solid var(--border-current); padding:10px 14px; border-radius:8px;">
+                            <span style="font-size:0.85rem; font-weight:600; color:#FFF;">Happy Trails Pet Resort</span>
+                            <span style="font-size:0.72rem; color:var(--accent); font-weight:700;">Autopilot Active</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    } else {
+        mockupLayoutHtml = `
+            <!-- Standard Location Autopilot Panel Mockup -->
+            <div style="background:rgba(255,255,255,0.01); border:1px solid var(--border-current); padding:32px; border-radius:20px; backdrop-filter:blur(20px); box-shadow:var(--shadow-premium); text-align:left; position:relative;">
+                <span style="position:absolute; top:12px; right:16px; font-size:0.65rem; color:#64748B; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; pointer-events:none;">Example dashboard data</span>
+                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:16px; margin-bottom:20px;">
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <div style="width:12px; height:12px; background:#EF4444; border-radius:50%;"></div>
+                        <div style="width:12px; height:12px; background:#F59E0B; border-radius:50%;"></div>
+                        <div style="width:12px; height:12px; background:#10B981; border-radius:50%;"></div>
+                    </div>
+                    <span style="font-size:0.75rem; font-weight:700; color:var(--primary-light); text-transform:uppercase;">Autopilot Dashboard</span>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:12px;">
+                    <div style="font-size:0.8rem; color:var(--text-secondary-current);">Store location context:</div>
+                    <div style="display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.02); border:1px solid var(--border-current); padding:12px; border-radius:8px;">
+                        <span style="font-weight:600; color:#FFF; display:flex; align-items:center; gap:6px;"><i data-lucide="map-pin" style="color:var(--primary-light); width:16px; height:16px;"></i> ${ind.mockupLocationName}</span>
+                        <span style="font-size:0.75rem; font-weight:700; color:var(--accent); background:rgba(16, 185, 129, 0.08); padding:2px 8px; border-radius:4px;">Connected</span>
+                    </div>
+                    <div style="font-size:0.8rem; color:var(--text-secondary-current); margin-top:8px;">Live Autopilot Stream:</div>
+                    <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-current); padding:16px; border-radius:8px; font-family:monospace; font-size:0.82rem; color:#94A3B8;">
+                        <div style="margin-bottom:4px;">[12:24 PM] New Google review detected.</div>
+                        <div style="margin-bottom:4px; color:var(--accent);">[12:24 PM] Tone matched. Autopilot reply drafted.</div>
+                        <div style="color:var(--primary-light);">[12:25 PM] Delay completed. Reply published live.</div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    // Set standard pricing plan pricing parameters
+    const startPrice = isAgency ? '$149' : '$29';
+    const planRate = isAgency ? '$149' : '$39';
+    const pricingUnit = isAgency ? ' / mo' : ' / mo / location';
+
+    let pricingFeaturesListHtml = '';
+    if (isAgency) {
+        pricingFeaturesListHtml = `
+            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 10 client locations included</li>
+            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> $12/mo for additional locations</li>
+            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Team access controls</li>
+            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Client approval links</li>
+            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Client tone profiles</li>
+            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> English and Spanish responses</li>
+            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Employee-name recognition</li>
+            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Review history logs</li>
+        `;
+    } else {
+        pricingFeaturesListHtml = `
+            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Google review responses</li>
+            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Auto-publishing for safe reviews</li>
+            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Approval rules</li>
+            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Custom tone matching</li>
+            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> English and Spanish responses</li>
+            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Employee-name recognition</li>
+            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Review history logs</li>
+            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Negative-review alerts</li>
+        `;
+    }
 
     return `
     <!-- Hero Section -->
@@ -789,50 +1057,27 @@ function buildCategoryBody(ind) {
         <div class="container" style="display:grid; grid-template-columns:1.2fr 1fr; gap:40px; align-items:center;">
             <div class="hero-content" style="text-align:left; max-width:100%;">
                 <div class="hero-badge" style="display:inline-flex; align-items:center; gap:6px; background:rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.2); padding: 6px 12px; border-radius: 50px; color: var(--primary-light); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 24px;">
-                    <i data-lucide="sparkles" style="width:12px; height:12px;"></i> Built for ${ind.title}
+                    <i data-lucide="sparkles" style="width:12px; height:12px;"></i> ${ind.heroEyebrow}
                 </div>
-                <h1 class="hero-headline" style="font-size:2.8rem; font-weight:800; line-height:1.1; margin-bottom:20px; color:#FFF;">${ind.heroTitle}</h1>
-                <p class="hero-sub" style="font-size:1.1rem; color:var(--text-secondary-current); margin-bottom:32px; line-height:1.6;">${ind.heroSub}</p>
+                <h1 class="hero-headline" style="font-size:2.8rem; font-weight:800; line-height:1.1; margin-bottom:20px; color:#FFF;">${ind.heroHeadline}</h1>
+                <p class="hero-sub" style="font-size:1.1rem; color:var(--text-secondary-current); margin-bottom:32px; line-height:1.6;">${ind.heroDescription}</p>
                 <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center; margin-bottom:24px;">
-                    <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent" style="padding:14px 28px; font-size:0.95rem;">Start Your Free Trial</a>
-                    <a href="/pricing.html" class="btn btn-secondary" style="padding:14px 28px; font-size:0.95rem;">Start for $39 per Month</a>
+                    <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent" style="padding:14px 28px; font-size:0.95rem;">${ind.heroPrimaryCta}</a>
+                    <a href="/pricing.html" class="btn btn-secondary" style="padding:14px 28px; font-size:0.95rem;">${ind.heroSecondaryCta}</a>
                 </div>
                 <p style="font-size:0.82rem; color:var(--text-secondary-current); font-weight:500;">Try ReplyVera free. 14-day free trial. No credit card required.</p>
             </div>
             
-            <!-- Static Product Mockup Graphic -->
-            <div style="background:rgba(255,255,255,0.01); border:1px solid var(--border-current); padding:32px; border-radius:20px; backdrop-filter:blur(20px); box-shadow:var(--shadow-premium); text-align:left;">
-                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:16px; margin-bottom:20px;">
-                    <div style="display:flex; align-items:center; gap:8px;">
-                        <div style="width:12px; height:12px; background:#EF4444; border-radius:50%;"></div>
-                        <div style="width:12px; height:12px; background:#F59E0B; border-radius:50%;"></div>
-                        <div style="width:12px; height:12px; background:#10B981; border-radius:50%;"></div>
-                    </div>
-                    <span style="font-size:0.75rem; font-weight:700; color:var(--primary-light); text-transform:uppercase;">ReplyVera Autopilot Panel</span>
-                </div>
-                <div style="display:flex; flex-direction:column; gap:12px;">
-                    <div style="font-size:0.8rem; color:var(--text-secondary-current);">Connection status:</div>
-                    <div style="display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.02); border:1px solid var(--border-current); padding:12px; border-radius:8px;">
-                        <span style="font-weight:600; color:#FFF; display:flex; align-items:center; gap:6px;"><i data-lucide="google" style="color:#DB4437; width:16px; height:16px;"></i> Google Business Profile</span>
-                        <span style="font-size:0.75rem; font-weight:700; color:var(--accent); background:rgba(16, 185, 129, 0.08); padding:2px 8px; border-radius:4px;">Connected</span>
-                    </div>
-                    <div style="font-size:0.8rem; color:var(--text-secondary-current); margin-top:8px;">Recent Activity:</div>
-                    <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-current); padding:16px; border-radius:8px; font-family:monospace; font-size:0.82rem; color:#94A3B8;">
-                        <div style="margin-bottom:4px;">[12:24 PM] Google review scanned.</div>
-                        <div style="margin-bottom:4px; color:var(--accent);">[12:24 PM] Safe to Auto-Publish reply drafted.</div>
-                        <div style="color:var(--primary-light);">[12:25 PM] Autopilot response published successfully.</div>
-                    </div>
-                </div>
-            </div>
+            ${mockupLayoutHtml}
         </div>
     </header>
 
-    <!-- Main Problem Section -->
+    <!-- Problems Section -->
     <section class="section theme-light" style="padding: 80px 0;">
         <div class="container text-center" style="max-width: 700px; margin-bottom: 56px;">
             <div class="label-pill"><i data-lucide="alert-circle" style="width:12px; height:12px;"></i> Core Challenges</div>
-            <h2 class="mb-4" style="color:#FFF;">Managing Reviews is Painful</h2>
-            <p class="lead-text" style="color:var(--text-secondary-current);">Here are the daily friction points businesses face without ReplyVera\'s review automation.</p>
+            <h2 class="mb-4" style="color:#FFF;">${ind.problemHeadline}</h2>
+            <p class="lead-text" style="color:var(--text-secondary-current);">Managing reviews shouldn't eat into your day. Here are the core issues we solve.</p>
         </div>
         
         <div class="container">
@@ -842,41 +1087,41 @@ function buildCategoryBody(ind) {
         </div>
     </section>
 
-    <!-- Target Customer Profile Preview Section -->
+    <!-- Target Business Types Segment -->
     <section class="section theme-gray" style="padding: 60px 0; border-top:1px solid var(--border-current); border-bottom:1px solid var(--border-current);">
         <div class="container text-center" style="max-width: 600px; margin-bottom: 32px;">
-            <h3 style="font-size:1.4rem; font-weight:700; color:#FFF;">Designed specifically for:</h3>
+            <h3 style="font-size:1.4rem; font-weight:700; color:#FFF;">Designed for:</h3>
         </div>
         <div class="container">
             <div style="display:flex; justify-content:center; gap:24px; flex-wrap:wrap; max-width:800px; margin:0 auto;">
-                ${customersHtml}
+                ${businessTypesHtml}
             </div>
         </div>
     </section>
 
-    <!-- How ReplyVera Works -->
+    <!-- 3-Step Workflow -->
     <section class="section theme-white" style="padding: 80px 0;" id="how-it-works">
         <div class="container text-center" style="max-width: 700px; margin-bottom: 56px;">
             <div class="label-pill"><i data-lucide="settings" style="width:12px; height:12px;"></i> Connection Setup</div>
-            <h2 class="mb-4">Reputation autopilot in 3 steps</h2>
-            <p class="lead-text">Connect your Google Business Profile and let ReplyVera take over the heavy lifting.</p>
+            <h2 class="mb-4">Autopilot setup in three simple steps</h2>
+            <p class="lead-text">Get connected and protect your local search reputation in under five minutes.</p>
         </div>
         <div class="container">
             <div class="grid-3" style="gap:32px;">
                 <div style="background:rgba(255,255,255,0.01); border:1px solid var(--border-current); padding:32px; border-radius:12px;">
                     <div style="width:40px; height:40px; background:rgba(99,102,241,0.08); color:var(--primary-light); border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem; margin-bottom:20px;">1</div>
-                    <h3 style="font-size:1.2rem; font-weight:700; color:#FFF; margin-bottom:12px;">Connect Google Profile</h3>
-                    <p style="font-size:0.9rem; color:var(--text-secondary-current); line-height:1.5;">Securely authorize your Google Business Profile in one click. No long integrations or setup fees.</p>
+                    <h3 style="font-size:1.2rem; font-weight:700; color:#FFF; margin-bottom:12px;">Connect Google Business Profile</h3>
+                    <p style="font-size:0.9rem; color:var(--text-secondary-current); line-height:1.5;">Securely authorize your Google Business Profile with one OAuth connection. No passwords saved, cancel anytime.</p>
                 </div>
                 <div style="background:rgba(255,255,255,0.01); border:1px solid var(--border-current); padding:32px; border-radius:12px;">
                     <div style="width:40px; height:40px; background:rgba(99,102,241,0.08); color:var(--primary-light); border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem; margin-bottom:20px;">2</div>
-                    <h3 style="font-size:1.2rem; font-weight:700; color:#FFF; margin-bottom:12px;">Configure Tone</h3>
-                    <p style="font-size:0.9rem; color:var(--text-secondary-current); line-height:1.5;">Choose a brand tone and set guardrails. Select which ratings autopost and which route to approval.</p>
+                    <h3 style="font-size:1.2rem; font-weight:700; color:#FFF; margin-bottom:12px;">ReplyVera understands the review</h3>
+                    <p style="font-size:0.9rem; color:var(--text-secondary-current); line-height:1.5;">${step2Text}</p>
                 </div>
                 <div style="background:rgba(255,255,255,0.01); border:1px solid var(--border-current); padding:32px; border-radius:12px;">
                     <div style="width:40px; height:40px; background:rgba(99,102,241,0.08); color:var(--primary-light); border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem; margin-bottom:20px;">3</div>
-                    <h3 style="font-size:1.2rem; font-weight:700; color:#FFF; margin-bottom:12px;">Save Admin Hours</h3>
-                    <p style="font-size:0.9rem; color:var(--text-secondary-current); line-height:1.5;">Replies publish instantly. Enjoy consistent support coverage and improved local SEO map rankings.</p>
+                    <h3 style="font-size:1.2rem; font-weight:700; color:#FFF; margin-bottom:12px;">Auto-publish or request approval</h3>
+                    <p style="font-size:0.9rem; color:var(--text-secondary-current); line-height:1.5;">${step3Text}</p>
                 </div>
             </div>
         </div>
@@ -885,6 +1130,10 @@ function buildCategoryBody(ind) {
     <!-- Industry Specific Features -->
     <section class="section theme-dark" style="padding: 80px 0;">
         <div class="container">
+            <div class="text-center mb-12">
+                <div class="label-pill"><i data-lucide="sliders" style="width:12px; height:12px;"></i> Core Features</div>
+                <h2 class="mb-4" style="color:#FFF;">${ind.featureHeadline}</h2>
+            </div>
             ${featuresHtml}
         </div>
     </section>
@@ -893,8 +1142,8 @@ function buildCategoryBody(ind) {
     <section class="section theme-light" style="padding: 80px 0;">
         <div class="container text-center" style="max-width: 700px; margin-bottom: 56px;">
             <div class="label-pill"><i data-lucide="eye" style="width:12px; height:12px;"></i> Interactive Examples</div>
-            <h2 class="mb-4" style="color:#FFF;">Review Response Workflows</h2>
-            <p class="lead-text" style="color:var(--text-secondary-current);">See how ReplyVera handles positive reviews automatically while escalating complex ones for manager draft approval.</p>
+            <h2 class="mb-4" style="color:#FFF;">Realistic Review Response Examples</h2>
+            <p class="lead-text" style="color:var(--text-secondary-current);">See how our autopilot safely logs positive experiences, routes minor complaints, and flags serious liabilities.</p>
         </div>
         <div class="container">
             <div class="grid-3" style="gap:24px;">
@@ -903,29 +1152,72 @@ function buildCategoryBody(ind) {
         </div>
     </section>
 
-    <!-- Escalation & Employee & Operational Insights Section -->
+    <!-- Supervision & Escalation Section -->
     <section class="section theme-gray" style="padding: 80px 0; border-top:1px solid var(--border-current); border-bottom:1px solid var(--border-current);">
-        <div class="container" style="display:grid; grid-template-columns:1fr 1fr; gap:40px;">
+        <div class="container" style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
             <div style="text-align:left;">
-                <div class="label-pill" style="margin-bottom:16px;"><i data-lucide="shield-alert" style="width:12px; height:12px;"></i> Risk Control</div>
-                <h2 style="font-size:1.8rem; font-weight:800; color:#FFF; margin-bottom:16px;">Supervision & Escalation Guardrails</h2>
-                <p style="color:var(--text-secondary-current); margin-bottom:24px; line-height:1.6;">ReplyVera never auto-posts blindly. Our scanners flag safety hazards, injuries, cancellation disputes, or billing errors, alerting managers immediately and locking the reviews in drafts.</p>
-                <div style="background:#05050C; padding:20px; border-radius:12px; border:1px solid var(--border-current); display:flex; flex-direction:column; gap:12px;">
-                    <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.88rem;">
-                        <span style="color:#FFF; font-weight:600;"><i data-lucide="search" style="width:14px; height:14px; vertical-align:middle; margin-right:6px; color:var(--primary-light);"></i> Auto-Draft Guardrails</span>
-                        <span style="color:var(--accent); font-weight:700;">Active</span>
-                    </div>
-                    <p style="font-size:0.82rem; color:var(--text-secondary-current); line-height:1.4; margin:0;">Reviews containing negative trigger words or ratings below 4 stars bypass automatic posting and are sent straight to your email alerts.</p>
+                <div class="label-pill" style="margin-bottom:16px;"><i data-lucide="shield-alert" style="width:12px; height:12px;"></i> Sensitive-Review Escalation</div>
+                <h2 style="font-size:1.8rem; font-weight:800; color:#FFF; margin-bottom:16px;">Supervision Guardrails & Safety Warnings</h2>
+                <p style="color:var(--text-secondary-current); margin-bottom:24px; line-height:1.6;">ReplyVera never auto-posts blindly. Our scanners scan incoming feedback for potential liability risks, contract disputes, safety complaints, or discrimination claims. Auto-publishing is blocked, reviews are locked in draft state, and email alerts are sent to managers immediately.</p>
+                <div style="font-size:0.8rem; font-weight:700; color:var(--text-secondary-current); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:12px;">Monitored sensitive topics:</div>
+                <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                    ${sensitiveTopicsHtml}
                 </div>
             </div>
             
-            <div style="text-align:left; display:flex; flex-direction:column; justify-content:center;">
+            <div style="text-align:left;">
+                <div class="label-pill" style="margin-bottom:16px;"><i data-lucide="award" style="width:12px; height:12px;"></i> Employee Recognition</div>
+                <h2 style="font-size:1.8rem; font-weight:800; color:#FFF; margin-bottom:16px;">Employee Recognition & Mentions</h2>
+                <p style="color:var(--text-secondary-current); margin-bottom:24px; line-height:1.6;">Build staff morale and reward your team. ReplyVera identifies and extracts employee names mentioned in customer reviews, logging positive mentions on your staff leaderboard dashboard.</p>
+                <div style="font-size:0.8rem; font-weight:700; color:var(--text-secondary-current); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:12px;">Tracked staff roles:</div>
+                <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                    ${employeeRolesHtml}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Operational-insights Dashboard -->
+    <section class="section theme-light" style="padding: 80px 0;">
+        <div class="container" style="display:grid; grid-template-columns:1fr 1.2fr; gap:40px; align-items:center;">
+            <div style="text-align:left;">
                 <div class="label-pill" style="margin-bottom:16px;"><i data-lucide="bar-chart-2" style="width:12px; height:12px;"></i> Reputation Analytics</div>
-                <h2 style="font-size:1.8rem; font-weight:800; color:#FFF; margin-bottom:16px;">Operational Insights & Staff Leaderboard</h2>
-                <p style="color:var(--text-secondary-current); margin-bottom:24px; line-height:1.6;">Track review volume, average ratings, and positive mentions of team members automatically extracted from Google customer feedback.</p>
+                <h2 style="font-size:1.8rem; font-weight:800; color:#FFF; margin-bottom:16px;">Operational Insights & Sentiment Trends</h2>
+                <p style="color:var(--text-secondary-current); margin-bottom:16px; line-height:1.6;">Identify recurring service bottlenecks, track rating trends, and spot clean/dirty mentions. Our metrics help you take action before ratings fall.</p>
+                <p style="color:var(--text-secondary-current); line-height:1.6; margin:0;">Receive weekly email reports summarising rating logs, mentions, and response progress directly to your inbox.</p>
+            </div>
+            <div style="background:var(--bg-card-current); border:1px solid var(--border-current); padding:32px; border-radius:16px; text-align:left; position:relative;">
+                <span style="position:absolute; top:12px; right:16px; font-size:0.65rem; color:#64748B; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; pointer-events:none;">Example dashboard data</span>
+                <div style="font-size:0.8rem; font-weight:700; color:var(--primary-light); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px;">Live Client Insights Stream</div>
                 <div style="display:flex; flex-direction:column; gap:12px;">
                     ${insightsHtml}
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Multi-Location/Client Section -->
+    <section class="section theme-white" style="padding: 80px 0; border-top:1px solid var(--border-current); border-bottom:1px solid var(--border-current);">
+        <div class="container" style="display:grid; grid-template-columns:1.2fr 1fr; gap:40px; align-items:center;">
+            <div style="text-align:left;">
+                <div class="label-pill" style="margin-bottom:16px;"><i data-lucide="map" style="width:12px; height:12px;"></i> Scalable Administration</div>
+                <h2 style="font-size:1.8rem; font-weight:800; color:#FFF; margin-bottom:16px;">Scale Across Locations and Portfolios</h2>
+                <p style="color:var(--text-secondary-current); line-height:1.6; margin-bottom:24px;">${ind.multiLocationCopy}</p>
+                <div style="background:#05050C; padding:20px; border-radius:12px; border:1px solid var(--border-current); display:flex; flex-direction:column; gap:12px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.88rem;">
+                        <span style="color:#FFF; font-weight:600;"><i data-lucide="users" style="width:14px; height:14px; vertical-align:middle; margin-right:6px; color:var(--primary-light);"></i> ${isAgency ? 'Multi-Client Settings' : 'Multi-Location Settings'}</span>
+                        <span style="color:var(--accent); font-weight:700;">Active</span>
+                    </div>
+                    <p style="font-size:0.82rem; color:var(--text-secondary-current); line-height:1.4; margin:0;">${isAgency ? 'Allow account managers or clients to manage individual locations with secure settings.' : 'Allow regional managers or corporate leads to oversee location responses with selective permissions.'}</p>
+                </div>
+            </div>
+            <div style="background:rgba(255,255,255,0.01); border:1px solid var(--border-current); padding:32px; border-radius:16px; text-align:left; display:flex; flex-direction:column; gap:16px;">
+                <div style="font-size:0.8rem; color:var(--text-secondary-current);">Connection status:</div>
+                <div style="display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.02); border:1px solid var(--border-current); padding:12px; border-radius:8px;">
+                    <span style="font-weight:600; color:#FFF; display:flex; align-items:center; gap:6px;"><i data-lucide="google" style="color:#DB4437; width:16px; height:16px;"></i> Google Business Profiles</span>
+                    <span style="font-size:0.75rem; font-weight:700; color:var(--accent); background:rgba(16, 185, 129, 0.08); padding:2px 8px; border-radius:4px;">Connected</span>
+                </div>
+                <p style="font-size:0.85rem; color:var(--text-secondary-current); line-height:1.5; margin:0;">Securely connect and authorize multiple locations in one central, OAuth-verified dashboard.</p>
             </div>
         </div>
     </section>
@@ -934,30 +1226,23 @@ function buildCategoryBody(ind) {
     <section class="section theme-dark" id="pricing" style="padding: 80px 0;">
         <div class="container text-center" style="max-width: 700px;">
             <div class="label-pill"><i data-lucide="credit-card" style="width:12px; height:12px;"></i> Simple Pricing</div>
-            <h2 class="mb-4">Standard pricing starting at $29 per month</h2>
-            <p class="lead-text mb-8">Choose the plan that fits your business. All plans support Google Reviews.</p>
+            <h2 class="mb-4">Plans start at ${startPrice} per month</h2>
+            <p class="lead-text mb-8">Choose the plan that fits your business footprint. Lock in your rate today.</p>
             
             <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-current); padding: 40px; border-radius: 20px; box-shadow: var(--shadow-premium); margin-bottom: 32px; backdrop-filter: blur(20px); text-align:left; max-width:600px; margin-left:auto; margin-right:auto;">
                 <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:16px; margin-bottom:20px;">
                     <div>
                         <div style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary-light); font-weight: 700;">Autopilot Plan</div>
-                        <div style="font-size: 0.82rem; color:var(--accent); font-weight:700; margin-top:2px;">Most Popular</div>
+                        <div style="font-size: 0.82rem; color:var(--accent); font-weight:700; margin-top:2px;">${ind.pricingOffer.label}</div>
                     </div>
                     <div style="text-align:right;">
-                        <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;">$39</span>
-                        <span style="color: var(--text-secondary-current); font-size: 0.88rem;">/ mo / location</span>
+                        <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;">${planRate}</span>
+                        <span style="color: var(--text-secondary-current); font-size: 0.88rem;">${pricingUnit}</span>
                     </div>
                 </div>
                 
                 <ul style="list-style:none; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:12px; font-size:0.9rem; margin-bottom:32px;">
-                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Google review responses</li>
-                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Auto-publishing for safe reviews</li>
-                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Approval rules for negatives</li>
-                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Custom business tone</li>
-                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> English and Spanish</li>
-                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Employee-name recognition</li>
-                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Review history logs</li>
-                    <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Negative-review alerts</li>
+                    ${pricingFeaturesListHtml}
                 </ul>
 
                 <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; align-items: center;">
@@ -978,7 +1263,7 @@ function buildCategoryBody(ind) {
             <div class="text-center mb-12">
                 <div class="label-pill"><i data-lucide="help-circle" style="width:12px; height:12px;"></i> FAQ</div>
                 <h2 class="mb-4">Frequently Asked Questions</h2>
-                <p>Everything you need to know about ReplyVera for ${ind.title}.</p>
+                <p>Everything you need to know about ReplyVera for ${ind.navigationLabel}.</p>
             </div>
             
             <div class="faq-list" style="display:flex; flex-direction:column; gap:4px;">
@@ -990,8 +1275,8 @@ function buildCategoryBody(ind) {
     <!-- Final Call to Action -->
     <section class="section theme-dark" style="border-top: 1px solid rgba(255, 255, 255, 0.04); padding: 80px 0;">
         <div class="container text-center" style="max-width: 650px;">
-            <h2 class="mb-4" style="color:#FFF;">Start Answering Every Google Review</h2>
-            <p class="mb-8" style="color:var(--text-secondary-current);">Connect your Google Business Profile and let ReplyVera handle routine responses while you stay in control of sensitive feedback.</p>
+            <h2 class="mb-4" style="color:#FFF;">${ind.finalCtaHeadline}</h2>
+            <p class="mb-8" style="color:var(--text-secondary-current);">${ind.finalCtaDescription}</p>
             
             <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-bottom:32px; align-items:center;">
                 <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent" style="padding: 14px 28px; font-size:0.95rem;">Start Your Free Trial</a>
@@ -1000,7 +1285,7 @@ function buildCategoryBody(ind) {
         </div>
     </section>
 
-    <!-- Related Industries -->
+    <!-- Related Industries links section -->
     <section class="section theme-gray" style="padding: 40px 0; border-top:1px solid var(--border-current);">
         <div class="container text-center">
             <div style="font-size:0.8rem; font-weight:700; color:var(--text-secondary-current); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px;">Related Industries</div>
@@ -1014,10 +1299,10 @@ function buildCategoryBody(ind) {
 
 // Compile all category pages
 industryPages.forEach((ind) => {
-    // Generate page body
-    const bodyContent = buildCategoryBody(ind);
+    // Generate page body content
+    const bodyContent = renderIndustryPage(ind);
 
-    // Modify header meta data
+    // Modify header tags
     let header = baseHeader;
     header = header.replace(
         /<title>[^<]+<\/title>/,
@@ -1025,17 +1310,17 @@ industryPages.forEach((ind) => {
     );
     header = header.replace(
         /<meta name="description" content="[^"]+">/,
-        `<meta name="description" content="${ind.metaDesc}">`
+        `<meta name="description" content="${ind.metaDescription}">`
     );
     header = header.replace(
         /<\/head>/,
-        `    <meta name="keywords" content="${ind.seoKeywords}">\n</head>`
+        `    <meta name="keywords" content="${ind.metaDescription}">\n</head>`
     );
 
     const fullPageContent = header + bodyContent + baseFooter;
 
-    // Target directory: industries/[id]/
-    const indDir = path.join(__dirname, 'industries', ind.id);
+    // Target directory: industries/[slug]/
+    const indDir = path.join(__dirname, 'industries', ind.slug);
     if (!fs.existsSync(indDir)) {
         fs.mkdirSync(indDir, { recursive: true });
     }
