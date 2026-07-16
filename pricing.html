@@ -128,397 +128,321 @@
         </div>
     </nav>
 
+    
+    <!-- Mobile Plan Selector -->
+    <div class="mobile-plan-selector theme-dark">
+        <div class="mobile-plan-selector-inner container">
+            <a href="#plan-starter" class="mobile-plan-btn">Starter</a>
+            <a href="#plan-autopilot" class="mobile-plan-btn">Autopilot</a>
+            <a href="#plan-multi" class="mobile-plan-btn">Multi-Location</a>
+            <a href="#plan-agency" class="mobile-plan-btn">Agency</a>
+        </div>
+    </div>
+
     <!-- Pricing Hero Section -->
-    <header class="hero theme-dark" style="padding: 160px 0 60px;">
+    <header class="hero theme-dark" style="padding: 100px 0 20px;">
         <div class="hero-glow-layer"></div>
         <div class="container hero-content" style="max-width: 800px; margin: 0 auto; text-align: center;">
-            <div class="label-pill">
-                <i data-lucide="credit-card" style="width:14px;height:14px;"></i>
-                Simple & Transparent
-            </div>
-            <h1>Pricing Plans for Businesses of <span class="text-gradient">All Sizes</span></h1>
-            <p class="lead-text" style="margin-bottom: 24px; max-width: 700px; margin-left: auto; margin-right: auto;">
-                Try ReplyVera free before choosing a plan. 14-day free trial. No credit card required. Cancel anytime.
+            <h1 style="font-size: 2.5rem; margin-bottom: 12px; letter-spacing: -0.02em;">Simple Pricing. No Sales Call Required.</h1>
+            <p class="lead-text" style="margin-bottom: 0; font-size: 1.1rem; color: var(--text-secondary-current);">
+                Choose the level of automation and number of locations that fit your business.
             </p>
+            
+            <!-- Billing Toggle -->
+            <div class="pricing-billing-toggle">
+                <button class="pricing-billing-btn active" id="btn-monthly" onclick="setBilling('monthly')">Monthly</button>
+                <button class="pricing-billing-btn" id="btn-annual" onclick="setBilling('annual')">Annual <span class="pricing-annual-badge">Save 2 Months</span></button>
+            </div>
         </div>
     </header>
 
     <!-- Pricing Cards Grid Section -->
-    <section class="section theme-dark" id="pricing" style="padding: 40px 0 80px;">
+    <section class="section theme-dark" id="pricing" style="padding: 20px 0 60px;">
         <div class="container">
-            <div class="pricing-tiers-grid mb-16">
+            <div class="pricing-4-grid mb-12">
+                
                 <!-- Starter Card -->
-                <div class="pricing-tier-card" id="pricing-starter" style="display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--border-current); background: var(--bg-card-current); padding: 32px; border-radius: var(--radius-lg); transition: border var(--transition-fast);">
+                <div class="pricing-4-card" id="plan-starter">
                     <div>
-                        <div class="tier-header" style="margin-bottom: 24px; border-bottom: 1px solid var(--border-current); padding-bottom: 20px;">
-                            <span style="font-size: 0.72rem; font-weight: 700; color: var(--primary-light); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 8px;">Best for lower review volume</span>
-                            <h4 style="color:var(--text-primary-current); font-size:1.5rem; font-weight:700; margin-bottom: 8px;">Starter</h4>
-                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height:40px; margin-bottom: 16px; line-height: 1.4;">For small businesses that want faster, more consistent Google review responses.</p>
-                            <div class="tier-price-box" style="display:flex; flex-direction:column; gap:4px; align-items:flex-start;">
-                                <div style="display:flex; align-items:baseline;">
-                                    <span style="font-size: 2.8rem; font-weight: 800; color: #FFF;">$29</span>
-                                    <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;">/ month</span>
-                                </div>
-                                <div style="font-size: 0.82rem; color: var(--accent); font-weight: 600;">
-                                    or $290 / annually <span style="font-size:0.75rem; color:var(--text-secondary-current); font-weight:normal;">(2 months free)</span>
-                                </div>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">Starter</h4>
+                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">For businesses that approve every reply before publishing.</p>
+                            
+                            <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
+                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$29" data-annual="$290">$29</span>
+                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ month" data-annual="billed annually">/ month</span>
                             </div>
                         </div>
                         
-                        <ul class="pricing-feature-list" style="list-style:none; padding:0; display:flex; flex-direction:column; gap:12px; font-size:0.9rem;">
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 1 Business Location</li>
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Up to 30 review responses/mo</li>
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> AI Google review replies</li>
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Manual approval workflow</li>
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Custom business tone</li>
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> English and Spanish responses</li>
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Negative-review alerts</li>
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Email support</li>
-                            <li style="display:flex; align-items:center; gap:8px; color: var(--text-secondary-current); font-size: 0.85rem;"><i data-lucide="info" style="color: var(--primary-light); width: 14px; height: 14px;"></i> Google Reviews supported</li>
+                        <ul class="pricing-4-feature-list">
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 1 business location</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Up to 30 replies per month</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Manual approval</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Custom tone</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> English and Spanish</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Negative-review alerts</li>
                         </ul>
                     </div>
-                    <div style="margin-top:32px;">
-                        <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-secondary" style="width: 100%;">Start Free Trial</a>
-                    </div>
+                    <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Start Free Trial</a>
                 </div>
 
-                <!-- Autopilot Card (Visual Centerpiece) -->
-                <div class="pricing-tier-card recommended" id="pricing-autopilot" style="display: flex; flex-direction: column; justify-content: space-between; border: 2px solid var(--accent); background: rgba(16, 185, 129, 0.02); padding: 32px; border-radius: var(--radius-lg); transform: scale(1.03); box-shadow: var(--shadow-premium), 0 0 30px rgba(16, 185, 129, 0.1); position: relative; z-index: 2;">
-                    <span style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #07070B; font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 12px; border-radius: 20px;">Most Popular</span>
+                <!-- Autopilot Card -->
+                <div class="pricing-4-card recommended" id="plan-autopilot">
                     <div>
-                        <div class="tier-header" style="margin-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 20px;">
-                            <span style="font-size: 0.72rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 8px;">Routine replies on autopilot</span>
-                            <h4 style="color:var(--text-primary-current); font-size:1.5rem; font-weight:700; margin-bottom: 8px;">Autopilot</h4>
-                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height:40px; margin-bottom: 16px; line-height: 1.4;">For businesses that want routine Google review responses handled automatically.</p>
-                            <div class="tier-price-box" style="display:flex; flex-direction:column; gap:4px; align-items:flex-start;">
-                                <div style="display:flex; align-items:baseline;">
-                                    <span style="font-size: 2.8rem; font-weight: 800; color: #FFF;">$39</span>
-                                    <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;">/ month</span>
-                                </div>
-                                <div style="font-size: 0.82rem; color: var(--accent); font-weight: 600;">
-                                    or $390 / annually <span style="font-size:0.75rem; color:var(--text-secondary-current); font-weight:normal;">(2 months free)</span>
-                                </div>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">Autopilot</h4>
+                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">For businesses that want safe review replies published automatically.</p>
+                            
+                            <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
+                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$39" data-annual="$390">$39</span>
+                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ month" data-annual="billed annually">/ month</span>
                             </div>
                         </div>
                         
-                        <ul class="pricing-feature-list" style="list-style:none; padding:0; display:flex; flex-direction:column; gap:12px; font-size:0.9rem;">
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 1 Business Location</li>
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Unlimited review responses</li>
-                            <li style="display:flex; align-items:center; gap:8px; cursor:help;" class="tooltip-trigger" data-tooltip="Routine positive reviews are posted instantly based on your autopilot rules.">
-                                <i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Automatic publishing <i data-lucide="info" style="width:12px; height:12px; color:var(--text-secondary-current);"></i>
-                            </li>
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Manual approval for negatives</li>
-                            <li style="display:flex; align-items:center; gap:8px; cursor:help;" class="tooltip-trigger" data-tooltip="Flag reviews mentioning safety, hygiene, or specific complaints for manual review.">
-                                <i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Sensitive-review detection <i data-lucide="info" style="width:12px; height:12px; color:var(--text-secondary-current);"></i>
-                            </li>
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Custom brand voice</li>
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> English and Spanish responses</li>
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Employee-name recognition</li>
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Review history</li>
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Priority email support</li>
-                            <li style="display:flex; align-items:center; gap:8px; color: var(--text-secondary-current); font-size: 0.85rem;"><i data-lucide="info" style="color: var(--primary-light); width: 14px; height: 14px;"></i> Google Reviews supported</li>
+                        <ul class="pricing-4-feature-list">
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 1 business location</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Unlimited replies*</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Safe replies auto-publish</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Sensitive reviews require approval</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Custom brand voice</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Review history</li>
                         </ul>
                     </div>
-                    <div style="margin-top:32px;">
-                        <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent" style="width: 100%;">Start Free Trial</a>
-                    </div>
+                    <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent" style="width: 100%; text-align: center; justify-content: center;">Start Free Trial</a>
                 </div>
 
                 <!-- Multi-Location Card -->
-                <div class="pricing-tier-card" id="pricing-multi-location" style="display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--border-current); background: var(--bg-card-current); padding: 32px; border-radius: var(--radius-lg); transition: border var(--transition-fast);">
+                <div class="pricing-4-card" id="plan-multi">
                     <div>
-                        <div class="tier-header" style="margin-bottom: 24px; border-bottom: 1px solid var(--border-current); padding-bottom: 20px;">
-                            <span style="font-size: 0.72rem; font-weight: 700; color: var(--primary-light); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 8px;">For multiple branches</span>
-                            <h4 style="color:var(--text-primary-current); font-size:1.5rem; font-weight:700; margin-bottom: 8px;">Multi-Location</h4>
-                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height:40px; margin-bottom: 16px; line-height: 1.4;">For businesses managing several storefront locations.</p>
-                            <div class="tier-price-box" style="display:flex; flex-direction:column; gap:4px; align-items:flex-start;">
-                                <div style="display:flex; align-items:baseline;">
-                                    <span style="font-size: 2.8rem; font-weight: 800; color: #FFF;">$79</span>
-                                    <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;">/ month</span>
-                                </div>
-                                <div style="font-size: 0.82rem; color: var(--accent); font-weight: 600;">
-                                    or $790 / annually <span style="font-size:0.75rem; color:var(--text-secondary-current); font-weight:normal;">(2 months free)</span>
-                                </div>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">Multi-Location</h4>
+                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">For businesses managing several locations.</p>
+                            
+                            <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
+                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$79" data-annual="$790"><span style="font-size:1.2rem;font-weight:600;margin-right:4px;">From</span>$79</span>
+                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ month" data-annual="billed annually">/ month</span>
                             </div>
                         </div>
                         
-                        <ul class="pricing-feature-list" style="list-style:none; padding:0; display:flex; flex-direction:column; gap:12px; font-size:0.9rem;">
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 3 Locations included</li>
-                            <li style="display:flex; align-items:center; gap:8px; cursor:help;" class="tooltip-trigger" data-tooltip="Add more locations to your plan for $15/location per month.">
-                                <i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> $15/additional location <i data-lucide="info" style="width:12px; height:12px; color:var(--text-secondary-current);"></i>
-                            </li>
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Central review dashboard</li>
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Unlimited review responses</li>
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Location-specific tones</li>
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Location approval rules</li>
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Team access</li>
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Negative escalation rules</li>
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Cross-location reporting</li>
-                            <li style="display:flex; align-items:center; gap:8px; color: var(--text-secondary-current); font-size: 0.85rem;"><i data-lucide="info" style="color: var(--primary-light); width: 14px; height: 14px;"></i> Google Reviews supported</li>
+                        <ul class="pricing-4-feature-list">
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 3 locations included</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Central dashboard</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Unlimited replies*</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Location-specific rules</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Team access</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Additional locations available</li>
                         </ul>
                     </div>
-                    <div style="margin-top:32px;">
-                        <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-secondary" style="width: 100%;">View Multi-Location Pricing</a>
-                    </div>
+                    <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Start Multi-Location Trial</a>
                 </div>
 
                 <!-- Agency Card -->
-                <div class="pricing-tier-card" id="pricing-agency" style="display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--border-current); background: var(--bg-card-current); padding: 32px; border-radius: var(--radius-lg); transition: border var(--transition-fast);">
+                <div class="pricing-4-card" id="plan-agency">
                     <div>
-                        <div class="tier-header" style="margin-bottom: 24px; border-bottom: 1px solid var(--border-current); padding-bottom: 20px;">
-                            <span style="font-size: 0.72rem; font-weight: 700; color: var(--primary-light); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 8px;">For marketing agencies</span>
-                            <h4 style="color:var(--text-primary-current); font-size:1.5rem; font-weight:700; margin-bottom: 8px;">Agency</h4>
-                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height:40px; margin-bottom: 16px; line-height: 1.4;">For marketing agencies managing Google reviews for multiple clients.</p>
-                            <div class="tier-price-box" style="display:flex; flex-direction:column; gap:4px; align-items:flex-start;">
-                                <div style="display:flex; align-items:baseline;">
-                                    <span style="font-size: 2.8rem; font-weight: 800; color: #FFF;">$149</span>
-                                    <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;">/ month</span>
-                                </div>
-                                <div style="font-size: 0.82rem; color: var(--accent); font-weight: 600;">
-                                    or $1,490 / annually <span style="font-size:0.75rem; color:var(--text-secondary-current); font-weight:normal;">(2 months free)</span>
-                                </div>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">Agency</h4>
+                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">For agencies managing Google review replies for multiple clients.</p>
+                            
+                            <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
+                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$149" data-annual="$1490"><span style="font-size:1.2rem;font-weight:600;margin-right:4px;">From</span>$149</span>
+                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ month" data-annual="billed annually">/ month</span>
                             </div>
                         </div>
                         
-                        <ul class="pricing-feature-list" style="list-style:none; padding:0; display:flex; flex-direction:column; gap:12px; font-size:0.9rem;">
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 10 Client Locations included</li>
-                            <li style="display:flex; align-items:center; gap:8px; cursor:help;" class="tooltip-trigger" data-tooltip="Manage more client locations for $12 to $19 per location per month (volume discounts apply).">
-                                <i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> $12-$19/client location <i data-lucide="info" style="width:12px; height:12px; color:var(--text-secondary-current);"></i>
-                            </li>
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Central client dashboard</li>
-                            <li style="display:flex; align-items:center; gap:8px; cursor:help;" class="tooltip-trigger" data-tooltip="Subject to fair usage guidelines to prevent system abuse.">
-                                <i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Unlimited review responses <i data-lucide="info" style="width:12px; height:12px; color:var(--text-secondary-current);"></i>
-                            </li>
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Client-specific brand voices</li>
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Client approval links</li>
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Team member access</li>
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Agency reporting</li>
-                            <li style="display:flex; align-items:center; gap:8px;"><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Optional branded reports</li>
-                            <li style="display:flex; align-items:center; gap:8px; color: var(--text-secondary-current); font-size: 0.85rem;"><i data-lucide="info" style="color: var(--primary-light); width: 14px; height: 14px;"></i> Google Reviews supported</li>
+                        <ul class="pricing-4-feature-list">
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 10 client locations included</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Multi-client dashboard</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Separate client brand voices</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Client approval access</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Team access</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Agency reporting</li>
                         </ul>
                     </div>
-                    <div style="margin-top:32px;">
-                        <a href="mailto:info@replyvera.com?subject=Agency%20Plan%20Inquiry" class="btn btn-secondary" style="width: 100%;">View Agency Pricing</a>
-                    </div>
+                    <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Start Agency Trial</a>
                 </div>
+
             </div>
             
-            <p style="font-size: 0.85rem; color: var(--text-secondary-current); font-weight: 500; text-align: center;">
-                ReplyVera currently supports Google Reviews. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.
+            <p style="font-size: 0.8rem; color: var(--text-secondary-current); text-align: center; margin-bottom: 32px;">
+                *Unlimited replies are subject to reasonable-use limits.
             </p>
+            
+            <div class="text-center">
+                <button class="compare-toggle-btn" id="compare-toggle" aria-expanded="false" aria-controls="comparison-container">
+                    Compare All Features <i data-lucide="chevron-down" style="width:16px;height:16px;"></i>
+                </button>
+            </div>
         </div>
     </section>
 
     <!-- Pricing Comparison Section -->
-    <section class="section theme-light" id="comparison" style="border-bottom: 1px solid var(--border-current); padding: 60px 0;">
+    <section class="section theme-light" id="comparison" style="border-top: 1px solid var(--border-current); padding: 40px 0;">
         <div class="container">
-            <div class="text-center mb-8">
-                <h3 style="font-size:1.8rem; letter-spacing:-0.02em;">Compare plans & features</h3>
+            <div class="comparison-container" id="comparison-container">
+                <div class="comparison-table-wrapper" style="margin-bottom: 40px;">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Features</th>
+                                <th>Starter</th>
+                                <th>Autopilot</th>
+                                <th>Multi-Location</th>
+                                <th>Agency</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Locations included</td>
+                                <td>1 Location</td>
+                                <td>1 Location</td>
+                                <td>3 Locations</td>
+                                <td>10 Locations</td>
+                            </tr>
+                            <tr>
+                                <td>Monthly reply limit</td>
+                                <td>30 replies</td>
+                                <td>Unlimited</td>
+                                <td>Unlimited</td>
+                                <td>Unlimited</td>
+                            </tr>
+                            <tr>
+                                <td>Manual approval</td>
+                                <td>Included</td>
+                                <td>Included</td>
+                                <td>Included</td>
+                                <td>Included</td>
+                            </tr>
+                            <tr>
+                                <td>Automatic publishing</td>
+                                <td>Not included</td>
+                                <td>Included</td>
+                                <td>Included</td>
+                                <td>Included</td>
+                            </tr>
+                            <tr>
+                                <td>Sensitive-review detection</td>
+                                <td>Not included</td>
+                                <td>Included</td>
+                                <td>Included</td>
+                                <td>Included</td>
+                            </tr>
+                            <tr>
+                                <td>Custom tone</td>
+                                <td>Included</td>
+                                <td>Included</td>
+                                <td>Included</td>
+                                <td>Included</td>
+                            </tr>
+                            <tr>
+                                <td>English and Spanish</td>
+                                <td>Included</td>
+                                <td>Included</td>
+                                <td>Included</td>
+                                <td>Included</td>
+                            </tr>
+                            <tr>
+                                <td>Employee-name recognition</td>
+                                <td>Not included</td>
+                                <td>Included</td>
+                                <td>Included</td>
+                                <td>Included</td>
+                            </tr>
+                            <tr>
+                                <td>Review history</td>
+                                <td>Not included</td>
+                                <td>Included</td>
+                                <td>Included</td>
+                                <td>Included</td>
+                            </tr>
+                            <tr>
+                                <td>Team access</td>
+                                <td>Not included</td>
+                                <td>Not included</td>
+                                <td>Included</td>
+                                <td>Included</td>
+                            </tr>
+                            <tr>
+                                <td>Multi-location reporting</td>
+                                <td>Not included</td>
+                                <td>Not included</td>
+                                <td>Included</td>
+                                <td>Included</td>
+                            </tr>
+                            <tr>
+                                <td>Client dashboard</td>
+                                <td>Not included</td>
+                                <td>Not included</td>
+                                <td>Not included</td>
+                                <td>Included</td>
+                            </tr>
+                            <tr>
+                                <td>Client approval access</td>
+                                <td>Not included</td>
+                                <td>Not included</td>
+                                <td>Not included</td>
+                                <td>Included</td>
+                            </tr>
+                            <tr>
+                                <td>Support level</td>
+                                <td>Standard</td>
+                                <td>Priority</td>
+                                <td>Priority</td>
+                                <td>Dedicated</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             
-            <div class="comparison-table-wrapper">
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Features</th>
-                            <th>Starter</th>
-                            <th>Autopilot</th>
-                            <th>Multi-Location</th>
-                            <th>Agency</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Business locations</td>
-                            <td>1 Location</td>
-                            <td>1 Location</td>
-                            <td>3 Locations included</td>
-                            <td>10 Client locations</td>
-                        </tr>
-                        <tr>
-                            <td>Monthly review-response limit</td>
-                            <td>30 responses / mo</td>
-                            <td>Unlimited responses</td>
-                            <td>Unlimited responses</td>
-                            <td>Unlimited responses</td>
-                        </tr>
-                        <tr>
-                            <td>Manual approval</td>
-                            <td><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
-                            <td><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
-                            <td><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
-                            <td><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
-                        </tr>
-                        <tr>
-                            <td>Automatic publishing</td>
-                            <td>—</td>
-                            <td><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
-                            <td><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
-                            <td><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
-                        </tr>
-                        <tr>
-                            <td>Sensitive-review detection</td>
-                            <td>—</td>
-                            <td><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
-                            <td><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
-                            <td><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
-                        </tr>
-                        <tr>
-                            <td>Custom tone</td>
-                            <td>1 Tone</td>
-                            <td><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
-                            <td><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
-                            <td><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
-                        </tr>
-                        <tr>
-                            <td>English and Spanish</td>
-                            <td><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
-                            <td><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
-                            <td><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
-                            <td><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
-                        </tr>
-                        <tr>
-                            <td>Employee-name recognition</td>
-                            <td>—</td>
-                            <td><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
-                            <td><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
-                            <td><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
-                        </tr>
-                        <tr>
-                            <td>Team access</td>
-                            <td>—</td>
-                            <td>—</td>
-                            <td><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
-                            <td><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
-                        </tr>
-                        <tr>
-                            <td>Multi-location reporting</td>
-                            <td>—</td>
-                            <td>—</td>
-                            <td><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
-                            <td><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
-                        </tr>
-                        <tr>
-                            <td>Client dashboard</td>
-                            <td>—</td>
-                            <td>—</td>
-                            <td>—</td>
-                            <td><i data-lucide="check" style="color:var(--accent); width:18px; height:18px;"></i></td>
-                        </tr>
-                        <tr>
-                            <td>Priority support</td>
-                            <td>Standard</td>
-                            <td>Standard</td>
-                            <td>Priority</td>
-                            <td>Dedicated</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="section theme-white" id="faq">
-        <div class="container" style="max-width: 800px;">
-            <div class="text-center mb-12">
-                <div class="label-pill"><i data-lucide="help-circle" style="width:12px; height:12px;"></i> FAQ</div>
-                <h2 class="mb-4">Frequently Asked Questions</h2>
-                <p>Everything you need to know about ReplyVera pricing, plans, and capabilities.</p>
-            </div>
-            
-            <div class="faq-list">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Can I cancel at any time?</span>
-                        <div class="faq-icon-wrapper"><i data-lucide="chevron-down"></i></div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes. ReplyVera is billed monthly, and you can cancel before your next billing date.</p>
-                    </div>
+            <!-- FAQ Section -->
+            <div id="faq" style="max-width: 800px; margin: 0 auto;">
+                <div class="text-center mb-8">
+                    <h2 class="mb-4">Frequently Asked Questions</h2>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Is there a setup fee?</span>
-                        <div class="faq-icon-wrapper"><i data-lucide="chevron-down"></i></div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>No. There is no setup fee for standard plans.</p>
-                    </div>
+                
+                <div class="faq-accordion">
+                    <details>
+                        <summary>Can I cancel at any time? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">Yes. ReplyVera is billed monthly or annually, and you can cancel before your next billing date.</div>
+                    </details>
+                    <details>
+                        <summary>Is there a setup fee? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">No. There is no setup fee for standard plans.</div>
+                    </details>
+                    <details>
+                        <summary>Does each location need its own plan? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">Starter and Autopilot include one location. Multi-location and Agency plans include several locations and allow additional locations to be added for a fee.</div>
+                    </details>
+                    <details>
+                        <summary>Are replies unlimited? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">The Starter plan includes up to 30 replies per month. Autopilot, Multi-Location, and Agency plans include unlimited responses subject to reasonable-use limits.</div>
+                    </details>
+                    <details>
+                        <summary>Which review platforms are supported? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">ReplyVera currently supports Google Reviews. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.</div>
+                    </details>
+                    <details>
+                        <summary>Can I change plans later? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">Yes. You can upgrade or downgrade your plan as your review volume or number of locations changes.</div>
+                    </details>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Does each location need its own plan?</span>
-                        <div class="faq-icon-wrapper"><i data-lucide="chevron-down"></i></div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Starter and Autopilot include one location. Multi-location plans include several locations and allow additional locations to be added.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Are review responses unlimited?</span>
-                        <div class="faq-icon-wrapper"><i data-lucide="chevron-down"></i></div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>The Starter plan includes a monthly response allowance (30 replies). Autopilot, Multi-Location, and Agency plans include unlimited responses subject to reasonable-use limits.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Which review platforms are included?</span>
-                        <div class="faq-icon-wrapper"><i data-lucide="chevron-down"></i></div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>ReplyVera currently supports Google Reviews. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Can I approve responses before they are published?</span>
-                        <div class="faq-icon-wrapper"><i data-lucide="chevron-down"></i></div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes. Manual approval is included, and Autopilot users can decide which types of reviews may be published automatically.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Can I change plans later?</span>
-                        <div class="faq-icon-wrapper"><i data-lucide="chevron-down"></i></div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes. Customers can upgrade or downgrade their plan as their review volume or number of locations changes.</p>
-                    </div>
-                </div>
+                
+                <p style="font-size: 0.85rem; color: var(--text-secondary-current); text-align: center; margin-top: 40px; font-weight: 500;">
+                    Currently supported: Google Reviews<br>
+                    Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.
+                </p>
             </div>
         </div>
     </section>
 
     <!-- Call to Action Section -->
-    <section class="section theme-dark" style="border-top: 1px solid rgba(255, 255, 255, 0.04);">
+    <section class="section theme-dark" style="border-top: 1px solid rgba(255, 255, 255, 0.04); padding: 60px 0;">
         <div class="container text-center" style="max-width: 650px;">
-            <h2 class="mb-4">Start Answering Every Google Review</h2>
-            <p class="mb-8">Choose a plan, connect your Google Business Profile, and let ReplyVera handle routine responses while you stay in control of sensitive feedback.</p>
-            
-            <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-bottom:32px; align-items:center;">
-                <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent" style="padding: 14px 28px; font-size:0.95rem;">Start Your Free Trial</a>
-                <a href="#comparison" style="color: #94A3B8; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color var(--transition-fast);" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94A3B8'">Compare Plans</a>
-            </div>
-            
-            <!-- Secondary lead collection form -->
-            <form id="waitlist-form-2" class="waitlist-form" style="display: flex; gap: 12px; margin-top: 24px;">
-                <div class="input-group" style="flex: 1; position:relative;">
-                    <i data-lucide="mail" style="position:absolute; left:20px; top:50%; transform:translateY(-50%); color:#5A5A7A; width:18px; height:18px;"></i>
-                    <input type="email" id="email-2" placeholder="Or enter business email to join waitlist" required style="width: 100%; padding: 18px 24px 18px 54px; border-radius: var(--radius-full); border: 1px solid var(--border-highlight-current); background: var(--bg-card-current); color: white; font-size: 1rem; outline: none; transition: border var(--transition-fast);">
-                </div>
-                <button type="submit" class="btn btn-primary" style="flex-shrink:0;">Join Waitlist</button>
-            </form>
-            <div id="success-msg" style="display: none; align-items:center; justify-content:center; gap:8px; color: var(--accent); margin-top: 16px; font-weight: 600;"></div>
+            <h2 class="mb-6">Ready to automate your Google review replies?</h2>
+            <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent" style="padding: 14px 28px; font-size:0.95rem;">Start Your Free Trial</a>
         </div>
     </section>
-
-    <!-- Footer -->
+<!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -571,5 +495,59 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <script>
+        // Billing Toggle Logic
+        function setBilling(mode) {
+            const btnMonthly = document.getElementById('btn-monthly');
+            const btnAnnual = document.getElementById('btn-annual');
+            const priceVals = document.querySelectorAll('.price-val');
+            const pricePeriods = document.querySelectorAll('.price-period');
+            
+            if (mode === 'annual') {
+                btnAnnual.classList.add('active');
+                btnMonthly.classList.remove('active');
+                priceVals.forEach(el => {
+                    let val = el.getAttribute('data-annual');
+                    if(val === '$790' || val === '$1490') {
+                        el.innerHTML = '<span style="font-size:1.2rem;font-weight:600;margin-right:4px;">From</span>' + val;
+                    } else {
+                        el.textContent = val;
+                    }
+                });
+                pricePeriods.forEach(el => el.textContent = el.getAttribute('data-annual'));
+            } else {
+                btnMonthly.classList.add('active');
+                btnAnnual.classList.remove('active');
+                priceVals.forEach(el => {
+                    let val = el.getAttribute('data-monthly');
+                    if(val === '$79' || val === '$149') {
+                        el.innerHTML = '<span style="font-size:1.2rem;font-weight:600;margin-right:4px;">From</span>' + val;
+                    } else {
+                        el.textContent = val;
+                    }
+                });
+                pricePeriods.forEach(el => el.textContent = el.getAttribute('data-monthly'));
+            }
+        }
+
+        // Compare Toggle Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const compareBtn = document.getElementById('compare-toggle');
+            const compareContainer = document.getElementById('comparison-container');
+            
+            if(compareBtn && compareContainer) {
+                compareBtn.addEventListener('click', () => {
+                    const isExpanded = compareBtn.getAttribute('aria-expanded') === 'true';
+                    compareBtn.setAttribute('aria-expanded', !isExpanded);
+                    if (!isExpanded) {
+                        compareContainer.classList.add('expanded');
+                    } else {
+                        compareContainer.classList.remove('expanded');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
