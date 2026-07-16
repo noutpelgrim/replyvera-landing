@@ -1,9 +1,44 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // Initialize Lucide Icons
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
     }
+
+    // --- Industries Dropdown Toggle ---
+    const dropdownWrappers = document.querySelectorAll('.nav-dropdown');
+    dropdownWrappers.forEach(wrapper => {
+        const btn = wrapper.querySelector('.nav-dropdown-btn');
+        const content = wrapper.querySelector('.nav-dropdown-content');
+        if (!btn || !content) return;
+
+        // Click the button → toggle open/closed
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = wrapper.classList.contains('open');
+            // Close all other dropdowns first
+            dropdownWrappers.forEach(w => w.classList.remove('open'));
+            if (!isOpen) {
+                wrapper.classList.add('open');
+            }
+        });
+
+        // Clicking a link inside closes the dropdown
+        content.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => wrapper.classList.remove('open'));
+        });
+    });
+
+    // Click anywhere outside → close all dropdowns
+    document.addEventListener('click', () => {
+        dropdownWrappers.forEach(w => w.classList.remove('open'));
+    });
+    // Escape key → close all dropdowns
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            dropdownWrappers.forEach(w => w.classList.remove('open'));
+        }
+    });
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

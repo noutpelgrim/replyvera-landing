@@ -332,7 +332,8 @@ p { color: var(--text-secondary); }
 }
 
 .nav-dropdown:hover .nav-dropdown-content,
-.nav-dropdown:focus-within .nav-dropdown-content {
+.nav-dropdown:focus-within .nav-dropdown-content,
+.nav-dropdown.open .nav-dropdown-content {
     opacity: 1;
     pointer-events: all;
     transform: translateX(-50%) translateY(0);
