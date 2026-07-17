@@ -2239,3 +2239,29 @@ footer  { border-top: 1px solid var(--border); padding: 44px 0 24px; }
         min-height: 100vh !important;
     }
 }
+
+/* --- Additional Mobile Overflow Fixes --- */
+@media (max-width: 768px) {
+    .eyebrow {
+        white-space: normal !important;
+        text-align: center !important;
+        line-height: 1.4 !important;
+        height: auto !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+    }
+    .hero-trust {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        text-align: center !important;
+        line-height: 1.5 !important;
+    }
+    .hero-text h1 {
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+    }
+    .container {
+        overflow-x: hidden !important;
+    }
+}
