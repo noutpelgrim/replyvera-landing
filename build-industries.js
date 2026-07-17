@@ -583,7 +583,7 @@ const industryPages = [
         faqItems: [
             { q: 'Can each client have their own tone and approval rules?', a: 'Yes. Each client location is configured independently with its own tone profile, brand voice, and approval settings.' },
             { q: 'Can clients approve their own reviews?', a: 'Yes. You can grant client-level access so the business owner can review and approve sensitive responses themselves.' },
-            { q: 'How many client locations can I manage?', a: 'The Agency plan starts at $149 per month for 10 client locations, with additional locations available for an additional monthly fee.' },
+            { q: 'How many client locations can I manage?', a: 'The Agency plan starts at $149 per month and includes 10 client locations. Additional client locations can be added for a monthly fee.' },
             { q: 'Does ReplyVera support sensitive-review detection per industry?', a: 'Yes. Each client location can have its own sensitive-topic rules configured to match their specific industry.' },
             { q: 'Which review platforms does ReplyVera support?', a: 'ReplyVera currently supports Google Reviews through Google Business Profile. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
         ],
