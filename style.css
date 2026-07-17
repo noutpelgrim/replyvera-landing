@@ -2195,3 +2195,47 @@ footer  { border-top: 1px solid var(--border); padding: 44px 0 24px; }
 .demo-outcome-box {
     padding: 10px 8px !important;
 }
+
+/* --- Comprehensive Mobile Landing Page Fixes --- */
+@media (max-width: 480px) {
+    /* Stack hero buttons */
+    .hero-actions {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+    .hero-actions .btn {
+        width: 100% !important;
+        text-align: center !important;
+        justify-content: center !important;
+    }
+    
+    /* Make footer 1 column */
+    .footer-grid, .footer-inner {
+        grid-template-columns: 1fr !important;
+        text-align: center !important;
+    }
+    .footer-brand-box {
+        text-align: center !important;
+    }
+    .nav-logo {
+        justify-content: center !important;
+    }
+    
+    /* Ensure no horizontal scrolling */
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+    }
+    
+    /* Stack demo modal vertically even if it was flex */
+    .rv-demo-body {
+        flex-direction: column !important;
+    }
+    .rv-demo-container {
+        width: 100% !important;
+        border-radius: 0 !important;
+        padding: 16px 12px !important;
+        max-height: 100vh !important;
+        min-height: 100vh !important;
+    }
+}
