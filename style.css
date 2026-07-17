@@ -2141,3 +2141,21 @@ footer  { border-top: 1px solid var(--border); padding: 44px 0 24px; }
 .demo-cta-panel { margin-top: 12px !important; padding: 16px !important; }
 .demo-review-quote { font-size: 0.85rem !important; }
 .demo-response-text { font-size: 0.85rem !important; min-height: 60px !important; }
+
+/* Ultra-compact overrides to remove vertical scrolling */
+.rv-demo-header p { display: none !important; }
+.rv-demo-header { margin-bottom: 0 !important; }
+.rv-demo-header h2 { font-size: 1.25rem !important; }
+.rv-demo-tabs { margin-top: 8px !important; margin-bottom: 8px !important; padding-bottom: 0 !important; }
+.rv-demo-tab { padding: 4px 12px !important; font-size: 0.8rem !important; }
+.rv-demo-body { margin-bottom: 8px !important; gap: 8px !important; }
+.rv-demo-stage { padding: 10px !important; gap: 8px !important; }
+.demo-stage-label { font-size: 0.7rem !important; }
+.demo-review-card, .demo-response-box, .demo-sensitive-alert, .demo-outcome-box { padding: 10px !important; }
+.demo-review-quote, .demo-response-text { font-size: 0.8rem !important; min-height: auto !important; line-height: 1.3 !important; }
+.demo-tag { padding: 4px 8px !important; font-size: 0.75rem !important; gap: 0 !important; }
+.demo-outcome-title { font-size: 0.9rem !important; margin: 8px 0 4px !important; }
+.rv-demo-controls { margin-top: 8px !important; padding-top: 8px !important; }
+.demo-cta-panel { margin-top: 8px !important; padding: 10px !important; }
+.demo-cta-panel div { font-size: 0.9rem !important; margin-bottom: 8px !important; }
+.btn-sm { padding: 4px 8px !important; font-size: 0.75rem !important; }
