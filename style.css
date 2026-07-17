@@ -1818,3 +1818,9 @@ footer  { border-top: 1px solid var(--border); padding: 44px 0 24px; }
     background: var(--industry-accent, var(--accent));
 }
 
+
+
+/* Pricing card hover effects */
+.pricing-card, .pricing-4-card { transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
+.pricing-card:hover, .pricing-4-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); border-color: var(--accent); }
+.pricing-card.featured:hover, .pricing-4-card.recommended:hover { transform: translateY(-8px); box-shadow: 0 0 0 1px var(--accent), 0 20px 40px rgba(16, 185, 129, 0.2); }

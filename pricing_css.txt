@@ -1,0 +1,32 @@
+1011: /* ─── Pricing ─── */
+1012: .pricing-grid {
+1019: .pricing-card {
+1030: .pricing-card.featured {
+1035: .pricing-popular {
+1050: .pricing-name {
+1059: .pricing-price {
+1067: .pricing-period {
+1074: .pricing-tagline {
+1084: .pricing-desc {
+1093: .pricing-features {
+1102: .pricing-features li {
+1110: .pricing-features li i { color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+1354:     .pricing-grid,
+1373:     /* Pricing cards on mobile stack cleanly */
+1374:     .pricing-card { padding: 24px 20px; }
+1383:     .pricing-grid { gap: 12px; }
+1429: /* ─── Pricing Page Redesign ─── */
+1430: .pricing-4-grid {
+1436: .pricing-4-card {
+1446: .pricing-4-card.recommended {
+1452: .pricing-4-card.recommended::before {
+1467: .pricing-4-feature-list {
+1476: .pricing-4-feature-list li {
+1482: .pricing-4-feature-list i {
+1486: .pricing-billing-toggle {
+1494: .pricing-billing-btn {
+1505: .pricing-billing-btn.active {
+1509: .pricing-annual-badge {
+1516: .pricing-billing-btn.active .pricing-annual-badge {
+1622:     .pricing-4-grid {
+1627:     .pricing-4-grid {
