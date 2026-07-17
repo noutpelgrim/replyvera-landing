@@ -313,7 +313,7 @@ function runDemoSequence() {
     document.getElementById('btn-skip').style.display = 'inline-flex';
     // document.getElementById('btn-pause').style.display = 'inline-flex';
     
-    const timings = [0, 800, 2200, 3600, 5000];
+    const timings = [0, 1500, 4000, 6500, 8500];
     
     function scheduleStage(stageIdx, delay) {
         demoTimer = setTimeout(() => {
