@@ -107,7 +107,7 @@ const DEMO_MODAL_HTML = `
         <div id="demo-cta-panel" class="demo-cta-panel" style="display:none;">
             <div style="font-weight:700;font-size:1.1rem;margin-bottom:12px;">Ready to automate your Google review replies?</div>
             <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-                <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent">Start Free Trial</a>
+                <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent">Start Free Trial</a>
                 <a href="/pricing.html" class="btn btn-secondary">View Pricing</a>
             </div>
         </div>

@@ -265,7 +265,7 @@ html_content = """
                             <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Negative-review alerts</li>
                         </ul>
                     </div>
-                    <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Start Free Trial</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Start Free Trial</a>
                 </div>
 
                 <!-- Autopilot Card -->
@@ -290,7 +290,7 @@ html_content = """
                             <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Review history</li>
                         </ul>
                     </div>
-                    <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent" style="width: 100%; text-align: center; justify-content: center;">Start Free Trial</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent" style="width: 100%; text-align: center; justify-content: center;">Start Free Trial</a>
                 </div>
 
                 <!-- Multi-Location Card -->
@@ -315,7 +315,7 @@ html_content = """
                             <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Additional locations available</li>
                         </ul>
                     </div>
-                    <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Start Multi-Location Trial</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Start Multi-Location Trial</a>
                 </div>
 
                 <!-- Agency Card -->
@@ -340,7 +340,7 @@ html_content = """
                             <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Agency reporting</li>
                         </ul>
                     </div>
-                    <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Start Agency Trial</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Start Agency Trial</a>
                 </div>
 
             </div>
@@ -521,7 +521,7 @@ html_content = """
     <section class="section theme-dark" style="border-top: 1px solid rgba(255, 255, 255, 0.04); padding: 60px 0;">
         <div class="container text-center" style="max-width: 650px;">
             <h2 class="mb-6">Ready to automate your Google review replies?</h2>
-            <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent" style="padding: 14px 28px; font-size:0.95rem;">Start Your Free Trial</a>
+            <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent" style="padding: 14px 28px; font-size:0.95rem;">Start Your Free Trial</a>
         </div>
     </section>
 """

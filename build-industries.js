@@ -152,7 +152,7 @@ function renderPricingSection(isAgency, ind) {
                         <li><i data-lucide="check" style="width:16px;height:16px;color:var(--accent);"></i> Agency reporting</li>
                     </ul>
                     <p style="font-size:0.85rem;color:var(--text-muted);margin:24px 0 28px;text-align:center;">Additional client locations available for a monthly fee.</p>
-                    <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent" style="text-align:center;justify-content:center;width:100%;">Start Agency Trial</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent" style="text-align:center;justify-content:center;width:100%;">Start Agency Trial</a>
                 </div>
             </div>
             
@@ -187,7 +187,7 @@ function renderPricingSection(isAgency, ind) {
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> English and Spanish</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Negative-review alerts</li>
                     </ul>
-                    <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-secondary" style="text-align:center;justify-content:center;">Start Free Trial</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-secondary" style="text-align:center;justify-content:center;">Start Free Trial</a>
                 </div>
                 <div class="pricing-card featured">
                     <div class="pricing-popular">Most Popular</div>
@@ -203,7 +203,7 @@ function renderPricingSection(isAgency, ind) {
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Custom brand voice</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Review history</li>
                     </ul>
-                    <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent" style="text-align:center;justify-content:center;">Start Free Trial</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent" style="text-align:center;justify-content:center;">Start Free Trial</a>
                 </div>
                 <div class="pricing-card">
                     <div class="pricing-name">Multi-Location</div>
@@ -254,7 +254,7 @@ function renderIndustryPage(ind) {
                     <h1 class="mb-6">${ind.heroHeadline}</h1>
                     <p class="lead mb-8">${ind.heroDescription}</p>
                     <div class="hero-actions">
-                        <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent btn-lg">${isAgency ? 'Start Agency Trial' : 'Start Your Free Trial'}</a>
+                        <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">${isAgency ? 'Start Agency Trial' : 'Start Your Free Trial'}</a>
                         <a href="/index.html#how-it-works" class="btn btn-secondary btn-lg">See How It Works</a>
                     </div>
                     <div class="hero-trust">
@@ -410,7 +410,7 @@ function renderIndustryPage(ind) {
                 <h2 class="mb-4">${ind.finalCtaHeadline}</h2>
                 <p class="lead mb-8">${ind.finalCtaDescription}</p>
                 <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
-                    <a href="https://replyvera-dashboard.vercel.app/login?signup=true" class="btn btn-accent btn-lg">Start Free Trial</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">Start Free Trial</a>
                     <a href="/pricing.html" class="btn btn-secondary btn-lg">View Pricing</a>
                 </div>
             </div>
@@ -974,7 +974,8 @@ industryPages.forEach(ind => {
     header = header.replace(`href="/industries/${ind.slug}" class="dropdown-item"`, `href="/industries/${ind.slug}" class="dropdown-item active"`);
     header = header.replace(`href="/industries/${ind.slug}" class="mobile-industry-item"`, `href="/industries/${ind.slug}" class="mobile-industry-item active"`);
 
-    const fullPage = header + '\n<body>\n' + bodyContent + '\n' + baseFooter;
+    const demoScript = `<script>window.REPLYVERA_DEMO_DATA = ${JSON.stringify(ind.demo)};</script>`;
+    const fullPage = header + '\n' + bodyContent + '\n' + baseFooter.replace('</body>', `${demoScript}\n</body>`);
 
     const indDir = path.join(__dirname, 'industries', ind.slug);
     if (!fs.existsSync(indDir)) fs.mkdirSync(indDir, { recursive: true });

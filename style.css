@@ -2305,3 +2305,51 @@ footer  { border-top: 1px solid var(--border); padding: 44px 0 24px; }
         padding: 0 !important;
     }
 }
+
+/* Cookie Consent Banner */
+.cookie-banner {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    max-width: 380px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    z-index: 9999;
+    transform: translateY(100px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform var(--transition-normal), opacity var(--transition-normal);
+}
+.cookie-banner.show {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+}
+.cookie-content p {
+    font-size: 0.84rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 16px;
+    margin-top: 0;
+    text-align: left;
+}
+.cookie-content p a {
+    color: var(--primary-light);
+    text-decoration: underline;
+}
+.cookie-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+@media (max-width: 480px) {
+    .cookie-banner {
+        bottom: 12px;
+        left: 12px;
+        right: 12px;
+        max-width: none;
+    }
+}
