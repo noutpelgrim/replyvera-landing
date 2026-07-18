@@ -592,4 +592,18 @@ document.addEventListener('DOMContentLoaded', () => {
             cookieBanner.setAttribute('aria-hidden', 'true');
         });
     }
+
+    // --- Vercel Analytics Event Tracking ---
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (link && link.href && link.href.includes('dashboard.replyvera.com')) {
+            if (typeof window.va === 'function') {
+                const action = link.href.includes('signup=true') ? 'signup_click' : 'login_click';
+                window.va('track', action, {
+                    text: link.textContent.trim(),
+                    page: window.location.pathname
+                });
+            }
+        }
+    });
 });
