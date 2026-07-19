@@ -34,23 +34,6 @@
         window.location.href = newPath + window.location.hash;
     }
     </script>
-
-    <script>
-        (function() {
-            if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
-                var lang = navigator.language || navigator.userLanguage;
-                if (lang) {
-                    if (lang.startsWith('es') && !localStorage.getItem('lang_redirected')) {
-                        localStorage.setItem('lang_redirected', 'true');
-                        window.location.href = '/es/';
-                    } else if (lang.startsWith('nl') && !localStorage.getItem('lang_redirected')) {
-                        localStorage.setItem('lang_redirected', 'true');
-                        window.location.href = '/nl/';
-                    }
-                }
-            }
-        })();
-    </script>
 </head>
 
 <body>
@@ -61,7 +44,7 @@
                 <div style="width:34px;height:34px;background:linear-gradient(135deg,#6C47FF 0%,#00C9A7 100%);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;color:#fff;box-shadow:0 4px 15px rgba(108,71,255,0.4);flex-shrink:0;"><i class="fa-solid fa-reply"></i></div>
                 <span style="font-size:1.4rem;font-weight:800;letter-spacing:-0.02em;color:#F0F0FF;">Reply<span style="color:#8B6FFF;">Vera</span></span>
             </a>
-            <a href="https://replyvera-dashboard.vercel.app/login" class="btn btn-secondary nav-btn">Log In</a>
+            <a href="https://replyvera-dashboard.vercel.app/login" class="btn btn-secondary nav-btn">Inloggen</a>
         </div>
     </nav>
 
@@ -310,7 +293,7 @@
 
                 <!-- Pro Plan -->
                 <div class="card glass-panel" style="display: flex; flex-direction: column; justify-content: space-between; padding: 32px; border-radius: 20px; border: 1.5px solid var(--primary); position: relative; text-align: center;">
-                    <span style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;">Most Popular</span>
+                    <span style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;">Meest Populair</span>
                     <div>
                         <span style="font-size: 0.8rem; font-weight: 700; color: var(--primary-light); text-transform: uppercase;">Growth Autopilot</span>
                         <div style="margin: 16px 0; display: flex; align-items: baseline; gap: 4px; justify-content: center;">
@@ -376,9 +359,9 @@
                 <div class="footer-links">
                     <p>{{ index_2026_replyvera_all_rights_r_c9ec }}</p>
                     <div style="margin-top: 10px; display: flex; gap: 20px; justify-content: center; font-size: 0.85rem;">
-                        <a href="terms.html" style="color: var(--text-dim); text-decoration: none;">Terms of Service</a>
-                        <a href="privacy.html" style="color: var(--text-dim); text-decoration: none;">Privacy Policy</a>
-                        <a href="cookie.html" style="color: var(--text-dim); text-decoration: none;">Cookie Policy</a>
+                        <a href="terms.html" style="color: var(--text-dim); text-decoration: none;">Servicevoorwaarden</a>
+                        <a href="privacy.html" style="color: var(--text-dim); text-decoration: none;">Privacybeleid</a>
+                        <a href="cookie.html" style="color: var(--text-dim); text-decoration: none;">Cookiebeleid</a>
                     </div>
                 </div>
             </div>

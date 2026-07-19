@@ -271,9 +271,8 @@ p { color: var(--text-secondary); line-height: 1.65; }
 }
 
 .nav-logo-icon i {
-    width: 17px;
-    height: 17px;
-    stroke-width: 2.5;
+    font-size: 0.95rem;
+    line-height: 1;
 }
 
 .nav-logo-text {
@@ -2352,4 +2351,55 @@ footer  { border-top: 1px solid var(--border); padding: 44px 0 24px; }
         right: 12px;
         max-width: none;
     }
+}
+
+/* Language Selector */
+.lang-selector {
+    position: relative;
+    display: inline-block;
+    margin-right: 15px;
+}
+.lang-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    border-radius: var(--radius-sm);
+    transition: color 0.2s, background-color 0.2s;
+}
+.lang-btn:hover {
+    color: var(--text);
+    background-color: var(--bg-hover);
+}
+.lang-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 5px 0;
+    min-width: 120px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    z-index: 100;
+}
+.lang-selector:hover .lang-menu,
+.lang-menu.show {
+    display: block;
+}
+.lang-item {
+    display: block;
+    padding: 8px 16px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.88rem;
+    transition: background-color 0.2s;
+}
+.lang-item:hover {
+    background: var(--bg-hover);
 }

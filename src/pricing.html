@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ pricing_replyvera_pricing_simple_trans_fd7d }}</title>
+    <meta name="description" content="Simple pricing. No sales call required. Start your 14-day free trial.">
+    <link rel="stylesheet" href="/style.css?v=15">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="/demo.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+
+    <script>
+    function changeLang(lang, event) {
+        event.preventDefault();
+        localStorage.setItem('lang_redirected', 'true');
+        
+        let path = window.location.pathname;
+        
+        // Remove existing lang prefix if present
+        if (path.startsWith('/es/')) path = path.replace('/es/', '/');
+        if (path.startsWith('/nl/')) path = path.replace('/nl/', '/');
+        if (path === '/es' || path === '/nl') path = '/';
+        
+        let newPath = path;
+        if (lang === 'es') {
+            newPath = '/es' + (path === '/' ? '/' : path);
+        } else if (lang === 'nl') {
+            newPath = '/nl' + (path === '/' ? '/' : path);
+        }
+        
+        window.location.href = newPath + window.location.hash;
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <i class="fa-solid fa-reply"></i>
+                </div>
+                <span class="nav-logo-text">{{ pricing_reply_25d8 }}<span>{{ pricing_vera_74fd }}</span></span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html#product">{{ pricing_product_deb1 }}</a>
+                <a href="index.html#benefits">{{ pricing_features_98f7 }}</a>
+                <a href="index.html#how-it-works">{{ pricing_how_it_works_aabd }}</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="menu" aria-controls="industries-menu">
+                        {{ pricing_industries_eb47 }}
+                        <span class="chevron-icon"><i data-lucide="chevron-down" style="width:12px;height:12px;"></i></span>
+                    </button>
+                    <div class="nav-dropdown-content" id="industries-menu" role="menu">
+                        <div class="nav-dropdown-grid">
+                            <a href="industries/restaurants" class="dropdown-item" role="menuitem">
+                                <div class="dropdown-icon-wrapper restaurant-icon"><i data-lucide="utensils" style="width:14px;height:14px;"></i></div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">{{ pricing_restaurants_386c }}</div>
+                                    <div class="dropdown-desc">{{ pricing_routine_replies_with_food_safe_2780 }}</div>
+                                </div>
+                            </a>
+                            <a href="industries/dentists" class="dropdown-item" role="menuitem">
+                                <div class="dropdown-icon-wrapper dentist-icon"><i data-lucide="activity" style="width:14px;height:14px;"></i></div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Dentists &amp; Clinics</div>
+                                    <div class="dropdown-desc">{{ pricing_privacy_conscious_replies_for_887c }}</div>
+                                </div>
+                            </a>
+                            <a href="industries/agencies" class="dropdown-item" role="menuitem">
+                                <div class="dropdown-icon-wrapper agency-icon"><i data-lucide="briefcase" style="width:14px;height:14px;"></i></div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">{{ pricing_marketing_agencies_9220 }}</div>
+                                    <div class="dropdown-desc">{{ pricing_manage_google_review_replies_f_51d4 }}</div>
+                                </div>
+                            </a>
+                            <a href="industries/martial-arts" class="dropdown-item" role="menuitem">
+                                <div class="dropdown-icon-wrapper martial-arts-icon"><i data-lucide="shield" style="width:14px;height:14px;"></i></div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">{{ pricing_martial_arts_schools_7e32 }}</div>
+                                    <div class="dropdown-desc">{{ pricing_parent_friendly_replies_with_s_c29c }}</div>
+                                </div>
+                            </a>
+                            <a href="industries/childcare" class="dropdown-item" role="menuitem">
+                                <div class="dropdown-icon-wrapper childcare-icon"><i data-lucide="heart" style="width:14px;height:14px;"></i></div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Childcare &amp; Preschool</div>
+                                    <div class="dropdown-desc">{{ pricing_safety_aware_responses_for_par_1b32 }}</div>
+                                </div>
+                            </a>
+                            <a href="industries/tutoring" class="dropdown-item" role="menuitem">
+                                <div class="dropdown-icon-wrapper tutoring-icon"><i data-lucide="book-open" style="width:14px;height:14px;"></i></div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">{{ pricing_tutoring_centers_9ad5 }}</div>
+                                    <div class="dropdown-desc">{{ pricing_professional_replies_for_paren_3315 }}</div>
+                                </div>
+                            </a>
+                            <a href="industries/pet-care" class="dropdown-item" role="menuitem">
+                                <div class="dropdown-icon-wrapper petcare-icon"><i data-lucide="dog" style="width:14px;height:14px;"></i></div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">{{ pricing_pet_care_ef83 }}</div>
+                                    <div class="dropdown-desc">{{ pricing_warm_replies_with_animal_safet_47eb }}</div>
+                                </div>
+                            </a>
+                            <a href="industries/car-washes" class="dropdown-item" role="menuitem">
+                                <div class="dropdown-icon-wrapper carwash-icon"><i data-lucide="car" style="width:14px;height:14px;"></i></div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">{{ pricing_car_wash_operators_0281 }}</div>
+                                    <div class="dropdown-desc">{{ pricing_track_damage_billing_and_servi_9260 }}</div>
+                                </div>
+                            </a>
+                            <a href="industries/laundromats" class="dropdown-item" role="menuitem">
+                                <div class="dropdown-icon-wrapper laundromat-icon"><i data-lucide="wind" style="width:14px;height:14px;"></i></div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">{{ pricing_laundromats_caf3 }}</div>
+                                    <div class="dropdown-desc">{{ pricing_monitor_cleanliness_equipment_3aed }}</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <a href="#pricing">{{ pricing_pricing_e22a }}</a>
+                <a href="#faq">{{ pricing_faq_1fe9 }}</a>
+            </div>
+
+            <div class="nav-actions">
+                <div class="lang-selector">
+                    <button class="lang-btn" aria-label="Select Language">
+                        <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
+                    </button>
+                    <div class="lang-menu">
+                        <a href="#" class="lang-item" onclick="changeLang('en', event)">English</a>
+                        <a href="#" class="lang-item" onclick="changeLang('es', event)">Español</a>
+                        <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+                    </div>
+                </div>
+                <a href="https://dashboard.replyvera.com/login" class="nav-login">{{ pricing_log_in_3bbb }}</a>
+                <a href="#pricing" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">{{ pricing_start_free_trial_debd }}</a>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Panel -->
+    <div class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+        <div class="mobile-nav-links">
+            <a href="index.html#product" class="mobile-nav-link">{{ pricing_product_deb1 }}</a>
+            <a href="index.html#benefits" class="mobile-nav-link">{{ pricing_features_98f7 }}</a>
+            <a href="index.html#how-it-works" class="mobile-nav-link">{{ pricing_how_it_works_aabd }}</a>
+
+            <!-- {{ pricing_industries_eb47 }} Accordion -->
+            <button class="mobile-industry-toggle" id="mobile-ind-toggle" aria-expanded="false">
+                Industries
+                <span class="mobile-industry-chevron">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+            </button>
+            <div class="mobile-industry-list" id="mobile-ind-list">
+                <a href="industries/restaurants" class="mobile-industry-item">
+                    <div class="mobile-ind-icon restaurant-icon"><i data-lucide="utensils" style="width:14px;height:14px;"></i></div>
+                    <div><div class="mobile-ind-name">{{ pricing_restaurants_386c }}</div><div class="mobile-ind-desc">{{ pricing_food_safety_escalation_and_sta_c10a }}</div></div>
+                </a>
+                <a href="industries/dentists" class="mobile-industry-item">
+                    <div class="mobile-ind-icon dentist-icon"><i data-lucide="activity" style="width:14px;height:14px;"></i></div>
+                    <div><div class="mobile-ind-name">Dentists &amp; Clinics</div><div class="mobile-ind-desc">{{ pricing_privacy_conscious_patient_revi_c2f3 }}</div></div>
+                </a>
+                <a href="industries/agencies" class="mobile-industry-item">
+                    <div class="mobile-ind-icon agency-icon"><i data-lucide="briefcase" style="width:14px;height:14px;"></i></div>
+                    <div><div class="mobile-ind-name">{{ pricing_marketing_agencies_9220 }}</div><div class="mobile-ind-desc">{{ pricing_manage_multiple_clients_from_o_305e }}</div></div>
+                </a>
+                <a href="industries/martial-arts" class="mobile-industry-item">
+                    <div class="mobile-ind-icon martial-arts-icon"><i data-lucide="shield" style="width:14px;height:14px;"></i></div>
+                    <div><div class="mobile-ind-name">{{ pricing_martial_arts_schools_7e32 }}</div><div class="mobile-ind-desc">{{ pricing_student_safety_and_membership_2673 }}</div></div>
+                </a>
+                <a href="industries/childcare" class="mobile-industry-item">
+                    <div class="mobile-ind-icon childcare-icon"><i data-lucide="heart" style="width:14px;height:14px;"></i></div>
+                    <div><div class="mobile-ind-name">Childcare &amp; Preschool</div><div class="mobile-ind-desc">{{ pricing_child_safety_and_privacy_prote_777c }}</div></div>
+                </a>
+                <a href="industries/tutoring" class="mobile-industry-item">
+                    <div class="mobile-ind-icon tutoring-icon"><i data-lucide="book-open" style="width:14px;height:14px;"></i></div>
+                    <div><div class="mobile-ind-name">{{ pricing_tutoring_centers_9ad5 }}</div><div class="mobile-ind-desc">{{ pricing_academic_claims_and_refund_pro_9f47 }}</div></div>
+                </a>
+                <a href="industries/pet-care" class="mobile-industry-item">
+                    <div class="mobile-ind-icon petcare-icon"><i data-lucide="dog" style="width:14px;height:14px;"></i></div>
+                    <div><div class="mobile-ind-name">{{ pricing_pet_care_ef83 }}</div><div class="mobile-ind-desc">{{ pricing_warm_replies_with_animal_safet_f68c }}</div></div>
+                </a>
+                <a href="industries/car-washes" class="mobile-industry-item">
+                    <div class="mobile-ind-icon carwash-icon"><i data-lucide="car" style="width:14px;height:14px;"></i></div>
+                    <div><div class="mobile-ind-name">{{ pricing_car_wash_operators_0281 }}</div><div class="mobile-ind-desc">{{ pricing_vehicle_damage_and_billing_esc_5799 }}</div></div>
+                </a>
+                <a href="industries/laundromats" class="mobile-industry-item">
+                    <div class="mobile-ind-icon laundromat-icon"><i data-lucide="wind" style="width:14px;height:14px;"></i></div>
+                    <div><div class="mobile-ind-name">{{ pricing_laundromats_caf3 }}</div><div class="mobile-ind-desc">{{ pricing_machine_cleanliness_and_refund_4826 }}</div></div>
+                </a>
+            </div>
+
+            <a href="#pricing" class="mobile-nav-link">{{ pricing_pricing_e22a }}</a>
+            <a href="#faq" class="mobile-nav-link">{{ pricing_faq_1fe9 }}</a>
+            <div class="lang-selector">
+                    <button class="lang-btn" aria-label="Select Language">
+                        <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
+                    </button>
+                    <div class="lang-menu">
+                        <a href="#" class="lang-item" onclick="changeLang('en', event)">English</a>
+                        <a href="#" class="lang-item" onclick="changeLang('es', event)">Español</a>
+                        <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+                    </div>
+                </div>
+                <a href="https://dashboard.replyvera.com/login" class="mobile-nav-link">{{ pricing_log_in_3bbb }}</a>
+        </div>
+    </div>
+
+<!-- Mobile Plan Selector -->
+    <div class="mobile-plan-selector theme-dark">
+        <div class="mobile-plan-selector-inner container">
+            <a href="#plan-starter" class="mobile-plan-btn">{{ pricing_starter_ee60 }}</a>
+            <a href="#plan-autopilot" class="mobile-plan-btn">{{ pricing_autopilot_6ca1 }}</a>
+            <a href="#plan-multi" class="mobile-plan-btn">{{ pricing_multi_location_627d }}</a>
+            <a href="#plan-agency" class="mobile-plan-btn">{{ pricing_agency_75ec }}</a>
+        </div>
+    </div>
+
+    <!-- {{ pricing_pricing_e22a }} Hero Section -->
+    <header class="hero theme-dark" style="padding: 100px 0 20px;">
+        <div class="hero-glow-layer"></div>
+        <div class="container hero-content" style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <h1 style="font-size: 2.5rem; margin-bottom: 12px; letter-spacing: -0.02em;">{{ pricing_simple_pricing_no_sales_call_r_355b }}</h1>
+            <p class="lead-text" style="margin-bottom: 0; font-size: 1.1rem; color: var(--text-secondary-current);">
+                {{ pricing_choose_the_level_of_automation_806e }}
+            </p>
+            
+            <!-- Billing Toggle -->
+            <div class="pricing-billing-toggle">
+                <button class="pricing-billing-btn active" id="btn-monthly" onclick="setBilling('monthly')">{{ pricing_monthly_9030 }}</button>
+                <button class="pricing-billing-btn" id="btn-annual" onclick="setBilling('annual')">{{ pricing_annual_c4c6 }} <span class="pricing-annual-badge">{{ pricing_save_2_months_05b1 }}</span></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Pricing Cards Grid Section -->
+    <section class="section theme-dark" id="pricing" style="padding: 20px 0 60px;">
+        <div class="container">
+            <div class="pricing-4-grid mb-12">
+                
+                <!-- {{ pricing_starter_ee60 }} Card -->
+                <div class="pricing-4-card" id="plan-starter">
+                    <div>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">{{ pricing_starter_ee60 }}</h4>
+                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">{{ pricing_for_businesses_that_approve_ev_6d2f }}</p>
+                            
+                            <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
+                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="{{ pricing__29_37f2 }}" data-annual="$290">$29</span>
+                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="{{ pricing__month_fc2b }}" data-annual="billed annually">{{ pricing__month_fc2b }}</span>
+                            </div>
+                        </div>
+                        
+                        <ul class="pricing-4-feature-list">
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> {{ pricing_1_business_location_80e7 }}</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> {{ pricing_up_to_30_replies_per_month_53a8 }}</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> {{ pricing_manual_approval_2f82 }}</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> {{ pricing_custom_tone_a5d4 }}</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> {{ pricing_english_and_spanish_dd48 }}</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> {{ pricing_negative_review_alerts_5238 }}</li>
+                        </ul>
+                    </div>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=starter" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">{{ pricing_start_free_trial_debd }}</a>
+                </div>
+
+                <!-- {{ pricing_autopilot_6ca1 }} Card -->
+                <div class="pricing-4-card recommended" id="plan-autopilot">
+                    <div>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">{{ pricing_autopilot_6ca1 }}</h4>
+                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">{{ pricing_for_businesses_that_want_safe_ada1 }}</p>
+                            
+                            <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
+                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="{{ pricing__39_338f }}" data-annual="$390">$39</span>
+                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="{{ pricing__month_fc2b }}" data-annual="billed annually">{{ pricing__month_fc2b }}</span>
+                            </div>
+                        </div>
+                        
+                        <ul class="pricing-4-feature-list">
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> {{ pricing_1_business_location_80e7 }}</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> {{ pricing_unlimited_review_responses_ee81 }}</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> {{ pricing_safe_replies_auto_publish_0b39 }}</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> {{ pricing_sensitive_reviews_require_appr_719b }}</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> {{ pricing_custom_brand_voice_3dbd }}</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> {{ pricing_review_history_8827 }}</li>
+                        </ul>
+                    </div>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent" style="width: 100%; text-align: center; justify-content: center;">{{ pricing_start_free_trial_debd }}</a>
+                </div>
+
+                <!-- {{ pricing_multi_location_627d }} Card -->
+                <div class="pricing-4-card" id="plan-multi">
+                    <div>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">{{ pricing_multi_location_627d }}</h4>
+                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">{{ pricing_for_businesses_managing_severa_e580 }}</p>
+                            
+                            <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
+                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="{{ pricing__79_f783 }}" data-annual="$790"><span style="font-size:1.2rem;font-weight:600;margin-right:4px;">{{ pricing_from_5da6 }}</span>$79</span>
+                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ month" data-annual="billed annually">/ month</span>
+                            </div>
+                        </div>
+                        
+                        <ul class="pricing-4-feature-list">
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> {{ pricing_3_locations_included_eb6d }}</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> {{ pricing_central_dashboard_c0f6 }}</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> {{ pricing_unlimited_review_responses_ee81 }}</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> {{ pricing_location_specific_rules_107e }}</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> {{ pricing_team_access_ee4e }}</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> {{ pricing_additional_locations_available_61fb }}</li>
+                        </ul>
+                    </div>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=multi_location" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">{{ pricing_start_multi_location_trial_a52d }}</a>
+                </div>
+
+                <!-- {{ pricing_agency_75ec }} Card -->
+                <div class="pricing-4-card" id="plan-agency">
+                    <div>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">{{ pricing_agency_75ec }}</h4>
+                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">{{ pricing_for_agencies_managing_google_r_7928 }}</p>
+                            
+                            <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
+                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="{{ pricing__149_78f6 }}" data-annual="$1490"><span style="font-size:1.2rem;font-weight:600;margin-right:4px;">{{ pricing_from_5da6 }}</span>$149</span>
+                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ month" data-annual="billed annually">/ month</span>
+                            </div>
+                        </div>
+                        
+                        <ul class="pricing-4-feature-list">
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> {{ pricing_10_client_locations_included_764d }}</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> {{ pricing_multi_client_dashboard_22cf }}</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> {{ pricing_separate_client_brand_voices_7aae }}</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> {{ pricing_client_approval_access_61b3 }}</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> {{ pricing_team_access_ee4e }}</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> {{ pricing_agency_reporting_4801 }}</li>
+                        </ul>
+                    </div>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=agency" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">{{ pricing_start_agency_trial_54e9 }}</a>
+                </div>
+
+            </div>
+            
+            <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:24px;margin-bottom:8px;">{{ pricing__unlimited_review_responses_ar_8a3a }}</p>
+            <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:0px;">{{ pricing_14_day_free_trial_cancel_anyti_3dcd }}</p>
+            
+            <div class="text-center">
+                <button class="compare-toggle-btn" id="compare-toggle" aria-expanded="false" aria-controls="comparison-container">
+                    {{ pricing_compare_all_features_d148 }} <i data-lucide="chevron-down" style="width:16px;height:16px;"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Comparison Section -->
+    <section class="section theme-light" id="comparison" style="border-top: 1px solid var(--border-current); padding: 40px 0;">
+        <div class="container">
+            <div class="comparison-container" id="comparison-container">
+                <div class="comparison-table-wrapper" style="margin-bottom: 40px;">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>{{ pricing_features_98f7 }}</th>
+                                <th>Starter</th>
+                                <th>Autopilot</th>
+                                <th>Multi-Location</th>
+                                <th>Agency</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ pricing_locations_included_396c }}</td>
+                                <td>{{ pricing_1_location_894e }}</td>
+                                <td>{{ pricing_1_location_894e }}</td>
+                                <td>{{ pricing_3_locations_5360 }}</td>
+                                <td>{{ pricing_10_locations_bff5 }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ pricing_monthly_reply_limit_68ef }}</td>
+                                <td>{{ pricing_30_replies_54c2 }}</td>
+                                <td>{{ pricing_unlimited_545f }}</td>
+                                <td>{{ pricing_unlimited_545f }}</td>
+                                <td>{{ pricing_unlimited_545f }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ pricing_manual_approval_2f82 }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ pricing_automatic_publishing_2fca }}</td>
+                                <td>{{ pricing_not_included_4bc8 }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ pricing_sensitive_review_detection_198e }}</td>
+                                <td>{{ pricing_not_included_4bc8 }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ pricing_custom_tone_a5d4 }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ pricing_english_and_spanish_dd48 }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ pricing_employee_name_recognition_85de }}</td>
+                                <td>{{ pricing_not_included_4bc8 }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ pricing_review_history_8827 }}</td>
+                                <td>{{ pricing_not_included_4bc8 }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ pricing_team_access_ee4e }}</td>
+                                <td>{{ pricing_not_included_4bc8 }}</td>
+                                <td>{{ pricing_not_included_4bc8 }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ pricing_multi_location_reporting_fc20 }}</td>
+                                <td>{{ pricing_not_included_4bc8 }}</td>
+                                <td>{{ pricing_not_included_4bc8 }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ pricing_client_dashboard_686c }}</td>
+                                <td>{{ pricing_not_included_4bc8 }}</td>
+                                <td>{{ pricing_not_included_4bc8 }}</td>
+                                <td>{{ pricing_not_included_4bc8 }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ pricing_client_approval_access_61b3 }}</td>
+                                <td>{{ pricing_not_included_4bc8 }}</td>
+                                <td>{{ pricing_not_included_4bc8 }}</td>
+                                <td>{{ pricing_not_included_4bc8 }}</td>
+                                <td>{{ pricing_included_984c }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ pricing_support_level_bcdc }}</td>
+                                <td>{{ pricing_standard_eb6d }}</td>
+                                <td>{{ pricing_priority_5029 }}</td>
+                                <td>{{ pricing_priority_5029 }}</td>
+                                <td>{{ pricing_dedicated_bc0a }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- FAQ Section -->
+            <div id="faq" style="max-width: 800px; margin: 0 auto;">
+                <div class="text-center mb-8">
+                    <h2 class="mb-4">{{ pricing_frequently_asked_questions_5405 }}</h2>
+                </div>
+                
+                <div class="faq-accordion">
+                    <details>
+                        <summary>{{ pricing_can_i_cancel_at_any_time_01a4 }} <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">{{ pricing_yes_replyvera_is_billed_monthl_3a45 }}</div>
+                    </details>
+                    <details>
+                        <summary>{{ pricing_is_there_a_setup_fee_7469 }} <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">{{ pricing_no_there_is_no_setup_fee_for_s_2b58 }}</div>
+                    </details>
+                    <details>
+                        <summary>{{ pricing_does_each_location_need_its_ow_2745 }} <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">{{ pricing_starter_and_autopilot_include_8b4b }}</div>
+                    </details>
+                    <details>
+                        <summary>{{ pricing_are_replies_unlimited_9290 }} <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">{{ pricing_the_starter_plan_includes_up_t_fd97 }}</div>
+                    </details>
+                    <details>
+                        <summary>{{ pricing_which_review_platforms_are_sup_10c6 }} <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">{{ pricing_replyvera_currently_supports_g_0d24 }}</div>
+                    </details>
+                    <details>
+                        <summary>{{ pricing_can_i_change_plans_later_75e0 }} <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">{{ pricing_yes_you_can_upgrade_or_downgra_ca69 }}</div>
+                    </details>
+                </div>
+                
+                <p style="font-size: 0.85rem; color: var(--text-secondary-current); text-align: center; margin-top: 40px; font-weight: 500;">
+                    {{ pricing_currently_supported_google_rev_7559 }}<br>
+                    {{ pricing_facebook_trustpilot_booking_co_bead }}
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="section theme-dark" style="border-top: 1px solid rgba(255, 255, 255, 0.04); padding: 60px 0;">
+        <div class="container text-center" style="max-width: 650px;">
+            <h2 class="mb-6">{{ pricing_ready_to_automate_your_google_76fc }}</h2>
+            <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent" style="padding: 14px 28px; font-size:0.95rem;">{{ pricing_start_free_trial_debd }}</a>
+        </div>
+    </section>
+<!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand-box">
+                    <a href="index.html" class="nav-logo" style="margin-bottom:14px;">
+                        <div class="nav-logo-icon">
+                            <i class="fa-solid fa-reply"></i>
+                        </div>
+                        <span class="nav-logo-text" style="font-size:1.2rem;">{{ pricing_reply_25d8 }}<span>{{ pricing_vera_74fd }}</span></span>
+                    </a>
+                    <p style="color:#94A3B8;">{{ pricing_the_review_autopilot_built_for_d4bf }}</p>
+                    <p style="color:#64748B; font-size:0.8rem; margin-top:12px;">{{ pricing_currently_supporting_google_re_ead9 }}</p>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-col-title">{{ pricing_product_deb1 }}</div>
+                    <ul class="footer-links">
+                        <li><a href="index.html#product">{{ pricing_product_deb1 }}</a></li>
+                        <li><a href="index.html#how-it-works">{{ pricing_how_it_works_aabd }}</a></li>
+                        <li><a href="pricing.html">{{ index_pricing_e22a }}</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-col-title">{{ pricing_company_1c76 }}</div>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@replyvera.com">{{ pricing_contact_us_9cfc }}</a></li>
+                        <li><div class="lang-selector">
+                    <button class="lang-btn" aria-label="Select Language">
+                        <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
+                    </button>
+                    <div class="lang-menu">
+                        <a href="#" class="lang-item" onclick="changeLang('en', event)">English</a>
+                        <a href="#" class="lang-item" onclick="changeLang('es', event)">Español</a>
+                        <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+                    </div>
+                </div>
+                <a h>{{ pricing_login_99de }}</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-col-title">{{ pricing_legal_a10a }}</div>
+                    <ul class="footer-links">
+                        <li><a href="/terms.html">{{ pricing_terms_of_service_3b6c }}</a></li>
+                        <li><a href="/privacy.html">{{ pricing_privacy_policy_fa2e }}</a></li>
+                        <li><a href="cookie.html">{{ pricing_cookie_policy_26b3 }}</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div>{{ index_2026_replyvera_all_rights_r_c9ec }}</div>
+                <div class="social-links">
+                    <a href="#"><i data-lucide="twitter" style="width:18px; height:18px;"></i></a>
+                    <a href="#"><i data-lucide="linkedin" style="width:18px; height:18px;"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner" aria-hidden="true">
+        <div class="cookie-content">
+            <p>{{ pricing_we_use_cookies_to_improve_your_35e6 }} <a href="cookie.html">{{ pricing_cookie_policy_26b3 }}</a>.</p>
+            <div class="cookie-buttons">
+                <button id="accept-cookies" class="btn btn-accent btn-sm" style="padding:6px 12px; font-size:0.78rem;">{{ pricing_accept_c440 }}</button>
+                <button id="decline-cookies" class="btn btn-secondary btn-sm" style="padding:6px 12px; font-size:0.78rem;">{{ pricing_decline_0d36 }}</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vercel Web Analytics -->
+    <script>
+      {{ pricing_window_va_window_va_function_w_bd2c }}
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <script src="/script.js"></script>
+
+    <script>
+        // Billing Toggle Logic
+        function setBilling(mode) {
+            const btnMonthly = document.getElementById('btn-monthly');
+            const btnAnnual = document.getElementById('btn-annual');
+            const priceVals = document.querySelectorAll('.price-val');
+            const pricePeriods = document.querySelectorAll('.price-period');
+            
+            if (mode === 'annual') {
+                btnAnnual.classList.add('active');
+                btnMonthly.classList.remove('active');
+                priceVals.forEach(el => {
+                    let val = el.getAttribute('data-annual');
+                    if(val === '$790' || val === '$1490') {
+                        el.innerHTML = '<span style="font-size:1.2rem;font-weight:600;margin-right:4px;">From</span>' + val;
+                    } else {
+                        el.textContent = val;
+                    }
+                });
+                pricePeriods.forEach(el => el.textContent = el.getAttribute('data-annual'));
+            } else {
+                btnMonthly.classList.add('active');
+                btnAnnual.classList.remove('active');
+                priceVals.forEach(el => {
+                    let val = el.getAttribute('data-monthly');
+                    if(val === '$79' || val === '$149') {
+                        el.innerHTML = '<span style="font-size:1.2rem;font-weight:600;margin-right:4px;">From</span>' + val;
+                    } else {
+                        el.textContent = val;
+                    }
+                });
+                pricePeriods.forEach(el => el.textContent = el.getAttribute('data-monthly'));
+            }
+        }
+
+        // Compare Toggle Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const compareBtn = document.getElementById('compare-toggle');
+            const compareContainer = document.getElementById('comparison-container');
+            
+            if(compareBtn && compareContainer) {
+                compareBtn.addEventListener('click', () => {
+                    const isExpanded = compareBtn.getAttribute('aria-expanded') === 'true';
+                    compareBtn.setAttribute('aria-expanded', !isExpanded);
+                    if (!isExpanded) {
+                        compareContainer.classList.add('expanded');
+                    } else {
+                        compareContainer.classList.remove('expanded');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

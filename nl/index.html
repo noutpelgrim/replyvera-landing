@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReplyVera – Google Review Automation for Small Businesses</title>
-    <meta name="description" content="ReplyVera automatically responds to your Google reviews. Routine reviews are handled automatically. Negative and sensitive feedback stays under your control. Plans from $29 per month.">
+    <title>ReplyVera – Google Review Automatisering voor Kleine Bedrijven</title>
+    <meta name="description" content="ReplyVera automatically responds to your Google reviews. Routine reviews are handled automatically. Negative and sensitive feedback stays under your control. Plans from $29 per maand.">
     <link rel="stylesheet" href="/style.css?v=15">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="/demo.js?v=3" defer></script>
+    <script src="/nl/demo.js?v=3" defer></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
 
     <script>
@@ -35,23 +35,6 @@
         window.location.href = newPath + window.location.hash;
     }
     </script>
-
-    <script>
-        (function() {
-            if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
-                var lang = navigator.language || navigator.userLanguage;
-                if (lang) {
-                    if (lang.startsWith('es') && !localStorage.getItem('lang_redirected')) {
-                        localStorage.setItem('lang_redirected', 'true');
-                        window.location.href = '/es/';
-                    } else if (lang.startsWith('nl') && !localStorage.getItem('lang_redirected')) {
-                        localStorage.setItem('lang_redirected', 'true');
-                        window.location.href = '/nl/';
-                    }
-                }
-            }
-        })();
-    </script>
 </head>
 
 <body>
@@ -68,11 +51,11 @@
 
             <div class="nav-links">
                 <a href="#product">Product</a>
-                <a href="#benefits">Features</a>
-                <a href="#how-it-works">How It Works</a>
+                <a href="#benefits">Functies</a>
+                <a href="#how-it-works">Hoe Het Werkt</a>
                 <div class="nav-dropdown">
                     <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="menu" aria-controls="industries-menu">
-                        Industries
+                        Sectoren
                         <span class="chevron-icon"><i data-lucide="chevron-down" style="width:12px;height:12px;"></i></span>
                     </button>
                     <div class="nav-dropdown-content" id="industries-menu" role="menu">
@@ -81,70 +64,70 @@
                                 <div class="dropdown-icon-wrapper restaurant-icon"><i data-lucide="utensils" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
                                     <div class="dropdown-title">Restaurants</div>
-                                    <div class="dropdown-desc">Routine replies with food-safety escalation.</div>
+                                    <div class="dropdown-desc">Standaardreacties met escalatie voor voedselveiligheid.</div>
                                 </div>
                             </a>
                             <a href="industries/dentists" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper dentist-icon"><i data-lucide="activity" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
                                     <div class="dropdown-title">Dentists &amp; Clinics</div>
-                                    <div class="dropdown-desc">Privacy-conscious replies for patient reviews.</div>
+                                    <div class="dropdown-desc">Privacybewuste reacties op patiëntbeoordelingen.</div>
                                 </div>
                             </a>
                             <a href="industries/agencies" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper agency-icon"><i data-lucide="briefcase" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Marketing Agencies</div>
-                                    <div class="dropdown-desc">Manage Google review replies for every client.</div>
+                                    <div class="dropdown-title">Marketingbureaus</div>
+                                    <div class="dropdown-desc">Beheer reacties op Google-reviews voor elke klant.</div>
                                 </div>
                             </a>
                             <a href="industries/martial-arts" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper martial-arts-icon"><i data-lucide="shield" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Martial Arts Schools</div>
-                                    <div class="dropdown-desc">Parent-friendly replies with safety controls.</div>
+                                    <div class="dropdown-title">Vechtsportscholen</div>
+                                    <div class="dropdown-desc">Oudervriendelijke reacties met veiligheidscontroles.</div>
                                 </div>
                             </a>
                             <a href="industries/childcare" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper childcare-icon"><i data-lucide="heart" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
                                     <div class="dropdown-title">Childcare &amp; Preschool</div>
-                                    <div class="dropdown-desc">Safety-aware responses for parent feedback.</div>
+                                    <div class="dropdown-desc">Veiligheidsbewuste reacties op feedback van ouders.</div>
                                 </div>
                             </a>
                             <a href="industries/tutoring" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper tutoring-icon"><i data-lucide="book-open" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Tutoring Centers</div>
-                                    <div class="dropdown-desc">Professional replies for parent and student reviews.</div>
+                                    <div class="dropdown-title">Bijlescentra</div>
+                                    <div class="dropdown-desc">Professionele reacties op beoordelingen van ouders en studenten.</div>
                                 </div>
                             </a>
                             <a href="industries/pet-care" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper petcare-icon"><i data-lucide="dog" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Pet Care</div>
-                                    <div class="dropdown-desc">Warm replies with animal-safety escalation.</div>
+                                    <div class="dropdown-title">Dierenverzorging</div>
+                                    <div class="dropdown-desc">Warme reacties met escalatie voor dierenveiligheid.</div>
                                 </div>
                             </a>
                             <a href="industries/car-washes" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper carwash-icon"><i data-lucide="car" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Car Wash Operators</div>
-                                    <div class="dropdown-desc">Track damage, billing, and service complaints.</div>
+                                    <div class="dropdown-title">Autowasstraten</div>
+                                    <div class="dropdown-desc">Volg klachten over schade, facturering en service.</div>
                                 </div>
                             </a>
                             <a href="industries/laundromats" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper laundromat-icon"><i data-lucide="wind" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Laundromats</div>
-                                    <div class="dropdown-desc">Monitor cleanliness, equipment, and refunds.</div>
+                                    <div class="dropdown-title">Wasserettes</div>
+                                    <div class="dropdown-desc">Houd toezicht op netheid, apparatuur en terugbetalingen.</div>
                                 </div>
                             </a>
                         </div>
                     </div>
                 </div>
-                <a href="#pricing">Pricing</a>
-                <a href="#faq">FAQ</a>
+                <a href="#pricing">Prijzen</a>
+                <a href="#faq">Veelgestelde Vragen</a>
             </div>
 
             <div class="nav-actions">
@@ -158,8 +141,8 @@
                         <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
                     </div>
                 </div>
-                <a href="https://dashboard.replyvera.com/login" class="nav-login">Log In</a>
-                <a href="#pricing" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Start Free Trial</a>
+                <a href="https://dashboard.replyvera.com/login" class="nav-login">Inloggen</a>
+                <a href="#pricing" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Start Gratis Proefperiode</a>
                 <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
                         <line x1="3" y1="6" x2="21" y2="6"/>
@@ -175,10 +158,10 @@
     <div class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
         <div class="mobile-nav-links">
             <a href="#product" class="mobile-nav-link">Product</a>
-            <a href="#benefits" class="mobile-nav-link">Features</a>
-            <a href="#how-it-works" class="mobile-nav-link">How It Works</a>
+            <a href="#benefits" class="mobile-nav-link">Functies</a>
+            <a href="#how-it-works" class="mobile-nav-link">Hoe Het Werkt</a>
 
-            <!-- Industries Accordion -->
+            <!-- Sectoren Accordion -->
             <button class="mobile-industry-toggle" id="mobile-ind-toggle" aria-expanded="false">
                 Industries
                 <span class="mobile-industry-chevron">
@@ -188,44 +171,44 @@
             <div class="mobile-industry-list" id="mobile-ind-list">
                 <a href="industries/restaurants" class="mobile-industry-item">
                     <div class="mobile-ind-icon restaurant-icon"><i data-lucide="utensils" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Restaurants</div><div class="mobile-ind-desc">Food-safety escalation and staff recognition</div></div>
+                    <div><div class="mobile-ind-name">Restaurants</div><div class="mobile-ind-desc">Escalatie voor voedselveiligheid en erkenning van personeel</div></div>
                 </a>
                 <a href="industries/dentists" class="mobile-industry-item">
                     <div class="mobile-ind-icon dentist-icon"><i data-lucide="activity" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Dentists &amp; Clinics</div><div class="mobile-ind-desc">Privacy-conscious patient review replies</div></div>
+                    <div><div class="mobile-ind-name">Dentists &amp; Clinics</div><div class="mobile-ind-desc">Privacybewuste reacties op patiëntbeoordelingen</div></div>
                 </a>
                 <a href="industries/agencies" class="mobile-industry-item">
                     <div class="mobile-ind-icon agency-icon"><i data-lucide="briefcase" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Marketing Agencies</div><div class="mobile-ind-desc">Manage multiple clients from one dashboard</div></div>
+                    <div><div class="mobile-ind-name">Marketingbureaus</div><div class="mobile-ind-desc">Beheer meerdere klanten vanuit één dashboard</div></div>
                 </a>
                 <a href="industries/martial-arts" class="mobile-industry-item">
                     <div class="mobile-ind-icon martial-arts-icon"><i data-lucide="shield" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Martial Arts Schools</div><div class="mobile-ind-desc">Student safety and membership escalation</div></div>
+                    <div><div class="mobile-ind-name">Vechtsportscholen</div><div class="mobile-ind-desc">Veiligheid van studenten en lidmaatschap escalatie</div></div>
                 </a>
                 <a href="industries/childcare" class="mobile-industry-item">
                     <div class="mobile-ind-icon childcare-icon"><i data-lucide="heart" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Childcare &amp; Preschool</div><div class="mobile-ind-desc">Child safety and privacy protection</div></div>
+                    <div><div class="mobile-ind-name">Childcare &amp; Preschool</div><div class="mobile-ind-desc">Veiligheid van kinderen en privacybescherming</div></div>
                 </a>
                 <a href="industries/tutoring" class="mobile-industry-item">
                     <div class="mobile-ind-icon tutoring-icon"><i data-lucide="book-open" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Tutoring Centers</div><div class="mobile-ind-desc">Academic claims and refund protection</div></div>
+                    <div><div class="mobile-ind-name">Bijlescentra</div><div class="mobile-ind-desc">Academische claims en bescherming bij terugbetalingen</div></div>
                 </a>
                 <a href="industries/pet-care" class="mobile-industry-item">
                     <div class="mobile-ind-icon petcare-icon"><i data-lucide="dog" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Pet Care</div><div class="mobile-ind-desc">Warm replies with animal-safety escalation</div></div>
+                    <div><div class="mobile-ind-name">Dierenverzorging</div><div class="mobile-ind-desc">Warme reacties met escalatie voor dierenveiligheid</div></div>
                 </a>
                 <a href="industries/car-washes" class="mobile-industry-item">
                     <div class="mobile-ind-icon carwash-icon"><i data-lucide="car" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Car Wash Operators</div><div class="mobile-ind-desc">Vehicle damage and billing escalation</div></div>
+                    <div><div class="mobile-ind-name">Autowasstraten</div><div class="mobile-ind-desc">Schade aan voertuigen en escalatie van facturering</div></div>
                 </a>
                 <a href="industries/laundromats" class="mobile-industry-item">
                     <div class="mobile-ind-icon laundromat-icon"><i data-lucide="wind" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Laundromats</div><div class="mobile-ind-desc">Machine, cleanliness, and refund reviews</div></div>
+                    <div><div class="mobile-ind-name">Wasserettes</div><div class="mobile-ind-desc">Beoordelingen over machines, netheid en terugbetalingen</div></div>
                 </a>
             </div>
 
-            <a href="#pricing" class="mobile-nav-link">Pricing</a>
-            <a href="#faq" class="mobile-nav-link">FAQ</a>
+            <a href="#pricing" class="mobile-nav-link">Prijzen</a>
+            <a href="#faq" class="mobile-nav-link">Veelgestelde Vragen</a>
             <div class="lang-selector">
                     <button class="lang-btn" aria-label="Select Language">
                         <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> EN
@@ -236,7 +219,7 @@
                         <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
                     </div>
                 </div>
-                <a href="https://dashboard.replyvera.com/login" class="mobile-nav-link">Log In</a>
+                <a href="https://dashboard.replyvera.com/login" class="mobile-nav-link">Inloggen</a>
         </div>
     </div>
 
@@ -249,19 +232,19 @@
                 <div class="hero-text">
                     <div class="eyebrow">
                         <i data-lucide="google" style="width:12px;height:12px;color:#DB4437;"></i>
-                        Google Review Automation for Small Businesses
+                        Google Review Automatisering voor Kleine Bedrijven
                     </div>
-                    <h1 class="mb-6">Meet Vera. Stop Wasting Hours on Google Reviews.</h1>
-                    <p class="lead mb-8">Vera is your AI assistant that syncs with Google to draft and post custom, brand-compliant replies instantly. Keep customers happy and rank higher—all on autopilot.</p>
+                    <h1 class="mb-6">Maak kennis met Vera. Stop met het verspillen van uren aan Google-reviews.</h1>
+                    <p class="lead mb-8">Vera is uw AI-assistent die synchroniseert met Google om direct aangepaste, merkconforme reacties op te stellen en te plaatsen. Houd klanten tevreden en scoor hoger—alles op de automatische piloot.</p>
                     
                     <div class="pricing-tag-hero" style="display:inline-flex;align-items:center;gap:8px;background:rgba(0, 201, 167, 0.1);border:1px solid rgba(0, 201, 167, 0.3);color:var(--accent);padding:8px 18px;border-radius:20px;font-size:0.9rem;font-weight:700;margin-bottom:25px;">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                        Available for less than $1 a day
+                        Beschikbaar voor minder dan $1 per dag
                     </div>
 
                     <div class="hero-actions">
-                        <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">Start Free Trial</a>
-                        <a href="#how-it-works" class="btn btn-secondary btn-lg">See How It Works</a>
+                        <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">Start Gratis Proefperiode</a>
+                        <a href="#how-it-works" class="btn btn-secondary btn-lg">Bekijk Hoe Het Werkt</a>
                     </div>
                     <div class="hero-trust">
                         <i data-lucide="shield-check" style="width:13px;height:13px;color:var(--accent);"></i>
@@ -279,10 +262,10 @@
                         </div>
                         <div style="font-size:0.7rem;font-weight:700;color:var(--accent);display:flex;align-items:center;gap:5px;">
                             <span style="width:6px;height:6px;background:var(--accent);border-radius:50%;display:inline-block;"></span>
-                            Active
+                            Actief
                         </div>
                     </div>
-                    <div style="font-size:0.72rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px;">Recent Reviews</div>
+                    <div style="font-size:0.72rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px;">Recente Beoordelingen</div>
                     <div class="review-rows">
                         <div class="review-row-item">
                             <div class="review-row-meta">
@@ -293,9 +276,9 @@
                                     <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:11px;height:11px;"></i>
                                     <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:11px;height:11px;"></i>
                                 </div>
-                                <div class="review-row-text">"Friendly team and excellent service."</div>
+                                <div class="review-row-text">"Vriendelijk team en uitstekende service."</div>
                             </div>
-                            <span class="review-badge badge-auto">Safe to Auto-Publish</span>
+                            <span class="review-badge badge-auto">Veilig om automatisch te publiceren</span>
                         </div>
                         <div class="review-row-item">
                             <div class="review-row-meta">
@@ -306,9 +289,9 @@
                                     <i data-lucide="star" style="fill:none;color:#64748B;width:11px;height:11px;"></i>
                                     <i data-lucide="star" style="fill:none;color:#64748B;width:11px;height:11px;"></i>
                                 </div>
-                                <div class="review-row-text">"The service took much longer than expected."</div>
+                                <div class="review-row-text">"De service duurde veel langer dan verwacht."</div>
                             </div>
-                            <span class="review-badge badge-approval">Needs Approval</span>
+                            <span class="review-badge badge-approval">Goedkeuring vereist</span>
                         </div>
                         <div class="review-row-item">
                             <div class="review-row-meta">
@@ -319,9 +302,9 @@
                                     <i data-lucide="star" style="fill:none;color:#64748B;width:11px;height:11px;"></i>
                                     <i data-lucide="star" style="fill:none;color:#64748B;width:11px;height:11px;"></i>
                                 </div>
-                                <div class="review-row-text">"This caused an injury."</div>
+                                <div class="review-row-text">"Dit veroorzaakte een blessure."</div>
                             </div>
-                            <span class="review-badge badge-blocked">Auto-Publishing Blocked</span>
+                            <span class="review-badge badge-blocked">Automatisch publiceren geblokkeerd</span>
                         </div>
                     </div>
                 </div>
@@ -333,23 +316,23 @@
     <section class="section section-light" id="benefits">
         <div class="container">
             <div class="section-header">
-                <h2>Review Replies Without the Daily Work</h2>
+                <h2>Reacties op reviews zonder het dagelijkse werk</h2>
             </div>
             <div class="benefits-grid">
                 <div class="benefit-card">
                     <div class="benefit-icon"><i data-lucide="clock" style="width:20px;height:20px;"></i></div>
-                    <div class="benefit-title">Save Time</div>
-                    <p class="benefit-text">Routine Google review responses are drafted or published automatically, freeing your team for more important work.</p>
+                    <div class="benefit-title">Bespaar Tijd</div>
+                    <p class="benefit-text">Standaardreacties op Google-reviews worden automatisch opgesteld of gepubliceerd, zodat uw team tijd overhoudt voor belangrijker werk.</p>
                 </div>
                 <div class="benefit-card">
                     <div class="benefit-icon"><i data-lucide="message-circle" style="width:20px;height:20px;"></i></div>
-                    <div class="benefit-title">Sound Personal</div>
-                    <p class="benefit-text">Every reply reflects the specific review and your preferred business tone. No copy-pasted responses.</p>
+                    <div class="benefit-title">Klinkt Persoonlijk</div>
+                    <p class="benefit-text">Elke reactie weerspiegelt de specifieke review en uw gewenste bedrijfstoon. Geen gekopieerde en geplakte antwoorden.</p>
                 </div>
                 <div class="benefit-card">
                     <div class="benefit-icon"><i data-lucide="shield-check" style="width:20px;height:20px;"></i></div>
-                    <div class="benefit-title">Stay in Control</div>
-                    <p class="benefit-text">Negative and sensitive reviews are always held for human approval before anything is published.</p>
+                    <div class="benefit-title">Houd de Controle</div>
+                    <p class="benefit-text">Negatieve en gevoelige reviews worden altijd vastgehouden voor menselijke goedkeuring voordat er iets wordt gepubliceerd.</p>
                 </div>
             </div>
         </div>
@@ -362,39 +345,39 @@
                 <img src="/img/safety_mockup.png" alt="Safety Feature: Flagged Reviews" style="width:100%; border-radius:12px; box-shadow:0 30px 60px rgba(0,0,0,0.6), inset 0 2px 0 rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08);">
             </div>
             <div style="flex:1; min-width:300px;">
-                <div class="eyebrow"><i data-lucide="shield-alert" style="width:12px;height:12px;color:var(--brand-red);"></i> Built-in Safety Controls</div>
-                <h2 style="font-size:36px; font-weight:800; margin-bottom:20px; color:#FFF; line-height:1.2; letter-spacing:-0.02em;">Total Control Over Your Reputation</h2>
+                <div class="eyebrow"><i data-lucide="shield-alert" style="width:12px;height:12px;color:var(--brand-red);"></i> Ingebouwde Veiligheidscontroles</div>
+                <h2 style="font-size:36px; font-weight:800; margin-bottom:20px; color:#FFF; line-height:1.2; letter-spacing:-0.02em;">Volledige Controle Over Uw Reputatie</h2>
                 <p style="font-size:18px; color:var(--text-muted); line-height:1.6; margin-bottom:20px;">
-                    Safe replies publish automatically. Sensitive or negative reviews are safely held for your approval.
+                    Veilige reacties worden automatisch gepubliceerd. Gevoelige of negatieve reviews worden veilig vastgehouden voor uw goedkeuring.
                 </p>
                 <p style="font-size:16px; color:var(--text-muted); line-height:1.6;">
-                    Never worry about an AI saying the wrong thing. Vera automatically analyzes sentiment, flagging anything under 4 stars or containing sensitive keywords for human review.
+                    Maak u nooit zorgen dat een AI iets verkeerds zegt. Vera analyseert automatisch het sentiment en markeert alles onder de 4 sterren of met gevoelige trefwoorden voor menselijke beoordeling.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- 4. How It Works -->
+    <!-- 4. Hoe Het Werkt -->
     <section class="section section-dark" id="how-it-works">
         <div class="container">
             <div class="section-header">
-                <h2>Connect Google. Set Your Rules. Let Vera Handle the Rest.</h2>
+                <h2>Koppel Google. Stel Uw Regels In. Laat Vera de Rest Doen.</h2>
             </div>
             <div class="steps-grid">
                 <div class="step-card">
                     <div class="step-number">1</div>
-                    <div class="step-title">Introduce Vera to Your Business</div>
-                    <p class="step-text">Securely connect your Google Business Profile in one click so Vera can monitor your incoming reviews.</p>
+                    <div class="step-title">Introduceer Vera in Uw Bedrijf</div>
+                    <p class="step-text">Koppel uw Google Bedrijfsprofiel veilig met één klik, zodat Vera uw inkomende reviews kan volgen.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">2</div>
-                    <div class="step-title">Tell Vera How to Respond</div>
-                    <p class="step-text">Set your brand's tone. Tell Vera which reviews she can publish automatically, and which ones you want to review first.</p>
+                    <div class="step-title">Vertel Vera Hoe Te Reageren</div>
+                    <p class="step-text">Stel de toon van uw merk in. Vertel Vera welke reviews ze automatisch kan publiceren, en welke u eerst zelf wilt controleren.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">3</div>
-                    <div class="step-title">Vera Goes to Work</div>
-                    <p class="step-text">Vera instantly drafts and posts personalized responses for routine reviews, saving you hours every single week.</p>
+                    <div class="step-title">Vera Gaat Aan De Slag</div>
+                    <p class="step-text">Vera stelt direct gepersonaliseerde reacties op en plaatst ze voor standaardreviews, wat u wekelijks uren bespaart.</p>
                 </div>
             </div>
         </div>
@@ -404,15 +387,15 @@
     <section class="section section-light">
         <div class="container">
             <div class="section-header">
-                <h2>Built for the Way Your Business Handles Reviews</h2>
-                <p>Choose your industry to see examples, safeguards, and review situations designed for your business.</p>
+                <h2>Gemaakt voor de Manier Waarop Uw Bedrijf Reviews Afhandelt</h2>
+                <p>Kies uw sector om voorbeelden, veiligheidsmaatregelen en reviewsituaties te zien die zijn ontworpen voor uw bedrijf.</p>
             </div>
             <div class="industry-grid">
                 <a href="industries/restaurants" class="industry-card">
                     <div class="industry-card-icon restaurant-icon"><i data-lucide="utensils" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
                         <div class="industry-card-name">Restaurants</div>
-                        <div class="industry-card-desc">Food-safety escalation and staff recognition</div>
+                        <div class="industry-card-desc">Escalatie voor voedselveiligheid en erkenning van personeel</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
@@ -420,23 +403,23 @@
                     <div class="industry-card-icon dentist-icon"><i data-lucide="activity" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
                         <div class="industry-card-name">Dentists &amp; Clinics</div>
-                        <div class="industry-card-desc">Privacy-conscious patient review replies</div>
+                        <div class="industry-card-desc">Privacybewuste reacties op patiëntbeoordelingen</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
                 <a href="industries/agencies" class="industry-card">
                     <div class="industry-card-icon agency-icon"><i data-lucide="briefcase" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-                        <div class="industry-card-name">Marketing Agencies</div>
-                        <div class="industry-card-desc">Manage multiple clients from one dashboard</div>
+                        <div class="industry-card-name">Marketingbureaus</div>
+                        <div class="industry-card-desc">Beheer meerdere klanten vanuit één dashboard</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
                 <a href="industries/martial-arts" class="industry-card">
                     <div class="industry-card-icon martial-arts-icon"><i data-lucide="shield" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-                        <div class="industry-card-name">Martial Arts Schools</div>
-                        <div class="industry-card-desc">Student safety and membership escalation</div>
+                        <div class="industry-card-name">Vechtsportscholen</div>
+                        <div class="industry-card-desc">Veiligheid van studenten en lidmaatschap escalatie</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
@@ -444,39 +427,39 @@
                     <div class="industry-card-icon childcare-icon"><i data-lucide="heart" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
                         <div class="industry-card-name">Childcare &amp; Preschool</div>
-                        <div class="industry-card-desc">Child safety and privacy protection</div>
+                        <div class="industry-card-desc">Veiligheid van kinderen en privacybescherming</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
                 <a href="industries/tutoring" class="industry-card">
                     <div class="industry-card-icon tutoring-icon"><i data-lucide="book-open" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-                        <div class="industry-card-name">Tutoring Centers</div>
-                        <div class="industry-card-desc">Academic claims and refund protection</div>
+                        <div class="industry-card-name">Bijlescentra</div>
+                        <div class="industry-card-desc">Academische claims en bescherming bij terugbetalingen</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
                 <a href="industries/pet-care" class="industry-card">
                     <div class="industry-card-icon petcare-icon"><i data-lucide="dog" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-                        <div class="industry-card-name">Pet Care</div>
-                        <div class="industry-card-desc">Warm replies with animal-safety escalation</div>
+                        <div class="industry-card-name">Dierenverzorging</div>
+                        <div class="industry-card-desc">Warme reacties met escalatie voor dierenveiligheid</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
                 <a href="industries/car-washes" class="industry-card">
                     <div class="industry-card-icon carwash-icon"><i data-lucide="car" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-                        <div class="industry-card-name">Car Wash Operators</div>
-                        <div class="industry-card-desc">Vehicle damage and billing escalation</div>
+                        <div class="industry-card-name">Autowasstraten</div>
+                        <div class="industry-card-desc">Schade aan voertuigen en escalatie van facturering</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
                 <a href="industries/laundromats" class="industry-card">
                     <div class="industry-card-icon laundromat-icon"><i data-lucide="wind" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-                        <div class="industry-card-name">Laundromats</div>
-                        <div class="industry-card-desc">Machine, cleanliness, and refund reviews</div>
+                        <div class="industry-card-name">Wasserettes</div>
+                        <div class="industry-card-desc">Beoordelingen over machines, netheid en terugbetalingen</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
@@ -488,8 +471,8 @@
     <section class="section section-dark">
         <div class="container">
             <div class="section-header">
-                <h2>From Routine Praise to Sensitive Complaints</h2>
-                <p>Vera handles every type of Google review differently, based on what is safe to publish automatically.</p>
+                <h2>Van Standaard Complimenten tot Gevoelige Klachten</h2>
+                <p>Vera behandelt elk type Google-review anders, gebaseerd op wat veilig is om automatisch te publiceren.</p>
             </div>
             <div class="reviews-grid">
                 <!-- Positive -->
@@ -502,14 +485,14 @@
                             <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:13px;height:13px;"></i>
                             <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:13px;height:13px;"></i>
                         </div>
-                        <span class="review-type">Positive Review</span>
+                        <span class="review-type">Positieve Beoordeling</span>
                     </div>
-                    <p class="review-quote">"Friendly team and excellent service."</p>
+                    <p class="review-quote">"Vriendelijk team en uitstekende service."</p>
                     <div class="review-response-box">
-                        <div class="review-response-label">Vera's response</div>
-                        <p class="review-response-text">"Thank you for the kind words. We're really glad you had a great experience and we appreciate you taking the time to share it."</p>
+                        <div class="review-response-label">Reactie van Vera</div>
+                        <p class="review-response-text">"Bedankt voor de vriendelijke woorden. We zijn erg blij dat u een geweldige ervaring had en waarderen het dat u de tijd heeft genomen om dit te delen."</p>
                     </div>
-                    <span class="review-badge badge-auto" style="align-self:flex-start;">Safe to Auto-Publish</span>
+                    <span class="review-badge badge-auto" style="align-self:flex-start;">Veilig om automatisch te publiceren</span>
                 </div>
 
                 <!-- Negative -->
@@ -522,14 +505,14 @@
                             <i data-lucide="star" style="fill:none;color:#64748B;width:13px;height:13px;"></i>
                             <i data-lucide="star" style="fill:none;color:#64748B;width:13px;height:13px;"></i>
                         </div>
-                        <span class="review-type">Negative Review</span>
+                        <span class="review-type">Negatieve Beoordeling</span>
                     </div>
-                    <p class="review-quote">"The service took much longer than expected."</p>
+                    <p class="review-quote">"De service duurde veel langer dan verwacht."</p>
                     <div class="review-response-box">
-                        <div class="review-response-label">Vera's response</div>
-                        <p class="review-response-text">"Thank you for your feedback. We're sorry your visit took longer than expected and we'll share this with the team."</p>
+                        <div class="review-response-label">Reactie van Vera</div>
+                        <p class="review-response-text">"Bedankt voor uw feedback. Het spijt ons dat uw bezoek langer duurde dan verwacht en we zullen dit delen met het team."</p>
                     </div>
-                    <span class="review-badge badge-approval" style="align-self:flex-start;">Needs Approval</span>
+                    <span class="review-badge badge-approval" style="align-self:flex-start;">Goedkeuring vereist</span>
                 </div>
 
                 <!-- Sensitive -->
@@ -542,17 +525,17 @@
                             <i data-lucide="star" style="fill:none;color:#64748B;width:13px;height:13px;"></i>
                             <i data-lucide="star" style="fill:none;color:#64748B;width:13px;height:13px;"></i>
                         </div>
-                        <span class="review-type">Sensitive Review</span>
+                        <span class="review-type">Gevoelige Beoordeling</span>
                     </div>
-                    <p class="review-quote">"This caused an injury."</p>
+                    <p class="review-quote">"Dit veroorzaakte een blessure."</p>
                     <div class="review-alert-box">
                         <div class="review-alert-title">
                             <i data-lucide="alert-triangle" style="width:14px;height:14px;"></i>
-                            Sensitive topic detected
+                            Gevoelig onderwerp gedetecteerd
                         </div>
-                        <p class="review-alert-sub">A manager must review this before publishing.</p>
+                        <p class="review-alert-sub">Een manager moet dit beoordelen voor publicatie.</p>
                     </div>
-                    <span class="review-badge badge-blocked" style="align-self:flex-start;">Auto-Publishing Blocked</span>
+                    <span class="review-badge badge-blocked" style="align-self:flex-start;">Automatisch publiceren geblokkeerd</span>
                 </div>
             </div>
         </div>
@@ -562,19 +545,19 @@
     <section class="section section-light">
         <div class="container">
             <div class="section-header">
-                <h2>Google Reviews Today. More Platforms Coming Next.</h2>
-                <p>ReplyVera currently connects directly to Google Business Profile to monitor and respond to Google reviews.</p>
+                <h2>Vandaag Google Reviews. Binnenkort Meer Platforms.</h2>
+                <p>ReplyVera maakt momenteel direct verbinding met Google Bedrijfsprofiel om Google-reviews te volgen en erop te reageren.</p>
             </div>
             <div class="platform-grid">
                 <div class="platform-group">
-                    <div class="platform-group-label label-active">Available Now</div>
+                    <div class="platform-group-label label-active">Nu Beschikbaar</div>
                     <div class="platform-item">
                         <span class="platform-dot dot-active"></span>
                         Google Reviews
                     </div>
                 </div>
                 <div class="platform-group">
-                    <div class="platform-group-label label-soon">Coming Soon</div>
+                    <div class="platform-group-label label-soon">Binnenkort Beschikbaar</div>
                     <div class="platform-item">
                         <span class="platform-dot dot-soon"></span>
                         Facebook
@@ -600,8 +583,8 @@
     <section class="section section-light" id="testimonials">
         <div class="container">
             <div class="section-header">
-                <h2>What Business Owners Say</h2>
-                <p>See how small businesses use ReplyVera to automate reviews and protect their online reputation.</p>
+                <h2>Wat Bedrijfseigenaren Zeggen</h2>
+                <p>Ontdek hoe kleine bedrijven ReplyVera gebruiken om reviews te automatiseren en hun online reputatie te beschermen.</p>
             </div>
             <div class="benefits-grid">
                 <div class="benefit-card">
@@ -612,7 +595,7 @@
                         <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:14px;height:14px;"></i>
                         <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:14px;height:14px;"></i>
                     </div>
-                    <p class="benefit-text" style="font-style:italic; margin-bottom:16px;">"As a dentist, patient privacy is everything. ReplyVera’s sensitive topic blocker gives me peace of mind knowing patient reviews are answered professionally without violating HIPAA guidelines."</p>
+                    <p class="benefit-text" style="font-style:italic; margin-bottom:16px;">"Als tandarts is de privacy van patiënten alles. De blokkering van gevoelige onderwerpen van ReplyVera geeft me de gemoedsrust dat patiëntbeoordelingen professioneel worden beantwoord zonder de AVG-richtlijnen te schenden."</p>
                     <div style="font-weight:700; font-size:0.9rem; color:var(--text-primary);">Dr. Amit Patel</div>
                     <div style="font-size:0.78rem; color:var(--text-muted);">Patel Dental Group</div>
                 </div>
@@ -624,7 +607,7 @@
                         <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:14px;height:14px;"></i>
                         <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:14px;height:14px;"></i>
                     </div>
-                    <p class="benefit-text" style="font-style:italic; margin-bottom:16px;">"Our managers spent hours every week replying to reviews. Now, routine 5-star reviews are handled automatically, and we only review wait-time or food feedback. It's a lifesaver."</p>
+                    <p class="benefit-text" style="font-style:italic; margin-bottom:16px;">"Onze managers spendeerden wekelijks uren aan het beantwoorden van reviews. Nu worden standaard 5-sterrenbeoordelingen automatisch afgehandeld, en beoordelen we alleen wachttijd of feedback over voedsel. Het is een redder in nood."</p>
                     <div style="font-weight:700; font-size:0.9rem; color:var(--text-primary);">Elena Rostova</div>
                     <div style="font-size:0.78rem; color:var(--text-muted);">The Bistro Group</div>
                 </div>
@@ -636,7 +619,7 @@
                         <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:14px;height:14px;"></i>
                         <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:14px;height:14px;"></i>
                     </div>
-                    <p class="benefit-text" style="font-style:italic; margin-bottom:16px;">"With 3 locations, keeping up with reviews was impossible. Now we manage everything from one dashboard, and the system automatically alerts me if a customer mentions vehicle damage."</p>
+                    <p class="benefit-text" style="font-style:italic; margin-bottom:16px;">"Met 3 locaties was het bijhouden van reviews onmogelijk. Nu beheren we alles vanuit één dashboard, en het systeem waarschuwt me automatisch als een klant schade aan het voertuig vermeldt."</p>
                     <div style="font-weight:700; font-size:0.9rem; color:var(--text-primary);">Marcus Vance</div>
                     <div style="font-size:0.78rem; color:var(--text-muted);">Vance Auto Wash</div>
                 </div>
@@ -644,12 +627,12 @@
         </div>
     </section>
 
-    <!-- 8. Pricing -->
+    <!-- 8. Prijzen -->
     <section class="section section-dark" id="pricing">
         <div class="container">
             <div class="section-header">
-                <h2>Simple Pricing for Small Businesses</h2>
-                <p>Start free. No credit card required. Cancel anytime.</p>
+                <h2>Eenvoudige Prijzen voor Kleine Bedrijven</h2>
+                <p>Start gratis. Geen creditcard vereist. Annuleer op elk moment.</p>
             </div>
             <div class="pricing-grid">
 
@@ -657,56 +640,56 @@
                 <div class="pricing-card">
                     <div class="pricing-name">Starter</div>
                     <div class="pricing-price">$29</div>
-                    <div class="pricing-period">per month</div>
-                    <p class="pricing-tagline">You approve every reply before it is published.</p>
+                    <div class="pricing-period">per maand</div>
+                    <p class="pricing-tagline">U keurt elke reactie goed voordat deze wordt gepubliceerd.</p>
                     <ul class="pricing-features">
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> One location</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Up to 30 replies per month</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Manual approval for all reviews</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Custom tone</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> English and Spanish</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Negative-review alerts</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Eén locatie</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Tot 30 reacties per maand</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Handmatige goedkeuring voor alle reviews</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Aangepaste toon</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Engels en Spaans</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Waarschuwingen voor negatieve reviews</li>
                     </ul>
-                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=starter" class="btn btn-secondary" style="text-align:center;justify-content:center;">Start Free Trial</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=starter" class="btn btn-secondary" style="text-align:center;justify-content:center;">Start Gratis Proefperiode</a>
                 </div>
 
                 <!-- Autopilot -->
                 <div class="pricing-card featured">
-                    <div class="pricing-popular">Most Popular</div>
+                    <div class="pricing-popular">Meest Populair</div>
                     <div class="pricing-name">Autopilot</div>
                     <div class="pricing-price">$39</div>
-                    <div class="pricing-period">per month</div>
-                    <p class="pricing-tagline">Safe replies publish automatically. Sensitive reviews stay under your approval.</p>
+                    <div class="pricing-period">per maand</div>
+                    <p class="pricing-tagline">Veilige reacties worden automatisch gepubliceerd. Gevoelige reviews blijven onder uw goedkeuring.</p>
                     <ul class="pricing-features">
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> One location</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Unlimited review responses*</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Automatic publishing for safe reviews</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Sensitive-review detection</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Custom brand voice</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Review history</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Eén locatie</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Onbeperkte reacties op reviews*</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Automatisch publiceren voor veilige reviews</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Detectie van gevoelige reviews</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Aangepaste merkstem</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Geschiedenis van reviews</li>
                     </ul>
-                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent" style="text-align:center;justify-content:center;">Start Free Trial</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent" style="text-align:center;justify-content:center;">Start Gratis Proefperiode</a>
                 </div>
 
-                <!-- Multi-Location -->
+                <!-- Meerdere Locaties -->
                 <div class="pricing-card">
                     <div class="pricing-name">Multi-Location</div>
-                    <div class="pricing-price" style="font-size:1.85rem;">From $79</div>
+                    <div class="pricing-price" style="font-size:1.85rem;">Vanaf $79</div>
                     <div class="pricing-period">per month</div>
-                    <p class="pricing-tagline">Manage all your locations from one account with location-level rules.</p>
+                    <p class="pricing-tagline">Beheer al uw locaties vanuit één account met regels op locatieniveau.</p>
                     <ul class="pricing-features">
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Three locations included</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Central dashboard</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Location-specific rules</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Team access</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Additional locations available</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Drie locaties inbegrepen</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Centraal dashboard</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Locatiespecifieke regels</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Toegang voor team</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Extra locaties beschikbaar</li>
                     </ul>
-                    <a href="pricing.html" class="btn btn-secondary" style="text-align:center;justify-content:center;">Start Multi-Location Trial</a>
+                    <a href="pricing.html" class="btn btn-secondary" style="text-align:center;justify-content:center;">Start Proefperiode Meerdere Locaties</a>
                 </div>
 
             </div>
-            <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:24px;margin-bottom:8px;">*Unlimited review responses are subject to reasonable-use limits.</p>
-            <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:0px;">14-day free trial. Cancel anytime.</p>
+            <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:24px;margin-bottom:8px;">*Onbeperkte reacties op reviews zijn onderhevig aan grenzen voor redelijk gebruik.</p>
+            <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:0px;">14 dagen gratis proefperiode. Annuleer op elk moment.</p>
         </div>
     </section>
 
@@ -714,52 +697,52 @@
     <section class="section section-light" id="faq">
         <div class="container" style="max-width:760px;">
             <div class="section-header">
-                <h2>Frequently Asked Questions</h2>
+                <h2>Veelgestelde Vragen</h2>
             </div>
             <div class="faq-list">
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>Which review platforms does ReplyVera support?</span>
+                        <span>Welke reviewplatforms ondersteunt ReplyVera?</span>
                         <div class="faq-icon-wrapper"><i data-lucide="plus" style="width:16px;height:16px;"></i></div>
                     </button>
                     <div class="faq-answer">
-                        ReplyVera currently supports Google Reviews through Google Business Profile. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases but are not currently available.
+                        ReplyVera ondersteunt momenteel Google Reviews via Google Bedrijfsprofiel. Facebook, Trustpilot, Booking.com en Tripadvisor staan op de planning voor toekomstige releases, maar zijn momenteel niet beschikbaar.
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>Can I approve responses before they are published?</span>
+                        <span>Kan ik reacties goedkeuren voordat ze worden gepubliceerd?</span>
                         <div class="faq-icon-wrapper"><i data-lucide="plus" style="width:16px;height:16px;"></i></div>
                     </button>
                     <div class="faq-answer">
-                        Yes. On the Starter plan, all replies go through your approval queue before publishing. On Autopilot, you choose which review types can publish automatically and which require your sign-off.
+                        Ja. In het Starter-abonnement gaan alle reacties via uw goedkeuringswachtrij voordat ze worden gepubliceerd. Met Autopilot kiest u welke typen reviews automatisch kunnen worden gepubliceerd en welke uw goedkeuring vereisen.
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>Can positive reviews be answered automatically?</span>
+                        <span>Kunnen positieve reviews automatisch worden beantwoord?</span>
                         <div class="faq-icon-wrapper"><i data-lucide="plus" style="width:16px;height:16px;"></i></div>
                     </button>
                     <div class="faq-answer">
-                        Yes. With the Autopilot plan, routine positive reviews can be published automatically based on your configuration. Negative and sensitive reviews are always held for approval.
+                        Ja. Met het Autopilot-abonnement kunnen standaard positieve reviews automatisch worden gepubliceerd op basis van uw configuratie. Negatieve en gevoelige reviews worden altijd vastgehouden voor goedkeuring.
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>Does ReplyVera support multiple locations?</span>
+                        <span>Ondersteunt ReplyVera meerdere locaties?</span>
                         <div class="faq-icon-wrapper"><i data-lucide="plus" style="width:16px;height:16px;"></i></div>
                     </button>
                     <div class="faq-answer">
-                        Yes. The Multi-Location plan lets you manage multiple Google Business Profile locations from one dashboard, with separate rules and tone settings for each location.
+                        Ja. Met het Meerdere Locaties-abonnement kunt u meerdere Google Bedrijfsprofiel-locaties beheren vanuit één dashboard, met afzonderlijke regels en tooninstellingen voor elke locatie.
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>Can I cancel at any time?</span>
+                        <span>Kan ik op elk moment annuleren?</span>
                         <div class="faq-icon-wrapper"><i data-lucide="plus" style="width:16px;height:16px;"></i></div>
                     </button>
                     <div class="faq-answer">
-                        Yes. There is no long-term contract. You can cancel your subscription at any time from your account settings with no cancellation fees.
+                        Ja. Er is geen langetermijncontract. U kunt uw abonnement op elk moment annuleren via uw accountinstellingen zonder annuleringskosten.
                     </div>
                 </div>
             </div>
@@ -770,11 +753,11 @@
     <section class="section section-dark">
         <div class="container" style="max-width:700px;">
             <div class="cta-box">
-                <h2 class="mb-4">Start Answering Every Google Review</h2>
-                <p class="lead mb-8">Connect your Google Business Profile and let Vera handle routine responses while you stay in control of sensitive feedback.</p>
+                <h2 class="mb-4">Begin met het Beantwoorden van Elke Google Review</h2>
+                <p class="lead mb-8">Koppel uw Google Bedrijfsprofiel en laat Vera de standaardreacties afhandelen terwijl u de controle houdt over gevoelige feedback.</p>
                 <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
-                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">Start Free Trial</a>
-                    <a href="#pricing" class="btn btn-secondary btn-lg">View Pricing</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">Start Gratis Proefperiode</a>
+                    <a href="#pricing" class="btn btn-secondary btn-lg">Bekijk Prijzen</a>
                 </div>
             </div>
         </div>
@@ -791,23 +774,23 @@
                         </div>
                         <span class="nav-logo-text" style="font-size:1.2rem;">Reply<span>Vera</span></span>
                     </a>
-                    <p>Automated Google review responses for small businesses. Plans start at $29 per month.</p>
-                    <p style="font-size:0.78rem;margin-top:8px;color:var(--text-muted);">Currently supporting Google Reviews. Additional platforms are planned.</p>
+                    <p>Geautomatiseerde reacties op Google-reviews voor kleine bedrijven. Abonnementen beginnen bij $29 per maand.</p>
+                    <p style="font-size:0.78rem;margin-top:8px;color:var(--text-muted);">Ondersteunt momenteel Google Reviews. Extra platforms staan in de planning.</p>
                 </div>
 
                 <div class="footer-col">
                     <div class="footer-col-title">Product</div>
                     <ul class="footer-links">
                         <li><a href="index.html#product">Product</a></li>
-                        <li><a href="index.html#how-it-works">How It Works</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="index.html#how-it-works">Hoe Het Werkt</a></li>
+                        <li><a href="pricing.html">Prijzen</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
-                    <div class="footer-col-title">Company</div>
+                    <div class="footer-col-title">Bedrijf</div>
                     <ul class="footer-links">
-                        <li><a href="mailto:info@replyvera.com">Contact Us</a></li>
+                        <li><a href="mailto:info@replyvera.com">Neem contact met ons op</a></li>
                         <li><div class="lang-selector">
                     <button class="lang-btn" aria-label="Select Language">
                         <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> EN
@@ -818,16 +801,16 @@
                         <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
                     </div>
                 </div>
-                <a h>Log In</a></li>
+                <a h>Inloggen</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
-                    <div class="footer-col-title">Legal</div>
+                    <div class="footer-col-title">Juridisch</div>
                     <ul class="footer-links">
-                        <li><a href="terms.html">Terms of Service</a></li>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="cookie.html">Cookie Policy</a></li>
+                        <li><a href="terms.html">Servicevoorwaarden</a></li>
+                        <li><a href="privacy.html">Privacybeleid</a></li>
+                        <li><a href="cookie.html">Cookiebeleid</a></li>
                     </ul>
                 </div>
             </div>
@@ -845,10 +828,10 @@
     <!-- Cookie Consent Banner -->
     <div id="cookie-banner" class="cookie-banner" aria-hidden="true">
         <div class="cookie-content">
-            <p>We use cookies to improve your experience and analyze site performance. By clicking "Accept", you agree to our use of cookies as outlined in our <a href="cookie.html">Cookie Policy</a>.</p>
+            <p>We gebruiken cookies om uw ervaring te verbeteren en de prestaties van de site te analyseren. Door op "Accepteren" te klikken, gaat u akkoord met ons gebruik van cookies zoals beschreven in ons <a href="cookie.html">Cookiebeleid</a>.</p>
             <div class="cookie-buttons">
-                <button id="accept-cookies" class="btn btn-accent btn-sm" style="padding:6px 12px; font-size:0.78rem;">Accept</button>
-                <button id="decline-cookies" class="btn btn-secondary btn-sm" style="padding:6px 12px; font-size:0.78rem;">Decline</button>
+                <button id="accept-cookies" class="btn btn-accent btn-sm" style="padding:6px 12px; font-size:0.78rem;">Accepteren</button>
+                <button id="decline-cookies" class="btn btn-secondary btn-sm" style="padding:6px 12px; font-size:0.78rem;">Weigeren</button>
             </div>
         </div>
     </div>

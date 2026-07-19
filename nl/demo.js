@@ -6,78 +6,78 @@ const DEMO_MODAL_HTML = `
             <i data-lucide="x"></i>
         </button>
         <div class="rv-demo-header">
-            <h2 id="demo-modal-title" style="margin-bottom:8px;">See Vera in Action</h2>
-            <p style="color:var(--text-secondary);font-size:0.95rem;max-width:500px;margin:0 auto 20px;">Watch a new Google review arrive, get analyzed, and move through Vera's approval rules.</p>
+            <h2 id="demo-modal-title" style="margin-bottom:8px;">Bekijk Vera in Actie</h2>
+            <p style="color:var(--text-secondary);font-size:0.95rem;max-width:500px;margin:0 auto 20px;">Kijk hoe een nieuwe Google-review binnenkomt, wordt geanalyseerd en door de goedkeuringsregels van Vera gaat.</p>
             
             <div class="rv-demo-tabs" role="tablist">
-                <button class="rv-demo-tab active" role="tab" aria-selected="true" onclick="switchScenario('positive')">Positive Review</button>
-                <button class="rv-demo-tab" role="tab" aria-selected="false" onclick="switchScenario('negative')">Negative Review</button>
-                <button class="rv-demo-tab" role="tab" aria-selected="false" onclick="switchScenario('sensitive')">Sensitive Review</button>
+                <button class="rv-demo-tab active" role="tab" aria-selected="true" onclick="switchScenario('positive')">Positieve Beoordeling</button>
+                <button class="rv-demo-tab" role="tab" aria-selected="false" onclick="switchScenario('negative')">Negatieve Beoordeling</button>
+                <button class="rv-demo-tab" role="tab" aria-selected="false" onclick="switchScenario('sensitive')">Gevoelige Beoordeling</button>
             </div>
         </div>
         
         <div class="rv-demo-body">
             <!-- Stage 1 -->
             <div class="rv-demo-stage" id="demo-stage-1">
-                <div class="demo-stage-label">Stage 1: New Google Review</div>
+                <div class="demo-stage-label">Fase 1: Nieuwe Google Review</div>
                 <div class="demo-review-card">
                     <div class="demo-review-stars" id="demo-val-stars"></div>
                     <div class="demo-review-quote" id="demo-val-quote"></div>
                 </div>
-                <div class="demo-notification"><i data-lucide="bell" style="width:14px;height:14px;"></i> New Google review received</div>
+                <div class="demo-notification"><i data-lucide="bell" style="width:14px;height:14px;"></i> Nieuwe Google-review ontvangen</div>
             </div>
 
             <!-- Stage 2 -->
             <div class="rv-demo-stage" id="demo-stage-2">
-                <div class="demo-stage-label">Stage 2: Review Analysis</div>
+                <div class="demo-stage-label">Fase 2: Review Analyse</div>
                 <div class="demo-analysis-grid">
                     <div class="demo-tag"><span class="demo-tag-label">Sentiment:</span> <span id="demo-val-sentiment"></span></div>
-                    <div class="demo-tag"><span class="demo-tag-label">Rating:</span> <span id="demo-val-rating"></span></div>
-                    <div class="demo-tag"><span class="demo-tag-label">Topic:</span> <span id="demo-val-topic"></span></div>
-                    <div class="demo-tag" id="demo-tag-employee"><span class="demo-tag-label">Employee mention:</span> <span id="demo-val-employee"></span></div>
-                    <div class="demo-tag" id="demo-tag-sensitive" style="display:none;"><span class="demo-tag-label">Sensitive topic:</span> <span id="demo-val-sensitive"></span></div>
-                    <div class="demo-tag"><span class="demo-tag-label">Risk level:</span> <span id="demo-val-risk"></span></div>
+                    <div class="demo-tag"><span class="demo-tag-label">Beoordeling:</span> <span id="demo-val-rating"></span></div>
+                    <div class="demo-tag"><span class="demo-tag-label">Onderwerp:</span> <span id="demo-val-topic"></span></div>
+                    <div class="demo-tag" id="demo-tag-employee"><span class="demo-tag-label">Werknemer vermeld:</span> <span id="demo-val-employee"></span></div>
+                    <div class="demo-tag" id="demo-tag-sensitive" style="display:none;"><span class="demo-tag-label">Gevoelig onderwerp:</span> <span id="demo-val-sensitive"></span></div>
+                    <div class="demo-tag"><span class="demo-tag-label">Risiconiveau:</span> <span id="demo-val-risk"></span></div>
                 </div>
             </div>
 
             <!-- Stage 3 -->
             <div class="rv-demo-stage" id="demo-stage-3">
-                <div class="demo-stage-label">Stage 3: Vera Response Generated</div>
+                <div class="demo-stage-label">Fase 3: Vera Reactie Gegenereerd</div>
                 <div class="demo-response-box" id="demo-val-response-box">
-                    <div style="font-size:0.75rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;margin-bottom:6px;">Vera's response</div>
+                    <div style="font-size:0.75rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;margin-bottom:6px;">Reactie van Vera</div>
                     <div class="demo-response-text" id="demo-val-response"></div>
                 </div>
                 <div class="demo-sensitive-alert" id="demo-val-sensitive-alert" style="display:none;">
                     <i data-lucide="shield-alert" style="color:var(--danger);margin-right:8px;width:18px;height:18px;"></i>
                     <div>
-                        <strong>Sensitive topic detected</strong>
-                        <div style="font-size:0.85rem;color:var(--text-secondary);margin-top:2px;">ReplyVera paused automatic response generation.</div>
+                        <strong>Gevoelig onderwerp gedetecteerd</strong>
+                        <div style="font-size:0.85rem;color:var(--text-secondary);margin-top:2px;">ReplyVera heeft automatische reactiegeneratie gepauzeerd.</div>
                     </div>
                 </div>
             </div>
 
             <!-- Stage 4 -->
             <div class="rv-demo-stage" id="demo-stage-4">
-                <div class="demo-stage-label">Stage 4: Approval Decision</div>
+                <div class="demo-stage-label">Fase 4: Goedkeuringsbesluit</div>
                 <div class="demo-decision-badge" id="demo-val-decision-badge"></div>
                 <div class="demo-decision-text" id="demo-val-decision-text"></div>
             </div>
 
             <!-- Stage 5 -->
             <div class="rv-demo-stage" id="demo-stage-5">
-                <div class="demo-stage-label">Stage 5: Final Outcome</div>
+                <div class="demo-stage-label">Fase 5: Eindresultaat</div>
                 
                 <div id="outcome-positive" style="display:none;" class="demo-outcome-box outcome-success">
                     <i data-lucide="check-circle-2" style="width:24px;height:24px;"></i>
-                    <div class="demo-outcome-title">Response published to Google</div>
-                    <div class="demo-outcome-sub">Published moments ago</div>
+                    <div class="demo-outcome-title">Reactie gepubliceerd op Google</div>
+                    <div class="demo-outcome-sub">Zojuist gepubliceerd</div>
                 </div>
                 
                 <div id="outcome-negative" style="display:none;" class="demo-outcome-box">
                     <div style="display:flex;gap:8px;margin-bottom:12px;">
-                        <button class="btn btn-accent btn-sm" onclick="approveAndPublish()">Approve and Publish</button>
-                        <button class="btn btn-secondary btn-sm">Edit Response</button>
-                        <button class="btn btn-secondary btn-sm">Keep as Draft</button>
+                        <button class="btn btn-accent btn-sm" onclick="approveAndPublish()">Goedkeuren en Publiceren</button>
+                        <button class="btn btn-secondary btn-sm">Reactie Bewerken</button>
+                        <button class="btn btn-secondary btn-sm">Als Concept Bewaren</button>
                     </div>
                     <div id="outcome-negative-success" style="display:none;align-items:center;gap:8px;color:var(--warning);font-weight:600;">
                         <i data-lucide="check-circle-2" style="width:18px;height:18px;"></i> Response approved and ready to publish
@@ -86,7 +86,7 @@ const DEMO_MODAL_HTML = `
                 
                 <div id="outcome-sensitive" style="display:none;" class="demo-outcome-box outcome-danger">
                     <i data-lucide="alert-triangle" style="width:24px;height:24px;"></i>
-                    <div class="demo-outcome-title">Escalated to manager</div>
+                    <div class="demo-outcome-title">Geëscaleerd naar manager</div>
                     <div class="demo-outcome-actions">
                         Suggested actions:<br>
                         • Review the complaint<br>
@@ -99,16 +99,16 @@ const DEMO_MODAL_HTML = `
         </div>
         
         <div class="rv-demo-controls">
-            <button id="btn-run-demo" class="btn btn-primary" onclick="runDemoSequence()">Run Demo</button>
-            <button id="btn-skip" class="btn btn-secondary" onclick="skipAnimations()" style="display:none;">Skip to Result</button>
-            <button id="btn-pause" class="btn btn-secondary" onclick="togglePause()" style="display:none;">Pause</button>
+            <button id="btn-run-demo" class="btn btn-primary" onclick="runDemoSequence()">Demo Starten</button>
+            <button id="btn-skip" class="btn btn-secondary" onclick="skipAnimations()" style="display:none;">Ga naar Resultaat</button>
+            <button id="btn-pause" class="btn btn-secondary" onclick="togglePause()" style="display:none;">Pauze</button>
         </div>
         
         <div id="demo-cta-panel" class="demo-cta-panel" style="display:none;">
-            <div style="font-weight:700;font-size:1.1rem;margin-bottom:12px;">Ready to automate your Google review replies?</div>
+            <div style="font-weight:700;font-size:1.1rem;margin-bottom:12px;">Klaar om uw reacties op Google-reviews te automatiseren?</div>
             <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-                <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent">Start Free Trial</a>
-                <a href="/pricing.html" class="btn btn-secondary">View Pricing</a>
+                <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent">Start Gratis Proefperiode</a>
+                <a href="pricing.html" class="btn btn-secondary">Bekijk Prijzen</a>
             </div>
         </div>
     </div>
@@ -117,9 +117,9 @@ const DEMO_MODAL_HTML = `
 
 // Base fallback data
 const fallbackData = {
-    'positive': { review: 'Friendly team and excellent service. Sarah was especially helpful.', sentiment: 'Positive', rating: 5, topic: 'Customer service', employee: 'Sarah', risk: 'Low', reply: 'Thank you for your kind review. We’re glad you had a great experience and that Sarah was especially helpful. We’ll be sure to share your feedback with her.', decision: 'Safe to Auto-Publish', text: 'This review matches your automatic publishing rules.' },
-    'negative': { review: 'The service took much longer than expected, and nobody explained the delay.', sentiment: 'Negative', rating: 2, topic: 'Wait time and communication', employee: 'None', risk: 'Medium', reply: 'Thank you for sharing your feedback. We’re sorry the service took longer than expected and that the delay was not clearly explained. We’re sharing this with the team so we can improve.', decision: 'Needs Approval', text: 'Negative reviews require approval under your current rules.' },
-    'sensitive': { review: 'This caused an injury, and the manager has not responded.', sentiment: 'Negative', rating: 1, topic: 'Injury and management response', employee: 'None', risk: 'High', blocked: 'Injury', decision: 'Auto-Publishing Blocked', text: 'This review requires human review before any public response is created or published.' }
+    'positive': { review: 'Vriendelijk team en uitstekende service. Sarah was bijzonder behulpzaam.', sentiment: 'Positief', rating: 5, topic: 'Klantenservice', employee: 'Sarah', risk: 'Laag', reply: 'Bedankt voor uw vriendelijke beoordeling. We zijn blij dat u een geweldige ervaring had en dat Sarah bijzonder behulpzaam was. We zullen uw feedback zeker met haar delen.', decision: 'Veilig om automatisch te publiceren', text: 'Deze recensie komt overeen met uw regels voor automatische publicatie.' },
+    'negative': { review: 'De service duurde veel langer dan verwacht, en niemand legde de vertraging uit.', sentiment: 'Negatief', rating: 2, topic: 'Wachttijd en communicatie', employee: 'Geen', risk: 'Gemiddeld', reply: 'Bedankt voor het delen van uw feedback. Het spijt ons dat de service langer duurde dan verwacht en dat de vertraging niet duidelijk werd uitgelegd. We delen dit met het team zodat we kunnen verbeteren.', decision: 'Goedkeuring vereist', text: 'Negatieve recensies vereisen goedkeuring volgens uw huidige regels.' },
+    'sensitive': { review: 'Dit veroorzaakte een blessure, en de manager heeft niet gereageerd.', sentiment: 'Negatief', rating: 1, topic: 'Letsel en reactie van het management', employee: 'Geen', risk: 'Hoog', blocked: 'Letsel', decision: 'Automatisch publiceren geblokkeerd', text: 'Deze recensie vereist menselijke beoordeling voordat een openbare reactie wordt gemaakt of gepubliceerd.' }
 };
 
 let currentScenario = 'positive';
@@ -194,7 +194,7 @@ function resetStages() {
     
     const runBtn = document.getElementById('btn-run-demo');
     runBtn.style.display = 'inline-flex';
-    runBtn.textContent = hasRun ? 'Replay Demo' : 'Run Demo';
+    runBtn.textContent = hasRun ? 'Demo Herhalen' : 'Demo Starten';
     
     document.getElementById('btn-skip').style.display = 'none';
     document.getElementById('btn-pause').style.display = 'none';
@@ -219,7 +219,7 @@ function switchScenario(scenario) {
     document.getElementById('demo-val-quote').textContent = `"${data.review}"`;
     
     document.getElementById('demo-val-sentiment').textContent = data.sentiment;
-    document.getElementById('demo-val-rating').textContent = `${data.rating} stars`;
+    document.getElementById('demo-val-rating').textContent = `${data.rating} sterren`;
     document.getElementById('demo-val-topic').textContent = data.topic;
     document.getElementById('demo-val-risk').textContent = data.risk;
     
@@ -256,9 +256,9 @@ function switchScenario(scenario) {
     const isAgency = window.location.pathname.includes('/agencies');
     const ctaPrimary = document.querySelector('#demo-cta-panel .btn-accent');
     if(isAgency) {
-        ctaPrimary.textContent = 'Start Agency Trial';
+        ctaPrimary.textContent = 'Start Proefperiode Bureau';
     } else {
-        ctaPrimary.textContent = 'Start Free Trial';
+        ctaPrimary.textContent = 'Start Gratis Proefperiode';
     }
     
     resetStages();
@@ -324,7 +324,7 @@ function runDemoSequence() {
                 setTimeout(() => {
                     document.getElementById('btn-skip').style.display = 'none';
                     document.getElementById('btn-run-demo').style.display = 'inline-flex';
-                    document.getElementById('btn-run-demo').textContent = 'Replay Demo';
+                    document.getElementById('btn-run-demo').textContent = 'Demo Herhalen';
                     document.getElementById('demo-cta-panel').style.display = 'block';
                 }, 1000);
             }
@@ -355,7 +355,7 @@ function skipAnimations() {
     document.getElementById('btn-skip').style.display = 'none';
     document.getElementById('btn-pause').style.display = 'none';
     document.getElementById('btn-run-demo').style.display = 'inline-flex';
-    document.getElementById('btn-run-demo').textContent = 'Replay Demo';
+    document.getElementById('btn-run-demo').textContent = 'Demo Herhalen';
     document.getElementById('demo-cta-panel').style.display = 'block';
 }
 

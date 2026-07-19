@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReplyVera Pricing – Simple, Transparent Pricing</title>
+    <title>Precios de ReplyVera – Precios Sencillos y Transparentes</title>
     <meta name="description" content="Simple pricing. No sales call required. Start your 14-day free trial.">
     <link rel="stylesheet" href="/style.css?v=15">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="/demo.js" defer></script>
+    <script src="/es/demo.js" defer></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
 
     <script>
@@ -35,23 +35,6 @@
         window.location.href = newPath + window.location.hash;
     }
     </script>
-
-    <script>
-        (function() {
-            if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
-                var lang = navigator.language || navigator.userLanguage;
-                if (lang) {
-                    if (lang.startsWith('es') && !localStorage.getItem('lang_redirected')) {
-                        localStorage.setItem('lang_redirected', 'true');
-                        window.location.href = '/es/';
-                    } else if (lang.startsWith('nl') && !localStorage.getItem('lang_redirected')) {
-                        localStorage.setItem('lang_redirected', 'true');
-                        window.location.href = '/nl/';
-                    }
-                }
-            }
-        })();
-    </script>
 </head>
 
 <body>
@@ -62,16 +45,16 @@
                 <div class="nav-logo-icon">
                     <i class="fa-solid fa-reply"></i>
                 </div>
-                <span class="nav-logo-text">Reply<span>Vera</span></span>
+                <span class="nav-logo-text">Responder<span>Vera</span></span>
             </a>
 
             <div class="nav-links">
-                <a href="index.html#product">Product</a>
-                <a href="index.html#benefits">Features</a>
-                <a href="index.html#how-it-works">How It Works</a>
+                <a href="index.html#product">Producto</a>
+                <a href="index.html#benefits">Características</a>
+                <a href="index.html#how-it-works">Cómo Funciona</a>
                 <div class="nav-dropdown">
                     <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="menu" aria-controls="industries-menu">
-                        Industries
+                        Industrias
                         <span class="chevron-icon"><i data-lucide="chevron-down" style="width:12px;height:12px;"></i></span>
                     </button>
                     <div class="nav-dropdown-content" id="industries-menu" role="menu">
@@ -79,71 +62,71 @@
                             <a href="industries/restaurants" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper restaurant-icon"><i data-lucide="utensils" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Restaurants</div>
-                                    <div class="dropdown-desc">Routine replies with food-safety escalation.</div>
+                                    <div class="dropdown-title">Restaurantes</div>
+                                    <div class="dropdown-desc">Respuestas rutinarias con escalado de seguridad alimentaria.</div>
                                 </div>
                             </a>
                             <a href="industries/dentists" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper dentist-icon"><i data-lucide="activity" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
                                     <div class="dropdown-title">Dentists &amp; Clinics</div>
-                                    <div class="dropdown-desc">Privacy-conscious replies for patient reviews.</div>
+                                    <div class="dropdown-desc">Respuestas conscientes de la privacidad para reseñas de pacientes.</div>
                                 </div>
                             </a>
                             <a href="industries/agencies" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper agency-icon"><i data-lucide="briefcase" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Marketing Agencies</div>
-                                    <div class="dropdown-desc">Manage Google review replies for every client.</div>
+                                    <div class="dropdown-title">Agencias de Marketing</div>
+                                    <div class="dropdown-desc">Gestiona respuestas a reseñas de Google para cada cliente.</div>
                                 </div>
                             </a>
                             <a href="industries/martial-arts" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper martial-arts-icon"><i data-lucide="shield" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Martial Arts Schools</div>
-                                    <div class="dropdown-desc">Parent-friendly replies with safety controls.</div>
+                                    <div class="dropdown-title">Escuelas de Artes Marciales</div>
+                                    <div class="dropdown-desc">Respuestas amigables para padres con controles de seguridad.</div>
                                 </div>
                             </a>
                             <a href="industries/childcare" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper childcare-icon"><i data-lucide="heart" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
                                     <div class="dropdown-title">Childcare &amp; Preschool</div>
-                                    <div class="dropdown-desc">Safety-aware responses for parent feedback.</div>
+                                    <div class="dropdown-desc">Respuestas conscientes de la seguridad para comentarios de padres.</div>
                                 </div>
                             </a>
                             <a href="industries/tutoring" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper tutoring-icon"><i data-lucide="book-open" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Tutoring Centers</div>
-                                    <div class="dropdown-desc">Professional replies for parent and student reviews.</div>
+                                    <div class="dropdown-title">Centros de Tutoría</div>
+                                    <div class="dropdown-desc">Respuestas profesionales para reseñas de padres y estudiantes.</div>
                                 </div>
                             </a>
                             <a href="industries/pet-care" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper petcare-icon"><i data-lucide="dog" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Pet Care</div>
-                                    <div class="dropdown-desc">Warm replies with animal-safety escalation.</div>
+                                    <div class="dropdown-title">Cuidado de Mascotas</div>
+                                    <div class="dropdown-desc">Respuestas cálidas con escalado de seguridad animal.</div>
                                 </div>
                             </a>
                             <a href="industries/car-washes" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper carwash-icon"><i data-lucide="car" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Car Wash Operators</div>
-                                    <div class="dropdown-desc">Track damage, billing, and service complaints.</div>
+                                    <div class="dropdown-title">Operadores de Lavado de Autos</div>
+                                    <div class="dropdown-desc">Rastrea quejas de daños, facturación y servicio.</div>
                                 </div>
                             </a>
                             <a href="industries/laundromats" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper laundromat-icon"><i data-lucide="wind" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Laundromats</div>
-                                    <div class="dropdown-desc">Monitor cleanliness, equipment, and refunds.</div>
+                                    <div class="dropdown-title">Lavanderías</div>
+                                    <div class="dropdown-desc">Monitorea limpieza, equipos y reembolsos.</div>
                                 </div>
                             </a>
                         </div>
                     </div>
                 </div>
-                <a href="#pricing">Pricing</a>
-                <a href="#faq">FAQ</a>
+                <a href="#pricing">Precios</a>
+                <a href="#faq">Preguntas Frecuentes</a>
             </div>
 
             <div class="nav-actions">
@@ -157,8 +140,8 @@
                         <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
                     </div>
                 </div>
-                <a href="https://dashboard.replyvera.com/login" class="nav-login">Log In</a>
-                <a href="#pricing" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Start Free Trial</a>
+                <a href="https://dashboard.replyvera.com/login" class="nav-login">Iniciar Sesión</a>
+                <a href="#pricing" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Comenzar Prueba Gratuita</a>
                 <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
                         <line x1="3" y1="6" x2="21" y2="6"/>
@@ -173,11 +156,11 @@
     <!-- Mobile Navigation Panel -->
     <div class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
         <div class="mobile-nav-links">
-            <a href="index.html#product" class="mobile-nav-link">Product</a>
-            <a href="index.html#benefits" class="mobile-nav-link">Features</a>
-            <a href="index.html#how-it-works" class="mobile-nav-link">How It Works</a>
+            <a href="index.html#product" class="mobile-nav-link">Producto</a>
+            <a href="index.html#benefits" class="mobile-nav-link">Características</a>
+            <a href="index.html#how-it-works" class="mobile-nav-link">Cómo Funciona</a>
 
-            <!-- Industries Accordion -->
+            <!-- Industrias Accordion -->
             <button class="mobile-industry-toggle" id="mobile-ind-toggle" aria-expanded="false">
                 Industries
                 <span class="mobile-industry-chevron">
@@ -187,44 +170,44 @@
             <div class="mobile-industry-list" id="mobile-ind-list">
                 <a href="industries/restaurants" class="mobile-industry-item">
                     <div class="mobile-ind-icon restaurant-icon"><i data-lucide="utensils" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Restaurants</div><div class="mobile-ind-desc">Food-safety escalation and staff recognition</div></div>
+                    <div><div class="mobile-ind-name">Restaurantes</div><div class="mobile-ind-desc">Escalado de seguridad alimentaria y reconocimiento del personal</div></div>
                 </a>
                 <a href="industries/dentists" class="mobile-industry-item">
                     <div class="mobile-ind-icon dentist-icon"><i data-lucide="activity" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Dentists &amp; Clinics</div><div class="mobile-ind-desc">Privacy-conscious patient review replies</div></div>
+                    <div><div class="mobile-ind-name">Dentists &amp; Clinics</div><div class="mobile-ind-desc">Respuestas a reseñas de pacientes conscientes de la privacidad</div></div>
                 </a>
                 <a href="industries/agencies" class="mobile-industry-item">
                     <div class="mobile-ind-icon agency-icon"><i data-lucide="briefcase" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Marketing Agencies</div><div class="mobile-ind-desc">Manage multiple clients from one dashboard</div></div>
+                    <div><div class="mobile-ind-name">Agencias de Marketing</div><div class="mobile-ind-desc">Gestiona múltiples clientes desde un solo panel</div></div>
                 </a>
                 <a href="industries/martial-arts" class="mobile-industry-item">
                     <div class="mobile-ind-icon martial-arts-icon"><i data-lucide="shield" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Martial Arts Schools</div><div class="mobile-ind-desc">Student safety and membership escalation</div></div>
+                    <div><div class="mobile-ind-name">Escuelas de Artes Marciales</div><div class="mobile-ind-desc">Seguridad de estudiantes y escalado de membresía</div></div>
                 </a>
                 <a href="industries/childcare" class="mobile-industry-item">
                     <div class="mobile-ind-icon childcare-icon"><i data-lucide="heart" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Childcare &amp; Preschool</div><div class="mobile-ind-desc">Child safety and privacy protection</div></div>
+                    <div><div class="mobile-ind-name">Childcare &amp; Preschool</div><div class="mobile-ind-desc">Seguridad infantil y protección de la privacidad</div></div>
                 </a>
                 <a href="industries/tutoring" class="mobile-industry-item">
                     <div class="mobile-ind-icon tutoring-icon"><i data-lucide="book-open" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Tutoring Centers</div><div class="mobile-ind-desc">Academic claims and refund protection</div></div>
+                    <div><div class="mobile-ind-name">Centros de Tutoría</div><div class="mobile-ind-desc">Reclamos académicos y protección de reembolsos</div></div>
                 </a>
                 <a href="industries/pet-care" class="mobile-industry-item">
                     <div class="mobile-ind-icon petcare-icon"><i data-lucide="dog" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Pet Care</div><div class="mobile-ind-desc">Warm replies with animal-safety escalation</div></div>
+                    <div><div class="mobile-ind-name">Cuidado de Mascotas</div><div class="mobile-ind-desc">Respuestas cálidas con escalado de seguridad animal</div></div>
                 </a>
                 <a href="industries/car-washes" class="mobile-industry-item">
                     <div class="mobile-ind-icon carwash-icon"><i data-lucide="car" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Car Wash Operators</div><div class="mobile-ind-desc">Vehicle damage and billing escalation</div></div>
+                    <div><div class="mobile-ind-name">Operadores de Lavado de Autos</div><div class="mobile-ind-desc">Escalado de daños a vehículos y facturación</div></div>
                 </a>
                 <a href="industries/laundromats" class="mobile-industry-item">
                     <div class="mobile-ind-icon laundromat-icon"><i data-lucide="wind" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Laundromats</div><div class="mobile-ind-desc">Machine, cleanliness, and refund reviews</div></div>
+                    <div><div class="mobile-ind-name">Lavanderías</div><div class="mobile-ind-desc">Reseñas de máquinas, limpieza y reembolsos</div></div>
                 </a>
             </div>
 
-            <a href="#pricing" class="mobile-nav-link">Pricing</a>
-            <a href="#faq" class="mobile-nav-link">FAQ</a>
+            <a href="#pricing" class="mobile-nav-link">Precios</a>
+            <a href="#faq" class="mobile-nav-link">Preguntas Frecuentes</a>
             <div class="lang-selector">
                     <button class="lang-btn" aria-label="Select Language">
                         <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
@@ -235,7 +218,7 @@
                         <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
                     </div>
                 </div>
-                <a href="https://dashboard.replyvera.com/login" class="mobile-nav-link">Log In</a>
+                <a href="https://dashboard.replyvera.com/login" class="mobile-nav-link">Iniciar Sesión</a>
         </div>
     </div>
 
@@ -243,25 +226,25 @@
     <div class="mobile-plan-selector theme-dark">
         <div class="mobile-plan-selector-inner container">
             <a href="#plan-starter" class="mobile-plan-btn">Starter</a>
-            <a href="#plan-autopilot" class="mobile-plan-btn">Autopilot</a>
-            <a href="#plan-multi" class="mobile-plan-btn">Multi-Location</a>
-            <a href="#plan-agency" class="mobile-plan-btn">Agency</a>
+            <a href="#plan-autopilot" class="mobile-plan-btn">Piloto Automático</a>
+            <a href="#plan-multi" class="mobile-plan-btn">Multi-Ubicación</a>
+            <a href="#plan-agency" class="mobile-plan-btn">Agencia</a>
         </div>
     </div>
 
-    <!-- Pricing Hero Section -->
+    <!-- Precios Hero Section -->
     <header class="hero theme-dark" style="padding: 100px 0 20px;">
         <div class="hero-glow-layer"></div>
         <div class="container hero-content" style="max-width: 800px; margin: 0 auto; text-align: center;">
-            <h1 style="font-size: 2.5rem; margin-bottom: 12px; letter-spacing: -0.02em;">Simple Pricing. No Sales Call Required.</h1>
+            <h1 style="font-size: 2.5rem; margin-bottom: 12px; letter-spacing: -0.02em;">Precios Sencillos. Sin Llamadas de Ventas.</h1>
             <p class="lead-text" style="margin-bottom: 0; font-size: 1.1rem; color: var(--text-secondary-current);">
-                Choose the level of automation and number of locations that fit your business.
+                Elige el nivel de automatización y la cantidad de ubicaciones que se adapten a tu negocio.
             </p>
             
             <!-- Billing Toggle -->
             <div class="pricing-billing-toggle">
-                <button class="pricing-billing-btn active" id="btn-monthly" onclick="setBilling('monthly')">Monthly</button>
-                <button class="pricing-billing-btn" id="btn-annual" onclick="setBilling('annual')">Annual <span class="pricing-annual-badge">Save 2 Months</span></button>
+                <button class="pricing-billing-btn active" id="btn-monthly" onclick="setBilling('monthly')">Mensual</button>
+                <button class="pricing-billing-btn" id="btn-annual" onclick="setBilling('annual')">Anual <span class="pricing-annual-badge">Ahorra 2 Meses</span></button>
             </div>
         </div>
     </header>
@@ -276,109 +259,109 @@
                     <div>
                         <div style="margin-bottom: 20px;">
                             <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">Starter</h4>
-                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">For businesses that approve every reply before publishing.</p>
+                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">Para empresas que aprueban cada respuesta antes de publicar.</p>
                             
                             <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
                                 <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$29" data-annual="$290">$29</span>
-                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ month" data-annual="billed annually">/ month</span>
+                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ mes" data-annual="billed annually">/ mes</span>
                             </div>
                         </div>
                         
                         <ul class="pricing-4-feature-list">
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 1 business location</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Up to 30 replies per month</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 1 ubicación de negocio</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Hasta 30 respuestas por mes</li>
                             <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Manual approval</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Custom tone</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> English and Spanish</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Negative-review alerts</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Tono personalizado</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Inglés y Español</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Alertas de reseñas negativas</li>
                         </ul>
                     </div>
-                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=starter" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Start Free Trial</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=starter" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Comenzar Prueba Gratuita</a>
                 </div>
 
-                <!-- Autopilot Card -->
+                <!-- Piloto Automático Card -->
                 <div class="pricing-4-card recommended" id="plan-autopilot">
                     <div>
                         <div style="margin-bottom: 20px;">
-                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">Autopilot</h4>
-                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">For businesses that want safe review replies published automatically.</p>
+                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">Piloto Automático</h4>
+                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">Para empresas que desean publicar automáticamente respuestas seguras.</p>
                             
                             <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
                                 <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$39" data-annual="$390">$39</span>
-                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ month" data-annual="billed annually">/ month</span>
+                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ mes" data-annual="billed annually">/ mes</span>
                             </div>
                         </div>
                         
                         <ul class="pricing-4-feature-list">
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 1 business location</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Unlimited review responses*</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 1 ubicación de negocio</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Respuestas ilimitadas a reseñas*</li>
                             <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Safe replies auto-publish</li>
                             <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Sensitive reviews require approval</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Custom brand voice</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Review history</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Voz de marca personalizada</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Historial de reseñas</li>
                         </ul>
                     </div>
-                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent" style="width: 100%; text-align: center; justify-content: center;">Start Free Trial</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent" style="width: 100%; text-align: center; justify-content: center;">Comenzar Prueba Gratuita</a>
                 </div>
 
-                <!-- Multi-Location Card -->
+                <!-- Multi-Ubicación Card -->
                 <div class="pricing-4-card" id="plan-multi">
                     <div>
                         <div style="margin-bottom: 20px;">
-                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">Multi-Location</h4>
-                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">For businesses managing several locations.</p>
+                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">Multi-Ubicación</h4>
+                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">Para empresas que gestionan varias ubicaciones.</p>
                             
                             <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
-                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$79" data-annual="$790"><span style="font-size:1.2rem;font-weight:600;margin-right:4px;">From</span>$79</span>
+                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$79" data-annual="$790"><span style="font-size:1.2rem;font-weight:600;margin-right:4px;">Desde</span>$79</span>
                                 <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ month" data-annual="billed annually">/ month</span>
                             </div>
                         </div>
                         
                         <ul class="pricing-4-feature-list">
                             <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 3 locations included</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Central dashboard</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Unlimited review responses*</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Location-specific rules</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Team access</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Additional locations available</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Panel central</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Respuestas ilimitadas a reseñas*</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Reglas específicas por ubicación</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Acceso para el equipo</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Ubicaciones adicionales disponibles</li>
                         </ul>
                     </div>
-                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=multi_location" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Start Multi-Location Trial</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=multi_location" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Iniciar Prueba Multi-Ubicación</a>
                 </div>
 
-                <!-- Agency Card -->
+                <!-- Agencia Card -->
                 <div class="pricing-4-card" id="plan-agency">
                     <div>
                         <div style="margin-bottom: 20px;">
-                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">Agency</h4>
-                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">For agencies managing Google review replies for multiple clients.</p>
+                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">Agencia</h4>
+                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">Para agencias que gestionan respuestas de reseñas de Google de múltiples clientes.</p>
                             
                             <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
-                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$149" data-annual="$1490"><span style="font-size:1.2rem;font-weight:600;margin-right:4px;">From</span>$149</span>
+                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$149" data-annual="$1490"><span style="font-size:1.2rem;font-weight:600;margin-right:4px;">Desde</span>$149</span>
                                 <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ month" data-annual="billed annually">/ month</span>
                             </div>
                         </div>
                         
                         <ul class="pricing-4-feature-list">
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 10 client locations included</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Multi-client dashboard</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Separate client brand voices</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Client approval access</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Team access</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Agency reporting</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 10 ubicaciones de clientes incluidas</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Panel multi-cliente</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Voces de marca separadas por cliente</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Acceso de aprobación de clientes</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Acceso para el equipo</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Informes de agencia</li>
                         </ul>
                     </div>
-                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=agency" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Start Agency Trial</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=agency" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Iniciar Prueba de Agencia</a>
                 </div>
 
             </div>
             
-            <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:24px;margin-bottom:8px;">*Unlimited review responses are subject to reasonable-use limits.</p>
-            <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:0px;">14-day free trial. Cancel anytime.</p>
+            <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:24px;margin-bottom:8px;">*Las respuestas ilimitadas a reseñas están sujetas a límites de uso razonable.</p>
+            <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:0px;">Prueba gratuita de 14 días. Cancela en cualquier momento.</p>
             
             <div class="text-center">
                 <button class="compare-toggle-btn" id="compare-toggle" aria-expanded="false" aria-controls="comparison-container">
-                    Compare All Features <i data-lucide="chevron-down" style="width:16px;height:16px;"></i>
+                    Comparar Todas las Características <i data-lucide="chevron-down" style="width:16px;height:16px;"></i>
                 </button>
             </div>
         </div>
@@ -392,7 +375,7 @@
                     <table class="comparison-table">
                         <thead>
                             <tr>
-                                <th>Features</th>
+                                <th>Características</th>
                                 <th>Starter</th>
                                 <th>Autopilot</th>
                                 <th>Multi-Location</th>
@@ -401,102 +384,102 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Locations included</td>
-                                <td>1 Location</td>
-                                <td>1 Location</td>
-                                <td>3 Locations</td>
-                                <td>10 Locations</td>
+                                <td>Ubicaciones incluidas</td>
+                                <td>1 Ubicación</td>
+                                <td>1 Ubicación</td>
+                                <td>3 Ubicaciones</td>
+                                <td>10 Ubicaciones</td>
                             </tr>
                             <tr>
-                                <td>Monthly reply limit</td>
-                                <td>30 replies</td>
-                                <td>Unlimited</td>
-                                <td>Unlimited</td>
-                                <td>Unlimited</td>
+                                <td>Límite mensual de respuestas</td>
+                                <td>30 respuestas</td>
+                                <td>Ilimitadas</td>
+                                <td>Ilimitadas</td>
+                                <td>Ilimitadas</td>
                             </tr>
                             <tr>
                                 <td>Manual approval</td>
-                                <td>Included</td>
-                                <td>Included</td>
-                                <td>Included</td>
-                                <td>Included</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
                             </tr>
                             <tr>
-                                <td>Automatic publishing</td>
-                                <td>Not included</td>
-                                <td>Included</td>
-                                <td>Included</td>
-                                <td>Included</td>
+                                <td>Publicación automática</td>
+                                <td>No incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
                             </tr>
                             <tr>
-                                <td>Sensitive-review detection</td>
-                                <td>Not included</td>
-                                <td>Included</td>
-                                <td>Included</td>
-                                <td>Included</td>
+                                <td>Detección de reseñas delicadas</td>
+                                <td>No incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
                             </tr>
                             <tr>
-                                <td>Custom tone</td>
-                                <td>Included</td>
-                                <td>Included</td>
-                                <td>Included</td>
-                                <td>Included</td>
+                                <td>Tono personalizado</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
                             </tr>
                             <tr>
-                                <td>English and Spanish</td>
-                                <td>Included</td>
-                                <td>Included</td>
-                                <td>Included</td>
-                                <td>Included</td>
+                                <td>Inglés y Español</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
                             </tr>
                             <tr>
-                                <td>Employee-name recognition</td>
-                                <td>Not included</td>
-                                <td>Included</td>
-                                <td>Included</td>
-                                <td>Included</td>
+                                <td>Reconocimiento de nombre de empleado</td>
+                                <td>No incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
                             </tr>
                             <tr>
-                                <td>Review history</td>
-                                <td>Not included</td>
-                                <td>Included</td>
-                                <td>Included</td>
-                                <td>Included</td>
+                                <td>Historial de reseñas</td>
+                                <td>No incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
                             </tr>
                             <tr>
-                                <td>Team access</td>
-                                <td>Not included</td>
-                                <td>Not included</td>
-                                <td>Included</td>
-                                <td>Included</td>
+                                <td>Acceso para el equipo</td>
+                                <td>No incluido</td>
+                                <td>No incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
                             </tr>
                             <tr>
-                                <td>Multi-location reporting</td>
-                                <td>Not included</td>
-                                <td>Not included</td>
-                                <td>Included</td>
-                                <td>Included</td>
+                                <td>Informes de múltiples ubicaciones</td>
+                                <td>No incluido</td>
+                                <td>No incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
                             </tr>
                             <tr>
-                                <td>Client dashboard</td>
-                                <td>Not included</td>
-                                <td>Not included</td>
-                                <td>Not included</td>
-                                <td>Included</td>
+                                <td>Panel de cliente</td>
+                                <td>No incluido</td>
+                                <td>No incluido</td>
+                                <td>No incluido</td>
+                                <td>Incluido</td>
                             </tr>
                             <tr>
-                                <td>Client approval access</td>
-                                <td>Not included</td>
-                                <td>Not included</td>
-                                <td>Not included</td>
-                                <td>Included</td>
+                                <td>Acceso de aprobación de clientes</td>
+                                <td>No incluido</td>
+                                <td>No incluido</td>
+                                <td>No incluido</td>
+                                <td>Incluido</td>
                             </tr>
                             <tr>
-                                <td>Support level</td>
-                                <td>Standard</td>
-                                <td>Priority</td>
-                                <td>Priority</td>
-                                <td>Dedicated</td>
+                                <td>Nivel de soporte</td>
+                                <td>Estándar</td>
+                                <td>Prioritario</td>
+                                <td>Prioritario</td>
+                                <td>Dedicado</td>
                             </tr>
                         </tbody>
                     </table>
@@ -506,39 +489,39 @@
             <!-- FAQ Section -->
             <div id="faq" style="max-width: 800px; margin: 0 auto;">
                 <div class="text-center mb-8">
-                    <h2 class="mb-4">Frequently Asked Questions</h2>
+                    <h2 class="mb-4">Preguntas Frecuentes</h2>
                 </div>
                 
                 <div class="faq-accordion">
                     <details>
-                        <summary>Can I cancel at any time? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
-                        <div class="faq-content">Yes. ReplyVera is billed monthly or annually, and you can cancel before your next billing date.</div>
+                        <summary>¿Puedo cancelar en cualquier momento? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">Sí. ReplyVera se factura mensual o anualmente, y puedes cancelar antes de tu próxima fecha de facturación.</div>
                     </details>
                     <details>
-                        <summary>Is there a setup fee? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
-                        <div class="faq-content">No. There is no setup fee for standard plans.</div>
+                        <summary>¿Hay alguna tarifa de instalación? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">No. No hay tarifas de instalación en los planes estándar.</div>
                     </details>
                     <details>
-                        <summary>Does each location need its own plan? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
-                        <div class="faq-content">Starter and Autopilot include one location. Multi-location and Agency plans include several locations and allow additional locations to be added for a fee.</div>
+                        <summary>¿Necesita cada ubicación su propio plan? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">Starter y Piloto Automático incluyen una ubicación. Los planes Multi-Ubicación y Agencia incluyen varias ubicaciones y permiten agregar ubicaciones adicionales por una tarifa.</div>
                     </details>
                     <details>
-                        <summary>Are replies unlimited? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
-                        <div class="faq-content">The Starter plan includes up to 30 replies per month. Autopilot, Multi-Location, and Agency plans include unlimited responses subject to reasonable-use limits.</div>
+                        <summary>¿Son ilimitadas las respuestas? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">El plan Starter incluye hasta 30 respuestas por mes. Los planes Piloto Automático, Multi-Ubicación y Agencia incluyen respuestas ilimitadas sujetas a límites de uso razonable.</div>
                     </details>
                     <details>
-                        <summary>Which review platforms are supported? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
-                        <div class="faq-content">ReplyVera currently supports Google Reviews. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.</div>
+                        <summary>¿Qué plataformas de reseñas se admiten? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">Actualmente, ReplyVera admite Reseñas de Google. Facebook, Trustpilot, Booking.com y Tripadvisor están planeados para futuras versiones.</div>
                     </details>
                     <details>
-                        <summary>Can I change plans later? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
-                        <div class="faq-content">Yes. You can upgrade or downgrade your plan as your review volume or number of locations changes.</div>
+                        <summary>¿Puedo cambiar de plan más adelante? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">Sí. Puedes actualizar o degradar tu plan a medida que cambia el volumen de tus reseñas o la cantidad de ubicaciones.</div>
                     </details>
                 </div>
                 
                 <p style="font-size: 0.85rem; color: var(--text-secondary-current); text-align: center; margin-top: 40px; font-weight: 500;">
-                    Currently supported: Google Reviews<br>
-                    Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.
+                    Actualmente compatible: Reseñas de Google<br>
+                    Facebook, Trustpilot, Booking.com y Tripadvisor están planeados para futuras versiones.
                 </p>
             </div>
         </div>
@@ -547,8 +530,8 @@
     <!-- Call to Action Section -->
     <section class="section theme-dark" style="border-top: 1px solid rgba(255, 255, 255, 0.04); padding: 60px 0;">
         <div class="container text-center" style="max-width: 650px;">
-            <h2 class="mb-6">Ready to automate your Google review replies?</h2>
-            <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent" style="padding: 14px 28px; font-size:0.95rem;">Start Free Trial</a>
+            <h2 class="mb-6">¿Listo para automatizar tus respuestas a las reseñas de Google?</h2>
+            <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent" style="padding: 14px 28px; font-size:0.95rem;">Comenzar Prueba Gratuita</a>
         </div>
     </section>
 <!-- Footer -->
@@ -560,23 +543,23 @@
                         <div class="nav-logo-icon">
                             <i class="fa-solid fa-reply"></i>
                         </div>
-                        <span class="nav-logo-text" style="font-size:1.2rem;">Reply<span>Vera</span></span>
+                        <span class="nav-logo-text" style="font-size:1.2rem;">Responder<span>Vera</span></span>
                     </a>
-                    <p style="color:#94A3B8;">The review autopilot built for storefronts, franchises, and agencies to protect their online reputation.</p>
-                    <p style="color:#64748B; font-size:0.8rem; margin-top:12px;">Currently supporting Google Reviews. Additional platforms are planned.</p>
+                    <p style="color:#94A3B8;">El piloto automático de reseñas creado para tiendas, franquicias y agencias para proteger su reputación en línea.</p>
+                    <p style="color:#64748B; font-size:0.8rem; margin-top:12px;">Actualmente compatible con Reseñas de Google. Se planean plataformas adicionales.</p>
                 </div>
                 
                 <div class="footer-col">
-                    <div class="footer-col-title">Product</div>
+                    <div class="footer-col-title">Producto</div>
                     <ul class="footer-links">
-                        <li><a href="index.html#product">Product</a></li>
-                        <li><a href="index.html#how-it-works">How It Works</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="index.html#product">Producto</a></li>
+                        <li><a href="index.html#how-it-works">Cómo Funciona</a></li>
+                        <li><a href="pricing.html">Precios</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-col">
-                    <div class="footer-col-title">Company</div>
+                    <div class="footer-col-title">Empresa</div>
                     <ul class="footer-links">
                         <li><a href="mailto:info@replyvera.com">Contact Us</a></li>
                         <li><div class="lang-selector">
@@ -589,16 +572,16 @@
                         <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
                     </div>
                 </div>
-                <a h>Login</a></li>
+                <a h>Iniciar Sesión</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-col">
                     <div class="footer-col-title">Legal</div>
                     <ul class="footer-links">
-                        <li><a href="/terms.html">Terms of Service</a></li>
-                        <li><a href="/privacy.html">Privacy Policy</a></li>
-                        <li><a href="cookie.html">Cookie Policy</a></li>
+                        <li><a href="/terms.html">Términos de Servicio</a></li>
+                        <li><a href="/privacy.html">Política de Privacidad</a></li>
+                        <li><a href="cookie.html">Política de Cookies</a></li>
                     </ul>
                 </div>
             </div>
@@ -616,10 +599,10 @@
     <!-- Cookie Consent Banner -->
     <div id="cookie-banner" class="cookie-banner" aria-hidden="true">
         <div class="cookie-content">
-            <p>We use cookies to improve your experience and analyze site performance. By clicking "Accept", you agree to our use of cookies as outlined in our <a href="cookie.html">Cookie Policy</a>.</p>
+            <p>Usamos cookies para mejorar su experiencia y analizar el rendimiento del sitio. Al hacer clic en "Aceptar", acepta nuestro uso de cookies como se describe en nuestra <a href="cookie.html">Política de Cookies</a>.</p>
             <div class="cookie-buttons">
-                <button id="accept-cookies" class="btn btn-accent btn-sm" style="padding:6px 12px; font-size:0.78rem;">Accept</button>
-                <button id="decline-cookies" class="btn btn-secondary btn-sm" style="padding:6px 12px; font-size:0.78rem;">Decline</button>
+                <button id="accept-cookies" class="btn btn-accent btn-sm" style="padding:6px 12px; font-size:0.78rem;">Aceptar</button>
+                <button id="decline-cookies" class="btn btn-secondary btn-sm" style="padding:6px 12px; font-size:0.78rem;">Rechazar</button>
             </div>
         </div>
     </div>

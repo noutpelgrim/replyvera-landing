@@ -107,6 +107,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Language Selector Toggle ---
+    const langBtns = document.querySelectorAll('.lang-btn');
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const selector = btn.closest('.lang-selector');
+            const menu = selector.querySelector('.lang-menu');
+            
+            // Close other open language menus
+            document.querySelectorAll('.lang-menu.show').forEach(m => {
+                if (m !== menu) m.classList.remove('show');
+            });
+            
+            menu.classList.toggle('show');
+        });
+    });
+
+    // Close language menus on outside click
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.lang-selector')) {
+            document.querySelectorAll('.lang-menu.show').forEach(m => {
+                m.classList.remove('show');
+            });
+        }
+    });
+
     // --- Mobile Industries Accordion ---
     const mobileIndToggle = document.getElementById('mobile-ind-toggle');
     const mobileIndList   = document.getElementById('mobile-ind-list');

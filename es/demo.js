@@ -6,78 +6,78 @@ const DEMO_MODAL_HTML = `
             <i data-lucide="x"></i>
         </button>
         <div class="rv-demo-header">
-            <h2 id="demo-modal-title" style="margin-bottom:8px;">See Vera in Action</h2>
-            <p style="color:var(--text-secondary);font-size:0.95rem;max-width:500px;margin:0 auto 20px;">Watch a new Google review arrive, get analyzed, and move through Vera's approval rules.</p>
+            <h2 id="demo-modal-title" style="margin-bottom:8px;">Ver a Vera en Acción</h2>
+            <p style="color:var(--text-secondary);font-size:0.95rem;max-width:500px;margin:0 auto 20px;">Observe cómo llega una nueva reseña de Google, se analiza y pasa por las reglas de aprobación de Vera.</p>
             
             <div class="rv-demo-tabs" role="tablist">
-                <button class="rv-demo-tab active" role="tab" aria-selected="true" onclick="switchScenario('positive')">Positive Review</button>
-                <button class="rv-demo-tab" role="tab" aria-selected="false" onclick="switchScenario('negative')">Negative Review</button>
-                <button class="rv-demo-tab" role="tab" aria-selected="false" onclick="switchScenario('sensitive')">Sensitive Review</button>
+                <button class="rv-demo-tab active" role="tab" aria-selected="true" onclick="switchScenario('positive')">Reseña Positiva</button>
+                <button class="rv-demo-tab" role="tab" aria-selected="false" onclick="switchScenario('negative')">Reseña Negativa</button>
+                <button class="rv-demo-tab" role="tab" aria-selected="false" onclick="switchScenario('sensitive')">Reseña Delicada</button>
             </div>
         </div>
         
         <div class="rv-demo-body">
             <!-- Stage 1 -->
             <div class="rv-demo-stage" id="demo-stage-1">
-                <div class="demo-stage-label">Stage 1: New Google Review</div>
+                <div class="demo-stage-label">Etapa 1: Nueva Reseña de Google</div>
                 <div class="demo-review-card">
                     <div class="demo-review-stars" id="demo-val-stars"></div>
                     <div class="demo-review-quote" id="demo-val-quote"></div>
                 </div>
-                <div class="demo-notification"><i data-lucide="bell" style="width:14px;height:14px;"></i> New Google review received</div>
+                <div class="demo-notification"><i data-lucide="bell" style="width:14px;height:14px;"></i> Nueva reseña de Google recibida</div>
             </div>
 
             <!-- Stage 2 -->
             <div class="rv-demo-stage" id="demo-stage-2">
-                <div class="demo-stage-label">Stage 2: Review Analysis</div>
+                <div class="demo-stage-label">Etapa 2: Análisis de Reseñas</div>
                 <div class="demo-analysis-grid">
-                    <div class="demo-tag"><span class="demo-tag-label">Sentiment:</span> <span id="demo-val-sentiment"></span></div>
-                    <div class="demo-tag"><span class="demo-tag-label">Rating:</span> <span id="demo-val-rating"></span></div>
-                    <div class="demo-tag"><span class="demo-tag-label">Topic:</span> <span id="demo-val-topic"></span></div>
-                    <div class="demo-tag" id="demo-tag-employee"><span class="demo-tag-label">Employee mention:</span> <span id="demo-val-employee"></span></div>
-                    <div class="demo-tag" id="demo-tag-sensitive" style="display:none;"><span class="demo-tag-label">Sensitive topic:</span> <span id="demo-val-sensitive"></span></div>
-                    <div class="demo-tag"><span class="demo-tag-label">Risk level:</span> <span id="demo-val-risk"></span></div>
+                    <div class="demo-tag"><span class="demo-tag-label">Sentimiento:</span> <span id="demo-val-sentiment"></span></div>
+                    <div class="demo-tag"><span class="demo-tag-label">Calificación:</span> <span id="demo-val-rating"></span></div>
+                    <div class="demo-tag"><span class="demo-tag-label">Tema:</span> <span id="demo-val-topic"></span></div>
+                    <div class="demo-tag" id="demo-tag-employee"><span class="demo-tag-label">Mención de empleado:</span> <span id="demo-val-employee"></span></div>
+                    <div class="demo-tag" id="demo-tag-sensitive" style="display:none;"><span class="demo-tag-label">Tema delicado:</span> <span id="demo-val-sensitive"></span></div>
+                    <div class="demo-tag"><span class="demo-tag-label">Nivel de riesgo:</span> <span id="demo-val-risk"></span></div>
                 </div>
             </div>
 
             <!-- Stage 3 -->
             <div class="rv-demo-stage" id="demo-stage-3">
-                <div class="demo-stage-label">Stage 3: Vera Response Generated</div>
+                <div class="demo-stage-label">Etapa 3: Respuesta de Vera Generada</div>
                 <div class="demo-response-box" id="demo-val-response-box">
-                    <div style="font-size:0.75rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;margin-bottom:6px;">Vera's response</div>
+                    <div style="font-size:0.75rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;margin-bottom:6px;">Respuesta de Vera</div>
                     <div class="demo-response-text" id="demo-val-response"></div>
                 </div>
                 <div class="demo-sensitive-alert" id="demo-val-sensitive-alert" style="display:none;">
                     <i data-lucide="shield-alert" style="color:var(--danger);margin-right:8px;width:18px;height:18px;"></i>
                     <div>
-                        <strong>Sensitive topic detected</strong>
-                        <div style="font-size:0.85rem;color:var(--text-secondary);margin-top:2px;">ReplyVera paused automatic response generation.</div>
+                        <strong>Tema delicado detectado</strong>
+                        <div style="font-size:0.85rem;color:var(--text-secondary);margin-top:2px;">ReplyVera pausó la generación automática de respuestas.</div>
                     </div>
                 </div>
             </div>
 
             <!-- Stage 4 -->
             <div class="rv-demo-stage" id="demo-stage-4">
-                <div class="demo-stage-label">Stage 4: Approval Decision</div>
+                <div class="demo-stage-label">Etapa 4: Decisión de Aprobación</div>
                 <div class="demo-decision-badge" id="demo-val-decision-badge"></div>
                 <div class="demo-decision-text" id="demo-val-decision-text"></div>
             </div>
 
             <!-- Stage 5 -->
             <div class="rv-demo-stage" id="demo-stage-5">
-                <div class="demo-stage-label">Stage 5: Final Outcome</div>
+                <div class="demo-stage-label">Etapa 5: Resultado Final</div>
                 
                 <div id="outcome-positive" style="display:none;" class="demo-outcome-box outcome-success">
                     <i data-lucide="check-circle-2" style="width:24px;height:24px;"></i>
-                    <div class="demo-outcome-title">Response published to Google</div>
-                    <div class="demo-outcome-sub">Published moments ago</div>
+                    <div class="demo-outcome-title">Respuesta publicada en Google</div>
+                    <div class="demo-outcome-sub">Publicado hace unos momentos</div>
                 </div>
                 
                 <div id="outcome-negative" style="display:none;" class="demo-outcome-box">
                     <div style="display:flex;gap:8px;margin-bottom:12px;">
-                        <button class="btn btn-accent btn-sm" onclick="approveAndPublish()">Approve and Publish</button>
-                        <button class="btn btn-secondary btn-sm">Edit Response</button>
-                        <button class="btn btn-secondary btn-sm">Keep as Draft</button>
+                        <button class="btn btn-accent btn-sm" onclick="approveAndPublish()">Aprobar y Publicar</button>
+                        <button class="btn btn-secondary btn-sm">Editar Respuesta</button>
+                        <button class="btn btn-secondary btn-sm">Mantener como Borrador</button>
                     </div>
                     <div id="outcome-negative-success" style="display:none;align-items:center;gap:8px;color:var(--warning);font-weight:600;">
                         <i data-lucide="check-circle-2" style="width:18px;height:18px;"></i> Response approved and ready to publish
@@ -86,7 +86,7 @@ const DEMO_MODAL_HTML = `
                 
                 <div id="outcome-sensitive" style="display:none;" class="demo-outcome-box outcome-danger">
                     <i data-lucide="alert-triangle" style="width:24px;height:24px;"></i>
-                    <div class="demo-outcome-title">Escalated to manager</div>
+                    <div class="demo-outcome-title">Escalado al gerente</div>
                     <div class="demo-outcome-actions">
                         Suggested actions:<br>
                         • Review the complaint<br>
@@ -99,16 +99,16 @@ const DEMO_MODAL_HTML = `
         </div>
         
         <div class="rv-demo-controls">
-            <button id="btn-run-demo" class="btn btn-primary" onclick="runDemoSequence()">Run Demo</button>
-            <button id="btn-skip" class="btn btn-secondary" onclick="skipAnimations()" style="display:none;">Skip to Result</button>
-            <button id="btn-pause" class="btn btn-secondary" onclick="togglePause()" style="display:none;">Pause</button>
+            <button id="btn-run-demo" class="btn btn-primary" onclick="runDemoSequence()">Ejecutar Demo</button>
+            <button id="btn-skip" class="btn btn-secondary" onclick="skipAnimations()" style="display:none;">Saltar al Resultado</button>
+            <button id="btn-pause" class="btn btn-secondary" onclick="togglePause()" style="display:none;">Pausa</button>
         </div>
         
         <div id="demo-cta-panel" class="demo-cta-panel" style="display:none;">
-            <div style="font-weight:700;font-size:1.1rem;margin-bottom:12px;">Ready to automate your Google review replies?</div>
+            <div style="font-weight:700;font-size:1.1rem;margin-bottom:12px;">¿Listo para automatizar tus respuestas a las reseñas de Google?</div>
             <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-                <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent">Start Free Trial</a>
-                <a href="/pricing.html" class="btn btn-secondary">View Pricing</a>
+                <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent">Comenzar Prueba Gratuita</a>
+                <a href="pricing.html" class="btn btn-secondary">Ver Precios</a>
             </div>
         </div>
     </div>
@@ -117,9 +117,9 @@ const DEMO_MODAL_HTML = `
 
 // Base fallback data
 const fallbackData = {
-    'positive': { review: 'Friendly team and excellent service. Sarah was especially helpful.', sentiment: 'Positive', rating: 5, topic: 'Customer service', employee: 'Sarah', risk: 'Low', reply: 'Thank you for your kind review. We’re glad you had a great experience and that Sarah was especially helpful. We’ll be sure to share your feedback with her.', decision: 'Safe to Auto-Publish', text: 'This review matches your automatic publishing rules.' },
-    'negative': { review: 'The service took much longer than expected, and nobody explained the delay.', sentiment: 'Negative', rating: 2, topic: 'Wait time and communication', employee: 'None', risk: 'Medium', reply: 'Thank you for sharing your feedback. We’re sorry the service took longer than expected and that the delay was not clearly explained. We’re sharing this with the team so we can improve.', decision: 'Needs Approval', text: 'Negative reviews require approval under your current rules.' },
-    'sensitive': { review: 'This caused an injury, and the manager has not responded.', sentiment: 'Negative', rating: 1, topic: 'Injury and management response', employee: 'None', risk: 'High', blocked: 'Injury', decision: 'Auto-Publishing Blocked', text: 'This review requires human review before any public response is created or published.' }
+    'positive': { review: 'Equipo amable y excelente servicio. Sarah fue especialmente servicial.', sentiment: 'Positivo', rating: 5, topic: 'Servicio al cliente', employee: 'Sarah', risk: 'Bajo', reply: 'Gracias por su amable reseña. Nos alegra que haya tenido una gran experiencia y que Sarah haya sido de gran ayuda. Nos aseguraremos de compartir sus comentarios con ella.', decision: 'Seguro para Publicación Automática', text: 'Esta reseña coincide con sus reglas de publicación automática.' },
+    'negative': { review: 'El servicio tomó mucho más tiempo de lo esperado y nadie explicó el retraso.', sentiment: 'Negativo', rating: 2, topic: 'Tiempo de espera y comunicación', employee: 'Ninguno', risk: 'Medio', reply: 'Gracias por compartir sus comentarios. Lamentamos que el servicio haya demorado más de lo esperado y que el retraso no se haya explicado claramente. Lo estamos compartiendo con el equipo para que podamos mejorar.', decision: 'Necesita Aprobación', text: 'Las reseñas negativas requieren aprobación bajo sus reglas actuales.' },
+    'sensitive': { review: 'Esto causó una lesión y el gerente no ha respondido.', sentiment: 'Negativo', rating: 1, topic: 'Lesiones y respuesta de la gerencia', employee: 'Ninguno', risk: 'Alto', blocked: 'Lesión', decision: 'Publicación Automática Bloqueada', text: 'Esta reseña requiere revisión humana antes de que se cree o publique cualquier respuesta pública.' }
 };
 
 let currentScenario = 'positive';
@@ -194,7 +194,7 @@ function resetStages() {
     
     const runBtn = document.getElementById('btn-run-demo');
     runBtn.style.display = 'inline-flex';
-    runBtn.textContent = hasRun ? 'Replay Demo' : 'Run Demo';
+    runBtn.textContent = hasRun ? 'Repetir Demo' : 'Ejecutar Demo';
     
     document.getElementById('btn-skip').style.display = 'none';
     document.getElementById('btn-pause').style.display = 'none';
@@ -219,7 +219,7 @@ function switchScenario(scenario) {
     document.getElementById('demo-val-quote').textContent = `"${data.review}"`;
     
     document.getElementById('demo-val-sentiment').textContent = data.sentiment;
-    document.getElementById('demo-val-rating').textContent = `${data.rating} stars`;
+    document.getElementById('demo-val-rating').textContent = `${data.rating} estrellas`;
     document.getElementById('demo-val-topic').textContent = data.topic;
     document.getElementById('demo-val-risk').textContent = data.risk;
     
@@ -256,9 +256,9 @@ function switchScenario(scenario) {
     const isAgency = window.location.pathname.includes('/agencies');
     const ctaPrimary = document.querySelector('#demo-cta-panel .btn-accent');
     if(isAgency) {
-        ctaPrimary.textContent = 'Start Agency Trial';
+        ctaPrimary.textContent = 'Iniciar Prueba de Agencia';
     } else {
-        ctaPrimary.textContent = 'Start Free Trial';
+        ctaPrimary.textContent = 'Comenzar Prueba Gratuita';
     }
     
     resetStages();
@@ -324,7 +324,7 @@ function runDemoSequence() {
                 setTimeout(() => {
                     document.getElementById('btn-skip').style.display = 'none';
                     document.getElementById('btn-run-demo').style.display = 'inline-flex';
-                    document.getElementById('btn-run-demo').textContent = 'Replay Demo';
+                    document.getElementById('btn-run-demo').textContent = 'Repetir Demo';
                     document.getElementById('demo-cta-panel').style.display = 'block';
                 }, 1000);
             }
@@ -355,7 +355,7 @@ function skipAnimations() {
     document.getElementById('btn-skip').style.display = 'none';
     document.getElementById('btn-pause').style.display = 'none';
     document.getElementById('btn-run-demo').style.display = 'inline-flex';
-    document.getElementById('btn-run-demo').textContent = 'Replay Demo';
+    document.getElementById('btn-run-demo').textContent = 'Repetir Demo';
     document.getElementById('demo-cta-panel').style.display = 'block';
 }
 

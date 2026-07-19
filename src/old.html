@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ old_replyvera_g_auto_reply_to_goog_1bdc }}</title>
+    <meta name="description" content="{{ old_reply_25d8 }}{{ old_vera_74fd }} helps businesses automatically respond to Google reviews with smart, on-brand AI replies. Join the waitlist for early access.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Using FontAwesome instead of Lucide to match main site -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+
+    <script>
+    function changeLang(lang, event) {
+        event.preventDefault();
+        localStorage.setItem('lang_redirected', 'true');
+        
+        let path = window.location.pathname;
+        
+        // Remove existing lang prefix if present
+        if (path.startsWith('/es/')) path = path.replace('/es/', '/');
+        if (path.startsWith('/nl/')) path = path.replace('/nl/', '/');
+        if (path === '/es' || path === '/nl') path = '/';
+        
+        let newPath = path;
+        if (lang === 'es') {
+            newPath = '/es' + (path === '/' ? '/' : path);
+        } else if (lang === 'nl') {
+            newPath = '/nl' + (path === '/' ? '/' : path);
+        }
+        
+        window.location.href = newPath + window.location.hash;
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+                <div style="width:34px;height:34px;background:linear-gradient(135deg,#6C47FF 0%,#00C9A7 100%);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;color:#fff;box-shadow:0 4px 15px rgba(108,71,255,0.4);flex-shrink:0;"><i class="fa-solid fa-reply"></i></div>
+                <span style="font-size:1.4rem;font-weight:800;letter-spacing:-0.02em;color:#F0F0FF;">{{ old_reply_25d8 }}<span style="color:#8B6FFF;">{{ old_vera_74fd }}</span></span>
+            </a>
+            <a href="https://replyvera-dashboard.vercel.app/login" class="btn btn-secondary nav-btn">{{ old_log_in_3bbb }}</a>
+        </div>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <header class="hero">
+        <div class="hero-bg-glow"></div>
+        <div class="container hero-container">
+            <div class="section-label" style="margin-bottom: 24px;">{{ old_g_14_day_free_trial_no_credit_2686 }}</div>
+            <h1 class="hero-title">{{ old_automate_google_review_replies_4ae5 }} <span class="text-gradient">{{ old_intelligent_ai_8801 }}</span></h1>
+            <p class="hero-subtitle">{{ old_instantly_craft_and_post_brand_2df7 }}</p>
+            
+            <div style="display: flex; gap: 16px; margin: 32px 0; justify-content: center; flex-wrap: wrap;">
+                <a href="https://replyvera-dashboard.vercel.app/login" class="btn btn-primary" style="padding: 14px 28px; font-weight: 700; font-size: 1rem; text-decoration: none;">{{ old_start_14_day_free_trial_f112 }}</a>
+                <a href="#demo" class="btn btn-secondary" style="padding: 14px 28px; font-weight: 700; font-size: 1rem; text-decoration: none;">{{ old_try_live_demo_f323 }}</a>
+            </div>
+            
+            <div class="hero-visual" id="demo">
+                <div class="mockup-window glass-panel" style="text-align: left; max-width: 600px; margin: 0 auto;">
+                    <div class="mockup-header" style="border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
+                        <div class="dots"><span></span><span></span><span></span></div>
+                        <span style="font-size: 0.8rem; font-weight: 700; color: #8B6FFF; background: rgba(139, 111, 255, 0.1); padding: 4px 10px; border-radius: 20px;">{{ old_g_live_demo_9c13 }}</span>
+                    </div>
+                    <div class="mockup-body" style="padding: 24px; display: flex; flex-direction: column; gap: 20px;">
+                        
+                        <div style="display: flex; flex-direction: column; gap: 6px;">
+                            <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-dim);">{{ old_paste_a_sample_review_0aa7 }}</label>
+                            <textarea id="demo-comment" style="width: 100%; min-height: 70px; padding: 12px; border-radius: 8px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); color: white; font-size: 0.85rem; outline: none; font-family: inherit;">{{ old_loved_the_vibe_at_the_hostel_t_649a }}</textarea>
+                        </div>
+
+                        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                          <div style="display: flex; flex-direction: column; gap: 6px; flex: 1;">
+                              <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-dim);">{{ old_star_rating_8768 }}</label>
+                              <select id="demo-rating" style="padding: 10px; border-radius: 8px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); color: white; font-size: 0.85rem; outline: none; cursor: pointer;">
+                                  <option value="5">{{ old_g_g_g_g_g_5_0d0b }}</option>
+                                  <option value="4" selected>{{ old_g_g_g_g_4_e7c7 }}</option>
+                                  <option value="3">{{ old_g_g_g_3_e667 }}</option>
+                                  <option value="2">{{ old_g_g_2_140c }}</option>
+                                  <option value="1">{{ old_g_1_7e91 }}</option>
+                              </select>
+                          </div>
+                          
+                          <div style="display: flex; flex-direction: column; gap: 6px; flex: 1;">
+                              <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-dim);">{{ old_brand_tone_914d }}</label>
+                              <select id="demo-tone" style="padding: 10px; border-radius: 8px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); color: white; font-size: 0.85rem; outline: none; cursor: pointer;">
+                                  <option value="{{ old_friendly_03fd }}">{{ old_friendly_03fd }}</option>
+                                  <option value="{{ old_professional_9e8b }}" selected>{{ old_professional_9e8b }}</option>
+                                  <option value="{{ old_premium_8d5e }}">Premium</option>
+                              </select>
+                          </div>
+                        </div>
+
+                        <button id="btn-generate-demo" style="width: 100%; padding: 12px; border-radius: 8px; background: var(--primary); color: white; font-weight: 700; border: none; cursor: pointer; font-size: 0.9rem; transition: background 0.3s ease;">
+                            {{ old_generate_ai_response_c0db }}
+                        </button>
+
+                        <div id="demo-output-container" style="display: none; background: rgba(139, 111, 255, 0.05); border: 1px solid rgba(139, 111, 255, 0.2); padding: 16px; border-radius: 8px; margin-top: 10px;">
+                            <div style="margin-bottom: 8px; display: flex; justify-content: space-between; font-size: 0.75rem;">
+                                <div style="color: #8B6FFF; font-weight: 700;"><i class="fa-solid fa-wand-magic-sparkles"></i> {{ old_vera_s_draft_response_f369 }}</div>
+                                <span style="background: rgba(0,201,167,0.1); color: #00C9A7; padding: 2px 8px; border-radius: 4px;"><i class="fa-solid fa-check"></i> {{ old_ready_to_post_fb60 }}</span>
+                            </div>
+                            <p id="demo-reply-text" style="font-size: 0.85rem; line-height: 1.5; color: #E0E0FF; font-style: italic; margin: 0;"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Problem Section -->
+    <section class="section problem-section">
+        <div class="container">
+            <div class="section-heading">
+                <h2>{{ old_unanswered_reviews_cost_you_cu_41b1 }}</h2>
+                <p>{{ old_in_today_s_market_your_reputat_e1f7 }}</p>
+            </div>
+            
+            <div class="grid-3">
+                <div class="card glass-panel">
+                    <div class="card-icon error"><i class="fa-solid fa-clock"></i></div>
+                    <h3>{{ old_it_takes_too_much_time_1336 }}</h3>
+                    <p>{{ old_writing_thoughtful_personalize_7875 }}</p>
+                </div>
+                <div class="card glass-panel">
+                    <div class="card-icon warning"><i class="fa-solid fa-arrow-trend-down"></i></div>
+                    <h3>{{ old_businesses_stay_silent_54d7 }}</h3>
+                    <p>{{ old_over_75_of_businesses_fail_to_a4bd }}</p>
+                </div>
+                <div class="card glass-panel">
+                    <div class="card-icon danger"><i class="fa-solid fa-magnifying-glass-minus"></i></div>
+                    <h3>{{ old_missed_opportunities_4cea }}</h3>
+                    <p>{{ old_google_prioritizes_active_busi_6a96 }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Solution Section -->
+    <section class="section solution-section">
+        <div class="container">
+            <div class="solution-grid">
+                <div class="solution-content">
+                    <div class="section-label">{{ old_intelligent_workflow_97f4 }}</div>
+                    <h2>{{ old_your_autopilot_for_customer_re_684c }}</h2>
+                    <p class="lead">{{ old_replyvera_transforms_how_you_h_0382 }}</p>
+                    
+                    <ul class="feature-list">
+                        <li>
+                            <div class="feature-icon"><i class="fa-solid fa-robot"></i></div>
+                            <div>
+                                <h4>{{ old_smart_ai_replies_bd4a }}</h4>
+                                <p>{{ old_generates_context_aware_empath_de7f }}</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                            <div>
+                                <h4>{{ old_safe_controlled_b7b3 }}</h4>
+                                <p>{{ old_set_up_guardrails_require_manu_f772 }}</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><i class="fa-solid fa-palette"></i></div>
+                            <div>
+                                <h4>{{ old_matches_your_brand_tone_36fa }}</h4>
+                                <p>{{ old_customize_the_ai_to_sound_just_196a }}</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="solution-image">
+                    <div class="glass-panel feature-showcase">
+                        <div class="tone-selector">
+                            <label>{{ old_ai_tone_settings_7844 }}</label>
+                            <div class="tone-pills">
+                                <span class="active">Professional</span>
+                                <span>Friendly</span>
+                                <span>{{ old_appreciative_dd02 }}</span>
+                            </div>
+                        </div>
+                        <div class="code-block">
+                            <div class="code-line"><span>{{ old_analyzing_sentiment_4512 }}</span> <span class="tag">{{ old_positive_0_94_d608 }}</span></div>
+                            <div class="code-line"><span>{{ old_extracting_keywords_87b5 }}</span> <span class="tag">{{ old__helpful_team_349d }}</span></div>
+                            <div class="code-line"><span>{{ old_drafting_response_69c8 }}</span> <span class="tag loading">{{ old_generating_530a }}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. How it Works Section -->
+    <section class="section steps-section">
+        <div class="container">
+            <div class="section-heading">
+                <div class="section-label">{{ old_simple_setup_b95d }}</div>
+                <h2>{{ old_three_steps_to_reputation_mast_256a }}</h2>
+                <p>{{ old_a_seamless_setup_process_that_e69f }}</p>
+            </div>
+            
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-icon"><i class="fa-brands fa-google"></i></div>
+                    <div class="step-number">01</div>
+                    <h3>{{ old_connect_google_117a }}</h3>
+                    <p>{{ old_link_your_google_business_prof_b59c }}</p>
+                </div>
+                <div class="step-line"></div>
+                <div class="step-card">
+                    <div class="step-icon"><i class="fa-solid fa-pen-nib"></i></div>
+                    <div class="step-number">02</div>
+                    <h3>{{ old_ai_generates_replies_b51d }}</h3>
+                    <p>{{ old_replyvera_instantly_drafts_the_6f61 }}</p>
+                </div>
+                <div class="step-line"></div>
+                <div class="step-card">
+                    <div class="step-icon"><i class="fa-solid fa-circle-check"></i></div>
+                    <div class="step-number">03</div>
+                    <h3>{{ old_approve_or_auto_post_6d2e }}</h3>
+                    <p>{{ old_review_the_draft_and_click_app_6d42 }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Trust Section -->
+    <section class="section trust-section">
+        <div class="container">
+            <div class="trust-banner glass-panel">
+                <div class="trust-content">
+                    <div class="section-label" style="border-color: var(--border-subtle); color: var(--primary-light);">{{ old_enterprise_grade_privacy_44c9 }}</div>
+                    <h2>{{ old_engineered_for_safety_dec3 }}</h2>
+                    <p>{{ old_we_take_your_business_reputati_9da9 }}</p>
+                    <div class="trust-features">
+                        <div class="trust-item">
+                            <i class="fa-solid fa-lock trust-icon"></i>
+                            <span><strong>{{ old_no_passwords_stored_46bb }}</strong> {{ old_we_use_secure_google_oauth_we_c8d5 }}</span>
+                        </div>
+                        <div class="trust-item">
+                            <i class="fa-solid fa-sliders trust-icon"></i>
+                            <span><strong>{{ old_you_re_in_control_e856 }}</strong> {{ old_nothing_is_posted_without_your_7726 }}</span>
+                        </div>
+                        <div class="trust-item">
+                            <i class="fa-solid fa-server trust-icon"></i>
+                            <span><strong>{{ old_bank_level_security_c8f2 }}</strong> {{ old_all_data_is_encrypted_in_trans_6adf }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="trust-badge-container">
+                    <div class="security-badge">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>{{ old_100_secure_14fa }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Pricing Section -->
+    <section class="section pricing-section" id="pricing" style="background: var(--bg-dark); border-top: 1px solid rgba(255,255,255,0.03);">
+        <div class="container">
+            <div class="section-heading">
+                <div class="section-label">{{ old_pricing_plans_3bb9 }}</div>
+                <h2>{{ old_fair_transparent_pricing_be6b }}</h2>
+                <p>{{ old_choose_the_tier_that_fits_your_5dfe }}</p>
+            </div>
+            
+            <div class="grid-3" style="margin-top: 40px;">
+                <!-- {{ old_starter_ee60 }} Plan -->
+                <div class="card glass-panel" style="display: flex; flex-direction: column; justify-content: space-between; padding: 32px; border-radius: 20px; text-align: center;">
+                    <div>
+                        <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase;">Starter</span>
+                        <div style="margin: 16px 0; display: flex; align-items: baseline; gap: 4px; justify-content: center;">
+                            <span style="font-size: 2.5rem; font-weight: 900; color: white;">{{ old__29_37f2 }}</span>
+                            <span style="color: var(--text-dim); font-size: 0.9rem;">{{ old__month_1ac4 }}</span>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 24px;">{{ old_perfect_for_small_local_shops_d9bc }}</p>
+                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; font-size: 0.85rem; text-align: left;">
+                            <li><i class="fa-solid fa-circle-check" style="color: #00C9A7; margin-right: 8px;"></i> {{ old_1_location_894e }}</li>
+                            <li><i class="fa-solid fa-circle-check" style="color: #00C9A7; margin-right: 8px;"></i> {{ old_up_to_50_review_replies_mo_9c4c }}</li>
+                            <li><i class="fa-solid fa-circle-check" style="color: #00C9A7; margin-right: 8px;"></i> {{ old_manual_approval_workflow_538a }}</li>
+                            <li><i class="fa-solid fa-circle-check" style="color: #00C9A7; margin-right: 8px;"></i> {{ old_email_support_68b2 }}</li>
+                        </ul>
+                    </div>
+                    <a href="https://replyvera-dashboard.vercel.app/login" class="btn btn-secondary" style="width: 100%; margin-top: 32px; text-align: center; display: block; text-decoration: none;">{{ old_start_14_day_free_trial_f112 }}</a>
+                </div>
+
+                <!-- Pro Plan -->
+                <div class="card glass-panel" style="display: flex; flex-direction: column; justify-content: space-between; padding: 32px; border-radius: 20px; border: 1.5px solid var(--primary); position: relative; text-align: center;">
+                    <span style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;">{{ old_most_popular_425e }}</span>
+                    <div>
+                        <span style="font-size: 0.8rem; font-weight: 700; color: var(--primary-light); text-transform: uppercase;">{{ old_growth_autopilot_c7df }}</span>
+                        <div style="margin: 16px 0; display: flex; align-items: baseline; gap: 4px; justify-content: center;">
+                            <span style="font-size: 2.5rem; font-weight: 900; color: white;">{{ old__79_f783 }}</span>
+                            <span style="color: var(--text-dim); font-size: 0.9rem;">{{ old__month_1ac4 }}</span>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 24px;">{{ old_autopilot_reply_rules_for_fran_8a74 }}</p>
+                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; font-size: 0.85rem; text-align: left;">
+                            <li><i class="fa-solid fa-circle-check" style="color: #00C9A7; margin-right: 8px;"></i> {{ old_multi_location_support_b2fe }}</li>
+                            <li><i class="fa-solid fa-circle-check" style="color: #00C9A7; margin-right: 8px;"></i> {{ old_unlimited_reviews_auto_replies_2bc4 }}</li>
+                            <li><i class="fa-solid fa-circle-check" style="color: #00C9A7; margin-right: 8px;"></i> {{ old_live_autopilot_auto_post_rules_27ca }}</li>
+                            <li><i class="fa-solid fa-circle-check" style="color: #00C9A7; margin-right: 8px;"></i> {{ old_custom_brand_tone_settings_602a }}</li>
+                            <li><i class="fa-solid fa-circle-check" style="color: #00C9A7; margin-right: 8px;"></i> {{ old_priority_support_d62f }}</li>
+                        </ul>
+                    </div>
+                    <a href="https://replyvera-dashboard.vercel.app/login" class="btn btn-primary" style="width: 100%; margin-top: 32px; text-align: center; display: block; text-decoration: none;">{{ old_start_14_day_free_trial_f112 }}</a>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="card glass-panel" style="display: flex; flex-direction: column; justify-content: space-between; padding: 32px; border-radius: 20px; text-align: center;">
+                    <div>
+                        <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase;">{{ old_agency_enterprise_42f2 }}</span>
+                        <div style="margin: 16px 0; display: flex; align-items: baseline; gap: 4px; justify-content: center;">
+                            <span style="font-size: 2.5rem; font-weight: 900; color: white;">{{ old__199_83bb }}</span>
+                            <span style="color: var(--text-dim); font-size: 0.9rem;">{{ old__month_1ac4 }}</span>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 24px;">{{ old_for_agencies_managing_hundreds_210a }}</p>
+                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; font-size: 0.85rem; text-align: left;">
+                            <li><i class="fa-solid fa-circle-check" style="color: #00C9A7; margin-right: 8px;"></i> {{ old_unlimited_locations_60df }}</li>
+                            <li><i class="fa-solid fa-circle-check" style="color: #00C9A7; margin-right: 8px;"></i> {{ old_custom_api_webhook_integration_c630 }}</li>
+                            <li><i class="fa-solid fa-circle-check" style="color: #00C9A7; margin-right: 8px;"></i> {{ old_dedicated_account_manager_7490 }}</li>
+                            <li><i class="fa-solid fa-circle-check" style="color: #00C9A7; margin-right: 8px;"></i> {{ old_sla_guarantees_53c9 }}</li>
+                        </ul>
+                    </div>
+                    <a href="mailto:{{ old_info_replyvera_com_151c }}?subject=Enterprise Inquiry - ReplyVera" class="btn btn-secondary" style="width: 100%; margin-top: 32px; text-align: center; display: block; text-decoration: none;">{{ old_contact_sales_48b4 }}</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Final CTA -->
+    <section class="section cta-section" id="signup">
+        <div class="cta-glow"></div>
+        <div class="container cta-container glass-panel" style="text-align: center; padding: 48px 32px;">
+            <h2>{{ old_don_t_let_another_review_go_un_3421 }}</h2>
+            <p>{{ old_ensure_every_customer_receives_9203 }}</p>
+            <a href="https://replyvera-dashboard.vercel.app/login" class="btn btn-primary" style="margin-top: 24px; padding: 14px 40px; font-weight: 700; font-size: 1.1rem; display: inline-block; text-decoration: none;">{{ old_get_started_instantly_64d9 }}</a>
+            <p style="margin-top: 16px; font-size: 0.85rem; color: var(--text-dim);">{{ old_have_questions_contact_us_at_f0ef }} <a href="mailto:info@replyvera.com" style="color: var(--primary-light); text-decoration: none; font-weight: 600;">info@replyvera.com</a></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+                        <div style="width:34px;height:34px;background:linear-gradient(135deg,#6C47FF 0%,#00C9A7 100%);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;color:#fff;box-shadow:0 4px 15px rgba(108,71,255,0.4);flex-shrink:0;"><i class="fa-solid fa-reply"></i></div>
+                        <span style="font-size:1.4rem;font-weight:800;letter-spacing:-0.02em;color:#F0F0FF;">Reply<span style="color:#8B6FFF;">Vera</span></span>
+                    </a>
+                    <p>{{ old_the_review_autopilot_trusted_b_2c8f }}</p>
+                </div>
+                <div class="footer-links">
+                    <p>{{ index_2026_replyvera_all_rights_r_c9ec }}</p>
+                    <div style="margin-top: 10px; display: flex; gap: 20px; justify-content: center; font-size: 0.85rem;">
+                        <a href="terms.html" style="color: var(--text-dim); text-decoration: none;">{{ old_terms_of_service_3b6c }}</a>
+                        <a href="privacy.html" style="color: var(--text-dim); text-decoration: none;">{{ old_privacy_policy_fa2e }}</a>
+                        <a href="cookie.html" style="color: var(--text-dim); text-decoration: none;">{{ old_cookie_policy_26b3 }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+</body>
+</html>

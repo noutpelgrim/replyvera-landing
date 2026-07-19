@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy | ReplyVera</title>
+  <title>{{ terms_terms_of_service_replyvera_13e4 }}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -16,8 +16,6 @@
     p { margin-bottom: 20px; color: var(--text-secondary); }
     ul { margin-bottom: 20px; padding-left: 20px; color: var(--text-secondary); }
     li { margin-bottom: 10px; }
-    a { color: var(--primary); text-decoration: none; }
-    a:hover { text-decoration: underline; }
   </style>
   <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
@@ -44,23 +42,6 @@
         window.location.href = newPath + window.location.hash;
     }
     </script>
-
-    <script>
-        (function() {
-            if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
-                var lang = navigator.language || navigator.userLanguage;
-                if (lang) {
-                    if (lang.startsWith('es') && !localStorage.getItem('lang_redirected')) {
-                        localStorage.setItem('lang_redirected', 'true');
-                        window.location.href = '/es/';
-                    } else if (lang.startsWith('nl') && !localStorage.getItem('lang_redirected')) {
-                        localStorage.setItem('lang_redirected', 'true');
-                        window.location.href = '/nl/';
-                    }
-                }
-            }
-        })();
-    </script>
 </head>
 
 <body>
@@ -71,16 +52,16 @@
                 <div class="nav-logo-icon">
                     <i class="fa-solid fa-reply"></i>
                 </div>
-                <span class="nav-logo-text">Reply<span>Vera</span></span>
+                <span class="nav-logo-text">{{ terms_reply_25d8 }}<span>{{ terms_vera_74fd }}</span></span>
             </a>
 
             <div class="nav-links">
-                <a href="index.html#product">Product</a>
-                <a href="index.html#benefits">Features</a>
-                <a href="index.html#how-it-works">How It Works</a>
+                <a href="index.html#product">{{ terms_product_deb1 }}</a>
+                <a href="index.html#benefits">{{ terms_features_98f7 }}</a>
+                <a href="index.html#how-it-works">{{ terms_how_it_works_aabd }}</a>
                 <div class="nav-dropdown">
                     <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="menu" aria-controls="industries-menu">
-                        Industries
+                        {{ terms_industries_eb47 }}
                         <span class="chevron-icon"><i data-lucide="chevron-down" style="width:12px;height:12px;"></i></span>
                     </button>
                     <div class="nav-dropdown-content" id="industries-menu" role="menu">
@@ -88,71 +69,71 @@
                             <a href="/industries/restaurants" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper restaurant-icon"><i data-lucide="utensils" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Restaurants</div>
-                                    <div class="dropdown-desc">Routine replies with food-safety escalation.</div>
+                                    <div class="dropdown-title">{{ terms_restaurants_386c }}</div>
+                                    <div class="dropdown-desc">{{ terms_routine_replies_with_food_safe_2780 }}</div>
                                 </div>
                             </a>
                             <a href="/industries/dentists" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper dentist-icon"><i data-lucide="activity" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
                                     <div class="dropdown-title">Dentists &amp; Clinics</div>
-                                    <div class="dropdown-desc">Privacy-conscious replies for patient reviews.</div>
+                                    <div class="dropdown-desc">{{ terms_privacy_conscious_replies_for_887c }}</div>
                                 </div>
                             </a>
                             <a href="/industries/agencies" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper agency-icon"><i data-lucide="briefcase" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Marketing Agencies</div>
-                                    <div class="dropdown-desc">Manage Google review replies for every client.</div>
+                                    <div class="dropdown-title">{{ terms_marketing_agencies_9220 }}</div>
+                                    <div class="dropdown-desc">{{ terms_manage_google_review_replies_f_51d4 }}</div>
                                 </div>
                             </a>
                             <a href="/industries/martial-arts" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper martial-arts-icon"><i data-lucide="shield" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Martial Arts Schools</div>
-                                    <div class="dropdown-desc">Parent-friendly replies with safety controls.</div>
+                                    <div class="dropdown-title">{{ terms_martial_arts_schools_7e32 }}</div>
+                                    <div class="dropdown-desc">{{ terms_parent_friendly_replies_with_s_c29c }}</div>
                                 </div>
                             </a>
                             <a href="/industries/childcare" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper childcare-icon"><i data-lucide="heart" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
                                     <div class="dropdown-title">Childcare &amp; Preschool</div>
-                                    <div class="dropdown-desc">Safety-aware responses for parent feedback.</div>
+                                    <div class="dropdown-desc">{{ terms_safety_aware_responses_for_par_1b32 }}</div>
                                 </div>
                             </a>
                             <a href="/industries/tutoring" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper tutoring-icon"><i data-lucide="book-open" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Tutoring Centers</div>
-                                    <div class="dropdown-desc">Professional replies for parent and student reviews.</div>
+                                    <div class="dropdown-title">{{ terms_tutoring_centers_9ad5 }}</div>
+                                    <div class="dropdown-desc">{{ terms_professional_replies_for_paren_3315 }}</div>
                                 </div>
                             </a>
                             <a href="/industries/pet-care" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper petcare-icon"><i data-lucide="dog" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Pet Care</div>
-                                    <div class="dropdown-desc">Warm replies with animal-safety escalation.</div>
+                                    <div class="dropdown-title">{{ terms_pet_care_ef83 }}</div>
+                                    <div class="dropdown-desc">{{ terms_warm_replies_with_animal_safet_47eb }}</div>
                                 </div>
                             </a>
                             <a href="/industries/car-washes" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper carwash-icon"><i data-lucide="car" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Car Wash Operators</div>
-                                    <div class="dropdown-desc">Track damage, billing, and service complaints.</div>
+                                    <div class="dropdown-title">{{ terms_car_wash_operators_0281 }}</div>
+                                    <div class="dropdown-desc">{{ terms_track_damage_billing_and_servi_9260 }}</div>
                                 </div>
                             </a>
                             <a href="/industries/laundromats" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper laundromat-icon"><i data-lucide="wind" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Laundromats</div>
-                                    <div class="dropdown-desc">Monitor cleanliness, equipment, and refunds.</div>
+                                    <div class="dropdown-title">{{ terms_laundromats_caf3 }}</div>
+                                    <div class="dropdown-desc">{{ terms_monitor_cleanliness_equipment_3aed }}</div>
                                 </div>
                             </a>
                         </div>
                     </div>
                 </div>
-                <a href="pricing.html">Pricing</a>
-                <a href="index.html#faq">FAQ</a>
+                <a href="pricing.html">{{ terms_pricing_e22a }}</a>
+                <a href="index.html#faq">{{ terms_faq_1fe9 }}</a>
             </div>
 
             <div class="nav-actions">
@@ -166,8 +147,8 @@
                         <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
                     </div>
                 </div>
-                <a href="https://dashboard.replyvera.com/login" class="nav-login">Log In</a>
-                <a href="pricing.html" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Start Free Trial</a>
+                <a href="https://dashboard.replyvera.com/login" class="nav-login">{{ terms_log_in_3bbb }}</a>
+                <a href="pricing.html" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">{{ terms_start_free_trial_debd }}</a>
                 <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
                         <line x1="3" y1="6" x2="21" y2="6"/>
@@ -182,11 +163,11 @@
     <!-- Mobile Navigation Panel -->
     <div class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
         <div class="mobile-nav-links">
-            <a href="index.html#product" class="mobile-nav-link">Product</a>
-            <a href="index.html#benefits" class="mobile-nav-link">Features</a>
-            <a href="index.html#how-it-works" class="mobile-nav-link">How It Works</a>
+            <a href="index.html#product" class="mobile-nav-link">{{ terms_product_deb1 }}</a>
+            <a href="index.html#benefits" class="mobile-nav-link">{{ terms_features_98f7 }}</a>
+            <a href="index.html#how-it-works" class="mobile-nav-link">{{ terms_how_it_works_aabd }}</a>
 
-            <!-- Industries Accordion -->
+            <!-- {{ terms_industries_eb47 }} Accordion -->
             <button class="mobile-industry-toggle" id="mobile-ind-toggle" aria-expanded="false">
                 Industries
                 <span class="mobile-industry-chevron">
@@ -196,44 +177,44 @@
             <div class="mobile-industry-list" id="mobile-ind-list">
                 <a href="/industries/restaurants" class="mobile-industry-item">
                     <div class="mobile-ind-icon restaurant-icon"><i data-lucide="utensils" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Restaurants</div><div class="mobile-ind-desc">Food-safety escalation and staff recognition</div></div>
+                    <div><div class="mobile-ind-name">{{ terms_restaurants_386c }}</div><div class="mobile-ind-desc">{{ terms_food_safety_escalation_and_sta_c10a }}</div></div>
                 </a>
                 <a href="/industries/dentists" class="mobile-industry-item">
                     <div class="mobile-ind-icon dentist-icon"><i data-lucide="activity" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Dentists &amp; Clinics</div><div class="mobile-ind-desc">Privacy-conscious patient review replies</div></div>
+                    <div><div class="mobile-ind-name">Dentists &amp; Clinics</div><div class="mobile-ind-desc">{{ terms_privacy_conscious_patient_revi_c2f3 }}</div></div>
                 </a>
                 <a href="/industries/agencies" class="mobile-industry-item">
                     <div class="mobile-ind-icon agency-icon"><i data-lucide="briefcase" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Marketing Agencies</div><div class="mobile-ind-desc">Manage multiple clients from one dashboard</div></div>
+                    <div><div class="mobile-ind-name">{{ terms_marketing_agencies_9220 }}</div><div class="mobile-ind-desc">{{ terms_manage_multiple_clients_from_o_305e }}</div></div>
                 </a>
                 <a href="/industries/martial-arts" class="mobile-industry-item">
                     <div class="mobile-ind-icon martial-arts-icon"><i data-lucide="shield" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Martial Arts Schools</div><div class="mobile-ind-desc">Student safety and membership escalation</div></div>
+                    <div><div class="mobile-ind-name">{{ terms_martial_arts_schools_7e32 }}</div><div class="mobile-ind-desc">{{ terms_student_safety_and_membership_2673 }}</div></div>
                 </a>
                 <a href="/industries/childcare" class="mobile-industry-item">
                     <div class="mobile-ind-icon childcare-icon"><i data-lucide="heart" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Childcare &amp; Preschool</div><div class="mobile-ind-desc">Child safety and privacy protection</div></div>
+                    <div><div class="mobile-ind-name">Childcare &amp; Preschool</div><div class="mobile-ind-desc">{{ terms_child_safety_and_privacy_prote_777c }}</div></div>
                 </a>
                 <a href="/industries/tutoring" class="mobile-industry-item">
                     <div class="mobile-ind-icon tutoring-icon"><i data-lucide="book-open" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Tutoring Centers</div><div class="mobile-ind-desc">Academic claims and refund protection</div></div>
+                    <div><div class="mobile-ind-name">{{ terms_tutoring_centers_9ad5 }}</div><div class="mobile-ind-desc">{{ terms_academic_claims_and_refund_pro_9f47 }}</div></div>
                 </a>
                 <a href="/industries/pet-care" class="mobile-industry-item">
                     <div class="mobile-ind-icon petcare-icon"><i data-lucide="dog" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Pet Care</div><div class="mobile-ind-desc">Warm replies with animal-safety escalation</div></div>
+                    <div><div class="mobile-ind-name">{{ terms_pet_care_ef83 }}</div><div class="mobile-ind-desc">{{ terms_warm_replies_with_animal_safet_f68c }}</div></div>
                 </a>
                 <a href="/industries/car-washes" class="mobile-industry-item">
                     <div class="mobile-ind-icon carwash-icon"><i data-lucide="car" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Car Wash Operators</div><div class="mobile-ind-desc">Vehicle damage and billing escalation</div></div>
+                    <div><div class="mobile-ind-name">{{ terms_car_wash_operators_0281 }}</div><div class="mobile-ind-desc">{{ terms_vehicle_damage_and_billing_esc_5799 }}</div></div>
                 </a>
                 <a href="/industries/laundromats" class="mobile-industry-item">
                     <div class="mobile-ind-icon laundromat-icon"><i data-lucide="wind" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Laundromats</div><div class="mobile-ind-desc">Machine, cleanliness, and refund reviews</div></div>
+                    <div><div class="mobile-ind-name">{{ terms_laundromats_caf3 }}</div><div class="mobile-ind-desc">{{ terms_machine_cleanliness_and_refund_4826 }}</div></div>
                 </a>
             </div>
 
-            <a href="pricing.html" class="mobile-nav-link">Pricing</a>
-            <a href="index.html#faq" class="mobile-nav-link">FAQ</a>
+            <a href="pricing.html" class="mobile-nav-link">{{ terms_pricing_e22a }}</a>
+            <a href="index.html#faq" class="mobile-nav-link">{{ terms_faq_1fe9 }}</a>
             <div class="lang-selector">
                     <button class="lang-btn" aria-label="Select Language">
                         <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
@@ -244,7 +225,7 @@
                         <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
                     </div>
                 </div>
-                <a href="https://dashboard.replyvera.com/login" class="mobile-nav-link">Log In</a>
+                <a href="https://dashboard.replyvera.com/login" class="mobile-nav-link">{{ terms_log_in_3bbb }}</a>
         </div>
     </div>
 
@@ -252,40 +233,39 @@
     <main class="section section-light" style="padding-top: 140px; min-height: calc(100vh - 400px);">
         <div class="container">
             <div class="content-wrapper">
-                <h1>Privacy Policy</h1>
-                <p>Last Updated: April 20, 2026</p>
+                <h1>{{ terms_terms_of_service_3b6c }}</h1>
+                <p>{{ terms_last_updated_april_20_2026_db0e }}</p>
 
-                <p>At ReplyVera, we value your privacy and the trust you place in us to manage your online reputation. This Privacy Policy explains how we collect, use, and protect your information when you use our service.</p>
+                <p>{{ terms_by_using_the_replyvera_service_920b }}</p>
 
-                <h2>1. Information We Collect</h2>
-                <p>We collect information to provide a better service to all our users. This includes:</p>
+                <h2>{{ terms_1_the_service_5b70 }}</h2>
+                <p>{{ terms_replyvera_provides_an_ai_assis_ede1 }}</p>
+
+                <h2>{{ terms_2_user_responsibilities_3c8f }}</h2>
+                <p>{{ terms_you_are_responsible_for_the_co_4ca8 }}</p>
                 <ul>
-                    <li><strong>Account Information:</strong> When you sign up, we collect your email address and basic profile information via Google OAuth.</li>
-                    <li><strong>Google Business Profile Data:</strong> To operate our core service, we request access to your Google Business Profile. This includes review content, reviewer names, and location data.</li>
-                    <li><strong>Usage Data:</strong> We may collect information about how you interact with our dashboard to improve our user interface and AI performance.</li>
+                    <li>{{ terms_automated_replies_are_generate_f696 }}</li>
+                    <li>{{ terms_you_have_the_option_to_review_6c83 }}</li>
+                    <li>{{ terms_you_must_comply_with_google_s_3c63 }}</li>
                 </ul>
 
-                <h2>2. How We Use Information</h2>
-                <p>We use the data we collect for the following purposes:</p>
-                <ul>
-                    <li>To draft and post replies to your Google reviews using AI.</li>
-                    <li>To provide analytics on your review performance.</li>
-                    <li>To communicate with you about your account and service updates.</li>
-                    <li>To improve our AI algorithms for more accurate and helpful responses.</li>
-                </ul>
+                <h2>{{ terms_3_access_and_permissions_d29c }}</h2>
+                <p>{{ terms_by_connecting_your_google_acco_f174 }}</p>
 
-                <h2>3. Limited Use for Google User Data</h2>
-                <p>ReplyVera's use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy#additional_requirements_for_specific_api_scopes">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
-                <p>We do not use your Google data for serving advertisements, and we do not sell your data to third parties.</p>
+                <h2>{{ terms_4_subscription_and_payments_54de }}</h2>
+                <p>{{ terms_replyvera_is_a_subscription_ba_222e }}</p>
 
-                <h2>4. Data Retention</h2>
-                <p>We retain your information as long as your account is active. If you disconnect your Google Account or delete your ReplyVera account, we will remove your tokens and cease data collection immediately.</p>
+                <h2>{{ terms_5_limitation_of_liability_6afb }}</h2>
+                <p>{{ terms_replyvera_is_provided_as_is_we_f9d2 }}</p>
 
-                <h2>5. Security</h2>
-                <p>We implement industry-standard security measures, including encryption at rest and in transit, to protect your data from unauthorized access or disclosure.</p>
+                <h2>{{ terms_6_termination_54a7 }}</h2>
+                <p>{{ terms_we_reserve_the_right_to_suspen_c7f3 }}</p>
 
-                <h2>6. Contact Us</h2>
-                <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:info@replyvera.com">info@replyvera.com</a>.</p>
+                <h2>{{ terms_7_changes_to_terms_558a }}</h2>
+                <p>{{ terms_we_may_update_these_terms_from_a2f0 }}</p>
+
+                <h2>{{ terms_8_contact_us_359a }}</h2>
+                <p>{{ terms_if_you_have_any_questions_abou_d738 }} <a href="mailto:{{ terms_info_replyvera_com_151c }}" style="color: var(--primary);">info@replyvera.com</a>.</p>
             </div>
         </div>
     </main>
@@ -299,25 +279,25 @@
                         <div class="nav-logo-icon">
                             <i class="fa-solid fa-reply"></i>
                         </div>
-                        <span class="nav-logo-text" style="font-size:1.2rem;">Reply<span>Vera</span></span>
+                        <span class="nav-logo-text" style="font-size:1.2rem;">{{ terms_reply_25d8 }}<span>{{ terms_vera_74fd }}</span></span>
                     </a>
-                    <p>Automated Google review responses for small businesses. Plans start at $29 per month.</p>
-                    <p style="font-size:0.78rem;margin-top:8px;color:var(--text-muted);">Currently supporting Google Reviews. Additional platforms are planned.</p>
+                    <p>{{ terms_automated_google_review_respon_2577 }}</p>
+                    <p style="font-size:0.78rem;margin-top:8px;color:var(--text-muted);">{{ terms_currently_supporting_google_re_ead9 }}</p>
                 </div>
 
                 <div class="footer-col">
-                    <div class="footer-col-title">Product</div>
+                    <div class="footer-col-title">{{ terms_product_deb1 }}</div>
                     <ul class="footer-links">
-                        <li><a href="index.html#product">Product</a></li>
-                        <li><a href="index.html#how-it-works">How It Works</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="index.html#product">{{ terms_product_deb1 }}</a></li>
+                        <li><a href="index.html#how-it-works">{{ terms_how_it_works_aabd }}</a></li>
+                        <li><a href="pricing.html">{{ terms_pricing_e22a }}</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
-                    <div class="footer-col-title">Company</div>
+                    <div class="footer-col-title">{{ terms_company_1c76 }}</div>
                     <ul class="footer-links">
-                        <li><a href="mailto:info@replyvera.com">Contact Us</a></li>
+                        <li><a href="mailto:info@replyvera.com">{{ terms_contact_us_9cfc }}</a></li>
                         <li><div class="lang-selector">
                     <button class="lang-btn" aria-label="Select Language">
                         <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
@@ -328,16 +308,16 @@
                         <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
                     </div>
                 </div>
-                <a h>Log In</a></li>
+                <a h>{{ terms_log_in_3bbb }}</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
-                    <div class="footer-col-title">Legal</div>
+                    <div class="footer-col-title">{{ terms_legal_a10a }}</div>
                     <ul class="footer-links">
-                        <li><a href="/terms.html">Terms of Service</a></li>
-                        <li><a href="/privacy.html">Privacy Policy</a></li>
-                        <li><a href="cookie.html">Cookie Policy</a></li>
+                        <li><a href="/terms.html">{{ terms_terms_of_service_3b6c }}</a></li>
+                        <li><a href="/privacy.html">{{ terms_privacy_policy_fa2e }}</a></li>
+                        <li><a href="cookie.html">{{ terms_cookie_policy_26b3 }}</a></li>
                     </ul>
                 </div>
             </div>
@@ -355,17 +335,17 @@
     <!-- Cookie Consent Banner -->
     <div id="cookie-banner" class="cookie-banner" aria-hidden="true">
         <div class="cookie-content">
-            <p>We use cookies to improve your experience and analyze site performance. By clicking "Accept", you agree to our use of cookies as outlined in our <a href="cookie.html">Cookie Policy</a>.</p>
+            <p>{{ terms_we_use_cookies_to_improve_your_35e6 }} <a href="cookie.html">{{ terms_cookie_policy_26b3 }}</a>.</p>
             <div class="cookie-buttons">
-                <button id="accept-cookies" class="btn btn-accent btn-sm" style="padding:6px 12px; font-size:0.78rem;">Accept</button>
-                <button id="decline-cookies" class="btn btn-secondary btn-sm" style="padding:6px 12px; font-size:0.78rem;">Decline</button>
+                <button id="accept-cookies" class="btn btn-accent btn-sm" style="padding:6px 12px; font-size:0.78rem;">{{ terms_accept_c440 }}</button>
+                <button id="decline-cookies" class="btn btn-secondary btn-sm" style="padding:6px 12px; font-size:0.78rem;">{{ terms_decline_0d36 }}</button>
             </div>
         </div>
     </div>
 
     <!-- Vercel Web Analytics -->
     <script>
-      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+      {{ terms_window_va_window_va_function_w_bd2c }}
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
 
