@@ -19,11 +19,12 @@ ReplyVera is a SaaS product that helps businesses automatically reply to Google 
 - ✅ Scroll-triggered fade-up animations via IntersectionObserver
 - ✅ Mouse parallax on hero blobs
 - ✅ Active nav highlight on scroll
-- ✅ Fully responsive (mobile, tablet, desktop)
+- ✅ Interactive self-serve product demo page (`demo.html`)
 
 ## File Structure
 ```
 index.html          — Main homepage HTML
+demo.html           — Standalone interactive product sandbox
 css/style.css       — All styles (dark SaaS theme)
 js/main.js          — Interactivity, animations, counters
 README.md           — This file
@@ -31,6 +32,7 @@ README.md           — This file
 
 ## Entry Point
 - `/index.html` — Main landing page
+- `/demo.html` — Interactive product demo
 
 ## Design Tokens
 - Primary color: `#6C47FF` (purple)
@@ -43,11 +45,10 @@ README.md           — This file
 - Authentication / user dashboard
 - Live Google API connection
 - Blog or help center pages
-- Contact / demo booking form logic
+- Contact / support form logic
 
 ## Recommended Next Steps
-1. Add a working contact/demo booking form (e.g. Formspree or Calendly embed)
+1. Add a simple contact/support inquiry form (e.g. Formspree embed)
 2. Add a dashboard preview screenshot or Lottie animation in the hero
-3. Build out an interactive product demo page
-4. Create individual pages for each feature
-5. Connect real pricing to a payment provider (Stripe)
+3. Create individual pages for each feature
+4. Connect real pricing to a payment provider (Stripe)

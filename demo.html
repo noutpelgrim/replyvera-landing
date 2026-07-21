@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Demo – ReplyVera Google Review Automation</title>
+    <meta name="description" content="Try ReplyVera's interactive AI demo. See how Vera handles routine 5-star reviews automatically while safely flagging negative or sensitive reviews for approval.">
+    <link rel="stylesheet" href="style.css?v=16">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+
+    <style>
+        .demo-page-hero {
+            padding: 140px 0 40px;
+            text-align: center;
+            background: radial-gradient(circle at 50% 20%, rgba(108, 71, 255, 0.15) 0%, rgba(10, 10, 20, 0) 70%);
+        }
+        .demo-sandbox-wrapper {
+            max-width: 1140px;
+            margin: 0 auto 100px;
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 28px;
+            background: #0E0E1A;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(108, 71, 255, 0.2);
+            overflow: hidden;
+        }
+        @media (max-width: 900px) {
+            .demo-sandbox-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* Left Controls */
+        .sandbox-controls {
+            padding: 28px;
+            background: rgba(18, 18, 32, 0.6);
+            border-right: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .control-group-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .industry-select {
+            width: 100%;
+            padding: 12px 14px;
+            background: #161628;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 10px;
+            color: #FFF;
+            font-family: inherit;
+            font-size: 0.92rem;
+            outline: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .industry-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(108, 71, 255, 0.2);
+        }
+        .preset-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .preset-btn {
+            padding: 12px 14px;
+            background: #141424;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            color: var(--text-secondary);
+            font-family: inherit;
+            font-size: 0.88rem;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.2s ease;
+        }
+        .preset-btn:hover, .preset-btn.active {
+            background: rgba(108, 71, 255, 0.15);
+            border-color: var(--primary);
+            color: #FFF;
+        }
+        .preset-btn.active {
+            box-shadow: 0 0 12px rgba(108, 71, 255, 0.3);
+        }
+        .stars-row {
+            display: flex;
+            gap: 4px;
+            color: #F59E0B;
+        }
+        .custom-review-input {
+            width: 100%;
+            height: 90px;
+            padding: 12px;
+            background: #161628;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 10px;
+            color: #FFF;
+            font-family: inherit;
+            font-size: 0.88rem;
+            resize: none;
+            outline: none;
+        }
+        .custom-review-input:focus {
+            border-color: var(--primary);
+        }
+        .star-rating-picker {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .star-pick-btn {
+            background: #161628;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #F59E0B;
+            padding: 6px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.82rem;
+            transition: all 0.2s;
+        }
+        .star-pick-btn.selected {
+            background: rgba(245, 158, 11, 0.2);
+            border-color: #F59E0B;
+        }
+
+        /* Right Canvas */
+        .sandbox-canvas {
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            background: #0A0A14;
+        }
+        .engine-stage {
+            background: #121222;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 14px;
+            padding: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .engine-stage-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 10px;
+        }
+        .engine-stage-num {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tag-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+        .chip-positive { background: rgba(0, 201, 167, 0.15); color: #00C9A7; border: 1px solid rgba(0, 201, 167, 0.3); }
+        .chip-warning { background: rgba(245, 158, 11, 0.15); color: #F59E0B; border: 1px solid rgba(245, 158, 11, 0.3); }
+        .chip-danger { background: rgba(239, 68, 68, 0.15); color: #EF4444; border: 1px solid rgba(239, 68, 68, 0.3); }
+
+        .response-typing-container {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #E2E8F0;
+            background: #18182E;
+            padding: 16px;
+            border-radius: 10px;
+            border-left: 3px solid var(--primary);
+            min-height: 60px;
+        }
+        .pulse-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-right: 6px;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.3; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.1); }
+            100% { opacity: 0.3; transform: scale(0.9); }
+        }
+    </style>
+
+    <script>
+    function changeLang(lang, event) {
+        event.preventDefault();
+        localStorage.setItem('lang_redirected', 'true');
+        
+        let path = window.location.pathname;
+        if (path.startsWith('/es/')) path = path.replace('/es/', '/');
+        if (path.startsWith('/nl/')) path = path.replace('/nl/', '/');
+        if (path === '/es' || path === '/nl') path = '/';
+        
+        let newPath = path;
+        if (lang === 'es') {
+            newPath = '/es' + (path === '/' ? '/' : path);
+        } else if (lang === 'nl') {
+            newPath = '/nl' + (path === '/' ? '/' : path);
+        }
+        window.location.href = newPath + window.location.hash;
+    }
+    </script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <i class="fa-solid fa-reply"></i>
+                </div>
+                <span class="nav-logo-text">Reply<span>Vera</span></span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html#product">Product</a>
+                <a href="index.html#benefits">Features</a>
+                <a href="index.html#how-it-works">How It Works</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="menu" aria-controls="industries-menu">
+                        Industries
+                        <span class="chevron-icon"><i data-lucide="chevron-down" style="width:12px;height:12px;"></i></span>
+                    </button>
+                    <div class="nav-dropdown-content" id="industries-menu" role="menu">
+                        <div class="nav-dropdown-grid">
+                            <a href="industries/restaurants" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper restaurant-icon"><i data-lucide="utensils" style="width:14px;height:14px;"></i></div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Restaurants</div>
+                                    <div class="dropdown-desc">Routine replies with food-safety escalation.</div>
+                                </div>
+                            </a>
+                            <a href="industries/dentists" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper dentist-icon"><i data-lucide="activity" style="width:14px;height:14px;"></i></div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Dentists &amp; Clinics</div>
+                                    <div class="dropdown-desc">Privacy-conscious replies for patient reviews.</div>
+                                </div>
+                            </a>
+                            <a href="industries/agencies" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper agency-icon"><i data-lucide="briefcase" style="width:14px;height:14px;"></i></div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Marketing Agencies</div>
+                                    <div class="dropdown-desc">Manage Google review replies for every client.</div>
+                                </div>
+                            </a>
+                            <a href="industries/martial-arts" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper martial-arts-icon"><i data-lucide="shield" style="width:14px;height:14px;"></i></div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Martial Arts Schools</div>
+                                    <div class="dropdown-desc">Parent-friendly replies with safety controls.</div>
+                                </div>
+                            </a>
+                            <a href="industries/childcare" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper childcare-icon"><i data-lucide="heart" style="width:14px;height:14px;"></i></div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Childcare &amp; Preschool</div>
+                                    <div class="dropdown-desc">Safety-aware responses for parent feedback.</div>
+                                </div>
+                            </a>
+                            <a href="industries/tutoring" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper tutoring-icon"><i data-lucide="book-open" style="width:14px;height:14px;"></i></div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Tutoring Centers</div>
+                                    <div class="dropdown-desc">Professional replies for parent and student reviews.</div>
+                                </div>
+                            </a>
+                            <a href="industries/pet-care" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper petcare-icon"><i data-lucide="dog" style="width:14px;height:14px;"></i></div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Pet Care</div>
+                                    <div class="dropdown-desc">Warm replies with animal-safety escalation.</div>
+                                </div>
+                            </a>
+                            <a href="industries/car-washes" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper carwash-icon"><i data-lucide="car" style="width:14px;height:14px;"></i></div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Car Wash Operators</div>
+                                    <div class="dropdown-desc">Track damage, billing, and service complaints.</div>
+                                </div>
+                            </a>
+                            <a href="industries/laundromats" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper laundromat-icon"><i data-lucide="wind" style="width:14px;height:14px;"></i></div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Laundromats</div>
+                                    <div class="dropdown-desc">Monitor cleanliness, equipment, and refunds.</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <a href="pricing.html">Pricing</a>
+                <a href="index.html#faq">FAQ</a>
+            </div>
+
+            <div class="nav-actions">
+                <div class="lang-selector">
+                    <button class="lang-btn" aria-label="Select Language">
+                        <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> EN
+                    </button>
+                    <div class="lang-menu">
+                        <a href="#" class="lang-item" onclick="changeLang('en', event)">English</a>
+                        <a href="#" class="lang-item" onclick="changeLang('es', event)">Español</a>
+                        <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+                    </div>
+                </div>
+                <a href="https://dashboard.replyvera.com/login" class="nav-login">Log In</a>
+                <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Start Free Trial</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header / Hero -->
+    <header class="demo-page-hero">
+        <div class="container">
+            <div class="eyebrow" style="display:inline-flex;margin-bottom:16px;">
+                <i data-lucide="play-circle" style="width:14px;height:14px;color:var(--accent);"></i>
+                Self-Serve Product Sandbox
+            </div>
+            <h1 style="font-size:2.8rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:16px;color:#FFF;">
+                Experience Vera's AI Review Engine
+            </h1>
+            <p style="font-size:1.15rem;color:var(--text-secondary);max-width:640px;margin:0 auto 40px;line-height:1.6;">
+                Select an industry scenario or type your own review to see Vera evaluate sentiment, check safety rules, and auto-draft personalized responses in real time.
+            </p>
+        </div>
+    </header>
+
+    <!-- Sandbox Section -->
+    <section class="container">
+        <div class="demo-sandbox-wrapper">
+            
+            <!-- Left Controls -->
+            <div class="sandbox-controls">
+                
+                <div>
+                    <div class="control-group-title">
+                        <i data-lucide="building-2" style="width:14px;height:14px;"></i> Select Industry Context
+                    </div>
+                    <select id="industrySelect" class="industry-select" onchange="handleIndustryChange()">
+                        <option value="restaurant">🍽️ Restaurant &amp; Dining</option>
+                        <option value="dentist">🦷 Dental Clinic</option>
+                        <option value="agency">💼 Marketing Agency</option>
+                        <option value="martial-arts">🥋 Martial Arts School</option>
+                        <option value="childcare">🧸 Childcare &amp; Preschool</option>
+                        <option value="pet-care">🐶 Pet Care &amp; Grooming</option>
+                        <option value="car-wash">🚗 Car Wash Operator</option>
+                        <option value="laundromat">🧺 Laundromat</option>
+                    </select>
+                </div>
+
+                <div>
+                    <div class="control-group-title">
+                        <i data-lucide="sparkles" style="width:14px;height:14px;"></i> Test Preset Scenarios
+                    </div>
+                    <div class="preset-buttons">
+                        <button class="preset-btn active" id="btn-preset-positive" onclick="loadPreset('positive')">
+                            <span>5-Star Praise</span>
+                            <div class="stars-row">★★★★★</div>
+                        </button>
+                        <button class="preset-btn" id="btn-preset-negative" onclick="loadPreset('negative')">
+                            <span>3-Star Service Complaint</span>
+                            <div class="stars-row">★★★☆☆</div>
+                        </button>
+                        <button class="preset-btn" id="btn-preset-sensitive" onclick="loadPreset('sensitive')">
+                            <span>1-Star Sensitive Incident</span>
+                            <div class="stars-row">★☆☆☆☆</div>
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="control-group-title">
+                        <i data-lucide="edit-3" style="width:14px;height:14px;"></i> Or Type Custom Review
+                    </div>
+                    <textarea id="customReviewText" class="custom-review-input" placeholder="Type custom review text here... (e.g. 'Great food but service was slow', or 'Damaged my car')"></textarea>
+                    
+                    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;">
+                        <span style="font-size:0.78rem;color:var(--text-muted);">Select Stars:</span>
+                        <div class="star-rating-picker">
+                            <button class="star-pick-btn" onclick="setCustomStars(1)">1★</button>
+                            <button class="star-pick-btn" onclick="setCustomStars(2)">2★</button>
+                            <button class="star-pick-btn" onclick="setCustomStars(3)">3★</button>
+                            <button class="star-pick-btn" onclick="setCustomStars(4)">4★</button>
+                            <button class="star-pick-btn selected" id="star-5-btn" onclick="setCustomStars(5)">5★</button>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" style="width:100%;margin-top:16px;padding:12px;font-size:0.9rem;justify-content:center;" onclick="runCustomAnalysis()">
+                        <i data-lucide="play" style="width:14px;height:14px;margin-right:6px;"></i> Run Custom Simulation
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Right Visualizer Canvas -->
+            <div class="sandbox-canvas">
+                
+                <!-- Stage 1: Incoming Google Review -->
+                <div class="engine-stage">
+                    <div class="engine-stage-header">
+                        <div class="engine-stage-num">
+                            <i data-lucide="bell" style="width:14px;height:14px;"></i> Step 1: New Google Review Arrived
+                        </div>
+                        <span style="font-size:0.75rem;color:var(--text-muted);"><i class="fa-brands fa-google" style="color:#DB4437;margin-right:4px;"></i> Google Business Profile</span>
+                    </div>
+                    <div style="display:flex;gap:12px;align-items:flex-start;">
+                        <div style="width:40px;height:40px;background:#2A2A44;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);" id="reviewerAvatar">
+                            JD
+                        </div>
+                        <div style="flex:1;">
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+                                <span style="font-weight:700;font-size:0.95rem;color:#FFF;" id="reviewerName">John Doe</span>
+                                <div class="stars-row" id="displayStars">★★★★★</div>
+                            </div>
+                            <div style="font-size:0.92rem;color:var(--text-secondary);line-height:1.5;" id="displayReviewText">
+                                "Friendly team and excellent service. Sarah was especially helpful during our visit!"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 2: Sentiment & Safety Engine -->
+                <div class="engine-stage">
+                    <div class="engine-stage-header">
+                        <div class="engine-stage-num">
+                            <i data-lucide="cpu" style="width:14px;height:14px;"></i> Step 2: Vera Sentiment &amp; Safety Filter
+                        </div>
+                        <span id="riskChip" class="tag-chip chip-positive">
+                            <i data-lucide="shield-check" style="width:12px;height:12px;"></i> Low Risk
+                        </span>
+                    </div>
+
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(130px, 1fr));gap:12px;">
+                        <div style="background:#18182E;padding:10px;border-radius:8px;">
+                            <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:4px;">Sentiment</div>
+                            <div style="font-weight:700;font-size:0.88rem;color:#FFF;" id="valSentiment">Positive</div>
+                        </div>
+                        <div style="background:#18182E;padding:10px;border-radius:8px;">
+                            <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:4px;">Primary Topic</div>
+                            <div style="font-weight:700;font-size:0.88rem;color:#FFF;" id="valTopic">Customer Service</div>
+                        </div>
+                        <div style="background:#18182E;padding:10px;border-radius:8px;">
+                            <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:4px;">Employee Mentioned</div>
+                            <div style="font-weight:700;font-size:0.88rem;color:var(--accent);" id="valEmployee">Sarah</div>
+                        </div>
+                        <div style="background:#18182E;padding:10px;border-radius:8px;">
+                            <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:4px;">Safety Flag</div>
+                            <div style="font-weight:700;font-size:0.88rem;color:#00C9A7;" id="valSafety">Clear</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 3: AI Response Generation -->
+                <div class="engine-stage">
+                    <div class="engine-stage-header">
+                        <div class="engine-stage-num">
+                            <i data-lucide="bot" style="width:14px;height:14px;"></i> Step 3: Vera AI Response Draft
+                        </div>
+                        <span style="font-size:0.75rem;color:var(--text-muted);">Tone: <strong style="color:#FFF;" id="valTone">Warm &amp; Professional</strong></span>
+                    </div>
+
+                    <div class="response-typing-container">
+                        <div style="display:flex;align-items:center;margin-bottom:8px;">
+                            <span class="pulse-dot"></span>
+                            <span style="font-size:0.75rem;font-weight:700;color:var(--accent);text-transform:uppercase;" id="statusIndicator">Response Ready</span>
+                        </div>
+                        <div id="aiResponseText">
+                            Thank you for your kind review, John! We’re really glad you had a great experience and that Sarah was especially helpful. We’ll be sure to pass along your compliments to her!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 4: Decision Banner -->
+                <div id="decisionBanner" class="engine-stage" style="background:rgba(0, 201, 167, 0.08);border-color:rgba(0, 201, 167, 0.3);">
+                    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+                        <div style="display:flex;align-items:center;gap:14px;">
+                            <div style="width:40px;height:40px;background:rgba(0, 201, 167, 0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#00C9A7;" id="decisionIcon">
+                                <i data-lucide="check-circle-2" style="width:22px;height:22px;"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight:800;font-size:1.05rem;color:#FFF;" id="decisionTitle">Safe to Auto-Publish</div>
+                                <div style="font-size:0.85rem;color:var(--text-muted);" id="decisionSub">Matches your rule: 4-5 star positive reviews publish automatically.</div>
+                            </div>
+                        </div>
+
+                        <button id="publishActionBtn" class="btn btn-accent btn-sm" onclick="triggerSimulatedPublish()">
+                            Publish to Google Now
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="section section-dark" style="border-top:1px solid rgba(255,255,255,0.06);text-align:center;">
+        <div class="container">
+            <h2 style="font-size:2.2rem;font-weight:800;margin-bottom:16px;color:#FFF;">Ready to put Google review replies on autopilot?</h2>
+            <p style="font-size:1.05rem;color:var(--text-secondary);max-width:550px;margin:0 auto 32px;">
+                Start your 14-day free trial today. Connect Google in 1 click and keep full control over every response.
+            </p>
+            <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+                <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">Start Free Trial</a>
+                <a href="pricing.html" class="btn btn-secondary btn-lg">View Pricing</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand-box">
+                    <a href="index.html" class="nav-logo" style="margin-bottom:14px;">
+                        <div class="nav-logo-icon">
+                            <i class="fa-solid fa-reply"></i>
+                        </div>
+                        <span class="nav-logo-text" style="font-size:1.2rem;">Reply<span>Vera</span></span>
+                    </a>
+                    <p style="color:#94A3B8;">The review autopilot built for storefronts, franchises, and agencies to protect their online reputation.</p>
+                    <p style="color:#64748B; font-size:0.8rem; margin-top:12px;">Currently supporting Google Reviews. Additional platforms are planned.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-col-title">Product</div>
+                    <ul class="footer-links">
+                        <li><a href="index.html#product">Product</a></li>
+                        <li><a href="index.html#benefits">Features</a></li>
+                        <li><a href="index.html#how-it-works">How It Works</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-col-title">Company</div>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@replyvera.com">Contact Us</a></li>
+                        <li><a href="https://dashboard.replyvera.com/login">Log In</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-col-title">Legal</div>
+                    <ul class="footer-links">
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="cookie.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div>© 2026 ReplyVera. All rights reserved.</div>
+                <div class="social-links">
+                    <a href="#"><i data-lucide="twitter" style="width:18px; height:18px;"></i></a>
+                    <a href="#"><i data-lucide="linkedin" style="width:18px; height:18px;"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Preset Scenarios Data
+        const INDUSTRY_PRESETS = {
+            'restaurant': {
+                'positive': { name: 'Sarah Jenkins', avatar: 'SJ', stars: 5, text: 'The lasagna was incredible and our server Alex was super attentive. Best Italian dinner in town!', sentiment: 'Positive', topic: 'Food & Staff', employee: 'Alex', risk: 'Low Risk', riskType: 'chip-positive', tone: 'Warm & Welcoming', response: 'Thank you so much for the kind words, Sarah! We’re thrilled you loved the lasagna and enjoyed Alex’s service. We’ll be sure to pass along your praise to him!', decision: 'Safe to Auto-Publish', decisionSub: 'Matches rule: 4-5 star praise auto-publishes immediately.', decisionType: 'positive' },
+                'negative': { name: 'Mark Davis', avatar: 'MD', stars: 3, text: 'Food was decent but we waited 45 minutes for a table even with a reservation.', sentiment: 'Neutral / Negative', topic: 'Wait Time & Service', employee: 'None', risk: 'Medium Risk', riskType: 'chip-warning', tone: 'Empathetic & Apologetic', response: 'Thank you for sharing your feedback, Mark. We sincerely apologize for the 45-minute wait despite your reservation. We are reviewing our host scheduling to ensure this doesn’t happen again.', decision: 'Needs Approval', decisionSub: 'Held for review because rating is under 4 stars.', decisionType: 'warning' },
+                'sensitive': { name: 'Lisa Ray', avatar: 'LR', stars: 1, text: 'We got terrible food poisoning after eating the seafood soup last night. Unacceptable safety conditions!', sentiment: 'Critical', topic: 'Food Safety Emergency', employee: 'None', risk: 'High Risk (Blocked)', riskType: 'chip-danger', tone: 'Escalated to Management', response: '[AI Generation Paused] Flagged for Food Safety Escalation. Immediate owner notification sent.', decision: 'Auto-Publishing Blocked', decisionSub: 'Sensitive topic "Food Poisoning" detected. Escalated directly to owner.', decisionType: 'danger' }
+            },
+            'dentist': {
+                'positive': { name: 'David Miller', avatar: 'DM', stars: 5, text: 'Dr. Evans made my root canal painless and easy. The front desk team was also wonderful!', sentiment: 'Positive', topic: 'Patient Care', employee: 'Dr. Evans', risk: 'Low Risk', riskType: 'chip-positive', tone: 'Professional & Reassuring', response: 'Thank you for your feedback, David! We’re glad Dr. Evans made your procedure comfortable. We appreciate your trust in our clinic.', decision: 'Safe to Auto-Publish', decisionSub: 'HIPAA-compliant general response rules passed.', decisionType: 'positive' },
+                'negative': { name: 'Karen White', avatar: 'KW', stars: 2, text: 'Billing was confusing and they charged me twice for X-rays.', sentiment: 'Negative', topic: 'Billing Claim', employee: 'None', risk: 'Medium Risk', riskType: 'chip-warning', tone: 'Professional & Direct', response: 'Hello Karen, thank you for alerting us. We apologize for the billing confusion and would love to review your account immediately to issue a correction.', decision: 'Needs Approval', decisionSub: 'Billing complaints require staff verification before posting.', decisionType: 'warning' },
+                'sensitive': { name: 'Robert King', avatar: 'RK', stars: 1, text: 'The procedure resulted in severe nerve damage and infection. Medical malpractice!', sentiment: 'Critical', topic: 'Medical Incident', employee: 'None', risk: 'High Risk (Blocked)', riskType: 'chip-danger', tone: 'Escalated to Practice Owner', response: '[AI Generation Paused] Flagged for Medical Liability. Auto-response suppressed.', decision: 'Auto-Publishing Blocked', decisionSub: 'Trigger word "malpractice/injury" detected. Strict HIPAA escalation activated.', decisionType: 'danger' }
+            },
+            'car-wash': {
+                'positive': { name: 'Tom Higgins', avatar: 'TH', stars: 5, text: 'Best drive-thru wash in the city! My car shines like brand new.', sentiment: 'Positive', topic: 'Wash Quality', employee: 'None', risk: 'Low Risk', riskType: 'chip-positive', tone: 'Enthusiastic', response: 'Thanks for the awesome 5-star review, Tom! We’re glad your car is shining bright. See you next time!', decision: 'Safe to Auto-Publish', decisionSub: 'Standard positive review auto-published.', decisionType: 'positive' },
+                'negative': { name: 'Chris Vance', avatar: 'CV', stars: 2, text: 'The vacuum machines had weak suction and half were out of order.', sentiment: 'Negative', topic: 'Equipment Maintenance', employee: 'None', risk: 'Medium Risk', riskType: 'chip-warning', tone: 'Apologetic & Action-Oriented', response: 'Thanks for letting us know, Chris. We apologize for the vacuum issue and our team is servicing them today.', decision: 'Needs Approval', decisionSub: 'Equipment complaint flagged for facility manager review.', decisionType: 'warning' },
+                'sensitive': { name: 'Amanda B.', avatar: 'AB', stars: 1, text: 'The side brushes scratched my brand new hood and dented the door mirror!', sentiment: 'Critical', topic: 'Vehicle Damage Claim', employee: 'None', risk: 'High Risk (Blocked)', riskType: 'chip-danger', tone: 'Escalated to Claims Manager', response: '[AI Generation Paused] Property Damage Trigger activated. Incident report auto-created.', decision: 'Auto-Publishing Blocked', decisionSub: 'Damage claim detected. Blocked to prevent unintended liability admission.', decisionType: 'danger' }
+            }
+        };
+
+        let selectedStars = 5;
+        let currentPreset = 'positive';
+
+        function getActiveIndustry() {
+            return document.getElementById('industrySelect').value;
+        }
+
+        function loadPreset(presetKey) {
+            currentPreset = presetKey;
+            
+            // Highlight buttons
+            document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn-preset-${presetKey}`).classList.add('active');
+
+            const ind = getActiveIndustry();
+            const data = (INDUSTRY_PRESETS[ind] && INDUSTRY_PRESETS[ind][presetKey]) ? INDUSTRY_PRESETS[ind][presetKey] : INDUSTRY_PRESETS['restaurant'][presetKey];
+
+            updateCanvas(data);
+        }
+
+        function handleIndustryChange() {
+            loadPreset(currentPreset);
+        }
+
+        function setCustomStars(s) {
+            selectedStars = s;
+            document.querySelectorAll('.star-pick-btn').forEach((btn, idx) => {
+                if (idx + 1 === s) btn.classList.add('selected');
+                else btn.classList.remove('selected');
+            });
+        }
+
+        function runCustomAnalysis() {
+            const text = document.getElementById('customReviewText').value.trim();
+            if (!text) {
+                alert('Please type some review text in the box first!');
+                return;
+            }
+
+            // Remove active state from preset buttons
+            document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
+
+            // Analyze text dynamically
+            let lower = text.toLowerCase();
+            let isSensitive = lower.includes('injury') || lower.includes('poison') || lower.includes('lawyer') || lower.includes('scratch') || lower.includes('hurt') || lower.includes('sue');
+            let isNegative = selectedStars <= 3 || lower.includes('slow') || lower.includes('bad') || lower.includes('waiting') || lower.includes('poor');
+
+            let data = {
+                name: 'Custom Reviewer',
+                avatar: 'CR',
+                stars: selectedStars,
+                text: text,
+                sentiment: isSensitive ? 'Critical' : (isNegative ? 'Negative' : 'Positive'),
+                topic: isSensitive ? 'Safety Emergency' : (isNegative ? 'Service Quality' : 'General Experience'),
+                employee: lower.includes('sarah') ? 'Sarah' : 'None',
+                risk: isSensitive ? 'High Risk (Blocked)' : (isNegative ? 'Medium Risk' : 'Low Risk'),
+                riskType: isSensitive ? 'chip-danger' : (isNegative ? 'chip-warning' : 'chip-positive'),
+                tone: isSensitive ? 'Escalated' : (isNegative ? 'Empathetic' : 'Warm & Professional'),
+                response: isSensitive 
+                    ? '[AI Generation Paused] Sensitive keywords detected. Sent to owner queue.' 
+                    : `Thank you for sharing your feedback with us! We appreciate you taking the time to share your experience regarding "${text.substring(0, 30)}...".`,
+                decision: isSensitive ? 'Auto-Publishing Blocked' : (isNegative ? 'Needs Approval' : 'Safe to Auto-Publish'),
+                decisionSub: isSensitive ? 'Sensitive trigger detected. Held for human review.' : (isNegative ? 'Review is under 4 stars. Held for approval.' : 'Matches rules for auto-publishing.'),
+                decisionType: isSensitive ? 'danger' : (isNegative ? 'warning' : 'positive')
+            };
+
+            updateCanvas(data);
+        }
+
+        function updateCanvas(data) {
+            document.getElementById('reviewerName').textContent = data.name;
+            document.getElementById('reviewerAvatar').textContent = data.avatar;
+            document.getElementById('displayReviewText').textContent = `"${data.text}"`;
+            
+            // Stars
+            let starsHtml = '';
+            for(let i=1; i<=5; i++) {
+                starsHtml += i <= data.stars ? '★' : '☆';
+            }
+            document.getElementById('displayStars').textContent = starsHtml;
+
+            // Engine outputs
+            document.getElementById('valSentiment').textContent = data.sentiment;
+            document.getElementById('valTopic').textContent = data.topic;
+            document.getElementById('valEmployee').textContent = data.employee;
+            document.getElementById('valSafety').textContent = data.riskType === 'chip-danger' ? 'Flagged' : 'Clear';
+
+            // Risk Chip
+            const riskChip = document.getElementById('riskChip');
+            riskChip.className = `tag-chip ${data.riskType}`;
+            riskChip.innerHTML = `<i data-lucide="${data.riskType === 'chip-danger' ? 'alert-triangle' : (data.riskType === 'chip-warning' ? 'alert-circle' : 'shield-check')}" style="width:12px;height:12px;"></i> ${data.risk}`;
+
+            document.getElementById('valTone').textContent = data.tone;
+            document.getElementById('aiResponseText').textContent = data.response;
+
+            // Decision banner styling
+            const banner = document.getElementById('decisionBanner');
+            const iconBox = document.getElementById('decisionIcon');
+            const btn = document.getElementById('publishActionBtn');
+
+            document.getElementById('decisionTitle').textContent = data.decision;
+            document.getElementById('decisionSub').textContent = data.decisionSub;
+
+            if (data.decisionType === 'positive') {
+                banner.style.background = 'rgba(0, 201, 167, 0.08)';
+                banner.style.borderColor = 'rgba(0, 201, 167, 0.3)';
+                iconBox.style.background = 'rgba(0, 201, 167, 0.2)';
+                iconBox.style.color = '#00C9A7';
+                iconBox.innerHTML = `<i data-lucide="check-circle-2" style="width:22px;height:22px;"></i>`;
+                btn.style.display = 'inline-flex';
+                btn.className = 'btn btn-accent btn-sm';
+                btn.textContent = 'Auto-Published to Google';
+            } else if (data.decisionType === 'warning') {
+                banner.style.background = 'rgba(245, 158, 11, 0.08)';
+                banner.style.borderColor = 'rgba(245, 158, 11, 0.3)';
+                iconBox.style.background = 'rgba(245, 158, 11, 0.2)';
+                iconBox.style.color = '#F59E0B';
+                iconBox.innerHTML = `<i data-lucide="clock" style="width:22px;height:22px;"></i>`;
+                btn.style.display = 'inline-flex';
+                btn.className = 'btn btn-secondary btn-sm';
+                btn.textContent = 'Approve & Publish';
+            } else {
+                banner.style.background = 'rgba(239, 68, 68, 0.08)';
+                banner.style.borderColor = 'rgba(239, 68, 68, 0.3)';
+                iconBox.style.background = 'rgba(239, 68, 68, 0.2)';
+                iconBox.style.color = '#EF4444';
+                iconBox.innerHTML = `<i data-lucide="shield-alert" style="width:22px;height:22px;"></i>`;
+                btn.style.display = 'inline-flex';
+                btn.className = 'btn btn-secondary btn-sm';
+                btn.style.borderColor = 'rgba(239, 68, 68, 0.4)';
+                btn.textContent = 'Review Escalation';
+            }
+
+            lucide.createIcons();
+        }
+
+        function triggerSimulatedPublish() {
+            alert('Demo Mode: In the live app, this response would post directly to your Google Business Profile page instantly!');
+        }
+
+        // Initialize icons
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            loadPreset('positive');
+        });
+    </script>
+</body>
+</html>
