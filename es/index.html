@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReplyVera – Automatización de Reseñas de Google para Pequeñas Empresas</title>
-    <meta name="description" content="ResponderVera automatically responds to your Google reviews. Routine reviews are handled automatically. Negative and sensitive feedback stays under your control. Plans from $29 por mes.">
+    <title>ReplyVera – Respuestas automáticas para reseñas de Google</title>
+    <meta name="description" content="Vera se conecta con tu Perfil de Empresa de Google para redactar respuestas con el tono de tu marca. Respuestas seguras automáticas o bajo tu control.">
     <link rel="stylesheet" href="/style.css?v=15">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +20,6 @@
         
         let path = window.location.pathname;
         
-        // Remove existing lang prefix if present
         if (path.startsWith('/es/')) path = path.replace('/es/', '/');
         if (path.startsWith('/nl/')) path = path.replace('/nl/', '/');
         if (path === '/es' || path === '/nl') path = '/';
@@ -46,16 +45,16 @@
                 <div class="nav-logo-icon">
                     <i class="fa-solid fa-reply"></i>
                 </div>
-                <span class="nav-logo-text">Responder<span>Vera</span></span>
+                <span class="nav-logo-text">Reply<span>Vera</span></span>
             </a>
 
             <div class="nav-links">
                 <a href="#product">Producto</a>
                 <a href="#benefits">Características</a>
-                <a href="#how-it-works">Cómo Funciona</a>
+                <a href="#how-it-works">Cómo funciona</a>
                 <div class="nav-dropdown">
                     <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="menu" aria-controls="industries-menu">
-                        Industrias
+                        Sectores
                         <span class="chevron-icon"><i data-lucide="chevron-down" style="width:12px;height:12px;"></i></span>
                     </button>
                     <div class="nav-dropdown-content" id="industries-menu" role="menu">
@@ -64,76 +63,76 @@
                                 <div class="dropdown-icon-wrapper restaurant-icon"><i data-lucide="utensils" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
                                     <div class="dropdown-title">Restaurantes</div>
-                                    <div class="dropdown-desc">Respuestas rutinarias con escalado de seguridad alimentaria.</div>
+                                    <div class="dropdown-desc">Respuestas habituales con alertas de seguridad alimentaria.</div>
                                 </div>
                             </a>
                             <a href="industries/dentists" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper dentist-icon"><i data-lucide="activity" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Dentists &amp; Clinics</div>
-                                    <div class="dropdown-desc">Respuestas conscientes de la privacidad para reseñas de pacientes.</div>
+                                    <div class="dropdown-title">Dentistas y clínicas</div>
+                                    <div class="dropdown-desc">Respuestas respetuosas con la privacidad de los pacientes.</div>
                                 </div>
                             </a>
                             <a href="industries/agencies" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper agency-icon"><i data-lucide="briefcase" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Agencias de Marketing</div>
-                                    <div class="dropdown-desc">Gestiona respuestas a reseñas de Google para cada cliente.</div>
+                                    <div class="dropdown-title">Agencias de marketing</div>
+                                    <div class="dropdown-desc">Gestiona las reseñas de Google de todos tus clientes desde un solo panel.</div>
                                 </div>
                             </a>
                             <a href="industries/martial-arts" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper martial-arts-icon"><i data-lucide="shield" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Escuelas de Artes Marciales</div>
-                                    <div class="dropdown-desc">Respuestas amigables para padres con controles de seguridad.</div>
+                                    <div class="dropdown-title">Escuelas de artes marciales</div>
+                                    <div class="dropdown-desc">Respuestas cercanas para familias con notificaciones ante cualquier problema.</div>
                                 </div>
                             </a>
                             <a href="industries/childcare" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper childcare-icon"><i data-lucide="heart" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Childcare &amp; Preschool</div>
-                                    <div class="dropdown-desc">Respuestas conscientes de la seguridad para comentarios de padres.</div>
+                                    <div class="dropdown-title">Guarderías y centros preescolares</div>
+                                    <div class="dropdown-desc">Respuestas atentas para las opiniones de los padres.</div>
                                 </div>
                             </a>
                             <a href="industries/tutoring" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper tutoring-icon"><i data-lucide="book-open" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Centros de Tutoría</div>
-                                    <div class="dropdown-desc">Respuestas profesionales para reseñas de padres y estudiantes.</div>
+                                    <div class="dropdown-title">Centros de tutoría</div>
+                                    <div class="dropdown-desc">Respuestas profesionales para opiniones de familias y estudiantes.</div>
                                 </div>
                             </a>
                             <a href="industries/pet-care" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper petcare-icon"><i data-lucide="dog" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Cuidado de Mascotas</div>
-                                    <div class="dropdown-desc">Respuestas cálidas con escalado de seguridad animal.</div>
+                                    <div class="dropdown-title">Cuidado de mascotas</div>
+                                    <div class="dropdown-desc">Respuestas cálidas con atención especial a temas de salud animal.</div>
                                 </div>
                             </a>
                             <a href="industries/car-washes" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper carwash-icon"><i data-lucide="car" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Operadores de Lavado de Autos</div>
-                                    <div class="dropdown-desc">Rastrea quejas de daños, facturación y servicio.</div>
+                                    <div class="dropdown-title">Operadores de lavado de autos</div>
+                                    <div class="dropdown-desc">Seguimiento de comentarios sobre daños, precios o servicio.</div>
                                 </div>
                             </a>
                             <a href="industries/laundromats" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper laundromat-icon"><i data-lucide="wind" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
                                     <div class="dropdown-title">Lavanderías</div>
-                                    <div class="dropdown-desc">Monitorea limpieza, equipos y reembolsos.</div>
+                                    <div class="dropdown-desc">Respuestas ante consultas de equipos, limpieza o reembolsos.</div>
                                 </div>
                             </a>
                         </div>
                     </div>
                 </div>
                 <a href="#pricing">Precios</a>
-                <a href="#faq">Preguntas Frecuentes</a>
+                <a href="#faq">Preguntas frecuentes</a>
             </div>
 
             <div class="nav-actions">
                 <div class="lang-selector">
-                    <button class="lang-btn" aria-label="Select Language">
-                        <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> EN
+                    <button class="lang-btn" aria-label="Seleccionar idioma">
+                        <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> ES
                     </button>
                     <div class="lang-menu">
                         <a href="#" class="lang-item" onclick="changeLang('en', event)">English</a>
@@ -141,9 +140,9 @@
                         <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
                     </div>
                 </div>
-                <a href="https://dashboard.replyvera.com/login" class="nav-login">Iniciar Sesión</a>
-                <a href="#pricing" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Comenzar Prueba Gratuita</a>
-                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+                <a href="https://dashboard.replyvera.com/login" class="nav-login">Iniciar sesión</a>
+                <a href="#pricing" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Empieza tu prueba gratuita</a>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Abrir menú de navegación" aria-expanded="false">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
                         <line x1="3" y1="6" x2="21" y2="6"/>
                         <line x1="3" y1="12" x2="21" y2="12"/>
@@ -155,15 +154,15 @@
     </nav>
 
     <!-- Mobile Navigation Panel -->
-    <div class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <div class="mobile-nav" id="mobile-nav" aria-label="Navegación móvil">
         <div class="mobile-nav-links">
             <a href="#product" class="mobile-nav-link">Producto</a>
             <a href="#benefits" class="mobile-nav-link">Características</a>
-            <a href="#how-it-works" class="mobile-nav-link">Cómo Funciona</a>
+            <a href="#how-it-works" class="mobile-nav-link">Cómo funciona</a>
 
-            <!-- Industrias Accordion -->
+            <!-- Sectores Accordion -->
             <button class="mobile-industry-toggle" id="mobile-ind-toggle" aria-expanded="false">
-                Industries
+                Sectores
                 <span class="mobile-industry-chevron">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                 </span>
@@ -171,55 +170,55 @@
             <div class="mobile-industry-list" id="mobile-ind-list">
                 <a href="industries/restaurants" class="mobile-industry-item">
                     <div class="mobile-ind-icon restaurant-icon"><i data-lucide="utensils" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Restaurantes</div><div class="mobile-ind-desc">Escalado de seguridad alimentaria y reconocimiento del personal</div></div>
+                    <div><div class="mobile-ind-name">Restaurantes</div><div class="mobile-ind-desc">Respuestas habituales con alertas de seguridad alimentaria</div></div>
                 </a>
                 <a href="industries/dentists" class="mobile-industry-item">
                     <div class="mobile-ind-icon dentist-icon"><i data-lucide="activity" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Dentists &amp; Clinics</div><div class="mobile-ind-desc">Respuestas a reseñas de pacientes conscientes de la privacidad</div></div>
+                    <div><div class="mobile-ind-name">Dentistas y clínicas</div><div class="mobile-ind-desc">Respuestas respetuosas con la privacidad de los pacientes</div></div>
                 </a>
                 <a href="industries/agencies" class="mobile-industry-item">
                     <div class="mobile-ind-icon agency-icon"><i data-lucide="briefcase" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Agencias de Marketing</div><div class="mobile-ind-desc">Gestiona múltiples clientes desde un solo panel</div></div>
+                    <div><div class="mobile-ind-name">Agencias de marketing</div><div class="mobile-ind-desc">Gestiona múltiples clientes desde un solo panel</div></div>
                 </a>
                 <a href="industries/martial-arts" class="mobile-industry-item">
                     <div class="mobile-ind-icon martial-arts-icon"><i data-lucide="shield" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Escuelas de Artes Marciales</div><div class="mobile-ind-desc">Seguridad de estudiantes y escalado de membresía</div></div>
+                    <div><div class="mobile-ind-name">Escuelas de artes marciales</div><div class="mobile-ind-desc">Respuestas cercanas para familias con notificaciones ante cualquier problema</div></div>
                 </a>
                 <a href="industries/childcare" class="mobile-industry-item">
                     <div class="mobile-ind-icon childcare-icon"><i data-lucide="heart" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Childcare &amp; Preschool</div><div class="mobile-ind-desc">Seguridad infantil y protección de la privacidad</div></div>
+                    <div><div class="mobile-ind-name">Guarderías y centros preescolares</div><div class="mobile-ind-desc">Respuestas atentas para las opiniones de los padres</div></div>
                 </a>
                 <a href="industries/tutoring" class="mobile-industry-item">
                     <div class="mobile-ind-icon tutoring-icon"><i data-lucide="book-open" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Centros de Tutoría</div><div class="mobile-ind-desc">Reclamos académicos y protección de reembolsos</div></div>
+                    <div><div class="mobile-ind-name">Centros de tutoría</div><div class="mobile-ind-desc">Respuestas profesionales para opiniones de familias y estudiantes</div></div>
                 </a>
                 <a href="industries/pet-care" class="mobile-industry-item">
                     <div class="mobile-ind-icon petcare-icon"><i data-lucide="dog" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Cuidado de Mascotas</div><div class="mobile-ind-desc">Respuestas cálidas con escalado de seguridad animal</div></div>
+                    <div><div class="mobile-ind-name">Cuidado de mascotas</div><div class="mobile-ind-desc">Respuestas cálidas con atención especial a temas de salud animal</div></div>
                 </a>
                 <a href="industries/car-washes" class="mobile-industry-item">
                     <div class="mobile-ind-icon carwash-icon"><i data-lucide="car" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Operadores de Lavado de Autos</div><div class="mobile-ind-desc">Escalado de daños a vehículos y facturación</div></div>
+                    <div><div class="mobile-ind-name">Operadores de lavado de autos</div><div class="mobile-ind-desc">Seguimiento de comentarios sobre daños, precios o servicio</div></div>
                 </a>
                 <a href="industries/laundromats" class="mobile-industry-item">
                     <div class="mobile-ind-icon laundromat-icon"><i data-lucide="wind" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Lavanderías</div><div class="mobile-ind-desc">Reseñas de máquinas, limpieza y reembolsos</div></div>
+                    <div><div class="mobile-ind-name">Lavanderías</div><div class="mobile-ind-desc">Respuestas ante consultas de equipos, limpieza o reembolsos</div></div>
                 </a>
             </div>
 
             <a href="#pricing" class="mobile-nav-link">Precios</a>
-            <a href="#faq" class="mobile-nav-link">Preguntas Frecuentes</a>
+            <a href="#faq" class="mobile-nav-link">Preguntas frecuentes</a>
             <div class="lang-selector">
-                    <button class="lang-btn" aria-label="Select Language">
-                        <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> EN
-                    </button>
-                    <div class="lang-menu">
-                        <a href="#" class="lang-item" onclick="changeLang('en', event)">English</a>
-                        <a href="#" class="lang-item" onclick="changeLang('es', event)">Español</a>
-                        <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
-                    </div>
+                <button class="lang-btn" aria-label="Seleccionar idioma">
+                    <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> ES
+                </button>
+                <div class="lang-menu">
+                    <a href="#" class="lang-item" onclick="changeLang('en', event)">English</a>
+                    <a href="#" class="lang-item" onclick="changeLang('es', event)">Español</a>
+                    <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
                 </div>
-                <a href="https://dashboard.replyvera.com/login" class="mobile-nav-link">Iniciar Sesión</a>
+            </div>
+            <a href="https://dashboard.replyvera.com/login" class="mobile-nav-link">Iniciar sesión</a>
         </div>
     </div>
 
@@ -232,27 +231,27 @@
                 <div class="hero-text">
                     <div class="eyebrow">
                         <i data-lucide="google" style="width:12px;height:12px;color:#DB4437;"></i>
-                        Automatización de Reseñas de Google para Pequeñas Empresas
+                        Respuestas automáticas para reseñas de Google
                     </div>
-                    <h1 class="mb-6">Conoce a Vera. Deja de perder horas en Reseñas de Google.</h1>
-                    <p class="lead mb-8">Vera es tu asistente de IA que se sincroniza con Google para redactar y publicar respuestas personalizadas y acordes a la marca al instante. Mantén a los clientes felices y sube de rango, todo en piloto automático.</p>
+                    <h1 class="mb-6">Conoce a Vera y ahorra horas cada semana.</h1>
+                    <p class="lead mb-8">Vera se conecta con tu Perfil de Empresa de Google para redactar respuestas personalizadas con el tono de tu marca. Las respuestas seguras pueden publicarse automáticamente, mientras tú mantienes el control de las reseñas negativas o delicadas.</p>
                     
                     <div class="pricing-tag-hero" style="display:inline-flex;align-items:center;gap:8px;background:rgba(0, 201, 167, 0.1);border:1px solid rgba(0, 201, 167, 0.3);color:var(--accent);padding:8px 18px;border-radius:20px;font-size:0.9rem;font-weight:700;margin-bottom:25px;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 16 14"></polyline></svg>
                         Disponible por menos de $1 al día
                     </div>
 
                     <div class="hero-actions">
-                        <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">Comenzar Prueba Gratuita</a>
-                        <a href="#how-it-works" class="btn btn-secondary btn-lg">Ver Cómo Funciona</a>
+                        <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">Empieza tu prueba gratuita</a>
+                        <a href="#how-it-works" class="btn btn-secondary btn-lg">Descubre cómo funciona</a>
                     </div>
                     <div class="hero-trust">
                         <i data-lucide="shield-check" style="width:13px;height:13px;color:var(--accent);"></i>
-                        Built for Reseñas de Google &nbsp;·&nbsp; Cancel anytime
+                        Creado para reseñas de Google &nbsp;·&nbsp; Cancela cuando quieras
                     </div>
                 </div>
 
-                <!-- Right: Producto Mockup -->
+                <!-- Right: Product Mockup -->
                 <div class="mockup-card">
                     <div class="mockup-header">
                         <div class="mockup-dots"><span></span><span></span><span></span></div>
@@ -265,7 +264,7 @@
                             Activo
                         </div>
                     </div>
-                    <div style="font-size:0.72rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px;">Reseñas Recientes</div>
+                    <div style="font-size:0.72rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px;">Reseñas recientes</div>
                     <div class="review-rows">
                         <div class="review-row-item">
                             <div class="review-row-meta">
@@ -278,7 +277,7 @@
                                 </div>
                                 <div class="review-row-text">"Equipo amable y excelente servicio."</div>
                             </div>
-                            <span class="review-badge badge-auto">Seguro para Publicación Automática</span>
+                            <span class="review-badge badge-auto">Seguro para publicación automática</span>
                         </div>
                         <div class="review-row-item">
                             <div class="review-row-meta">
@@ -291,7 +290,7 @@
                                 </div>
                                 <div class="review-row-text">"El servicio tardó mucho más de lo esperado."</div>
                             </div>
-                            <span class="review-badge badge-approval">Necesita Aprobación</span>
+                            <span class="review-badge badge-approval">Espera tu aprobación</span>
                         </div>
                         <div class="review-row-item">
                             <div class="review-row-meta">
@@ -304,7 +303,7 @@
                                 </div>
                                 <div class="review-row-text">"Esto causó una lesión."</div>
                             </div>
-                            <span class="review-badge badge-blocked">Publicación Automática Bloqueada</span>
+                            <span class="review-badge badge-blocked">Requiere revisión manual</span>
                         </div>
                     </div>
                 </div>
@@ -316,23 +315,23 @@
     <section class="section section-light" id="benefits">
         <div class="container">
             <div class="section-header">
-                <h2>Respuestas a Reseñas Sin el Trabajo Diario</h2>
+                <h2>Respuestas a reseñas sin la carga de trabajo diaria</h2>
             </div>
             <div class="benefits-grid">
                 <div class="benefit-card">
                     <div class="benefit-icon"><i data-lucide="clock" style="width:20px;height:20px;"></i></div>
-                    <div class="benefit-title">Ahorra Tiempo</div>
-                    <p class="benefit-text">Las respuestas rutinarias a reseñas de Google se redactan o publican automáticamente, liberando a tu equipo para trabajos más importantes.</p>
+                    <div class="benefit-title">Ahorra tiempo</div>
+                    <p class="benefit-text">Las respuestas rutinarias a reseñas de Google se redactan o publican automáticamente para que tu equipo se concentre en lo más importante.</p>
                 </div>
                 <div class="benefit-card">
                     <div class="benefit-icon"><i data-lucide="message-circle" style="width:20px;height:20px;"></i></div>
-                    <div class="benefit-title">Suena Personal</div>
-                    <p class="benefit-text">Cada respuesta refleja la reseña específica y el tono preferido de tu empresa. Sin respuestas copiadas y pegadas.</p>
+                    <div class="benefit-title">Respuestas que suenan humanas</div>
+                    <p class="benefit-text">Cada respuesta se adapta a la reseña concreta y al tono de tu empresa. Sin respuestas genéricas ni textos copiados.</p>
                 </div>
                 <div class="benefit-card">
                     <div class="benefit-icon"><i data-lucide="shield-check" style="width:20px;height:20px;"></i></div>
-                    <div class="benefit-title">Mantén el Control</div>
-                    <p class="benefit-text">Las reseñas negativas y confidenciales siempre se retienen para aprobación humana antes de que se publique nada.</p>
+                    <div class="benefit-title">Tú mantienes el control</div>
+                    <p class="benefit-text">Las reseñas negativas y delicadas esperan siempre tu aprobación antes de publicarse.</p>
                 </div>
             </div>
         </div>
@@ -342,42 +341,42 @@
     <section class="section section-dark" style="background:#07070E; padding:80px 0; border-top:1px solid rgba(255,255,255,0.05); border-bottom:1px solid rgba(255,255,255,0.05);">
         <div class="container" style="display:flex; align-items:center; gap:60px; flex-wrap:wrap;">
             <div style="flex:1; min-width:300px;">
-                <img src="/img/safety_mockup.png" alt="Safety Feature: Flagged Reviews" style="width:100%; border-radius:12px; box-shadow:0 30px 60px rgba(0,0,0,0.6), inset 0 2px 0 rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08);">
+                <img src="/img/safety_mockup.png" alt="Controles de seguridad para reseñas" style="width:100%; border-radius:12px; box-shadow:0 30px 60px rgba(0,0,0,0.6), inset 0 2px 0 rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08);">
             </div>
             <div style="flex:1; min-width:300px;">
-                <div class="eyebrow"><i data-lucide="shield-alert" style="width:12px;height:12px;color:var(--brand-red);"></i> Controles de Seguridad Incorporados</div>
-                <h2 style="font-size:36px; font-weight:800; margin-bottom:20px; color:#FFF; line-height:1.2; letter-spacing:-0.02em;">Control Total Sobre tu Reputación</h2>
+                <div class="eyebrow"><i data-lucide="shield-alert" style="width:12px;height:12px;color:var(--brand-red);"></i> Controles de seguridad integrados</div>
+                <h2 style="font-size:36px; font-weight:800; margin-bottom:20px; color:#FFF; line-height:1.2; letter-spacing:-0.02em;">Control total sobre la reputación de tu negocio</h2>
                 <p style="font-size:18px; color:var(--text-muted); line-height:1.6; margin-bottom:20px;">
-                    Las respuestas seguras se publican automáticamente. Las reseñas delicadas o negativas se retienen de forma segura para tu aprobación.
+                    Las respuestas seguras pueden publicarse automáticamente. Las reseñas delicadas o negativas esperan siempre tu aprobación.
                 </p>
                 <p style="font-size:16px; color:var(--text-muted); line-height:1.6;">
-                    Nunca te preocupes por que una IA diga algo incorrecto. Vera analiza automáticamente el sentimiento, marcando cualquier cosa por debajo de 4 estrellas o que contenga palabras clave confidenciales para revisión humana.
+                    Así tienes la certeza de que Vera nunca dirá nada inconveniente. Vera analiza automáticamente el tono y marca las valoraciones de menos de 4 estrellas o con palabras clave delicadas para que tú las revises.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- 4. Cómo Funciona -->
+    <!-- 4. Cómo funciona -->
     <section class="section section-dark" id="how-it-works">
         <div class="container">
             <div class="section-header">
-                <h2>Conecta Google. Establece Tus Reglas. Deja que Vera Haga el Resto.</h2>
+                <h2>Conecta tu perfil, define tus reglas y deja que Vera haga el resto</h2>
             </div>
             <div class="steps-grid">
                 <div class="step-card">
                     <div class="step-number">1</div>
-                    <div class="step-title">Presenta a Vera a Tu Empresa</div>
-                    <p class="step-text">Conecta de forma segura tu Perfil de Empresa de Google con un clic para que Vera pueda monitorear tus reseñas entrantes.</p>
+                    <div class="step-title">Conecta tu Perfil de Empresa de Google</div>
+                    <p class="step-text">Vincula tu Perfil de Empresa de Google de forma segura en un solo clic para que Vera detecte al instante cada nueva reseña.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">2</div>
-                    <div class="step-title">Dile a Vera Cómo Responder</div>
-                    <p class="step-text">Establece el tono de tu marca. Dile a Vera qué reseñas puede publicar automáticamente y cuáles quieres revisar primero.</p>
+                    <div class="step-title">Define el estilo de tu empresa</div>
+                    <p class="step-text">Establece el tono de tu marca. Elige qué respuestas pueden publicarse de forma automática y cuáles prefieres revisar tú primero.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">3</div>
-                    <div class="step-title">Vera se Pone a Trabajar</div>
-                    <p class="step-text">Vera redacta y publica al instante respuestas personalizadas para reseñas rutinarias, ahorrándote horas cada semana.</p>
+                    <div class="step-title">Vera empieza a trabajar</div>
+                    <p class="step-text">Vera redacta al instante respuestas personalizadas para las reseñas habituales, ahorrándote horas cada semana.</p>
                 </div>
             </div>
 
@@ -385,7 +384,7 @@
             <div style="text-align:center;margin-top:40px;">
                 <a href="/es/demo.html" class="btn btn-accent btn-lg" style="display:inline-flex;align-items:center;gap:8px;">
                     <i data-lucide="play-circle" style="width:18px;height:18px;"></i>
-                    Probar la Demostración Interactiva
+                    Probar la demostración interactiva
                 </a>
             </div>
         </div>
@@ -395,71 +394,71 @@
     <section class="section section-light">
         <div class="container">
             <div class="section-header">
-                <h2>Creado para la Forma en que tu Empresa Maneja las Reseñas</h2>
-                <p>Elige tu industria para ver ejemplos, medidas de seguridad y situaciones de reseñas diseñadas para tu negocio.</p>
+                <h2>Diseñado según la forma en que tu empresa gestiona las reseñas</h2>
+                <p>Elige tu sector y descubre ejemplos, medidas de seguridad y situaciones reales pensadas para tu negocio.</p>
             </div>
             <div class="industry-grid">
                 <a href="industries/restaurants" class="industry-card">
                     <div class="industry-card-icon restaurant-icon"><i data-lucide="utensils" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
                         <div class="industry-card-name">Restaurantes</div>
-                        <div class="industry-card-desc">Escalado de seguridad alimentaria y reconocimiento del personal</div>
+                        <div class="industry-card-desc">Respuestas habituales con alertas de seguridad alimentaria</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
                 <a href="industries/dentists" class="industry-card">
                     <div class="industry-card-icon dentist-icon"><i data-lucide="activity" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-                        <div class="industry-card-name">Dentists &amp; Clinics</div>
-                        <div class="industry-card-desc">Respuestas a reseñas de pacientes conscientes de la privacidad</div>
+                        <div class="industry-card-name">Dentistas y clínicas</div>
+                        <div class="industry-card-desc">Respuestas respetuosas con la privacidad de los pacientes</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
                 <a href="industries/agencies" class="industry-card">
                     <div class="industry-card-icon agency-icon"><i data-lucide="briefcase" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-                        <div class="industry-card-name">Agencias de Marketing</div>
-                        <div class="industry-card-desc">Gestiona múltiples clientes desde un solo panel</div>
+                        <div class="industry-card-name">Agencias de marketing</div>
+                        <div class="industry-card-desc">Gestiona las reseñas de Google de todos tus clientes desde un solo panel</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
                 <a href="industries/martial-arts" class="industry-card">
                     <div class="industry-card-icon martial-arts-icon"><i data-lucide="shield" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-                        <div class="industry-card-name">Escuelas de Artes Marciales</div>
-                        <div class="industry-card-desc">Seguridad de estudiantes y escalado de membresía</div>
+                        <div class="industry-card-name">Escuelas de artes marciales</div>
+                        <div class="industry-card-desc">Respuestas cercanas para familias con notificaciones ante cualquier problema</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
                 <a href="industries/childcare" class="industry-card">
                     <div class="industry-card-icon childcare-icon"><i data-lucide="heart" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-                        <div class="industry-card-name">Childcare &amp; Preschool</div>
-                        <div class="industry-card-desc">Seguridad infantil y protección de la privacidad</div>
+                        <div class="industry-card-name">Guarderías y centros preescolares</div>
+                        <div class="industry-card-desc">Respuestas atentas para las opiniones de los padres</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
                 <a href="industries/tutoring" class="industry-card">
                     <div class="industry-card-icon tutoring-icon"><i data-lucide="book-open" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-                        <div class="industry-card-name">Centros de Tutoría</div>
-                        <div class="industry-card-desc">Reclamos académicos y protección de reembolsos</div>
+                        <div class="industry-card-name">Centros de tutoría</div>
+                        <div class="industry-card-desc">Respuestas profesionales para opiniones de familias y estudiantes</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
                 <a href="industries/pet-care" class="industry-card">
                     <div class="industry-card-icon petcare-icon"><i data-lucide="dog" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-                        <div class="industry-card-name">Cuidado de Mascotas</div>
-                        <div class="industry-card-desc">Respuestas cálidas con escalado de seguridad animal</div>
+                        <div class="industry-card-name">Cuidado de mascotas</div>
+                        <div class="industry-card-desc">Respuestas cálidas con atención especial a temas de salud animal</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
                 <a href="industries/car-washes" class="industry-card">
                     <div class="industry-card-icon carwash-icon"><i data-lucide="car" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-                        <div class="industry-card-name">Operadores de Lavado de Autos</div>
-                        <div class="industry-card-desc">Escalado de daños a vehículos y facturación</div>
+                        <div class="industry-card-name">Operadores de lavado de autos</div>
+                        <div class="industry-card-desc">Seguimiento de comentarios sobre daños, precios o servicio</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
@@ -467,7 +466,7 @@
                     <div class="industry-card-icon laundromat-icon"><i data-lucide="wind" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
                         <div class="industry-card-name">Lavanderías</div>
-                        <div class="industry-card-desc">Reseñas de máquinas, limpieza y reembolsos</div>
+                        <div class="industry-card-desc">Respuestas ante consultas de equipos, limpieza o reembolsos</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
@@ -479,8 +478,8 @@
     <section class="section section-dark">
         <div class="container">
             <div class="section-header">
-                <h2>Desde Elogios Rutinarios hasta Quejas Delicadas</h2>
-                <p>Vera maneja cada tipo de reseña de Google de manera diferente, según lo que sea seguro publicar automáticamente.</p>
+                <h2>Desde elogios habituales hasta quejas delicadas</h2>
+                <p>Vera gestiona cada tipo de reseña de Google según las reglas y parámetros que tú configuras.</p>
             </div>
             <div class="reviews-grid">
                 <!-- Positive -->
@@ -493,14 +492,14 @@
                             <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:13px;height:13px;"></i>
                             <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:13px;height:13px;"></i>
                         </div>
-                        <span class="review-type">Reseña Positiva</span>
+                        <span class="review-type">Reseña positiva</span>
                     </div>
                     <p class="review-quote">"Equipo amable y excelente servicio."</p>
                     <div class="review-response-box">
                         <div class="review-response-label">Respuesta de Vera</div>
-                        <p class="review-response-text">"Gracias por las amables palabras. Nos alegra mucho que hayas tenido una gran experiencia y agradecemos que te tomes el tiempo de compartirlo."</p>
+                        <p class="review-response-text">"¡Muchas gracias por tus amables palabras! Nos alegra mucho saber que tuviste una gran experiencia. ¡Esperamos verte pronto de nuevo!"</p>
                     </div>
-                    <span class="review-badge badge-auto" style="align-self:flex-start;">Seguro para Publicación Automática</span>
+                    <span class="review-badge badge-auto" style="align-self:flex-start;">Seguro para publicación automática</span>
                 </div>
 
                 <!-- Negative -->
@@ -513,14 +512,14 @@
                             <i data-lucide="star" style="fill:none;color:#64748B;width:13px;height:13px;"></i>
                             <i data-lucide="star" style="fill:none;color:#64748B;width:13px;height:13px;"></i>
                         </div>
-                        <span class="review-type">Reseña Negativa</span>
+                        <span class="review-type">Reseña negativa</span>
                     </div>
                     <p class="review-quote">"El servicio tardó mucho más de lo esperado."</p>
                     <div class="review-response-box">
                         <div class="review-response-label">Respuesta de Vera</div>
-                        <p class="review-response-text">"Gracias por tu opinión. Lamentamos que tu visita haya tardado más de lo esperado y compartiremos esto con el equipo."</p>
+                        <p class="review-response-text">"Gracias por tus comentarios. Lamentamos que tu visita haya tomado más tiempo del previsto. Revisaremos esto con el equipo."</p>
                     </div>
-                    <span class="review-badge badge-approval" style="align-self:flex-start;">Necesita Aprobación</span>
+                    <span class="review-badge badge-approval" style="align-self:flex-start;">Espera tu aprobación</span>
                 </div>
 
                 <!-- Sensitive -->
@@ -533,7 +532,7 @@
                             <i data-lucide="star" style="fill:none;color:#64748B;width:13px;height:13px;"></i>
                             <i data-lucide="star" style="fill:none;color:#64748B;width:13px;height:13px;"></i>
                         </div>
-                        <span class="review-type">Reseña Delicada</span>
+                        <span class="review-type">Reseña delicada</span>
                     </div>
                     <p class="review-quote">"Esto causó una lesión."</p>
                     <div class="review-alert-box">
@@ -541,9 +540,9 @@
                             <i data-lucide="alert-triangle" style="width:14px;height:14px;"></i>
                             Tema delicado detectado
                         </div>
-                        <p class="review-alert-sub">Un gerente debe revisar esto antes de publicarlo.</p>
+                        <p class="review-alert-sub">Requiere revisión de un gerente antes de publicarse.</p>
                     </div>
-                    <span class="review-badge badge-blocked" style="align-self:flex-start;">Publicación Automática Bloqueada</span>
+                    <span class="review-badge badge-blocked" style="align-self:flex-start;">Requiere revisión manual</span>
                 </div>
             </div>
         </div>
@@ -553,15 +552,15 @@
     <section class="section section-light">
         <div class="container">
             <div class="section-header">
-                <h2>Reseñas de Google Hoy. Más Plataformas Próximamente.</h2>
-                <p>ReplyVera se conecta actualmente directamente al Perfil de Empresa de Google para monitorear y responder a las reseñas de Google.</p>
+                <h2>Hoy para reseñas de Google, muy pronto para más plataformas</h2>
+                <p>ReplyVera se conecta directamente con tu Perfil de Empresa de Google para gestionar tus reseñas.</p>
             </div>
             <div class="platform-grid">
                 <div class="platform-group">
-                    <div class="platform-group-label label-active">Disponible Ahora</div>
+                    <div class="platform-group-label label-active">Disponible ahora</div>
                     <div class="platform-item">
                         <span class="platform-dot dot-active"></span>
-                        Google Reviews
+                        Reseñas de Google
                     </div>
                 </div>
                 <div class="platform-group">
@@ -591,8 +590,8 @@
     <section class="section section-light" id="testimonials">
         <div class="container">
             <div class="section-header">
-                <h2>Lo Que Dicen los Dueños de Negocios</h2>
-                <p>Mira cómo las pequeñas empresas utilizan ReplyVera para automatizar reseñas y proteger su reputación en línea.</p>
+                <h2>Experiencias de dueños de negocios</h2>
+                <p>Descubre cómo pequeñas empresas usan ReplyVera para ahorrar tiempo y proteger su reputación.</p>
             </div>
             <div class="benefits-grid">
                 <div class="benefit-card">
@@ -603,7 +602,7 @@
                         <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:14px;height:14px;"></i>
                         <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:14px;height:14px;"></i>
                     </div>
-                    <p class="benefit-text" style="font-style:italic; margin-bottom:16px;">"Como dentista, la privacidad del paciente lo es todo. El bloqueador de temas delicados de ReplyVera me da tranquilidad al saber que las reseñas de los pacientes se responden profesionalmente sin violar las pautas de HIPAA."</p>
+                    <p class="benefit-text" style="font-style:italic; margin-bottom:16px;">"Para nuestra clínica, la privacidad de los pacientes es fundamental. Los controles de seguridad de ReplyVera nos dan la tranquilidad de responder profesionalmente y sin riesgos."</p>
                     <div style="font-weight:700; font-size:0.9rem; color:var(--text-primary);">Dr. Amit Patel</div>
                     <div style="font-size:0.78rem; color:var(--text-muted);">Patel Dental Group</div>
                 </div>
@@ -615,7 +614,7 @@
                         <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:14px;height:14px;"></i>
                         <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:14px;height:14px;"></i>
                     </div>
-                    <p class="benefit-text" style="font-style:italic; margin-bottom:16px;">"Nuestros gerentes pasaban horas cada semana respondiendo a las reseñas. Ahora, las reseñas de 5 estrellas de rutina se manejan automáticamente, y solo revisamos los comentarios sobre el tiempo de espera o la comida. Es un salvavidas."</p>
+                    <p class="benefit-text" style="font-style:italic; margin-bottom:16px;">"Nuestro equipo pasaba horas cada semana respondiendo reseñas. Ahora las valoraciones positivas se gestionan automáticamente y solo revisamos comentarios específicos. Nos ahorra muchísimo tiempo cada semana."</p>
                     <div style="font-weight:700; font-size:0.9rem; color:var(--text-primary);">Elena Rostova</div>
                     <div style="font-size:0.78rem; color:var(--text-muted);">The Bistro Group</div>
                 </div>
@@ -627,7 +626,7 @@
                         <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:14px;height:14px;"></i>
                         <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:14px;height:14px;"></i>
                     </div>
-                    <p class="benefit-text" style="font-style:italic; margin-bottom:16px;">"Con 3 ubicaciones, mantenerse al día con las reseñas era imposible. Ahora gestionamos todo desde un solo panel, y el sistema me alerta automáticamente si un cliente menciona daños en el vehículo."</p>
+                    <p class="benefit-text" style="font-style:italic; margin-bottom:16px;">"Con 3 ubicaciones era imposible dar seguimiento a todas las reseñas. Ahora gestionamos todo desde un solo panel y recibimos alertas inmediatas sobre comentarios importantes."</p>
                     <div style="font-weight:700; font-size:0.9rem; color:var(--text-primary);">Marcus Vance</div>
                     <div style="font-size:0.78rem; color:var(--text-muted);">Vance Auto Wash</div>
                 </div>
@@ -639,65 +638,65 @@
     <section class="section section-dark" id="pricing">
         <div class="container">
             <div class="section-header">
-                <h2>Precios Sencillos para Pequeñas Empresas</h2>
-                <p>Comienza gratis. No se requiere tarjeta de crédito. Cancela en cualquier momento.</p>
+                <h2>Precios claros para cualquier negocio</h2>
+                <p>Empieza con una prueba gratuita de 14 días. Sin tarjeta de crédito. Cancela cuando quieras.</p>
             </div>
             <div class="pricing-grid">
 
-                <!-- Starter -->
+                <!-- Plan Inicial -->
                 <div class="pricing-card">
-                    <div class="pricing-name">Starter</div>
+                    <div class="pricing-name">Plan Inicial</div>
                     <div class="pricing-price">$29</div>
-                    <div class="pricing-period">por mes</div>
+                    <div class="pricing-period">al mes</div>
                     <p class="pricing-tagline">Tú apruebas cada respuesta antes de que se publique.</p>
                     <ul class="pricing-features">
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Una ubicación</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Hasta 30 respuestas por mes</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Hasta 30 respuestas al mes</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Aprobación manual para todas las reseñas</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Tono personalizado</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Inglés y Español</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Soporte multilingüe (EN, ES, NL)</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Alertas de reseñas negativas</li>
                     </ul>
-                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=starter" class="btn btn-secondary" style="text-align:center;justify-content:center;">Comenzar Prueba Gratuita</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=starter" class="btn btn-secondary" style="text-align:center;justify-content:center;">Empieza tu prueba gratuita</a>
                 </div>
 
                 <!-- Piloto Automático -->
                 <div class="pricing-card featured">
-                    <div class="pricing-popular">Más Popular</div>
-                    <div class="pricing-name">Autopilot</div>
+                    <div class="pricing-popular">Más popular</div>
+                    <div class="pricing-name">Piloto Automático</div>
                     <div class="pricing-price">$39</div>
-                    <div class="pricing-period">por mes</div>
-                    <p class="pricing-tagline">Las respuestas seguras se publican automáticamente. Las reseñas delicadas permanecen bajo tu aprobación.</p>
+                    <div class="pricing-period">al mes</div>
+                    <p class="pricing-tagline">Las respuestas seguras se publican automáticamente. Las reseñas delicadas esperan tu aprobación.</p>
                     <ul class="pricing-features">
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Una ubicación</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Respuestas ilimitadas a reseñas*</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Publicación automática para reseñas seguras</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Respuestas ilimitadas*</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Publicación automática para respuestas seguras</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Detección de reseñas delicadas</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Voz de marca personalizada</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Historial de reseñas</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Tono de marca personalizado</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Historial completo de reseñas</li>
                     </ul>
-                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent" style="text-align:center;justify-content:center;">Comenzar Prueba Gratuita</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent" style="text-align:center;justify-content:center;">Empieza tu prueba gratuita</a>
                 </div>
 
-                <!-- Multi-Ubicación -->
+                <!-- Varias ubicaciones -->
                 <div class="pricing-card">
-                    <div class="pricing-name">Multi-Location</div>
+                    <div class="pricing-name">Varias ubicaciones</div>
                     <div class="pricing-price" style="font-size:1.85rem;">Desde $79</div>
-                    <div class="pricing-period">per month</div>
-                    <p class="pricing-tagline">Gestiona todas tus ubicaciones desde una sola cuenta con reglas a nivel de ubicación.</p>
+                    <div class="pricing-period">al mes</div>
+                    <p class="pricing-tagline">Gestiona todos tus locales desde una sola cuenta con reglas independientes por ubicación.</p>
                     <ul class="pricing-features">
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Tres ubicaciones incluidas</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Panel central</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Reglas específicas por ubicación</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Acceso para el equipo</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> 3 ubicaciones incluidas</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Panel centralizado</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Reglas por ubicación</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Acceso para tu equipo</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Ubicaciones adicionales disponibles</li>
                     </ul>
-                    <a href="pricing.html" class="btn btn-secondary" style="text-align:center;justify-content:center;">Iniciar Prueba Multi-Ubicación</a>
+                    <a href="pricing.html" class="btn btn-secondary" style="text-align:center;justify-content:center;">Iniciar prueba para varias ubicaciones</a>
                 </div>
 
             </div>
-            <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:24px;margin-bottom:8px;">*Las respuestas ilimitadas a reseñas están sujetas a límites de uso razonable.</p>
-            <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:0px;">Prueba gratuita de 14 días. Cancela en cualquier momento.</p>
+            <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:24px;margin-bottom:8px;">* Respuestas ilimitadas sujetas a políticas de uso justo.</p>
+            <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:0px;">Prueba gratuita de 14 días. Cancela cuando quieras.</p>
         </div>
     </section>
 
@@ -705,7 +704,7 @@
     <section class="section section-light" id="faq">
         <div class="container" style="max-width:760px;">
             <div class="section-header">
-                <h2>Preguntas Frecuentes</h2>
+                <h2>Preguntas frecuentes</h2>
             </div>
             <div class="faq-list">
                 <div class="faq-item">
@@ -714,43 +713,43 @@
                         <div class="faq-icon-wrapper"><i data-lucide="plus" style="width:16px;height:16px;"></i></div>
                     </button>
                     <div class="faq-answer">
-                        Actualmente, ReplyVera admite Reseñas de Google a través del Perfil de Empresa de Google. Facebook, Trustpilot, Booking.com y Tripadvisor están planeados para futuras versiones, pero no están disponibles actualmente.
+                        Actualmente ReplyVera admite reseñas de Google a través de tu Perfil de Empresa de Google. Las integraciones con Facebook, Trustpilot, Booking.com y Tripadvisor están en desarrollo.
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>¿Puedo aprobar las respuestas antes de que se publiquen?</span>
+                        <span>¿Puedo revisar las respuestas antes de que se publiquen?</span>
                         <div class="faq-icon-wrapper"><i data-lucide="plus" style="width:16px;height:16px;"></i></div>
                     </button>
                     <div class="faq-answer">
-                        Sí. En el plan Starter, todas las respuestas pasan por tu cola de aprobación antes de publicarse. En el plan Piloto Automático, eliges qué tipos de reseñas pueden publicarse automáticamente y cuáles requieren tu aprobación.
+                        Sí. En el Plan Inicial revisas cada respuesta manualmente antes de su publicación. Con Piloto Automático defines qué respuestas se publican automáticamente y cuáles esperan tu aprobación.
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>¿Se pueden responder automáticamente las reseñas positivas?</span>
+                        <span>¿Las reseñas positivas se responden automáticamente?</span>
                         <div class="faq-icon-wrapper"><i data-lucide="plus" style="width:16px;height:16px;"></i></div>
                     </button>
                     <div class="faq-answer">
-                        Sí. Con el plan Piloto Automático, las reseñas positivas rutinarias se pueden publicar automáticamente según tu configuración. Las reseñas negativas y delicadas siempre se retienen para su aprobación.
+                        Sí. En el plan Piloto Automático las reseñas positivas se pueden responder de forma automática manteniendo el tono de tu empresa. Las reseñas negativas o delicadas siempre esperan tu aprobación.
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>¿Admite ReplyVera múltiples ubicaciones?</span>
+                        <span>¿ReplyVera admite varias ubicaciones?</span>
                         <div class="faq-icon-wrapper"><i data-lucide="plus" style="width:16px;height:16px;"></i></div>
                     </button>
                     <div class="faq-answer">
-                        Sí. El plan Multi-Ubicación te permite gestionar múltiples ubicaciones del Perfil de Empresa de Google desde un solo panel, con reglas y configuraciones de tono separadas para cada ubicación.
+                        Sí. El plan Varias ubicaciones te permite gestionar múltiples Perfiles de Empresa de Google desde un solo panel, con reglas y tonos independientes para cada local.
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>¿Puedo cancelar en cualquier momento?</span>
+                        <span>¿Puedo cancelar mi suscripción en cualquier momento?</span>
                         <div class="faq-icon-wrapper"><i data-lucide="plus" style="width:16px;height:16px;"></i></div>
                     </button>
                     <div class="faq-answer">
-                        Sí. No hay contratos a largo plazo. Puedes cancelar tu suscripción en cualquier momento desde la configuración de tu cuenta sin cargos de cancelación.
+                        Sí. No hay contratos a largo plazo. Puedes cancelar tu suscripción en cualquier momento desde la configuración de tu cuenta sin ningún costo adicional.
                     </div>
                 </div>
             </div>
@@ -761,11 +760,11 @@
     <section class="section section-dark">
         <div class="container" style="max-width:700px;">
             <div class="cta-box">
-                <h2 class="mb-4">Comienza a Responder Cada Reseña de Google</h2>
-                <p class="lead mb-8">Conecta tu Perfil de Empresa de Google y deja que Vera se encargue de las respuestas de rutina mientras mantienes el control sobre los comentarios delicados.</p>
+                <h2 class="mb-4">Empieza hoy mismo a responder cada reseña de Google</h2>
+                <p class="lead mb-8">Conecta tu Perfil de Empresa de Google y deja que Vera se encargue de las respuestas rutinarias mientras mantienes el control sobre la información delicada.</p>
                 <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
-                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">Comenzar Prueba Gratuita</a>
-                    <a href="#pricing" class="btn btn-secondary btn-lg">Ver Precios</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">Empieza tu prueba gratuita</a>
+                    <a href="#pricing" class="btn btn-secondary btn-lg">Ver precios</a>
                 </div>
             </div>
         </div>
@@ -782,15 +781,15 @@
                         </div>
                         <span class="nav-logo-text" style="font-size:1.2rem;">Reply<span>Vera</span></span>
                     </a>
-                    <p>Respuestas automatizadas de reseñas de Google para pequeñas empresas. Los planes comienzan en $29 por mes.</p>
-                    <p style="font-size:0.78rem;margin-top:8px;color:var(--text-muted);">Actualmente compatible con Reseñas de Google. Se planean plataformas adicionales.</p>
+                    <p>Respuestas automáticas para reseñas de Google para pequeñas y medianas empresas. Planes desde $29 al mes.</p>
+                    <p style="font-size:0.78rem;margin-top:8px;color:var(--text-muted);">Actualmente compatible con reseñas de Google. Próximamente integración con más plataformas.</p>
                 </div>
 
                 <div class="footer-col">
                     <div class="footer-col-title">Producto</div>
                     <ul class="footer-links">
                         <li><a href="index.html#product">Producto</a></li>
-                        <li><a href="index.html#how-it-works">Cómo Funciona</a></li>
+                        <li><a href="index.html#how-it-works">Cómo funciona</a></li>
                         <li><a href="pricing.html">Precios</a></li>
                     </ul>
                 </div>
@@ -798,33 +797,23 @@
                 <div class="footer-col">
                     <div class="footer-col-title">Empresa</div>
                     <ul class="footer-links">
-                        <li><a href="mailto:info@replyvera.com">Contact Us</a></li>
-                        <li><div class="lang-selector">
-                    <button class="lang-btn" aria-label="Select Language">
-                        <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> EN
-                    </button>
-                    <div class="lang-menu">
-                        <a href="#" class="lang-item" onclick="changeLang('en', event)">English</a>
-                        <a href="#" class="lang-item" onclick="changeLang('es', event)">Español</a>
-                        <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
-                    </div>
-                </div>
-                <a h>Iniciar Sesión</a></li>
+                        <li><a href="mailto:info@replyvera.com">Contacto</a></li>
+                        <li><a href="https://dashboard.replyvera.com/login">Iniciar sesión</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
                     <div class="footer-col-title">Legal</div>
                     <ul class="footer-links">
-                        <li><a href="terms.html">Términos de Servicio</a></li>
-                        <li><a href="privacy.html">Política de Privacidad</a></li>
-                        <li><a href="cookie.html">Política de Cookies</a></li>
+                        <li><a href="terms.html">Términos de servicio</a></li>
+                        <li><a href="privacy.html">Política de privacidad</a></li>
+                        <li><a href="cookie.html">Política de cookies</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <div>{{ index_2026_replyvera_all_rights_r_c9ec }}</div>
+                <div>© 2026 ReplyVera. Todos los derechos reservados.</div>
                 <div class="social-links">
                     <a href="#"><i data-lucide="twitter" style="width:17px;height:17px;"></i></a>
                     <a href="#"><i data-lucide="linkedin" style="width:17px;height:17px;"></i></a>
@@ -836,7 +825,7 @@
     <!-- Cookie Consent Banner -->
     <div id="cookie-banner" class="cookie-banner" aria-hidden="true">
         <div class="cookie-content">
-            <p>Usamos cookies para mejorar su experiencia y analizar el rendimiento del sitio. Al hacer clic en "Aceptar", acepta nuestro uso de cookies como se describe en nuestra <a href="cookie.html">Política de Cookies</a>.</p>
+            <p>Utilizamos cookies para mejorar tu experiencia y analizar el rendimiento del sitio. Al hacer clic en «Aceptar», aceptas el uso de cookies según se explica en nuestra <a href="cookie.html">Política de Cookies</a>.</p>
             <div class="cookie-buttons">
                 <button id="accept-cookies" class="btn btn-accent btn-sm" style="padding:6px 12px; font-size:0.78rem;">Aceptar</button>
                 <button id="decline-cookies" class="btn btn-secondary btn-sm" style="padding:6px 12px; font-size:0.78rem;">Rechazar</button>
