@@ -433,7 +433,7 @@
 
             let lower = text.toLowerCase();
 
-            // 1. Smart Employee Extraction (Supports Raul, Señor, Don, Dr, Coach, etc.)
+            // 1. Smart Employee Extraction (Supports Mary, Raul, Señor, Don, Dr, Coach, etc.)
             let employee = 'Ninguno';
             const titleMatch = text.match(/(?:senor|señor|sr\.|sr|don|doña|dr\.|dr|doctor|doctora|profesor|profe|coach|chef|mr\.|mr|mrs\.|ms\.|camarero|con|por|atendido por)\s+([A-ZÀ-ÿ][a-zà-ÿ]+)/i);
             if (titleMatch && titleMatch[1]) {
@@ -445,11 +445,24 @@
                 }
             }
             if (employee === 'Ninguno') {
-                const commonNames = ['raul', 'raúl', 'hank', 'alejandro', 'sara', 'marcos', 'clara', 'david', 'carlos', 'juan', 'laura', 'diego', 'roberto', 'karla'];
+                const commonNames = ['mary', 'maria', 'raul', 'raúl', 'hank', 'alejandro', 'sara', 'marcos', 'clara', 'david', 'carlos', 'juan', 'laura', 'diego', 'roberto', 'karla'];
                 for (let n of commonNames) {
                     if (lower.includes(n)) {
                         employee = (n === 'raul' || n === 'raúl') ? 'Raúl' : (n.charAt(0).toUpperCase() + n.slice(1));
                         break;
+                    }
+                }
+            }
+            if (employee === 'Ninguno') {
+                const words = text.split(/\s+/);
+                for (let i = 0; i < words.length; i++) {
+                    let clean = words[i].replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ]/g, '');
+                    if (clean.length >= 3 && /^[A-ZÁÉÍÓÚÑ]/.test(clean)) {
+                        const ignoreList = ['The', 'Google', 'Clinic', 'Clinica', 'Clinico', 'Restaurant', 'Service', 'Food', 'Senor', 'Señor', 'Doctor', 'Coach', 'Chef', 'Good', 'Great', 'Bad', 'Poor', 'Best', 'Very', 'Mijn', 'Onze', 'Deze', 'Het', 'Een', 'Beste', 'Hartelijk', 'Bedankt', 'Muchas', 'Gracias', 'Excelente', 'Bueno', 'Buena', 'Hola'];
+                        if (!ignoreList.includes(clean)) {
+                            employee = clean.charAt(0).toUpperCase() + clean.slice(1);
+                            break;
+                        }
                     }
                 }
             }
@@ -459,7 +472,7 @@
 
             // 3. Sentiment & Praise vs Complaint
             let hasPraise = lower.includes('bueno') || lower.includes('buen') || lower.includes('buena') || lower.includes('bien') || lower.includes('excelente') || lower.includes('perfecto') || lower.includes('increible') || lower.includes('gran') || lower.includes('me encanto') || lower.includes('muy bien') || lower.includes('amable');
-            let hasComplaint = lower.includes('malo') || lower.includes('mal') || lower.includes('lento') || lower.includes('frio') || lower.includes('espera') || lower.includes('no fue bueno') || lower.includes('no me gusto') || lower.includes('pobre') || lower.includes('sucio');
+            let hasComplaint = lower.includes('malo') || lower.includes('mal') || lower.includes('lento') || lower.includes('frio') || lower.includes('espera') || lower.includes('no fue bueno') || lower.includes('no me gusto') || lower.includes('pobre') || lower.includes('sucio') || lower.includes('caro') || lower.includes('costoso') || lower.includes('precio') || lower.includes('factura');
 
             let sentiment = 'Positivo';
             if (isSensitive) {
@@ -474,7 +487,9 @@
 
             // 4. Topic Detection
             let topic = 'Experiencia General';
-            if (lower.includes('comida') || lower.includes('plato') || lower.includes('sopa') || lower.includes('sabor')) {
+            if (lower.includes('precio') || lower.includes('caro') || lower.includes('costoso') || lower.includes('factura') || lower.includes('cobro')) {
+                topic = (employee !== 'Ninguno') ? `Atención (${employee}) y Precios` : 'Precios y Tarifas';
+            } else if (lower.includes('comida') || lower.includes('plato') || lower.includes('sopa') || lower.includes('sabor')) {
                 topic = (employee !== 'Ninguno') ? 'Elogio de Atención y Comida' : 'Calidad de la Comida';
             } else if (lower.includes('espera') || lower.includes('mesa') || lower.includes('reserva') || lower.includes('cola')) {
                 topic = 'Tiempo de Espera';
@@ -494,7 +509,11 @@
             } else if (hasPraise && hasComplaint) {
                 tone = 'Empático y Equilibrado';
                 if (employee !== 'Ninguno') {
-                    responseText = `¡Muchas gracias por tomarse el tiempo de dejarnos su reseña! Nos alegra saber que ${employee} le brindó una excelente atención, pero lamentamos sinceramente que la comida no haya estado a la altura de sus expectativas. Hemos compartido sus comentarios con nuestro equipo para mejorar.`;
+                    if (lower.includes('precio') || lower.includes('caro') || lower.includes('costoso')) {
+                        responseText = `¡Muchas gracias por su reseña! Nos alegra saber que ${employee} le brindó una atención muy amable, pero tomamos nota de su comentario sobre los precios. Nos esforzamos por mantener tarifas justas y competitivas.`;
+                    } else {
+                        responseText = `¡Muchas gracias por tomarse el tiempo de dejarnos su reseña! Nos alegra saber que ${employee} le brindó una excelente atención, pero lamentamos sinceramente que algunos aspectos no hayan cumplido sus expectativas. Compartimos su opinión con el equipo.`;
+                    }
                 } else {
                     responseText = `¡Gracias por su comentario! Nos alegra que haya disfrutado de parte de su visita, pero nos disculpamos por los aspectos que no cumplieron con sus expectativas. Estamos trabajando con el equipo para corregirlo.`;
                 }
@@ -514,7 +533,7 @@
                 }
             }
 
-            let isNegative = sentiment === 'Negativo' || isSensitive;
+            let isNegative = sentiment === 'Negativo' || sentiment === 'Mixto / Neutral' || isSensitive;
 
             let data = {
                 name: 'Reseña Personalizada',

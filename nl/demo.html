@@ -424,7 +424,16 @@
 
             let lower = text.toLowerCase();
 
-            // 1. Smart Employee Extraction (Supports Raul, Señor, Don, Dr, Coach, etc.)
+        function runCustomAnalysis() {
+            const inputEl = document.getElementById('customReviewText');
+            const text = inputEl ? inputEl.value.trim() : '';
+            if (!text) { alert('Typ eerst een review in het tekstveld!'); return; }
+
+            document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
+
+            let lower = text.toLowerCase();
+
+            // 1. Smart Universal Employee Extraction (Supports Mary, Raul, Sanne, Hank, etc.)
             let employee = 'Geen';
             const titleMatch = text.match(/(?:met|door|bediend door|medewerker|trainer|dr\.|dr|doctor|juf|geholpen door|senor|señor|meneer|dhr\.)\s+([A-ZÀ-ÿ][a-zà-ÿ]+)/i);
             if (titleMatch && titleMatch[1]) {
@@ -436,7 +445,7 @@
                 }
             }
             if (employee === 'Geen') {
-                const commonNames = ['raul', 'raúl', 'hank', 'sanne', 'marcus', 'clara', 'david', 'jan', 'marc', 'lisa', 'karel', 'derek', 'jessica'];
+                const commonNames = ['mary', 'maria', 'raul', 'raúl', 'hank', 'sanne', 'marcus', 'clara', 'david', 'jan', 'marc', 'lisa', 'karel', 'derek', 'jessica', 'sophie', 'emma', 'eva', 'anne', 'esmee', 'lotte'];
                 for (let n of commonNames) {
                     if (lower.includes(n)) {
                         employee = (n === 'raul' || n === 'raúl') ? 'Raúl' : (n.charAt(0).toUpperCase() + n.slice(1));
@@ -444,13 +453,26 @@
                     }
                 }
             }
+            if (employee === 'Geen') {
+                const words = text.split(/\s+/);
+                for (let i = 0; i < words.length; i++) {
+                    let clean = words[i].replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ]/g, '');
+                    if (clean.length >= 3 && /^[A-ZÁÉÍÓÚÑ]/.test(clean)) {
+                        const ignoreList = ['The', 'Google', 'Clinic', 'Clinica', 'Clinico', 'Restaurant', 'Service', 'Food', 'Senor', 'Señor', 'Doctor', 'Coach', 'Chef', 'Good', 'Great', 'Bad', 'Poor', 'Best', 'Very', 'Mijn', 'Onze', 'Deze', 'Het', 'Een', 'Beste', 'Hartelijk', 'Bedankt', 'Muchas', 'Gracias', 'Excelente', 'Bueno', 'Buena', 'Hola'];
+                        if (!ignoreList.includes(clean)) {
+                            employee = clean.charAt(0).toUpperCase() + clean.slice(1);
+                            break;
+                        }
+                    }
+                }
+            }
 
             // 2. Risk & Safety Check
             let isSensitive = lower.includes('ziek') || lower.includes('letsel') || lower.includes('advocaat') || lower.includes('schade') || lower.includes('diefstal') || lower.includes('gestolen') || lower.includes('bloed');
 
-            // 3. Sentiment & Praise vs Complaint
-            let hasPraise = lower.includes('goed') || lower.includes('geweldig') || lower.includes('perfect') || lower.includes('uitstekend') || lower.includes('heerlijk') || lower.includes('fijn') || lower.includes('super') || lower.includes('vriendelijk');
-            let hasComplaint = lower.includes('slecht') || lower.includes('niet goed') || lower.includes('traag') || lower.includes('koud') || lower.includes('wachten') || lower.includes('chaotisch') || lower.includes('vies');
+            // 3. Sentiment & Praise vs Complaint (Supports price/prijs/duur/prijzig complaints)
+            let hasPraise = lower.includes('goed') || lower.includes('geweldig') || lower.includes('perfect') || lower.includes('uitstekend') || lower.includes('heerlijk') || lower.includes('fijn') || lower.includes('super') || lower.includes('vriendelijk') || lower.includes('aardig');
+            let hasComplaint = lower.includes('slecht') || lower.includes('niet goed') || lower.includes('traag') || lower.includes('koud') || lower.includes('wachten') || lower.includes('chaotisch') || lower.includes('vies') || lower.includes('duur') || lower.includes('prijs') || lower.includes('prijzig') || lower.includes('kosten') || lower.includes('te duur');
 
             let sentiment = 'Positief';
             if (isSensitive) {
@@ -463,9 +485,11 @@
                 sentiment = 'Positief';
             }
 
-            // 4. Topic Detection
+            // 4. Topic Detection (Dutch Pricing, Wait Time, Service)
             let topic = 'Algemene Ervaring';
-            if (lower.includes('eten') || lower.includes('maaltijd') || lower.includes('soep') || lower.includes('smaak')) {
+            if (lower.includes('prijs') || lower.includes('duur') || lower.includes('prijzig') || lower.includes('kosten') || lower.includes('tarief')) {
+                topic = (employee !== 'Geen') ? `Service (${employee}) & Prijs` : 'Prijs & Tarieven';
+            } else if (lower.includes('eten') || lower.includes('maaltijd') || lower.includes('soep') || lower.includes('smaak')) {
                 topic = (employee !== 'Geen') ? 'Service & Eten' : 'Kwaliteit van Eten';
             } else if (lower.includes('wachten') || lower.includes('tafel') || lower.includes('reservering') || lower.includes('rij')) {
                 topic = 'Wachttijd & Service';
@@ -485,9 +509,13 @@
             } else if (hasPraise && hasComplaint) {
                 tone = 'Empathisch & Gebalanceerd';
                 if (employee !== 'Geen') {
-                    responseText = `Hartelijk dank voor het achterlaten van je review! Fijn om te horen dat ${employee} geweldige service heeft verleend, maar onze oprechte excuses dat het eten niet aan de verwachtingen voldeed. We hebben dit intern besproken met het team.`;
+                    if (lower.includes('prijs') || lower.includes('duur') || lower.includes('prijzig')) {
+                        responseText = `Hartelijk dank voor je review! Fijn om te horen dat ${employee} zo vriendelijk was, maar jammer dat je de prijs aan de hoge kant vond. We waarderen je eerlijke feedback!`;
+                    } else {
+                        responseText = `Hartelijk dank voor je review! Fijn om te horen dat ${employee} geweldige service heeft verleend, maar onze oprechte excuses dat niet alles naar wens was. We bespreken je feedback intern.`;
+                    }
                 } else {
-                    responseText = `Bedankt voor je feedback! Fijn dat een deel van het bezoek prettig was, maar excuses voor de punten die beter konden. We werken hier direct aan met het team!`;
+                    responseText = `Bedankt voor je feedback! Fijn dat een deel van het bezoek prettig was, maar excuses voor de punten die beter konden. We werken hier direct aan!`;
                 }
             } else if (sentiment === 'Positief') {
                 tone = 'Enthousiast & Waarderend';
@@ -505,7 +533,7 @@
                 }
             }
 
-            let isNegative = sentiment === 'Negatief' || isSensitive;
+            let isNegative = sentiment === 'Negatief' || sentiment === 'Gemengd / Neutraal' || isSensitive;
 
             let data = {
                 name: 'Aangepaste Review',
@@ -520,7 +548,7 @@
                 tone: tone,
                 response: responseText,
                 decision: isSensitive ? 'Publicatie Geblokkeerd' : (isNegative ? 'Goedkeuring Vereist' : 'Veilig voor Automatische Publicatie'),
-                decisionSub: isSensitive ? 'Gevoelig onderwerp gedetecteerd. Vastgehouden voor handmatige controle.' : (isNegative ? 'Bevat een klacht of negatieve beoordeling. Vastgehouden voor goedkeuring.' : 'Voldoet aan de regels voor automatische publicatie.'),
+                decisionSub: isSensitive ? 'Gevoelig onderwerp gedetecteerd. Vastgehouden voor handmatige controle.' : (isNegative ? 'Bevat een klacht of gemengde beoordeling. Vastgehouden voor goedkeuring.' : 'Voldoet aan de regels voor automatische publicatie.'),
                 decisionType: isSensitive ? 'danger' : (isNegative ? 'warning' : 'positive')
             };
 
