@@ -446,15 +446,6 @@
 
             let lower = text.toLowerCase();
 
-        function runCustomAnalysis() {
-            const inputEl = document.getElementById('customReviewText');
-            const text = inputEl ? inputEl.value.trim() : '';
-            if (!text) { alert('Typ eerst een review in het tekstveld!'); return; }
-
-            document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
-
-            let lower = text.toLowerCase();
-
             // 1. Smart Universal Employee Extraction (Supports Mary, Raul, Sanne, Hank, etc.)
             let employee = 'Geen';
             const titleMatch = text.match(/(?:met|door|bediend door|medewerker|trainer|dr\.|dr|doctor|juf|geholpen door|senor|señor|meneer|dhr\.)\s+([A-ZÀ-ÿ][a-zà-ÿ]+)/i);
