@@ -424,16 +424,22 @@
 
             let lower = text.toLowerCase();
 
-            // 1. Smart Employee Extraction
+            // 1. Smart Employee Extraction (Supports Raul, Señor, Don, Dr, Coach, etc.)
             let employee = 'Geen';
-            const empMatch = text.match(/(?:met|door|bediend door|medewerker|trainer|dr\.|doctor|juf|geholpen door)\s+([A-Z][a-z]+)/i);
-            if (empMatch && empMatch[1]) {
-                employee = empMatch[1];
-            } else {
-                const commonNames = ['hank', 'sanne', 'marcus', 'clara', 'david', 'jan', 'marc', 'lisa', 'karel', 'derek', 'jessica'];
+            const titleMatch = text.match(/(?:met|door|bediend door|medewerker|trainer|dr\.|dr|doctor|juf|geholpen door|senor|señor|meneer|dhr\.)\s+([A-ZÀ-ÿ][a-zà-ÿ]+)/i);
+            if (titleMatch && titleMatch[1]) {
+                const cand = titleMatch[1];
+                const stopwords = ['het', 'de', 'een', 'erg', 'goed', 'slecht', 'praktijk', 'kliniek', 'restaurant'];
+                if (!stopwords.includes(cand.toLowerCase())) {
+                    employee = cand.charAt(0).toUpperCase() + cand.slice(1);
+                    if (employee.toLowerCase() === 'raul') employee = 'Raúl';
+                }
+            }
+            if (employee === 'Geen') {
+                const commonNames = ['raul', 'raúl', 'hank', 'sanne', 'marcus', 'clara', 'david', 'jan', 'marc', 'lisa', 'karel', 'derek', 'jessica'];
                 for (let n of commonNames) {
                     if (lower.includes(n)) {
-                        employee = n.charAt(0).toUpperCase() + n.slice(1);
+                        employee = (n === 'raul' || n === 'raúl') ? 'Raúl' : (n.charAt(0).toUpperCase() + n.slice(1));
                         break;
                     }
                 }

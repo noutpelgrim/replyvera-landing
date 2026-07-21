@@ -433,16 +433,22 @@
 
             let lower = text.toLowerCase();
 
-            // 1. Smart Employee Extraction
+            // 1. Smart Employee Extraction (Supports Raul, Señor, Don, Dr, Coach, etc.)
             let employee = 'Ninguno';
-            const empMatch = text.match(/(?:con|por|camarero|entrenador|dr\.|doctor|maestra|juf|empleado|atendido por)\s+([A-Z][a-z]+)/i);
-            if (empMatch && empMatch[1]) {
-                employee = empMatch[1];
-            } else {
-                const commonNames = ['hank', 'alejandro', 'sara', 'marcos', 'clara', 'david', 'carlos', 'juan', 'laura', 'diego'];
+            const titleMatch = text.match(/(?:senor|señor|sr\.|sr|don|doña|dr\.|dr|doctor|doctora|profesor|profe|coach|chef|mr\.|mr|mrs\.|ms\.|camarero|con|por|atendido por)\s+([A-ZÀ-ÿ][a-zà-ÿ]+)/i);
+            if (titleMatch && titleMatch[1]) {
+                const cand = titleMatch[1];
+                const stopwords = ['el', 'la', 'los', 'las', 'muy', 'clinico', 'clinica', 'restaurant', 'comida', 'servicio', 'mal', 'bueno'];
+                if (!stopwords.includes(cand.toLowerCase())) {
+                    employee = cand.charAt(0).toUpperCase() + cand.slice(1);
+                    if (employee.toLowerCase() === 'raul') employee = 'Raúl';
+                }
+            }
+            if (employee === 'Ninguno') {
+                const commonNames = ['raul', 'raúl', 'hank', 'alejandro', 'sara', 'marcos', 'clara', 'david', 'carlos', 'juan', 'laura', 'diego', 'roberto', 'karla'];
                 for (let n of commonNames) {
                     if (lower.includes(n)) {
-                        employee = n.charAt(0).toUpperCase() + n.slice(1);
+                        employee = (n === 'raul' || n === 'raúl') ? 'Raúl' : (n.charAt(0).toUpperCase() + n.slice(1));
                         break;
                     }
                 }
@@ -452,8 +458,8 @@
             let isSensitive = lower.includes('lesion') || lower.includes('intoxicacion') || lower.includes('abogado') || lower.includes('demandar') || lower.includes('robo') || lower.includes('infeccion');
 
             // 3. Sentiment & Praise vs Complaint
-            let hasPraise = lower.includes('bueno') || lower.includes('excelente') || lower.includes('perfecto') || lower.includes('increible') || lower.includes('gran') || lower.includes('me encanto');
-            let hasComplaint = lower.includes('malo') || lower.includes('lento') || lower.includes('frio') || lower.includes('espera') || lower.includes('no fue bueno') || lower.includes('no me gusto');
+            let hasPraise = lower.includes('bueno') || lower.includes('buen') || lower.includes('bien') || lower.includes('excelente') || lower.includes('perfecto') || lower.includes('increible') || lower.includes('gran') || lower.includes('me encanto') || lower.includes('muy bien');
+            let hasComplaint = lower.includes('malo') || lower.includes('mal') || lower.includes('lento') || lower.includes('frio') || lower.includes('espera') || lower.includes('no fue bueno') || lower.includes('no me gusto');
 
             let sentiment = 'Positivo';
             if (isSensitive) {
