@@ -393,6 +393,13 @@
 
         function getActiveIndustry() { return document.getElementById('industrySelect').value; }
 
+        function updateStarPickerUI(s) {
+            document.querySelectorAll('.star-pick-btn').forEach((btn, idx) => {
+                if (idx + 1 === s) btn.classList.add('selected');
+                else btn.classList.remove('selected');
+            });
+        }
+
         function loadPreset(presetKey) {
             currentPreset = presetKey;
             document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
@@ -402,6 +409,11 @@
             const ind = getActiveIndustry();
             const data = (INDUSTRY_PRESETS[ind] && INDUSTRY_PRESETS[ind][presetKey]) ? INDUSTRY_PRESETS[ind][presetKey] : INDUSTRY_PRESETS['restaurant'][presetKey];
 
+            if (data && data.stars) {
+                selectedStars = data.stars;
+                updateStarPickerUI(selectedStars);
+            }
+
             updateCanvas(data);
         }
 
@@ -409,10 +421,20 @@
 
         function setCustomStars(s) {
             selectedStars = s;
-            document.querySelectorAll('.star-pick-btn').forEach((btn, idx) => {
-                if (idx + 1 === s) btn.classList.add('selected');
-                else btn.classList.remove('selected');
-            });
+            updateStarPickerUI(s);
+
+            const inputEl = document.getElementById('customReviewText');
+            const text = inputEl ? inputEl.value.trim() : '';
+            if (text) {
+                runCustomAnalysis();
+            } else {
+                let starsHtml = '';
+                for(let i=1; i<=5; i++) {
+                    starsHtml += i <= selectedStars ? '★' : '☆';
+                }
+                const displayEl = document.getElementById('displayStars');
+                if (displayEl) displayEl.textContent = starsHtml;
+            }
         }
 
         function runCustomAnalysis() {

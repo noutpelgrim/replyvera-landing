@@ -2522,17 +2522,27 @@ footer  { border-top: 1px solid var(--border); padding: 44px 0 24px; }
 }
 .star-pick-btn {
     background: #161628;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #F59E0B;
-    padding: 6px 10px;
-    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #94A3B8;
+    padding: 8px 12px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 0.82rem;
-    transition: all 0.2s;
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+.star-pick-btn:hover {
+    background: rgba(245, 158, 11, 0.15);
+    border-color: #F59E0B;
+    color: #F59E0B;
 }
 .star-pick-btn.selected {
-    background: rgba(245, 158, 11, 0.2);
+    background: rgba(245, 158, 11, 0.25);
     border-color: #F59E0B;
+    color: #F59E0B;
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+}
 }
 .sandbox-canvas {
     padding: 32px;

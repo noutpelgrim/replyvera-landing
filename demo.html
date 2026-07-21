@@ -412,11 +412,11 @@
                     <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;">
                         <span style="font-size:0.78rem;color:var(--text-muted);">Select Stars:</span>
                         <div class="star-rating-picker">
-                            <button class="star-pick-btn" onclick="setCustomStars(1)">1★</button>
-                            <button class="star-pick-btn" onclick="setCustomStars(2)">2★</button>
-                            <button class="star-pick-btn" onclick="setCustomStars(3)">3★</button>
-                            <button class="star-pick-btn" onclick="setCustomStars(4)">4★</button>
-                            <button class="star-pick-btn selected" id="star-5-btn" onclick="setCustomStars(5)">5★</button>
+                            <button type="button" class="star-pick-btn" onclick="setCustomStars(1)">1★</button>
+                            <button type="button" class="star-pick-btn" onclick="setCustomStars(2)">2★</button>
+                            <button type="button" class="star-pick-btn" onclick="setCustomStars(3)">3★</button>
+                            <button type="button" class="star-pick-btn" onclick="setCustomStars(4)">4★</button>
+                            <button type="button" class="star-pick-btn selected" id="star-5-btn" onclick="setCustomStars(5)">5★</button>
                         </div>
                     </div>
 
@@ -648,15 +648,28 @@
             return document.getElementById('industrySelect').value;
         }
 
+        function updateStarPickerUI(s) {
+            document.querySelectorAll('.star-pick-btn').forEach((btn, idx) => {
+                if (idx + 1 === s) btn.classList.add('selected');
+                else btn.classList.remove('selected');
+            });
+        }
+
         function loadPreset(presetKey) {
             currentPreset = presetKey;
             
-            // Highlight buttons
+            // Highlight preset buttons
             document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(`btn-preset-${presetKey}`).classList.add('active');
+            const activeBtn = document.getElementById(`btn-preset-${presetKey}`);
+            if (activeBtn) activeBtn.classList.add('active');
 
             const ind = getActiveIndustry();
             const data = (INDUSTRY_PRESETS[ind] && INDUSTRY_PRESETS[ind][presetKey]) ? INDUSTRY_PRESETS[ind][presetKey] : INDUSTRY_PRESETS['restaurant'][presetKey];
+
+            if (data && data.stars) {
+                selectedStars = data.stars;
+                updateStarPickerUI(selectedStars);
+            }
 
             updateCanvas(data);
         }
@@ -667,10 +680,20 @@
 
         function setCustomStars(s) {
             selectedStars = s;
-            document.querySelectorAll('.star-pick-btn').forEach((btn, idx) => {
-                if (idx + 1 === s) btn.classList.add('selected');
-                else btn.classList.remove('selected');
-            });
+            updateStarPickerUI(s);
+
+            const textInput = document.getElementById('customReviewText');
+            const text = textInput ? textInput.value.trim() : '';
+            if (text) {
+                runCustomAnalysis();
+            } else {
+                let starsHtml = '';
+                for(let i=1; i<=5; i++) {
+                    starsHtml += i <= selectedStars ? '★' : '☆';
+                }
+                const displayEl = document.getElementById('displayStars');
+                if (displayEl) displayEl.textContent = starsHtml;
+            }
         }
 
         function runCustomAnalysis() {
