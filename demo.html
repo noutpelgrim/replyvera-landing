@@ -709,7 +709,7 @@
             let isSensitive = lower.includes('injury') || lower.includes('poison') || lower.includes('lawyer') || lower.includes('scratch') || lower.includes('hurt') || lower.includes('sue') || lower.includes('malpractice') || lower.includes('bleed') || lower.includes('stolen') || lower.includes('theft');
             
             // 3. Sentiment & Praise vs Complaint
-            let hasPraise = lower.includes('good') || lower.includes('great') || lower.includes('perfect') || lower.includes('awesome') || lower.includes('excellent') || lower.includes('loved') || lower.includes('amazing') || lower.includes('shines');
+            let hasPraise = lower.includes('good') || lower.includes('great') || lower.includes('perfect') || lower.includes('awesome') || lower.includes('excellent') || lower.includes('loved') || lower.includes('amazing') || lower.includes('shines') || lower.includes('friendly') || lower.includes('kind');
             let hasComplaint = lower.includes('not good') || lower.includes('bad') || lower.includes('slow') || lower.includes('cold') || lower.includes('poor') || lower.includes('terrible') || lower.includes('dirty') || lower.includes('wait') || lower.includes('overcrowded');
 
             let sentiment = 'Positive';
@@ -717,8 +717,10 @@
                 sentiment = 'Critical';
             } else if (hasPraise && hasComplaint) {
                 sentiment = 'Mixed / Neutral';
-            } else if (selectedStars <= 3 || hasComplaint) {
+            } else if (hasComplaint || (selectedStars <= 2 && !hasPraise)) {
                 sentiment = 'Negative';
+            } else {
+                sentiment = 'Positive';
             }
 
             // 4. Topic Detection
@@ -749,12 +751,12 @@
                 } else {
                     responseText = `Thank you for your feedback! We're glad you enjoyed parts of your visit, but we apologize for the areas that didn't meet your expectations. We're actively working with our team to improve!`;
                 }
-            } else if (selectedStars >= 4 || (hasPraise && !hasComplaint)) {
+            } else if (sentiment === 'Positive') {
                 tone = 'Warm & Welcoming';
                 if (employee !== 'None') {
-                    responseText = `Thank you so much for the 5-star review! We're delighted that ${employee} took such great care of you. We'll be sure to pass along your praise to ${employee}!`;
+                    responseText = `Thank you so much for the review! We're delighted that ${employee} took such great care of you. We'll be sure to pass along your praise to ${employee}!`;
                 } else {
-                    responseText = `Thank you so much for the fantastic 5-star review! We're thrilled that you had a great experience and look forward to welcoming you back soon!`;
+                    responseText = `Thank you so much for the fantastic review! We're thrilled that you had a great experience and look forward to welcoming you back soon!`;
                 }
             } else {
                 tone = 'Apologetic & Professional';
@@ -765,7 +767,7 @@
                 }
             }
 
-            let isNegative = selectedStars <= 3 || hasComplaint;
+            let isNegative = sentiment === 'Negative' || isSensitive;
 
             let data = {
                 name: 'Custom Reviewer',
@@ -780,7 +782,7 @@
                 tone: tone,
                 response: responseText,
                 decision: isSensitive ? 'Auto-Publishing Blocked' : (isNegative ? 'Needs Approval' : 'Safe to Auto-Publish'),
-                decisionSub: isSensitive ? 'Sensitive trigger detected. Held for human review.' : (isNegative ? 'Review is under 4 stars or contains a complaint. Held for owner approval.' : 'Matches rules for auto-publishing.'),
+                decisionSub: isSensitive ? 'Sensitive trigger detected. Held for human review.' : (isNegative ? 'Review contains a complaint or negative rating. Held for owner approval.' : 'Matches rules for auto-publishing.'),
                 decisionType: isSensitive ? 'danger' : (isNegative ? 'warning' : 'positive')
             };
 

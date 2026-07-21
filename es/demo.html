@@ -458,16 +458,18 @@
             let isSensitive = lower.includes('lesion') || lower.includes('intoxicacion') || lower.includes('abogado') || lower.includes('demandar') || lower.includes('robo') || lower.includes('infeccion');
 
             // 3. Sentiment & Praise vs Complaint
-            let hasPraise = lower.includes('bueno') || lower.includes('buen') || lower.includes('bien') || lower.includes('excelente') || lower.includes('perfecto') || lower.includes('increible') || lower.includes('gran') || lower.includes('me encanto') || lower.includes('muy bien');
-            let hasComplaint = lower.includes('malo') || lower.includes('mal') || lower.includes('lento') || lower.includes('frio') || lower.includes('espera') || lower.includes('no fue bueno') || lower.includes('no me gusto');
+            let hasPraise = lower.includes('bueno') || lower.includes('buen') || lower.includes('buena') || lower.includes('bien') || lower.includes('excelente') || lower.includes('perfecto') || lower.includes('increible') || lower.includes('gran') || lower.includes('me encanto') || lower.includes('muy bien') || lower.includes('amable');
+            let hasComplaint = lower.includes('malo') || lower.includes('mal') || lower.includes('lento') || lower.includes('frio') || lower.includes('espera') || lower.includes('no fue bueno') || lower.includes('no me gusto') || lower.includes('pobre') || lower.includes('sucio');
 
             let sentiment = 'Positivo';
             if (isSensitive) {
                 sentiment = 'Crítico';
             } else if (hasPraise && hasComplaint) {
                 sentiment = 'Mixto / Neutral';
-            } else if (selectedStars <= 3 || hasComplaint) {
+            } else if (hasComplaint || (selectedStars <= 2 && !hasPraise)) {
                 sentiment = 'Negativo';
+            } else {
+                sentiment = 'Positivo';
             }
 
             // 4. Topic Detection
@@ -496,10 +498,10 @@
                 } else {
                     responseText = `¡Gracias por su comentario! Nos alegra que haya disfrutado de parte de su visita, pero nos disculpamos por los aspectos que no cumplieron con sus expectativas. Estamos trabajando con el equipo para corregirlo.`;
                 }
-            } else if (selectedStars >= 4 || (hasPraise && !hasComplaint)) {
+            } else if (sentiment === 'Positivo') {
                 tone = 'Cálido y Agradecido';
                 if (employee !== 'Ninguno') {
-                    responseText = `¡Muchas gracias por su reseña de 5 estrellas! Nos encanta saber que ${employee} le atendió tan bien. ¡Le transmitiremos sus amables palabras a ${employee}!`;
+                    responseText = `¡Muchas gracias por su reseña! Nos encanta saber que ${employee} le atendió tan bien y que disfrutó de su experiencia. ¡Le transmitiremos sus amables palabras a ${employee}!`;
                 } else {
                     responseText = `¡Muchas gracias por su excelente reseña! Nos alegra enormemente que haya tenido una gran experiencia y esperamos volver a verle muy pronto.`;
                 }
@@ -512,7 +514,7 @@
                 }
             }
 
-            let isNegative = selectedStars <= 3 || hasComplaint;
+            let isNegative = sentiment === 'Negativo' || isSensitive;
 
             let data = {
                 name: 'Reseña Personalizada',
@@ -527,7 +529,7 @@
                 tone: tone,
                 response: responseText,
                 decision: isSensitive ? 'Publicación Bloqueada' : (isNegative ? 'Requiere Aprobación' : 'Seguro para Publicación Automática'),
-                decisionSub: isSensitive ? 'Tema sensible detectado. Retenido para revisión humana.' : (isNegative ? 'Calificación menor a 4 estrellas o contiene una queja.' : 'Cumple las reglas para publicación automática.'),
+                decisionSub: isSensitive ? 'Tema sensible detectado. Retenido para revisión humana.' : (isNegative ? 'Contiene una queja o calificación negativa. Retenido para aprobación.' : 'Cumple las reglas para publicación automática.'),
                 decisionType: isSensitive ? 'danger' : (isNegative ? 'warning' : 'positive')
             };
 

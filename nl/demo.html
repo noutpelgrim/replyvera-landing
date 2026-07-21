@@ -449,7 +449,7 @@
             let isSensitive = lower.includes('ziek') || lower.includes('letsel') || lower.includes('advocaat') || lower.includes('schade') || lower.includes('diefstal') || lower.includes('gestolen') || lower.includes('bloed');
 
             // 3. Sentiment & Praise vs Complaint
-            let hasPraise = lower.includes('goed') || lower.includes('geweldig') || lower.includes('perfect') || lower.includes('uitstekend') || lower.includes('heerlijk') || lower.includes('fijn') || lower.includes('super');
+            let hasPraise = lower.includes('goed') || lower.includes('geweldig') || lower.includes('perfect') || lower.includes('uitstekend') || lower.includes('heerlijk') || lower.includes('fijn') || lower.includes('super') || lower.includes('vriendelijk');
             let hasComplaint = lower.includes('slecht') || lower.includes('niet goed') || lower.includes('traag') || lower.includes('koud') || lower.includes('wachten') || lower.includes('chaotisch') || lower.includes('vies');
 
             let sentiment = 'Positief';
@@ -457,8 +457,10 @@
                 sentiment = 'Kritiek';
             } else if (hasPraise && hasComplaint) {
                 sentiment = 'Gemengd / Neutraal';
-            } else if (selectedStars <= 3 || hasComplaint) {
+            } else if (hasComplaint || (selectedStars <= 2 && !hasPraise)) {
                 sentiment = 'Negatief';
+            } else {
+                sentiment = 'Positief';
             }
 
             // 4. Topic Detection
@@ -487,12 +489,12 @@
                 } else {
                     responseText = `Bedankt voor je feedback! Fijn dat een deel van het bezoek prettig was, maar excuses voor de punten die beter konden. We werken hier direct aan met het team!`;
                 }
-            } else if (selectedStars >= 4 || (hasPraise && !hasComplaint)) {
+            } else if (sentiment === 'Positief') {
                 tone = 'Enthousiast & Waarderend';
                 if (employee !== 'Geen') {
-                    responseText = `Hartelijk dank voor de fantastische 5-sterren review! Geweldig dat ${employee} je zo goed heeft geholpen. We geven het compliment direct door aan ${employee}!`;
+                    responseText = `Hartelijk dank voor de mooie review! Geweldig dat ${employee} je zo goed heeft geholpen. We geven het compliment direct door aan ${employee}!`;
                 } else {
-                    responseText = `Hartelijk dank voor de geweldige 5-sterren review! Fijn dat je een fantastische ervaring hebt gehad en graag tot een volgende keer!`;
+                    responseText = `Hartelijk dank voor de geweldige review! Fijn dat je een fantastische ervaring hebt gehad en graag tot een volgende keer!`;
                 }
             } else {
                 tone = 'Excuserend & Professioneel';
@@ -503,7 +505,7 @@
                 }
             }
 
-            let isNegative = selectedStars <= 3 || hasComplaint;
+            let isNegative = sentiment === 'Negatief' || isSensitive;
 
             let data = {
                 name: 'Aangepaste Review',
@@ -518,7 +520,7 @@
                 tone: tone,
                 response: responseText,
                 decision: isSensitive ? 'Publicatie Geblokkeerd' : (isNegative ? 'Goedkeuring Vereist' : 'Veilig voor Automatische Publicatie'),
-                decisionSub: isSensitive ? 'Gevoelig onderwerp gedetecteerd. Vastgehouden voor handmatige controle.' : (isNegative ? 'Score is lager dan 4 sterren of bevat een klacht. Vastgehouden voor goedkeuring.' : 'Voldoet aan de regels voor automatische publicatie.'),
+                decisionSub: isSensitive ? 'Gevoelig onderwerp gedetecteerd. Vastgehouden voor handmatige controle.' : (isNegative ? 'Bevat een klacht of negatieve beoordeling. Vastgehouden voor goedkeuring.' : 'Voldoet aan de regels voor automatische publicatie.'),
                 decisionType: isSensitive ? 'danger' : (isNegative ? 'warning' : 'positive')
             };
 
