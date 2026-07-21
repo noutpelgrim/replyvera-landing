@@ -2414,6 +2414,43 @@ footer  { border-top: 1px solid var(--border); padding: 44px 0 24px; }
     background: var(--bg-hover);
 }
 
+/* ── Mobile nav: flat inline language switcher ── */
+.mobile-lang-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 0 4px;
+    border-top: 1px solid var(--border-light);
+    margin-top: 4px;
+}
+.mobile-lang-bar .mobile-lang-label {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    margin-right: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.mobile-lang-bar .mobile-lang-opt {
+    background: none;
+    border: 1px solid var(--border-light);
+    border-radius: 20px;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 4px 12px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    font-family: var(--font-sans);
+    text-decoration: none;
+}
+.mobile-lang-bar .mobile-lang-opt:hover,
+.mobile-lang-bar .mobile-lang-opt.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+}
+
 /* ==========================================================================
    Interactive Product Sandbox Styles
    ========================================================================== */
