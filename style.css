@@ -826,8 +826,11 @@ p { color: var(--text-secondary); line-height: 1.65; }
 /* ─── Industry Grid ─── */
 .industry-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 12px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 .industry-card {
@@ -840,6 +843,9 @@ p { color: var(--text-secondary); line-height: 1.65; }
     align-items: center;
     gap: 12px;
     min-height: 68px;
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
     transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
 }
 .industry-card:hover {
@@ -857,22 +863,21 @@ p { color: var(--text-secondary); line-height: 1.65; }
     flex-shrink: 0;
 }
 
-.industry-card-body { flex: 1; min-width: 0; }
+.industry-card-body { flex: 1; min-width: 0; overflow: hidden; }
 
 .industry-card-name {
     font-size: 0.86rem;
     font-weight: 700;
     color: var(--text-primary);
     margin-bottom: 2px;
+    line-height: 1.35;
 }
 
 .industry-card-desc {
     font-size: 0.73rem;
     color: var(--text-muted);
     line-height: 1.35;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
 }
 
 .industry-card-arrow {
