@@ -3,196 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demostración Interactiva – ReplyVera Automatización de Reseñas</title>
+    <title>Demostración Interactiva – ReplyVera Automatización de Reseñas de Google</title>
     <meta name="description" content="Pruebe la demostración interactiva de IA de ReplyVera. Vea cómo Vera gestiona las reseñas de 5 estrellas automáticamente mientras protege las reseñas negativas o sensibles.">
-    <link rel="stylesheet" href="../css/style.css?v=16">
+    <link rel="stylesheet" href="/style.css?v=16">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
-
-    <style>
-        .demo-page-hero {
-            padding: 140px 0 40px;
-            text-align: center;
-            background: radial-gradient(circle at 50% 20%, rgba(108, 71, 255, 0.15) 0%, rgba(10, 10, 20, 0) 70%);
-        }
-        .demo-sandbox-wrapper {
-            max-width: 1140px;
-            margin: 0 auto 100px;
-            display: grid;
-            grid-template-columns: 380px 1fr;
-            gap: 28px;
-            background: #0E0E1A;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(108, 71, 255, 0.2);
-            overflow: hidden;
-        }
-        @media (max-width: 900px) {
-            .demo-sandbox-wrapper {
-                grid-template-columns: 1fr;
-            }
-        }
-        .sandbox-controls {
-            padding: 28px;
-            background: rgba(18, 18, 32, 0.6);
-            border-right: 1px solid rgba(255, 255, 255, 0.06);
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-        .control-group-title {
-            font-size: 0.78rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--text-muted);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .industry-select {
-            width: 100%;
-            padding: 12px 14px;
-            background: #161628;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 10px;
-            color: #FFF;
-            font-family: inherit;
-            font-size: 0.92rem;
-            outline: none;
-            cursor: pointer;
-        }
-        .preset-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .preset-btn {
-            padding: 12px 14px;
-            background: #141424;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 10px;
-            color: var(--text-secondary);
-            font-family: inherit;
-            font-size: 0.88rem;
-            text-align: left;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: all 0.2s ease;
-        }
-        .preset-btn:hover, .preset-btn.active {
-            background: rgba(108, 71, 255, 0.15);
-            border-color: var(--primary);
-            color: #FFF;
-        }
-        .stars-row {
-            display: flex;
-            gap: 4px;
-            color: #F59E0B;
-        }
-        .custom-review-input {
-            width: 100%;
-            height: 90px;
-            padding: 12px;
-            background: #161628;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 10px;
-            color: #FFF;
-            font-family: inherit;
-            font-size: 0.88rem;
-            resize: none;
-            outline: none;
-        }
-        .star-rating-picker {
-            display: flex;
-            gap: 8px;
-            margin-top: 8px;
-        }
-        .star-pick-btn {
-            background: #161628;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #F59E0B;
-            padding: 6px 10px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.82rem;
-        }
-        .star-pick-btn.selected {
-            background: rgba(245, 158, 11, 0.2);
-            border-color: #F59E0B;
-        }
-        .sandbox-canvas {
-            padding: 32px;
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-            background: #0A0A14;
-        }
-        .engine-stage {
-            background: #121222;
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 14px;
-            padding: 20px;
-        }
-        .engine-stage-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 14px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding-bottom: 10px;
-        }
-        .engine-stage-num {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .tag-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.78rem;
-            font-weight: 600;
-        }
-        .chip-positive { background: rgba(0, 201, 167, 0.15); color: #00C9A7; border: 1px solid rgba(0, 201, 167, 0.3); }
-        .chip-warning { background: rgba(245, 158, 11, 0.15); color: #F59E0B; border: 1px solid rgba(245, 158, 11, 0.3); }
-        .chip-danger { background: rgba(239, 68, 68, 0.15); color: #EF4444; border: 1px solid rgba(239, 68, 68, 0.3); }
-        .response-typing-container {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #E2E8F0;
-            background: #18182E;
-            padding: 16px;
-            border-radius: 10px;
-            border-left: 3px solid var(--primary);
-        }
-        .pulse-dot {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: var(--accent);
-            border-radius: 50%;
-            margin-right: 6px;
-            animation: pulse 1.5s infinite;
-        }
-        @keyframes pulse {
-            0% { opacity: 0.3; transform: scale(0.9); }
-            50% { opacity: 1; transform: scale(1.1); }
-            100% { opacity: 0.3; transform: scale(0.9); }
-        }
-    </style>
 
     <script>
     function changeLang(lang, event) {
@@ -230,7 +48,39 @@
                 <a href="/es/index.html#product">Producto</a>
                 <a href="/es/index.html#benefits">Funciones</a>
                 <a href="/es/index.html#how-it-works">Cómo funciona</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="menu" aria-controls="industries-menu">
+                        Sectores
+                        <span class="chevron-icon"><i data-lucide="chevron-down" style="width:12px;height:12px;"></i></span>
+                    </button>
+                    <div class="nav-dropdown-content" id="industries-menu" role="menu">
+                        <div class="nav-dropdown-grid">
+                            <a href="/es/industries/restaurants" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper restaurant-icon"><i data-lucide="utensils" style="width:14px;height:14px;"></i></div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Restaurantes</div>
+                                    <div class="dropdown-desc">Respuestas de rutina con escalado de seguridad alimentaria.</div>
+                                </div>
+                            </a>
+                            <a href="/es/industries/dentists" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper dentist-icon"><i data-lucide="activity" style="width:14px;height:14px;"></i></div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Dentistas y Clínicas</div>
+                                    <div class="dropdown-desc">Respuestas con privacidad para reseñas de pacientes.</div>
+                                </div>
+                            </a>
+                            <a href="/es/industries/agencies" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper agency-icon"><i data-lucide="briefcase" style="width:14px;height:14px;"></i></div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Agencias de Marketing</div>
+                                    <div class="dropdown-desc">Gestione respuestas para cada cliente.</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <a href="/es/pricing.html">Precios</a>
+                <a href="/es/index.html#faq">FAQ</a>
             </div>
 
             <div class="nav-actions">
@@ -255,13 +105,13 @@
         <div class="container">
             <div class="eyebrow" style="display:inline-flex;margin-bottom:16px;">
                 <i data-lucide="play-circle" style="width:14px;height:14px;color:var(--accent);"></i>
-                Demostración Interactiva
+                Simulador Interactivo de Producto
             </div>
             <h1 style="font-size:2.8rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:16px;color:#FFF;">
                 Experimente el Motor de IA de Vera
             </h1>
             <p style="font-size:1.15rem;color:var(--text-secondary);max-width:640px;margin:0 auto 40px;line-height:1.6;">
-                Seleccione un escenario o escriba su propia reseña para ver cómo Vera evalúa el sentimiento, aplica reglas de seguridad y genera respuestas personalizadas.
+                Seleccione un sector o escriba su propia reseña para ver cómo Vera analiza el sentimiento, evalúa reglas de seguridad y genera respuestas personalizadas.
             </p>
         </div>
     </header>
@@ -270,37 +120,46 @@
     <section class="container">
         <div class="demo-sandbox-wrapper">
             
+            <!-- Left Controls -->
             <div class="sandbox-controls">
+                
                 <div>
-                    <div class="control-group-title"><i data-lucide="building-2" style="width:14px;height:14px;"></i> Sector</div>
+                    <div class="control-group-title">
+                        <i data-lucide="building-2" style="width:14px;height:14px;"></i> Seleccionar Sector
+                    </div>
                     <select id="industrySelect" class="industry-select" onchange="handleIndustryChange()">
-                        <option value="restaurant">🍽️ Restaurante</option>
+                        <option value="restaurant">🍽️ Restaurantes y Hostelería</option>
                         <option value="dentist">🦷 Clínica Dental</option>
+                        <option value="agency">💼 Agencia de Marketing</option>
                         <option value="car-wash">🚗 Lavado de Autos</option>
                     </select>
                 </div>
 
                 <div>
-                    <div class="control-group-title"><i data-lucide="sparkles" style="width:14px;height:14px;"></i> Casos de Prueba</div>
+                    <div class="control-group-title">
+                        <i data-lucide="sparkles" style="width:14px;height:14px;"></i> Probar Casos de Ejemplo
+                    </div>
                     <div class="preset-buttons">
                         <button class="preset-btn active" id="btn-preset-positive" onclick="loadPreset('positive')">
                             <span>Reseña de 5 Estrellas</span>
                             <div class="stars-row">★★★★★</div>
                         </button>
                         <button class="preset-btn" id="btn-preset-negative" onclick="loadPreset('negative')">
-                            <span>Queja de Servicio (3 Estrellas)</span>
+                            <span>Queja de Servicio (3★)</span>
                             <div class="stars-row">★★★☆☆</div>
                         </button>
                         <button class="preset-btn" id="btn-preset-sensitive" onclick="loadPreset('sensitive')">
-                            <span>Incidente Sensible (1 Estrella)</span>
+                            <span>Incidente Sensible (1★)</span>
                             <div class="stars-row">★☆☆☆☆</div>
                         </button>
                     </div>
                 </div>
 
                 <div>
-                    <div class="control-group-title"><i data-lucide="edit-3" style="width:14px;height:14px;"></i> O Escriba una Reseña</div>
-                    <textarea id="customReviewText" class="custom-review-input" placeholder="Escriba su texto aquí..."></textarea>
+                    <div class="control-group-title">
+                        <i data-lucide="edit-3" style="width:14px;height:14px;"></i> O Escriba una Reseña
+                    </div>
+                    <textarea id="customReviewText" class="custom-review-input" placeholder="Escriba texto personalizado... (ej. 'Comida excelente pero el servicio fue lento')"></textarea>
                     
                     <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;">
                         <span style="font-size:0.78rem;color:var(--text-muted);">Estrellas:</span>
@@ -309,79 +168,130 @@
                             <button class="star-pick-btn" onclick="setCustomStars(2)">2★</button>
                             <button class="star-pick-btn" onclick="setCustomStars(3)">3★</button>
                             <button class="star-pick-btn" onclick="setCustomStars(4)">4★</button>
-                            <button class="star-pick-btn selected" onclick="setCustomStars(5)">5★</button>
+                            <button class="star-pick-btn selected" id="star-5-btn" onclick="setCustomStars(5)">5★</button>
                         </div>
                     </div>
 
                     <button class="btn btn-primary" style="width:100%;margin-top:16px;padding:12px;font-size:0.9rem;justify-content:center;" onclick="runCustomAnalysis()">
-                        Simular Análisis de Vera
+                        <i data-lucide="play" style="width:14px;height:14px;margin-right:6px;"></i> Simular Análisis de Vera
                     </button>
                 </div>
+
             </div>
 
+            <!-- Right Visualizer Canvas -->
             <div class="sandbox-canvas">
+                
+                <!-- Stage 1 -->
                 <div class="engine-stage">
                     <div class="engine-stage-header">
-                        <div class="engine-stage-num"><i data-lucide="bell" style="width:14px;height:14px;"></i> Paso 1: Nueva Reseña Recibida</div>
-                        <span style="font-size:0.75rem;color:var(--text-muted);">Google Business Profile</span>
+                        <div class="engine-stage-num">
+                            <i data-lucide="bell" style="width:14px;height:14px;"></i> Paso 1: Nueva Reseña Recibida
+                        </div>
+                        <span style="font-size:0.75rem;color:var(--text-muted);"><i class="fa-brands fa-google" style="color:#DB4437;margin-right:4px;"></i> Google Business Profile</span>
                     </div>
-                    <div style="display:flex;gap:12px;">
-                        <div style="width:40px;height:40px;background:#2A2A44;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);" id="reviewerAvatar">CM</div>
+                    <div style="display:flex;gap:12px;align-items:flex-start;">
+                        <div style="width:40px;height:40px;background:#2A2A44;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);" id="reviewerAvatar">
+                            CM
+                        </div>
                         <div style="flex:1;">
                             <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
-                                <span style="font-weight:700;color:#FFF;" id="reviewerName">Carlos Mendoza</span>
+                                <span style="font-weight:700;font-size:0.95rem;color:#FFF;" id="reviewerName">Carlos Mendoza</span>
                                 <div class="stars-row" id="displayStars">★★★★★</div>
                             </div>
-                            <div style="font-size:0.92rem;color:var(--text-secondary);" id="displayReviewText">"¡Excelente comida y un trato estupendo!"</div>
+                            <div style="font-size:0.92rem;color:var(--text-secondary);line-height:1.5;" id="displayReviewText">
+                                "¡La comida estuvo increíble y nuestro camarero Alejandro fue super atento!"
+                            </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Stage 2 -->
                 <div class="engine-stage">
                     <div class="engine-stage-header">
-                        <div class="engine-stage-num"><i data-lucide="cpu" style="width:14px;height:14px;"></i> Paso 2: Análisis de Sentimiento y Seguridad</div>
-                        <span id="riskChip" class="tag-chip chip-positive">Riesgo Bajo</span>
+                        <div class="engine-stage-num">
+                            <i data-lucide="cpu" style="width:14px;height:14px;"></i> Paso 2: Análisis de Sentimiento y Seguridad
+                        </div>
+                        <span id="riskChip" class="tag-chip chip-positive">
+                            <i data-lucide="shield-check" style="width:12px;height:12px;"></i> Riesgo Bajo
+                        </span>
                     </div>
+
                     <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(130px, 1fr));gap:12px;">
                         <div style="background:#18182E;padding:10px;border-radius:8px;">
-                            <div style="font-size:0.72rem;color:var(--text-muted);">Sentimiento</div>
-                            <div style="font-weight:700;color:#FFF;" id="valSentiment">Positivo</div>
+                            <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:4px;">Sentimiento</div>
+                            <div style="font-weight:700;font-size:0.88rem;color:#FFF;" id="valSentiment">Positivo</div>
                         </div>
                         <div style="background:#18182E;padding:10px;border-radius:8px;">
-                            <div style="font-size:0.72rem;color:var(--text-muted);">Tema Principal</div>
-                            <div style="font-weight:700;color:#FFF;" id="valTopic">Atención</div>
+                            <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:4px;">Tema Principal</div>
+                            <div style="font-weight:700;font-size:0.88rem;color:#FFF;" id="valTopic">Atención al Cliente</div>
                         </div>
                         <div style="background:#18182E;padding:10px;border-radius:8px;">
-                            <div style="font-size:0.72rem;color:var(--text-muted);">Estado de Seguridad</div>
-                            <div style="font-weight:700;color:#00C9A7;" id="valSafety">Aprobado</div>
+                            <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:4px;">Personal Mencionado</div>
+                            <div style="font-weight:700;font-size:0.88rem;color:var(--accent);" id="valEmployee">Alejandro</div>
+                        </div>
+                        <div style="background:#18182E;padding:10px;border-radius:8px;">
+                            <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:4px;">Filtro de Seguridad</div>
+                            <div style="font-weight:700;font-size:0.88rem;color:#00C9A7;" id="valSafety">Aprobado</div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Stage 3 -->
                 <div class="engine-stage">
                     <div class="engine-stage-header">
-                        <div class="engine-stage-num"><i data-lucide="bot" style="width:14px;height:14px;"></i> Paso 3: Respuesta Generada por Vera</div>
+                        <div class="engine-stage-num">
+                            <i data-lucide="bot" style="width:14px;height:14px;"></i> Paso 3: Respuesta Generada por Vera
+                        </div>
+                        <span style="font-size:0.75rem;color:var(--text-muted);">Tono: <strong style="color:#FFF;" id="valTone">Cálido y Profesional</strong></span>
                     </div>
+
                     <div class="response-typing-container">
                         <div style="display:flex;align-items:center;margin-bottom:8px;">
                             <span class="pulse-dot"></span>
-                            <span style="font-size:0.75rem;font-weight:700;color:var(--accent);">Respuesta Lista</span>
+                            <span style="font-size:0.75rem;font-weight:700;color:var(--accent);text-transform:uppercase;" id="statusIndicator">Respuesta Lista</span>
                         </div>
-                        <div id="aiResponseText">¡Muchas gracias por su reseña, Carlos! Nos alegra mucho saber que disfrutó de su visita.</div>
+                        <div id="aiResponseText">
+                            ¡Muchas gracias por su reseña, Carlos! Nos alegra mucho saber que disfrutó de la comida y que Alejandro le brindó una excelente atención. ¡Le transmitiremos sus amables palabras!
+                        </div>
                     </div>
                 </div>
 
+                <!-- Stage 4 -->
                 <div id="decisionBanner" class="engine-stage" style="background:rgba(0, 201, 167, 0.08);border-color:rgba(0, 201, 167, 0.3);">
                     <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
-                        <div>
-                            <div style="font-weight:800;font-size:1.05rem;color:#FFF;" id="decisionTitle">Seguro para Publicar Automáticamente</div>
-                            <div style="font-size:0.85rem;color:var(--text-muted);" id="decisionSub">Las reseñas positivas de 4-5 estrellas se publican de inmediato.</div>
+                        <div style="display:flex;align-items:center;gap:14px;">
+                            <div style="width:40px;height:40px;background:rgba(0, 201, 167, 0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#00C9A7;" id="decisionIcon">
+                                <i data-lucide="check-circle-2" style="width:22px;height:22px;"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight:800;font-size:1.05rem;color:#FFF;" id="decisionTitle">Seguro para Publicación Automática</div>
+                                <div style="font-size:0.85rem;color:var(--text-muted);" id="decisionSub">Coincide con regla: reseñas de 4-5 estrellas se publican de inmediato.</div>
+                            </div>
                         </div>
-                        <button class="btn btn-accent btn-sm" onclick="alert('En la versión activa, esto se publica directamente en Google.')">Publicar en Google</button>
+
+                        <button id="publishActionBtn" class="btn btn-accent btn-sm" onclick="alert('Modo Demo: En la app real, esta respuesta se publica al instante en Google.')">
+                            Publicar en Google Ahora
+                        </button>
                     </div>
                 </div>
+
             </div>
 
+        </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="section section-dark" style="border-top:1px solid rgba(255,255,255,0.06);text-align:center;">
+        <div class="container">
+            <h2 style="font-size:2.2rem;font-weight:800;margin-bottom:16px;color:#FFF;">¿Listo para automatizar sus respuestas en Google?</h2>
+            <p style="font-size:1.05rem;color:var(--text-secondary);max-width:550px;margin:0 auto 32px;">
+                Comience su prueba gratuita de 14 días. Conecte Google en 1 clic y mantenga el control total sobre cada respuesta.
+            </p>
+            <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+                <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">Probar Gratis</a>
+                <a href="/es/pricing.html" class="btn btn-secondary btn-lg">Ver Precios</a>
+            </div>
         </div>
     </section>
 
@@ -404,6 +314,7 @@
                     <ul class="footer-links">
                         <li><a href="/es/index.html#product">Producto</a></li>
                         <li><a href="/es/index.html#benefits">Funciones</a></li>
+                        <li><a href="/es/index.html#how-it-works">Cómo Funciona</a></li>
                         <li><a href="/es/pricing.html">Precios</a></li>
                     </ul>
                 </div>
@@ -437,7 +348,150 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => { lucide.createIcons(); });
+        const INDUSTRY_PRESETS = {
+            'restaurant': {
+                'positive': { name: 'Carlos Mendoza', avatar: 'CM', stars: 5, text: '¡La comida estuvo increíble y nuestro camarero Alejandro fue super atento!', sentiment: 'Positivo', topic: 'Comida y Atención', employee: 'Alejandro', risk: 'Riesgo Bajo', riskType: 'chip-positive', tone: 'Cálido y Profesional', response: '¡Muchas gracias por su reseña, Carlos! Nos alegra mucho saber que disfrutó de la comida y que Alejandro le brindó una excelente atención.', decision: 'Seguro para Publicación Automática', decisionSub: 'Reseña de 5 estrellas aprobada automáticamente.', decisionType: 'positive' },
+                'negative': { name: 'Marcos Díaz', avatar: 'MD', stars: 3, text: 'La comida estuvo bien pero esperamos 45 minutos por una mesa aun con reserva.', sentiment: 'Neutral / Negativo', topic: 'Tiempo de Espera', employee: 'Ninguno', risk: 'Riesgo Medio', riskType: 'chip-warning', tone: 'Empático y Atento', response: 'Gracias por sus comentarios, Marcos. Pedimos disculpas sinceramente por los 45 minutos de espera a pesar de su reserva.', decision: 'Requiere Aprobación', decisionSub: 'Retenido para revisión por ser menor a 4 estrellas.', decisionType: 'warning' },
+                'sensitive': { name: 'Laura Reyes', avatar: 'LR', stars: 1, text: 'Tuvimos una intoxicación grave tras comer la sopa de mariscos anoche.', sentiment: 'Crítico', topic: 'Seguridad Alimentaria', employee: 'Ninguno', risk: 'Riesgo Alto (Bloqueado)', riskType: 'chip-danger', tone: 'Escalado a Gerencia', response: '[Generación Pausada] Detectada palabra clave de seguridad alimentaria. Notificación enviada al propietario.', decision: 'Publicación Bloqueada', decisionSub: 'Tema sensible detectado. Escalado directamente al propietario.', decisionType: 'danger' }
+            },
+            'dentist': {
+                'positive': { name: 'David Millán', avatar: 'DM', stars: 5, text: 'El Dr. Evans hizo que mi tratamiento fuera rápido y sin dolor. ¡Excelente equipo!', sentiment: 'Positivo', topic: 'Atención al Paciente', employee: 'Dr. Evans', risk: 'Riesgo Bajo', riskType: 'chip-positive', tone: 'Profesional', response: '¡Muchas gracias David! Nos alegra que su tratamiento haya sido cómodo. Agradecemos su confianza.', decision: 'Seguro para Publicación Automática', decisionSub: 'Reglas de privacidad pasadas correctamente.', decisionType: 'positive' },
+                'negative': { name: 'Karla Blanco', avatar: 'KB', stars: 2, text: 'La facturación fue confusa y me cobraron dos veces por la radiografía.', sentiment: 'Negativo', topic: 'Reclamación de Facturación', employee: 'Ninguno', risk: 'Riesgo Medio', riskType: 'chip-warning', tone: 'Directo y Atento', response: 'Hola Karla, disculpe la confusión con su facturación. Revisaremos su cuenta de inmediato.', decision: 'Requiere Aprobación', decisionSub: 'Reclamaciones de pago requieren verificación previa.', decisionType: 'warning' },
+                'sensitive': { name: 'Roberto Rey', avatar: 'RR', stars: 1, text: 'El procedimiento causó una infección grave. ¡Negligencia médica!', sentiment: 'Crítico', topic: 'Incidente Médico', employee: 'Ninguno', risk: 'Riesgo Alto (Bloqueado)', riskType: 'chip-danger', tone: 'Escalado al Director', response: '[Generación Pausada] Alerta médica activada.', decision: 'Publicación Bloqueada', decisionSub: 'Término de responsabilidad detectado.', decisionType: 'danger' }
+            }
+        };
+
+        let selectedStars = 5;
+        let currentPreset = 'positive';
+
+        function getActiveIndustry() {
+            return document.getElementById('industrySelect').value;
+        }
+
+        function loadPreset(presetKey) {
+            currentPreset = presetKey;
+            document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.getElementById(`btn-preset-${presetKey}`);
+            if (activeBtn) activeBtn.classList.add('active');
+
+            const ind = getActiveIndustry();
+            const data = (INDUSTRY_PRESETS[ind] && INDUSTRY_PRESETS[ind][presetKey]) ? INDUSTRY_PRESETS[ind][presetKey] : INDUSTRY_PRESETS['restaurant'][presetKey];
+
+            updateCanvas(data);
+        }
+
+        function handleIndustryChange() { loadPreset(currentPreset); }
+
+        function setCustomStars(s) {
+            selectedStars = s;
+            document.querySelectorAll('.star-pick-btn').forEach((btn, idx) => {
+                if (idx + 1 === s) btn.classList.add('selected');
+                else btn.classList.remove('selected');
+            });
+        }
+
+        function runCustomAnalysis() {
+            const inputEl = document.getElementById('customReviewText');
+            const text = inputEl ? inputEl.value.trim() : '';
+            if (!text) { alert('¡Por favor escriba texto antes de simular!'); return; }
+
+            document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
+            let lower = text.toLowerCase();
+            let isSensitive = lower.includes('lesion') || lower.includes('intoxicacion') || lower.includes('abogado') || lower.includes('dolor') || lower.includes('demandar');
+            let isNegative = selectedStars <= 3 || lower.includes('lento') || lower.includes('malo') || lower.includes('espera');
+
+            let data = {
+                name: 'Reseña Personalizada',
+                avatar: 'RP',
+                stars: selectedStars,
+                text: text,
+                sentiment: isSensitive ? 'Crítico' : (isNegative ? 'Negativo' : 'Positivo'),
+                topic: isSensitive ? 'Emergencia de Seguridad' : (isNegative ? 'Servicio' : 'Experiencia General'),
+                employee: lower.includes('alejandro') ? 'Alejandro' : 'Ninguno',
+                risk: isSensitive ? 'Riesgo Alto (Bloqueado)' : (isNegative ? 'Riesgo Medio' : 'Riesgo Bajo'),
+                riskType: isSensitive ? 'chip-danger' : (isNegative ? 'chip-warning' : 'chip-positive'),
+                tone: isSensitive ? 'Escalado' : (isNegative ? 'Empático' : 'Cálido y Profesional'),
+                response: isSensitive 
+                    ? '[Generación Pausada] Palabras sensibles detectadas. Enviado a gerencia.' 
+                    : `Muchas gracias por compartir su experiencia con nosotros respecto a "${text.substring(0, 30)}...".`,
+                decision: isSensitive ? 'Publicación Bloqueada' : (isNegative ? 'Requiere Aprobación' : 'Seguro para Publicación Automática'),
+                decisionSub: isSensitive ? 'Tema sensible detectado.' : (isNegative ? 'Calificación menor a 4 estrellas.' : 'Reglas pasadas correctamente.'),
+                decisionType: isSensitive ? 'danger' : (isNegative ? 'warning' : 'positive')
+            };
+
+            updateCanvas(data);
+        }
+
+        function updateCanvas(data) {
+            if (!document.getElementById('reviewerName')) return;
+            document.getElementById('reviewerName').textContent = data.name;
+            document.getElementById('reviewerAvatar').textContent = data.avatar;
+            document.getElementById('displayReviewText').textContent = `"${data.text}"`;
+            
+            let starsHtml = '';
+            for(let i=1; i<=5; i++) starsHtml += i <= data.stars ? '★' : '☆';
+            document.getElementById('displayStars').textContent = starsHtml;
+
+            document.getElementById('valSentiment').textContent = data.sentiment;
+            document.getElementById('valTopic').textContent = data.topic;
+            document.getElementById('valEmployee').textContent = data.employee;
+            document.getElementById('valSafety').textContent = data.riskType === 'chip-danger' ? 'Flagged' : 'Clear';
+
+            const riskChip = document.getElementById('riskChip');
+            if (riskChip) {
+                riskChip.className = `tag-chip ${data.riskType}`;
+                riskChip.innerHTML = `<i data-lucide="${data.riskType === 'chip-danger' ? 'alert-triangle' : (data.riskType === 'chip-warning' ? 'alert-circle' : 'shield-check')}" style="width:12px;height:12px;"></i> ${data.risk}`;
+            }
+
+            document.getElementById('valTone').textContent = data.tone;
+            document.getElementById('aiResponseText').textContent = data.response;
+
+            const banner = document.getElementById('decisionBanner');
+            const iconBox = document.getElementById('decisionIcon');
+            const btn = document.getElementById('publishActionBtn');
+
+            if (banner && iconBox && btn) {
+                document.getElementById('decisionTitle').textContent = data.decision;
+                document.getElementById('decisionSub').textContent = data.decisionSub;
+
+                if (data.decisionType === 'positive') {
+                    banner.style.background = 'rgba(0, 201, 167, 0.08)';
+                    banner.style.borderColor = 'rgba(0, 201, 167, 0.3)';
+                    iconBox.style.background = 'rgba(0, 201, 167, 0.2)';
+                    iconBox.style.color = '#00C9A7';
+                    iconBox.innerHTML = `<i data-lucide="check-circle-2" style="width:22px;height:22px;"></i>`;
+                    btn.style.display = 'inline-flex';
+                    btn.className = 'btn btn-accent btn-sm';
+                    btn.textContent = 'Publicado en Google';
+                } else if (data.decisionType === 'warning') {
+                    banner.style.background = 'rgba(245, 158, 11, 0.08)';
+                    banner.style.borderColor = 'rgba(245, 158, 11, 0.3)';
+                    iconBox.style.background = 'rgba(245, 158, 11, 0.2)';
+                    iconBox.style.color = '#F59E0B';
+                    iconBox.innerHTML = `<i data-lucide="clock" style="width:22px;height:22px;"></i>`;
+                    btn.style.display = 'inline-flex';
+                    btn.className = 'btn btn-secondary btn-sm';
+                    btn.textContent = 'Aprobar y Publicar';
+                } else {
+                    banner.style.background = 'rgba(239, 68, 68, 0.08)';
+                    banner.style.borderColor = 'rgba(239, 68, 68, 0.3)';
+                    iconBox.style.background = 'rgba(239, 68, 68, 0.2)';
+                    iconBox.style.color = '#EF4444';
+                    iconBox.innerHTML = `<i data-lucide="shield-alert" style="width:22px;height:22px;"></i>`;
+                    btn.style.display = 'inline-flex';
+                    btn.className = 'btn btn-secondary btn-sm';
+                    btn.style.borderColor = 'rgba(239, 68, 68, 0.4)';
+                    btn.textContent = 'Revisar Escalado';
+                }
+            }
+
+            if (window.lucide) lucide.createIcons();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) lucide.createIcons();
+            loadPreset('positive');
+        });
     </script>
 </body>
 </html>

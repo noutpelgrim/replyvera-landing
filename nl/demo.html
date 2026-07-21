@@ -5,169 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactieve Demo – ReplyVera Google Review Automatisering</title>
     <meta name="description" content="Probeer de interactieve AI-demo van ReplyVera. Bekijk hoe Vera routinematige 5-sterren reviews automatisch afhandelt en negatieve reviews veilig ter goedkeuring voorlegt.">
-    <link rel="stylesheet" href="../css/style.css?v=16">
+    <link rel="stylesheet" href="/style.css?v=16">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
-
-    <style>
-        .demo-page-hero {
-            padding: 140px 0 40px;
-            text-align: center;
-            background: radial-gradient(circle at 50% 20%, rgba(108, 71, 255, 0.15) 0%, rgba(10, 10, 20, 0) 70%);
-        }
-        .demo-sandbox-wrapper {
-            max-width: 1140px;
-            margin: 0 auto 100px;
-            display: grid;
-            grid-template-columns: 380px 1fr;
-            gap: 28px;
-            background: #0E0E1A;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(108, 71, 255, 0.2);
-            overflow: hidden;
-        }
-        @media (max-width: 900px) {
-            .demo-sandbox-wrapper { grid-template-columns: 1fr; }
-        }
-        .sandbox-controls {
-            padding: 28px;
-            background: rgba(18, 18, 32, 0.6);
-            border-right: 1px solid rgba(255, 255, 255, 0.06);
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-        .control-group-title {
-            font-size: 0.78rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .industry-select {
-            width: 100%;
-            padding: 12px 14px;
-            background: #161628;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 10px;
-            color: #FFF;
-            font-family: inherit;
-            font-size: 0.92rem;
-            outline: none;
-            cursor: pointer;
-        }
-        .preset-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .preset-btn {
-            padding: 12px 14px;
-            background: #141424;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 10px;
-            color: var(--text-secondary);
-            font-family: inherit;
-            font-size: 0.88rem;
-            text-align: left;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: all 0.2s ease;
-        }
-        .preset-btn:hover, .preset-btn.active {
-            background: rgba(108, 71, 255, 0.15);
-            border-color: var(--primary);
-            color: #FFF;
-        }
-        .stars-row { display: flex; gap: 4px; color: #F59E0B; }
-        .custom-review-input {
-            width: 100%;
-            height: 90px;
-            padding: 12px;
-            background: #161628;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 10px;
-            color: #FFF;
-            font-family: inherit;
-            font-size: 0.88rem;
-            resize: none;
-            outline: none;
-        }
-        .sandbox-canvas {
-            padding: 32px;
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-            background: #0A0A14;
-        }
-        .engine-stage {
-            background: #121222;
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 14px;
-            padding: 20px;
-        }
-        .engine-stage-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 14px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding-bottom: 10px;
-        }
-        .engine-stage-num {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .tag-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.78rem;
-            font-weight: 600;
-        }
-        .chip-positive { background: rgba(0, 201, 167, 0.15); color: #00C9A7; border: 1px solid rgba(0, 201, 167, 0.3); }
-        .chip-warning { background: rgba(245, 158, 11, 0.15); color: #F59E0B; border: 1px solid rgba(245, 158, 11, 0.3); }
-        .chip-danger { background: rgba(239, 68, 68, 0.15); color: #EF4444; border: 1px solid rgba(239, 68, 68, 0.3); }
-        .response-typing-container {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #E2E8F0;
-            background: #18182E;
-            padding: 16px;
-            border-radius: 10px;
-            border-left: 3px solid var(--primary);
-        }
-        .pulse-dot {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: var(--accent);
-            border-radius: 50%;
-            margin-right: 6px;
-            animation: pulse 1.5s infinite;
-        }
-        @keyframes pulse {
-            0% { opacity: 0.3; transform: scale(0.9); }
-            50% { opacity: 1; transform: scale(1.1); }
-            100% { opacity: 0.3; transform: scale(0.9); }
-        }
-    </style>
 
     <script>
     function changeLang(lang, event) {
@@ -205,7 +48,32 @@
                 <a href="/nl/index.html#product">Product</a>
                 <a href="/nl/index.html#benefits">Functies</a>
                 <a href="/nl/index.html#how-it-works">Hoe het werkt</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="menu" aria-controls="industries-menu">
+                        Sectoren
+                        <span class="chevron-icon"><i data-lucide="chevron-down" style="width:12px;height:12px;"></i></span>
+                    </button>
+                    <div class="nav-dropdown-content" id="industries-menu" role="menu">
+                        <div class="nav-dropdown-grid">
+                            <a href="/nl/industries/restaurants" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper restaurant-icon"><i data-lucide="utensils" style="width:14px;height:14px;"></i></div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Restaurants</div>
+                                    <div class="dropdown-desc">Routinereacties met voedselveiligheid-escalatie.</div>
+                                </div>
+                            </a>
+                            <a href="/nl/industries/dentists" class="dropdown-item">
+                                <div class="dropdown-icon-wrapper dentist-icon"><i data-lucide="activity" style="width:14px;height:14px;"></i></div>
+                                <div class="dropdown-text">
+                                    <div class="dropdown-title">Tandartsen &amp; Praktijken</div>
+                                    <div class="dropdown-desc">Privacybewuste reacties op patiëntreviews.</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <a href="/nl/pricing.html">Prijzen</a>
+                <a href="/nl/index.html#faq">FAQ</a>
             </div>
 
             <div class="nav-actions">
@@ -230,13 +98,13 @@
         <div class="container">
             <div class="eyebrow" style="display:inline-flex;margin-bottom:16px;">
                 <i data-lucide="play-circle" style="width:14px;height:14px;color:var(--accent);"></i>
-                Interactieve Product Demo
+                Interactieve Product Sandbox
             </div>
             <h1 style="font-size:2.8rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:16px;color:#FFF;">
                 Ervaar Vera's AI Review Engine
             </h1>
             <p style="font-size:1.15rem;color:var(--text-secondary);max-width:640px;margin:0 auto 40px;line-height:1.6;">
-                Kies een voorbeeldscenario of typ een eigen review om te zien hoe Vera sentiment analyseert en automatisch reacties opstelt.
+                Kies een voorbeeldscenario of typ een eigen review om te zien hoe Vera sentiment analyseert, veiligheidsregels controleert en automatisch antwoorden genereert.
             </p>
         </div>
     </header>
@@ -244,56 +112,177 @@
     <!-- Sandbox Section -->
     <section class="container">
         <div class="demo-sandbox-wrapper">
+            
+            <!-- Left Controls -->
             <div class="sandbox-controls">
+                
                 <div>
-                    <div class="control-group-title"><i data-lucide="building-2" style="width:14px;height:14px;"></i> Branche</div>
-                    <select id="industrySelect" class="industry-select">
-                        <option value="restaurant">🍽️ Restaurant</option>
+                    <div class="control-group-title">
+                        <i data-lucide="building-2" style="width:14px;height:14px;"></i> Selecteer Branche
+                    </div>
+                    <select id="industrySelect" class="industry-select" onchange="handleIndustryChange()">
+                        <option value="restaurant">🍽️ Restaurant &amp; Horeca</option>
                         <option value="dentist">🦷 Tandarts &amp; Praktijk</option>
+                        <option value="car-wash">🚗 Autowasstraat</option>
                     </select>
                 </div>
 
                 <div>
-                    <div class="control-group-title"><i data-lucide="sparkles" style="width:14px;height:14px;"></i> Test Scenario's</div>
+                    <div class="control-group-title">
+                        <i data-lucide="sparkles" style="width:14px;height:14px;"></i> Test Voorbeeldscenario's
+                    </div>
                     <div class="preset-buttons">
-                        <button class="preset-btn active">
+                        <button class="preset-btn active" id="btn-preset-positive" onclick="loadPreset('positive')">
                             <span>5-Sterren Review</span>
                             <div class="stars-row">★★★★★</div>
+                        </button>
+                        <button class="preset-btn" id="btn-preset-negative" onclick="loadPreset('negative')">
+                            <span>3-Sterren Klacht</span>
+                            <div class="stars-row">★★★☆☆</div>
+                        </button>
+                        <button class="preset-btn" id="btn-preset-sensitive" onclick="loadPreset('sensitive')">
+                            <span>1-Ster Gevoelig Incident</span>
+                            <div class="stars-row">★☆☆☆☆</div>
                         </button>
                     </div>
                 </div>
 
                 <div>
-                    <div class="control-group-title"><i data-lucide="edit-3" style="width:14px;height:14px;"></i> Eigen Review Typen</div>
-                    <textarea class="custom-review-input" placeholder="Typ hier een eigen review..."></textarea>
+                    <div class="control-group-title">
+                        <i data-lucide="edit-3" style="width:14px;height:14px;"></i> Of Typ Eigen Review
+                    </div>
+                    <textarea id="customReviewText" class="custom-review-input" placeholder="Typ hier een eigen review... (bijv. 'Heerlijk gegeten maar bediening was wat traag')"></textarea>
+                    
+                    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;">
+                        <span style="font-size:0.78rem;color:var(--text-muted);">Sterren:</span>
+                        <div class="star-rating-picker">
+                            <button class="star-pick-btn" onclick="setCustomStars(1)">1★</button>
+                            <button class="star-pick-btn" onclick="setCustomStars(2)">2★</button>
+                            <button class="star-pick-btn" onclick="setCustomStars(3)">3★</button>
+                            <button class="star-pick-btn" onclick="setCustomStars(4)">4★</button>
+                            <button class="star-pick-btn selected" id="star-5-btn" onclick="setCustomStars(5)">5★</button>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" style="width:100%;margin-top:16px;padding:12px;font-size:0.9rem;justify-content:center;" onclick="runCustomAnalysis()">
+                        <i data-lucide="play" style="width:14px;height:14px;margin-right:6px;"></i> Simuleer Vera Analyse
+                    </button>
                 </div>
+
             </div>
 
+            <!-- Right Visualizer Canvas -->
             <div class="sandbox-canvas">
+                
+                <!-- Stage 1 -->
                 <div class="engine-stage">
                     <div class="engine-stage-header">
-                        <div class="engine-stage-num"><i data-lucide="bell" style="width:14px;height:14px;"></i> Stap 1: Nieuwe Google Review</div>
-                        <span style="font-size:0.75rem;color:var(--text-muted);">Google Mijn Bedrijf</span>
+                        <div class="engine-stage-num">
+                            <i data-lucide="bell" style="width:14px;height:14px;"></i> Stap 1: Nieuwe Google Review Binnengekomen
+                        </div>
+                        <span style="font-size:0.75rem;color:var(--text-muted);"><i class="fa-brands fa-google" style="color:#DB4437;margin-right:4px;"></i> Google Mijn Bedrijf</span>
                     </div>
-                    <div style="display:flex;gap:12px;">
-                        <div style="width:40px;height:40px;background:#2A2A44;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);">JV</div>
-                        <div>
-                            <div style="font-weight:700;color:#FFF;">Jan de Vries</div>
-                            <div class="stars-row">★★★★★</div>
-                            <div style="font-size:0.92rem;color:var(--text-secondary);margin-top:4px;">"Geweldige service en vriendelijk personeel!"</div>
+                    <div style="display:flex;gap:12px;align-items:flex-start;">
+                        <div style="width:40px;height:40px;background:#2A2A44;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);" id="reviewerAvatar">
+                            JV
+                        </div>
+                        <div style="flex:1;">
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+                                <span style="font-weight:700;font-size:0.95rem;color:#FFF;" id="reviewerName">Jan de Vries</span>
+                                <div class="stars-row" id="displayStars">★★★★★</div>
+                            </div>
+                            <div style="font-size:0.92rem;color:var(--text-secondary);line-height:1.5;" id="displayReviewText">
+                                "Geweldige service en erg lekker gegeten. Bedank Sanne voor de fantastische hulp!"
+                            </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Stage 2 -->
                 <div class="engine-stage">
                     <div class="engine-stage-header">
-                        <div class="engine-stage-num"><i data-lucide="bot" style="width:14px;height:14px;"></i> Stap 2: Vera Automatisch Antwoord</div>
+                        <div class="engine-stage-num">
+                            <i data-lucide="cpu" style="width:14px;height:14px;"></i> Stap 2: Vera Sentiment &amp; Veiligheidsfilter
+                        </div>
+                        <span id="riskChip" class="tag-chip chip-positive">
+                            <i data-lucide="shield-check" style="width:12px;height:12px;"></i> Laag Risico
+                        </span>
                     </div>
-                    <div class="response-typing-container">
-                        <div style="font-size:0.75rem;font-weight:700;color:var(--accent);margin-bottom:6px;">AUTOMATISCH GEGENEREERD</div>
-                        <div>Hartelijk dank voor je fantastische review, Jan! Fijn om te horen dat je tevreden bent.</div>
+
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(130px, 1fr));gap:12px;">
+                        <div style="background:#18182E;padding:10px;border-radius:8px;">
+                            <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:4px;">Sentiment</div>
+                            <div style="font-weight:700;font-size:0.88rem;color:#FFF;" id="valSentiment">Positief</div>
+                        </div>
+                        <div style="background:#18182E;padding:10px;border-radius:8px;">
+                            <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:4px;">Onderwerp</div>
+                            <div style="font-weight:700;font-size:0.88rem;color:#FFF;" id="valTopic">Service &amp; Eten</div>
+                        </div>
+                        <div style="background:#18182E;padding:10px;border-radius:8px;">
+                            <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:4px;">Medewerker</div>
+                            <div style="font-weight:700;font-size:0.88rem;color:var(--accent);" id="valEmployee">Sanne</div>
+                        </div>
+                        <div style="background:#18182E;padding:10px;border-radius:8px;">
+                            <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:4px;">Veiligheidsstatus</div>
+                            <div style="font-weight:700;font-size:0.88rem;color:#00C9A7;" id="valSafety">Goedgekeurd</div>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Stage 3 -->
+                <div class="engine-stage">
+                    <div class="engine-stage-header">
+                        <div class="engine-stage-num">
+                            <i data-lucide="bot" style="width:14px;height:14px;"></i> Stap 3: Vera AI Automatisch Antwoord
+                        </div>
+                        <span style="font-size:0.75rem;color:var(--text-muted);">Toon: <strong style="color:#FFF;" id="valTone">Vriendelijk &amp; Professioneel</strong></span>
+                    </div>
+
+                    <div class="response-typing-container">
+                        <div style="display:flex;align-items:center;margin-bottom:8px;">
+                            <span class="pulse-dot"></span>
+                            <span style="font-size:0.75rem;font-weight:700;color:var(--accent);text-transform:uppercase;" id="statusIndicator">Reactie Gereed</span>
+                        </div>
+                        <div id="aiResponseText">
+                            Hartelijk dank voor je fantastische review, Jan! Fijn om te horen dat je tevreden bent. We geven het compliment door aan Sanne!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 4 -->
+                <div id="decisionBanner" class="engine-stage" style="background:rgba(0, 201, 167, 0.08);border-color:rgba(0, 201, 167, 0.3);">
+                    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+                        <div style="display:flex;align-items:center;gap:14px;">
+                            <div style="width:40px;height:40px;background:rgba(0, 201, 167, 0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#00C9A7;" id="decisionIcon">
+                                <i data-lucide="check-circle-2" style="width:22px;height:22px;"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight:800;font-size:1.05rem;color:#FFF;" id="decisionTitle">Veilig voor Automatische Publicatie</div>
+                                <div style="font-size:0.85rem;color:var(--text-muted);" id="decisionSub">Voldoet aan regel: 4-5 sterren reviews worden direct gepubliceerd.</div>
+                            </div>
+                        </div>
+
+                        <button id="publishActionBtn" class="btn btn-accent btn-sm" onclick="alert('Demo Modus: In de live app wordt dit direct geplaatst op Google!')">
+                            Nu Publiceren op Google
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="section section-dark" style="border-top:1px solid rgba(255,255,255,0.06);text-align:center;">
+        <div class="container">
+            <h2 style="font-size:2.2rem;font-weight:800;margin-bottom:16px;color:#FFF;">Klaar om uw Google reviews automatisch te beantwoorden?</h2>
+            <p style="font-size:1.05rem;color:var(--text-secondary);max-width:550px;margin:0 auto 32px;">
+                Start uw gratis proefperiode van 14 dagen. Koppel Google in 1 klik en behoud de volledige controle.
+            </p>
+            <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+                <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">Gratis Proberen</a>
+                <a href="/nl/pricing.html" class="btn btn-secondary btn-lg">Prijzen Bekijken</a>
             </div>
         </div>
     </section>
@@ -317,6 +306,7 @@
                     <ul class="footer-links">
                         <li><a href="/nl/index.html#product">Product</a></li>
                         <li><a href="/nl/index.html#benefits">Functies</a></li>
+                        <li><a href="/nl/index.html#how-it-works">Hoe het werkt</a></li>
                         <li><a href="/nl/pricing.html">Prijzen</a></li>
                     </ul>
                 </div>
@@ -350,7 +340,146 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => { lucide.createIcons(); });
+        const INDUSTRY_PRESETS = {
+            'restaurant': {
+                'positive': { name: 'Jan de Vries', avatar: 'JV', stars: 5, text: 'Geweldige service en erg lekker gegeten. Bedank Sanne voor de fantastische hulp!', sentiment: 'Positief', topic: 'Service & Eten', employee: 'Sanne', risk: 'Laag Risico', riskType: 'chip-positive', tone: 'Vriendelijk & Professioneel', response: 'Hartelijk dank voor je fantastische review, Jan! Fijn om te horen dat je tevreden bent. We geven het compliment door aan Sanne!', decision: 'Veilig voor Automatische Publicatie', decisionSub: '5-sterren review automatisch goedgekeurd.', decisionType: 'positive' },
+                'negative': { name: 'Marc de Boer', avatar: 'MB', stars: 3, text: 'Eten was prima maar we moesten 45 minuten wachten op onze tafel ondanks reservering.', sentiment: 'Neutraal / Negatief', topic: 'Wachttijd', employee: 'Geen', risk: 'Middelgroot Risico', riskType: 'chip-warning', tone: 'Empathisch & Excuserend', response: 'Hartelijk dank voor je feedback, Marc. Excuus voor de lange wachttijd ondanks de reservering.', decision: 'Goedkeuring Vereist', decisionSub: 'Vastgehouden voor beoordeling omdat de score lager is dan 4 sterren.', decisionType: 'warning' },
+                'sensitive': { name: 'Lisa Bakker', avatar: 'LB', stars: 1, text: 'We zijn ernstig ziek geworden na het eten van de vissoep gisteravond.', sentiment: 'Kritiek', topic: 'Voedselveiligheid', employee: 'Geen', risk: 'Hoog Risico (Gefilterd)', riskType: 'chip-danger', tone: 'Geëscaleerd naar Eigenaar', response: '[AI Generatie Gepauzeerd] Signaal voor voedselveiligheid gedetecteerd. Melding gestuurd naar de eigenaar.', decision: 'Publicatie Gegarandeerd Geblokkeerd', decisionSub: 'Gevoelig onderwerp gedetecteerd.', decisionType: 'danger' }
+            },
+            'dentist': {
+                'positive': { name: 'David Mulder', avatar: 'DM', stars: 5, text: 'Dr. Evans hielp mij erg deskundig en pijnloos. Fijne praktijk!', sentiment: 'Positief', topic: 'Patiëntenzorg', employee: 'Dr. Evans', risk: 'Laag Risico', riskType: 'chip-positive', tone: 'Professioneel', response: 'Hartelijk dank David! Fijn dat de behandeling prettig is verlopen. Wij waarderen je vertrouwen in onze praktijk.', decision: 'Veilig voor Automatische Publicatie', decisionSub: 'Privacyregels succesvol doorlopen.', decisionType: 'positive' }
+            }
+        };
+
+        let selectedStars = 5;
+        let currentPreset = 'positive';
+
+        function getActiveIndustry() { return document.getElementById('industrySelect').value; }
+
+        function loadPreset(presetKey) {
+            currentPreset = presetKey;
+            document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.getElementById(`btn-preset-${presetKey}`);
+            if (activeBtn) activeBtn.classList.add('active');
+
+            const ind = getActiveIndustry();
+            const data = (INDUSTRY_PRESETS[ind] && INDUSTRY_PRESETS[ind][presetKey]) ? INDUSTRY_PRESETS[ind][presetKey] : INDUSTRY_PRESETS['restaurant'][presetKey];
+
+            updateCanvas(data);
+        }
+
+        function handleIndustryChange() { loadPreset(currentPreset); }
+
+        function setCustomStars(s) {
+            selectedStars = s;
+            document.querySelectorAll('.star-pick-btn').forEach((btn, idx) => {
+                if (idx + 1 === s) btn.classList.add('selected');
+                else btn.classList.remove('selected');
+            });
+        }
+
+        function runCustomAnalysis() {
+            const inputEl = document.getElementById('customReviewText');
+            const text = inputEl ? inputEl.value.trim() : '';
+            if (!text) { alert('Typ eerst een review in het tekstveld!'); return; }
+
+            document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
+            let lower = text.toLowerCase();
+            let isSensitive = lower.includes('ziek') || lower.includes('letsel') || lower.includes('advocaat') || lower.includes('schade');
+            let isNegative = selectedStars <= 3 || lower.includes('traag') || lower.includes('slecht') || lower.includes('wachten');
+
+            let data = {
+                name: 'Aangepaste Review',
+                avatar: 'AR',
+                stars: selectedStars,
+                text: text,
+                sentiment: isSensitive ? 'Kritiek' : (isNegative ? 'Negatief' : 'Positief'),
+                topic: isSensitive ? 'Veiligheid' : (isNegative ? 'Service' : 'Algemeen'),
+                employee: lower.includes('sanne') ? 'Sanne' : 'Geen',
+                risk: isSensitive ? 'Hoog Risico (Gefilterd)' : (isNegative ? 'Middelgroot Risico' : 'Laag Risico'),
+                riskType: isSensitive ? 'chip-danger' : (isNegative ? 'chip-warning' : 'chip-positive'),
+                tone: isSensitive ? 'Geëscaleerd' : (isNegative ? 'Empathisch' : 'Vriendelijk & Professioneel'),
+                response: isSensitive 
+                    ? '[AI Generatie Gepauzeerd] Gevoelig trefwoord gedetecteerd. Doorgestuurd naar beheerder.' 
+                    : `Hartelijk dank voor je review met betrekking tot "${text.substring(0, 30)}...". We stellen je feedback erg op prijs.`,
+                decision: isSensitive ? 'Publicatie Geblokkeerd' : (isNegative ? 'Goedkeuring Vereist' : 'Veilig voor Automatische Publicatie'),
+                decisionSub: isSensitive ? 'Gevoelig onderwerp gedetecteerd.' : (isNegative ? 'Score is lager dan 4 sterren.' : 'Voldoet aan de regels.'),
+                decisionType: isSensitive ? 'danger' : (isNegative ? 'warning' : 'positive')
+            };
+
+            updateCanvas(data);
+        }
+
+        function updateCanvas(data) {
+            if (!document.getElementById('reviewerName')) return;
+            document.getElementById('reviewerName').textContent = data.name;
+            document.getElementById('reviewerAvatar').textContent = data.avatar;
+            document.getElementById('displayReviewText').textContent = `"${data.text}"`;
+            
+            let starsHtml = '';
+            for(let i=1; i<=5; i++) starsHtml += i <= data.stars ? '★' : '☆';
+            document.getElementById('displayStars').textContent = starsHtml;
+
+            document.getElementById('valSentiment').textContent = data.sentiment;
+            document.getElementById('valTopic').textContent = data.topic;
+            document.getElementById('valEmployee').textContent = data.employee;
+            document.getElementById('valSafety').textContent = data.riskType === 'chip-danger' ? 'Flagged' : 'Clear';
+
+            const riskChip = document.getElementById('riskChip');
+            if (riskChip) {
+                riskChip.className = `tag-chip ${data.riskType}`;
+                riskChip.innerHTML = `<i data-lucide="${data.riskType === 'chip-danger' ? 'alert-triangle' : (data.riskType === 'chip-warning' ? 'alert-circle' : 'shield-check')}" style="width:12px;height:12px;"></i> ${data.risk}`;
+            }
+
+            document.getElementById('valTone').textContent = data.tone;
+            document.getElementById('aiResponseText').textContent = data.response;
+
+            const banner = document.getElementById('decisionBanner');
+            const iconBox = document.getElementById('decisionIcon');
+            const btn = document.getElementById('publishActionBtn');
+
+            if (banner && iconBox && btn) {
+                document.getElementById('decisionTitle').textContent = data.decision;
+                document.getElementById('decisionSub').textContent = data.decisionSub;
+
+                if (data.decisionType === 'positive') {
+                    banner.style.background = 'rgba(0, 201, 167, 0.08)';
+                    banner.style.borderColor = 'rgba(0, 201, 167, 0.3)';
+                    iconBox.style.background = 'rgba(0, 201, 167, 0.2)';
+                    iconBox.style.color = '#00C9A7';
+                    iconBox.innerHTML = `<i data-lucide="check-circle-2" style="width:22px;height:22px;"></i>`;
+                    btn.style.display = 'inline-flex';
+                    btn.className = 'btn btn-accent btn-sm';
+                    btn.textContent = 'Gepubliceerd op Google';
+                } else if (data.decisionType === 'warning') {
+                    banner.style.background = 'rgba(245, 158, 11, 0.08)';
+                    banner.style.borderColor = 'rgba(245, 158, 11, 0.3)';
+                    iconBox.style.background = 'rgba(245, 158, 11, 0.2)';
+                    iconBox.style.color = '#F59E0B';
+                    iconBox.innerHTML = `<i data-lucide="clock" style="width:22px;height:22px;"></i>`;
+                    btn.style.display = 'inline-flex';
+                    btn.className = 'btn btn-secondary btn-sm';
+                    btn.textContent = 'Goedkeuren en Publiceren';
+                } else {
+                    banner.style.background = 'rgba(239, 68, 68, 0.08)';
+                    banner.style.borderColor = 'rgba(239, 68, 68, 0.3)';
+                    iconBox.style.background = 'rgba(239, 68, 68, 0.2)';
+                    iconBox.style.color = '#EF4444';
+                    iconBox.innerHTML = `<i data-lucide="shield-alert" style="width:22px;height:22px;"></i>`;
+                    btn.style.display = 'inline-flex';
+                    btn.className = 'btn btn-secondary btn-sm';
+                    btn.style.borderColor = 'rgba(239, 68, 68, 0.4)';
+                    btn.textContent = 'Escalatie Controleren';
+                }
+            }
+
+            if (window.lucide) lucide.createIcons();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) lucide.createIcons();
+            loadPreset('positive');
+        });
     </script>
 </body>
 </html>
