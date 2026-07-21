@@ -421,26 +421,98 @@
             if (!text) { alert('Typ eerst een review in het tekstveld!'); return; }
 
             document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
+
             let lower = text.toLowerCase();
-            let isSensitive = lower.includes('ziek') || lower.includes('letsel') || lower.includes('advocaat') || lower.includes('schade');
-            let isNegative = selectedStars <= 3 || lower.includes('traag') || lower.includes('slecht') || lower.includes('wachten');
+
+            // 1. Smart Employee Extraction
+            let employee = 'Geen';
+            const empMatch = text.match(/(?:met|door|bediend door|medewerker|trainer|dr\.|doctor|juf|geholpen door)\s+([A-Z][a-z]+)/i);
+            if (empMatch && empMatch[1]) {
+                employee = empMatch[1];
+            } else {
+                const commonNames = ['hank', 'sanne', 'marcus', 'clara', 'david', 'jan', 'marc', 'lisa', 'karel', 'derek', 'jessica'];
+                for (let n of commonNames) {
+                    if (lower.includes(n)) {
+                        employee = n.charAt(0).toUpperCase() + n.slice(1);
+                        break;
+                    }
+                }
+            }
+
+            // 2. Risk & Safety Check
+            let isSensitive = lower.includes('ziek') || lower.includes('letsel') || lower.includes('advocaat') || lower.includes('schade') || lower.includes('diefstal') || lower.includes('gestolen') || lower.includes('bloed');
+
+            // 3. Sentiment & Praise vs Complaint
+            let hasPraise = lower.includes('goed') || lower.includes('geweldig') || lower.includes('perfect') || lower.includes('uitstekend') || lower.includes('heerlijk') || lower.includes('fijn') || lower.includes('super');
+            let hasComplaint = lower.includes('slecht') || lower.includes('niet goed') || lower.includes('traag') || lower.includes('koud') || lower.includes('wachten') || lower.includes('chaotisch') || lower.includes('vies');
+
+            let sentiment = 'Positief';
+            if (isSensitive) {
+                sentiment = 'Kritiek';
+            } else if (hasPraise && hasComplaint) {
+                sentiment = 'Gemengd / Neutraal';
+            } else if (selectedStars <= 3 || hasComplaint) {
+                sentiment = 'Negatief';
+            }
+
+            // 4. Topic Detection
+            let topic = 'Algemene Ervaring';
+            if (lower.includes('eten') || lower.includes('maaltijd') || lower.includes('soep') || lower.includes('smaak')) {
+                topic = (employee !== 'Geen') ? 'Service & Eten' : 'Kwaliteit van Eten';
+            } else if (lower.includes('wachten') || lower.includes('tafel') || lower.includes('reservering') || lower.includes('rij')) {
+                topic = 'Wachttijd & Service';
+            } else if (lower.includes('schoon') || lower.includes('vies') || lower.includes('wasstraat')) {
+                topic = 'Hygiëne & Accommodatie';
+            } else if (employee !== 'Geen') {
+                topic = `Klantenservice (${employee})`;
+            }
+
+            // 5. Intelligent AI Response Draft Generator
+            let responseText = '';
+            let tone = 'Vriendelijk & Professioneel';
+
+            if (isSensitive) {
+                tone = 'Geëscaleerd naar Beheerder';
+                responseText = '[AI Generatie Gepauzeerd] Gevoelig trefwoord gedetecteerd. Automatische reactie tegengehouden en doorgestuurd naar beheerder.';
+            } else if (hasPraise && hasComplaint) {
+                tone = 'Empathisch & Gebalanceerd';
+                if (employee !== 'Geen') {
+                    responseText = `Hartelijk dank voor het achterlaten van je review! Fijn om te horen dat ${employee} geweldige service heeft verleend, maar onze oprechte excuses dat het eten niet aan de verwachtingen voldeed. We hebben dit intern besproken met het team.`;
+                } else {
+                    responseText = `Bedankt voor je feedback! Fijn dat een deel van het bezoek prettig was, maar excuses voor de punten die beter konden. We werken hier direct aan met het team!`;
+                }
+            } else if (selectedStars >= 4 || (hasPraise && !hasComplaint)) {
+                tone = 'Enthousiast & Waarderend';
+                if (employee !== 'Geen') {
+                    responseText = `Hartelijk dank voor de fantastische 5-sterren review! Geweldig dat ${employee} je zo goed heeft geholpen. We geven het compliment direct door aan ${employee}!`;
+                } else {
+                    responseText = `Hartelijk dank voor de geweldige 5-sterren review! Fijn dat je een fantastische ervaring hebt gehad en graag tot een volgende keer!`;
+                }
+            } else {
+                tone = 'Excuserend & Professioneel';
+                if (employee !== 'Geen') {
+                    responseText = `Bedankt dat je dit bij ons meldt. Excuses dat het bezoek niet naar wens was. We bespreken dit met ${employee} en ons team om onze service te verbeteren.`;
+                } else {
+                    responseText = `Hartelijk dank voor je eerlijke feedback. Oprechte excuses voor deze ervaring; we nemen dit op met ons management om herhaling te voorkomen.`;
+                }
+            }
+
+            let isNegative = selectedStars <= 3 || hasComplaint;
 
             let data = {
                 name: 'Aangepaste Review',
                 avatar: 'AR',
                 stars: selectedStars,
                 text: text,
-                sentiment: isSensitive ? 'Kritiek' : (isNegative ? 'Negatief' : 'Positief'),
-                topic: isSensitive ? 'Veiligheid' : (isNegative ? 'Service' : 'Algemeen'),
-                employee: lower.includes('sanne') ? 'Sanne' : 'Geen',
+                sentiment: sentiment,
+                topic: topic,
+                employee: employee,
                 risk: isSensitive ? 'Hoog Risico (Gefilterd)' : (isNegative ? 'Middelgroot Risico' : 'Laag Risico'),
                 riskType: isSensitive ? 'chip-danger' : (isNegative ? 'chip-warning' : 'chip-positive'),
-                tone: isSensitive ? 'Geëscaleerd' : (isNegative ? 'Empathisch' : 'Vriendelijk & Professioneel'),
-                response: isSensitive 
-                    ? '[AI Generatie Gepauzeerd] Gevoelig trefwoord gedetecteerd. Doorgestuurd naar beheerder.' 
-                    : `Hartelijk dank voor je review met betrekking tot "${text.substring(0, 30)}...". We stellen je feedback erg op prijs.`,
+                tone: tone,
+                response: responseText,
                 decision: isSensitive ? 'Publicatie Geblokkeerd' : (isNegative ? 'Goedkeuring Vereist' : 'Veilig voor Automatische Publicatie'),
-                decisionSub: isSensitive ? 'Gevoelig onderwerp gedetecteerd.' : (isNegative ? 'Score is lager dan 4 sterren.' : 'Voldoet aan de regels.'),
+                decisionSub: isSensitive ? 'Gevoelig onderwerp gedetecteerd. Vastgehouden voor handmatige controle.' : (isNegative ? 'Score is lager dan 4 sterren of bevat een klacht. Vastgehouden voor goedkeuring.' : 'Voldoet aan de regels voor automatische publicatie.'),
                 decisionType: isSensitive ? 'danger' : (isNegative ? 'warning' : 'positive')
             };
 

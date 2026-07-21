@@ -430,26 +430,98 @@
             if (!text) { alert('¡Por favor escriba texto antes de simular!'); return; }
 
             document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
+
             let lower = text.toLowerCase();
-            let isSensitive = lower.includes('lesion') || lower.includes('intoxicacion') || lower.includes('abogado') || lower.includes('dolor') || lower.includes('demandar');
-            let isNegative = selectedStars <= 3 || lower.includes('lento') || lower.includes('malo') || lower.includes('espera');
+
+            // 1. Smart Employee Extraction
+            let employee = 'Ninguno';
+            const empMatch = text.match(/(?:con|por|camarero|entrenador|dr\.|doctor|maestra|juf|empleado|atendido por)\s+([A-Z][a-z]+)/i);
+            if (empMatch && empMatch[1]) {
+                employee = empMatch[1];
+            } else {
+                const commonNames = ['hank', 'alejandro', 'sara', 'marcos', 'clara', 'david', 'carlos', 'juan', 'laura', 'diego'];
+                for (let n of commonNames) {
+                    if (lower.includes(n)) {
+                        employee = n.charAt(0).toUpperCase() + n.slice(1);
+                        break;
+                    }
+                }
+            }
+
+            // 2. Risk & Safety Check
+            let isSensitive = lower.includes('lesion') || lower.includes('intoxicacion') || lower.includes('abogado') || lower.includes('demandar') || lower.includes('robo') || lower.includes('infeccion');
+
+            // 3. Sentiment & Praise vs Complaint
+            let hasPraise = lower.includes('bueno') || lower.includes('excelente') || lower.includes('perfecto') || lower.includes('increible') || lower.includes('gran') || lower.includes('me encanto');
+            let hasComplaint = lower.includes('malo') || lower.includes('lento') || lower.includes('frio') || lower.includes('espera') || lower.includes('no fue bueno') || lower.includes('no me gusto');
+
+            let sentiment = 'Positivo';
+            if (isSensitive) {
+                sentiment = 'Crítico';
+            } else if (hasPraise && hasComplaint) {
+                sentiment = 'Mixto / Neutral';
+            } else if (selectedStars <= 3 || hasComplaint) {
+                sentiment = 'Negativo';
+            }
+
+            // 4. Topic Detection
+            let topic = 'Experiencia General';
+            if (lower.includes('comida') || lower.includes('plato') || lower.includes('sopa') || lower.includes('sabor')) {
+                topic = (employee !== 'Ninguno') ? 'Elogio de Atención y Comida' : 'Calidad de la Comida';
+            } else if (lower.includes('espera') || lower.includes('mesa') || lower.includes('reserva') || lower.includes('cola')) {
+                topic = 'Tiempo de Espera';
+            } else if (lower.includes('limpio') || lower.includes('sucio') || lower.includes('lavado')) {
+                topic = 'Instalaciones y Limpieza';
+            } else if (employee !== 'Ninguno') {
+                topic = `Atención del Personal (${employee})`;
+            }
+
+            // 5. Intelligent AI Response Draft
+            let responseText = '';
+            let tone = 'Cálido y Profesional';
+
+            if (isSensitive) {
+                tone = 'Escalado a Gerencia';
+                responseText = '[Generación Pausada] Detectadas palabras clave sensibles. Respuesta automática retenida y enviada al propietario.';
+            } else if (hasPraise && hasComplaint) {
+                tone = 'Empático y Equilibrado';
+                if (employee !== 'Ninguno') {
+                    responseText = `¡Muchas gracias por tomarse el tiempo de dejarnos su reseña! Nos alegra saber que ${employee} le brindó una excelente atención, pero lamentamos sinceramente que la comida no haya estado a la altura de sus expectativas. Hemos compartido sus comentarios con nuestro equipo para mejorar.`;
+                } else {
+                    responseText = `¡Gracias por su comentario! Nos alegra que haya disfrutado de parte de su visita, pero nos disculpamos por los aspectos que no cumplieron con sus expectativas. Estamos trabajando con el equipo para corregirlo.`;
+                }
+            } else if (selectedStars >= 4 || (hasPraise && !hasComplaint)) {
+                tone = 'Cálido y Agradecido';
+                if (employee !== 'Ninguno') {
+                    responseText = `¡Muchas gracias por su reseña de 5 estrellas! Nos encanta saber que ${employee} le atendió tan bien. ¡Le transmitiremos sus amables palabras a ${employee}!`;
+                } else {
+                    responseText = `¡Muchas gracias por su excelente reseña! Nos alegra enormemente que haya tenido una gran experiencia y esperamos volver a verle muy pronto.`;
+                }
+            } else {
+                tone = 'Empático y Profesional';
+                if (employee !== 'Ninguno') {
+                    responseText = `Gracias por notificarnos sobre su experiencia. Lamentamos que su visita no haya sido ideal. Hablaremos con ${employee} y nuestro equipo para asegurar que mejoremos nuestro servicio.`;
+                } else {
+                    responseText = `Muchas gracias por sus comentarios honestos. Le pedimos disculpas sinceras por los inconvenientes y estamos revisándolo con gerencia para evitar que vuelva a ocurrir.`;
+                }
+            }
+
+            let isNegative = selectedStars <= 3 || hasComplaint;
 
             let data = {
                 name: 'Reseña Personalizada',
                 avatar: 'RP',
                 stars: selectedStars,
                 text: text,
-                sentiment: isSensitive ? 'Crítico' : (isNegative ? 'Negativo' : 'Positivo'),
-                topic: isSensitive ? 'Emergencia de Seguridad' : (isNegative ? 'Servicio' : 'Experiencia General'),
-                employee: lower.includes('alejandro') ? 'Alejandro' : 'Ninguno',
+                sentiment: sentiment,
+                topic: topic,
+                employee: employee,
                 risk: isSensitive ? 'Riesgo Alto (Bloqueado)' : (isNegative ? 'Riesgo Medio' : 'Riesgo Bajo'),
                 riskType: isSensitive ? 'chip-danger' : (isNegative ? 'chip-warning' : 'chip-positive'),
-                tone: isSensitive ? 'Escalado' : (isNegative ? 'Empático' : 'Cálido y Profesional'),
-                response: isSensitive 
-                    ? '[Generación Pausada] Palabras sensibles detectadas. Enviado a gerencia.' 
-                    : `Muchas gracias por compartir su experiencia con nosotros respecto a "${text.substring(0, 30)}...".`,
+                tone: tone,
+                response: responseText,
                 decision: isSensitive ? 'Publicación Bloqueada' : (isNegative ? 'Requiere Aprobación' : 'Seguro para Publicación Automática'),
-                decisionSub: isSensitive ? 'Tema sensible detectado.' : (isNegative ? 'Calificación menor a 4 estrellas.' : 'Reglas pasadas correctamente.'),
+                decisionSub: isSensitive ? 'Tema sensible detectado. Retenido para revisión humana.' : (isNegative ? 'Calificación menor a 4 estrellas o contiene una queja.' : 'Cumple las reglas para publicación automática.'),
                 decisionType: isSensitive ? 'danger' : (isNegative ? 'warning' : 'positive')
             };
 

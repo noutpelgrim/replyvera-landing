@@ -680,30 +680,101 @@
                 return;
             }
 
-            // Remove active state from preset buttons
             document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
 
-            // Analyze text dynamically
             let lower = text.toLowerCase();
-            let isSensitive = lower.includes('injury') || lower.includes('poison') || lower.includes('lawyer') || lower.includes('scratch') || lower.includes('hurt') || lower.includes('sue');
-            let isNegative = selectedStars <= 3 || lower.includes('slow') || lower.includes('bad') || lower.includes('waiting') || lower.includes('poor');
+            
+            // 1. Smart Employee Extraction
+            let employee = 'None';
+            const empMatch = text.match(/(?:with|by|server|coach|dr\.|doctor|trainer|attendant|employee|staff)\s+([A-Z][a-z]+)/i);
+            if (empMatch && empMatch[1]) {
+                employee = empMatch[1];
+            } else {
+                const commonNames = ['hank', 'alex', 'sarah', 'marcus', 'clara', 'jessica', 'david', 'max', 'john', 'mike', 'sam', 'emily', 'anna', 'carlos', 'juan', 'rachel', 'derek'];
+                for (let n of commonNames) {
+                    if (lower.includes(n)) {
+                        employee = n.charAt(0).toUpperCase() + n.slice(1);
+                        break;
+                    }
+                }
+            }
+
+            // 2. Risk & Safety Check
+            let isSensitive = lower.includes('injury') || lower.includes('poison') || lower.includes('lawyer') || lower.includes('scratch') || lower.includes('hurt') || lower.includes('sue') || lower.includes('malpractice') || lower.includes('bleed') || lower.includes('stolen') || lower.includes('theft');
+            
+            // 3. Sentiment & Praise vs Complaint
+            let hasPraise = lower.includes('good') || lower.includes('great') || lower.includes('perfect') || lower.includes('awesome') || lower.includes('excellent') || lower.includes('loved') || lower.includes('amazing') || lower.includes('shines');
+            let hasComplaint = lower.includes('not good') || lower.includes('bad') || lower.includes('slow') || lower.includes('cold') || lower.includes('poor') || lower.includes('terrible') || lower.includes('dirty') || lower.includes('wait') || lower.includes('overcrowded');
+
+            let sentiment = 'Positive';
+            if (isSensitive) {
+                sentiment = 'Critical';
+            } else if (hasPraise && hasComplaint) {
+                sentiment = 'Mixed / Neutral';
+            } else if (selectedStars <= 3 || hasComplaint) {
+                sentiment = 'Negative';
+            }
+
+            // 4. Topic Detection
+            let topic = 'General Experience';
+            if (lower.includes('food') || lower.includes('meal') || lower.includes('taste') || lower.includes('lasagna') || lower.includes('soup')) {
+                topic = (employee !== 'None') ? 'Food & Staff Praise' : 'Food Quality';
+            } else if (lower.includes('wait') || lower.includes('table') || lower.includes('reservation') || lower.includes('line')) {
+                topic = 'Wait Time & Service';
+            } else if (lower.includes('clean') || lower.includes('dirty') || lower.includes('wash') || lower.includes('vacuum')) {
+                topic = 'Cleanliness & Facility';
+            } else if (lower.includes('bill') || lower.includes('price') || lower.includes('charge') || lower.includes('cost') || lower.includes('quarter')) {
+                topic = 'Pricing & Billing';
+            } else if (employee !== 'None') {
+                topic = `Staff Service (${employee})`;
+            }
+
+            // 5. Intelligent AI Response Draft Generator
+            let responseText = '';
+            let tone = 'Warm & Professional';
+
+            if (isSensitive) {
+                tone = 'Escalated to Management';
+                responseText = '[AI Generation Paused] Sensitive safety keywords detected. Auto-response suppressed and sent directly to owner queue.';
+            } else if (hasPraise && hasComplaint) {
+                tone = 'Empathetic & Balanced';
+                if (employee !== 'None') {
+                    responseText = `Thank you for taking the time to leave a review! We're thrilled to hear that ${employee} provided fantastic service, but we sincerely apologize that the food fell short of your expectations. We've passed your comments to our team so we can make things right!`;
+                } else {
+                    responseText = `Thank you for your feedback! We're glad you enjoyed parts of your visit, but we apologize for the areas that didn't meet your expectations. We're actively working with our team to improve!`;
+                }
+            } else if (selectedStars >= 4 || (hasPraise && !hasComplaint)) {
+                tone = 'Warm & Welcoming';
+                if (employee !== 'None') {
+                    responseText = `Thank you so much for the 5-star review! We're delighted that ${employee} took such great care of you. We'll be sure to pass along your praise to ${employee}!`;
+                } else {
+                    responseText = `Thank you so much for the fantastic 5-star review! We're thrilled that you had a great experience and look forward to welcoming you back soon!`;
+                }
+            } else {
+                tone = 'Apologetic & Professional';
+                if (employee !== 'None') {
+                    responseText = `Thank you for bringing this to our attention. We apologize that your experience fell short of expectations. We will follow up with ${employee} and our team to ensure we improve.`;
+                } else {
+                    responseText = `Thank you for your honest feedback. We sincerely apologize for your experience and are addressing this with our management team to ensure it doesn't happen again.`;
+                }
+            }
+
+            let isNegative = selectedStars <= 3 || hasComplaint;
 
             let data = {
                 name: 'Custom Reviewer',
                 avatar: 'CR',
                 stars: selectedStars,
                 text: text,
-                sentiment: isSensitive ? 'Critical' : (isNegative ? 'Negative' : 'Positive'),
-                topic: isSensitive ? 'Safety Emergency' : (isNegative ? 'Service Quality' : 'General Experience'),
-                employee: lower.includes('sarah') ? 'Sarah' : 'None',
+                sentiment: sentiment,
+                topic: topic,
+                employee: employee,
                 risk: isSensitive ? 'High Risk (Blocked)' : (isNegative ? 'Medium Risk' : 'Low Risk'),
                 riskType: isSensitive ? 'chip-danger' : (isNegative ? 'chip-warning' : 'chip-positive'),
-                tone: isSensitive ? 'Escalated' : (isNegative ? 'Empathetic' : 'Warm & Professional'),
-                response: isSensitive 
-                    ? '[AI Generation Paused] Sensitive keywords detected. Sent to owner queue.' 
-                    : `Thank you for sharing your feedback with us! We appreciate you taking the time to share your experience regarding "${text.substring(0, 30)}...".`,
+                tone: tone,
+                response: responseText,
                 decision: isSensitive ? 'Auto-Publishing Blocked' : (isNegative ? 'Needs Approval' : 'Safe to Auto-Publish'),
-                decisionSub: isSensitive ? 'Sensitive trigger detected. Held for human review.' : (isNegative ? 'Review is under 4 stars. Held for approval.' : 'Matches rules for auto-publishing.'),
+                decisionSub: isSensitive ? 'Sensitive trigger detected. Held for human review.' : (isNegative ? 'Review is under 4 stars or contains a complaint. Held for owner approval.' : 'Matches rules for auto-publishing.'),
                 decisionType: isSensitive ? 'danger' : (isNegative ? 'warning' : 'positive')
             };
 
