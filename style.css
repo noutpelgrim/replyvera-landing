@@ -495,7 +495,7 @@ p { color: var(--text-secondary); line-height: 1.65; }
     border: 1px solid var(--border-light);
     border-radius: var(--radius-lg);
     padding: 8px;
-    width: min(760px, calc(100vw - 32px));
+    width: min(820px, calc(100vw - 32px));
     max-width: none;
     box-shadow: 0 24px 56px rgba(0,0,0,0.7);
     opacity: 0;
@@ -563,7 +563,7 @@ p { color: var(--text-secondary); line-height: 1.65; }
     height: 16px;
 }
 
-.dropdown-text { flex: 1; min-width: 0; }
+.dropdown-text { flex: 1; min-width: 0; overflow: hidden; }
 
 .dropdown-title {
     font-size: 0.88rem;
@@ -571,6 +571,9 @@ p { color: var(--text-secondary); line-height: 1.65; }
     color: var(--text-primary);
     margin-bottom: 4px;
     transition: color var(--transition-fast);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .dropdown-item:hover .dropdown-title { color: #FFF; }
 
@@ -578,6 +581,12 @@ p { color: var(--text-secondary); line-height: 1.65; }
     font-size: 0.78rem;
     color: var(--text-muted);
     line-height: 1.4;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 /* Icon colour variants */
