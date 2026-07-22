@@ -636,19 +636,18 @@
     <script>
         // Paddle Billing Integration
         let currentBillingCycle = 'monthly';
-
         const PADDLE_PRICES = {
             monthly: {
-                starter: 'pri_01ky3na4v3rpq4yv77s6t26rc4',
-                autopilot: 'pri_01ky3na5bg2enh5nqyfkak9x7j',
-                multi_location: 'pri_01ky3na5txs9wvexws7j7f2m7b',
-                agency: 'pri_01ky3na69fe3z9eey942kfkzeb'
+                starter: 'pri_01ky53134vhsk21e0z0e9ajt4q',
+                autopilot: 'pri_01ky5313nywzvdwxrtkszp05vn',
+                multi_location: 'pri_01ky53144z3zq8mx7cv98j8jp5',
+                agency: 'pri_01ky5314p4fgkf7sphce77gg1y'
             },
             annual: {
-                starter: 'pri_01ky3na50f7f9j9xvp359b7gnv',
-                autopilot: 'pri_01ky3na5fygcey9cd2548a2v1y',
-                multi_location: 'pri_01ky3na5zfvj3jayknkn599fxe',
-                agency: 'pri_01ky3na6ee5rpycr2sk45rkrj9'
+                starter: 'pri_01ky53139rw0v5yaz4dh2k2cwy',
+                autopilot: 'pri_01ky5313twprhqhdpm8smt78vt',
+                multi_location: 'pri_01ky53149h9xhyzky18jfv924g',
+                agency: 'pri_01ky5314tsf8k8hvnk99e8dstc'
             }
         };
 
@@ -657,7 +656,7 @@
                 try {
                     Paddle.Environment.set('sandbox');
                     Paddle.Initialize({ 
-                        token: 'test_805ab1a4a02871a6e7a89b83254',
+                        token: 'test_3b0fabc0a8909b59a9f95735b2c',
                         eventCallback: function(data) {
                             console.log('Paddle Event:', data);
                         }
