@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
     <script src="/demo.js?v=3" defer></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
 
@@ -671,7 +672,7 @@
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> English and Spanish</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Negative-review alerts</li>
                     </ul>
-                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=starter" class="btn btn-secondary" style="text-align:center;justify-content:center;">Start Free Trial</a>
+                    <button onclick="openPaddleCheckout('starter', event)" class="btn btn-secondary" style="width:100%;text-align:center;justify-content:center;cursor:pointer;">Start Free Trial</button>
                 </div>
 
                 <!-- Autopilot -->
@@ -689,7 +690,7 @@
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Custom brand voice</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Review history</li>
                     </ul>
-                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent" style="text-align:center;justify-content:center;">Start Free Trial</a>
+                    <button onclick="openPaddleCheckout('autopilot', event)" class="btn btn-accent" style="width:100%;text-align:center;justify-content:center;cursor:pointer;">Start Free Trial</button>
                 </div>
 
                 <!-- Multi-Location -->
@@ -705,7 +706,7 @@
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Team access</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Additional locations available</li>
                     </ul>
-                    <a href="pricing.html" class="btn btn-secondary" style="text-align:center;justify-content:center;">Start Multi-Location Trial</a>
+                    <button onclick="openPaddleCheckout('multi_location', event)" class="btn btn-secondary" style="width:100%;text-align:center;justify-content:center;cursor:pointer;">Start Multi-Location Trial</button>
                 </div>
 
             </div>
@@ -854,5 +855,80 @@
     <script defer src="/_vercel/insights/script.js"></script>
 
     <script src="/script.js"></script>
+
+    <script>
+        // Paddle Billing Integration
+        let currentBillingCycle = 'monthly';
+        const PADDLE_PRICES = {
+            monthly: {
+                starter: 'pri_01ky53qca2x1ag8yt36en377pv',
+                autopilot: 'pri_01ky53qcz7kpx92h9wnnmq4z50',
+                multi_location: 'pri_01ky53qdg9qab3ct8hgexqkf2n',
+                agency: 'pri_01ky53qdz80wsxaqnw672ehrcs'
+            },
+            annual: {
+                starter: 'pri_01ky53qcerr3hb001fsccthevr',
+                autopilot: 'pri_01ky53qd42g20ew50kgea0yf75',
+                multi_location: 'pri_01ky53qdmvhzz157qsss7hehy7',
+                agency: 'pri_01ky53qe3q3hfmfav69h2r19v6'
+            }
+        };
+
+        function setupPaddle() {
+            if (window.Paddle) {
+                try {
+                    Paddle.Initialize({ 
+                        token: 'live_717730a5b06d6e51817b4a48b9e',
+                        eventCallback: function(data) {
+                            console.log('Paddle Event:', data);
+                        }
+                    });
+                    console.log('✅ Paddle Live Initialized Successfully');
+                } catch (e) {
+                    console.error('Paddle Initialization Error:', e);
+                }
+            } else {
+                console.warn('⚠️ Paddle SDK script not detected on window.');
+            }
+        }
+
+        if (document.readyState === 'complete') {
+            setupPaddle();
+        } else {
+            window.addEventListener('load', setupPaddle);
+        }
+
+        function openPaddleCheckout(tier, event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            const priceId = PADDLE_PRICES[currentBillingCycle]?.[tier];
+            console.log('Checkout Triggered:', { tier, currentBillingCycle, priceId, paddleExists: !!window.Paddle });
+
+            if (window.Paddle && priceId) {
+                try {
+                    Paddle.Checkout.open({
+                        items: [{ priceId: priceId, quantity: 1 }],
+                        settings: {
+                            displayMode: 'overlay',
+                            theme: 'dark',
+                            locale: 'en'
+                        }
+                    });
+                    return false;
+                } catch (err) {
+                    console.error('Paddle Checkout.open error:', err);
+                    alert('Checkout Error: ' + err.message);
+                }
+            } else if (!window.Paddle) {
+                alert('Paddle SDK is not loaded yet.');
+            } else {
+                alert('Missing Price ID for tier: ' + tier);
+            }
+            return false;
+        }
+    </script>
 </body>
 </html>
