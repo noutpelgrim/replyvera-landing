@@ -490,9 +490,11 @@
             let sentiment = 'Positief';
             if (isSensitive) {
                 sentiment = 'Kritiek';
-            } else if (hasPraise && hasComplaint) {
+            } else if (selectedStars <= 2) {
+                sentiment = 'Negatief';
+            } else if (selectedStars === 3 || (hasPraise && hasComplaint)) {
                 sentiment = 'Gemengd / Neutraal';
-            } else if (hasComplaint || (selectedStars <= 2 && !hasPraise)) {
+            } else if (hasComplaint) {
                 sentiment = 'Negatief';
             } else {
                 sentiment = 'Positief';

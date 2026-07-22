@@ -751,9 +751,11 @@
             let sentiment = 'Positive';
             if (isSensitive) {
                 sentiment = 'Critical';
-            } else if (hasPraise && hasComplaint) {
+            } else if (selectedStars <= 2) {
+                sentiment = 'Negative';
+            } else if (selectedStars === 3 || (hasPraise && hasComplaint)) {
                 sentiment = 'Mixed / Neutral';
-            } else if (hasComplaint || (selectedStars <= 2 && !hasPraise)) {
+            } else if (hasComplaint) {
                 sentiment = 'Negative';
             } else {
                 sentiment = 'Positive';

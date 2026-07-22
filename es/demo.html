@@ -499,9 +499,11 @@
             let sentiment = 'Positivo';
             if (isSensitive) {
                 sentiment = 'Crítico';
-            } else if (hasPraise && hasComplaint) {
+            } else if (selectedStars <= 2) {
+                sentiment = 'Negativo';
+            } else if (selectedStars === 3 || (hasPraise && hasComplaint)) {
                 sentiment = 'Mixto / Neutral';
-            } else if (hasComplaint || (selectedStars <= 2 && !hasPraise)) {
+            } else if (hasComplaint) {
                 sentiment = 'Negativo';
             } else {
                 sentiment = 'Positivo';
