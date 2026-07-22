@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
     <script src="/demo.js" defer></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
 
@@ -293,7 +294,7 @@
                             <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Negative-review alerts</li>
                         </ul>
                     </div>
-                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=starter" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Start Free Trial</a>
+                    <button onclick="openPaddleCheckout('starter', event)" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center; cursor: pointer;">Start Free Trial</button>
                 </div>
 
                 <!-- Autopilot Card -->
@@ -318,7 +319,7 @@
                             <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Review history</li>
                         </ul>
                     </div>
-                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent" style="width: 100%; text-align: center; justify-content: center;">Start Free Trial</a>
+                    <button onclick="openPaddleCheckout('autopilot', event)" class="btn btn-accent" style="width: 100%; text-align: center; justify-content: center; cursor: pointer;">Start Free Trial</button>
                 </div>
 
                 <!-- Multi-Location Card -->
@@ -343,7 +344,7 @@
                             <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Additional locations available</li>
                         </ul>
                     </div>
-                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=multi_location" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Start Multi-Location Trial</a>
+                    <button onclick="openPaddleCheckout('multi_location', event)" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center; cursor: pointer;">Start Multi-Location Trial</button>
                 </div>
 
                 <!-- Agency Card -->
@@ -368,7 +369,7 @@
                             <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Agency reporting</li>
                         </ul>
                     </div>
-                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=agency" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Start Agency Trial</a>
+                    <button onclick="openPaddleCheckout('agency', event)" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center; cursor: pointer;">Start Agency Trial</button>
                 </div>
 
             </div>
@@ -633,8 +634,84 @@
     <script src="/script.js"></script>
 
     <script>
+        // Paddle Billing Integration
+        let currentBillingCycle = 'monthly';
+
+        const PADDLE_PRICES = {
+            monthly: {
+                starter: 'pri_01ky3na4v3rpq4yv77s6t26rc4',
+                autopilot: 'pri_01ky3na5bg2enh5nqyfkak9x7j',
+                multi_location: 'pri_01ky3na5txs9wvexws7j7f2m7b',
+                agency: 'pri_01ky3na69fe3z9eey942kfkzeb'
+            },
+            annual: {
+                starter: 'pri_01ky3na50f7f9j9xvp359b7gnv',
+                autopilot: 'pri_01ky3na5fygcey9cd2548a2v1y',
+                multi_location: 'pri_01ky3na5zfvj3jayknkn599fxe',
+                agency: 'pri_01ky3na6ee5rpycr2sk45rkrj9'
+            }
+        };
+
+        function setupPaddle() {
+            if (window.Paddle) {
+                try {
+                    Paddle.Environment.set('sandbox');
+                    Paddle.Initialize({ 
+                        token: 'test_805ab1a4a02871a6e7a89b83254',
+                        eventCallback: function(data) {
+                            console.log('Paddle Event:', data);
+                        }
+                    });
+                    console.log('✅ Paddle Sandbox Initialized Successfully');
+                } catch (e) {
+                    console.error('Paddle Initialization Error:', e);
+                }
+            } else {
+                console.warn('⚠️ Paddle SDK script not detected on window.');
+            }
+        }
+
+        if (document.readyState === 'complete') {
+            setupPaddle();
+        } else {
+            window.addEventListener('load', setupPaddle);
+        }
+
+        function openPaddleCheckout(tier, event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            const priceId = PADDLE_PRICES[currentBillingCycle]?.[tier];
+            console.log('Checkout Triggered:', { tier, currentBillingCycle, priceId, paddleExists: !!window.Paddle });
+
+            if (window.Paddle && priceId) {
+                try {
+                    Paddle.Checkout.open({
+                        items: [{ priceId: priceId, quantity: 1 }],
+                        settings: {
+                            displayMode: 'overlay',
+                            theme: 'dark',
+                            locale: 'en'
+                        }
+                    });
+                    return false;
+                } catch (err) {
+                    console.error('Paddle Checkout.open error:', err);
+                    alert('Checkout Error: ' + err.message);
+                }
+            } else if (!window.Paddle) {
+                alert('Paddle SDK is not loaded yet. If you have an AdBlocker active or are opening pricing.html directly as a local file (file://), please disable AdBlocker or run over a local web server (http://localhost).');
+            } else {
+                alert('Missing Price ID for tier: ' + tier);
+            }
+            return false;
+        }
+
         // Billing Toggle Logic
         function setBilling(mode) {
+            currentBillingCycle = mode;
             const btnMonthly = document.getElementById('btn-monthly');
             const btnAnnual = document.getElementById('btn-annual');
             const priceVals = document.querySelectorAll('.price-val');
