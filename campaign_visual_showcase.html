@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReplyVera — Social Media Ad Campaign Visual Showcase</title>
+    <title>ReplyVera — Full 20-Post Social Media Campaign Visual Showcase</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
     <style>
@@ -29,11 +29,11 @@
 
         .header {
             text-align: center;
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto 50px;
         }
         .header h1 {
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             font-weight: 900;
             letter-spacing: -0.04em;
             margin-bottom: 12px;
@@ -41,70 +41,14 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .header p { color: var(--text-muted); font-size: 1.1rem; }
-
-        .campaign-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-            gap: 40px;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-        .ad-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-glass);
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            backdrop-filter: blur(20px);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .ad-header {
-            padding: 16px 20px;
-            border-bottom: 1px solid var(--border-glass);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--text-muted);
-        }
-        .ad-tag {
-            background: rgba(108, 71, 255, 0.15);
-            color: #A78BFA;
-            padding: 4px 10px;
-            border-radius: 20px;
-            border: 1px solid rgba(108, 71, 255, 0.3);
-        }
-
-        /* Render Preview Canvas */
-        .ad-visual-canvas {
-            height: 440px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 30px;
-            overflow: hidden;
-        }
-
-        /* Post 1 Visuals */
-        .bg-mesh-1 {
-            background: radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.25) 0%, transparent 40%),
-                        radial-gradient(circle at 90% 80%, rgba(108, 71, 255, 0.3) 0%, transparent 50%),
-                        #0B0C18;
-        }
+        .header p { color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; }
 
         .logo-badge {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 10px;
             background: rgba(255,255,255,0.05);
-            padding: 8px 16px;
+            padding: 8px 18px;
             border-radius: 30px;
             border: 1px solid rgba(255,255,255,0.1);
             margin-bottom: 20px;
@@ -118,16 +62,74 @@
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
         }
-        .logo-text { font-weight: 800; font-size: 1.1rem; }
+        .logo-text { font-weight: 800; font-size: 1.15rem; }
+
+        .campaign-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .ad-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .ad-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(108, 71, 255, 0.4);
+        }
+
+        .ad-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-glass);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            background: rgba(0,0,0,0.2);
+        }
+        .ad-tag {
+            background: rgba(108, 71, 255, 0.15);
+            color: #A78BFA;
+            padding: 4px 10px;
+            border-radius: 20px;
+            border: 1px solid rgba(108, 71, 255, 0.3);
+            font-size: 0.75rem;
+        }
+
+        /* Render Preview Canvas */
+        .ad-visual-canvas {
+            height: 420px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
 
         .headline-hero {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 900;
             letter-spacing: -0.04em;
             text-align: center;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             line-height: 1.1;
         }
 
@@ -142,7 +144,7 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
         .review-stars { color: #F59E0B; margin-bottom: 6px; font-size: 0.85rem; }
-        .review-text { font-size: 0.85rem; font-style: italic; color: #E2E8F0; margin-bottom: 12px; }
+        .review-text { font-size: 0.85rem; font-style: italic; color: #E2E8F0; margin-bottom: 12px; line-height: 1.4; }
         
         .ai-reply-box {
             background: rgba(0, 201, 167, 0.08);
@@ -159,9 +161,12 @@
 
         .ad-body {
             padding: 24px;
-            background: rgba(10, 10, 20, 0.8);
+            background: rgba(10, 10, 20, 0.9);
             border-top: 1px solid var(--border-glass);
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .ad-title { font-weight: 800; font-size: 1.1rem; margin-bottom: 8px; color: #FFF; }
         .ad-caption { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 16px; }
@@ -177,22 +182,31 @@
             text-decoration: none;
             box-shadow: 0 8px 20px rgba(108, 71, 255, 0.3);
         }
+
+        /* Specific Visual Backgrounds */
+        .bg-mesh-1 { background: radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.25) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(108, 71, 255, 0.3) 0%, transparent 50%), #0B0C18; }
+        .bg-mesh-2 { background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 60%), #0A0A14; }
+        .bg-mesh-3 { background: linear-gradient(180deg, #13142B 0%, #0A0A14 100%); }
+        .bg-mesh-4 { background: radial-gradient(circle at 80% 20%, rgba(0, 201, 167, 0.2) 0%, transparent 50%), #0D0E1E; }
+        .bg-mesh-5 { background: linear-gradient(135deg, #0A0A14 0%, #171833 100%); }
+        .bg-mesh-6 { background: radial-gradient(circle at 50% 10%, rgba(108, 71, 255, 0.3) 0%, transparent 60%), #0B0C18; }
+        .bg-mesh-7 { background: linear-gradient(180deg, #0A0A14 0%, #15162C 100%); }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <div class="logo-badge" style="display:inline-flex; margin-bottom: 16px;">
+        <div class="logo-badge">
             <div class="logo-icon"><i class="fa-solid fa-reply"></i></div>
             <span class="logo-text">Reply<span style="color:#8B6FFF">Vera</span></span>
         </div>
-        <h1>Social Campaign Visual Showcase</h1>
-        <p>Ultra-premium visual creative mockups for Apple / Stripe aesthetic brand rollout.</p>
+        <h1>20-Post Social Media Creative Campaign</h1>
+        <p>Complete visual ad design directory for ReplyVera. Designed in the brand aesthetic of Apple, Stripe, Linear, and OpenAI.</p>
     </div>
 
     <div class="campaign-grid">
 
-        <!-- Visual 1: Split Screen Efficiency -->
+        <!-- 1. Post 1 -->
         <div class="ad-card">
             <div class="ad-header">
                 <span>POST #1 • INSTAGRAM FEED</span>
@@ -205,47 +219,51 @@
                     <div class="review-text">"Outstanding service! Will definitely return."</div>
                     <div class="ai-reply-box">
                         <div class="ai-reply-title">✨ Vera Auto-Replied</div>
-                        <div>Thank you for your review! We're thrilled you enjoyed our service. See you soon!</div>
+                        <div>Thank you for your review! We're thrilled you enjoyed our service.</div>
                     </div>
                 </div>
             </div>
             <div class="ad-body">
-                <div class="ad-title">Split-Screen Efficiency Comparison</div>
-                <div class="ad-caption">Stop typing manual Google review replies. ReplyVera handles routine 5-star feedback in seconds on autopilot.</div>
+                <div>
+                    <div class="ad-title">Split-Screen Efficiency Comparison</div>
+                    <div class="ad-caption">Stop typing manual Google review replies. ReplyVera handles routine 5-star feedback in seconds on autopilot.</div>
+                </div>
                 <a href="https://replyvera.com" target="_blank" class="ad-cta-btn">Try ReplyVera Free</a>
             </div>
         </div>
 
-        <!-- Visual 2: Apple Keynote Style -->
+        <!-- 2. Post 2 -->
         <div class="ad-card">
             <div class="ad-header">
-                <span>POST #2 • KEYNOTE BANNER</span>
+                <span>POST #2 • INSTAGRAM FEED</span>
                 <span class="ad-tag">1080 x 1350</span>
             </div>
-            <div class="ad-visual-canvas" style="background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 60%), #0A0A14;">
+            <div class="ad-visual-canvas bg-mesh-2">
                 <div class="logo-badge">
                     <div class="logo-icon"><i class="fa-solid fa-reply"></i></div>
                     <span class="logo-text">Reply<span style="color:#8B6FFF">Vera</span></span>
                 </div>
                 <div class="headline-hero" style="font-size:1.8rem; margin-bottom: 20px;">Stop wasting<br>hours replying.</div>
-                <div style="background: rgba(108,71,255,0.1); border:1px solid rgba(108,71,255,0.3); padding: 12px 20px; border-radius: 12px; text-align: center; color: #A78BFA; font-weight: 700; font-size:0.9rem;">
+                <div style="background: rgba(108,71,255,0.1); border:1px solid rgba(108,71,255,0.3); padding: 12px 20px; border-radius: 12px; text-align: center; color: #A78BFA; font-weight: 700; font-size:0.85rem;">
                     ⚡ 100% Automated Google Reviews
                 </div>
             </div>
             <div class="ad-body">
-                <div class="ad-title">Minimalist Brand Keynote</div>
-                <div class="ad-caption">Ultra-clean presentation highlight for business owners and agencies managing multi-location reviews.</div>
+                <div>
+                    <div class="ad-title">Minimalist Brand Keynote</div>
+                    <div class="ad-caption">Ultra-clean presentation highlight for business owners and agencies managing multi-location reviews.</div>
+                </div>
                 <a href="https://replyvera.com" target="_blank" class="ad-cta-btn">Start Free Trial</a>
             </div>
         </div>
 
-        <!-- Visual 3: Story Format Ad -->
+        <!-- 3. Post 3 -->
         <div class="ad-card">
             <div class="ad-header">
-                <span>POST #3 • STORY AD</span>
+                <span>POST #3 • INSTAGRAM STORY</span>
                 <span class="ad-tag">1080 x 1920</span>
             </div>
-            <div class="ad-visual-canvas" style="background: linear-gradient(180deg, #13142B 0%, #0A0A14 100%);">
+            <div class="ad-visual-canvas bg-mesh-3">
                 <div style="position:absolute; top:20px; right:20px; background:rgba(239,68,68,0.15); border:1px solid rgba(239,68,68,0.4); color:#EF4444; padding:4px 10px; border-radius:20px; font-size:0.75rem; font-weight:800;">
                     🛡️ SAFETY FILTER ACTIVE
                 </div>
@@ -260,9 +278,350 @@
                 </div>
             </div>
             <div class="ad-body">
-                <div class="ad-title">Safety Filter & Story Ad</div>
-                <div class="ad-caption">Demonstrates how 1-star reviews are safely held for owner approval while safe reviews auto-publish.</div>
+                <div>
+                    <div class="ad-title">Safety Filter Story Banner</div>
+                    <div class="ad-caption">Demonstrates how 1-star reviews are safely held for owner approval while safe reviews auto-publish.</div>
+                </div>
                 <a href="https://replyvera.com" target="_blank" class="ad-cta-btn">Get Started Free</a>
+            </div>
+        </div>
+
+        <!-- 4. Post 4 -->
+        <div class="ad-card">
+            <div class="ad-header">
+                <span>POST #4 • LINKEDIN GRAPHIC</span>
+                <span class="ad-tag">1200 x 627</span>
+            </div>
+            <div class="ad-visual-canvas bg-mesh-4">
+                <div class="headline-hero" style="font-size:1.5rem; text-align:left; width:100%; margin-bottom:16px;">
+                    Why <span style="color:#3B82F6">88% of Customers</span> Read Review Replies Before Buying.
+                </div>
+                <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); padding:16px; border-radius:12px; width:100%; font-size:0.8rem; color:#94A3B8;">
+                    📈 <strong style="color:#FFF;">35% Higher Conversion Rate</strong> for storefronts that maintain 100% review response coverage.
+                </div>
+            </div>
+            <div class="ad-body">
+                <div>
+                    <div class="ad-title">LinkedIn Data Thought Leadership</div>
+                    <div class="ad-caption">Stripe-style data graphic analyzing local SEO ranking boost & conversion impact.</div>
+                </div>
+                <a href="https://replyvera.com" target="_blank" class="ad-cta-btn">Read Full Study</a>
+            </div>
+        </div>
+
+        <!-- 5. Post 5 -->
+        <div class="ad-card">
+            <div class="ad-header">
+                <span>POST #5 • CAROUSEL SLIDE 1</span>
+                <span class="ad-tag">1080 x 1350</span>
+            </div>
+            <div class="ad-visual-canvas bg-mesh-5">
+                <div style="color:#A78BFA; font-size:0.8rem; font-weight:800; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:12px;">SLIDE 1 / 5</div>
+                <div class="headline-hero" style="font-size:1.7rem;">5 Costly Review Mistakes You're Making.</div>
+                <div style="font-size:0.85rem; color:#8888AA; text-align:center;">Swipe to fix your Google reputation in 60 seconds →</div>
+            </div>
+            <div class="ad-body">
+                <div>
+                    <div class="ad-title">5-Slide Educational Carousel</div>
+                    <div class="ad-caption">Actionable carousel highlighting bad practices like ignoring 5-star reviews or arguing with angry customers.</div>
+                </div>
+                <a href="https://replyvera.com" target="_blank" class="ad-cta-btn">View Carousel</a>
+            </div>
+        </div>
+
+        <!-- 6. Post 6 -->
+        <div class="ad-card">
+            <div class="ad-header">
+                <span>POST #6 • REEL COVER</span>
+                <span class="ad-tag">1080 x 1920</span>
+            </div>
+            <div class="ad-visual-canvas bg-mesh-6">
+                <div style="width:50px; height:50px; background:rgba(0,201,167,0.2); border:1px solid #00C9A7; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#00C9A7; font-size:1.2rem; margin-bottom:16px;">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <div class="headline-hero" style="font-size:1.6rem;">Replied in<br><span style="color:#00C9A7">3 Seconds Flat.</span></div>
+            </div>
+            <div class="ad-body">
+                <div>
+                    <div class="ad-title">Real-Time Auto-Reply Reel</div>
+                    <div class="ad-caption">Watch Vera detect a new 5-star Google review and post a brand-aligned reply automatically.</div>
+                </div>
+                <a href="https://replyvera.com" target="_blank" class="ad-cta-btn">Watch Reel</a>
+            </div>
+        </div>
+
+        <!-- 7. Post 7 -->
+        <div class="ad-card">
+            <div class="ad-header">
+                <span>POST #7 • SQUARE AD</span>
+                <span class="ad-tag">1080 x 1080</span>
+            </div>
+            <div class="ad-visual-canvas bg-mesh-7">
+                <div style="font-size:1.8rem; color:#F59E0B; margin-bottom:10px;">★★★★★</div>
+                <div class="headline-hero" style="font-size:1.6rem; margin-bottom:16px;">Your Reputation<br>Works 24/7.</div>
+                <div style="font-size:0.85rem; color:#00C9A7; font-weight:700;">14-Day Free Trial • Cancel Anytime</div>
+            </div>
+            <div class="ad-body">
+                <div>
+                    <div class="ad-title">Direct Response Square Ad</div>
+                    <div class="ad-caption">High-converting direct response format targeting small storefront owners.</div>
+                </div>
+                <a href="https://replyvera.com" target="_blank" class="ad-cta-btn">Start Free Today</a>
+            </div>
+        </div>
+
+        <!-- 8. Post 8 -->
+        <div class="ad-card">
+            <div class="ad-header">
+                <span>POST #8 • STORY AD</span>
+                <span class="ad-tag">1080 x 1920</span>
+            </div>
+            <div class="ad-visual-canvas bg-mesh-1">
+                <div class="headline-hero" style="font-size:1.5rem;">Turn 1-Star Crises<br>into <span style="color:#00C9A7">5-Star Loyalty.</span></div>
+                <div class="glass-review-box">
+                    <div class="review-text" style="margin-bottom:0; font-size:0.8rem;">"Vera catches negative sentiment and holds for owner review."</div>
+                </div>
+            </div>
+            <div class="ad-body">
+                <div>
+                    <div class="ad-title">Crisis Prevention Story Ad</div>
+                    <div class="ad-caption">Showcases Vera's sentiment scoring guarding your business against public reputation damage.</div>
+                </div>
+                <a href="https://replyvera.com" target="_blank" class="ad-cta-btn">See It In Action</a>
+            </div>
+        </div>
+
+        <!-- 9. Post 9 -->
+        <div class="ad-card">
+            <div class="ad-header">
+                <span>POST #9 • INSTAGRAM FEED</span>
+                <span class="ad-tag">1080 x 1350</span>
+            </div>
+            <div class="ad-visual-canvas bg-mesh-2">
+                <div class="headline-hero" style="font-size:1.8rem;">Every Review<br>Deserves a Reply.</div>
+                <div style="font-size:0.85rem; color:#8888AA; text-align:center;">Show future buyers you care about quality.</div>
+            </div>
+            <div class="ad-body">
+                <div>
+                    <div class="ad-title">Studio Dashboard Render</div>
+                    <div class="ad-caption">Minimalist Apple studio lighting showcase highlighting Vera's response rate metric.</div>
+                </div>
+                <a href="https://replyvera.com" target="_blank" class="ad-cta-btn">Try ReplyVera Free</a>
+            </div>
+        </div>
+
+        <!-- 10. Post 10 -->
+        <div class="ad-card">
+            <div class="ad-header">
+                <span>POST #10 • LINKEDIN GRAPHIC</span>
+                <span class="ad-tag">1200 x 627</span>
+            </div>
+            <div class="ad-visual-canvas bg-mesh-3">
+                <div class="headline-hero" style="font-size:1.4rem; text-align:left; width:100%;">Managing Reviews Across 10+ Locations?</div>
+                <div style="background:rgba(108,71,255,0.15); border:1px solid rgba(108,71,255,0.3); padding:12px; border-radius:10px; font-size:0.8rem; color:#A78BFA; width:100%;">
+                    🏢 Multi-Location Central Control Dashboard
+                </div>
+            </div>
+            <div class="ad-body">
+                <div>
+                    <div class="ad-title">Agency & Franchise B2B Banner</div>
+                    <div class="ad-caption">Targeting multi-store operators needing centralized Google Business Profile governance.</div>
+                </div>
+                <a href="https://replyvera.com/pricing.html" target="_blank" class="ad-cta-btn">Explore Agency Plan</a>
+            </div>
+        </div>
+
+        <!-- 11. Post 11 -->
+        <div class="ad-card">
+            <div class="ad-header">
+                <span>POST #11 • CAROUSEL SLIDE 2</span>
+                <span class="ad-tag">1080 x 1350</span>
+            </div>
+            <div class="ad-visual-canvas bg-mesh-4">
+                <div style="font-weight:900; color:#00C9A7; font-size:1.8rem; margin-bottom:8px;">STEP 1</div>
+                <div class="headline-hero" style="font-size:1.4rem;">Connect Google in 60 Seconds.</div>
+            </div>
+            <div class="ad-body">
+                <div>
+                    <div class="ad-title">Product Onboarding Walkthrough</div>
+                    <div class="ad-caption">3-step process showing 1-click Google OAuth setup and brand voice configuration.</div>
+                </div>
+                <a href="https://replyvera.com" target="_blank" class="ad-cta-btn">Start 1-Click Setup</a>
+            </div>
+        </div>
+
+        <!-- 12. Post 12 -->
+        <div class="ad-card">
+            <div class="ad-header">
+                <span>POST #12 • INSTAGRAM STORY</span>
+                <span class="ad-tag">1080 x 1920</span>
+            </div>
+            <div class="ad-visual-canvas bg-mesh-5">
+                <div style="font-size:2rem; color:#EF4444; margin-bottom:10px;">❌</div>
+                <div class="headline-hero" style="font-size:1.6rem;">Goodbye Copy-Pasting.</div>
+                <div style="font-size:0.85rem; color:#8888AA;">No more generic templates.</div>
+            </div>
+            <div class="ad-body">
+                <div>
+                    <div class="ad-title">Anti-Template Motion Story</div>
+                    <div class="ad-caption">Contrasts robotic copy-paste templates with Vera's dynamic context-aware AI drafting.</div>
+                </div>
+                <a href="https://replyvera.com" target="_blank" class="ad-cta-btn">See Live Demo</a>
+            </div>
+        </div>
+
+        <!-- 13. Post 13 -->
+        <div class="ad-card">
+            <div class="ad-header">
+                <span>POST #13 • SQUARE AD</span>
+                <span class="ad-tag">1080 x 1080</span>
+            </div>
+            <div class="ad-visual-canvas bg-mesh-6">
+                <div style="display:flex; gap:8px; margin-bottom:14px; font-size:1.2rem;">🇺🇸 🇪🇸 🇳🇱 🇩🇪 🇫🇷</div>
+                <div class="headline-hero" style="font-size:1.5rem;">AI That Writes Better Than You.</div>
+            </div>
+            <div class="ad-body">
+                <div>
+                    <div class="ad-title">Multi-Language Translation Ad</div>
+                    <div class="ad-caption">Highlights instant translation capability for tourist-heavy restaurants & hotels.</div>
+                </div>
+                <a href="https://replyvera.com" target="_blank" class="ad-cta-btn">Try Multi-Lang Free</a>
+            </div>
+        </div>
+
+        <!-- 14. Post 14 -->
+        <div class="ad-card">
+            <div class="ad-header">
+                <span>POST #14 • FACEBOOK POST</span>
+                <span class="ad-tag">1200 x 630</span>
+            </div>
+            <div class="ad-visual-canvas bg-mesh-7">
+                <div style="font-size:1.3rem; font-style:italic; color:#E2E8F0; text-align:center; margin-bottom:12px;">"I reclaimed 5 hours every week."</div>
+                <div style="font-size:0.8rem; color:#00C9A7; font-weight:800;">— Marco R., Storefront Owner</div>
+            </div>
+            <div class="ad-body">
+                <div>
+                    <div class="ad-title">Customer Case Study Banner</div>
+                    <div class="ad-caption">Social proof highlight showing real time savings for local business owners.</div>
+                </div>
+                <a href="https://replyvera.com" target="_blank" class="ad-cta-btn">Read Case Study</a>
+            </div>
+        </div>
+
+        <!-- 15. Post 15 -->
+        <div class="ad-card">
+            <div class="ad-header">
+                <span>POST #15 • INSTAGRAM FEED</span>
+                <span class="ad-tag">1080 x 1350</span>
+            </div>
+            <div class="ad-visual-canvas bg-mesh-1">
+                <div class="headline-hero" style="font-size:1.8rem; margin-bottom:20px;">One Click.<br><span style="color:#00C9A7">Perfect Reply.</span></div>
+                <div style="background:linear-gradient(135deg, #6C47FF, #00C9A7); color:white; padding:10px 24px; border-radius:30px; font-weight:800; font-size:0.85rem; box-shadow:0 10px 25px rgba(108,71,255,0.4);">
+                    ✓ Approve & Publish
+                </div>
+            </div>
+            <div class="ad-body">
+                <div>
+                    <div class="ad-title">1-Click Action Showcase</div>
+                    <div class="ad-caption">Focuses on the ease of 1-tap approval for business owners on the move.</div>
+                </div>
+                <a href="https://replyvera.com" target="_blank" class="ad-cta-btn">Try ReplyVera Free</a>
+            </div>
+        </div>
+
+        <!-- 16. Post 16 -->
+        <div class="ad-card">
+            <div class="ad-header">
+                <span>POST #16 • REEL COVER</span>
+                <span class="ad-tag">1080 x 1920</span>
+            </div>
+            <div class="ad-visual-canvas bg-mesh-2">
+                <div class="headline-hero" style="font-size:1.6rem;">How Vera Handles<br><span style="color:#EF4444">Angry Reviews.</span></div>
+            </div>
+            <div class="ad-body">
+                <div>
+                    <div class="ad-title">Profanity & Sentiment Filter Reel</div>
+                    <div class="ad-caption">Breakdown of how Vera turns negative customer rants into professional, calm resolutions.</div>
+                </div>
+                <a href="https://replyvera.com" target="_blank" class="ad-cta-btn">Watch Breakdown</a>
+            </div>
+        </div>
+
+        <!-- 17. Post 17 -->
+        <div class="ad-card">
+            <div class="ad-header">
+                <span>POST #17 • LINKEDIN GRAPHIC</span>
+                <span class="ad-tag">1200 x 627</span>
+            </div>
+            <div class="ad-visual-canvas bg-mesh-3">
+                <div class="headline-hero" style="font-size:1.4rem; text-align:left; width:100%;">Is Silence Killing Your Google Ranking?</div>
+                <div style="font-size:0.8rem; color:#8888AA; text-align:left; width:100%;">Active reply history signals authority to Google's local algorithm.</div>
+            </div>
+            <div class="ad-body">
+                <div>
+                    <div class="ad-title">Local SEO Ranking Graphic</div>
+                    <div class="ad-caption">Educates business owners on how Google algorithm rewards fast review response rates.</div>
+                </div>
+                <a href="https://replyvera.com" target="_blank" class="ad-cta-btn">Boost Google Rank</a>
+            </div>
+        </div>
+
+        <!-- 18. Post 18 -->
+        <div class="ad-card">
+            <div class="ad-header">
+                <span>POST #18 • CAROUSEL SLIDE 3</span>
+                <span class="ad-tag">1080 x 1350</span>
+            </div>
+            <div class="ad-visual-canvas bg-mesh-4">
+                <div class="headline-hero" style="font-size:1.5rem;">The Ultimate Google Review Checklist.</div>
+            </div>
+            <div class="ad-body">
+                <div>
+                    <div class="ad-title">High-Save Checklist Carousel</div>
+                    <div class="ad-caption">5-point checklist every review response must follow to maximize customer retention.</div>
+                </div>
+                <a href="https://replyvera.com" target="_blank" class="ad-cta-btn">Save Checklist</a>
+            </div>
+        </div>
+
+        <!-- 19. Post 19 -->
+        <div class="ad-card">
+            <div class="ad-header">
+                <span>POST #19 • STORY AD</span>
+                <span class="ad-tag">1080 x 1920</span>
+            </div>
+            <div class="ad-visual-canvas bg-mesh-5">
+                <div class="headline-hero" style="font-size:1.6rem;">Reply in 5+ Languages<br><span style="color:#00C9A7">Instantly.</span></div>
+            </div>
+            <div class="ad-body">
+                <div>
+                    <div class="ad-title">Multi-Language Story Overlay</div>
+                    <div class="ad-caption">Targeted at hotel, tourism, and airport storefront managers.</div>
+                </div>
+                <a href="https://replyvera.com" target="_blank" class="ad-cta-btn">Start Free Trial</a>
+            </div>
+        </div>
+
+        <!-- 20. Post 20 -->
+        <div class="ad-card">
+            <div class="ad-header">
+                <span>POST #20 • INSTAGRAM FEED</span>
+                <span class="ad-tag">1080 x 1350</span>
+            </div>
+            <div class="ad-visual-canvas bg-mesh-6">
+                <div class="logo-badge" style="margin-bottom:16px;">
+                    <div class="logo-icon"><i class="fa-solid fa-reply"></i></div>
+                    <span class="logo-text">Reply<span style="color:#8B6FFF">Vera</span></span>
+                </div>
+                <div class="headline-hero" style="font-size:1.8rem; margin-bottom:12px;">Reply Smarter.<br><span style="color:#00C9A7">Scale Faster.</span></div>
+                <div style="font-size:0.8rem; color:#8888AA;">14-Day Free Trial • No Credit Card Required</div>
+            </div>
+            <div class="ad-body">
+                <div>
+                    <div class="ad-title">Brand Anthem & Launch Banner</div>
+                    <div class="ad-caption">Flagship brand rollout design encapsulating ReplyVera's value proposition.</div>
+                </div>
+                <a href="https://replyvera.com" target="_blank" class="ad-cta-btn">Launch Free Trial</a>
             </div>
         </div>
 
