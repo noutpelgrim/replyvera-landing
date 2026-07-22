@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReplyVera — Social Media Ad Campaign Visual Showcase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+    <style>
+        :root {
+            --bg-dark: #0A0A14;
+            --card-bg: rgba(26, 26, 50, 0.7);
+            --border-glass: rgba(255, 255, 255, 0.1);
+            --primary: #6C47FF;
+            --accent: #00C9A7;
+            --blue-electric: #3B82F6;
+            --text-main: #FFFFFF;
+            --text-muted: #8888AA;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-main);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #FFF 0%, #A78BFA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .header p { color: var(--text-muted); font-size: 1.1rem; }
+
+        .campaign-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 40px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .ad-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ad-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-glass);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+        .ad-tag {
+            background: rgba(108, 71, 255, 0.15);
+            color: #A78BFA;
+            padding: 4px 10px;
+            border-radius: 20px;
+            border: 1px solid rgba(108, 71, 255, 0.3);
+        }
+
+        /* Render Preview Canvas */
+        .ad-visual-canvas {
+            height: 440px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            overflow: hidden;
+        }
+
+        /* Post 1 Visuals */
+        .bg-mesh-1 {
+            background: radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.25) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(108, 71, 255, 0.3) 0%, transparent 50%),
+                        #0B0C18;
+        }
+
+        .logo-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.05);
+            padding: 8px 16px;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 20px;
+        }
+        .logo-icon {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #6C47FF, #00C9A7);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+        }
+        .logo-text { font-weight: 800; font-size: 1.1rem; }
+
+        .headline-hero {
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            text-align: center;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .glass-review-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 16px 20px;
+            width: 100%;
+            max-width: 320px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+        .review-stars { color: #F59E0B; margin-bottom: 6px; font-size: 0.85rem; }
+        .review-text { font-size: 0.85rem; font-style: italic; color: #E2E8F0; margin-bottom: 12px; }
+        
+        .ai-reply-box {
+            background: rgba(0, 201, 167, 0.08);
+            border: 1px solid rgba(0, 201, 167, 0.3);
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 0.8rem;
+            color: #00C9A7;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .ai-reply-title { font-weight: 800; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+        .ad-body {
+            padding: 24px;
+            background: rgba(10, 10, 20, 0.8);
+            border-top: 1px solid var(--border-glass);
+            flex: 1;
+        }
+        .ad-title { font-weight: 800; font-size: 1.1rem; margin-bottom: 8px; color: #FFF; }
+        .ad-caption { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 16px; }
+        .ad-cta-btn {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            padding: 12px;
+            background: linear-gradient(135deg, #6C47FF 0%, #00C9A7 100%);
+            color: white;
+            font-weight: 800;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(108, 71, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-badge" style="display:inline-flex; margin-bottom: 16px;">
+            <div class="logo-icon"><i class="fa-solid fa-reply"></i></div>
+            <span class="logo-text">Reply<span style="color:#8B6FFF">Vera</span></span>
+        </div>
+        <h1>Social Campaign Visual Showcase</h1>
+        <p>Ultra-premium visual creative mockups for Apple / Stripe aesthetic brand rollout.</p>
+    </div>
+
+    <div class="campaign-grid">
+
+        <!-- Visual 1: Split Screen Efficiency -->
+        <div class="ad-card">
+            <div class="ad-header">
+                <span>POST #1 • INSTAGRAM FEED</span>
+                <span class="ad-tag">1080 x 1350</span>
+            </div>
+            <div class="ad-visual-canvas bg-mesh-1">
+                <div class="headline-hero">30 Minutes<br><span style="color:#00C9A7">vs 30 Seconds.</span></div>
+                <div class="glass-review-box">
+                    <div class="review-stars">★★★★★</div>
+                    <div class="review-text">"Outstanding service! Will definitely return."</div>
+                    <div class="ai-reply-box">
+                        <div class="ai-reply-title">✨ Vera Auto-Replied</div>
+                        <div>Thank you for your review! We're thrilled you enjoyed our service. See you soon!</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ad-body">
+                <div class="ad-title">Split-Screen Efficiency Comparison</div>
+                <div class="ad-caption">Stop typing manual Google review replies. ReplyVera handles routine 5-star feedback in seconds on autopilot.</div>
+                <a href="https://replyvera.com" target="_blank" class="ad-cta-btn">Try ReplyVera Free</a>
+            </div>
+        </div>
+
+        <!-- Visual 2: Apple Keynote Style -->
+        <div class="ad-card">
+            <div class="ad-header">
+                <span>POST #2 • KEYNOTE BANNER</span>
+                <span class="ad-tag">1080 x 1350</span>
+            </div>
+            <div class="ad-visual-canvas" style="background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 60%), #0A0A14;">
+                <div class="logo-badge">
+                    <div class="logo-icon"><i class="fa-solid fa-reply"></i></div>
+                    <span class="logo-text">Reply<span style="color:#8B6FFF">Vera</span></span>
+                </div>
+                <div class="headline-hero" style="font-size:1.8rem; margin-bottom: 20px;">Stop wasting<br>hours replying.</div>
+                <div style="background: rgba(108,71,255,0.1); border:1px solid rgba(108,71,255,0.3); padding: 12px 20px; border-radius: 12px; text-align: center; color: #A78BFA; font-weight: 700; font-size:0.9rem;">
+                    ⚡ 100% Automated Google Reviews
+                </div>
+            </div>
+            <div class="ad-body">
+                <div class="ad-title">Minimalist Brand Keynote</div>
+                <div class="ad-caption">Ultra-clean presentation highlight for business owners and agencies managing multi-location reviews.</div>
+                <a href="https://replyvera.com" target="_blank" class="ad-cta-btn">Start Free Trial</a>
+            </div>
+        </div>
+
+        <!-- Visual 3: Story Format Ad -->
+        <div class="ad-card">
+            <div class="ad-header">
+                <span>POST #3 • STORY AD</span>
+                <span class="ad-tag">1080 x 1920</span>
+            </div>
+            <div class="ad-visual-canvas" style="background: linear-gradient(180deg, #13142B 0%, #0A0A14 100%);">
+                <div style="position:absolute; top:20px; right:20px; background:rgba(239,68,68,0.15); border:1px solid rgba(239,68,68,0.4); color:#EF4444; padding:4px 10px; border-radius:20px; font-size:0.75rem; font-weight:800;">
+                    🛡️ SAFETY FILTER ACTIVE
+                </div>
+                <div class="headline-hero" style="font-size:1.6rem; margin-bottom:16px;">Never Ignore<br>Another Review.</div>
+                <div class="glass-review-box" style="border-color: rgba(239,68,68,0.3); background: rgba(239,68,68,0.05);">
+                    <div class="review-stars" style="color:#EF4444;">★☆☆☆☆</div>
+                    <div class="review-text" style="color:#F87171;">"Wait time was longer than expected."</div>
+                    <div class="ai-reply-box" style="background:rgba(239,68,68,0.1); border-color:rgba(239,68,68,0.3); color:#F87171;">
+                        <div class="ai-reply-title">⚠️ Held for Owner Review</div>
+                        <div>Vera paused autopilot. Draft ready for 1-click approval.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ad-body">
+                <div class="ad-title">Safety Filter & Story Ad</div>
+                <div class="ad-caption">Demonstrates how 1-star reviews are safely held for owner approval while safe reviews auto-publish.</div>
+                <a href="https://replyvera.com" target="_blank" class="ad-cta-btn">Get Started Free</a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
