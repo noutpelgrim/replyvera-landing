@@ -654,14 +654,13 @@
         function setupPaddle() {
             if (window.Paddle) {
                 try {
-                    Paddle.Environment.set('sandbox');
                     Paddle.Initialize({ 
-                        token: 'test_3b0fabc0a8909b59a9f95735b2c',
+                        token: 'live_717730a5b06d6e51817b4a48b9e',
                         eventCallback: function(data) {
                             console.log('Paddle Event:', data);
                         }
                     });
-                    console.log('✅ Paddle Sandbox Initialized Successfully');
+                    console.log('✅ Paddle Production Initialized Successfully');
                 } catch (e) {
                     console.error('Paddle Initialization Error:', e);
                 }
