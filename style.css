@@ -1339,6 +1339,15 @@ footer  { border-top: 1px solid var(--border); padding: 44px 0 24px; }
     }
 }
 
+/* ─── Responsive: 1150px desktop nav transition ─── */
+@media (max-width: 1150px) {
+    /* Hide desktop nav, show mobile menu below 1150px to prevent horizontal overflow in translated versions */
+    .nav-links { display: none; }
+    .nav-actions .nav-login { display: none; }
+    .mobile-menu-btn { display: flex; }
+    .mobile-nav { display: block; }
+}
+
 /* ─── Responsive: 1024px desktop transition ─── */
 @media (max-width: 1024px) {
     .hero {
@@ -1350,11 +1359,7 @@ footer  { border-top: 1px solid var(--border); padding: 44px 0 24px; }
     }
     .hero-text h1 { max-width: 100%; font-size: clamp(2rem, 4vw, 2.5rem); }
 
-    /* Hide desktop nav, show mobile menu below 1024px to prevent horizontal overflow */
-    .nav-links { display: none; }
-    .nav-actions .nav-login { display: none; }
-    .mobile-menu-btn { display: flex; }
-    .mobile-nav { display: block; }
+    /* Desktop nav hidden and mobile menu shown in the 1140px breakpoint instead */
 
     .industry-grid { grid-template-columns: repeat(2, 1fr); }
 }
