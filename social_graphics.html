@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReplyVera – Social Media Post Graphics Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #06060E;
+            color: #FFFFFF;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #6C47FF 0%, #00C9A7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: #8888AA;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        .card-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        /* 1080x1080 Aspect Ratio Container scaled down for preview */
+        .social-post {
+            width: 480px;
+            height: 480px;
+            background: radial-gradient(circle at 0% 0%, rgba(108, 71, 255, 0.25) 0%, rgba(10, 10, 20, 0.98) 70%), #0A0A14;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 36px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+        }
+
+        .glow-accent {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+        }
+
+        .glow-purple { background: rgba(108, 71, 255, 0.4); top: -50px; right: -50px; }
+        .glow-teal { background: rgba(0, 201, 167, 0.3); bottom: -50px; left: -50px; }
+
+        /* Header Logo */
+        .post-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 2;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, #6C47FF 0%, #00C9A7 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFF;
+            font-size: 1.2rem;
+            box-shadow: 0 6px 16px rgba(108, 71, 255, 0.4);
+        }
+
+        .logo-text {
+            font-size: 1.3rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .logo-text span { color: #8B6FFF; }
+
+        /* Post Content */
+        .post-body {
+            z-index: 2;
+            margin-top: 10px;
+        }
+
+        .tag-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 14px;
+        }
+
+        .badge-red { background: rgba(239, 68, 68, 0.15); color: #EF4444; border: 1px solid rgba(239, 68, 68, 0.3); }
+        .badge-teal { background: rgba(0, 201, 167, 0.15); color: #00C9A7; border: 1px solid rgba(0, 201, 167, 0.3); }
+        .badge-purple { background: rgba(139, 92, 246, 0.15); color: #A78BFA; border: 1px solid rgba(139, 92, 246, 0.3); }
+
+        .headline {
+            font-size: 1.65rem;
+            font-weight: 900;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+            margin-bottom: 14px;
+        }
+
+        .headline span {
+            background: linear-gradient(135deg, #A78BFA 0%, #00C9A7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Mockup Box */
+        .mockup-box {
+            background: rgba(26, 26, 50, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 16px;
+            font-size: 0.82rem;
+            z-index: 2;
+        }
+
+        .stars { color: #F59E0B; margin-bottom: 6px; font-size: 0.9rem; }
+
+        .post-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 2;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 16px;
+        }
+
+        .cta-btn {
+            background: linear-gradient(135deg, #6C47FF 0%, #00C9A7 100%);
+            color: white;
+            font-weight: 800;
+            font-size: 0.85rem;
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: none;
+            box-shadow: 0 6px 16px rgba(108, 71, 255, 0.3);
+        }
+
+        .url-text {
+            color: #8888AA;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .download-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #FFF;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .download-btn:hover {
+            background: #6C47FF;
+            border-color: #6C47FF;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>ReplyVera Social Media Post Graphics</h1>
+    <p class="subtitle">High-converting Instagram & Facebook ad visuals styled with your logo and brand colors.</p>
+
+    <div class="grid">
+
+        <!-- Graphic 1: Problem / Hook -->
+        <div class="card-wrapper">
+            <div class="social-post" id="post1">
+                <div class="glow-accent glow-purple"></div>
+                <div class="glow-accent glow-teal"></div>
+                
+                <div class="post-logo">
+                    <div class="logo-icon"><i class="fa-solid fa-reply"></i></div>
+                    <div class="logo-text">Reply<span>Vera</span></div>
+                </div>
+
+                <div class="post-body">
+                    <div class="tag-badge badge-red"><i class="fa-solid fa-clock"></i> Pain Point</div>
+                    <div class="headline">Still replying to Google reviews <span>after a 12-hour workday?</span></div>
+                    
+                    <div class="mockup-box">
+                        <div class="stars">★★★★★</div>
+                        <p style="color: #DDD; margin-bottom: 8px;">"Great service and friendly staff!"</p>
+                        <div style="background: rgba(108, 71, 255, 0.15); border: 1px solid rgba(108, 71, 255, 0.3); padding: 8px 12px; border-radius: 8px; color: #A78BFA;">
+                            ✨ <strong>Vera:</strong> Thank you for your support! We look forward to seeing you again.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-footer">
+                    <span class="url-text">replyvera.com</span>
+                    <button class="cta-btn">Start Free Trial</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Graphic 2: Meet Vera / Autopilot -->
+        <div class="card-wrapper">
+            <div class="social-post" id="post2">
+                <div class="glow-accent glow-purple"></div>
+                
+                <div class="post-logo">
+                    <div class="logo-icon"><i class="fa-solid fa-reply"></i></div>
+                    <div class="logo-text">Reply<span>Vera</span></div>
+                </div>
+
+                <div class="post-body">
+                    <div class="tag-badge badge-teal"><i class="fa-solid fa-bolt"></i> Google Autopilot</div>
+                    <div class="headline">Meet Vera. <span>Your 24/7 Google Review Assistant.</span></div>
+                    
+                    <div class="mockup-box" style="border-color: rgba(0, 201, 167, 0.3);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <span style="color: #00C9A7; font-weight: 700;">✓ AUTO-PUBLISHED</span>
+                            <span style="color: #8888AA; font-size: 0.75rem;">Just now</span>
+                        </div>
+                        <p style="color: #EEE;">Routine 5-star reviews answered automatically in your custom brand voice.</p>
+                    </div>
+                </div>
+
+                <div class="post-footer">
+                    <span class="url-text">replyvera.com</span>
+                    <button class="cta-btn">Try 14 Days Free</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Graphic 3: Safety Filter -->
+        <div class="card-wrapper">
+            <div class="social-post" id="post3">
+                <div class="glow-accent glow-teal"></div>
+                
+                <div class="post-logo">
+                    <div class="logo-icon"><i class="fa-solid fa-reply"></i></div>
+                    <div class="logo-text">Reply<span>Vera</span></div>
+                </div>
+
+                <div class="post-body">
+                    <div class="tag-badge badge-red"><i class="fa-solid fa-shield-halved"></i> Safety Guard</div>
+                    <div class="headline">Full Control. <span>Zero Risk.</span></div>
+                    
+                    <div class="mockup-box" style="background: rgba(239, 68, 68, 0.08); border-color: rgba(239, 68, 68, 0.3);">
+                        <div style="color: #EF4444; font-weight: 700; margin-bottom: 6px;">⚠️ HELD FOR YOUR APPROVAL</div>
+                        <p style="color: #F87171;">Low ratings or sensitive keywords are automatically paused for your 1-click review.</p>
+                    </div>
+                </div>
+
+                <div class="post-footer">
+                    <span class="url-text">replyvera.com</span>
+                    <button class="cta-btn">Learn More</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Graphic 4: ROI / Pricing -->
+        <div class="card-wrapper">
+            <div class="social-post" id="post4">
+                <div class="glow-accent glow-purple"></div>
+                <div class="glow-accent glow-teal"></div>
+                
+                <div class="post-logo">
+                    <div class="logo-icon"><i class="fa-solid fa-reply"></i></div>
+                    <div class="logo-text">Reply<span>Vera</span></div>
+                </div>
+
+                <div class="post-body">
+                    <div class="tag-badge badge-purple"><i class="fa-solid fa-tag"></i> Best Value</div>
+                    <div class="headline">Rank higher on Google <span>for less than $1 a day.</span></div>
+                    
+                    <div style="text-align: center; margin: 12px 0;">
+                        <span style="font-size: 2.4rem; font-weight: 900; color: #FFF;">$29</span>
+                        <span style="color: #8888AA; font-size: 0.9rem;">/ month</span>
+                    </div>
+                </div>
+
+                <div class="post-footer">
+                    <span class="url-text">14-Day Free Trial</span>
+                    <button class="cta-btn">Start Free Trial</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
