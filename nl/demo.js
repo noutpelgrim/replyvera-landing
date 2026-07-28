@@ -74,13 +74,13 @@ const DEMO_MODAL_HTML = `
                 </div>
                 
                 <div id="outcome-negative" style="display:none;" class="demo-outcome-box">
-                    <div style="display:flex;gap:8px;margin-bottom:12px;">
+                    <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
                         <button class="btn btn-accent btn-sm" onclick="approveAndPublish()">Goedkeuren en Publiceren</button>
-                        <button class="btn btn-secondary btn-sm">Reactie Bewerken</button>
-                        <button class="btn btn-secondary btn-sm">Als Concept Bewaren</button>
+                        <button class="btn btn-secondary btn-sm" onclick="editResponseDemo()">Reactie Bewerken</button>
+                        <button class="btn btn-secondary btn-sm" onclick="keepAsDraftDemo()">Als Concept Bewaren</button>
                     </div>
-                    <div id="outcome-negative-success" style="display:none;align-items:center;gap:8px;color:var(--warning);font-weight:600;">
-                        <i data-lucide="check-circle-2" style="width:18px;height:18px;"></i> Response approved and ready to publish
+                    <div id="outcome-negative-success" style="display:none;align-items:center;gap:8px;color:#10b981;font-weight:600;">
+                        <i data-lucide="check-circle-2" style="width:18px;height:18px;"></i> <span id="outcome-status-text">Reactie goedgekeurd en geplaatst op Google!</span>
                     </div>
                 </div>
                 
@@ -385,7 +385,53 @@ function skipAnimations() {
 
 function approveAndPublish() {
     const msg = document.getElementById('outcome-negative-success');
-    msg.style.display = 'flex';
-    msg.style.opacity = '0';
-    setTimeout(() => msg.style.opacity = '1', 10);
+    const txt = document.getElementById('outcome-status-text');
+    if (txt) txt.textContent = "Reactie goedgekeurd en geplaatst op Google!";
+    if (msg) {
+        msg.style.display = 'flex';
+        msg.style.color = '#10b981';
+        msg.style.opacity = '0';
+        setTimeout(() => msg.style.opacity = '1', 10);
+    }
+}
+
+function editResponseDemo() {
+    const rBox = document.getElementById('demo-val-response');
+    if (!rBox) return;
+    const currentText = rBox.textContent || rBox.innerText;
+    rBox.innerHTML = `
+        <textarea id="demo-edit-input" style="width:100%;height:70px;background:#161628;color:#FFF;border:1px solid var(--primary);border-radius:6px;padding:8px;font-family:inherit;font-size:0.85rem;outline:none;">${currentText.trim()}</textarea>
+        <button onclick="saveEditedResponseDemo()" class="btn btn-accent btn-sm" style="margin-top:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Wijzigingen Opslaan</button>
+    `;
+    const input = document.getElementById('demo-edit-input');
+    if (input) input.focus();
+}
+
+function saveEditedResponseDemo() {
+    const input = document.getElementById('demo-edit-input');
+    const rBox = document.getElementById('demo-val-response');
+    if (input && rBox) {
+        rBox.textContent = input.value;
+        const msg = document.getElementById('outcome-negative-success');
+        const txt = document.getElementById('outcome-status-text');
+        if (txt) txt.textContent = "Wijzigingen opgeslagen! Klaar om te publiceren.";
+        if (msg) {
+            msg.style.display = 'flex';
+            msg.style.color = '#60A5FA';
+            msg.style.opacity = '0';
+            setTimeout(() => msg.style.opacity = '1', 10);
+        }
+    }
+}
+
+function keepAsDraftDemo() {
+    const msg = document.getElementById('outcome-negative-success');
+    const txt = document.getElementById('outcome-status-text');
+    if (txt) txt.textContent = "Opgeslagen als concept in je ReplyVera dashboard.";
+    if (msg) {
+        msg.style.display = 'flex';
+        msg.style.color = '#F59E0B';
+        msg.style.opacity = '0';
+        setTimeout(() => msg.style.opacity = '1', 10);
+    }
 }

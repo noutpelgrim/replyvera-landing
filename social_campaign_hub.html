@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReplyVera — Ultra-Premium Social Media Campaign Showcase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #07090E;
+            --bg-card: rgba(15, 23, 42, 0.65);
+            --border-glass: rgba(255, 255, 255, 0.12);
+            --border-highlight: rgba(59, 130, 246, 0.4);
+            --accent-blue: #3B82F6;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --text-muted: #64748B;
+            --font-main: 'Plus Jakarta Sans', 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --radius-lg: 20px;
+            --radius-md: 14px;
+            --radius-sm: 8px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.18) 0%, transparent 60%),
+                radial-gradient(circle at 90% 80%, rgba(147, 51, 234, 0.06) 0%, transparent 50%);
+        }
+
+        header {
+            position: sticky; top: 0; z-index: 100;
+            backdrop-filter: blur(24px); background: rgba(7, 9, 14, 0.85);
+            border-bottom: 1px solid var(--border-glass);
+            padding: 16px 40px; display: flex; align-items: center; justify-content: space-between;
+        }
+
+        .brand-container { display: flex; align-items: center; gap: 16px; }
+        .brand-logo-img { height: 36px; filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.5)); }
+        .brand-badge {
+            font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+            padding: 4px 12px; border-radius: 20px; background: rgba(59, 130, 246, 0.12);
+            border: 1px solid rgba(59, 130, 246, 0.3); color: var(--accent-blue);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
+            color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px;
+            border-radius: 10px; text-decoration: none; box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
+        }
+
+        .hero-section { max-width: 1300px; margin: 0 auto; padding: 60px 24px 30px; text-align: center; }
+        .hero-subtitle { color: var(--accent-blue); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; display: inline-block; }
+        .hero-title { font-size: 3.2rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px; background: linear-gradient(180deg, #FFFFFF 0%, #94A3B8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-description { font-size: 1.15rem; color: var(--text-secondary); max-width: 760px; margin: 0 auto 30px; }
+
+        .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto 40px; }
+        .metric-card { background: var(--bg-card); backdrop-filter: blur(16px); border: 1px solid var(--border-glass); border-radius: var(--radius-md); padding: 20px; text-align: center; }
+        .metric-value { font-size: 2rem; font-weight: 800; color: #FFF; }
+        .metric-label { font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px; }
+
+        .filter-container { max-width: 1300px; margin: 0 auto 40px; padding: 0 24px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .filter-btn { background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border-glass); color: var(--text-secondary); font-size: 0.88rem; font-weight: 600; padding: 10px 20px; border-radius: 30px; cursor: pointer; transition: all 0.2s ease; }
+        .filter-btn.active { background: var(--accent-blue); color: #fff; border-color: var(--accent-blue); box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4); }
+
+        .posts-grid { max-width: 1400px; margin: 0 auto; padding: 0 24px 80px; display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 32px; }
+        .post-card { background: var(--bg-card); backdrop-filter: blur(20px); border: 1px solid var(--border-glass); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease; }
+        .post-card:hover { border-color: var(--border-highlight); transform: translateY(-6px); box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15); }
+
+        .post-picture-container { width: 100%; background: #000; overflow: hidden; position: relative; border-bottom: 1px solid var(--border-glass); }
+        .post-picture-img { width: 100%; height: auto; display: block; object-fit: cover; }
+
+        .post-body { padding: 24px; display: flex; flex-direction: column; gap: 14px; flex-grow: 1; }
+        .post-header-meta { display: flex; align-items: center; justify-content: space-between; }
+        .post-num { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-blue); font-weight: 600; }
+        .post-format-tag { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
+        .post-title { font-size: 1.25rem; font-weight: 700; color: #FFF; }
+        .post-concept-desc { font-size: 0.88rem; color: var(--text-secondary); }
+
+        .caption-container { background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border-glass); border-radius: var(--radius-sm); padding: 14px; font-size: 0.85rem; color: var(--text-secondary); max-height: 140px; overflow-y: auto; white-space: pre-line; }
+
+        .post-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: auto; padding-top: 12px; }
+        .btn-copy, .btn-download { background: rgba(59, 130, 246, 0.12); border: 1px solid rgba(59, 130, 246, 0.3); color: var(--accent-blue); font-weight: 600; font-size: 0.85rem; padding: 10px; border-radius: 8px; cursor: pointer; text-align: center; text-decoration: none; transition: all 0.2s ease; }
+        .btn-copy:hover, .btn-download:hover { background: var(--accent-blue); color: #fff; }
+
+        .toast { position: fixed; bottom: 30px; right: 30px; background: var(--accent-blue); color: #fff; font-weight: 600; padding: 12px 24px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.4); transform: translateY(100px); opacity: 0; transition: all 0.3s ease; z-index: 1000; }
+        .toast.show { transform: translateY(0); opacity: 1; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand-container">
+            <img src="./logo.png" alt="ReplyVera Logo" class="brand-logo-img">
+            <span class="brand-badge">2026 Creative Campaign</span>
+        </div>
+        <div>
+            <a href="https://replyvera.com" target="_blank" class="btn-primary">🚀 Visit ReplyVera.com</a>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <span class="hero-subtitle">High-Res Social Campaign Collection</span>
+        <h1 class="hero-title">ReplyVera 20-Post Picture Gallery</h1>
+        <p class="hero-description">
+            Explore and download all 20 custom picture graphics designed with Apple & Stripe aesthetics.
+        </p>
+
+        <div class="metrics-grid">
+            <div class="metric-card"><div class="metric-value">20</div><div class="metric-label">High-Res PNG Pictures</div></div>
+            <div class="metric-card"><div class="metric-value">1080p+</div><div class="metric-label">Retina Rendered</div></div>
+            <div class="metric-card"><div class="metric-value">8</div><div class="metric-label">Ad Formats</div></div>
+            <div class="metric-card"><div class="metric-value">100%</div><div class="metric-label">Custom Designs</div></div>
+        </div>
+    </section>
+
+    <div class="filter-container">
+        <button class="filter-btn active" onclick="filterPosts('all', this)">All 20 Pictures</button>
+        <button class="filter-btn" onclick="filterPosts('feed', this)">Instagram Feed (1080x1350)</button>
+        <button class="filter-btn" onclick="filterPosts('story', this)">Story & Reel (1080x1920)</button>
+        <button class="filter-btn" onclick="filterPosts('linkedin', this)">LinkedIn & Facebook</button>
+        <button class="filter-btn" onclick="filterPosts('ad', this)">Performance Ads</button>
+    </div>
+
+    <main class="posts-grid" id="postsContainer"></main>
+
+    <div class="toast" id="toast">Caption copied to clipboard! 📋</div>
+
+    <script>
+        const campaignData = [
+            { id: 1, num: "POST #01", format: "Instagram Feed", category: "feed", img: "./pictures/post_01_stop_wasting_hours.png", headline: "Stop wasting hours replying.", desc: "Restaurateur peace of mind; 48 reviews answered automatically.", caption: `You didn’t open a business to spend 2 hours every night typing customer replies. ⌛\n\nIgnoring reviews costs you new customers. But manually drafting responses eats up your evenings.\n\nReplyVera drafts flawless, professional replies in seconds.\n\nStart free today at replyvera.com 🚀` },
+            { id: 2, num: "POST #02", format: "Instagram Feed", category: "feed", img: "./pictures/post_02_30_min_vs_30_sec.png", headline: "30 minutes vs 30 seconds.", desc: "High-impact split screen comparing manual typing vs ReplyVera AI.", caption: `Which evening would you choose? 🤔\n\nManual review responses take ~5-7 minutes per review. 10 reviews = nearly an hour of typing.\n\nWith ReplyVera, 10 reviews are answered in under 30 seconds!\n\nTry ReplyVera Free at replyvera.com ↗️` },
+            { id: 3, num: "POST #03", format: "Instagram Feed", category: "feed", img: "./pictures/post_03_every_review_deserves_reply.png", headline: "Every review deserves a reply.", desc: "Minimalist Apple-style dark aesthetic highlighting brand reputation.", caption: `97% of consumers read business responses to online reviews. What is your silence telling them? 🔇\n\nReplyVera makes zero-inbox for reviews effortless.\n\nGenerate Your First Reply Free → replyvera.com` },
+            { id: 4, num: "POST #04", format: "Story Ad", category: "story", img: "./pictures/post_04_turn_reviews_into_revenue.png", headline: "Turn Reviews Into Revenue.", desc: "Vertical story ad layout transforming reviews into AI responses.", caption: `Unanswered reviews are leaking revenue. 💸\n\nReplyVera automates review responses across Google, TripAdvisor, Booking & Trustpilot.\n\nSWIPE UP to Start Free Today 📲` },
+            { id: 5, num: "POST #05", format: "LinkedIn Post", category: "linkedin", img: "./pictures/post_05_enterprise_reputation.png", headline: "Reputation Management at Enterprise Scale.", desc: "Multi-location hospitality & retail AI response orchestration.", caption: `Managing online reputation across hundreds of locations is a massive headache. 🏨\n\nReplyVera gives enterprise teams centralized AI response orchestration in 25+ languages.\n\nRequest Demo at replyvera.com` },
+            { id: 6, num: "POST #06", format: "Facebook Post", category: "linkedin", img: "./pictures/post_06_from_overwhelmed_to_unstoppable.png", headline: "From Overwhelmed to Unstoppable.", desc: "Relatable café & boutique owner workflow transformation.", caption: `Running a business is exhausting enough without spending hours responding online. ☕\n\nLet ReplyVera handle it in seconds.\n\nTry for free today at replyvera.com 👇` },
+            { id: 7, num: "POST #07", format: "Carousel", category: "feed", img: "./pictures/post_07_5step_playbook_carousel.png", headline: "The 5-Step AI Review Playbook", desc: "How top brands achieve 100% review response rate in 2 mins/day.", caption: `Save this post for your marketing strategy! 📌\n\nA 100% response rate boosts local SEO by 300%.\n\nTry free at replyvera.com` },
+            { id: 8, num: "POST #08", format: "Instagram Feed", category: "feed", img: "./pictures/post_08_reply_like_a_pro.png", headline: "Reply Like a Professional.", desc: "Dark Mode glassmorphism card surrounded by glowing platform badges.", caption: `First impressions aren't made at your front door anymore. They're made on Google Reviews. 🌟\n\nSound polished every time with ReplyVera.` },
+            { id: 9, num: "POST #09", format: "Story Ad", category: "ad", img: "./pictures/post_09_one_click_perfect_reply.png", headline: "One Click. Perfect Reply.", desc: "High-converting story ad with instant UI button simulation.", caption: `Say goodbye to review anxiety. Generate AI responses in 30 seconds. Tap to try free!` },
+            { id: 10, num: "POST #10", format: "Square Ad", category: "ad", img: "./pictures/post_10_neural_engine.png", headline: "The Neural Engine for Customer Trust.", desc: "Futuristic glowing AI neural connections outputting 5-star replies.", caption: `Engineered for speed, empathy, and conversion. Upgrade your reputation stack with ReplyVera.` },
+            { id: 11, num: "POST #11", format: "Reel Cover", category: "story", img: "./pictures/post_11_ai_writes_better.png", headline: "AI That Writes Better Than You.", desc: "Bold typographic overlay designed for Instagram Reel covers.", caption: `Stop struggling for words when responding to negative reviews. Let ReplyVera craft diplomatic, flawless responses.` },
+            { id: 12, num: "POST #12", format: "Square Ad", category: "ad", img: "./pictures/post_12_never_lose_customers.png", headline: "Never Lose Customers Because Of Silence.", desc: "High-conversion ad highlighting native platform integrations.", caption: `88% of customers avoid businesses that ignore online reviews. Protect your revenue with ReplyVera.` },
+            { id: 13, num: "POST #13", format: "Instagram Feed", category: "feed", img: "./pictures/post_13_customers_notice_replies.png", headline: "Customers Notice Replies.", desc: "Data-driven visual highlighting local map SEO visibility growth.", caption: `Data speaks: 88% of shoppers choose local businesses that respond to every review.` },
+            { id: 14, num: "POST #14", format: "Story Ad", category: "story", img: "./pictures/post_14_reputation_works_247.png", headline: "Your Reputation Works 24/7.", desc: "Midnight dark UI showing automatic AI drafting while owner sleeps.", caption: `While you sleep, ReplyVera works. Ensure every review receives a prompt, polite response.` },
+            { id: 15, num: "POST #15", format: "Carousel", category: "feed", img: "./pictures/post_15_top_brands_switched.png", headline: "Why Top Brands Switched to ReplyVera", desc: "ROI breakdown: Manual labor ($2,500/mo) vs ReplyVera ($29/mo).", caption: `Discover why 500+ businesses upgraded their review workflow. Save 98% in overhead!` },
+            { id: 16, num: "POST #16", format: "Facebook Post", category: "linkedin", img: "./pictures/post_16_turn_negative_reviews.png", headline: "Turn Negative Reviews into 5-Star Loyalty.", desc: "AI de-escalation engine converting upset guests into loyal fans.", caption: `A bad review is your chance to shine. ReplyVera drafts empathetic solutions that win back customers.` },
+            { id: 17, num: "POST #17", format: "LinkedIn Post", category: "linkedin", img: "./pictures/post_17_multilingual_excellence.png", headline: "Multilingual Excellence in 25+ Languages.", desc: "Global review responses in native French, German, Spanish, & Japanese.", caption: `Hospitality without borders. ReplyVera automatically detects review language and responds natively.` },
+            { id: 18, num: "POST #18", format: "Story", category: "story", img: "./pictures/post_18_reply_faster.png", headline: "Reply Faster Than Your Competitors.", desc: "Speed benchmark: 0.4 seconds vs 4.2 hours industry average.", caption: `Speed wins local SEO. Be the first business to reply and capture prospective customers.` },
+            { id: 19, num: "POST #19", format: "Square Ad", category: "ad", img: "./pictures/post_19_win_more_customers.png", headline: "Win More Customers With AI.", desc: "+0.6 Average rating growth in 60 days for 500+ businesses.", caption: `Join hundreds of thriving business owners. Start your free trial at replyvera.com today!` },
+            { id: 20, num: "POST #20", format: "Reel Cover", category: "story", img: "./pictures/post_20_never_ignore_another_review.png", headline: "Never Ignore Another Review.", desc: "Apple-keynote style product hero visual with glowing logo emblem.", caption: `Your customer reviews deserve the gold standard of responses. Elevate your brand today with ReplyVera.` }
+        ];
+
+        function renderPosts(items) {
+            const container = document.getElementById('postsContainer');
+            container.innerHTML = '';
+            items.forEach(post => {
+                const card = document.createElement('article');
+                card.className = 'post-card';
+                card.innerHTML = `
+                    <div class="post-picture-container">
+                        <img src="${post.img}" alt="${post.headline}" class="post-picture-img">
+                    </div>
+                    <div class="post-body">
+                        <div class="post-header-meta">
+                            <span class="post-num">${post.num}</span>
+                            <span class="post-format-tag">${post.format}</span>
+                        </div>
+                        <h3 class="post-title">${post.headline}</h3>
+                        <p class="post-concept-desc">${post.desc}</p>
+                        <div class="caption-container">${post.caption}</div>
+                        <div class="post-actions">
+                            <button class="btn-copy" onclick="copyCaption('${post.id}')">📋 Copy Caption</button>
+                            <a href="${post.img}" download class="btn-download">📷 Download Image</a>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function filterPosts(cat, btnElement) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btnElement.classList.add('active');
+            if (cat === 'all') renderPosts(campaignData);
+            else renderPosts(campaignData.filter(p => p.category === cat));
+        }
+
+        function copyCaption(id) {
+            const post = campaignData.find(p => p.id === parseInt(id));
+            if (post) {
+                navigator.clipboard.writeText(post.caption).then(() => {
+                    const toast = document.getElementById('toast');
+                    toast.classList.add('show');
+                    setTimeout(() => toast.classList.remove('show'), 2500);
+                });
+            }
+        }
+
+        renderPosts(campaignData);
+    </script>
+</body>
+</html>
