@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReplyVera – Google Review Automation for Small Businesses</title>
-    <meta name="description" content="ReplyVera automatically responds to your Google reviews. Routine reviews are handled automatically. Negative and sensitive feedback stays under your control. Plans from $29 per month.">
+    <title>ReplyVera – Respuestas automáticas para reseñas de Google</title>
+    <meta name="description" content="Vera se conecta con tu Perfil de Empresa de Google para redactar respuestas con el tono de tu marca. Respuestas seguras automáticas o bajo tu control.">
     <link rel="stylesheet" href="/style.css?v=15">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
-    <script src="/demo.js?v=6" defer></script>
+    <script src="/es/demo.js?v=6" defer></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
 
     <script>
@@ -21,7 +20,6 @@
         
         let path = window.location.pathname;
         
-        // Remove existing lang prefix if present
         if (path.startsWith('/es/')) path = path.replace('/es/', '/');
         if (path.startsWith('/nl/')) path = path.replace('/nl/', '/');
         if (path === '/es' || path === '/nl') path = '/';
@@ -36,23 +34,6 @@
         window.location.href = newPath + window.location.hash;
     }
     </script>
-
-    <script>
-        (function() {
-            if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
-                var lang = navigator.language || navigator.userLanguage;
-                if (lang) {
-                    if (lang.startsWith('es') && !localStorage.getItem('lang_redirected')) {
-                        localStorage.setItem('lang_redirected', 'true');
-                        window.location.href = '/es/';
-                    } else if (lang.startsWith('nl') && !localStorage.getItem('lang_redirected')) {
-                        localStorage.setItem('lang_redirected', 'true');
-                        window.location.href = '/nl/';
-                    }
-                }
-            }
-        })();
-    </script>
 </head>
 
 <body>
@@ -60,7 +41,7 @@
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
-            <a href="/" class="nav-logo">
+            <a href="/es/" class="nav-logo">
                 <div class="nav-logo-icon">
                     <i class="fa-solid fa-reply"></i>
                 </div>
@@ -68,90 +49,90 @@
             </a>
 
             <div class="nav-links">
-                <a href="/#product">Product</a>
-                <a href="/#benefits">Features</a>
-                <a href="/#how-it-works">How It Works</a>
+                <a href="/es/#product">Producto</a>
+                <a href="/es/industries/restaurants">Características</a>
+                <a href="/es/#how-it-works">Cómo funciona</a>
                 <div class="nav-dropdown">
                     <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="menu" aria-controls="industries-menu">
-                        Industries
+                        Sectores
                         <span class="chevron-icon"><i data-lucide="chevron-down" style="width:12px;height:12px;"></i></span>
                     </button>
                     <div class="nav-dropdown-content" id="industries-menu" role="menu">
                         <div class="nav-dropdown-grid">
-                            <a href="/industries/restaurants" class="dropdown-item" role="menuitem">
+                            <a href="/es/industries/dentists" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper restaurant-icon"><i data-lucide="utensils" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Restaurants</div>
-                                    <div class="dropdown-desc">Routine replies with food-safety escalation.</div>
+                                    <div class="dropdown-title">Restaurantes</div>
+                                    <div class="dropdown-desc">Respuestas habituales con alertas de seguridad alimentaria.</div>
                                 </div>
                             </a>
-                            <a href="/industries/dentists" class="dropdown-item" role="menuitem">
+                            <a href="/es/industries/agencies" class="dropdown-item active" role="menuitem">
                                 <div class="dropdown-icon-wrapper dentist-icon"><i data-lucide="activity" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Dentists &amp; Clinics</div>
-                                    <div class="dropdown-desc">Privacy-conscious replies for patient reviews.</div>
+                                    <div class="dropdown-title">Dentistas y clínicas</div>
+                                    <div class="dropdown-desc">Respuestas respetuosas con la privacidad de los pacientes.</div>
                                 </div>
                             </a>
-                            <a href="/industries/agencies" class="dropdown-item active" role="menuitem">
+                            <a href="/es/industries/martial-arts" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper agency-icon"><i data-lucide="briefcase" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Marketing Agencies</div>
-                                    <div class="dropdown-desc">Manage Google review replies for every client.</div>
+                                    <div class="dropdown-title">Agencias de marketing</div>
+                                    <div class="dropdown-desc">Gestiona las reseñas de todos tus clientes desde un panel.</div>
                                 </div>
                             </a>
-                            <a href="/industries/martial-arts" class="dropdown-item" role="menuitem">
+                            <a href="/es/industries/childcare" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper martial-arts-icon"><i data-lucide="shield" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Martial Arts Schools</div>
-                                    <div class="dropdown-desc">Parent-friendly replies with safety controls.</div>
+                                    <div class="dropdown-title">Escuelas de artes marciales</div>
+                                    <div class="dropdown-desc">Respuestas cercanas con alertas ante cualquier incidencia.</div>
                                 </div>
                             </a>
-                            <a href="/industries/childcare" class="dropdown-item" role="menuitem">
+                            <a href="/es/industries/tutoring" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper childcare-icon"><i data-lucide="heart" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Childcare &amp; Preschool</div>
-                                    <div class="dropdown-desc">Safety-aware responses for parent feedback.</div>
+                                    <div class="dropdown-title">Guarderías y centros preescolares</div>
+                                    <div class="dropdown-desc">Respuestas atentas para las opiniones de los padres.</div>
                                 </div>
                             </a>
-                            <a href="/industries/tutoring" class="dropdown-item" role="menuitem">
+                            <a href="/es/industries/pet-care" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper tutoring-icon"><i data-lucide="book-open" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Tutoring Centers</div>
-                                    <div class="dropdown-desc">Professional replies for parent and student reviews.</div>
+                                    <div class="dropdown-title">Centros de tutoría</div>
+                                    <div class="dropdown-desc">Respuestas profesionales para familias y estudiantes.</div>
                                 </div>
                             </a>
-                            <a href="/industries/pet-care" class="dropdown-item" role="menuitem">
+                            <a href="/es/industries/car-washes" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper petcare-icon"><i data-lucide="dog" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Pet Care</div>
-                                    <div class="dropdown-desc">Warm replies with animal-safety escalation.</div>
+                                    <div class="dropdown-title">Cuidado de mascotas</div>
+                                    <div class="dropdown-desc">Respuestas cálidas con atención especial a temas de salud animal.</div>
                                 </div>
                             </a>
-                            <a href="/industries/car-washes" class="dropdown-item" role="menuitem">
+                            <a href="/es/industries/laundromats" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper carwash-icon"><i data-lucide="car" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Car Wash Operators</div>
-                                    <div class="dropdown-desc">Track damage, billing, and service complaints.</div>
+                                    <div class="dropdown-title">Autolavados</div>
+                                    <div class="dropdown-desc">Seguimiento de comentarios sobre daños, precios o servicio.</div>
                                 </div>
                             </a>
-                            <a href="/industries/laundromats" class="dropdown-item" role="menuitem">
+                            <a href="/es/industries/restaurants" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper laundromat-icon"><i data-lucide="wind" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
-                                    <div class="dropdown-title">Laundromats</div>
-                                    <div class="dropdown-desc">Monitor cleanliness, equipment, and refunds.</div>
+                                    <div class="dropdown-title">Lavanderías</div>
+                                    <div class="dropdown-desc">Respuestas ante consultas de equipos, limpieza o reembolsos.</div>
                                 </div>
                             </a>
                         </div>
                     </div>
                 </div>
-                <a href="/#pricing">Pricing</a>
-                <a href="/#faq">FAQ</a>
+                <a href="/es/#pricing">Precios</a>
+                <a href="/es/#faq">Preguntas frecuentes</a>
             </div>
 
             <div class="nav-actions">
                 <div class="lang-selector">
-                    <button class="lang-btn" aria-label="Select Language">
-                        <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> EN
+                    <button class="lang-btn" aria-label="Seleccionar idioma">
+                        <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> ES
                     </button>
                     <div class="lang-menu">
                         <a href="#" class="lang-item" onclick="changeLang('en', event)">English</a>
@@ -159,9 +140,9 @@
                         <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
                     </div>
                 </div>
-                <a href="https://dashboard.replyvera.com/login" class="nav-login">Log In</a>
-                <a href="/#pricing" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Start Free Trial</a>
-                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+                <a href="https://dashboard.replyvera.com/login" class="nav-login">Iniciar sesión</a>
+                <a href="/es/#pricing" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Empieza tu prueba gratuita</a>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Abrir menú de navegación" aria-expanded="false">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
                         <line x1="3" y1="6" x2="21" y2="6"/>
                         <line x1="3" y1="12" x2="21" y2="12"/>
@@ -171,6 +152,7 @@
             </div>
         </div>
     </nav>
+
 
 
     <style>
@@ -472,50 +454,51 @@
         </div>
     </section>
 
+
 <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand-box">
-                    <a href="/" class="nav-logo" style="margin-bottom:14px;">
+                    <a href="/es/" class="nav-logo" style="margin-bottom:14px;">
                         <div class="nav-logo-icon">
                             <i class="fa-solid fa-reply"></i>
                         </div>
                         <span class="nav-logo-text" style="font-size:1.2rem;">Reply<span>Vera</span></span>
                     </a>
-                    <p>Automated Google review responses for small businesses. Plans start at $29 per month.</p>
-                    <p style="font-size:0.78rem;margin-top:8px;color:var(--text-muted);">Currently supporting Google Reviews. Additional platforms are planned.</p>
+                    <p>Respuestas automáticas a reseñas de Google, diseñadas para pequeñas y medianas empresas. Planes desde $29 al mes.</p>
+                    <p style="font-size:0.78rem;margin-top:8px;color:var(--text-muted);">Actualmente compatible con reseñas de Google. Próximamente integración con más plataformas.</p>
                 </div>
 
                 <div class="footer-col">
-                    <div class="footer-col-title">Product</div>
+                    <div class="footer-col-title">Producto</div>
                     <ul class="footer-links">
-                        <li><a href="/#product">Product</a></li>
-                        <li><a href="/#how-it-works">How It Works</a></li>
-                        <li><a href="/pricing.html">Pricing</a></li>
+                        <li><a href="#product">Producto</a></li>
+                        <li><a href="#how-it-works">Cómo funciona</a></li>
+                        <li><a href="/es/pricing.html">Precios</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
-                    <div class="footer-col-title">Company</div>
+                    <div class="footer-col-title">Empresa</div>
                     <ul class="footer-links">
-                        <li><a href="mailto:info@replyvera.com">Contact Us</a></li>
-                        <li><a href="https://dashboard.replyvera.com/login">Log In</a></li>
+                        <li><a href="mailto:info@replyvera.com">Contacto</a></li>
+                        <li><a href="https://dashboard.replyvera.com/login">Iniciar sesión</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
                     <div class="footer-col-title">Legal</div>
                     <ul class="footer-links">
-                        <li><a href="/terms.html">Terms of Service</a></li>
-                        <li><a href="/privacy.html">Privacy Policy</a></li>
-                        <li><a href="/cookie.html">Cookie Policy</a></li>
+                        <li><a href="/es/terms.html">Términos de servicio</a></li>
+                        <li><a href="/es/privacy.html">Política de privacidad</a></li>
+                        <li><a href="/es/cookie.html">Política de cookies</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <div>{{ index_2026_replyvera_all_rights_r_c9ec }}</div>
+                <div>© 2026 ReplyVera. Todos los derechos reservados.</div>
                 <div class="social-links">
                     <a href="#"><i data-lucide="twitter" style="width:17px;height:17px;"></i></a>
                     <a href="#"><i data-lucide="linkedin" style="width:17px;height:17px;"></i></a>
@@ -527,10 +510,10 @@
     <!-- Cookie Consent Banner -->
     <div id="cookie-banner" class="cookie-banner" aria-hidden="true">
         <div class="cookie-content">
-            <p>We use cookies to improve your experience and analyze site performance. By clicking "Accept", you agree to our use of cookies as outlined in our <a href="/cookie.html">Cookie Policy</a>.</p>
+            <p>Utilizamos cookies para mejorar tu experiencia y analizar el rendimiento del sitio. Al hacer clic en «Aceptar», aceptas el uso de cookies según se explica en nuestra <a href="/es/cookie.html">política de cookies</a>.</p>
             <div class="cookie-buttons">
-                <button id="accept-cookies" class="btn btn-accent btn-sm" style="padding:6px 12px; font-size:0.78rem;">Accept</button>
-                <button id="decline-cookies" class="btn btn-secondary btn-sm" style="padding:6px 12px; font-size:0.78rem;">Decline</button>
+                <button id="accept-cookies" class="btn btn-accent btn-sm" style="padding:6px 12px; font-size:0.78rem;">Aceptar</button>
+                <button id="decline-cookies" class="btn btn-secondary btn-sm" style="padding:6px 12px; font-size:0.78rem;">Rechazar</button>
             </div>
         </div>
     </div>
@@ -542,80 +525,5 @@
     <script defer src="/_vercel/insights/script.js"></script>
 
     <script src="/script.js"></script>
-
-    <script>
-        // Paddle Billing Integration
-        let currentBillingCycle = 'monthly';
-        const PADDLE_PRICES = {
-            monthly: {
-                starter: 'pri_01ky53qca2x1ag8yt36en377pv',
-                autopilot: 'pri_01ky53qcz7kpx92h9wnnmq4z50',
-                multi_location: 'pri_01ky53qdg9qab3ct8hgexqkf2n',
-                agency: 'pri_01ky53qdz80wsxaqnw672ehrcs'
-            },
-            annual: {
-                starter: 'pri_01ky53qcerr3hb001fsccthevr',
-                autopilot: 'pri_01ky53qd42g20ew50kgea0yf75',
-                multi_location: 'pri_01ky53qdmvhzz157qsss7hehy7',
-                agency: 'pri_01ky53qe3q3hfmfav69h2r19v6'
-            }
-        };
-
-        function setupPaddle() {
-            if (window.Paddle) {
-                try {
-                    Paddle.Initialize({ 
-                        token: 'live_717730a5b06d6e51817b4a48b9e',
-                        eventCallback: function(data) {
-                            console.log('Paddle Event:', data);
-                        }
-                    });
-                    console.log('✅ Paddle Live Initialized Successfully');
-                } catch (e) {
-                    console.error('Paddle Initialization Error:', e);
-                }
-            } else {
-                console.warn('⚠️ Paddle SDK script not detected on window.');
-            }
-        }
-
-        if (document.readyState === 'complete') {
-            setupPaddle();
-        } else {
-            window.addEventListener('load', setupPaddle);
-        }
-
-        function openPaddleCheckout(tier, event) {
-            if (event) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-
-            const priceId = PADDLE_PRICES[currentBillingCycle]?.[tier];
-            console.log('Checkout Triggered:', { tier, currentBillingCycle, priceId, paddleExists: !!window.Paddle });
-
-            if (window.Paddle && priceId) {
-                try {
-                    Paddle.Checkout.open({
-                        items: [{ priceId: priceId, quantity: 1 }],
-                        settings: {
-                            displayMode: 'overlay',
-                            theme: 'dark',
-                            locale: 'en'
-                        }
-                    });
-                    return false;
-                } catch (err) {
-                    console.error('Paddle Checkout.open error:', err);
-                    alert('Checkout Error: ' + err.message);
-                }
-            } else if (!window.Paddle) {
-                alert('Paddle SDK is not loaded yet.');
-            } else {
-                alert('Missing Price ID for tier: ' + tier);
-            }
-            return false;
-        }
-    </script>
 </body>
 </html>
