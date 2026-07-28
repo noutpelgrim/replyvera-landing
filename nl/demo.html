@@ -389,7 +389,7 @@
         let selectedStars = 5;
         let currentPreset = 'positive';
 
-        function getActiveIndustry() { return document.getElementById('industrySelect').value; }
+        function getActiefIndustry() { return document.getElementById('industrySelect').value; }
 
         function updateStarPickerUI(s) {
             document.querySelectorAll('.star-pick-btn').forEach((btn, idx) => {
@@ -404,7 +404,7 @@
             const activeBtn = document.getElementById(`btn-preset-${presetKey}`);
             if (activeBtn) activeBtn.classList.add('active');
 
-            const ind = getActiveIndustry();
+            const ind = getActiefIndustry();
             const data = (INDUSTRY_PRESETS[ind] && INDUSTRY_PRESETS[ind][presetKey]) ? INDUSTRY_PRESETS[ind][presetKey] : INDUSTRY_PRESETS['restaurant'][presetKey];
 
             if (data && data.stars) {
