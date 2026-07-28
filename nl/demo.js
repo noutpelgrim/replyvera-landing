@@ -154,8 +154,32 @@ function getDemoData() {
     return fallbackData[currentScenario];
 }
 
+function ensureDemoModalInjected() {
+    let modal = document.getElementById('rv-demo-modal');
+    if (!modal && document.body) {
+        document.body.insertAdjacentHTML('beforeend', DEMO_MODAL_HTML);
+        modal = document.getElementById('rv-demo-modal');
+        if (window.lucide && window.lucide.createIcons) {
+            window.lucide.createIcons();
+        }
+    }
+    return modal;
+}
+
 function openDemoModal() {
-    document.getElementById('rv-demo-modal').setAttribute('aria-hidden', 'false');
+    let modal = ensureDemoModalInjected();
+    if (!modal) {
+        document.addEventListener('DOMContentLoaded', () => {
+            modal = ensureDemoModalInjected();
+            if (modal) {
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+                switchScenario('positive');
+            }
+        });
+        return;
+    }
+    modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
     switchScenario('positive'); // Reset to default on open
 }
