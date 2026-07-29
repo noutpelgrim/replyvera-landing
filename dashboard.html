@@ -238,13 +238,15 @@
 
         async function fetchBackendLeads() {
             try {
-                const res = await fetch('https://api.replyvera.com/api/leads');
+                const res = await fetch('https://replyvera-backend-production.up.railway.app/api/leads');
                 if (res.ok) {
                     const data = await res.json();
-                    if (data && data.length > 0) allLeads = data;
+                    if (data && data.length > 0) {
+                        allLeads = data;
+                    }
                 }
             } catch (e) {
-                console.log('Using local dashboard state');
+                console.log('Backend sync offline, displaying current prospect state');
             }
             renderDashboard();
         }
