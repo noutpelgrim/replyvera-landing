@@ -1,72 +1,72 @@
-﻿<!DOCTYPE html>
-<html lang="nl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cookiebeleid | ReplyVera</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/style.css?v=15" />
-  <style>
-    body { background-color: var(--bg); color: var(--text-primary); font-family: var(--font-sans); line-height: 1.6; }
-    .content-wrapper { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
-    h1 { font-size: 2.5rem; margin-bottom: 20px; color: var(--text-primary); }
-    h2 { font-size: 1.5rem; margin-top: 40px; margin-bottom: 20px; color: var(--primary); }
-    p { margin-bottom: 20px; color: var(--text-secondary); }
-    ul { margin-bottom: 20px; padding-left: 20px; color: var(--text-secondary); }
-    li { margin-bottom: 10px; }
-    a { color: var(--primary); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-  </style>
-  <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
-
-    <script>
-    function changeLang(lang, event) {
-        event.preventDefault();
-        localStorage.setItem('lang_redirected', 'true');
-        
-        let path = window.location.pathname;
-        
-        // Remove existing lang prefix if present
-        if (path.startsWith('/es/')) path = path.replace('/es/', '/');
-        if (path.startsWith('/nl/')) path = path.replace('/nl/', '/');
-        if (path === '/es' || path === '/nl') path = '/';
-        
-        let newPath = path;
-        if (lang === 'es') {
-            newPath = '/es' + (path === '/' ? '/' : path);
-        } else if (lang === 'nl') {
-            newPath = '/nl' + (path === '/' ? '/' : path);
-        }
-        
-        window.location.href = newPath + window.location.hash;
-    }
-    </script>
-</head>
-
-<body>
-    <!-- Navbar -->
-    <nav class="navbar" id="navbar">
-        <div class="container nav-container">
-            <a href="/nl/" class="nav-logo">
-                <div class="nav-logo-icon">
-                    <i class="fa-solid fa-reply"></i>
-                </div>
-                <span class="nav-logo-text">Reply<span>Vera</span></span>
-            </a>
-
-            <div class="nav-links">
-                <a href="/nl/#product">Product</a>
-                <a href="/nl/#benefits">Functies</a>
-                <a href="/nl/#how-it-works">Hoe Het Werkt</a>
-                <div class="nav-dropdown">
-                    <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="menu" aria-controls="industries-menu">
-                        Sectoren
-                        <span class="chevron-icon"><i data-lucide="chevron-down" style="width:12px;height:12px;"></i></span>
-                    </button>
-                    <div class="nav-dropdown-content" id="industries-menu" role="menu">
+﻿<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cookiebeleid | ReplyVera</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css?v=15" />
+  <style>
+    body { background-color: var(--bg); color: var(--text-primary); font-family: var(--font-sans); line-height: 1.6; }
+    .content-wrapper { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+    h1 { font-size: 2.5rem; margin-bottom: 20px; color: var(--text-primary); }
+    h2 { font-size: 1.5rem; margin-top: 40px; margin-bottom: 20px; color: var(--primary); }
+    p { margin-bottom: 20px; color: var(--text-secondary); }
+    ul { margin-bottom: 20px; padding-left: 20px; color: var(--text-secondary); }
+    li { margin-bottom: 10px; }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+  <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+
+    <script>
+    function changeLang(lang, event) {
+        event.preventDefault();
+        localStorage.setItem('lang_redirected', 'true');
+        
+        let path = window.location.pathname;
+        
+        // Remove existing lang prefix if present
+        if (path.startsWith('/es/')) path = path.replace('/es/', '/');
+        if (path.startsWith('/nl/')) path = path.replace('/nl/', '/');
+        if (path === '/es' || path === '/nl') path = '/';
+        
+        let newPath = path;
+        if (lang === 'es') {
+            newPath = '/es' + (path === '/' ? '/' : path);
+        } else if (lang === 'nl') {
+            newPath = '/nl' + (path === '/' ? '/' : path);
+        }
+        
+        window.location.href = newPath + window.location.hash;
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="/nl/" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <i class="fa-solid fa-reply"></i>
+                </div>
+                <span class="nav-logo-text">Reply<span>Vera</span></span>
+            </a>
+
+            <div class="nav-links">
+                <a href="/nl/#product">Product</a>
+                <a href="/nl/#benefits">Functies</a>
+                <a href="/nl/#how-it-works">Hoe Het Werkt</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="menu" aria-controls="industries-menu">
+                        Sectoren
+                        <span class="chevron-icon"><i data-lucide="chevron-down" style="width:12px;height:12px;"></i></span>
+                    </button>
+                    <div class="nav-dropdown-content" id="industries-menu" role="menu">
                         <!-- NAV_DROPDOWN_GRID_START -->
 <div class="nav-dropdown-grid">
 
@@ -134,52 +134,52 @@
             </div>
         </a>
 </div>
-<!-- NAV_DROPDOWN_GRID_END -->
-</div>
-</div>
-                <a href="/nl/pricing.html">Prijzen</a>
-                <a href="/nl/#faq">Veelgestelde Vragen</a>
-            </div>
-
-            <div class="nav-actions">
-                <div class="lang-selector">
+<!-- NAV_DROPDOWN_GRID_END -->
+</div>
+</div>
+                <a href="/nl/pricing.html">Prijzen</a>
+                <a href="/nl/#faq">Veelgestelde Vragen</a>
+            </div>
+
+            <div class="nav-actions">
+                <div class="lang-selector">
                     
                     <button class="lang-btn" aria-label="Select Language">
                         <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> NL
-                    </button>
-                    <div class="lang-menu">
-                        <a href="/nl/#" class="lang-item" onclick="changeLang('en', event)">English</a>
-                        <a href="/nl/#" class="lang-item" onclick="changeLang('es', event)">EspaÃ±ol</a>
-                        <a href="/nl/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
-                    </div>
-                </div>
-                <a href="https://dashboard.replyvera.com/login" class="nav-login">Inloggen</a>
-                <a href="/nl/pricing.html" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Start Gratis Proefperiode</a>
-                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-                        <line x1="3" y1="6" x2="21" y2="6"/>
-                        <line x1="3" y1="12" x2="21" y2="12"/>
-                        <line x1="3" y1="18" x2="21" y2="18"/>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Mobile Navigation Panel -->
-    <div class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
-        <div class="mobile-nav-links">
-            <a href="/nl/#product" class="mobile-nav-link">Product</a>
-            <a href="/nl/#benefits" class="mobile-nav-link">Functies</a>
-            <a href="/nl/#how-it-works" class="mobile-nav-link">Hoe Het Werkt</a>
-
-            <!-- Sectoren Accordion -->
-            <button class="mobile-industry-toggle" id="mobile-ind-toggle" aria-expanded="false">
-                Industries
-                <span class="mobile-industry-chevron">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-                </span>
-            </button>
+                    </button>
+                    <div class="lang-menu">
+                        <a href="/nl/#" class="lang-item" onclick="changeLang('en', event)">English</a>
+                        <a href="/nl/#" class="lang-item" onclick="changeLang('es', event)">Español</a>
+                        <a href="/nl/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+                    </div>
+                </div>
+                <a href="https://dashboard.replyvera.com/login" class="nav-login">Inloggen</a>
+                <a href="/nl/pricing.html" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Start Gratis Proefperiode</a>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Panel -->
+    <div class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+        <div class="mobile-nav-links">
+            <a href="/nl/#product" class="mobile-nav-link">Product</a>
+            <a href="/nl/#benefits" class="mobile-nav-link">Functies</a>
+            <a href="/nl/#how-it-works" class="mobile-nav-link">Hoe Het Werkt</a>
+
+            <!-- Sectoren Accordion -->
+            <button class="mobile-industry-toggle" id="mobile-ind-toggle" aria-expanded="false">
+                Industries
+                <span class="mobile-industry-chevron">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+            </button>
             <!-- MOBILE_IND_LIST_START -->
 <div class="mobile-industry-list" id="mobile-ind-list">
 
@@ -247,136 +247,136 @@
             </div>
         </a>
 </div>
-<!-- MOBILE_IND_LIST_END -->
-<a href="/nl/pricing.html" class="mobile-nav-link">Prijzen</a>
-            <a href="/nl/#faq" class="mobile-nav-link">Veelgestelde Vragen</a>
-            <div class="lang-selector">
-                    <button class="lang-btn" aria-label="Select Language">
-                        <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
-                    </button>
-                    <div class="lang-menu">
-                        <a href="/nl/#" class="lang-item" onclick="changeLang('en', event)">English</a>
-                        <a href="/nl/#" class="lang-item" onclick="changeLang('es', event)">EspaÃ±ol</a>
-                        <a href="/nl/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
-                    </div>
-                </div>
-                <a href="https://dashboard.replyvera.com/login" class="mobile-nav-link">Inloggen</a>
-        </div>
-    </div>
-
-    <!-- Main Content -->
-    <main class="section section-light" style="padding-top: 140px; min-height: calc(100vh - 400px);">
-        <div class="container">
-            <div class="content-wrapper">
-                <h1>Cookiebeleid</h1>
-                <p>Laatst bijgewerkt: 20 april 2026</p>
-
-                <p>Dit Cookiebeleid legt uit hoe ReplyVera cookies en vergelijkbare technologieën gebruikt om u te herkennen wanneer u onze website bezoekt. Het legt uit wat deze technologieën zijn, waarom we gebruiken, en wat uw rechten zijn om het gebruik ervan te beheren.</p>
-
-                <h2>1. Wat zijn cookies?</h2>
-                <p>Cookies zijn kleine gegevensbestanden die op uw computer of mobiele apparaat worden geplaatst wanneer u een website bezoekt. Cookies worden veelvuldig gebruikt door website-eigenaren om hun websites te laten werken, of om efficiënter te werken, en om rapportage-informatie te verstrekken.</p>
-
-                <h2>2. Waarom gebruiken we cookies?</h2>
-                <p>We gebruiken first-party en third-party cookies om verschillende redenen. Sommige cookies zijn om technische redenen vereist om onze Website te laten functioneren; deze noemen we "essentiële" of "strikt noodzakelijke" cookies. Andere cookies stellen ons in staat om de interesses van onze gebruikers te volgen en te targeten om de ervaring op onze Website te verbeteren.</p>
-
-                <h2>3. Soorten cookies die we gebruiken</h2>
-                <ul>
-                    <li><strong>Essentiële cookies:</strong> Deze cookies zijn strikt noodzakelijk om u diensten te kunnen bieden die via onze Website beschikbaar zijn, en om bepaalde functies ervan te kunnen gebruiken, zoals toegang tot beveiligde omgevingen.</li>
-                    <li><strong>Analytische cookies:</strong> Deze cookies verzamelen informatie die wordt gebruikt in geaggregeerde vorm om ons te helpen begrijpen hoe onze Website wordt gebruikt of hoe effectief onze marketingcampagnes zijn.</li>
-                    <li><strong>Authenticatiecookies:</strong> Deze helpen ons uw inlogsessie te onthouden, zodat u niet elke keer opnieuw hoeft in te loggen wanneer u zich tussen het Dashboard en de site beweegt.</li>
-                </ul>
-
-                <h2>4. Hoe kan ik cookies beheren?</h2>
-                <p>U heeft het recht om te beslissen of u cookies accepteert of weigert. U kunt de instellingen van uw webbrowser aanpassen om cookies te accepteren of te weigeren. Als u ervoor kiest om cookies te weigeren, kunt u onze website nog steeds gebruiken, hoewel uw toegang tot bepaalde functionaliteit en delen van onze website mogelijk beperkt zal zijn.</p>
-
-                <h2>5. Wijzigingen in het Cookiebeleid</h2>
-                <p>We kunnen dit Cookiebeleid van tijd tot tijd bijwerken om bijvoorbeeld wijzigingen in de cookies die we gebruiken weer te geven, of om andere operationele, wettelijke of regelgevende redenen.</p>
-
-                <h2>6. Neem contact met ons op</h2>
-                <p>Als u vragen heeft over ons gebruik van cookies of andere technologieën, e-mail ons dan op <a href="mailto:info@replyvera.com">info@replyvera.com</a>.</p>
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand-box">
-                    <a href="/nl/" class="nav-logo" style="margin-bottom:14px;">
-                        <div class="nav-logo-icon">
-                            <i class="fa-solid fa-reply"></i>
-                        </div>
-                        <span class="nav-logo-text" style="font-size:1.2rem;">Reply<span>Vera</span></span>
-                    </a>
-                    <p>Geautomatiseerde reacties op Google-reviews voor kleine bedrijven. Abonnementen beginnen bij $29 per maand.</p>
-                    <p style="font-size:0.78rem;margin-top:8px;color:var(--text-muted);">Ondersteunt momenteel Google Reviews. Extra platforms staan in de planning.</p>
-                </div>
-
-                <div class="footer-col">
-                    <div class="footer-col-title">Product</div>
-                    <ul class="footer-links">
-                        <li><a href="/nl/#product">Product</a></li>
-                        <li><a href="/nl/#how-it-works">Hoe Het Werkt</a></li>
-                        <li><a href="/nl/pricing.html">Prijzen</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <div class="footer-col-title">Bedrijf</div>
-                    <ul class="footer-links">
-                        <li><a href="mailto:info@replyvera.com">Neem contact met ons op</a></li>
-                        <li><div class="lang-selector">
-                    <button class="lang-btn" aria-label="Select Language">
-                        <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
-                    </button>
-                    <div class="lang-menu">
-                        <a href="/nl/#" class="lang-item" onclick="changeLang('en', event)">English</a>
-                        <a href="/nl/#" class="lang-item" onclick="changeLang('es', event)">EspaÃ±ol</a>
-                        <a href="/nl/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
-                    </div>
-                </div>
-                <a h>Inloggen</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <div class="footer-col-title">Juridisch</div>
-                    <ul class="footer-links">
-                        <li><a href="/nl/terms.html">Servicevoorwaarden</a></li>
-                        <li><a href="/nl/privacy.html">Privacybeleid</a></li>
-                        <li><a href="/nl/cookie.html">Cookiebeleid</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <div>© 2026 ReplyVera. Alle rechten voorbehouden.</div>
-                <div class="social-links">
-                    <a href="/nl/#"><i data-lucide="twitter" style="width:17px;height:17px;"></i></a>
-                    <a href="/nl/#"><i data-lucide="linkedin" style="width:17px;height:17px;"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Cookie Consent Banner -->
-    <div id="cookie-banner" class="cookie-banner" aria-hidden="true">
-        <div class="cookie-content">
-            <p>We gebruiken cookies om uw ervaring te verbeteren en de prestaties van de site te analyseren. Door op "Accepteren" te klikken, gaat u akkoord met ons gebruik van cookies zoals beschreven in ons <a href="/nl/cookie.html">Cookiebeleid</a>.</p>
-            <div class="cookie-buttons">
-                <button id="accept-cookies" class="btn btn-accent btn-sm" style="padding:6px 12px; font-size:0.78rem;">Accepteren</button>
-                <button id="decline-cookies" class="btn btn-secondary btn-sm" style="padding:6px 12px; font-size:0.78rem;">Weigeren</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Vercel Web Analytics -->
-    <script>
-      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    </script>
-    <script defer src="/_vercel/insights/script.js"></script>
-
-    <script src="/script.js"></script>
-</body>
-</html>
+<!-- MOBILE_IND_LIST_END -->
+<a href="/nl/pricing.html" class="mobile-nav-link">Prijzen</a>
+            <a href="/nl/#faq" class="mobile-nav-link">Veelgestelde Vragen</a>
+            <div class="lang-selector">
+                    <button class="lang-btn" aria-label="Select Language">
+                        <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
+                    </button>
+                    <div class="lang-menu">
+                        <a href="/nl/#" class="lang-item" onclick="changeLang('en', event)">English</a>
+                        <a href="/nl/#" class="lang-item" onclick="changeLang('es', event)">Español</a>
+                        <a href="/nl/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+                    </div>
+                </div>
+                <a href="https://dashboard.replyvera.com/login" class="mobile-nav-link">Inloggen</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="section section-light" style="padding-top: 140px; min-height: calc(100vh - 400px);">
+        <div class="container">
+            <div class="content-wrapper">
+                <h1>Cookiebeleid</h1>
+                <p>Laatst bijgewerkt: 20 april 2026</p>
+
+                <p>Dit Cookiebeleid legt uit hoe ReplyVera cookies en vergelijkbare technologieën gebruikt om u te herkennen wanneer u onze website bezoekt. Het legt uit wat deze technologieën zijn, waarom we gebruiken, en wat uw rechten zijn om het gebruik ervan te beheren.</p>
+
+                <h2>1. Wat zijn cookies?</h2>
+                <p>Cookies zijn kleine gegevensbestanden die op uw computer of mobiele apparaat worden geplaatst wanneer u een website bezoekt. Cookies worden veelvuldig gebruikt door website-eigenaren om hun websites te laten werken, of om efficiënter te werken, en om rapportage-informatie te verstrekken.</p>
+
+                <h2>2. Waarom gebruiken we cookies?</h2>
+                <p>We gebruiken first-party en third-party cookies om verschillende redenen. Sommige cookies zijn om technische redenen vereist om onze Website te laten functioneren; deze noemen we "essentiële" of "strikt noodzakelijke" cookies. Andere cookies stellen ons in staat om de interesses van onze gebruikers te volgen en te targeten om de ervaring op onze Website te verbeteren.</p>
+
+                <h2>3. Soorten cookies die we gebruiken</h2>
+                <ul>
+                    <li><strong>Essentiële cookies:</strong> Deze cookies zijn strikt noodzakelijk om u diensten te kunnen bieden die via onze Website beschikbaar zijn, en om bepaalde functies ervan te kunnen gebruiken, zoals toegang tot beveiligde omgevingen.</li>
+                    <li><strong>Analytische cookies:</strong> Deze cookies verzamelen informatie die wordt gebruikt in geaggregeerde vorm om ons te helpen begrijpen hoe onze Website wordt gebruikt of hoe effectief onze marketingcampagnes zijn.</li>
+                    <li><strong>Authenticatiecookies:</strong> Deze helpen ons uw inlogsessie te onthouden, zodat u niet elke keer opnieuw hoeft in te loggen wanneer u zich tussen het Dashboard en de site beweegt.</li>
+                </ul>
+
+                <h2>4. Hoe kan ik cookies beheren?</h2>
+                <p>U heeft het recht om te beslissen of u cookies accepteert of weigert. U kunt de instellingen van uw webbrowser aanpassen om cookies te accepteren of te weigeren. Als u ervoor kiest om cookies te weigeren, kunt u onze website nog steeds gebruiken, hoewel uw toegang tot bepaalde functionaliteit en delen van onze website mogelijk beperkt zal zijn.</p>
+
+                <h2>5. Wijzigingen in het Cookiebeleid</h2>
+                <p>We kunnen dit Cookiebeleid van tijd tot tijd bijwerken om bijvoorbeeld wijzigingen in de cookies die we gebruiken weer te geven, of om andere operationele, wettelijke of regelgevende redenen.</p>
+
+                <h2>6. Neem contact met ons op</h2>
+                <p>Als u vragen heeft over ons gebruik van cookies of andere technologieën, e-mail ons dan op <a href="mailto:info@replyvera.com">info@replyvera.com</a>.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand-box">
+                    <a href="/nl/" class="nav-logo" style="margin-bottom:14px;">
+                        <div class="nav-logo-icon">
+                            <i class="fa-solid fa-reply"></i>
+                        </div>
+                        <span class="nav-logo-text" style="font-size:1.2rem;">Reply<span>Vera</span></span>
+                    </a>
+                    <p>Geautomatiseerde reacties op Google-reviews voor kleine bedrijven. Abonnementen beginnen bij $29 per maand.</p>
+                    <p style="font-size:0.78rem;margin-top:8px;color:var(--text-muted);">Ondersteunt momenteel Google Reviews. Extra platforms staan in de planning.</p>
+                </div>
+
+                <div class="footer-col">
+                    <div class="footer-col-title">Product</div>
+                    <ul class="footer-links">
+                        <li><a href="/nl/#product">Product</a></li>
+                        <li><a href="/nl/#how-it-works">Hoe Het Werkt</a></li>
+                        <li><a href="/nl/pricing.html">Prijzen</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <div class="footer-col-title">Bedrijf</div>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@replyvera.com">Neem contact met ons op</a></li>
+                        <li><div class="lang-selector">
+                    <button class="lang-btn" aria-label="Select Language">
+                        <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
+                    </button>
+                    <div class="lang-menu">
+                        <a href="/nl/#" class="lang-item" onclick="changeLang('en', event)">English</a>
+                        <a href="/nl/#" class="lang-item" onclick="changeLang('es', event)">Español</a>
+                        <a href="/nl/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+                    </div>
+                </div>
+                <a h>Inloggen</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <div class="footer-col-title">Juridisch</div>
+                    <ul class="footer-links">
+                        <li><a href="/nl/terms.html">Servicevoorwaarden</a></li>
+                        <li><a href="/nl/privacy.html">Privacybeleid</a></li>
+                        <li><a href="/nl/cookie.html">Cookiebeleid</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>© 2026 ReplyVera. Alle rechten voorbehouden.</div>
+                <div class="social-links">
+                    <a href="/nl/#"><i data-lucide="twitter" style="width:17px;height:17px;"></i></a>
+                    <a href="/nl/#"><i data-lucide="linkedin" style="width:17px;height:17px;"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner" aria-hidden="true">
+        <div class="cookie-content">
+            <p>We gebruiken cookies om uw ervaring te verbeteren en de prestaties van de site te analyseren. Door op "Accepteren" te klikken, gaat u akkoord met ons gebruik van cookies zoals beschreven in ons <a href="/nl/cookie.html">Cookiebeleid</a>.</p>
+            <div class="cookie-buttons">
+                <button id="accept-cookies" class="btn btn-accent btn-sm" style="padding:6px 12px; font-size:0.78rem;">Accepteren</button>
+                <button id="decline-cookies" class="btn btn-secondary btn-sm" style="padding:6px 12px; font-size:0.78rem;">Weigeren</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vercel Web Analytics -->
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <script src="/script.js"></script>
+</body>
+</html>

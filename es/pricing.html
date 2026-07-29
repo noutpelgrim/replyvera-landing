@@ -1,63 +1,63 @@
-﻿<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Precios de ReplyVera – Precios Sencillos y Transparentes</title>
-    <meta name="description" content="Simple pricing. No sales call required. Start your 14-day free trial.">
-    <link rel="stylesheet" href="/style.css?v=15">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="/es/demo.js" defer></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
-
-    <script>
-    function changeLang(lang, event) {
-        event.preventDefault();
-        localStorage.setItem('lang_redirected', 'true');
-        
-        let path = window.location.pathname;
-        
-        // Remove existing lang prefix if present
-        if (path.startsWith('/es/')) path = path.replace('/es/', '/');
-        if (path.startsWith('/nl/')) path = path.replace('/nl/', '/');
-        if (path === '/es' || path === '/nl') path = '/';
-        
-        let newPath = path;
-        if (lang === 'es') {
-            newPath = '/es' + (path === '/' ? '/' : path);
-        } else if (lang === 'nl') {
-            newPath = '/nl' + (path === '/' ? '/' : path);
-        }
-        
-        window.location.href = newPath + window.location.hash;
-    }
-    </script>
-</head>
-
-<body>
-    <!-- Navbar -->
-    <nav class="navbar" id="navbar">
-        <div class="container nav-container">
-            <a href="/es/" class="nav-logo">
-                <div class="nav-logo-icon">
-                    <i class="fa-solid fa-reply"></i>
-                </div>
-                <span class="nav-logo-text">Responder<span>Vera</span></span>
-            </a>
-
-            <div class="nav-links">
-                <a href="/es/#product">Producto</a>
-                <a href="/es/#benefits">Características</a>
-                <a href="/es/#how-it-works">Cómo Funciona</a>
-                <div class="nav-dropdown">
-                    <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="menu" aria-controls="industries-menu">
-                        Industrias
-                        <span class="chevron-icon"><i data-lucide="chevron-down" style="width:12px;height:12px;"></i></span>
-                    </button>
-                    <div class="nav-dropdown-content" id="industries-menu" role="menu">
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precios de ReplyVera – Precios Sencillos y Transparentes</title>
+    <meta name="description" content="Simple pricing. No sales call required. Start your 14-day free trial.">
+    <link rel="stylesheet" href="/style.css?v=15">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="/es/demo.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+
+    <script>
+    function changeLang(lang, event) {
+        event.preventDefault();
+        localStorage.setItem('lang_redirected', 'true');
+        
+        let path = window.location.pathname;
+        
+        // Remove existing lang prefix if present
+        if (path.startsWith('/es/')) path = path.replace('/es/', '/');
+        if (path.startsWith('/nl/')) path = path.replace('/nl/', '/');
+        if (path === '/es' || path === '/nl') path = '/';
+        
+        let newPath = path;
+        if (lang === 'es') {
+            newPath = '/es' + (path === '/' ? '/' : path);
+        } else if (lang === 'nl') {
+            newPath = '/nl' + (path === '/' ? '/' : path);
+        }
+        
+        window.location.href = newPath + window.location.hash;
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="/es/" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <i class="fa-solid fa-reply"></i>
+                </div>
+                <span class="nav-logo-text">Responder<span>Vera</span></span>
+            </a>
+
+            <div class="nav-links">
+                <a href="/es/#product">Producto</a>
+                <a href="/es/#benefits">Características</a>
+                <a href="/es/#how-it-works">Cómo Funciona</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="menu" aria-controls="industries-menu">
+                        Industrias
+                        <span class="chevron-icon"><i data-lucide="chevron-down" style="width:12px;height:12px;"></i></span>
+                    </button>
+                    <div class="nav-dropdown-content" id="industries-menu" role="menu">
                         <!-- NAV_DROPDOWN_GRID_START -->
 <div class="nav-dropdown-grid">
 
@@ -125,52 +125,52 @@
             </div>
         </a>
 </div>
-<!-- NAV_DROPDOWN_GRID_END -->
-</div>
-</div>
-                <a href="/es/#pricing">Precios</a>
-                <a href="/es/#faq">Preguntas Frecuentes</a>
-            </div>
-
-            <div class="nav-actions">
-                <div class="lang-selector">
+<!-- NAV_DROPDOWN_GRID_END -->
+</div>
+</div>
+                <a href="/es/#pricing">Precios</a>
+                <a href="/es/#faq">Preguntas Frecuentes</a>
+            </div>
+
+            <div class="nav-actions">
+                <div class="lang-selector">
                     
                     <button class="lang-btn" aria-label="Select Language">
                         <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> ES
-                    </button>
-                    <div class="lang-menu">
-                        <a href="/es/#" class="lang-item" onclick="changeLang('en', event)">English</a>
-                        <a href="/es/#" class="lang-item" onclick="changeLang('es', event)">EspaÃ±ol</a>
-                        <a href="/es/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
-                    </div>
-                </div>
-                <a href="https://dashboard.replyvera.com/login" class="nav-login">Iniciar Sesión</a>
-                <a href="/es/#pricing" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Comenzar Prueba Gratuita</a>
-                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-                        <line x1="3" y1="6" x2="21" y2="6"/>
-                        <line x1="3" y1="12" x2="21" y2="12"/>
-                        <line x1="3" y1="18" x2="21" y2="18"/>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Mobile Navigation Panel -->
-    <div class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
-        <div class="mobile-nav-links">
-            <a href="/es/#product" class="mobile-nav-link">Producto</a>
-            <a href="/es/#benefits" class="mobile-nav-link">Características</a>
-            <a href="/es/#how-it-works" class="mobile-nav-link">Cómo Funciona</a>
-
-            <!-- Industrias Accordion -->
-            <button class="mobile-industry-toggle" id="mobile-ind-toggle" aria-expanded="false">
-                Industries
-                <span class="mobile-industry-chevron">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-                </span>
-            </button>
+                    </button>
+                    <div class="lang-menu">
+                        <a href="/es/#" class="lang-item" onclick="changeLang('en', event)">English</a>
+                        <a href="/es/#" class="lang-item" onclick="changeLang('es', event)">Español</a>
+                        <a href="/es/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+                    </div>
+                </div>
+                <a href="https://dashboard.replyvera.com/login" class="nav-login">Iniciar Sesión</a>
+                <a href="/es/#pricing" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Comenzar Prueba Gratuita</a>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Panel -->
+    <div class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+        <div class="mobile-nav-links">
+            <a href="/es/#product" class="mobile-nav-link">Producto</a>
+            <a href="/es/#benefits" class="mobile-nav-link">Características</a>
+            <a href="/es/#how-it-works" class="mobile-nav-link">Cómo Funciona</a>
+
+            <!-- Industrias Accordion -->
+            <button class="mobile-industry-toggle" id="mobile-ind-toggle" aria-expanded="false">
+                Industries
+                <span class="mobile-industry-chevron">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+            </button>
             <!-- MOBILE_IND_LIST_START -->
 <div class="mobile-industry-list" id="mobile-ind-list">
 
@@ -238,468 +238,468 @@
             </div>
         </a>
 </div>
-<!-- MOBILE_IND_LIST_END -->
-<a href="/es/#pricing" class="mobile-nav-link">Precios</a>
-            <a href="/es/#faq" class="mobile-nav-link">Preguntas Frecuentes</a>
-            <div class="lang-selector">
-                    <button class="lang-btn" aria-label="Select Language">
-                        <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
-                    </button>
-                    <div class="lang-menu">
-                        <a href="/es/#" class="lang-item" onclick="changeLang('en', event)">English</a>
-                        <a href="/es/#" class="lang-item" onclick="changeLang('es', event)">EspaÃ±ol</a>
-                        <a href="/es/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
-                    </div>
-                </div>
-                <a href="https://dashboard.replyvera.com/login" class="mobile-nav-link">Iniciar Sesión</a>
-        </div>
-    </div>
-
-<!-- Mobile Plan Selector -->
-    <div class="mobile-plan-selector theme-dark">
-        <div class="mobile-plan-selector-inner container">
-            <a href="/es/#plan-starter" class="mobile-plan-btn">Starter</a>
-            <a href="/es/#plan-autopilot" class="mobile-plan-btn">Piloto Automático</a>
-            <a href="/es/#plan-multi" class="mobile-plan-btn">Multi-Ubicación</a>
-            <a href="/es/#plan-agency" class="mobile-plan-btn">Agencia</a>
-        </div>
-    </div>
-
-    <!-- Precios Hero Section -->
-    <header class="hero theme-dark" style="padding: 100px 0 20px;">
-        <div class="hero-glow-layer"></div>
-        <div class="container hero-content" style="max-width: 800px; margin: 0 auto; text-align: center;">
-            <h1 style="font-size: 2.5rem; margin-bottom: 12px; letter-spacing: -0.02em;">Precios Sencillos. Sin Llamadas de Ventas.</h1>
-            <p class="lead-text" style="margin-bottom: 0; font-size: 1.1rem; color: var(--text-secondary-current);">
-                Elige el nivel de automatización y la cantidad de ubicaciones que se adapten a tu negocio.
-            </p>
-            
-            <!-- Billing Toggle -->
-            <div class="pricing-billing-toggle">
-                <button class="pricing-billing-btn active" id="btn-monthly" onclick="setBilling('monthly')">Mensual</button>
-                <button class="pricing-billing-btn" id="btn-annual" onclick="setBilling('annual')">Anual <span class="pricing-annual-badge">Ahorra 2 Meses</span></button>
-            </div>
-        </div>
-    </header>
-
-    <!-- Pricing Cards Grid Section -->
-    <section class="section theme-dark" id="pricing" style="padding: 20px 0 60px;">
-        <div class="container">
-            <div class="pricing-4-grid mb-12">
-                
-                <!-- Starter Card -->
-                <div class="pricing-4-card" id="plan-starter">
-                    <div>
-                        <div style="margin-bottom: 20px;">
-                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">Starter</h4>
-                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">Para empresas que aprueban cada respuesta antes de publicar.</p>
-                            
-                            <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
-                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$29" data-annual="$290">$29</span>
-                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ mes" data-annual="billed annually">/ mes</span>
-                            </div>
-                        </div>
-                        
-                        <ul class="pricing-4-feature-list">
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 1 ubicación de negocio</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Hasta 30 respuestas por mes</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Manual approval</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Tono personalizado</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Inglés y Español</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Alertas de reseñas negativas</li>
-                        </ul>
-                    </div>
-                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=starter" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Comenzar Prueba Gratuita</a>
-                </div>
-
-                <!-- Piloto Automático Card -->
-                <div class="pricing-4-card recommended" id="plan-autopilot">
-                    <div>
-                        <div style="margin-bottom: 20px;">
-                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">Piloto Automático</h4>
-                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">Para empresas que desean publicar automáticamente respuestas seguras.</p>
-                            
-                            <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
-                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$39" data-annual="$390">$39</span>
-                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ mes" data-annual="billed annually">/ mes</span>
-                            </div>
-                        </div>
-                        
-                        <ul class="pricing-4-feature-list">
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 1 ubicación de negocio</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Respuestas ilimitadas a reseñas*</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Safe replies auto-publish</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Sensitive reviews require approval</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Voz de marca personalizada</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Historial de reseñas</li>
-                        </ul>
-                    </div>
-                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent" style="width: 100%; text-align: center; justify-content: center;">Comenzar Prueba Gratuita</a>
-                </div>
-
-                <!-- Multi-Ubicación Card -->
-                <div class="pricing-4-card" id="plan-multi">
-                    <div>
-                        <div style="margin-bottom: 20px;">
-                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">Multi-Ubicación</h4>
-                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">Para empresas que gestionan varias ubicaciones.</p>
-                            
-                            <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
-                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$79" data-annual="$790"><span style="font-size:1.2rem;font-weight:600;margin-right:4px;">Desde</span>$79</span>
-                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ month" data-annual="billed annually">/ month</span>
-                            </div>
-                        </div>
-                        
-                        <ul class="pricing-4-feature-list">
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 3 locations included</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Panel central</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Respuestas ilimitadas a reseñas*</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Reglas específicas por ubicación</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Acceso para el equipo</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Ubicaciones adicionales disponibles</li>
-                        </ul>
-                    </div>
-                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=multi_location" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Iniciar Prueba Multi-Ubicación</a>
-                </div>
-
-                <!-- Agencia Card -->
-                <div class="pricing-4-card" id="plan-agency">
-                    <div>
-                        <div style="margin-bottom: 20px;">
-                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">Agencia</h4>
-                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">Para agencias que gestionan respuestas de reseñas de Google de múltiples clientes.</p>
-                            
-                            <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
-                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$149" data-annual="$1490"><span style="font-size:1.2rem;font-weight:600;margin-right:4px;">Desde</span>$149</span>
-                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ month" data-annual="billed annually">/ month</span>
-                            </div>
-                        </div>
-                        
-                        <ul class="pricing-4-feature-list">
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 10 ubicaciones de clientes incluidas</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Panel multi-cliente</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Voces de marca separadas por cliente</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Acceso de aprobación de clientes</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Acceso para el equipo</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Informes de agencia</li>
-                        </ul>
-                    </div>
-                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=agency" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Iniciar Prueba de Agencia</a>
-                </div>
-
-            </div>
-            
-            <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:24px;margin-bottom:8px;">*Las respuestas ilimitadas a reseñas están sujetas a límites de uso razonable.</p>
-            <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:0px;">Prueba gratuita de 14 días. Cancela en cualquier momento.</p>
-            
-            <div class="text-center">
-                <button class="compare-toggle-btn" id="compare-toggle" aria-expanded="false" aria-controls="comparison-container">
-                    Comparar Todas las Características <i data-lucide="chevron-down" style="width:16px;height:16px;"></i>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Comparison Section -->
-    <section class="section theme-light" id="comparison" style="border-top: 1px solid var(--border-current); padding: 40px 0;">
-        <div class="container">
-            <div class="comparison-container" id="comparison-container">
-                <div class="comparison-table-wrapper" style="margin-bottom: 40px;">
-                    <table class="comparison-table">
-                        <thead>
-                            <tr>
-                                <th>Características</th>
-                                <th>Starter</th>
-                                <th>Autopilot</th>
-                                <th>Multi-Location</th>
-                                <th>Agency</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Ubicaciones incluidas</td>
-                                <td>1 Ubicación</td>
-                                <td>1 Ubicación</td>
-                                <td>3 Ubicaciones</td>
-                                <td>10 Ubicaciones</td>
-                            </tr>
-                            <tr>
-                                <td>Límite mensual de respuestas</td>
-                                <td>30 respuestas</td>
-                                <td>Ilimitadas</td>
-                                <td>Ilimitadas</td>
-                                <td>Ilimitadas</td>
-                            </tr>
-                            <tr>
-                                <td>Manual approval</td>
-                                <td>Incluido</td>
-                                <td>Incluido</td>
-                                <td>Incluido</td>
-                                <td>Incluido</td>
-                            </tr>
-                            <tr>
-                                <td>Publicación automática</td>
-                                <td>No incluido</td>
-                                <td>Incluido</td>
-                                <td>Incluido</td>
-                                <td>Incluido</td>
-                            </tr>
-                            <tr>
-                                <td>Detección de reseñas delicadas</td>
-                                <td>No incluido</td>
-                                <td>Incluido</td>
-                                <td>Incluido</td>
-                                <td>Incluido</td>
-                            </tr>
-                            <tr>
-                                <td>Tono personalizado</td>
-                                <td>Incluido</td>
-                                <td>Incluido</td>
-                                <td>Incluido</td>
-                                <td>Incluido</td>
-                            </tr>
-                            <tr>
-                                <td>Inglés y Español</td>
-                                <td>Incluido</td>
-                                <td>Incluido</td>
-                                <td>Incluido</td>
-                                <td>Incluido</td>
-                            </tr>
-                            <tr>
-                                <td>Reconocimiento de nombre de empleado</td>
-                                <td>No incluido</td>
-                                <td>Incluido</td>
-                                <td>Incluido</td>
-                                <td>Incluido</td>
-                            </tr>
-                            <tr>
-                                <td>Historial de reseñas</td>
-                                <td>No incluido</td>
-                                <td>Incluido</td>
-                                <td>Incluido</td>
-                                <td>Incluido</td>
-                            </tr>
-                            <tr>
-                                <td>Acceso para el equipo</td>
-                                <td>No incluido</td>
-                                <td>No incluido</td>
-                                <td>Incluido</td>
-                                <td>Incluido</td>
-                            </tr>
-                            <tr>
-                                <td>Informes de múltiples ubicaciones</td>
-                                <td>No incluido</td>
-                                <td>No incluido</td>
-                                <td>Incluido</td>
-                                <td>Incluido</td>
-                            </tr>
-                            <tr>
-                                <td>Panel de cliente</td>
-                                <td>No incluido</td>
-                                <td>No incluido</td>
-                                <td>No incluido</td>
-                                <td>Incluido</td>
-                            </tr>
-                            <tr>
-                                <td>Acceso de aprobación de clientes</td>
-                                <td>No incluido</td>
-                                <td>No incluido</td>
-                                <td>No incluido</td>
-                                <td>Incluido</td>
-                            </tr>
-                            <tr>
-                                <td>Nivel de soporte</td>
-                                <td>Estándar</td>
-                                <td>Prioritario</td>
-                                <td>Prioritario</td>
-                                <td>Dedicado</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            
-            <!-- FAQ Section -->
-            <div id="faq" style="max-width: 800px; margin: 0 auto;">
-                <div class="text-center mb-8">
-                    <h2 class="mb-4">Preguntas Frecuentes</h2>
-                </div>
-                
-                <div class="faq-accordion">
-                    <details>
-                        <summary>¿Puedo cancelar en cualquier momento? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
-                        <div class="faq-content">Sí. ReplyVera se factura mensual o anualmente, y puedes cancelar antes de tu próxima fecha de facturación.</div>
-                    </details>
-                    <details>
-                        <summary>¿Hay alguna tarifa de instalación? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
-                        <div class="faq-content">No. No hay tarifas de instalación en los planes estándar.</div>
-                    </details>
-                    <details>
-                        <summary>¿Necesita cada ubicación su propio plan? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
-                        <div class="faq-content">Starter y Piloto Automático incluyen una ubicación. Los planes Multi-Ubicación y Agencia incluyen varias ubicaciones y permiten agregar ubicaciones adicionales por una tarifa.</div>
-                    </details>
-                    <details>
-                        <summary>¿Son ilimitadas las respuestas? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
-                        <div class="faq-content">El plan Starter incluye hasta 30 respuestas por mes. Los planes Piloto Automático, Multi-Ubicación y Agencia incluyen respuestas ilimitadas sujetas a límites de uso razonable.</div>
-                    </details>
-                    <details>
-                        <summary>¿Qué plataformas de reseñas se admiten? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
-                        <div class="faq-content">Actualmente, ReplyVera admite Reseñas de Google. Facebook, Trustpilot, Booking.com y Tripadvisor están planeados para futuras versiones.</div>
-                    </details>
-                    <details>
-                        <summary>¿Puedo cambiar de plan más adelante? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
-                        <div class="faq-content">Sí. Puedes actualizar o degradar tu plan a medida que cambia el volumen de tus reseñas o la cantidad de ubicaciones.</div>
-                    </details>
-                </div>
-                
-                <p style="font-size: 0.85rem; color: var(--text-secondary-current); text-align: center; margin-top: 40px; font-weight: 500;">
-                    Actualmente compatible: Reseñas de Google<br>
-                    Facebook, Trustpilot, Booking.com y Tripadvisor están planeados para futuras versiones.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action Section -->
-    <section class="section theme-dark" style="border-top: 1px solid rgba(255, 255, 255, 0.04); padding: 60px 0;">
-        <div class="container text-center" style="max-width: 650px;">
-            <h2 class="mb-6">¿Listo para automatizar tus respuestas a las reseñas de Google?</h2>
-            <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent" style="padding: 14px 28px; font-size:0.95rem;">Comenzar Prueba Gratuita</a>
-        </div>
-    </section>
-<!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand-box">
-                    <a href="/es/" class="nav-logo" style="margin-bottom:14px;">
-                        <div class="nav-logo-icon">
-                            <i class="fa-solid fa-reply"></i>
-                        </div>
-                        <span class="nav-logo-text" style="font-size:1.2rem;">Responder<span>Vera</span></span>
-                    </a>
-                    <p style="color:#94A3B8;">El piloto automático de reseñas creado para tiendas, franquicias y agencias para proteger su reputación en línea.</p>
-                    <p style="color:#64748B; font-size:0.8rem; margin-top:12px;">Actualmente compatible con Reseñas de Google. Se planean plataformas adicionales.</p>
-                </div>
-                
-                <div class="footer-col">
-                    <div class="footer-col-title">Producto</div>
-                    <ul class="footer-links">
-                        <li><a href="/es/#product">Producto</a></li>
-                        <li><a href="/es/#how-it-works">Cómo Funciona</a></li>
-                        <li><a href="/es/pricing.html">Precios</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <div class="footer-col-title">Empresa</div>
-                    <ul class="footer-links">
-                        <li><a href="mailto:info@replyvera.com">Contact Us</a></li>
-                        <li><div class="lang-selector">
-                    <button class="lang-btn" aria-label="Select Language">
-                        <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
-                    </button>
-                    <div class="lang-menu">
-                        <a href="/es/#" class="lang-item" onclick="changeLang('en', event)">English</a>
-                        <a href="/es/#" class="lang-item" onclick="changeLang('es', event)">EspaÃ±ol</a>
-                        <a href="/es/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
-                    </div>
-                </div>
-                <a h>Iniciar Sesión</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <div class="footer-col-title">Legal</div>
-                    <ul class="footer-links">
-                        <li><a href="/es/terms.html">Términos de Servicio</a></li>
-                        <li><a href="/es/privacy.html">Política de Privacidad</a></li>
-                        <li><a href="/es/cookie.html">Política de Cookies</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <div>© 2026 ReplyVera. Todos los derechos reservados.</div>
-                <div class="social-links">
-                    <a href="/es/#"><i data-lucide="twitter" style="width:18px; height:18px;"></i></a>
-                    <a href="/es/#"><i data-lucide="linkedin" style="width:18px; height:18px;"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Cookie Consent Banner -->
-    <div id="cookie-banner" class="cookie-banner" aria-hidden="true">
-        <div class="cookie-content">
-            <p>Usamos cookies para mejorar su experiencia y analizar el rendimiento del sitio. Al hacer clic en "Aceptar", acepta nuestro uso de cookies como se describe en nuestra <a href="/es/cookie.html">Política de Cookies</a>.</p>
-            <div class="cookie-buttons">
-                <button id="accept-cookies" class="btn btn-accent btn-sm" style="padding:6px 12px; font-size:0.78rem;">Aceptar</button>
-                <button id="decline-cookies" class="btn btn-secondary btn-sm" style="padding:6px 12px; font-size:0.78rem;">Rechazar</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Vercel Web Analytics -->
-    <script>
-      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    </script>
-    <script defer src="/_vercel/insights/script.js"></script>
-
-    <script src="/script.js"></script>
-
-    <script>
-        // Billing Toggle Logic
-        function setBilling(mode) {
-            const btnMonthly = document.getElementById('btn-monthly');
-            const btnAnnual = document.getElementById('btn-annual');
-            const priceVals = document.querySelectorAll('.price-val');
-            const pricePeriods = document.querySelectorAll('.price-period');
-            
-            if (mode === 'annual') {
-                btnAnnual.classList.add('active');
-                btnMonthly.classList.remove('active');
-                priceVals.forEach(el => {
-                    let val = el.getAttribute('data-annual');
-                    if(val === '$790' || val === '$1490') {
-                        el.innerHTML = '<span style="font-size:1.2rem;font-weight:600;margin-right:4px;">From</span>' + val;
-                    } else {
-                        el.textContent = val;
-                    }
-                });
-                pricePeriods.forEach(el => el.textContent = el.getAttribute('data-annual'));
-            } else {
-                btnMonthly.classList.add('active');
-                btnAnnual.classList.remove('active');
-                priceVals.forEach(el => {
-                    let val = el.getAttribute('data-monthly');
-                    if(val === '$79' || val === '$149') {
-                        el.innerHTML = '<span style="font-size:1.2rem;font-weight:600;margin-right:4px;">From</span>' + val;
-                    } else {
-                        el.textContent = val;
-                    }
-                });
-                pricePeriods.forEach(el => el.textContent = el.getAttribute('data-monthly'));
-            }
-        }
-
-        // Compare Toggle Logic
-        document.addEventListener('DOMContentLoaded', () => {
-            const compareBtn = document.getElementById('compare-toggle');
-            const compareContainer = document.getElementById('comparison-container');
-            
-            if(compareBtn && compareContainer) {
-                compareBtn.addEventListener('click', () => {
-                    const isExpanded = compareBtn.getAttribute('aria-expanded') === 'true';
-                    compareBtn.setAttribute('aria-expanded', !isExpanded);
-                    if (!isExpanded) {
-                        compareContainer.classList.add('expanded');
-                    } else {
-                        compareContainer.classList.remove('expanded');
-                    }
-                });
-            }
-        });
-    </script>
-</body>
-</html>
+<!-- MOBILE_IND_LIST_END -->
+<a href="/es/#pricing" class="mobile-nav-link">Precios</a>
+            <a href="/es/#faq" class="mobile-nav-link">Preguntas Frecuentes</a>
+            <div class="lang-selector">
+                    <button class="lang-btn" aria-label="Select Language">
+                        <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
+                    </button>
+                    <div class="lang-menu">
+                        <a href="/es/#" class="lang-item" onclick="changeLang('en', event)">English</a>
+                        <a href="/es/#" class="lang-item" onclick="changeLang('es', event)">Español</a>
+                        <a href="/es/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+                    </div>
+                </div>
+                <a href="https://dashboard.replyvera.com/login" class="mobile-nav-link">Iniciar Sesión</a>
+        </div>
+    </div>
+
+<!-- Mobile Plan Selector -->
+    <div class="mobile-plan-selector theme-dark">
+        <div class="mobile-plan-selector-inner container">
+            <a href="/es/#plan-starter" class="mobile-plan-btn">Starter</a>
+            <a href="/es/#plan-autopilot" class="mobile-plan-btn">Piloto Automático</a>
+            <a href="/es/#plan-multi" class="mobile-plan-btn">Multi-Ubicación</a>
+            <a href="/es/#plan-agency" class="mobile-plan-btn">Agencia</a>
+        </div>
+    </div>
+
+    <!-- Precios Hero Section -->
+    <header class="hero theme-dark" style="padding: 100px 0 20px;">
+        <div class="hero-glow-layer"></div>
+        <div class="container hero-content" style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <h1 style="font-size: 2.5rem; margin-bottom: 12px; letter-spacing: -0.02em;">Precios Sencillos. Sin Llamadas de Ventas.</h1>
+            <p class="lead-text" style="margin-bottom: 0; font-size: 1.1rem; color: var(--text-secondary-current);">
+                Elige el nivel de automatización y la cantidad de ubicaciones que se adapten a tu negocio.
+            </p>
+            
+            <!-- Billing Toggle -->
+            <div class="pricing-billing-toggle">
+                <button class="pricing-billing-btn active" id="btn-monthly" onclick="setBilling('monthly')">Mensual</button>
+                <button class="pricing-billing-btn" id="btn-annual" onclick="setBilling('annual')">Anual <span class="pricing-annual-badge">Ahorra 2 Meses</span></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Pricing Cards Grid Section -->
+    <section class="section theme-dark" id="pricing" style="padding: 20px 0 60px;">
+        <div class="container">
+            <div class="pricing-4-grid mb-12">
+                
+                <!-- Starter Card -->
+                <div class="pricing-4-card" id="plan-starter">
+                    <div>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">Starter</h4>
+                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">Para empresas que aprueban cada respuesta antes de publicar.</p>
+                            
+                            <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
+                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$29" data-annual="$290">$29</span>
+                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ mes" data-annual="billed annually">/ mes</span>
+                            </div>
+                        </div>
+                        
+                        <ul class="pricing-4-feature-list">
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 1 ubicación de negocio</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Hasta 30 respuestas por mes</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Manual approval</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Tono personalizado</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Inglés y Español</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Alertas de reseñas negativas</li>
+                        </ul>
+                    </div>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=starter" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Comenzar Prueba Gratuita</a>
+                </div>
+
+                <!-- Piloto Automático Card -->
+                <div class="pricing-4-card recommended" id="plan-autopilot">
+                    <div>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">Piloto Automático</h4>
+                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">Para empresas que desean publicar automáticamente respuestas seguras.</p>
+                            
+                            <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
+                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$39" data-annual="$390">$39</span>
+                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ mes" data-annual="billed annually">/ mes</span>
+                            </div>
+                        </div>
+                        
+                        <ul class="pricing-4-feature-list">
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 1 ubicación de negocio</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Respuestas ilimitadas a reseñas*</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Safe replies auto-publish</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Sensitive reviews require approval</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Voz de marca personalizada</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Historial de reseñas</li>
+                        </ul>
+                    </div>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent" style="width: 100%; text-align: center; justify-content: center;">Comenzar Prueba Gratuita</a>
+                </div>
+
+                <!-- Multi-Ubicación Card -->
+                <div class="pricing-4-card" id="plan-multi">
+                    <div>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">Multi-Ubicación</h4>
+                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">Para empresas que gestionan varias ubicaciones.</p>
+                            
+                            <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
+                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$79" data-annual="$790"><span style="font-size:1.2rem;font-weight:600;margin-right:4px;">Desde</span>$79</span>
+                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ month" data-annual="billed annually">/ month</span>
+                            </div>
+                        </div>
+                        
+                        <ul class="pricing-4-feature-list">
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 3 locations included</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Panel central</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Respuestas ilimitadas a reseñas*</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Reglas específicas por ubicación</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Acceso para el equipo</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Ubicaciones adicionales disponibles</li>
+                        </ul>
+                    </div>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=multi_location" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Iniciar Prueba Multi-Ubicación</a>
+                </div>
+
+                <!-- Agencia Card -->
+                <div class="pricing-4-card" id="plan-agency">
+                    <div>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">Agencia</h4>
+                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">Para agencias que gestionan respuestas de reseñas de Google de múltiples clientes.</p>
+                            
+                            <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
+                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$149" data-annual="$1490"><span style="font-size:1.2rem;font-weight:600;margin-right:4px;">Desde</span>$149</span>
+                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ month" data-annual="billed annually">/ month</span>
+                            </div>
+                        </div>
+                        
+                        <ul class="pricing-4-feature-list">
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 10 ubicaciones de clientes incluidas</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Panel multi-cliente</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Voces de marca separadas por cliente</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Acceso de aprobación de clientes</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Acceso para el equipo</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Informes de agencia</li>
+                        </ul>
+                    </div>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=agency" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Iniciar Prueba de Agencia</a>
+                </div>
+
+            </div>
+            
+            <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:24px;margin-bottom:8px;">*Las respuestas ilimitadas a reseñas están sujetas a límites de uso razonable.</p>
+            <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:0px;">Prueba gratuita de 14 días. Cancela en cualquier momento.</p>
+            
+            <div class="text-center">
+                <button class="compare-toggle-btn" id="compare-toggle" aria-expanded="false" aria-controls="comparison-container">
+                    Comparar Todas las Características <i data-lucide="chevron-down" style="width:16px;height:16px;"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Comparison Section -->
+    <section class="section theme-light" id="comparison" style="border-top: 1px solid var(--border-current); padding: 40px 0;">
+        <div class="container">
+            <div class="comparison-container" id="comparison-container">
+                <div class="comparison-table-wrapper" style="margin-bottom: 40px;">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Características</th>
+                                <th>Starter</th>
+                                <th>Autopilot</th>
+                                <th>Multi-Location</th>
+                                <th>Agency</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ubicaciones incluidas</td>
+                                <td>1 Ubicación</td>
+                                <td>1 Ubicación</td>
+                                <td>3 Ubicaciones</td>
+                                <td>10 Ubicaciones</td>
+                            </tr>
+                            <tr>
+                                <td>Límite mensual de respuestas</td>
+                                <td>30 respuestas</td>
+                                <td>Ilimitadas</td>
+                                <td>Ilimitadas</td>
+                                <td>Ilimitadas</td>
+                            </tr>
+                            <tr>
+                                <td>Manual approval</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                            </tr>
+                            <tr>
+                                <td>Publicación automática</td>
+                                <td>No incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                            </tr>
+                            <tr>
+                                <td>Detección de reseñas delicadas</td>
+                                <td>No incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                            </tr>
+                            <tr>
+                                <td>Tono personalizado</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                            </tr>
+                            <tr>
+                                <td>Inglés y Español</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                            </tr>
+                            <tr>
+                                <td>Reconocimiento de nombre de empleado</td>
+                                <td>No incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                            </tr>
+                            <tr>
+                                <td>Historial de reseñas</td>
+                                <td>No incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                            </tr>
+                            <tr>
+                                <td>Acceso para el equipo</td>
+                                <td>No incluido</td>
+                                <td>No incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                            </tr>
+                            <tr>
+                                <td>Informes de múltiples ubicaciones</td>
+                                <td>No incluido</td>
+                                <td>No incluido</td>
+                                <td>Incluido</td>
+                                <td>Incluido</td>
+                            </tr>
+                            <tr>
+                                <td>Panel de cliente</td>
+                                <td>No incluido</td>
+                                <td>No incluido</td>
+                                <td>No incluido</td>
+                                <td>Incluido</td>
+                            </tr>
+                            <tr>
+                                <td>Acceso de aprobación de clientes</td>
+                                <td>No incluido</td>
+                                <td>No incluido</td>
+                                <td>No incluido</td>
+                                <td>Incluido</td>
+                            </tr>
+                            <tr>
+                                <td>Nivel de soporte</td>
+                                <td>Estándar</td>
+                                <td>Prioritario</td>
+                                <td>Prioritario</td>
+                                <td>Dedicado</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- FAQ Section -->
+            <div id="faq" style="max-width: 800px; margin: 0 auto;">
+                <div class="text-center mb-8">
+                    <h2 class="mb-4">Preguntas Frecuentes</h2>
+                </div>
+                
+                <div class="faq-accordion">
+                    <details>
+                        <summary>¿Puedo cancelar en cualquier momento? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">Sí. ReplyVera se factura mensual o anualmente, y puedes cancelar antes de tu próxima fecha de facturación.</div>
+                    </details>
+                    <details>
+                        <summary>¿Hay alguna tarifa de instalación? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">No. No hay tarifas de instalación en los planes estándar.</div>
+                    </details>
+                    <details>
+                        <summary>¿Necesita cada ubicación su propio plan? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">Starter y Piloto Automático incluyen una ubicación. Los planes Multi-Ubicación y Agencia incluyen varias ubicaciones y permiten agregar ubicaciones adicionales por una tarifa.</div>
+                    </details>
+                    <details>
+                        <summary>¿Son ilimitadas las respuestas? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">El plan Starter incluye hasta 30 respuestas por mes. Los planes Piloto Automático, Multi-Ubicación y Agencia incluyen respuestas ilimitadas sujetas a límites de uso razonable.</div>
+                    </details>
+                    <details>
+                        <summary>¿Qué plataformas de reseñas se admiten? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">Actualmente, ReplyVera admite Reseñas de Google. Facebook, Trustpilot, Booking.com y Tripadvisor están planeados para futuras versiones.</div>
+                    </details>
+                    <details>
+                        <summary>¿Puedo cambiar de plan más adelante? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">Sí. Puedes actualizar o degradar tu plan a medida que cambia el volumen de tus reseñas o la cantidad de ubicaciones.</div>
+                    </details>
+                </div>
+                
+                <p style="font-size: 0.85rem; color: var(--text-secondary-current); text-align: center; margin-top: 40px; font-weight: 500;">
+                    Actualmente compatible: Reseñas de Google<br>
+                    Facebook, Trustpilot, Booking.com y Tripadvisor están planeados para futuras versiones.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="section theme-dark" style="border-top: 1px solid rgba(255, 255, 255, 0.04); padding: 60px 0;">
+        <div class="container text-center" style="max-width: 650px;">
+            <h2 class="mb-6">¿Listo para automatizar tus respuestas a las reseñas de Google?</h2>
+            <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent" style="padding: 14px 28px; font-size:0.95rem;">Comenzar Prueba Gratuita</a>
+        </div>
+    </section>
+<!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand-box">
+                    <a href="/es/" class="nav-logo" style="margin-bottom:14px;">
+                        <div class="nav-logo-icon">
+                            <i class="fa-solid fa-reply"></i>
+                        </div>
+                        <span class="nav-logo-text" style="font-size:1.2rem;">Responder<span>Vera</span></span>
+                    </a>
+                    <p style="color:#94A3B8;">El piloto automático de reseñas creado para tiendas, franquicias y agencias para proteger su reputación en línea.</p>
+                    <p style="color:#64748B; font-size:0.8rem; margin-top:12px;">Actualmente compatible con Reseñas de Google. Se planean plataformas adicionales.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-col-title">Producto</div>
+                    <ul class="footer-links">
+                        <li><a href="/es/#product">Producto</a></li>
+                        <li><a href="/es/#how-it-works">Cómo Funciona</a></li>
+                        <li><a href="/es/pricing.html">Precios</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-col-title">Empresa</div>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@replyvera.com">Contact Us</a></li>
+                        <li><div class="lang-selector">
+                    <button class="lang-btn" aria-label="Select Language">
+                        <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
+                    </button>
+                    <div class="lang-menu">
+                        <a href="/es/#" class="lang-item" onclick="changeLang('en', event)">English</a>
+                        <a href="/es/#" class="lang-item" onclick="changeLang('es', event)">Español</a>
+                        <a href="/es/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+                    </div>
+                </div>
+                <a h>Iniciar Sesión</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-col-title">Legal</div>
+                    <ul class="footer-links">
+                        <li><a href="/es/terms.html">Términos de Servicio</a></li>
+                        <li><a href="/es/privacy.html">Política de Privacidad</a></li>
+                        <li><a href="/es/cookie.html">Política de Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div>© 2026 ReplyVera. Todos los derechos reservados.</div>
+                <div class="social-links">
+                    <a href="/es/#"><i data-lucide="twitter" style="width:18px; height:18px;"></i></a>
+                    <a href="/es/#"><i data-lucide="linkedin" style="width:18px; height:18px;"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner" aria-hidden="true">
+        <div class="cookie-content">
+            <p>Usamos cookies para mejorar su experiencia y analizar el rendimiento del sitio. Al hacer clic en "Aceptar", acepta nuestro uso de cookies como se describe en nuestra <a href="/es/cookie.html">Política de Cookies</a>.</p>
+            <div class="cookie-buttons">
+                <button id="accept-cookies" class="btn btn-accent btn-sm" style="padding:6px 12px; font-size:0.78rem;">Aceptar</button>
+                <button id="decline-cookies" class="btn btn-secondary btn-sm" style="padding:6px 12px; font-size:0.78rem;">Rechazar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vercel Web Analytics -->
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <script src="/script.js"></script>
+
+    <script>
+        // Billing Toggle Logic
+        function setBilling(mode) {
+            const btnMonthly = document.getElementById('btn-monthly');
+            const btnAnnual = document.getElementById('btn-annual');
+            const priceVals = document.querySelectorAll('.price-val');
+            const pricePeriods = document.querySelectorAll('.price-period');
+            
+            if (mode === 'annual') {
+                btnAnnual.classList.add('active');
+                btnMonthly.classList.remove('active');
+                priceVals.forEach(el => {
+                    let val = el.getAttribute('data-annual');
+                    if(val === '$790' || val === '$1490') {
+                        el.innerHTML = '<span style="font-size:1.2rem;font-weight:600;margin-right:4px;">From</span>' + val;
+                    } else {
+                        el.textContent = val;
+                    }
+                });
+                pricePeriods.forEach(el => el.textContent = el.getAttribute('data-annual'));
+            } else {
+                btnMonthly.classList.add('active');
+                btnAnnual.classList.remove('active');
+                priceVals.forEach(el => {
+                    let val = el.getAttribute('data-monthly');
+                    if(val === '$79' || val === '$149') {
+                        el.innerHTML = '<span style="font-size:1.2rem;font-weight:600;margin-right:4px;">From</span>' + val;
+                    } else {
+                        el.textContent = val;
+                    }
+                });
+                pricePeriods.forEach(el => el.textContent = el.getAttribute('data-monthly'));
+            }
+        }
+
+        // Compare Toggle Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const compareBtn = document.getElementById('compare-toggle');
+            const compareContainer = document.getElementById('comparison-container');
+            
+            if(compareBtn && compareContainer) {
+                compareBtn.addEventListener('click', () => {
+                    const isExpanded = compareBtn.getAttribute('aria-expanded') === 'true';
+                    compareBtn.setAttribute('aria-expanded', !isExpanded);
+                    if (!isExpanded) {
+                        compareContainer.classList.add('expanded');
+                    } else {
+                        compareContainer.classList.remove('expanded');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,258 +1,258 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{ terms_terms_of_service_replyvera_13e4 }}</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/style.css?v=15" />
-  <style>
-    body { background-color: var(--bg); color: var(--text-primary); font-family: var(--font-sans); line-height: 1.6; }
-    .content-wrapper { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
-    h1 { font-size: 2.5rem; margin-bottom: 20px; color: var(--text-primary); }
-    h2 { font-size: 1.5rem; margin-top: 40px; margin-bottom: 20px; color: var(--primary); }
-    p { margin-bottom: 20px; color: var(--text-secondary); }
-    ul { margin-bottom: 20px; padding-left: 20px; color: var(--text-secondary); }
-    li { margin-bottom: 10px; }
-  </style>
-  <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
-
-    <script>
-    function changeLang(lang, event) {
-        event.preventDefault();
-        localStorage.setItem('lang_redirected', 'true');
-        
-        let path = window.location.pathname;
-        
-        // Remove existing lang prefix if present
-        if (path.startsWith('/es/')) path = path.replace('/es/', '/');
-        if (path.startsWith('/nl/')) path = path.replace('/nl/', '/');
-        if (path === '/es' || path === '/nl') path = '/';
-        
-        let newPath = path;
-        if (lang === 'es') {
-            newPath = '/es' + (path === '/' ? '/' : path);
-        } else if (lang === 'nl') {
-            newPath = '/nl' + (path === '/' ? '/' : path);
-        }
-        
-        window.location.href = newPath + window.location.hash;
-    }
-    </script>
-</head>
-
-<body>
-    <!-- Navbar -->
-    <nav class="navbar" id="navbar">
-        <div class="container nav-container">
-            <a href="index.html" class="nav-logo">
-                <div class="nav-logo-icon">
-                    <i class="fa-solid fa-reply"></i>
-                </div>
-                <span class="nav-logo-text">{{ terms_reply_25d8 }}<span>{{ terms_vera_74fd }}</span></span>
-            </a>
-
-            <div class="nav-links">
-                <a href="index.html#product">{{ terms_product_deb1 }}</a>
-                <a href="index.html#benefits">{{ terms_features_98f7 }}</a>
-                <a href="index.html#how-it-works">{{ terms_how_it_works_aabd }}</a>
-                <div class="nav-dropdown">
-                    <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="menu" aria-controls="industries-menu">
-                        {{ terms_industries_eb47 }}
-                        <span class="chevron-icon"><i data-lucide="chevron-down" style="width:12px;height:12px;"></i></span>
-                    </button>
-                    <div class="nav-dropdown-content" id="industries-menu" role="menu">
-                        <!-- NAV_DROPDOWN_GRID_START -->
-<div class="nav-dropdown-grid">
-</div>
-<!-- NAV_DROPDOWN_GRID_END -->
-</div>
-</div>
-                <a href="pricing.html">{{ terms_pricing_e22a }}</a>
-                <a href="index.html#faq">{{ terms_faq_1fe9 }}</a>
-            </div>
-
-            <div class="nav-actions">
-                <div class="lang-selector">
-                    <button class="lang-btn" aria-label="Select Language">
-                        <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
-                    </button>
-                    <div class="lang-menu">
-                        <a href="#" class="lang-item" onclick="changeLang('en', event)">English</a>
-                        <a href="#" class="lang-item" onclick="changeLang('es', event)">EspaÃ±ol</a>
-                        <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
-                    </div>
-                </div>
-                <a href="https://dashboard.replyvera.com/login" class="nav-login">{{ terms_log_in_3bbb }}</a>
-                <a href="pricing.html" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">{{ terms_start_free_trial_debd }}</a>
-                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-                        <line x1="3" y1="6" x2="21" y2="6"/>
-                        <line x1="3" y1="12" x2="21" y2="12"/>
-                        <line x1="3" y1="18" x2="21" y2="18"/>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Mobile Navigation Panel -->
-    <div class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
-        <div class="mobile-nav-links">
-            <a href="index.html#product" class="mobile-nav-link">{{ terms_product_deb1 }}</a>
-            <a href="index.html#benefits" class="mobile-nav-link">{{ terms_features_98f7 }}</a>
-            <a href="index.html#how-it-works" class="mobile-nav-link">{{ terms_how_it_works_aabd }}</a>
-
-            <!-- {{ terms_industries_eb47 }} Accordion -->
-            <button class="mobile-industry-toggle" id="mobile-ind-toggle" aria-expanded="false">
-                Industries
-                <span class="mobile-industry-chevron">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-                </span>
-            </button>
-            <!-- MOBILE_IND_LIST_START -->
-<div class="mobile-industry-list" id="mobile-ind-list">
-</div>
-<!-- MOBILE_IND_LIST_END -->
-<a href="pricing.html" class="mobile-nav-link">{{ terms_pricing_e22a }}</a>
-            <a href="index.html#faq" class="mobile-nav-link">{{ terms_faq_1fe9 }}</a>
-            <div class="lang-selector">
-                    <button class="lang-btn" aria-label="Select Language">
-                        <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
-                    </button>
-                    <div class="lang-menu">
-                        <a href="#" class="lang-item" onclick="changeLang('en', event)">English</a>
-                        <a href="#" class="lang-item" onclick="changeLang('es', event)">EspaÃ±ol</a>
-                        <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
-                    </div>
-                </div>
-                <a href="https://dashboard.replyvera.com/login" class="mobile-nav-link">{{ terms_log_in_3bbb }}</a>
-        </div>
-    </div>
-
-    <!-- Main Content -->
-    <main class="section section-light" style="padding-top: 140px; min-height: calc(100vh - 400px);">
-        <div class="container">
-            <div class="content-wrapper">
-                <h1>{{ terms_terms_of_service_3b6c }}</h1>
-                <p>{{ terms_last_updated_april_20_2026_db0e }}</p>
-
-                <p>{{ terms_by_using_the_replyvera_service_920b }}</p>
-
-                <h2>{{ terms_1_the_service_5b70 }}</h2>
-                <p>{{ terms_replyvera_provides_an_ai_assis_ede1 }}</p>
-
-                <h2>{{ terms_2_user_responsibilities_3c8f }}</h2>
-                <p>{{ terms_you_are_responsible_for_the_co_4ca8 }}</p>
-                <ul>
-                    <li>{{ terms_automated_replies_are_generate_f696 }}</li>
-                    <li>{{ terms_you_have_the_option_to_review_6c83 }}</li>
-                    <li>{{ terms_you_must_comply_with_google_s_3c63 }}</li>
-                </ul>
-
-                <h2>{{ terms_3_access_and_permissions_d29c }}</h2>
-                <p>{{ terms_by_connecting_your_google_acco_f174 }}</p>
-
-                <h2>{{ terms_4_subscription_and_payments_54de }}</h2>
-                <p>{{ terms_replyvera_is_a_subscription_ba_222e }}</p>
-
-                <h2>{{ terms_5_limitation_of_liability_6afb }}</h2>
-                <p>{{ terms_replyvera_is_provided_as_is_we_f9d2 }}</p>
-
-                <h2>{{ terms_6_termination_54a7 }}</h2>
-                <p>{{ terms_we_reserve_the_right_to_suspen_c7f3 }}</p>
-
-                <h2>{{ terms_7_changes_to_terms_558a }}</h2>
-                <p>{{ terms_we_may_update_these_terms_from_a2f0 }}</p>
-
-                <h2>{{ terms_8_contact_us_359a }}</h2>
-                <p>{{ terms_if_you_have_any_questions_abou_d738 }} <a href="mailto:{{ terms_info_replyvera_com_151c }}" style="color: var(--primary);">info@replyvera.com</a>.</p>
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand-box">
-                    <a href="index.html" class="nav-logo" style="margin-bottom:14px;">
-                        <div class="nav-logo-icon">
-                            <i class="fa-solid fa-reply"></i>
-                        </div>
-                        <span class="nav-logo-text" style="font-size:1.2rem;">{{ terms_reply_25d8 }}<span>{{ terms_vera_74fd }}</span></span>
-                    </a>
-                    <p>{{ terms_automated_google_review_respon_2577 }}</p>
-                    <p style="font-size:0.78rem;margin-top:8px;color:var(--text-muted);">{{ terms_currently_supporting_google_re_ead9 }}</p>
-                </div>
-
-                <div class="footer-col">
-                    <div class="footer-col-title">{{ terms_product_deb1 }}</div>
-                    <ul class="footer-links">
-                        <li><a href="index.html#product">{{ terms_product_deb1 }}</a></li>
-                        <li><a href="index.html#how-it-works">{{ terms_how_it_works_aabd }}</a></li>
-                        <li><a href="pricing.html">{{ terms_pricing_e22a }}</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <div class="footer-col-title">{{ terms_company_1c76 }}</div>
-                    <ul class="footer-links">
-                        <li><a href="mailto:info@replyvera.com">{{ terms_contact_us_9cfc }}</a></li>
-                        <li><div class="lang-selector">
-                    <button class="lang-btn" aria-label="Select Language">
-                        <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
-                    </button>
-                    <div class="lang-menu">
-                        <a href="#" class="lang-item" onclick="changeLang('en', event)">English</a>
-                        <a href="#" class="lang-item" onclick="changeLang('es', event)">EspaÃ±ol</a>
-                        <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
-                    </div>
-                </div>
-                <a h>{{ terms_log_in_3bbb }}</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <div class="footer-col-title">{{ terms_legal_a10a }}</div>
-                    <ul class="footer-links">
-                        <li><a href="/terms.html">{{ terms_terms_of_service_3b6c }}</a></li>
-                        <li><a href="/privacy.html">{{ terms_privacy_policy_fa2e }}</a></li>
-                        <li><a href="cookie.html">{{ terms_cookie_policy_26b3 }}</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <div>{{ index_2026_replyvera_all_rights_r_c9ec }}</div>
-                <div class="social-links">
-                    <a href="#"><i data-lucide="twitter" style="width:17px;height:17px;"></i></a>
-                    <a href="#"><i data-lucide="linkedin" style="width:17px;height:17px;"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Cookie Consent Banner -->
-    <div id="cookie-banner" class="cookie-banner" aria-hidden="true">
-        <div class="cookie-content">
-            <p>{{ terms_we_use_cookies_to_improve_your_35e6 }} <a href="cookie.html">{{ terms_cookie_policy_26b3 }}</a>.</p>
-            <div class="cookie-buttons">
-                <button id="accept-cookies" class="btn btn-accent btn-sm" style="padding:6px 12px; font-size:0.78rem;">{{ terms_accept_c440 }}</button>
-                <button id="decline-cookies" class="btn btn-secondary btn-sm" style="padding:6px 12px; font-size:0.78rem;">{{ terms_decline_0d36 }}</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Vercel Web Analytics -->
-    <script>
-      {{ terms_window_va_window_va_function_w_bd2c }}
-    </script>
-    <script defer src="/_vercel/insights/script.js"></script>
-
-    <script src="/script.js"></script>
-</body>
-</html>
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ terms_terms_of_service_replyvera_13e4 }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css?v=15" />
+  <style>
+    body { background-color: var(--bg); color: var(--text-primary); font-family: var(--font-sans); line-height: 1.6; }
+    .content-wrapper { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+    h1 { font-size: 2.5rem; margin-bottom: 20px; color: var(--text-primary); }
+    h2 { font-size: 1.5rem; margin-top: 40px; margin-bottom: 20px; color: var(--primary); }
+    p { margin-bottom: 20px; color: var(--text-secondary); }
+    ul { margin-bottom: 20px; padding-left: 20px; color: var(--text-secondary); }
+    li { margin-bottom: 10px; }
+  </style>
+  <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+
+    <script>
+    function changeLang(lang, event) {
+        event.preventDefault();
+        localStorage.setItem('lang_redirected', 'true');
+        
+        let path = window.location.pathname;
+        
+        // Remove existing lang prefix if present
+        if (path.startsWith('/es/')) path = path.replace('/es/', '/');
+        if (path.startsWith('/nl/')) path = path.replace('/nl/', '/');
+        if (path === '/es' || path === '/nl') path = '/';
+        
+        let newPath = path;
+        if (lang === 'es') {
+            newPath = '/es' + (path === '/' ? '/' : path);
+        } else if (lang === 'nl') {
+            newPath = '/nl' + (path === '/' ? '/' : path);
+        }
+        
+        window.location.href = newPath + window.location.hash;
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <i class="fa-solid fa-reply"></i>
+                </div>
+                <span class="nav-logo-text">{{ terms_reply_25d8 }}<span>{{ terms_vera_74fd }}</span></span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html#product">{{ terms_product_deb1 }}</a>
+                <a href="index.html#benefits">{{ terms_features_98f7 }}</a>
+                <a href="index.html#how-it-works">{{ terms_how_it_works_aabd }}</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="menu" aria-controls="industries-menu">
+                        {{ terms_industries_eb47 }}
+                        <span class="chevron-icon"><i data-lucide="chevron-down" style="width:12px;height:12px;"></i></span>
+                    </button>
+                    <div class="nav-dropdown-content" id="industries-menu" role="menu">
+                        <!-- NAV_DROPDOWN_GRID_START -->
+<div class="nav-dropdown-grid">
+</div>
+<!-- NAV_DROPDOWN_GRID_END -->
+</div>
+</div>
+                <a href="pricing.html">{{ terms_pricing_e22a }}</a>
+                <a href="index.html#faq">{{ terms_faq_1fe9 }}</a>
+            </div>
+
+            <div class="nav-actions">
+                <div class="lang-selector">
+                    <button class="lang-btn" aria-label="Select Language">
+                        <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
+                    </button>
+                    <div class="lang-menu">
+                        <a href="#" class="lang-item" onclick="changeLang('en', event)">English</a>
+                        <a href="#" class="lang-item" onclick="changeLang('es', event)">Español</a>
+                        <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+                    </div>
+                </div>
+                <a href="https://dashboard.replyvera.com/login" class="nav-login">{{ terms_log_in_3bbb }}</a>
+                <a href="pricing.html" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">{{ terms_start_free_trial_debd }}</a>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Panel -->
+    <div class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+        <div class="mobile-nav-links">
+            <a href="index.html#product" class="mobile-nav-link">{{ terms_product_deb1 }}</a>
+            <a href="index.html#benefits" class="mobile-nav-link">{{ terms_features_98f7 }}</a>
+            <a href="index.html#how-it-works" class="mobile-nav-link">{{ terms_how_it_works_aabd }}</a>
+
+            <!-- {{ terms_industries_eb47 }} Accordion -->
+            <button class="mobile-industry-toggle" id="mobile-ind-toggle" aria-expanded="false">
+                Industries
+                <span class="mobile-industry-chevron">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+            </button>
+            <!-- MOBILE_IND_LIST_START -->
+<div class="mobile-industry-list" id="mobile-ind-list">
+</div>
+<!-- MOBILE_IND_LIST_END -->
+<a href="pricing.html" class="mobile-nav-link">{{ terms_pricing_e22a }}</a>
+            <a href="index.html#faq" class="mobile-nav-link">{{ terms_faq_1fe9 }}</a>
+            <div class="lang-selector">
+                    <button class="lang-btn" aria-label="Select Language">
+                        <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
+                    </button>
+                    <div class="lang-menu">
+                        <a href="#" class="lang-item" onclick="changeLang('en', event)">English</a>
+                        <a href="#" class="lang-item" onclick="changeLang('es', event)">Español</a>
+                        <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+                    </div>
+                </div>
+                <a href="https://dashboard.replyvera.com/login" class="mobile-nav-link">{{ terms_log_in_3bbb }}</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="section section-light" style="padding-top: 140px; min-height: calc(100vh - 400px);">
+        <div class="container">
+            <div class="content-wrapper">
+                <h1>{{ terms_terms_of_service_3b6c }}</h1>
+                <p>{{ terms_last_updated_april_20_2026_db0e }}</p>
+
+                <p>{{ terms_by_using_the_replyvera_service_920b }}</p>
+
+                <h2>{{ terms_1_the_service_5b70 }}</h2>
+                <p>{{ terms_replyvera_provides_an_ai_assis_ede1 }}</p>
+
+                <h2>{{ terms_2_user_responsibilities_3c8f }}</h2>
+                <p>{{ terms_you_are_responsible_for_the_co_4ca8 }}</p>
+                <ul>
+                    <li>{{ terms_automated_replies_are_generate_f696 }}</li>
+                    <li>{{ terms_you_have_the_option_to_review_6c83 }}</li>
+                    <li>{{ terms_you_must_comply_with_google_s_3c63 }}</li>
+                </ul>
+
+                <h2>{{ terms_3_access_and_permissions_d29c }}</h2>
+                <p>{{ terms_by_connecting_your_google_acco_f174 }}</p>
+
+                <h2>{{ terms_4_subscription_and_payments_54de }}</h2>
+                <p>{{ terms_replyvera_is_a_subscription_ba_222e }}</p>
+
+                <h2>{{ terms_5_limitation_of_liability_6afb }}</h2>
+                <p>{{ terms_replyvera_is_provided_as_is_we_f9d2 }}</p>
+
+                <h2>{{ terms_6_termination_54a7 }}</h2>
+                <p>{{ terms_we_reserve_the_right_to_suspen_c7f3 }}</p>
+
+                <h2>{{ terms_7_changes_to_terms_558a }}</h2>
+                <p>{{ terms_we_may_update_these_terms_from_a2f0 }}</p>
+
+                <h2>{{ terms_8_contact_us_359a }}</h2>
+                <p>{{ terms_if_you_have_any_questions_abou_d738 }} <a href="mailto:{{ terms_info_replyvera_com_151c }}" style="color: var(--primary);">info@replyvera.com</a>.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand-box">
+                    <a href="index.html" class="nav-logo" style="margin-bottom:14px;">
+                        <div class="nav-logo-icon">
+                            <i class="fa-solid fa-reply"></i>
+                        </div>
+                        <span class="nav-logo-text" style="font-size:1.2rem;">{{ terms_reply_25d8 }}<span>{{ terms_vera_74fd }}</span></span>
+                    </a>
+                    <p>{{ terms_automated_google_review_respon_2577 }}</p>
+                    <p style="font-size:0.78rem;margin-top:8px;color:var(--text-muted);">{{ terms_currently_supporting_google_re_ead9 }}</p>
+                </div>
+
+                <div class="footer-col">
+                    <div class="footer-col-title">{{ terms_product_deb1 }}</div>
+                    <ul class="footer-links">
+                        <li><a href="index.html#product">{{ terms_product_deb1 }}</a></li>
+                        <li><a href="index.html#how-it-works">{{ terms_how_it_works_aabd }}</a></li>
+                        <li><a href="pricing.html">{{ terms_pricing_e22a }}</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <div class="footer-col-title">{{ terms_company_1c76 }}</div>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@replyvera.com">{{ terms_contact_us_9cfc }}</a></li>
+                        <li><div class="lang-selector">
+                    <button class="lang-btn" aria-label="Select Language">
+                        <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
+                    </button>
+                    <div class="lang-menu">
+                        <a href="#" class="lang-item" onclick="changeLang('en', event)">English</a>
+                        <a href="#" class="lang-item" onclick="changeLang('es', event)">Español</a>
+                        <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+                    </div>
+                </div>
+                <a h>{{ terms_log_in_3bbb }}</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <div class="footer-col-title">{{ terms_legal_a10a }}</div>
+                    <ul class="footer-links">
+                        <li><a href="/terms.html">{{ terms_terms_of_service_3b6c }}</a></li>
+                        <li><a href="/privacy.html">{{ terms_privacy_policy_fa2e }}</a></li>
+                        <li><a href="cookie.html">{{ terms_cookie_policy_26b3 }}</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>{{ index_2026_replyvera_all_rights_r_c9ec }}</div>
+                <div class="social-links">
+                    <a href="#"><i data-lucide="twitter" style="width:17px;height:17px;"></i></a>
+                    <a href="#"><i data-lucide="linkedin" style="width:17px;height:17px;"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner" aria-hidden="true">
+        <div class="cookie-content">
+            <p>{{ terms_we_use_cookies_to_improve_your_35e6 }} <a href="cookie.html">{{ terms_cookie_policy_26b3 }}</a>.</p>
+            <div class="cookie-buttons">
+                <button id="accept-cookies" class="btn btn-accent btn-sm" style="padding:6px 12px; font-size:0.78rem;">{{ terms_accept_c440 }}</button>
+                <button id="decline-cookies" class="btn btn-secondary btn-sm" style="padding:6px 12px; font-size:0.78rem;">{{ terms_decline_0d36 }}</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vercel Web Analytics -->
+    <script>
+      {{ terms_window_va_window_va_function_w_bd2c }}
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <script src="/script.js"></script>
+</body>
+</html>

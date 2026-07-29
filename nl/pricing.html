@@ -1,63 +1,63 @@
-﻿<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReplyVera Prijzen – Eenvoudige, Transparante Prijzen</title>
-    <meta name="description" content="Simple pricing. No sales call required. Start your 14-day free trial.">
-    <link rel="stylesheet" href="/style.css?v=15">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="/nl/demo.js" defer></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
-
-    <script>
-    function changeLang(lang, event) {
-        event.preventDefault();
-        localStorage.setItem('lang_redirected', 'true');
-        
-        let path = window.location.pathname;
-        
-        // Remove existing lang prefix if present
-        if (path.startsWith('/es/')) path = path.replace('/es/', '/');
-        if (path.startsWith('/nl/')) path = path.replace('/nl/', '/');
-        if (path === '/es' || path === '/nl') path = '/';
-        
-        let newPath = path;
-        if (lang === 'es') {
-            newPath = '/es' + (path === '/' ? '/' : path);
-        } else if (lang === 'nl') {
-            newPath = '/nl' + (path === '/' ? '/' : path);
-        }
-        
-        window.location.href = newPath + window.location.hash;
-    }
-    </script>
-</head>
-
-<body>
-    <!-- Navbar -->
-    <nav class="navbar" id="navbar">
-        <div class="container nav-container">
-            <a href="/nl/" class="nav-logo">
-                <div class="nav-logo-icon">
-                    <i class="fa-solid fa-reply"></i>
-                </div>
-                <span class="nav-logo-text">Reply<span>Vera</span></span>
-            </a>
-
-            <div class="nav-links">
-                <a href="/nl/#product">Product</a>
-                <a href="/nl/#benefits">Functies</a>
-                <a href="/nl/#how-it-works">Hoe Het Werkt</a>
-                <div class="nav-dropdown">
-                    <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="menu" aria-controls="industries-menu">
-                        Sectoren
-                        <span class="chevron-icon"><i data-lucide="chevron-down" style="width:12px;height:12px;"></i></span>
-                    </button>
-                    <div class="nav-dropdown-content" id="industries-menu" role="menu">
+﻿<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReplyVera Prijzen – Eenvoudige, Transparante Prijzen</title>
+    <meta name="description" content="Simple pricing. No sales call required. Start your 14-day free trial.">
+    <link rel="stylesheet" href="/style.css?v=15">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="/nl/demo.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+
+    <script>
+    function changeLang(lang, event) {
+        event.preventDefault();
+        localStorage.setItem('lang_redirected', 'true');
+        
+        let path = window.location.pathname;
+        
+        // Remove existing lang prefix if present
+        if (path.startsWith('/es/')) path = path.replace('/es/', '/');
+        if (path.startsWith('/nl/')) path = path.replace('/nl/', '/');
+        if (path === '/es' || path === '/nl') path = '/';
+        
+        let newPath = path;
+        if (lang === 'es') {
+            newPath = '/es' + (path === '/' ? '/' : path);
+        } else if (lang === 'nl') {
+            newPath = '/nl' + (path === '/' ? '/' : path);
+        }
+        
+        window.location.href = newPath + window.location.hash;
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="/nl/" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <i class="fa-solid fa-reply"></i>
+                </div>
+                <span class="nav-logo-text">Reply<span>Vera</span></span>
+            </a>
+
+            <div class="nav-links">
+                <a href="/nl/#product">Product</a>
+                <a href="/nl/#benefits">Functies</a>
+                <a href="/nl/#how-it-works">Hoe Het Werkt</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="menu" aria-controls="industries-menu">
+                        Sectoren
+                        <span class="chevron-icon"><i data-lucide="chevron-down" style="width:12px;height:12px;"></i></span>
+                    </button>
+                    <div class="nav-dropdown-content" id="industries-menu" role="menu">
                         <!-- NAV_DROPDOWN_GRID_START -->
 <div class="nav-dropdown-grid">
 
@@ -125,52 +125,52 @@
             </div>
         </a>
 </div>
-<!-- NAV_DROPDOWN_GRID_END -->
-</div>
-</div>
-                <a href="/nl/#pricing">Prijzen</a>
-                <a href="/nl/#faq">Veelgestelde Vragen</a>
-            </div>
-
-            <div class="nav-actions">
-                <div class="lang-selector">
+<!-- NAV_DROPDOWN_GRID_END -->
+</div>
+</div>
+                <a href="/nl/#pricing">Prijzen</a>
+                <a href="/nl/#faq">Veelgestelde Vragen</a>
+            </div>
+
+            <div class="nav-actions">
+                <div class="lang-selector">
                     
                     <button class="lang-btn" aria-label="Select Language">
                         <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> NL
-                    </button>
-                    <div class="lang-menu">
-                        <a href="/nl/#" class="lang-item" onclick="changeLang('en', event)">English</a>
-                        <a href="/nl/#" class="lang-item" onclick="changeLang('es', event)">EspaÃ±ol</a>
-                        <a href="/nl/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
-                    </div>
-                </div>
-                <a href="https://dashboard.replyvera.com/login" class="nav-login">Inloggen</a>
-                <a href="/nl/#pricing" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Start Gratis Proefperiode</a>
-                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-                        <line x1="3" y1="6" x2="21" y2="6"/>
-                        <line x1="3" y1="12" x2="21" y2="12"/>
-                        <line x1="3" y1="18" x2="21" y2="18"/>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Mobile Navigation Panel -->
-    <div class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
-        <div class="mobile-nav-links">
-            <a href="/nl/#product" class="mobile-nav-link">Product</a>
-            <a href="/nl/#benefits" class="mobile-nav-link">Functies</a>
-            <a href="/nl/#how-it-works" class="mobile-nav-link">Hoe Het Werkt</a>
-
-            <!-- Sectoren Accordion -->
-            <button class="mobile-industry-toggle" id="mobile-ind-toggle" aria-expanded="false">
-                Industries
-                <span class="mobile-industry-chevron">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-                </span>
-            </button>
+                    </button>
+                    <div class="lang-menu">
+                        <a href="/nl/#" class="lang-item" onclick="changeLang('en', event)">English</a>
+                        <a href="/nl/#" class="lang-item" onclick="changeLang('es', event)">Español</a>
+                        <a href="/nl/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+                    </div>
+                </div>
+                <a href="https://dashboard.replyvera.com/login" class="nav-login">Inloggen</a>
+                <a href="/nl/#pricing" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Start Gratis Proefperiode</a>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Panel -->
+    <div class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+        <div class="mobile-nav-links">
+            <a href="/nl/#product" class="mobile-nav-link">Product</a>
+            <a href="/nl/#benefits" class="mobile-nav-link">Functies</a>
+            <a href="/nl/#how-it-works" class="mobile-nav-link">Hoe Het Werkt</a>
+
+            <!-- Sectoren Accordion -->
+            <button class="mobile-industry-toggle" id="mobile-ind-toggle" aria-expanded="false">
+                Industries
+                <span class="mobile-industry-chevron">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+            </button>
             <!-- MOBILE_IND_LIST_START -->
 <div class="mobile-industry-list" id="mobile-ind-list">
 
@@ -238,468 +238,468 @@
             </div>
         </a>
 </div>
-<!-- MOBILE_IND_LIST_END -->
-<a href="/nl/#pricing" class="mobile-nav-link">Prijzen</a>
-            <a href="/nl/#faq" class="mobile-nav-link">Veelgestelde Vragen</a>
-            <div class="lang-selector">
-                    <button class="lang-btn" aria-label="Select Language">
-                        <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
-                    </button>
-                    <div class="lang-menu">
-                        <a href="/nl/#" class="lang-item" onclick="changeLang('en', event)">English</a>
-                        <a href="/nl/#" class="lang-item" onclick="changeLang('es', event)">EspaÃ±ol</a>
-                        <a href="/nl/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
-                    </div>
-                </div>
-                <a href="https://dashboard.replyvera.com/login" class="mobile-nav-link">Inloggen</a>
-        </div>
-    </div>
-
-<!-- Mobile Plan Selector -->
-    <div class="mobile-plan-selector theme-dark">
-        <div class="mobile-plan-selector-inner container">
-            <a href="/nl/#plan-starter" class="mobile-plan-btn">Starter</a>
-            <a href="/nl/#plan-autopilot" class="mobile-plan-btn">Autopilot</a>
-            <a href="/nl/#plan-multi" class="mobile-plan-btn">Meerdere Locaties</a>
-            <a href="/nl/#plan-agency" class="mobile-plan-btn">Bureau</a>
-        </div>
-    </div>
-
-    <!-- Prijzen Hero Section -->
-    <header class="hero theme-dark" style="padding: 100px 0 20px;">
-        <div class="hero-glow-layer"></div>
-        <div class="container hero-content" style="max-width: 800px; margin: 0 auto; text-align: center;">
-            <h1 style="font-size: 2.5rem; margin-bottom: 12px; letter-spacing: -0.02em;">Eenvoudige Prijzen. Geen Verkoopgesprek Vereist.</h1>
-            <p class="lead-text" style="margin-bottom: 0; font-size: 1.1rem; color: var(--text-secondary-current);">
-                Kies het niveau van automatisering en het aantal locaties dat bij uw bedrijf past.
-            </p>
-            
-            <!-- Billing Toggle -->
-            <div class="pricing-billing-toggle">
-                <button class="pricing-billing-btn active" id="btn-monthly" onclick="setBilling('monthly')">Maandelijks</button>
-                <button class="pricing-billing-btn" id="btn-annual" onclick="setBilling('annual')">Jaarlijks <span class="pricing-annual-badge">Bespaar 2 Maanden</span></button>
-            </div>
-        </div>
-    </header>
-
-    <!-- Pricing Cards Grid Section -->
-    <section class="section theme-dark" id="pricing" style="padding: 20px 0 60px;">
-        <div class="container">
-            <div class="pricing-4-grid mb-12">
-                
-                <!-- Starter Card -->
-                <div class="pricing-4-card" id="plan-starter">
-                    <div>
-                        <div style="margin-bottom: 20px;">
-                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">Starter</h4>
-                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">Voor bedrijven die elke reactie goedkeuren voor publicatie.</p>
-                            
-                            <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
-                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$29" data-annual="$290">$29</span>
-                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ maand" data-annual="billed annually">/ maand</span>
-                            </div>
-                        </div>
-                        
-                        <ul class="pricing-4-feature-list">
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 1 bedrijfslocatie</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Tot 30 reacties per maand</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Manual approval</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Aangepaste toon</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Engels en Spaans</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Waarschuwingen voor negatieve reviews</li>
-                        </ul>
-                    </div>
-                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=starter" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Start Gratis Proefperiode</a>
-                </div>
-
-                <!-- Autopilot Card -->
-                <div class="pricing-4-card recommended" id="plan-autopilot">
-                    <div>
-                        <div style="margin-bottom: 20px;">
-                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">Autopilot</h4>
-                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">Voor bedrijven die veilige reacties op reviews automatisch gepubliceerd willen hebben.</p>
-                            
-                            <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
-                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$39" data-annual="$390">$39</span>
-                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ maand" data-annual="billed annually">/ maand</span>
-                            </div>
-                        </div>
-                        
-                        <ul class="pricing-4-feature-list">
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 1 bedrijfslocatie</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Onbeperkte reacties op reviews*</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Safe replies auto-publish</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Sensitive reviews require approval</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Aangepaste merkstem</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Geschiedenis van reviews</li>
-                        </ul>
-                    </div>
-                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent" style="width: 100%; text-align: center; justify-content: center;">Start Gratis Proefperiode</a>
-                </div>
-
-                <!-- Meerdere Locaties Card -->
-                <div class="pricing-4-card" id="plan-multi">
-                    <div>
-                        <div style="margin-bottom: 20px;">
-                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">Meerdere Locaties</h4>
-                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">Voor bedrijven die meerdere locaties beheren.</p>
-                            
-                            <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
-                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$79" data-annual="$790"><span style="font-size:1.2rem;font-weight:600;margin-right:4px;">Vanaf</span>$79</span>
-                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ month" data-annual="billed annually">/ month</span>
-                            </div>
-                        </div>
-                        
-                        <ul class="pricing-4-feature-list">
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 3 locations included</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Centraal dashboard</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Onbeperkte reacties op reviews*</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Locatiespecifieke regels</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Toegang voor team</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Extra locaties beschikbaar</li>
-                        </ul>
-                    </div>
-                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=multi_location" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Start Proefperiode Meerdere Locaties</a>
-                </div>
-
-                <!-- Bureau Card -->
-                <div class="pricing-4-card" id="plan-agency">
-                    <div>
-                        <div style="margin-bottom: 20px;">
-                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">Bureau</h4>
-                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">Voor bureaus die Google review-reacties voor meerdere klanten beheren.</p>
-                            
-                            <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
-                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$149" data-annual="$1490"><span style="font-size:1.2rem;font-weight:600;margin-right:4px;">Vanaf</span>$149</span>
-                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ month" data-annual="billed annually">/ month</span>
-                            </div>
-                        </div>
-                        
-                        <ul class="pricing-4-feature-list">
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 10 klantlocaties inbegrepen</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Dashboard voor meerdere klanten</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Afzonderlijke merkstemmen voor klanten</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Toegang voor klantgoedkeuring</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Toegang voor team</li>
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Bureau-rapportage</li>
-                        </ul>
-                    </div>
-                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=agency" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Start Proefperiode Bureau</a>
-                </div>
-
-            </div>
-            
-            <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:24px;margin-bottom:8px;">*Onbeperkte reacties op reviews zijn onderhevig aan grenzen voor redelijk gebruik.</p>
-            <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:0px;">14 dagen gratis proefperiode. Annuleer op elk moment.</p>
-            
-            <div class="text-center">
-                <button class="compare-toggle-btn" id="compare-toggle" aria-expanded="false" aria-controls="comparison-container">
-                    Vergelijk Alle Functies <i data-lucide="chevron-down" style="width:16px;height:16px;"></i>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Comparison Section -->
-    <section class="section theme-light" id="comparison" style="border-top: 1px solid var(--border-current); padding: 40px 0;">
-        <div class="container">
-            <div class="comparison-container" id="comparison-container">
-                <div class="comparison-table-wrapper" style="margin-bottom: 40px;">
-                    <table class="comparison-table">
-                        <thead>
-                            <tr>
-                                <th>Functies</th>
-                                <th>Starter</th>
-                                <th>Autopilot</th>
-                                <th>Multi-Location</th>
-                                <th>Agency</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Inbegrepen locaties</td>
-                                <td>1 Location</td>
-                                <td>1 Location</td>
-                                <td>3 Locaties</td>
-                                <td>10 Locaties</td>
-                            </tr>
-                            <tr>
-                                <td>Maandelijkse reactielimiet</td>
-                                <td>30 reacties</td>
-                                <td>Onbeperkt</td>
-                                <td>Onbeperkt</td>
-                                <td>Onbeperkt</td>
-                            </tr>
-                            <tr>
-                                <td>Manual approval</td>
-                                <td>Inbegrepen</td>
-                                <td>Inbegrepen</td>
-                                <td>Inbegrepen</td>
-                                <td>Inbegrepen</td>
-                            </tr>
-                            <tr>
-                                <td>Automatisch publiceren</td>
-                                <td>Niet inbegrepen</td>
-                                <td>Inbegrepen</td>
-                                <td>Inbegrepen</td>
-                                <td>Inbegrepen</td>
-                            </tr>
-                            <tr>
-                                <td>Detectie van gevoelige reviews</td>
-                                <td>Niet inbegrepen</td>
-                                <td>Inbegrepen</td>
-                                <td>Inbegrepen</td>
-                                <td>Inbegrepen</td>
-                            </tr>
-                            <tr>
-                                <td>Aangepaste toon</td>
-                                <td>Inbegrepen</td>
-                                <td>Inbegrepen</td>
-                                <td>Inbegrepen</td>
-                                <td>Inbegrepen</td>
-                            </tr>
-                            <tr>
-                                <td>Engels en Spaans</td>
-                                <td>Inbegrepen</td>
-                                <td>Inbegrepen</td>
-                                <td>Inbegrepen</td>
-                                <td>Inbegrepen</td>
-                            </tr>
-                            <tr>
-                                <td>Herkenning van medewerkersnamen</td>
-                                <td>Niet inbegrepen</td>
-                                <td>Inbegrepen</td>
-                                <td>Inbegrepen</td>
-                                <td>Inbegrepen</td>
-                            </tr>
-                            <tr>
-                                <td>Geschiedenis van reviews</td>
-                                <td>Niet inbegrepen</td>
-                                <td>Inbegrepen</td>
-                                <td>Inbegrepen</td>
-                                <td>Inbegrepen</td>
-                            </tr>
-                            <tr>
-                                <td>Toegang voor team</td>
-                                <td>Niet inbegrepen</td>
-                                <td>Niet inbegrepen</td>
-                                <td>Inbegrepen</td>
-                                <td>Inbegrepen</td>
-                            </tr>
-                            <tr>
-                                <td>Rapportage over meerdere locaties</td>
-                                <td>Niet inbegrepen</td>
-                                <td>Niet inbegrepen</td>
-                                <td>Inbegrepen</td>
-                                <td>Inbegrepen</td>
-                            </tr>
-                            <tr>
-                                <td>Klantendashboard</td>
-                                <td>Niet inbegrepen</td>
-                                <td>Niet inbegrepen</td>
-                                <td>Niet inbegrepen</td>
-                                <td>Inbegrepen</td>
-                            </tr>
-                            <tr>
-                                <td>Toegang voor klantgoedkeuring</td>
-                                <td>Niet inbegrepen</td>
-                                <td>Niet inbegrepen</td>
-                                <td>Niet inbegrepen</td>
-                                <td>Inbegrepen</td>
-                            </tr>
-                            <tr>
-                                <td>Ondersteuningsniveau</td>
-                                <td>Standaard</td>
-                                <td>Prioriteit</td>
-                                <td>Prioriteit</td>
-                                <td>Toegewijd</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            
-            <!-- FAQ Section -->
-            <div id="faq" style="max-width: 800px; margin: 0 auto;">
-                <div class="text-center mb-8">
-                    <h2 class="mb-4">Veelgestelde Vragen</h2>
-                </div>
-                
-                <div class="faq-accordion">
-                    <details>
-                        <summary>Kan ik op elk moment annuleren? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
-                        <div class="faq-content">Ja. ReplyVera wordt maandelijks of jaarlijks gefactureerd, en u kunt annuleren voor uw volgende factureringsdatum.</div>
-                    </details>
-                    <details>
-                        <summary>Zijn er instelkosten? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
-                        <div class="faq-content">Nee. Er zijn geen instelkosten voor standaardabonnementen.</div>
-                    </details>
-                    <details>
-                        <summary>Heeft elke locatie een eigen abonnement nodig? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
-                        <div class="faq-content">Starter en Autopilot zijn inclusief één locatie. Multi-Location en Agency abonnementen zijn inclusief meerdere locaties en bieden de mogelijkheid om tegen betaling extra locaties toe te voegen.</div>
-                    </details>
-                    <details>
-                        <summary>Zijn reacties onbeperkt? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
-                        <div class="faq-content">Het Starter-abonnement bevat tot 30 reacties per maand. Autopilot, Multi-Location en Agency abonnementen bevatten onbeperkte reacties onder voorbehoud van limieten voor redelijk gebruik.</div>
-                    </details>
-                    <details>
-                        <summary>Welke reviewplatforms worden ondersteund? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
-                        <div class="faq-content">ReplyVera ondersteunt momenteel Google Reviews. Facebook, Trustpilot, Booking.com en Tripadvisor staan op de planning voor toekomstige releases.</div>
-                    </details>
-                    <details>
-                        <summary>Kan ik later van abonnement veranderen? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
-                        <div class="faq-content">Ja. U kunt uw abonnement upgraden of downgraden naarmate uw reviewvolume of aantal locaties verandert.</div>
-                    </details>
-                </div>
-                
-                <p style="font-size: 0.85rem; color: var(--text-secondary-current); text-align: center; margin-top: 40px; font-weight: 500;">
-                    Momenteel ondersteund: Google Reviews<br>
-                    Facebook, Trustpilot, Booking.com en Tripadvisor staan gepland voor toekomstige releases.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action Section -->
-    <section class="section theme-dark" style="border-top: 1px solid rgba(255, 255, 255, 0.04); padding: 60px 0;">
-        <div class="container text-center" style="max-width: 650px;">
-            <h2 class="mb-6">Klaar om uw reacties op Google-reviews te automatiseren?</h2>
-            <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent" style="padding: 14px 28px; font-size:0.95rem;">Start Gratis Proefperiode</a>
-        </div>
-    </section>
-<!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand-box">
-                    <a href="/nl/" class="nav-logo" style="margin-bottom:14px;">
-                        <div class="nav-logo-icon">
-                            <i class="fa-solid fa-reply"></i>
-                        </div>
-                        <span class="nav-logo-text" style="font-size:1.2rem;">Reply<span>Vera</span></span>
-                    </a>
-                    <p style="color:#94A3B8;">De review-autopilot gebouwd voor winkels, franchises en bureaus om hun online reputatie te beschermen.</p>
-                    <p style="color:#64748B; font-size:0.8rem; margin-top:12px;">Ondersteunt momenteel Google Reviews. Extra platforms staan in de planning.</p>
-                </div>
-                
-                <div class="footer-col">
-                    <div class="footer-col-title">Product</div>
-                    <ul class="footer-links">
-                        <li><a href="/nl/#product">Product</a></li>
-                        <li><a href="/nl/#how-it-works">Hoe Het Werkt</a></li>
-                        <li><a href="/nl/pricing.html">Prijzen</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <div class="footer-col-title">Bedrijf</div>
-                    <ul class="footer-links">
-                        <li><a href="mailto:info@replyvera.com">Neem contact met ons op</a></li>
-                        <li><div class="lang-selector">
-                    <button class="lang-btn" aria-label="Select Language">
-                        <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
-                    </button>
-                    <div class="lang-menu">
-                        <a href="/nl/#" class="lang-item" onclick="changeLang('en', event)">English</a>
-                        <a href="/nl/#" class="lang-item" onclick="changeLang('es', event)">EspaÃ±ol</a>
-                        <a href="/nl/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
-                    </div>
-                </div>
-                <a h>Inloggen</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <div class="footer-col-title">Juridisch</div>
-                    <ul class="footer-links">
-                        <li><a href="/nl/terms.html">Servicevoorwaarden</a></li>
-                        <li><a href="/nl/privacy.html">Privacybeleid</a></li>
-                        <li><a href="/nl/cookie.html">Cookiebeleid</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <div>© 2026 ReplyVera. Alle rechten voorbehouden.</div>
-                <div class="social-links">
-                    <a href="/nl/#"><i data-lucide="twitter" style="width:18px; height:18px;"></i></a>
-                    <a href="/nl/#"><i data-lucide="linkedin" style="width:18px; height:18px;"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Cookie Consent Banner -->
-    <div id="cookie-banner" class="cookie-banner" aria-hidden="true">
-        <div class="cookie-content">
-            <p>We gebruiken cookies om uw ervaring te verbeteren en de prestaties van de site te analyseren. Door op "Accepteren" te klikken, gaat u akkoord met ons gebruik van cookies zoals beschreven in ons <a href="/nl/cookie.html">Cookiebeleid</a>.</p>
-            <div class="cookie-buttons">
-                <button id="accept-cookies" class="btn btn-accent btn-sm" style="padding:6px 12px; font-size:0.78rem;">Accepteren</button>
-                <button id="decline-cookies" class="btn btn-secondary btn-sm" style="padding:6px 12px; font-size:0.78rem;">Weigeren</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Vercel Web Analytics -->
-    <script>
-      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    </script>
-    <script defer src="/_vercel/insights/script.js"></script>
-
-    <script src="/script.js"></script>
-
-    <script>
-        // Billing Toggle Logic
-        function setBilling(mode) {
-            const btnMonthly = document.getElementById('btn-monthly');
-            const btnAnnual = document.getElementById('btn-annual');
-            const priceVals = document.querySelectorAll('.price-val');
-            const pricePeriods = document.querySelectorAll('.price-period');
-            
-            if (mode === 'annual') {
-                btnAnnual.classList.add('active');
-                btnMonthly.classList.remove('active');
-                priceVals.forEach(el => {
-                    let val = el.getAttribute('data-annual');
-                    if(val === '$790' || val === '$1490') {
-                        el.innerHTML = '<span style="font-size:1.2rem;font-weight:600;margin-right:4px;">From</span>' + val;
-                    } else {
-                        el.textContent = val;
-                    }
-                });
-                pricePeriods.forEach(el => el.textContent = el.getAttribute('data-annual'));
-            } else {
-                btnMonthly.classList.add('active');
-                btnAnnual.classList.remove('active');
-                priceVals.forEach(el => {
-                    let val = el.getAttribute('data-monthly');
-                    if(val === '$79' || val === '$149') {
-                        el.innerHTML = '<span style="font-size:1.2rem;font-weight:600;margin-right:4px;">From</span>' + val;
-                    } else {
-                        el.textContent = val;
-                    }
-                });
-                pricePeriods.forEach(el => el.textContent = el.getAttribute('data-monthly'));
-            }
-        }
-
-        // Compare Toggle Logic
-        document.addEventListener('DOMContentLoaded', () => {
-            const compareBtn = document.getElementById('compare-toggle');
-            const compareContainer = document.getElementById('comparison-container');
-            
-            if(compareBtn && compareContainer) {
-                compareBtn.addEventListener('click', () => {
-                    const isExpanded = compareBtn.getAttribute('aria-expanded') === 'true';
-                    compareBtn.setAttribute('aria-expanded', !isExpanded);
-                    if (!isExpanded) {
-                        compareContainer.classList.add('expanded');
-                    } else {
-                        compareContainer.classList.remove('expanded');
-                    }
-                });
-            }
-        });
-    </script>
-</body>
-</html>
+<!-- MOBILE_IND_LIST_END -->
+<a href="/nl/#pricing" class="mobile-nav-link">Prijzen</a>
+            <a href="/nl/#faq" class="mobile-nav-link">Veelgestelde Vragen</a>
+            <div class="lang-selector">
+                    <button class="lang-btn" aria-label="Select Language">
+                        <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
+                    </button>
+                    <div class="lang-menu">
+                        <a href="/nl/#" class="lang-item" onclick="changeLang('en', event)">English</a>
+                        <a href="/nl/#" class="lang-item" onclick="changeLang('es', event)">Español</a>
+                        <a href="/nl/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+                    </div>
+                </div>
+                <a href="https://dashboard.replyvera.com/login" class="mobile-nav-link">Inloggen</a>
+        </div>
+    </div>
+
+<!-- Mobile Plan Selector -->
+    <div class="mobile-plan-selector theme-dark">
+        <div class="mobile-plan-selector-inner container">
+            <a href="/nl/#plan-starter" class="mobile-plan-btn">Starter</a>
+            <a href="/nl/#plan-autopilot" class="mobile-plan-btn">Autopilot</a>
+            <a href="/nl/#plan-multi" class="mobile-plan-btn">Meerdere Locaties</a>
+            <a href="/nl/#plan-agency" class="mobile-plan-btn">Bureau</a>
+        </div>
+    </div>
+
+    <!-- Prijzen Hero Section -->
+    <header class="hero theme-dark" style="padding: 100px 0 20px;">
+        <div class="hero-glow-layer"></div>
+        <div class="container hero-content" style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <h1 style="font-size: 2.5rem; margin-bottom: 12px; letter-spacing: -0.02em;">Eenvoudige Prijzen. Geen Verkoopgesprek Vereist.</h1>
+            <p class="lead-text" style="margin-bottom: 0; font-size: 1.1rem; color: var(--text-secondary-current);">
+                Kies het niveau van automatisering en het aantal locaties dat bij uw bedrijf past.
+            </p>
+            
+            <!-- Billing Toggle -->
+            <div class="pricing-billing-toggle">
+                <button class="pricing-billing-btn active" id="btn-monthly" onclick="setBilling('monthly')">Maandelijks</button>
+                <button class="pricing-billing-btn" id="btn-annual" onclick="setBilling('annual')">Jaarlijks <span class="pricing-annual-badge">Bespaar 2 Maanden</span></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Pricing Cards Grid Section -->
+    <section class="section theme-dark" id="pricing" style="padding: 20px 0 60px;">
+        <div class="container">
+            <div class="pricing-4-grid mb-12">
+                
+                <!-- Starter Card -->
+                <div class="pricing-4-card" id="plan-starter">
+                    <div>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">Starter</h4>
+                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">Voor bedrijven die elke reactie goedkeuren voor publicatie.</p>
+                            
+                            <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
+                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$29" data-annual="$290">$29</span>
+                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ maand" data-annual="billed annually">/ maand</span>
+                            </div>
+                        </div>
+                        
+                        <ul class="pricing-4-feature-list">
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 1 bedrijfslocatie</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Tot 30 reacties per maand</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Manual approval</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Aangepaste toon</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Engels en Spaans</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Waarschuwingen voor negatieve reviews</li>
+                        </ul>
+                    </div>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=starter" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Start Gratis Proefperiode</a>
+                </div>
+
+                <!-- Autopilot Card -->
+                <div class="pricing-4-card recommended" id="plan-autopilot">
+                    <div>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">Autopilot</h4>
+                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">Voor bedrijven die veilige reacties op reviews automatisch gepubliceerd willen hebben.</p>
+                            
+                            <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
+                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$39" data-annual="$390">$39</span>
+                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ maand" data-annual="billed annually">/ maand</span>
+                            </div>
+                        </div>
+                        
+                        <ul class="pricing-4-feature-list">
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 1 bedrijfslocatie</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Onbeperkte reacties op reviews*</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Safe replies auto-publish</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Sensitive reviews require approval</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Aangepaste merkstem</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Geschiedenis van reviews</li>
+                        </ul>
+                    </div>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent" style="width: 100%; text-align: center; justify-content: center;">Start Gratis Proefperiode</a>
+                </div>
+
+                <!-- Meerdere Locaties Card -->
+                <div class="pricing-4-card" id="plan-multi">
+                    <div>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">Meerdere Locaties</h4>
+                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">Voor bedrijven die meerdere locaties beheren.</p>
+                            
+                            <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
+                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$79" data-annual="$790"><span style="font-size:1.2rem;font-weight:600;margin-right:4px;">Vanaf</span>$79</span>
+                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ month" data-annual="billed annually">/ month</span>
+                            </div>
+                        </div>
+                        
+                        <ul class="pricing-4-feature-list">
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 3 locations included</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Centraal dashboard</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Onbeperkte reacties op reviews*</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Locatiespecifieke regels</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Toegang voor team</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Extra locaties beschikbaar</li>
+                        </ul>
+                    </div>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=multi_location" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Start Proefperiode Meerdere Locaties</a>
+                </div>
+
+                <!-- Bureau Card -->
+                <div class="pricing-4-card" id="plan-agency">
+                    <div>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color:var(--text-primary-current); font-size:1.4rem; font-weight:700; margin-bottom: 4px;">Bureau</h4>
+                            <p style="font-size:0.85rem; color:var(--text-secondary-current); min-height: 40px; margin-bottom: 16px; line-height: 1.4;">Voor bureaus die Google review-reacties voor meerdere klanten beheren.</p>
+                            
+                            <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
+                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$149" data-annual="$1490"><span style="font-size:1.2rem;font-weight:600;margin-right:4px;">Vanaf</span>$149</span>
+                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ month" data-annual="billed annually">/ month</span>
+                            </div>
+                        </div>
+                        
+                        <ul class="pricing-4-feature-list">
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> 10 klantlocaties inbegrepen</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Dashboard voor meerdere klanten</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Afzonderlijke merkstemmen voor klanten</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Toegang voor klantgoedkeuring</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Toegang voor team</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Bureau-rapportage</li>
+                        </ul>
+                    </div>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=agency" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Start Proefperiode Bureau</a>
+                </div>
+
+            </div>
+            
+            <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:24px;margin-bottom:8px;">*Onbeperkte reacties op reviews zijn onderhevig aan grenzen voor redelijk gebruik.</p>
+            <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:0px;">14 dagen gratis proefperiode. Annuleer op elk moment.</p>
+            
+            <div class="text-center">
+                <button class="compare-toggle-btn" id="compare-toggle" aria-expanded="false" aria-controls="comparison-container">
+                    Vergelijk Alle Functies <i data-lucide="chevron-down" style="width:16px;height:16px;"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Comparison Section -->
+    <section class="section theme-light" id="comparison" style="border-top: 1px solid var(--border-current); padding: 40px 0;">
+        <div class="container">
+            <div class="comparison-container" id="comparison-container">
+                <div class="comparison-table-wrapper" style="margin-bottom: 40px;">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Functies</th>
+                                <th>Starter</th>
+                                <th>Autopilot</th>
+                                <th>Multi-Location</th>
+                                <th>Agency</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Inbegrepen locaties</td>
+                                <td>1 Location</td>
+                                <td>1 Location</td>
+                                <td>3 Locaties</td>
+                                <td>10 Locaties</td>
+                            </tr>
+                            <tr>
+                                <td>Maandelijkse reactielimiet</td>
+                                <td>30 reacties</td>
+                                <td>Onbeperkt</td>
+                                <td>Onbeperkt</td>
+                                <td>Onbeperkt</td>
+                            </tr>
+                            <tr>
+                                <td>Manual approval</td>
+                                <td>Inbegrepen</td>
+                                <td>Inbegrepen</td>
+                                <td>Inbegrepen</td>
+                                <td>Inbegrepen</td>
+                            </tr>
+                            <tr>
+                                <td>Automatisch publiceren</td>
+                                <td>Niet inbegrepen</td>
+                                <td>Inbegrepen</td>
+                                <td>Inbegrepen</td>
+                                <td>Inbegrepen</td>
+                            </tr>
+                            <tr>
+                                <td>Detectie van gevoelige reviews</td>
+                                <td>Niet inbegrepen</td>
+                                <td>Inbegrepen</td>
+                                <td>Inbegrepen</td>
+                                <td>Inbegrepen</td>
+                            </tr>
+                            <tr>
+                                <td>Aangepaste toon</td>
+                                <td>Inbegrepen</td>
+                                <td>Inbegrepen</td>
+                                <td>Inbegrepen</td>
+                                <td>Inbegrepen</td>
+                            </tr>
+                            <tr>
+                                <td>Engels en Spaans</td>
+                                <td>Inbegrepen</td>
+                                <td>Inbegrepen</td>
+                                <td>Inbegrepen</td>
+                                <td>Inbegrepen</td>
+                            </tr>
+                            <tr>
+                                <td>Herkenning van medewerkersnamen</td>
+                                <td>Niet inbegrepen</td>
+                                <td>Inbegrepen</td>
+                                <td>Inbegrepen</td>
+                                <td>Inbegrepen</td>
+                            </tr>
+                            <tr>
+                                <td>Geschiedenis van reviews</td>
+                                <td>Niet inbegrepen</td>
+                                <td>Inbegrepen</td>
+                                <td>Inbegrepen</td>
+                                <td>Inbegrepen</td>
+                            </tr>
+                            <tr>
+                                <td>Toegang voor team</td>
+                                <td>Niet inbegrepen</td>
+                                <td>Niet inbegrepen</td>
+                                <td>Inbegrepen</td>
+                                <td>Inbegrepen</td>
+                            </tr>
+                            <tr>
+                                <td>Rapportage over meerdere locaties</td>
+                                <td>Niet inbegrepen</td>
+                                <td>Niet inbegrepen</td>
+                                <td>Inbegrepen</td>
+                                <td>Inbegrepen</td>
+                            </tr>
+                            <tr>
+                                <td>Klantendashboard</td>
+                                <td>Niet inbegrepen</td>
+                                <td>Niet inbegrepen</td>
+                                <td>Niet inbegrepen</td>
+                                <td>Inbegrepen</td>
+                            </tr>
+                            <tr>
+                                <td>Toegang voor klantgoedkeuring</td>
+                                <td>Niet inbegrepen</td>
+                                <td>Niet inbegrepen</td>
+                                <td>Niet inbegrepen</td>
+                                <td>Inbegrepen</td>
+                            </tr>
+                            <tr>
+                                <td>Ondersteuningsniveau</td>
+                                <td>Standaard</td>
+                                <td>Prioriteit</td>
+                                <td>Prioriteit</td>
+                                <td>Toegewijd</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- FAQ Section -->
+            <div id="faq" style="max-width: 800px; margin: 0 auto;">
+                <div class="text-center mb-8">
+                    <h2 class="mb-4">Veelgestelde Vragen</h2>
+                </div>
+                
+                <div class="faq-accordion">
+                    <details>
+                        <summary>Kan ik op elk moment annuleren? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">Ja. ReplyVera wordt maandelijks of jaarlijks gefactureerd, en u kunt annuleren voor uw volgende factureringsdatum.</div>
+                    </details>
+                    <details>
+                        <summary>Zijn er instelkosten? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">Nee. Er zijn geen instelkosten voor standaardabonnementen.</div>
+                    </details>
+                    <details>
+                        <summary>Heeft elke locatie een eigen abonnement nodig? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">Starter en Autopilot zijn inclusief één locatie. Multi-Location en Agency abonnementen zijn inclusief meerdere locaties en bieden de mogelijkheid om tegen betaling extra locaties toe te voegen.</div>
+                    </details>
+                    <details>
+                        <summary>Zijn reacties onbeperkt? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">Het Starter-abonnement bevat tot 30 reacties per maand. Autopilot, Multi-Location en Agency abonnementen bevatten onbeperkte reacties onder voorbehoud van limieten voor redelijk gebruik.</div>
+                    </details>
+                    <details>
+                        <summary>Welke reviewplatforms worden ondersteund? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">ReplyVera ondersteunt momenteel Google Reviews. Facebook, Trustpilot, Booking.com en Tripadvisor staan op de planning voor toekomstige releases.</div>
+                    </details>
+                    <details>
+                        <summary>Kan ik later van abonnement veranderen? <i data-lucide="chevron-down" style="width:18px;height:18px;"></i></summary>
+                        <div class="faq-content">Ja. U kunt uw abonnement upgraden of downgraden naarmate uw reviewvolume of aantal locaties verandert.</div>
+                    </details>
+                </div>
+                
+                <p style="font-size: 0.85rem; color: var(--text-secondary-current); text-align: center; margin-top: 40px; font-weight: 500;">
+                    Momenteel ondersteund: Google Reviews<br>
+                    Facebook, Trustpilot, Booking.com en Tripadvisor staan gepland voor toekomstige releases.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="section theme-dark" style="border-top: 1px solid rgba(255, 255, 255, 0.04); padding: 60px 0;">
+        <div class="container text-center" style="max-width: 650px;">
+            <h2 class="mb-6">Klaar om uw reacties op Google-reviews te automatiseren?</h2>
+            <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent" style="padding: 14px 28px; font-size:0.95rem;">Start Gratis Proefperiode</a>
+        </div>
+    </section>
+<!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand-box">
+                    <a href="/nl/" class="nav-logo" style="margin-bottom:14px;">
+                        <div class="nav-logo-icon">
+                            <i class="fa-solid fa-reply"></i>
+                        </div>
+                        <span class="nav-logo-text" style="font-size:1.2rem;">Reply<span>Vera</span></span>
+                    </a>
+                    <p style="color:#94A3B8;">De review-autopilot gebouwd voor winkels, franchises en bureaus om hun online reputatie te beschermen.</p>
+                    <p style="color:#64748B; font-size:0.8rem; margin-top:12px;">Ondersteunt momenteel Google Reviews. Extra platforms staan in de planning.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-col-title">Product</div>
+                    <ul class="footer-links">
+                        <li><a href="/nl/#product">Product</a></li>
+                        <li><a href="/nl/#how-it-works">Hoe Het Werkt</a></li>
+                        <li><a href="/nl/pricing.html">Prijzen</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-col-title">Bedrijf</div>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@replyvera.com">Neem contact met ons op</a></li>
+                        <li><div class="lang-selector">
+                    <button class="lang-btn" aria-label="Select Language">
+                        <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
+                    </button>
+                    <div class="lang-menu">
+                        <a href="/nl/#" class="lang-item" onclick="changeLang('en', event)">English</a>
+                        <a href="/nl/#" class="lang-item" onclick="changeLang('es', event)">Español</a>
+                        <a href="/nl/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+                    </div>
+                </div>
+                <a h>Inloggen</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-col-title">Juridisch</div>
+                    <ul class="footer-links">
+                        <li><a href="/nl/terms.html">Servicevoorwaarden</a></li>
+                        <li><a href="/nl/privacy.html">Privacybeleid</a></li>
+                        <li><a href="/nl/cookie.html">Cookiebeleid</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div>© 2026 ReplyVera. Alle rechten voorbehouden.</div>
+                <div class="social-links">
+                    <a href="/nl/#"><i data-lucide="twitter" style="width:18px; height:18px;"></i></a>
+                    <a href="/nl/#"><i data-lucide="linkedin" style="width:18px; height:18px;"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner" aria-hidden="true">
+        <div class="cookie-content">
+            <p>We gebruiken cookies om uw ervaring te verbeteren en de prestaties van de site te analyseren. Door op "Accepteren" te klikken, gaat u akkoord met ons gebruik van cookies zoals beschreven in ons <a href="/nl/cookie.html">Cookiebeleid</a>.</p>
+            <div class="cookie-buttons">
+                <button id="accept-cookies" class="btn btn-accent btn-sm" style="padding:6px 12px; font-size:0.78rem;">Accepteren</button>
+                <button id="decline-cookies" class="btn btn-secondary btn-sm" style="padding:6px 12px; font-size:0.78rem;">Weigeren</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vercel Web Analytics -->
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <script src="/script.js"></script>
+
+    <script>
+        // Billing Toggle Logic
+        function setBilling(mode) {
+            const btnMonthly = document.getElementById('btn-monthly');
+            const btnAnnual = document.getElementById('btn-annual');
+            const priceVals = document.querySelectorAll('.price-val');
+            const pricePeriods = document.querySelectorAll('.price-period');
+            
+            if (mode === 'annual') {
+                btnAnnual.classList.add('active');
+                btnMonthly.classList.remove('active');
+                priceVals.forEach(el => {
+                    let val = el.getAttribute('data-annual');
+                    if(val === '$790' || val === '$1490') {
+                        el.innerHTML = '<span style="font-size:1.2rem;font-weight:600;margin-right:4px;">From</span>' + val;
+                    } else {
+                        el.textContent = val;
+                    }
+                });
+                pricePeriods.forEach(el => el.textContent = el.getAttribute('data-annual'));
+            } else {
+                btnMonthly.classList.add('active');
+                btnAnnual.classList.remove('active');
+                priceVals.forEach(el => {
+                    let val = el.getAttribute('data-monthly');
+                    if(val === '$79' || val === '$149') {
+                        el.innerHTML = '<span style="font-size:1.2rem;font-weight:600;margin-right:4px;">From</span>' + val;
+                    } else {
+                        el.textContent = val;
+                    }
+                });
+                pricePeriods.forEach(el => el.textContent = el.getAttribute('data-monthly'));
+            }
+        }
+
+        // Compare Toggle Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const compareBtn = document.getElementById('compare-toggle');
+            const compareContainer = document.getElementById('comparison-container');
+            
+            if(compareBtn && compareContainer) {
+                compareBtn.addEventListener('click', () => {
+                    const isExpanded = compareBtn.getAttribute('aria-expanded') === 'true';
+                    compareBtn.setAttribute('aria-expanded', !isExpanded);
+                    if (!isExpanded) {
+                        compareContainer.classList.add('expanded');
+                    } else {
+                        compareContainer.classList.remove('expanded');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
