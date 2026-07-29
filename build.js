@@ -38,11 +38,17 @@ locales.forEach(lang => {
 
         // Replace desktop header dropdown content with dynamically generated localized industries dropdown
         const headerDropdownHtml = renderHeaderDropdownHTML(lang);
-        html = html.replace(/<div class="dropdown-menu">[\s\S]*?<\/div>/, `<div class="dropdown-menu">\n${headerDropdownHtml}\n</div>`);
+        html = html.replace(
+            /<!-- NAV_DROPDOWN_GRID_START -->[\s\S]*?<!-- NAV_DROPDOWN_GRID_END -->/,
+            `<!-- NAV_DROPDOWN_GRID_START -->\n<div class="nav-dropdown-grid">\n${headerDropdownHtml}\n</div>\n<!-- NAV_DROPDOWN_GRID_END -->`
+        );
 
         // Replace mobile menu accordion content with dynamically generated localized industries list
         const mobileAccordionHtml = renderMobileAccordionHTML(lang);
-        html = html.replace(/<div class="mobile-industry-list" id="mobile-ind-list">[\s\S]*?<\/div>/, `<div class="mobile-industry-list" id="mobile-ind-list">\n${mobileAccordionHtml}\n</div>`);
+        html = html.replace(
+            /<!-- MOBILE_IND_LIST_START -->[\s\S]*?<!-- MOBILE_IND_LIST_END -->/,
+            `<!-- MOBILE_IND_LIST_START -->\n<div class="mobile-industry-list" id="mobile-ind-list">\n${mobileAccordionHtml}\n</div>\n<!-- MOBILE_IND_LIST_END -->`
+        );
 
         // Update header language button label (EN -> NL / ES)
         html = html.replace(/<button class="lang-btn"[^>]*>[\s\S]*?<\/button>/, `
@@ -98,4 +104,4 @@ locales.forEach(lang => {
     });
 });
 
-console.log("Build complete! Generated localized static HTML files with master industry navigation.");
+console.log("Build complete! Generated localized static HTML files with marker-based menu replacements.");

@@ -40,11 +40,17 @@ function getHeaderAndFooter(lang) {
 
     // Replace desktop header dropdown
     const headerDropdownHtml = renderHeaderDropdownHTML(targetLang);
-    patchedH = patchedH.replace(/<div class="dropdown-menu">[\s\S]*?<\/div>/, `<div class="dropdown-menu">\n${headerDropdownHtml}\n</div>`);
+    patchedH = patchedH.replace(
+        /<!-- NAV_DROPDOWN_GRID_START -->[\s\S]*?<!-- NAV_DROPDOWN_GRID_END -->/,
+        `<!-- NAV_DROPDOWN_GRID_START -->\n<div class="nav-dropdown-grid">\n${headerDropdownHtml}\n</div>\n<!-- NAV_DROPDOWN_GRID_END -->`
+    );
 
     // Replace mobile accordion
     const mobileAccordionHtml = renderMobileAccordionHTML(targetLang);
-    patchedH = patchedH.replace(/<div class="mobile-industry-list" id="mobile-ind-list">[\s\S]*?<\/div>/, `<div class="mobile-industry-list" id="mobile-ind-list">\n${mobileAccordionHtml}\n</div>`);
+    patchedH = patchedH.replace(
+        /<!-- MOBILE_IND_LIST_START -->[\s\S]*?<!-- MOBILE_IND_LIST_END -->/,
+        `<!-- MOBILE_IND_LIST_START -->\n<div class="mobile-industry-list" id="mobile-ind-list">\n${mobileAccordionHtml}\n</div>\n<!-- MOBILE_IND_LIST_END -->`
+    );
 
     // Update language selector button label (EN -> NL / ES)
     patchedH = patchedH.replace(/<button class="lang-btn"[^>]*>[\s\S]*?<\/button>/, `
@@ -580,7 +586,7 @@ industriesData.forEach(ind => {
         pageCount++;
         console.log(`✓ Built Primary Industry Page [${lang.toUpperCase()}]: ${lang === 'en' ? '' : lang + '/'}industries/${localizedSlug}/index.html`);
 
-        // Also build alias page for English slug if different (e.g., /nl/industries/dentists/index.html -> renders Dutch content!)
+        // Also build alias page for English slug if different (e.g., /nl/industries/pet-care/index.html -> renders Dutch content!)
         const enSlug = ind.slugs.en;
         if (localizedSlug !== enSlug) {
             const aliasDir = lang === 'en' ?
