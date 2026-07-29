@@ -708,3 +708,87 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// ─── Paddle Billing Integration ───
+window.currentBillingCycle = 'monthly';
+window.PADDLE_PRICES = {
+    monthly: {
+        starter: 'pri_01ky53qca2x1ag8yt36en377pv',
+        autopilot: 'pri_01ky53qcz7kpx92h9wnnmq4z50',
+        multi_location: 'pri_01ky53qdg9qab3ct8hgexqkf2n',
+        agency: 'pri_01ky53qdz80wsxaqnw672ehrcs'
+    },
+    annual: {
+        starter: 'pri_01ky53qcerr3hb001fsccthevr',
+        autopilot: 'pri_01ky53qd42g20ew50kgea0yf75',
+        multi_location: 'pri_01ky53qdmvhzz157qsss7hehy7',
+        agency: 'pri_01ky53qe3q3hfmfav69h2r19v6'
+    }
+};
+
+function setupPaddle() {
+    if (window.Paddle) {
+        try {
+            Paddle.Initialize({ 
+                token: 'live_717730a5b06d6e51817b4a48b9e',
+                eventCallback: function(data) {
+                    console.log('Paddle Event:', data);
+                }
+            });
+            console.log('✅ Paddle Live Initialized Successfully');
+        } catch (e) {
+            console.error('Paddle Initialization Error:', e);
+        }
+    } else {
+        var s = document.createElement('script');
+        s.src = 'https://cdn.paddle.com/paddle/v2/paddle.js';
+        s.onload = function() {
+            setupPaddle();
+        };
+        document.head.appendChild(s);
+    }
+}
+
+if (document.readyState === 'complete') {
+    setupPaddle();
+} else {
+    window.addEventListener('load', setupPaddle);
+}
+
+function openPaddleCheckout(tier, event) {
+    if (event) {
+        if (event.preventDefault) event.preventDefault();
+        if (event.stopPropagation) event.stopPropagation();
+    }
+
+    var selectedTier = tier || 'autopilot';
+    var cycle = window.currentBillingCycle || 'monthly';
+    var priceId = (window.PADDLE_PRICES[cycle] && window.PADDLE_PRICES[cycle][selectedTier]) || 
+                    (window.PADDLE_PRICES['monthly'] && window.PADDLE_PRICES['monthly'][selectedTier]);
+
+    console.log('Checkout Triggered:', { tier: selectedTier, cycle: cycle, priceId: priceId, paddleExists: !!window.Paddle });
+
+    if (window.Paddle && priceId) {
+        try {
+            var htmlLang = document.documentElement.lang || 'en';
+            Paddle.Checkout.open({
+                items: [{ priceId: priceId, quantity: 1 }],
+                settings: {
+                    displayMode: 'overlay',
+                    theme: 'dark',
+                    locale: htmlLang
+                }
+            });
+            return false;
+        } catch (err) {
+            console.error('Paddle Checkout.open error:', err);
+            window.location.href = 'https://dashboard.replyvera.com/login?signup=true&tier=' + selectedTier;
+        }
+    } else {
+        window.location.href = 'https://dashboard.replyvera.com/login?signup=true&tier=' + selectedTier;
+    }
+    return false;
+}
+
+window.openPaddleCheckout = openPaddleCheckout;
+window.setupPaddle = setupPaddle;

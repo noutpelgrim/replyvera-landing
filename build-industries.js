@@ -200,7 +200,7 @@ function renderPricingSection(isAgency, ind, trans, lang) {
                         <li><i data-lucide="check" style="width:16px;height:16px;color:var(--accent);"></i> ${feat5}</li>
                         <li><i data-lucide="check" style="width:16px;height:16px;color:var(--accent);"></i> ${feat6}</li>
                     </ul>
-                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent" style="text-align:center;justify-content:center;width:100%;margin-top:28px;">${startAgency}</a>
+                    <a href="#" onclick="openPaddleCheckout('agency', event)" class="btn btn-accent" style="text-align:center;justify-content:center;width:100%;margin-top:28px;">${startAgency}</a>
                 </div>
             </div>
             <div class="text-center" style="margin-top:60px;">
@@ -239,7 +239,7 @@ function renderPricingSection(isAgency, ind, trans, lang) {
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Tot 30 reacties per maand' : isEs ? 'Hasta 30 respuestas por mes' : 'Up to 30 replies per month'}</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Handmatige goedkeuring voor alle reviews' : isEs ? 'Aprobación manual para todas las reseñas' : 'Manual approval for all reviews'}</li>
                     </ul>
-                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-secondary" style="text-align:center;justify-content:center;">${starterBtn}</a>
+                    <a href="#" onclick="openPaddleCheckout('starter', event)" class="btn btn-secondary" style="text-align:center;justify-content:center;">${starterBtn}</a>
                 </div>
                 <div class="pricing-card featured">
                     <div class="pricing-popular">${isNl ? 'Meest Populair' : isEs ? 'Más Popular' : 'Most Popular'}</div>
@@ -252,7 +252,7 @@ function renderPricingSection(isAgency, ind, trans, lang) {
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Onbeperkt aantal reviewreacties*' : isEs ? 'Respuestas ilimitadas*' : 'Unlimited review responses*'}</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Automatisch publiceren van veilige reviews' : isEs ? 'Publicación automática de reseñas seguras' : 'Automatic publishing for safe reviews'}</li>
                     </ul>
-                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent" style="text-align:center;justify-content:center;">${starterBtn}</a>
+                    <a href="#" onclick="openPaddleCheckout('autopilot', event)" class="btn btn-accent" style="text-align:center;justify-content:center;">${starterBtn}</a>
                 </div>
                 <div class="pricing-card">
                     <div class="pricing-name">${multiTitle}</div>
@@ -353,7 +353,7 @@ function renderIndustryPage(ind, lang) {
                     <h1 class="mb-6">${trans.heroHeadline}</h1>
                     <p class="lead mb-8">${trans.heroDescription}</p>
                     <div class="hero-actions">
-                        <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">${ctaStart}</a>
+                        <a href="#" onclick="openPaddleCheckout(isAgency ? 'agency' : 'autopilot', event)" class="btn btn-accent btn-lg">${ctaStart}</a>
                         <a href="${isNl ? '/nl/#how-it-works' : isEs ? '/es/#how-it-works' : '/#how-it-works'}" class="btn btn-secondary btn-lg">${ctaHow}</a>
                     </div>
                     <div class="hero-trust">
@@ -523,7 +523,7 @@ function renderIndustryPage(ind, lang) {
                 <h2 class="mb-4">${trans.finalCtaHeadline}</h2>
                 <p class="lead mb-8">${trans.finalCtaDescription}</p>
                 <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
-                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">${isNl ? 'Start Gratis Proefperiode' : isEs ? 'Comenzar Prueba Gratuita' : 'Start Free Trial'}</a>
+                    <a href="#" onclick="openPaddleCheckout('autopilot', event)" class="btn btn-accent btn-lg">${isNl ? 'Start Gratis Proefperiode' : isEs ? 'Comenzar Prueba Gratuita' : 'Start Free Trial'}</a>
                     <a href="${isNl ? '/nl/pricing.html' : isEs ? '/es/pricing.html' : '/pricing.html'}" class="btn btn-secondary btn-lg">${isNl ? 'Bekijk Prijzen' : isEs ? 'Ver Precios' : 'View Pricing'}</a>
                 </div>
             </div>
