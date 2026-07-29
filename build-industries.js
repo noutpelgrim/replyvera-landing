@@ -102,6 +102,44 @@ function getHeaderAndFooter(lang) {
     return { header: patchedH, footer: patchedF };
 }
 
+// ─── Localise all internal links for a given language ────────────────────────
+// This is the single source of truth for link rewriting.
+// It is applied to the ENTIRE output HTML for es/nl variants so that
+// every industry link in nav, body, footer, and cards is correctly prefixed.
+function localizeLinks(html, lang) {
+    if (!lang || lang === 'en') return html;
+    const p = '/' + lang;
+    return html
+        // Strip accidental double-prefixes from previous passes
+        .replace(new RegExp(`href="${p}/${lang}/`, 'g'), `href="${p}/`)
+        // Root-relative industry paths
+        .replace(/href="\/industries\/restaurants"/g,  `href="${p}/industries/restaurants"`)
+        .replace(/href="\/industries\/dentists"/g,     `href="${p}/industries/dentists"`)
+        .replace(/href="\/industries\/agencies"/g,     `href="${p}/industries/agencies"`)
+        .replace(/href="\/industries\/martial-arts"/g, `href="${p}/industries/martial-arts"`)
+        .replace(/href="\/industries\/childcare"/g,    `href="${p}/industries/childcare"`)
+        .replace(/href="\/industries\/tutoring"/g,     `href="${p}/industries/tutoring"`)
+        .replace(/href="\/industries\/pet-care"/g,     `href="${p}/industries/pet-care"`)
+        .replace(/href="\/industries\/car-washes"/g,   `href="${p}/industries/car-washes"`)
+        .replace(/href="\/industries\/laundromats"/g,  `href="${p}/industries/laundromats"`)
+        // Relative industry paths (missing leading slash)
+        .replace(/href="industries\/restaurants"/g,  `href="${p}/industries/restaurants"`)
+        .replace(/href="industries\/dentists"/g,     `href="${p}/industries/dentists"`)
+        .replace(/href="industries\/agencies"/g,     `href="${p}/industries/agencies"`)
+        .replace(/href="industries\/martial-arts"/g, `href="${p}/industries/martial-arts"`)
+        .replace(/href="industries\/childcare"/g,    `href="${p}/industries/childcare"`)
+        .replace(/href="industries\/tutoring"/g,     `href="${p}/industries/tutoring"`)
+        .replace(/href="industries\/pet-care"/g,     `href="${p}/industries/pet-care"`)
+        .replace(/href="industries\/car-washes"/g,   `href="${p}/industries/car-washes"`)
+        .replace(/href="industries\/laundromats"/g,  `href="${p}/industries/laundromats"`)
+        // Root pages
+        .replace(/href="\/index\.html"/g,  `href="${p}/index.html"`)
+        .replace(/href="\/pricing\.html"/g,`href="${p}/pricing.html"`)
+        .replace(/href="\/terms\.html"/g,  `href="${p}/terms.html"`)
+        .replace(/href="\/privacy\.html"/g,`href="${p}/privacy.html"`)
+        .replace(/href="\/cookie\.html"/g, `href="${p}/cookie.html"`);
+}
+
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 function stars(n) {
     let s = '';
@@ -1025,7 +1063,8 @@ industryPages.forEach(ind => {
         header = header.replace(`href="${lang ? '/' + lang : ''}/industries/${ind.slug}" class="dropdown-item"`, `href="${lang ? '/' + lang : ''}/industries/${ind.slug}" class="dropdown-item active"`);
         header = header.replace(`href="${lang ? '/' + lang : ''}/industries/${ind.slug}" class="mobile-industry-item"`, `href="${lang ? '/' + lang : ''}/industries/${ind.slug}" class="mobile-industry-item active"`);
 
-        const fullPage = header + '\n' + bodyContent + '\n' + hf.footer.replace('</body>', `${demoScript}\n</body>`);
+        // Apply link localisation to the complete page (header + body + footer)
+        let fullPage = localizeLinks(header + '\n' + bodyContent + '\n' + hf.footer.replace('</body>', `${demoScript}\n</body>`), lang);
 
         const indDir = lang ? path.join(__dirname, lang, 'industries', ind.slug) : path.join(__dirname, 'industries', ind.slug);
         if (!fs.existsSync(indDir)) fs.mkdirSync(indDir, { recursive: true });
