@@ -1,5 +1,8 @@
 const fs = require('fs');
 const path = require('path');
+const { localizeAllHtmlLinks, localizePath } = require('./lib/router');
+const { uiTranslations, industryTranslations } = require('./lib/industry_translations');
+
 
 // ─── Extract nav + footer from index.html ───────────────────────────────────
 const templatePath = path.join(__dirname, 'index.html');
@@ -25,120 +28,46 @@ const footerSplit = restPart.split('<!-- Footer -->');
 if (footerSplit.length < 2) { console.error('<!-- Footer --> not found'); process.exit(1); }
 const rawFooter = '<!-- Footer -->' + footerSplit[1];
 
-// Patch paths to be absolute root-relative for sub-pages
-function patchHeader(h) {
-    return h
-        .replace(/href="index\.html"/g,              'href="/index.html"')
-        .replace(/href="pricing\.html"/g,            'href="/pricing.html"')
-        .replace(/href="industries\/restaurants"/g,  'href="/industries/restaurants"')
-        .replace(/href="industries\/dentists"/g,     'href="/industries/dentists"')
-        .replace(/href="industries\/agencies"/g,     'href="/industries/agencies"')
-        .replace(/href="industries\/martial-arts"/g, 'href="/industries/martial-arts"')
-        .replace(/href="industries\/childcare"/g,    'href="/industries/childcare"')
-        .replace(/href="industries\/tutoring"/g,     'href="/industries/tutoring"')
-        .replace(/href="industries\/pet-care"/g,     'href="/industries/pet-care"')
-        .replace(/href="industries\/car-washes"/g,   'href="/industries/car-washes"')
-        .replace(/href="industries\/laundromats"/g,  'href="/industries/laundromats"')
-        .replace(/href="#product"/g,                 'href="/index.html#product"')
-        .replace(/href="#how-it-works"/g,            'href="/index.html#how-it-works"')
-        .replace(/href="#pricing"/g,                 'href="/index.html#pricing"')
-        .replace(/href="#faq"/g,                     'href="/index.html#faq"')
-        .replace(/href="#benefits"/g,                'href="/index.html#benefits"');
-}
-
-function patchFooter(f) {
-    return f
-        .replace(/href="index\.html/g,   'href="/index.html')
-        .replace(/href="pricing\.html/g, 'href="/pricing.html')
-        .replace(/href="terms\.html"/g,  'href="/terms.html"')
-        .replace(/href="privacy\.html"/g,'href="/privacy.html"')
-        .replace(/href="cookie\.html"/g, 'href="/cookie.html"')
-        .replace(/src="script\.js"/g,    'src="/script.js"');
-}
-
 function getHeaderAndFooter(lang) {
     const isDefault = !lang || lang === 'en';
     const filePath = isDefault ? path.join(__dirname, 'index.html') : path.join(__dirname, lang, 'index.html');
-    if (!fs.existsSync(filePath)) return { header: baseHeader, footer: baseFooter };
+    if (!fs.existsSync(filePath)) return { header: rawHeader, footer: rawFooter };
 
     const fileHtml = fs.readFileSync(filePath, 'utf8');
     let navSplit = fileHtml.split('<!-- 2. Hero -->');
     if (navSplit.length < 2) navSplit = fileHtml.split('<header class="hero"');
-    if (navSplit.length < 2) return { header: baseHeader, footer: baseFooter };
+    if (navSplit.length < 2) return { header: rawHeader, footer: rawFooter };
 
     const rawH = navSplit[0];
     const restP = navSplit[1];
     const footerSplit = restP.split('<!-- Footer -->');
-    const rawF = footerSplit.length >= 2 ? '<!-- Footer -->' + footerSplit[1] : baseFooter;
+    const rawF = footerSplit.length >= 2 ? '<!-- Footer -->' + footerSplit[1] : rawFooter;
 
-    const langPrefix = isDefault ? '' : '/' + lang;
+    const targetLang = lang || 'en';
+    let patchedH = rawH;
 
-    const patchedH = rawH
-        .replace(/href="index\.html"/g,              `href="${langPrefix}/index.html"`)
-        .replace(/href="pricing\.html"/g,            `href="${langPrefix}/pricing.html"`)
-        .replace(/href="industries\/restaurants"/g,  `href="${langPrefix}/industries/restaurants"`)
-        .replace(/href="industries\/dentists"/g,     `href="${langPrefix}/industries/dentists"`)
-        .replace(/href="industries\/agencies"/g,     `href="${langPrefix}/industries/agencies"`)
-        .replace(/href="industries\/martial-arts"/g, `href="${langPrefix}/industries/martial-arts"`)
-        .replace(/href="industries\/childcare"/g,    `href="${langPrefix}/industries/childcare"`)
-        .replace(/href="industries\/tutoring"/g,     `href="${langPrefix}/industries/tutoring"`)
-        .replace(/href="industries\/pet-care"/g,     `href="${langPrefix}/industries/pet-care"`)
-        .replace(/href="industries\/car-washes"/g,   `href="${langPrefix}/industries/car-washes"`)
-        .replace(/href="industries\/laundromats"/g,  `href="${langPrefix}/industries/laundromats"`)
-        .replace(/href="#product"/g,                 `href="${langPrefix}/index.html#product"`)
-        .replace(/href="#how-it-works"/g,            `href="${langPrefix}/index.html#how-it-works"`)
-        .replace(/href="#pricing"/g,                 `href="${langPrefix}/index.html#pricing"`)
-        .replace(/href="#faq"/g,                     `href="${langPrefix}/index.html#faq"`)
-        .replace(/href="#benefits"/g,                `href="${langPrefix}/index.html#benefits"`);
+    // Update language selector button label (EN -> NL / ES)
+    patchedH = patchedH.replace(/<button class="lang-btn"[^>]*>[\s\S]*?<\/button>/, `
+                    <button class="lang-btn" aria-label="Select Language">
+                        <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> ${targetLang.toUpperCase()}
+                    </button>`);
 
-    const patchedF = rawF
-        .replace(/href="index\.html/g,   `href="${langPrefix}/index.html`)
-        .replace(/href="pricing\.html/g, `href="${langPrefix}/pricing.html`)
-        .replace(/href="terms\.html"/g,  `href="${langPrefix}/terms.html"`)
-        .replace(/href="privacy\.html"/g,`href="${langPrefix}/privacy.html"`)
-        .replace(/href="cookie\.html"/g, `href="${langPrefix}/cookie.html"`)
-        .replace(/src="script\.js"/g,    'src="/script.js"');
+    // Update mobile language selector active state
+    patchedH = patchedH.replace(/class="mobile-lang-opt active"/g, 'class="mobile-lang-opt"');
+    const langUpper = targetLang.toUpperCase();
+    patchedH = patchedH.replace(
+        new RegExp(`class="mobile-lang-opt"\\s+onclick="changeLang\\('${targetLang}',\\s*event\\)">${langUpper}<\\/a>`),
+        `class="mobile-lang-opt active" onclick="changeLang('${targetLang}', event)">${langUpper}</a>`
+    );
+
+    patchedH = localizeAllHtmlLinks(patchedH, targetLang);
+    const patchedF = localizeAllHtmlLinks(rawF, targetLang);
 
     return { header: patchedH, footer: patchedF };
 }
 
-// ─── Localise all internal links for a given language ────────────────────────
-// This is the single source of truth for link rewriting.
-// It is applied to the ENTIRE output HTML for es/nl variants so that
-// every industry link in nav, body, footer, and cards is correctly prefixed.
 function localizeLinks(html, lang) {
-    if (!lang || lang === 'en') return html;
-    const p = '/' + lang;
-    return html
-        // Strip accidental double-prefixes from previous passes
-        .replace(new RegExp(`href="${p}/${lang}/`, 'g'), `href="${p}/`)
-        // Root-relative paths (catch everything from /path up to the closing quote)
-        .replace(/href="\/industries\/restaurants([^"]*)"/g, `href="${p}/industries/restaurants$1"`)
-        .replace(/href="\/industries\/dentists([^"]*)"/g,     `href="${p}/industries/dentists$1"`)
-        .replace(/href="\/industries\/agencies([^"]*)"/g,     `href="${p}/industries/agencies$1"`)
-        .replace(/href="\/industries\/martial-arts([^"]*)"/g, `href="${p}/industries/martial-arts$1"`)
-        .replace(/href="\/industries\/childcare([^"]*)"/g,    `href="${p}/industries/childcare$1"`)
-        .replace(/href="\/industries\/tutoring([^"]*)"/g,     `href="${p}/industries/tutoring$1"`)
-        .replace(/href="\/industries\/pet-care([^"]*)"/g,     `href="${p}/industries/pet-care$1"`)
-        .replace(/href="\/industries\/car-washes([^"]*)"/g,   `href="${p}/industries/car-washes$1"`)
-        .replace(/href="\/industries\/laundromats([^"]*)"/g,  `href="${p}/industries/laundromats$1"`)
-        // Relative paths (missing leading slash)
-        .replace(/href="industries\/restaurants([^"]*)"/g,    `href="${p}/industries/restaurants$1"`)
-        .replace(/href="industries\/dentists([^"]*)"/g,       `href="${p}/industries/dentists$1"`)
-        .replace(/href="industries\/agencies([^"]*)"/g,       `href="${p}/industries/agencies$1"`)
-        .replace(/href="industries\/martial-arts([^"]*)"/g,   `href="${p}/industries/martial-arts$1"`)
-        .replace(/href="industries\/childcare([^"]*)"/g,      `href="${p}/industries/childcare$1"`)
-        .replace(/href="industries\/tutoring([^"]*)"/g,       `href="${p}/industries/tutoring$1"`)
-        .replace(/href="industries\/pet-care([^"]*)"/g,       `href="${p}/industries/pet-care$1"`)
-        .replace(/href="industries\/car-washes([^"]*)"/g,     `href="${p}/industries/car-washes$1"`)
-        .replace(/href="industries\/laundromats([^"]*)"/g,    `href="${p}/industries/laundromats$1"`)
-        // Root pages — ([^"]*) captures optional hash/query so /index.html#how-it-works is also rewritten
-        .replace(/href="(\/index\.html[^"]*)"/g,   (_, rest) => `href="${p}${rest}"`)
-        .replace(/href="(\/pricing\.html[^"]*)"/g, (_, rest) => `href="${p}${rest}"`)
-        .replace(/href="(\/terms\.html[^"]*)"/g,   (_, rest) => `href="${p}${rest}"`)
-        .replace(/href="(\/privacy\.html[^"]*)"/g, (_, rest) => `href="${p}${rest}"`)
-        .replace(/href="(\/cookie\.html[^"]*)"/g,  (_, rest) => `href="${p}${rest}"`)
-        .replace(/href="(\/demo\.html[^"]*)"/g,    (_, rest) => `href="${p}${rest}"`);
+    return localizeAllHtmlLinks(html, lang || 'en');
 }
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -160,7 +89,13 @@ function renderBenefits(benefits) {
         </div>`).join('');
 }
 
-function renderReviews(examples) {
+function renderReviews(examples, ui, currentLang) {
+    const isNl = currentLang === 'nl';
+    const isEs = currentLang === 'es';
+    const responseLabel = isNl ? 'ReplyVera reactie' : isEs ? 'Respuesta de ReplyVera' : 'ReplyVera response';
+    const sensitiveTypeLabel = ui ? ui.sensitiveReviewType : 'Sensitive Review';
+    const alertSubLabel = isNl ? 'Een manager moet dit controleren voordat het wordt gepubliceerd.' : isEs ? 'Un gerente debe revisar esto antes de publicar.' : 'A manager must review this before publishing.';
+
     return examples.map(ex => {
         const starHtml = stars(ex.rating);
         if (ex.isAlert) {
@@ -168,27 +103,28 @@ function renderReviews(examples) {
         <div class="review-card">
             <div class="review-card-top">
                 <div class="review-stars">${starHtml}</div>
-                <span class="review-type">${ex.type || 'Sensitive Review'}</span>
+                <span class="review-type">${ex.type || sensitiveTypeLabel}</span>
             </div>
             <p class="review-quote">${ex.quote}</p>
             <div class="review-alert-box">
                 <div class="review-alert-title">
                     <i data-lucide="alert-triangle" style="width:13px;height:13px;"></i>
-                    Sensitive topic detected
+                    ${ex.alertTitle || (ui ? ui.sensitiveDetected : 'Sensitive topic detected')}
                 </div>
-                <p class="review-alert-sub">A manager must review this before publishing.</p>
+                <p class="review-alert-sub">${ex.alertText || alertSubLabel}</p>
             </div>
-            <span class="review-badge badge-blocked" style="align-self:flex-start;">Auto-Publishing Blocked</span>
+            <span class="review-badge badge-blocked" style="align-self:flex-start;">${ui ? ui.autoPublishingBlocked : 'Auto-Publishing Blocked'}</span>
         </div>`;
         }
-        const badgeClass  = ex.needsApproval ? 'badge-approval' : 'badge-auto';
-        const badgeLabel  = ex.needsApproval ? 'Needs Approval'  : 'Safe to Auto-Publish';
-        const responseLabel = 'ReplyVera response';
+        const badgeClass = ex.needsApproval ? 'badge-approval' : 'badge-auto';
+        const badgeLabel = ex.needsApproval ? (ui ? ui.needsApproval : 'Needs Approval') : (ui ? ui.safeToAutoPublish : 'Safe to Auto-Publish');
+        const defaultType = ex.needsApproval ? (ui ? ui.negativeReviewType : 'Negative Review') : (ui ? ui.positiveReviewType : 'Positive Review');
+
         return `
         <div class="review-card">
             <div class="review-card-top">
                 <div class="review-stars">${starHtml}</div>
-                <span class="review-type">${ex.type || (ex.needsApproval ? 'Negative Review' : 'Positive Review')}</span>
+                <span class="review-type">${ex.type || defaultType}</span>
             </div>
             <p class="review-quote">${ex.quote}</p>
             <div class="review-response-box">
@@ -215,106 +151,143 @@ function renderFAQ(items) {
         </div>`).join('');
 }
 
-function renderPricingSection(isAgency, ind) {
+function renderPricingSection(isAgency, ind, ui, lang) {
+    const currentLang = lang || 'en';
+    const isNl = currentLang === 'nl';
+    const isEs = currentLang === 'es';
+
+    const agencyTitle = isNl ? 'Eenvoudige Prijzen voor Marketingbureaus' : isEs ? 'Precios Simples para Agencias' : 'Pricing Built for Agencies';
+    const agencySub = isNl ? 'Beheer reviewreacties voor al uw klanten vanuit één centraal dashboard.' : isEs ? 'Gestiona respuestas de reseñas para todos tus clientes desde un panel central.' : 'Manage Google review responses for multiple clients from one dashboard, with separate brand voices, approval rules, and team access.';
+    const agencyCardTitle = 'Agency';
+    const startingAt = isNl ? 'Vanaf $149' : isEs ? 'Desde $149' : 'Starting at $149';
+    const perMonth = isNl ? 'per maand' : isEs ? 'por mes' : 'per month';
+    const agencyTagline = isNl ? 'Voor bureaus die Google-reviewreacties beheren voor meerdere klantlocaties.' : isEs ? 'Para agencias que gestionan respuestas de reseñas de Google para múltiples clientes.' : 'For agencies managing Google review responses for multiple client locations.';
+    
+    const feat1 = isNl ? '10 klantlocaties inbegrepen' : isEs ? '10 ubicaciones de clientes incluidas' : '10 client locations included';
+    const feat2 = isNl ? 'Centraal multi-client dashboard' : isEs ? 'Panel central multi-cliente' : 'Central multi-client dashboard';
+    const feat3 = isNl ? 'Eigen merkstem per klant' : isEs ? 'Voz de marca propia para cada cliente' : 'Separate brand voice for every client';
+    const feat4 = isNl ? 'Toegang voor klantgoedkeuring' : isEs ? 'Acceso de aprobación para clientes' : 'Client approval access';
+    const feat5 = isNl ? 'Toegang voor teamleden' : isEs ? 'Acceso para miembros del equipo' : 'Team member access';
+    const feat6 = isNl ? 'Bureau-rapportage' : isEs ? 'Informes para agencias' : 'Agency reporting';
+    const extraLoc = isNl ? 'Aanvullende klantlocaties beschikbaar tegen maandelijkse vergoeding.' : isEs ? 'Ubicaciones adicionales disponibles por una cuota mensual.' : 'Additional client locations available for a monthly fee.';
+    const startAgency = isNl ? 'Start Bureau Proefperiode' : isEs ? 'Comenzar Prueba de Agencia' : 'Start Agency Trial';
+
+    const needOwnTitle = isNl ? 'ReplyVera Nodig voor uw Eigen Bedrijf?' : isEs ? '¿Necesitas ReplyVera para tu Propio Negocio?' : 'Need ReplyVera for Your Own Business?';
+    const needOwnSub = isNl ? 'Starter, Autopilot en Multi-Locatie abonnementen zijn ook beschikbaar.' : isEs ? 'Los planes Starter, Autopilot y Multi-Ubicación también están disponibles.' : 'Starter, Autopilot, and Multi-Location plans are also available for individual businesses.';
+    const viewBizPricing = isNl ? 'Bekijk Kleine-Bedrijven Prijzen' : isEs ? 'Ver Precios para Pequeñas Empresas' : 'View Small-Business Pricing';
+
     if (isAgency) {
         return `
-    ${ind.theme.divider === 'glow' ? '<div class=\"industry-divider-glow\"></div>' : '<div class=\"industry-divider-line\"></div>'}\n    <!-- Pricing -->
+    ${ind.theme.divider === 'glow' ? '<div class="industry-divider-glow"></div>' : '<div class="industry-divider-line"></div>'}
+    <!-- Pricing -->
     <section class="section section-dark" id="pricing">
         <div class="container">
             <div class="section-header">
-                <h2>Pricing Built for Agencies</h2>
-                <p>Manage Google review responses for multiple clients from one dashboard, with separate brand voices, approval rules, and team access.</p>
+                <h2>${agencyTitle}</h2>
+                <p>${agencySub}</p>
             </div>
             <div style="max-width:460px;margin:0 auto;">
                 <div class="pricing-card featured" style="padding:36px 32px;">
-                    <div class="pricing-name" style="margin-bottom:8px;">Agency</div>
-                    <div class="pricing-price" style="font-size:2.2rem;">Starting at $149</div>
-                    <div class="pricing-period">per month</div>
-                    <p class="pricing-tagline" style="margin-bottom:28px;">For agencies managing Google review responses for multiple client locations.</p>
+                    <div class="pricing-name" style="margin-bottom:8px;">${agencyCardTitle}</div>
+                    <div class="pricing-price" style="font-size:2.2rem;">${startingAt}</div>
+                    <div class="pricing-period">${perMonth}</div>
+                    <p class="pricing-tagline" style="margin-bottom:28px;">${agencyTagline}</p>
                     <ul class="pricing-features" style="display:flex;flex-direction:column;gap:16px;">
-                        <li><i data-lucide="check" style="width:16px;height:16px;color:var(--accent);"></i> 10 client locations included</li>
-                        <li><i data-lucide="check" style="width:16px;height:16px;color:var(--accent);"></i> Central multi-client dashboard</li>
-                        <li><i data-lucide="check" style="width:16px;height:16px;color:var(--accent);"></i> Separate brand voice for every client</li>
-                        <li><i data-lucide="check" style="width:16px;height:16px;color:var(--accent);"></i> Client approval access</li>
-                        <li><i data-lucide="check" style="width:16px;height:16px;color:var(--accent);"></i> Team member access</li>
-                        <li><i data-lucide="check" style="width:16px;height:16px;color:var(--accent);"></i> Agency reporting</li>
+                        <li><i data-lucide="check" style="width:16px;height:16px;color:var(--accent);"></i> ${feat1}</li>
+                        <li><i data-lucide="check" style="width:16px;height:16px;color:var(--accent);"></i> ${feat2}</li>
+                        <li><i data-lucide="check" style="width:16px;height:16px;color:var(--accent);"></i> ${feat3}</li>
+                        <li><i data-lucide="check" style="width:16px;height:16px;color:var(--accent);"></i> ${feat4}</li>
+                        <li><i data-lucide="check" style="width:16px;height:16px;color:var(--accent);"></i> ${feat5}</li>
+                        <li><i data-lucide="check" style="width:16px;height:16px;color:var(--accent);"></i> ${feat6}</li>
                     </ul>
-                    <p style="font-size:0.85rem;color:var(--text-muted);margin:24px 0 28px;text-align:center;">Additional client locations available for a monthly fee.</p>
-                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent" style="text-align:center;justify-content:center;width:100%;">Start Agency Trial</a>
+                    <p style="font-size:0.85rem;color:var(--text-muted);margin:24px 0 28px;text-align:center;">${extraLoc}</p>
+                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent" style="text-align:center;justify-content:center;width:100%;">${startAgency}</a>
                 </div>
             </div>
             
             <div class="text-center" style="margin-top:80px; max-width:540px; margin-left:auto; margin-right:auto; padding-top:40px; border-top:1px solid var(--border);">
-                <h3 style="font-size:1.3rem; margin-bottom:12px; color:var(--text-primary);">Need ReplyVera for Your Own Business?</h3>
-                <p style="font-size:0.95rem; color:var(--text-secondary); margin-bottom:24px;">Starter, Autopilot, and Multi-Location plans are also available for individual businesses.</p>
-                <a href="/pricing.html" class="btn btn-secondary" style="font-size:0.9rem;">View Small-Business Pricing</a>
+                <h3 style="font-size:1.3rem; margin-bottom:12px; color:var(--text-primary);">${needOwnTitle}</h3>
+                <p style="font-size:0.95rem; color:var(--text-secondary); margin-bottom:24px;">${needOwnSub}</p>
+                <a href="/pricing.html" class="btn btn-secondary" style="font-size:0.9rem;">${viewBizPricing}</a>
             </div>
         </div>
     </section>`;
     }
 
+    const starterTagline = isNl ? 'U keurt elke reactie goed voordat deze wordt gepubliceerd.' : isEs ? 'Apruebas cada respuesta antes de que se publique.' : 'You approve every reply before it is published.';
+    const autopilotTagline = isNl ? 'Veilige reacties worden automatisch gepubliceerd. Gevoelige reviews blijven onder uw goedkeuring.' : isEs ? 'Las respuestas seguras se publican automáticamente. Las reseñas sensibles requieren tu aprobación.' : 'Safe replies publish automatically. Sensitive reviews stay under your approval.';
+    const multiTagline = isNl ? 'Beheer al uw locaties vanuit één account met regels op locatieniveau.' : isEs ? 'Administra todas tus sedes desde una sola cuenta con reglas por ubicación.' : 'Manage all your locations from one account with location-level rules.';
+    const multiTitle = isNl ? 'Meerdere Locaties' : isEs ? 'Multi-Ubicación' : 'Multi-Location';
+    const from79 = isNl ? 'Vanaf $79' : isEs ? 'Desde $79' : 'From $79';
+
     return `
-    ${ind.theme.divider === 'glow' ? '<div class=\"industry-divider-glow\"></div>' : '<div class=\"industry-divider-line\"></div>'}\n    <!-- Pricing -->
+    ${ind.theme.divider === 'glow' ? '<div class="industry-divider-glow"></div>' : '<div class="industry-divider-line"></div>'}
+    <!-- Pricing -->
     <section class="section section-dark" id="pricing">
         <div class="container">
             <div class="section-header">
-                <h2>Simple Pricing for Small Businesses</h2>
-                <p>Start free. No credit card required. Cancel anytime.</p>
+                <h2>${ui.pricingTitle}</h2>
+                <p>${ui.pricingSub}</p>
             </div>
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <div class="pricing-name">Starter</div>
                     <div class="pricing-price">$29</div>
-                    <div class="pricing-period">per month</div>
-                    <p class="pricing-tagline">You approve every reply before it is published.</p>
+                    <div class="pricing-period">${perMonth}</div>
+                    <p class="pricing-tagline">${starterTagline}</p>
                     <ul class="pricing-features">
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> One location</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Up to 30 replies per month</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Manual approval for all reviews</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Custom tone</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> English and Spanish</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Negative-review alerts</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Eén locatie' : isEs ? 'Una ubicación' : 'One location'}</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Tot 30 reacties per maand' : isEs ? 'Hasta 30 respuestas por mes' : 'Up to 30 replies per month'}</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Handmatige goedkeuring voor alle reviews' : isEs ? 'Aprobación manual para todas las reseñas' : 'Manual approval for all reviews'}</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Aangepaste merktoon' : isEs ? 'Tono personalizado' : 'Custom tone'}</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Engels en Spaans' : isEs ? 'Inglés y Español' : 'English and Spanish'}</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Meldingen bij negatieve reviews' : isEs ? 'Alertas de reseñas negativas' : 'Negative-review alerts'}</li>
                     </ul>
-                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-secondary" style="text-align:center;justify-content:center;">Start Free Trial</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-secondary" style="text-align:center;justify-content:center;">${ui.startFreeTrial}</a>
                 </div>
                 <div class="pricing-card featured">
-                    <div class="pricing-popular">Most Popular</div>
+                    <div class="pricing-popular">${isNl ? 'Meest Populair' : isEs ? 'Más Popular' : 'Most Popular'}</div>
                     <div class="pricing-name">Autopilot</div>
                     <div class="pricing-price">$39</div>
-                    <div class="pricing-period">per month</div>
-                    <p class="pricing-tagline">Safe replies publish automatically. Sensitive reviews stay under your approval.</p>
+                    <div class="pricing-period">${perMonth}</div>
+                    <p class="pricing-tagline">${autopilotTagline}</p>
                     <ul class="pricing-features">
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> One location</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Unlimited review responses*</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Automatic publishing for safe reviews</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Sensitive-review detection</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Custom brand voice</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Review history</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Eén locatie' : isEs ? 'Una ubicación' : 'One location'}</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Onbeperkt aantal reviewreacties*' : isEs ? 'Respuestas ilimitadas*' : 'Unlimited review responses*'}</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Automatisch publiceren van veilige reviews' : isEs ? 'Publicación automática de reseñas seguras' : 'Automatic publishing for safe reviews'}</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Detectie van gevoelige reviews' : isEs ? 'Detección de reseñas sensibles' : 'Sensitive-review detection'}</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Aangepaste merkstem' : isEs ? 'Voz de marca personalizada' : 'Custom brand voice'}</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Geschiedenis van reviews' : isEs ? 'Historial de reseñas' : 'Review history'}</li>
                     </ul>
-                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent" style="text-align:center;justify-content:center;">Start Free Trial</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent" style="text-align:center;justify-content:center;">${ui.startFreeTrial}</a>
                 </div>
                 <div class="pricing-card">
-                    <div class="pricing-name">Multi-Location</div>
-                    <div class="pricing-price" style="font-size:1.85rem;">From $79</div>
-                    <div class="pricing-period">per month</div>
-                    <p class="pricing-tagline">Manage all your locations from one account with location-level rules.</p>
+                    <div class="pricing-name">${multiTitle}</div>
+                    <div class="pricing-price" style="font-size:1.85rem;">${from79}</div>
+                    <div class="pricing-period">${perMonth}</div>
+                    <p class="pricing-tagline">${multiTagline}</p>
                     <ul class="pricing-features">
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Three locations included</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Central dashboard</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Location-specific rules</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Team access</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Additional locations available</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Drie locaties inbegrepen' : isEs ? 'Tres ubicaciones incluidas' : 'Three locations included'}</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Centraal dashboard' : isEs ? 'Panel central' : 'Central dashboard'}</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Regels op locatieniveau' : isEs ? 'Reglas por ubicación' : 'Location-specific rules'}</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Teamtoegang' : isEs ? 'Acceso de equipo' : 'Team access'}</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Aanvullende locaties beschikbaar' : isEs ? 'Ubicaciones adicionales disponibles' : 'Additional locations available'}</li>
                     </ul>
-                    <a href="/pricing.html" class="btn btn-secondary" style="text-align:center;justify-content:center;">Start Multi-Location Trial</a>
+                    <a href="/pricing.html" class="btn btn-secondary" style="text-align:center;justify-content:center;">${isNl ? 'Start Proefperiode Meerdere Locaties' : isEs ? 'Iniciar Prueba Multi-Ubicación' : 'Start Multi-Location Trial'}</a>
                 </div>
             </div>
-            <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:24px;">14-day free trial. Cancel anytime.</p>
+            <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:24px;">${isNl ? '14 dagen gratis proefperiode. Annuleer op elk moment.' : isEs ? 'Prueba gratuita de 14 días. Cancela en cualquier momento.' : '14-day free trial. Cancel anytime.'}</p>
         </div>
     </section>`;
 }
 
 // ─── Main render function ─────────────────────────────────────────────────────
-function renderIndustryPage(ind) {
+function renderIndustryPage(ind, lang) {
+    const currentLang = lang || 'en';
+    const ui = uiTranslations[currentLang] || uiTranslations.en;
+    const indTrans = (industryTranslations[currentLang] && industryTranslations[currentLang][ind.slug]) ? industryTranslations[currentLang][ind.slug] : {};
+    const localizedInd = { ...ind, ...indTrans };
+    const indObj = localizedInd;
     const isAgency = ind.slug === 'agencies';
     const themeStyles = `
     <style>
@@ -339,15 +312,15 @@ function renderIndustryPage(ind) {
                         <i data-lucide="google" style="width:12px;height:12px;color:#DB4437;"></i>
                         Google Review Automation
                     </div>
-                    <h1 class="mb-6">${ind.heroHeadline}</h1>
-                    <p class="lead mb-8">${ind.heroDescription}</p>
+                    <h1 class="mb-6">${indObj.heroHeadline}</h1>
+                    <p class="lead mb-8">${indObj.heroDescription}</p>
                     <div class="hero-actions">
-                        <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">${isAgency ? 'Start Agency Trial' : 'Start Your Free Trial'}</a>
-                        <a href="/index.html#how-it-works" class="btn btn-secondary btn-lg">See How It Works</a>
+                        <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">${isAgency ? (currentLang === 'nl' ? 'Start Bureau Proefperiode' : currentLang === 'es' ? 'Comenzar Prueba de Agencia' : 'Start Agency Trial') : ui.startYourFreeTrial}</a>
+                        <a href="/index.html#how-it-works" class="btn btn-secondary btn-lg">${ui.seeHowItWorks}</a>
                     </div>
                     <div class="hero-trust">
                         <i data-lucide="shield-check" style="width:13px;height:13px;color:var(--accent);"></i>
-                        Built for Google Reviews &nbsp;·&nbsp; ${isAgency ? 'Agency plans start at $149 per month. Cancel anytime.' : 'Plans start at $29 per month'}
+                        ${ui.builtForGoogle} &nbsp;·&nbsp; ${isAgency ? ui.agencyPlans149 : ui.plansStart29}
                     </div>
                 </div>
                 <div class="mockup-card">
@@ -355,31 +328,31 @@ function renderIndustryPage(ind) {
                         <div class="mockup-dots"><span></span><span></span><span></span></div>
                         <div class="mockup-url"><i data-lucide="lock" style="width:10px;height:10px;"></i> replyvera.com/dashboard</div>
                         <div style="font-size:0.7rem;font-weight:700;color:var(--industry-accent, var(--accent));display:flex;align-items:center;gap:5px;">
-                            <span style="width:6px;height:6px;background:var(--accent);border-radius:50%;display:inline-block;"></span>Active
+                            <span style="width:6px;height:6px;background:var(--accent);border-radius:50%;display:inline-block;"></span>${ui.active}
                         </div>
                     </div>
-                    <div style="font-size:0.72rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px;">Recent Reviews</div>
+                    <div style="font-size:0.72rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px;">${ui.recentReviews}</div>
                     <div class="review-rows">
                         <div class="review-row-item">
                             <div class="review-row-meta">
                                 <div class="review-row-stars">${stars(5)}</div>
                                 <div class="review-row-text">"${ind.mockupPositive || 'Great service and friendly staff.'}"</div>
                             </div>
-                            <span class="review-badge badge-auto">Safe to Auto-Publish</span>
+                            <span class="review-badge badge-auto">${ui.safeToAutoPublish}</span>
                         </div>
                         <div class="review-row-item">
                             <div class="review-row-meta">
                                 <div class="review-row-stars">${stars(2)}</div>
                                 <div class="review-row-text">"${ind.mockupNegative || 'Service did not meet expectations.'}"</div>
                             </div>
-                            <span class="review-badge badge-approval">Needs Approval</span>
+                            <span class="review-badge badge-approval">${ui.needsApproval}</span>
                         </div>
                         <div class="review-row-item">
                             <div class="review-row-meta">
                                 <div class="review-row-stars">${stars(1)}</div>
                                 <div class="review-row-text">"${ind.mockupSensitive || 'Serious complaint requiring review.'}"</div>
                             </div>
-                            <span class="review-badge badge-blocked">Auto-Publishing Blocked</span>
+                            <span class="review-badge badge-blocked">${ui.autoPublishingBlocked}</span>
                         </div>
                     </div>
                 </div>
@@ -405,22 +378,22 @@ function renderIndustryPage(ind) {
     <section class="section section-dark" id="how-it-works">
         <div class="container">
             <div class="section-header">
-                <h2>Connect Google. Set Your Rules. Let ReplyVera Handle the Rest.</h2>
+                <h2>${ui.howItWorksTitle}</h2>
             </div>
             <div class="steps-grid">
                 <div class="step-card">
                     <div class="step-number">1</div>
-                    <div class="step-title">Connect Google Business Profile</div>
-                    <p class="step-text">Securely connect one or more business locations. No passwords stored, and you can disconnect anytime.</p>
+                    <div class="step-title">${ui.step1Title}</div>
+                    <p class="step-text">${ui.step1Text}</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">2</div>
-                    <div class="step-title">Choose Your Tone and Approval Rules</div>
+                    <div class="step-title">${ui.step2Title}</div>
                     <p class="step-text">${ind.step2Text}</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">3</div>
-                    <div class="step-title">ReplyVera Handles New Reviews</div>
+                    <div class="step-title">${ui.step3Title}</div>
                     <p class="step-text">${ind.step3Text}</p>
                 </div>
             </div>
@@ -436,24 +409,24 @@ function renderIndustryPage(ind) {
                 <p>${ind.reviewsSubhead || 'See how different review types are handled based on your configuration.'}</p>
             </div>
             <div class="reviews-grid">
-                ${renderReviews(ind.reviewExamples)}
+                ${renderReviews(indObj.reviewExamples, ui, currentLang)}
             </div>
         </div>
     </section>`;
 
     const sensitiveSection = `
-    ${ind.theme.divider === 'glow' ? '<div class=\"industry-divider-glow\"></div>' : '<div class=\"industry-divider-line\"></div>'}\n    <!-- Sensitive Review Protection -->
+    ${ind.theme.divider === 'glow' ? '<div class=\"industry-divider-glow\"></div>' : '<div class=\"industry-divider-line\"></div>'}\n    <!-- ${ui.sensitiveProtection} -->
     <section class="section section-dark">
         <div class="container">
             <div class="sensitive-inner">
                 <div>
                     <div class="eyebrow" style="margin-bottom:16px;">
                         <i data-lucide="shield-alert" style="width:12px;height:12px;"></i>
-                        Sensitive Review Protection
+                        ${ui.sensitiveProtection}
                     </div>
                     <h2 style="margin-bottom:12px;">${ind.sensitiveHeadline}</h2>
-                    <p style="margin-bottom:16px;">ReplyVera never publishes sensitive feedback automatically. When a review matches a protected topic, auto-publishing is blocked and you receive an immediate alert.</p>
-                    <p style="font-size:0.82rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;">Monitored topics:</p>
+                    <p style="margin-bottom:16px;">${ui.sensitiveIntroText}</p>
+                    <p style="font-size:0.82rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;">${ui.monitoredTopics}</p>
                     <div class="topic-tags">
                         ${renderTopics(ind.sensitiveTopics)}
                     </div>
@@ -462,12 +435,12 @@ function renderIndustryPage(ind) {
                     <div class="sensitive-alert">
                         <div class="sensitive-alert-title">
                             <i data-lucide="alert-triangle" style="width:16px;height:16px;"></i>
-                            Sensitive Topic Detected
+                            ${ui.sensitiveDetected}
                         </div>
-                        <p class="sensitive-alert-text" style="margin-bottom:12px;">Auto-publishing has been blocked. A draft has been prepared but will not go live until you approve it.</p>
+                        <p class="sensitive-alert-text" style="margin-bottom:12px;">${ui.sensitiveBoxText}</p>
                         <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                            <span class="review-badge badge-blocked">Auto-Publishing Blocked</span>
-                            <span style="font-size:0.68rem;font-weight:700;padding:3px 9px;border-radius:4px;background:rgba(245,158,11,0.1);color:#FCD34D;border:1px solid rgba(245,158,11,0.2);">Owner Notified</span>
+                            <span class="review-badge badge-blocked">${ui.autoPublishingBlocked}</span>
+                            <span style="font-size:0.68rem;font-weight:700;padding:3px 9px;border-radius:4px;background:rgba(245,158,11,0.1);color:#FCD34D;border:1px solid rgba(245,158,11,0.2);">${ui.ownerNotified}</span>
                         </div>
                     </div>
                 </div>
@@ -475,14 +448,14 @@ function renderIndustryPage(ind) {
         </div>
     </section>`;
 
-    const pricingSection = renderPricingSection(isAgency, ind);
+    const pricingSection = renderPricingSection(isAgency, indObj, ui, currentLang);
 
     const faqSection = `
     ${ind.theme.divider === 'glow' ? '<div class=\"industry-divider-glow\"></div>' : '<div class=\"industry-divider-line\"></div>'}\n    <!-- FAQ -->
     <section class="section section-light" id="faq">
         <div class="container" style="max-width:760px;">
             <div class="section-header">
-                <h2>Frequently Asked Questions</h2>
+                <h2>${ui.faqTitle}</h2>
             </div>
             <div class="faq-list">
                 ${renderFAQ(ind.faqItems)}
@@ -498,8 +471,8 @@ function renderIndustryPage(ind) {
                 <h2 class="mb-4">${ind.finalCtaHeadline}</h2>
                 <p class="lead mb-8">${ind.finalCtaDescription}</p>
                 <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
-                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">Start Free Trial</a>
-                    <a href="/pricing.html" class="btn btn-secondary btn-lg">View Pricing</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">${ui.startFreeTrial}</a>
+                    <a href="/pricing.html" class="btn btn-secondary btn-lg">${ui.viewPricing}</a>
                 </div>
             </div>
         </div>
@@ -1052,14 +1025,20 @@ if (!allValid) { console.error('Validation failed. Fix errors above before build
 
 // ─── Build pages ──────────────────────────────────────────────────────────────
 industryPages.forEach(ind => {
-    const bodyContent = renderIndustryPage(ind);
-    const demoScript = `<script>window.REPLYVERA_DEMO_DATA = ${JSON.stringify(ind.demo)};</script>`;
-
     ['', 'es', 'nl'].forEach(lang => {
+        const targetLang = lang || 'en';
+        const indTrans = (industryTranslations[targetLang] && industryTranslations[targetLang][ind.slug]) ? industryTranslations[targetLang][ind.slug] : {};
+        const metaTitle = indTrans.metaTitle || ind.metaTitle;
+        const metaDescription = indTrans.metaDescription || ind.metaDescription;
+
+        const bodyContent = renderIndustryPage(ind, targetLang);
+        const demoScript = `<script>window.REPLYVERA_DEMO_DATA = ${JSON.stringify(ind.demo)};</script>`;
+
         const hf = getHeaderAndFooter(lang);
         let header = hf.header
-            .replace(/<title>[^<]+<\/title>/, `<title>${ind.metaTitle}</title>`)
-            .replace(/<meta name="description" content="[^"]+">/, `<meta name="description" content="${ind.metaDescription}">`);
+            .replace(/<html\s+lang=["'][^"']*["']/i, `<html lang="${targetLang}"`)
+            .replace(/<title>[^<]+<\/title>/, `<title>${metaTitle}</title>`)
+            .replace(/<meta name="description" content="[^"]+">/, `<meta name="description" content="${metaDescription}">`);
 
         header = header.replace(`href="${lang ? '/' + lang : ''}/industries/${ind.slug}" class="dropdown-item"`, `href="${lang ? '/' + lang : ''}/industries/${ind.slug}" class="dropdown-item active"`);
         header = header.replace(`href="${lang ? '/' + lang : ''}/industries/${ind.slug}" class="mobile-industry-item"`, `href="${lang ? '/' + lang : ''}/industries/${ind.slug}" class="mobile-industry-item active"`);

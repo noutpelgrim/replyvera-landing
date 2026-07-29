@@ -1,3 +1,25 @@
+window.changeLang = function(lang, event) {
+    if (event && event.preventDefault) event.preventDefault();
+    try { localStorage.setItem('lang_redirected', 'true'); } catch (e) {}
+    
+    let path = window.location.pathname;
+    
+    if (path.startsWith('/es/')) path = path.substring(3);
+    else if (path.startsWith('/nl/')) path = path.substring(3);
+    else if (path === '/es' || path === '/nl') path = '/';
+    
+    if (!path.startsWith('/')) path = '/' + path;
+    
+    let newPath = path;
+    if (lang === 'es') {
+        newPath = '/es' + path;
+    } else if (lang === 'nl') {
+        newPath = '/nl' + path;
+    }
+    
+    window.location.href = newPath + (window.location.hash || '');
+};
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize Lucide Icons
