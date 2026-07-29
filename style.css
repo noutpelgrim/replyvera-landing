@@ -2640,7 +2640,6 @@ footer  { border-top: 1px solid var(--border); padding: 44px 0 24px; }
     color: #F59E0B;
     box-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
 }
-}
 .sandbox-canvas {
     padding: 32px;
     display: flex;
@@ -2710,4 +2709,29 @@ footer  { border-top: 1px solid var(--border); padding: 44px 0 24px; }
     0% { opacity: 0.3; transform: scale(0.9); }
     50% { opacity: 1; transform: scale(1.1); }
     100% { opacity: 0.3; transform: scale(0.9); }
+}
+
+
+/* ─── iOS Safari Touch & Demo Modal Mobile Fixes ─── */
+[onclick], .rv-demo-backdrop, .rv-demo-close, .rv-demo-tab, .preset-btn, .star-pick-btn {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+@media (max-width: 768px) {
+    .rv-demo-container {
+        width: 95vw !important;
+        max-height: 90vh !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 16px !important;
+    }
+    .demo-sandbox-wrapper {
+        margin: 20px 10px !important;
+        border-radius: 12px !important;
+    }
+    .sandbox-controls, .sandbox-canvas {
+        padding: 16px !important;
+    }
 }

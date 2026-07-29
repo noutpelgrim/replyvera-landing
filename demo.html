@@ -886,7 +886,7 @@
                 btn.textContent = 'Review Escalation';
             }
 
-            lucide.createIcons();
+            if (typeof lucide !== "undefined" && lucide.createIcons) { lucide.createIcons(); }
         }
 
         function triggerSimulatedPublish() {
@@ -895,9 +895,17 @@
 
         // Initialize icons
         document.addEventListener('DOMContentLoaded', () => {
-            lucide.createIcons();
+            if (typeof lucide !== "undefined" && lucide.createIcons) { lucide.createIcons(); }
             loadPreset('positive');
         });
     </script>
+
+    <script>
+        if (typeof loadPreset !== 'undefined') window.loadPreset = loadPreset;
+        if (typeof selectStar !== 'undefined') window.selectStar = selectStar;
+        if (typeof runCustomReview !== 'undefined') window.runCustomReview = runCustomReview;
+        if (typeof triggerSimulatedPublish !== 'undefined') window.triggerSimulatedPublish = triggerSimulatedPublish;
+    </script>
+    
 </body>
 </html>

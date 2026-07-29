@@ -235,7 +235,11 @@ function switchScenario(scenario) {
     // Update tabs
     document.querySelectorAll('.rv-demo-tab').forEach(t => t.setAttribute('aria-selected', 'false'));
     document.querySelectorAll('.rv-demo-tab').forEach(t => t.classList.remove('active'));
-    document.querySelector(`.rv-demo-tab[onclick="switchScenario('${scenario}')"]`).classList.add('active');
+    const targetTab = document.querySelector(`.rv-demo-tab[onclick="switchScenario('${scenario}')"]`);
+    if (targetTab) {
+        targetTab.classList.add('active');
+        targetTab.setAttribute('aria-selected', 'true');
+    }
     document.querySelector(`.rv-demo-tab[onclick="switchScenario('${scenario}')"]`).setAttribute('aria-selected', 'true');
     
     const data = getDemoData();
@@ -437,3 +441,15 @@ function keepAsDraftDemo() {
         setTimeout(() => msg.style.opacity = '1', 10);
     }
 }
+
+// Explicitly expose functions to window object for iOS Safari compatibility
+window.openDemoModal = openDemoModal;
+window.closeDemoModal = closeDemoModal;
+window.switchScenario = switchScenario;
+window.runDemoSequence = runDemoSequence;
+window.skipAnimations = skipAnimations;
+window.togglePause = togglePause;
+window.approveAndPublish = approveAndPublish;
+window.editResponseDemo = editResponseDemo;
+window.saveEditedResponseDemo = saveEditedResponseDemo;
+window.keepAsDraftDemo = keepAsDraftDemo;

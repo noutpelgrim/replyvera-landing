@@ -639,13 +639,21 @@
                 }
             }
 
-            if (window.lucide) lucide.createIcons();
+            if (window.lucide) if (typeof lucide !== "undefined" && lucide.createIcons) { lucide.createIcons(); }
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            if (window.lucide) lucide.createIcons();
+            if (window.lucide) if (typeof lucide !== "undefined" && lucide.createIcons) { lucide.createIcons(); }
             loadPreset('positive');
         });
     </script>
+
+    <script>
+        if (typeof loadPreset !== 'undefined') window.loadPreset = loadPreset;
+        if (typeof selectStar !== 'undefined') window.selectStar = selectStar;
+        if (typeof runCustomReview !== 'undefined') window.runCustomReview = runCustomReview;
+        if (typeof triggerSimulatedPublish !== 'undefined') window.triggerSimulatedPublish = triggerSimulatedPublish;
+    </script>
+    
 </body>
 </html>
