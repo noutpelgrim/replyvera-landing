@@ -133,13 +133,15 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.insertAdjacentHTML('beforeend', DEMO_MODAL_HTML);
     lucide.createIcons();
     
-    // Intercept clicks to #how-it-works
+    // Intercept clicks to #how-it-works (Disabled - allow normal anchor scrolling to section)
+    /*
     document.querySelectorAll('a[href$="#how-it-works"]').forEach(el => {
         el.addEventListener('click', (e) => {
             e.preventDefault();
             openDemoModal();
         });
     });
+    */
     
     // Escape key handling
     document.addEventListener('keydown', (e) => {
