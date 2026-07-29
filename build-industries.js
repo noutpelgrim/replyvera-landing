@@ -10,9 +10,15 @@ if (!fs.existsSync(templatePath)) {
 
 const html = fs.readFileSync(templatePath, 'utf8');
 
-const navSplit = html.split('</nav>');
-if (navSplit.length < 2) { console.error('</nav> not found'); process.exit(1); }
-const rawHeader = navSplit[0] + '</nav>';
+let navSplit = html.split('<!-- 2. Hero -->');
+if (navSplit.length < 2) {
+    navSplit = html.split('<header class="hero"');
+    if (navSplit.length >= 2) {
+        navSplit[1] = '<header class="hero"' + navSplit[1];
+    }
+}
+if (navSplit.length < 2) { console.error('Hero section not found in index.html'); process.exit(1); }
+const rawHeader = navSplit[0];
 const restPart  = navSplit[1];
 
 const footerSplit = restPart.split('<!-- Footer -->');
@@ -977,11 +983,20 @@ industryPages.forEach(ind => {
     const demoScript = `<script>window.REPLYVERA_DEMO_DATA = ${JSON.stringify(ind.demo)};</script>`;
     const fullPage = header + '\n' + bodyContent + '\n' + baseFooter.replace('</body>', `${demoScript}\n</body>`);
 
-    const indDir = path.join(__dirname, 'industries', ind.slug);
-    if (!fs.existsSync(indDir)) fs.mkdirSync(indDir, { recursive: true });
+    ['', 'es', 'nl'].forEach(lang => {
+        const langPrefix = lang ? `/${lang}` : '';
+        const indDir = lang ? path.join(__dirname, lang, 'industries', ind.slug) : path.join(__dirname, 'industries', ind.slug);
+        if (!fs.existsSync(indDir)) fs.mkdirSync(indDir, { recursive: true });
 
-    fs.writeFileSync(path.join(indDir, 'index.html'), fullPage, 'utf8');
-    console.log(`✓ Built: industries/${ind.slug}/index.html`);
+        let langHeader = header;
+        if (lang) {
+            // Adjust lang button text in header
+            langHeader = langHeader.replace(/<span class="nav-logo-text">/g, `<span class="nav-logo-text">`);
+        }
+
+        fs.writeFileSync(path.join(indDir, 'index.html'), fullPage, 'utf8');
+        console.log(`✓ Built: ${lang ? lang + '/' : ''}industries/${ind.slug}/index.html`);
+    });
 });
 
-console.log('\n✓ All 9 industry landing pages built successfully.');
+console.log('\n✓ All 9 industry landing pages built successfully across all language targets.');

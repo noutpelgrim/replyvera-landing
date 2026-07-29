@@ -10,8 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
-    <script src="/demo.js?v=6" defer></script>
+    <script src="/demo.js?v=3" defer></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
 
     <script>
@@ -120,7 +119,7 @@
                                     <div class="dropdown-title">Pet Care</div>
                                 </div>
                             </a>
-                            <a href="/industries/car-washes" class="dropdown-item" role="menuitem">
+                            <a href="industries/car-washes" class="dropdown-item" role="menuitem">
                                 <div class="dropdown-icon-wrapper carwash-icon"><i data-lucide="car" style="width:14px;height:14px;"></i></div>
                                 <div class="dropdown-text">
                                     <div class="dropdown-title">Car Wash Operators</div>
@@ -206,9 +205,9 @@
                     <div class="mobile-ind-icon petcare-icon"><i data-lucide="dog" style="width:14px;height:14px;"></i></div>
                     <div><div class="mobile-ind-name">Pet Care</div><div class="dropdown-desc">Warm replies with animal-safety escalation.</div></div>
                 </a>
-                <a href="/industries/car-washes" class="mobile-industry-item">
+                <a href="industries/car-washes" class="mobile-industry-item">
                     <div class="mobile-ind-icon carwash-icon"><i data-lucide="car" style="width:14px;height:14px;"></i></div>
-                    <div><div class="mobile-ind-name">Car Wash Operators</div><div class="dropdown-desc">Track damage, billing, and service complaints.</div></div>
+                    <div><div class="mobile-ind-name">Car Wash Operators</div><div class="mobile-ind-desc">Vehicle damage and billing escalation</div></div>
                 </a>
                 <a href="/industries/laundromats" class="mobile-industry-item">
                     <div class="mobile-ind-icon laundromat-icon"><i data-lucide="wind" style="width:14px;height:14px;"></i></div>
@@ -218,12 +217,16 @@
 
             <a href="#pricing" class="mobile-nav-link">Pricing</a>
             <a href="#faq" class="mobile-nav-link">FAQ</a>
-            <div class="mobile-lang-bar">
-                <span class="mobile-lang-label"><i class="fa-solid fa-globe" style="font-size:13px;"></i></span>
-                <a href="#" class="mobile-lang-opt active" onclick="changeLang('en', event)">EN</a>
-                <a href="#" class="mobile-lang-opt" onclick="changeLang('es', event)">ES</a>
-                <a href="#" class="mobile-lang-opt" onclick="changeLang('nl', event)">NL</a>
-            </div>
+            <div class="lang-selector">
+                    <button class="lang-btn" aria-label="Select Language">
+                        <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> EN
+                    </button>
+                    <div class="lang-menu">
+                        <a href="#" class="lang-item" onclick="changeLang('en', event)">English</a>
+                        <a href="#" class="lang-item" onclick="changeLang('es', event)">Español</a>
+                        <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+                    </div>
+                </div>
                 <a href="https://dashboard.replyvera.com/login" class="mobile-nav-link">Log In</a>
         </div>
     </div>
@@ -248,7 +251,7 @@
                     </div>
 
                     <div class="hero-actions">
-                        <button onclick="openPaddleCheckout('autopilot', event)" class="btn btn-accent btn-lg" style="cursor:pointer;">Start Free Trial</button>
+                        <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">Start Free Trial</a>
                         <a href="#how-it-works" class="btn btn-secondary btn-lg">See How It Works</a>
                     </div>
                     <div class="hero-trust">
@@ -385,18 +388,6 @@
                     <p class="step-text">Vera instantly drafts and posts personalized responses for routine reviews, saving you hours every single week.</p>
                 </div>
             </div>
-
-            <!-- Interactive Demo Buttons under How It Works -->
-            <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:40px;">
-                <a href="#" onclick="openDemoModal(); return false;" class="btn btn-accent btn-lg" style="display:inline-flex;align-items:center;gap:8px;cursor:pointer;">
-                    <i data-lucide="play-circle" style="width:18px;height:18px;"></i>
-                    See Vera in Action
-                </a>
-                <a href="demo.html" class="btn btn-secondary btn-lg" style="display:inline-flex;align-items:center;gap:8px;">
-                    <i data-lucide="sliders" style="width:18px;height:18px;"></i>
-                    Try Full Simulator
-                </a>
-            </div>
         </div>
     </section>
 
@@ -464,11 +455,11 @@
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
-                <a href="/industries/car-washes" class="industry-card">
+                <a href="industries/car-washes" class="industry-card">
                     <div class="industry-card-icon carwash-icon"><i data-lucide="car" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
                         <div class="industry-card-name">Car Wash Operators</div>
-                        <div class="dropdown-desc">Track damage, billing, and service complaints.</div>
+                        <div class="industry-card-desc">Vehicle damage and billing escalation</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
@@ -667,7 +658,7 @@
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> English and Spanish</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Negative-review alerts</li>
                     </ul>
-                    <button onclick="openPaddleCheckout('starter', event)" class="btn btn-secondary" style="width:100%;text-align:center;justify-content:center;cursor:pointer;">Start Free Trial</button>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=starter" class="btn btn-secondary" style="text-align:center;justify-content:center;">Start Free Trial</a>
                 </div>
 
                 <!-- Autopilot -->
@@ -685,7 +676,7 @@
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Custom brand voice</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Review history</li>
                     </ul>
-                    <button onclick="openPaddleCheckout('autopilot', event)" class="btn btn-accent" style="width:100%;text-align:center;justify-content:center;cursor:pointer;">Start Free Trial</button>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent" style="text-align:center;justify-content:center;">Start Free Trial</a>
                 </div>
 
                 <!-- Multi-Location -->
@@ -701,7 +692,7 @@
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Team access</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Additional locations available</li>
                     </ul>
-                    <a href="pricing.html" class="btn btn-secondary" style="width:100%;text-align:center;justify-content:center;">Start Multi-Location Trial</a>
+                    <a href="pricing.html" class="btn btn-secondary" style="text-align:center;justify-content:center;">Start Multi-Location Trial</a>
                 </div>
 
             </div>
@@ -773,7 +764,7 @@
                 <h2 class="mb-4">Start Answering Every Google Review</h2>
                 <p class="lead mb-8">Connect your Google Business Profile and let Vera handle routine responses while you stay in control of sensitive feedback.</p>
                 <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
-                    <button onclick="openPaddleCheckout('autopilot', event)" class="btn btn-accent btn-lg" style="cursor:pointer;">Start Free Trial</button>
+                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">Start Free Trial</a>
                     <a href="#pricing" class="btn btn-secondary btn-lg">View Pricing</a>
                 </div>
             </div>
@@ -808,7 +799,17 @@
                     <div class="footer-col-title">Company</div>
                     <ul class="footer-links">
                         <li><a href="mailto:info@replyvera.com">Contact Us</a></li>
-                        <li><a href="https://dashboard.replyvera.com/login">Log In</a></li>
+                        <li><div class="lang-selector">
+                    <button class="lang-btn" aria-label="Select Language">
+                        <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> EN
+                    </button>
+                    <div class="lang-menu">
+                        <a href="#" class="lang-item" onclick="changeLang('en', event)">English</a>
+                        <a href="#" class="lang-item" onclick="changeLang('es', event)">Español</a>
+                        <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+                    </div>
+                </div>
+                <a h>Log In</a></li>
                     </ul>
                 </div>
 
@@ -823,7 +824,7 @@
             </div>
 
             <div class="footer-bottom">
-                <div>{{ index_2026_replyvera_all_rights_r_c9ec }}</div>
+                <div>© 2026 ReplyVera. All rights reserved.</div>
                 <div class="social-links">
                     <a href="#"><i data-lucide="twitter" style="width:17px;height:17px;"></i></a>
                     <a href="#"><i data-lucide="linkedin" style="width:17px;height:17px;"></i></a>
@@ -850,80 +851,5 @@
     <script defer src="/_vercel/insights/script.js"></script>
 
     <script src="/script.js"></script>
-
-    <script>
-        // Paddle Billing Integration
-        let currentBillingCycle = 'monthly';
-        const PADDLE_PRICES = {
-            monthly: {
-                starter: 'pri_01ky53qca2x1ag8yt36en377pv',
-                autopilot: 'pri_01ky53qcz7kpx92h9wnnmq4z50',
-                multi_location: 'pri_01ky53qdg9qab3ct8hgexqkf2n',
-                agency: 'pri_01ky53qdz80wsxaqnw672ehrcs'
-            },
-            annual: {
-                starter: 'pri_01ky53qcerr3hb001fsccthevr',
-                autopilot: 'pri_01ky53qd42g20ew50kgea0yf75',
-                multi_location: 'pri_01ky53qdmvhzz157qsss7hehy7',
-                agency: 'pri_01ky53qe3q3hfmfav69h2r19v6'
-            }
-        };
-
-        function setupPaddle() {
-            if (window.Paddle) {
-                try {
-                    Paddle.Initialize({ 
-                        token: 'live_717730a5b06d6e51817b4a48b9e',
-                        eventCallback: function(data) {
-                            console.log('Paddle Event:', data);
-                        }
-                    });
-                    console.log('✅ Paddle Live Initialized Successfully');
-                } catch (e) {
-                    console.error('Paddle Initialization Error:', e);
-                }
-            } else {
-                console.warn('⚠️ Paddle SDK script not detected on window.');
-            }
-        }
-
-        if (document.readyState === 'complete') {
-            setupPaddle();
-        } else {
-            window.addEventListener('load', setupPaddle);
-        }
-
-        function openPaddleCheckout(tier, event) {
-            if (event) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-
-            const priceId = PADDLE_PRICES[currentBillingCycle]?.[tier];
-            console.log('Checkout Triggered:', { tier, currentBillingCycle, priceId, paddleExists: !!window.Paddle });
-
-            if (window.Paddle && priceId) {
-                try {
-                    Paddle.Checkout.open({
-                        items: [{ priceId: priceId, quantity: 1 }],
-                        settings: {
-                            displayMode: 'overlay',
-                            theme: 'dark',
-                            locale: 'en'
-                        }
-                    });
-                    return false;
-                } catch (err) {
-                    console.error('Paddle Checkout.open error:', err);
-                    alert('Checkout Error: ' + err.message);
-                }
-            } else if (!window.Paddle) {
-                alert('Paddle SDK is not loaded yet.');
-            } else {
-                alert('Missing Price ID for tier: ' + tier);
-            }
-            return false;
-        }
-    </script>
 </body>
 </html>

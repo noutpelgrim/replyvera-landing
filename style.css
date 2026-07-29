@@ -353,8 +353,10 @@ p { color: var(--text-secondary); line-height: 1.65; }
     display: none;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
     background: rgba(255,255,255,0.05);
     border: 1px solid var(--border-light);
     border-radius: var(--radius-md);
@@ -2400,9 +2402,12 @@ footer  { border-top: 1px solid var(--border); padding: 44px 0 24px; }
     color: var(--text-muted);
     font-size: 1rem;
     cursor: pointer;
-    padding: 5px;
-    display: flex;
+    padding: 6px 10px;
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
     align-items: center;
+    justify-content: center;
     border-radius: var(--radius-sm);
     transition: color 0.2s, background-color 0.2s;
 }
@@ -2428,7 +2433,9 @@ footer  { border-top: 1px solid var(--border); padding: 44px 0 24px; }
     display: block;
 }
 .lang-item {
-    display: block;
+    display: flex;
+    align-items: center;
+    min-height: 44px;
     padding: 8px 16px;
     color: var(--text);
     text-decoration: none;
@@ -2443,7 +2450,7 @@ footer  { border-top: 1px solid var(--border); padding: 44px 0 24px; }
 .mobile-lang-bar {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     padding: 12px 0 4px;
     border-top: 1px solid var(--border-light);
     margin-top: 4px;
@@ -2463,7 +2470,12 @@ footer  { border-top: 1px solid var(--border); padding: 44px 0 24px; }
     color: var(--text-muted);
     font-size: 0.82rem;
     font-weight: 500;
-    padding: 4px 12px;
+    padding: 8px 16px;
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     transition: background 0.2s, color 0.2s, border-color 0.2s;
     font-family: var(--font-sans);
@@ -2474,6 +2486,18 @@ footer  { border-top: 1px solid var(--border); padding: 44px 0 24px; }
     background: var(--primary);
     border-color: var(--primary);
     color: #fff;
+}
+
+@media (max-width: 768px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="password"],
+    select,
+    textarea {
+        font-size: 16px !important;
+    }
 }
 
 /* ==========================================================================

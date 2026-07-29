@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReplyVera – Google Review Automation for Small Businesses</title>
-    <meta name="description" content="ReplyVera automatically responds to your Google reviews. Routine reviews are handled automatically. Negative and sensitive feedback stays under your control. Plans from $29 per month.">
+    <title>Google Review Automation for Pet Care Businesses | ReplyVera</title>
+    <meta name="description" content="ReplyVera writes warm Google review responses for pet care businesses while immediately holding injury, illness, lost-pet, and animal-safety complaints for approval.">
     <link rel="stylesheet" href="/style.css?v=15">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
-    <script src="/demo.js?v=6" defer></script>
+    <script src="/demo.js?v=3" defer></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
 
     <script>
@@ -60,7 +59,7 @@
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
-            <a href="/" class="nav-logo">
+            <a href="/index.html" class="nav-logo">
                 <div class="nav-logo-icon">
                     <i class="fa-solid fa-reply"></i>
                 </div>
@@ -68,9 +67,9 @@
             </a>
 
             <div class="nav-links">
-                <a href="/#product">Product</a>
-                <a href="/#benefits">Features</a>
-                <a href="/#how-it-works">How It Works</a>
+                <a href="/index.html#product">Product</a>
+                <a href="/index.html#benefits">Features</a>
+                <a href="/index.html#how-it-works">How It Works</a>
                 <div class="nav-dropdown">
                     <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="menu" aria-controls="industries-menu">
                         Industries
@@ -135,8 +134,8 @@
                         </div>
                     </div>
                 </div>
-                <a href="/#pricing">Pricing</a>
-                <a href="/#faq">FAQ</a>
+                <a href="/index.html#pricing">Pricing</a>
+                <a href="/index.html#faq">FAQ</a>
             </div>
 
             <div class="nav-actions">
@@ -151,7 +150,7 @@
                     </div>
                 </div>
                 <a href="https://dashboard.replyvera.com/login" class="nav-login">Log In</a>
-                <a href="/#pricing" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Start Free Trial</a>
+                <a href="/index.html#pricing" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Start Free Trial</a>
                 <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
                         <line x1="3" y1="6" x2="21" y2="6"/>
@@ -163,6 +162,76 @@
         </div>
     </nav>
 
+    <!-- Mobile Navigation Panel -->
+    <div class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+        <div class="mobile-nav-links">
+            <a href="/index.html#product" class="mobile-nav-link">Product</a>
+            <a href="/index.html#benefits" class="mobile-nav-link">Features</a>
+            <a href="/index.html#how-it-works" class="mobile-nav-link">How It Works</a>
+
+            <!-- Industries Accordion -->
+            <button class="mobile-industry-toggle" id="mobile-ind-toggle" aria-expanded="false">
+                Industries
+                <span class="mobile-industry-chevron">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+            </button>
+            <div class="mobile-industry-list" id="mobile-ind-list">
+                <a href="/industries/restaurants" class="mobile-industry-item">
+                    <div class="mobile-ind-icon restaurant-icon"><i data-lucide="utensils" style="width:14px;height:14px;"></i></div>
+                    <div><div class="mobile-ind-name">Restaurants</div><div class="dropdown-desc">Automated replies with food-safety and allergy escalation.</div></div>
+                </a>
+                <a href="/industries/dentists" class="mobile-industry-item">
+                    <div class="mobile-ind-icon dentist-icon"><i data-lucide="activity" style="width:14px;height:14px;"></i></div>
+                    <div><div class="mobile-ind-name">Dentists &amp; Clinics</div><div class="dropdown-desc">Privacy-conscious replies for patient reviews.</div></div>
+                </a>
+                <a href="/industries/agencies" class="mobile-industry-item">
+                    <div class="mobile-ind-icon agency-icon"><i data-lucide="briefcase" style="width:14px;height:14px;"></i></div>
+                    <div><div class="mobile-ind-name">Marketing Agencies</div><div class="dropdown-desc">Manage Google review replies for every client from one dashboard.</div></div>
+                </a>
+                <a href="/industries/martial-arts" class="mobile-industry-item">
+                    <div class="mobile-ind-icon martial-arts-icon"><i data-lucide="shield" style="width:14px;height:14px;"></i></div>
+                    <div><div class="mobile-ind-name">Martial Arts Schools</div><div class="dropdown-desc">Parent-friendly replies with safety controls.</div></div>
+                </a>
+                <a href="/industries/childcare" class="mobile-industry-item">
+                    <div class="mobile-ind-icon childcare-icon"><i data-lucide="heart" style="width:14px;height:14px;"></i></div>
+                    <div><div class="mobile-ind-name">Childcare &amp; Preschool</div><div class="dropdown-desc">Safety-aware responses for parent feedback.</div></div>
+                </a>
+                <a href="/industries/tutoring" class="mobile-industry-item">
+                    <div class="mobile-ind-icon tutoring-icon"><i data-lucide="book-open" style="width:14px;height:14px;"></i></div>
+                    <div><div class="mobile-ind-name">Tutoring Centers</div><div class="dropdown-desc">Professional replies for parent and student reviews.</div></div>
+                </a>
+                <a href="/industries/pet-care" class="mobile-industry-item active">
+                    <div class="mobile-ind-icon petcare-icon"><i data-lucide="dog" style="width:14px;height:14px;"></i></div>
+                    <div><div class="mobile-ind-name">Pet Care</div><div class="dropdown-desc">Warm replies with animal-safety escalation.</div></div>
+                </a>
+                <a href="/industries/car-washes" class="mobile-industry-item">
+                    <div class="mobile-ind-icon carwash-icon"><i data-lucide="car" style="width:14px;height:14px;"></i></div>
+                    <div><div class="mobile-ind-name">Car Wash Operators</div><div class="mobile-ind-desc">Vehicle damage and billing escalation</div></div>
+                </a>
+                <a href="/industries/laundromats" class="mobile-industry-item">
+                    <div class="mobile-ind-icon laundromat-icon"><i data-lucide="wind" style="width:14px;height:14px;"></i></div>
+                    <div><div class="mobile-ind-name">Laundromats</div><div class="dropdown-desc">Monitor cleanliness, equipment, and refunds.</div></div>
+                </a>
+            </div>
+
+            <a href="/index.html#pricing" class="mobile-nav-link">Pricing</a>
+            <a href="/index.html#faq" class="mobile-nav-link">FAQ</a>
+            <div class="lang-selector">
+                    <button class="lang-btn" aria-label="Select Language">
+                        <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> EN
+                    </button>
+                    <div class="lang-menu">
+                        <a href="#" class="lang-item" onclick="changeLang('en', event)">English</a>
+                        <a href="#" class="lang-item" onclick="changeLang('es', event)">Español</a>
+                        <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+                    </div>
+                </div>
+                <a href="https://dashboard.replyvera.com/login" class="mobile-nav-link">Log In</a>
+        </div>
+    </div>
+
+    
 
     <style>
         :root {
@@ -486,13 +555,12 @@
             </div>
         </div>
     </section>
-
 <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand-box">
-                    <a href="/" class="nav-logo" style="margin-bottom:14px;">
+                    <a href="/index.html" class="nav-logo" style="margin-bottom:14px;">
                         <div class="nav-logo-icon">
                             <i class="fa-solid fa-reply"></i>
                         </div>
@@ -505,8 +573,8 @@
                 <div class="footer-col">
                     <div class="footer-col-title">Product</div>
                     <ul class="footer-links">
-                        <li><a href="/#product">Product</a></li>
-                        <li><a href="/#how-it-works">How It Works</a></li>
+                        <li><a href="/index.html#product">Product</a></li>
+                        <li><a href="/index.html#how-it-works">How It Works</a></li>
                         <li><a href="/pricing.html">Pricing</a></li>
                     </ul>
                 </div>
@@ -515,7 +583,17 @@
                     <div class="footer-col-title">Company</div>
                     <ul class="footer-links">
                         <li><a href="mailto:info@replyvera.com">Contact Us</a></li>
-                        <li><a href="https://dashboard.replyvera.com/login">Log In</a></li>
+                        <li><div class="lang-selector">
+                    <button class="lang-btn" aria-label="Select Language">
+                        <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> EN
+                    </button>
+                    <div class="lang-menu">
+                        <a href="#" class="lang-item" onclick="changeLang('en', event)">English</a>
+                        <a href="#" class="lang-item" onclick="changeLang('es', event)">Español</a>
+                        <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+                    </div>
+                </div>
+                <a h>Log In</a></li>
                     </ul>
                 </div>
 
@@ -530,7 +608,7 @@
             </div>
 
             <div class="footer-bottom">
-                <div>{{ index_2026_replyvera_all_rights_r_c9ec }}</div>
+                <div>© 2026 ReplyVera. All rights reserved.</div>
                 <div class="social-links">
                     <a href="#"><i data-lucide="twitter" style="width:17px;height:17px;"></i></a>
                     <a href="#"><i data-lucide="linkedin" style="width:17px;height:17px;"></i></a>
@@ -557,80 +635,6 @@
     <script defer src="/_vercel/insights/script.js"></script>
 
     <script src="/script.js"></script>
-
-    <script>
-        // Paddle Billing Integration
-        let currentBillingCycle = 'monthly';
-        const PADDLE_PRICES = {
-            monthly: {
-                starter: 'pri_01ky53qca2x1ag8yt36en377pv',
-                autopilot: 'pri_01ky53qcz7kpx92h9wnnmq4z50',
-                multi_location: 'pri_01ky53qdg9qab3ct8hgexqkf2n',
-                agency: 'pri_01ky53qdz80wsxaqnw672ehrcs'
-            },
-            annual: {
-                starter: 'pri_01ky53qcerr3hb001fsccthevr',
-                autopilot: 'pri_01ky53qd42g20ew50kgea0yf75',
-                multi_location: 'pri_01ky53qdmvhzz157qsss7hehy7',
-                agency: 'pri_01ky53qe3q3hfmfav69h2r19v6'
-            }
-        };
-
-        function setupPaddle() {
-            if (window.Paddle) {
-                try {
-                    Paddle.Initialize({ 
-                        token: 'live_717730a5b06d6e51817b4a48b9e',
-                        eventCallback: function(data) {
-                            console.log('Paddle Event:', data);
-                        }
-                    });
-                    console.log('✅ Paddle Live Initialized Successfully');
-                } catch (e) {
-                    console.error('Paddle Initialization Error:', e);
-                }
-            } else {
-                console.warn('⚠️ Paddle SDK script not detected on window.');
-            }
-        }
-
-        if (document.readyState === 'complete') {
-            setupPaddle();
-        } else {
-            window.addEventListener('load', setupPaddle);
-        }
-
-        function openPaddleCheckout(tier, event) {
-            if (event) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-
-            const priceId = PADDLE_PRICES[currentBillingCycle]?.[tier];
-            console.log('Checkout Triggered:', { tier, currentBillingCycle, priceId, paddleExists: !!window.Paddle });
-
-            if (window.Paddle && priceId) {
-                try {
-                    Paddle.Checkout.open({
-                        items: [{ priceId: priceId, quantity: 1 }],
-                        settings: {
-                            displayMode: 'overlay',
-                            theme: 'dark',
-                            locale: 'en'
-                        }
-                    });
-                    return false;
-                } catch (err) {
-                    console.error('Paddle Checkout.open error:', err);
-                    alert('Checkout Error: ' + err.message);
-                }
-            } else if (!window.Paddle) {
-                alert('Paddle SDK is not loaded yet.');
-            } else {
-                alert('Missing Price ID for tier: ' + tier);
-            }
-            return false;
-        }
-    </script>
+<script>window.REPLYVERA_DEMO_DATA = {"positive":{"review":"The staff is always so excited to see our golden retriever.","sentiment":"Positive","rating":5,"topic":"Staff praise","employee":"None","risk":"Low","reply":"Thank you for your kind review! We truly love seeing your golden retriever and we appreciate you trusting us with their care.","decision":"Safe to Auto-Publish","text":"This review matches your automatic publishing rules."},"negative":{"review":"Grooming took two hours longer than we were quoted.","sentiment":"Negative","rating":2,"topic":"Grooming delay","employee":"None","risk":"Medium","reply":"We are sorry that your pet's grooming took longer than expected today. We understand your time is valuable and we are working to improve our scheduling accuracy.","decision":"Needs Approval","text":"Negative reviews require approval under your current rules."},"sensitive":{"review":"My dog came home with a cut near his ear that needed a vet.","sentiment":"Negative","rating":1,"topic":"Animal injury concern","employee":"None","risk":"High","blocked":"Injury","decision":"Auto-Publishing Blocked","text":"This review requires human review before any public response is created or published."}};</script>
 </body>
 </html>
