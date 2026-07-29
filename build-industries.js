@@ -56,8 +56,51 @@ function patchFooter(f) {
         .replace(/src="script\.js"/g,    'src="/script.js"');
 }
 
-const baseHeader = patchHeader(rawHeader);
-const baseFooter = patchFooter(rawFooter);
+function getHeaderAndFooter(lang) {
+    const isDefault = !lang || lang === 'en';
+    const filePath = isDefault ? path.join(__dirname, 'index.html') : path.join(__dirname, lang, 'index.html');
+    if (!fs.existsSync(filePath)) return { header: baseHeader, footer: baseFooter };
+
+    const fileHtml = fs.readFileSync(filePath, 'utf8');
+    let navSplit = fileHtml.split('<!-- 2. Hero -->');
+    if (navSplit.length < 2) navSplit = fileHtml.split('<header class="hero"');
+    if (navSplit.length < 2) return { header: baseHeader, footer: baseFooter };
+
+    const rawH = navSplit[0];
+    const restP = navSplit[1];
+    const footerSplit = restP.split('<!-- Footer -->');
+    const rawF = footerSplit.length >= 2 ? '<!-- Footer -->' + footerSplit[1] : baseFooter;
+
+    const langPrefix = isDefault ? '' : '/' + lang;
+
+    const patchedH = rawH
+        .replace(/href="index\.html"/g,              `href="${langPrefix}/index.html"`)
+        .replace(/href="pricing\.html"/g,            `href="${langPrefix}/pricing.html"`)
+        .replace(/href="industries\/restaurants"/g,  `href="${langPrefix}/industries/restaurants"`)
+        .replace(/href="industries\/dentists"/g,     `href="${langPrefix}/industries/dentists"`)
+        .replace(/href="industries\/agencies"/g,     `href="${langPrefix}/industries/agencies"`)
+        .replace(/href="industries\/martial-arts"/g, `href="${langPrefix}/industries/martial-arts"`)
+        .replace(/href="industries\/childcare"/g,    `href="${langPrefix}/industries/childcare"`)
+        .replace(/href="industries\/tutoring"/g,     `href="${langPrefix}/industries/tutoring"`)
+        .replace(/href="industries\/pet-care"/g,     `href="${langPrefix}/industries/pet-care"`)
+        .replace(/href="industries\/car-washes"/g,   `href="${langPrefix}/industries/car-washes"`)
+        .replace(/href="industries\/laundromats"/g,  `href="${langPrefix}/industries/laundromats"`)
+        .replace(/href="#product"/g,                 `href="${langPrefix}/index.html#product"`)
+        .replace(/href="#how-it-works"/g,            `href="${langPrefix}/index.html#how-it-works"`)
+        .replace(/href="#pricing"/g,                 `href="${langPrefix}/index.html#pricing"`)
+        .replace(/href="#faq"/g,                     `href="${langPrefix}/index.html#faq"`)
+        .replace(/href="#benefits"/g,                `href="${langPrefix}/index.html#benefits"`);
+
+    const patchedF = rawF
+        .replace(/href="index\.html/g,   `href="${langPrefix}/index.html`)
+        .replace(/href="pricing\.html/g, `href="${langPrefix}/pricing.html`)
+        .replace(/href="terms\.html"/g,  `href="${langPrefix}/terms.html"`)
+        .replace(/href="privacy\.html"/g,`href="${langPrefix}/privacy.html"`)
+        .replace(/href="cookie\.html"/g, `href="${langPrefix}/cookie.html"`)
+        .replace(/src="script\.js"/g,    'src="/script.js"');
+
+    return { header: patchedH, footer: patchedF };
+}
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 function stars(n) {
@@ -971,28 +1014,21 @@ if (!allValid) { console.error('Validation failed. Fix errors above before build
 // ─── Build pages ──────────────────────────────────────────────────────────────
 industryPages.forEach(ind => {
     const bodyContent = renderIndustryPage(ind);
-
-    let header = baseHeader
-        .replace(/<title>[^<]+<\/title>/, `<title>${ind.metaTitle}</title>`)
-        .replace(/<meta name="description" content="[^"]+">/, `<meta name="description" content="${ind.metaDescription}">`);
-
-    // Highlight active industry
-    header = header.replace(`href="/industries/${ind.slug}" class="dropdown-item"`, `href="/industries/${ind.slug}" class="dropdown-item active"`);
-    header = header.replace(`href="/industries/${ind.slug}" class="mobile-industry-item"`, `href="/industries/${ind.slug}" class="mobile-industry-item active"`);
-
     const demoScript = `<script>window.REPLYVERA_DEMO_DATA = ${JSON.stringify(ind.demo)};</script>`;
-    const fullPage = header + '\n' + bodyContent + '\n' + baseFooter.replace('</body>', `${demoScript}\n</body>`);
 
     ['', 'es', 'nl'].forEach(lang => {
-        const langPrefix = lang ? `/${lang}` : '';
+        const hf = getHeaderAndFooter(lang);
+        let header = hf.header
+            .replace(/<title>[^<]+<\/title>/, `<title>${ind.metaTitle}</title>`)
+            .replace(/<meta name="description" content="[^"]+">/, `<meta name="description" content="${ind.metaDescription}">`);
+
+        header = header.replace(`href="${lang ? '/' + lang : ''}/industries/${ind.slug}" class="dropdown-item"`, `href="${lang ? '/' + lang : ''}/industries/${ind.slug}" class="dropdown-item active"`);
+        header = header.replace(`href="${lang ? '/' + lang : ''}/industries/${ind.slug}" class="mobile-industry-item"`, `href="${lang ? '/' + lang : ''}/industries/${ind.slug}" class="mobile-industry-item active"`);
+
+        const fullPage = header + '\n' + bodyContent + '\n' + hf.footer.replace('</body>', `${demoScript}\n</body>`);
+
         const indDir = lang ? path.join(__dirname, lang, 'industries', ind.slug) : path.join(__dirname, 'industries', ind.slug);
         if (!fs.existsSync(indDir)) fs.mkdirSync(indDir, { recursive: true });
-
-        let langHeader = header;
-        if (lang) {
-            // Adjust lang button text in header
-            langHeader = langHeader.replace(/<span class="nav-logo-text">/g, `<span class="nav-logo-text">`);
-        }
 
         fs.writeFileSync(path.join(indDir, 'index.html'), fullPage, 'utf8');
         console.log(`✓ Built: ${lang ? lang + '/' : ''}industries/${ind.slug}/index.html`);
