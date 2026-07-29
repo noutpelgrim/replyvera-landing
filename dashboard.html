@@ -1,6 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <!-- Founder Admin Restricted Access Guard -->
+    <script>
+        (function() {
+            // Check for logged in admin email from URL, localStorage, or Session
+            const urlParams = new URLSearchParams(window.location.search);
+            const adminPass = urlParams.get('admin');
+            const storedEmail = localStorage.getItem('user_email') || sessionStorage.getItem('user_email') || '';
+            const AUTHORIZED_ADMINS = ['noutpelgrim@hotmail.com', 'nout@replyvera.com', 'info@replyvera.com', 'nout'];
+
+            // Allow if admin pass in URL or authorized admin email present
+            const isAuthorized = adminPass === 'nout' || AUTHORIZED_ADMINS.some(email => storedEmail.toLowerCase().includes(email));
+
+            if (!isAuthorized && window.location.hostname !== 'localhost') {
+                window.addEventListener('DOMContentLoaded', () => {
+                    document.body.innerHTML = `
+                        <div style="background:#0A0A14;color:#F8FAFC;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Inter',sans-serif;text-align:center;padding:20px;">
+                            <div style="background:#121225;border:1px solid #26264A;padding:40px;border-radius:20px;max-width:450px;box-shadow:0 20px 40px rgba(0,0,0,0.5);">
+                                <div style="font-size:3rem;margin-bottom:16px;">🔒</div>
+                                <h1 style="color:#F8FAFC;font-size:1.6rem;font-weight:700;margin-bottom:12px;">Founder Admin Access Required</h1>
+                                <p style="color:#94A3B8;font-size:0.95rem;line-height:1.5;margin-bottom:24px;">This Outreach & Lead Control Dashboard is protected and accessible exclusively to Nout (Founder Admin).</p>
+                                <a href="https://dashboard.replyvera.com" style="display:inline-block;background:#6C47FF;color:white;padding:12px 24px;border-radius:10px;text-decoration:none;font-weight:600;font-size:0.9rem;box-shadow:0 4px 14px rgba(108,71,255,0.4);">Return to ReplyVera Dashboard</a>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+        })();
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Outreach Control Dashboard | ReplyVera</title>
