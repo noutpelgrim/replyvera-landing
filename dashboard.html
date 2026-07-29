@@ -222,12 +222,12 @@
 
     <script>
         let allLeads = [
-            { id: '1', business_name: 'The Mudhouse Hostel', rating: '4.8', email: 'info@the-mud-house.com', status: 'FOLLOW_UP_1', last_contacted_at: '2026-07-29T16:12:00Z', outreach_draft: 'Subject: Re: A quick idea for The Mudhouse Hostel\n\nHi The Mudhouse Hostel Team,\n\nJust bringing this back to the top of your inbox...' },
-            { id: '2', business_name: 'Grand Central Bistro', rating: '4.7', email: 'contact@grandbistro.com', status: 'SENT', last_contacted_at: '2026-07-29T14:30:00Z', outreach_draft: 'Subject: A quick idea for Grand Central Bistro\n\nHi Grand Central Bistro Team,\n\nI came across Grand Central Bistro on Google today...' },
-            { id: '3', business_name: 'Ocean View Restaurant', rating: '4.9', email: 'hello@oceanview.com', status: 'CONVERTED', last_contacted_at: '2026-07-28T10:15:00Z', outreach_draft: 'Trial Activated via Paddle Checkout' },
-            { id: '4', business_name: 'Apex Dental Care', rating: '4.6', email: 'info@apexdental.com', status: 'NEW', last_contacted_at: 'Not contacted yet', outreach_draft: 'Subject: A quick idea for Apex Dental Care...' },
-            { id: '5', business_name: 'Sunset Boutique Hotel', rating: '4.8', email: 'info@sunsetboutique.com', status: 'FOLLOW_UP_2', last_contacted_at: '2026-07-22T09:00:00Z', outreach_draft: 'Subject: Re: A quick idea for Sunset Boutique Hotel...' },
-            { id: '6', business_name: 'Urban Fitness Gym', rating: '4.5', email: 'support@urbanfitness.com', status: 'NEW', last_contacted_at: 'Not contacted yet', outreach_draft: 'Subject: A quick idea for Urban Fitness Gym...' }
+            { id: 'mudhouse-1', business_name: 'The Mudhouse Hostel', rating: '4.8', email: 'info@the-mud-house.com', status: 'FOLLOW_UP_1', last_contacted_at: new Date().toISOString(), outreach_draft: 'Subject: Re: A quick idea for The Mudhouse Hostel\n\nHi The Mudhouse Hostel Team,\n\nJust bringing this back to the top of your inbox...' },
+            { id: 'supa-1', business_name: 'Upstairs at Caroline', rating: '4.8', email: 'forms@tambourine.com', status: 'NEW', last_contacted_at: null, outreach_draft: 'Subject: A quick idea for Upstairs at Caroline...' },
+            { id: 'supa-2', business_name: 'Sapori Italian Roots', rating: '4.8', email: 'info@saporiatx.com', status: 'NEW', last_contacted_at: null, outreach_draft: 'Subject: A quick idea for Sapori Italian Roots...' },
+            { id: 'supa-3', business_name: 'Ember Kitchen', rating: '4.7', email: 'info@emberatx.com', status: 'NEW', last_contacted_at: null, outreach_draft: 'Subject: A quick idea for Ember Kitchen...' },
+            { id: 'supa-4', business_name: 'Moonshine Grill', rating: '4.6', email: 'info@moonshinegrill.com', status: 'NEW', last_contacted_at: null, outreach_draft: 'Subject: A quick idea for Moonshine Grill...' },
+            { id: 'supa-5', business_name: 'Aba Austin', rating: '4.8', email: 'info@abarestaurants.com', status: 'NEW', last_contacted_at: null, outreach_draft: 'Subject: A quick idea for Aba Austin...' }
         ];
 
         let currentFilter = 'ALL';
