@@ -1,22 +1,74 @@
 window.changeLang = function(lang, event) {
     if (event && event.preventDefault) event.preventDefault();
-    try { localStorage.setItem('lang_redirected', 'true'); } catch (e) {}
-    
-    let path = window.location.pathname;
-    
+    try {
+        localStorage.setItem('lang_redirected', 'true');
+        localStorage.setItem('replyvera_lang', lang);
+    } catch (e) {}
+
+    var industrySlugMap = {
+        'dentists': { en: 'dentists', nl: 'tandartsen', es: 'dentistas' },
+        'tandartsen': { en: 'dentists', nl: 'tandartsen', es: 'dentistas' },
+        'dentistas': { en: 'dentists', nl: 'tandartsen', es: 'dentistas' },
+        
+        'restaurants': { en: 'restaurants', nl: 'restaurants', es: 'restaurantes' },
+        'restaurantes': { en: 'restaurants', nl: 'restaurants', es: 'restaurantes' },
+        
+        'car-washes': { en: 'car-washes', nl: 'autowasstraten', es: 'autolavados' },
+        'autowasstraten': { en: 'car-washes', nl: 'autowasstraten', es: 'autolavados' },
+        'autolavados': { en: 'car-washes', nl: 'autowasstraten', es: 'autolavados' },
+        
+        'agencies': { en: 'agencies', nl: 'marketingbureaus', es: 'agencias-de-marketing' },
+        'marketingbureaus': { en: 'agencies', nl: 'marketingbureaus', es: 'agencias-de-marketing' },
+        'agencias-de-marketing': { en: 'agencies', nl: 'marketingbureaus', es: 'agencias-de-marketing' },
+        
+        'pet-care': { en: 'pet-care', nl: 'dierenverzorging', es: 'cuidado-de-mascotas' },
+        'dierenverzorging': { en: 'pet-care', nl: 'dierenverzorging', es: 'cuidado-de-mascotas' },
+        'cuidado-de-mascotas': { en: 'pet-care', nl: 'dierenverzorging', es: 'cuidado-de-mascotas' },
+        
+        'childcare': { en: 'childcare', nl: 'kinderopvang', es: 'guarderias' },
+        'kinderopvang': { en: 'childcare', nl: 'kinderopvang', es: 'guarderias' },
+        'guarderias': { en: 'childcare', nl: 'kinderopvang', es: 'guarderias' },
+        
+        'martial-arts': { en: 'martial-arts', nl: 'vechtsportscholen', es: 'escuelas-de-artes-marciales' },
+        'vechtsportscholen': { en: 'martial-arts', nl: 'vechtsportscholen', es: 'escuelas-de-artes-marciales' },
+        'escuelas-de-artes-marciales': { en: 'martial-arts', nl: 'vechtsportscholen', es: 'escuelas-de-artes-marciales' },
+        
+        'tutoring': { en: 'tutoring', nl: 'bijlescentra', es: 'centros-de-tutoria' },
+        'bijlescentra': { en: 'tutoring', nl: 'bijlescentra', es: 'centros-de-tutoria' },
+        'centros-de-tutoria': { en: 'tutoring', nl: 'bijlescentra', es: 'centros-de-tutoria' },
+        
+        'laundromats': { en: 'laundromats', nl: 'wasserettes', es: 'lavanderias' },
+        'wasserettes': { en: 'laundromats', nl: 'wasserettes', es: 'lavanderias' },
+        'lavanderias': { en: 'laundromats', nl: 'wasserettes', es: 'lavanderias' }
+    };
+
+    var path = window.location.pathname;
     if (path.startsWith('/es/')) path = path.substring(3);
     else if (path.startsWith('/nl/')) path = path.substring(3);
-    else if (path === '/es' || path === '/nl') path = '/';
-    
+    else if (path.startsWith('/en/')) path = path.substring(3);
+    else if (path === '/es' || path === '/nl' || path === '/en') path = '/';
+
     if (!path.startsWith('/')) path = '/' + path;
-    
-    let newPath = path;
+
+    var indMatch = path.match(/^\/industries\/([^\/]+)/);
+    if (indMatch) {
+        var slug = indMatch[1].replace('.html', '');
+        var slugMap = industrySlugMap[slug];
+        if (slugMap && slugMap[lang]) {
+            var targetSlug = slugMap[lang];
+            var targetPrefix = lang === 'en' ? '' : '/' + lang;
+            window.location.href = targetPrefix + '/industries/' + targetSlug + '/' + (window.location.hash || '');
+            return;
+        }
+    }
+
+    var newPath = path;
     if (lang === 'es') {
         newPath = '/es' + path;
     } else if (lang === 'nl') {
         newPath = '/nl' + path;
     }
-    
+
     window.location.href = newPath + (window.location.hash || '');
 };
 

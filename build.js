@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { localizeAllHtmlLinks } = require('./lib/router');
+const { renderHeaderDropdownHTML, renderMobileAccordionHTML } = require('./lib/industries_master');
 
 const srcDir = path.join(__dirname, 'src');
 const localesDir = path.join(__dirname, 'locales');
@@ -35,6 +36,14 @@ locales.forEach(lang => {
         // Update <html lang="..."> attribute
         html = html.replace(/<html\s+lang=["'][^"']*["']/i, `<html lang="${lang}"`);
 
+        // Replace desktop header dropdown content with dynamically generated localized industries dropdown
+        const headerDropdownHtml = renderHeaderDropdownHTML(lang);
+        html = html.replace(/<div class="dropdown-menu">[\s\S]*?<\/div>/, `<div class="dropdown-menu">\n${headerDropdownHtml}\n</div>`);
+
+        // Replace mobile menu accordion content with dynamically generated localized industries list
+        const mobileAccordionHtml = renderMobileAccordionHTML(lang);
+        html = html.replace(/<div class="mobile-industry-list" id="mobile-ind-list">[\s\S]*?<\/div>/, `<div class="mobile-industry-list" id="mobile-ind-list">\n${mobileAccordionHtml}\n</div>`);
+
         // Update header language button label (EN -> NL / ES)
         html = html.replace(/<button class="lang-btn"[^>]*>[\s\S]*?<\/button>/, `
                     <button class="lang-btn" aria-label="Select Language">
@@ -54,7 +63,7 @@ locales.forEach(lang => {
             return translations[lang][key] || enTranslations[key] || match;
         });
 
-        // Rewrite internal links using centralized router
+        // Rewrite all internal links using centralized router
         html = localizeAllHtmlLinks(html, lang);
 
         if (!isDefault) {
@@ -62,8 +71,8 @@ locales.forEach(lang => {
             html = html.replace(/src="\/demo\.js/g, `src="/${lang}/demo.js`);
         }
 
-        // Add auto-redirect script only on the root english files
-        if (isDefault) {
+        // Add auto-redirect script only on the root english index file
+        if (isDefault && file === 'index.html') {
             const redirectScript = `
     <script>
         (function() {
@@ -89,4 +98,4 @@ locales.forEach(lang => {
     });
 });
 
-console.log("Build complete! Generated localized HTML files with centralized router & language selector fixes.");
+console.log("Build complete! Generated localized static HTML files with master industry navigation.");

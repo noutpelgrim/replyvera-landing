@@ -1,50 +1,50 @@
 const fs = require('fs');
 const path = require('path');
-const { localizeAllHtmlLinks, localizePath } = require('./lib/router');
-const { uiTranslations, industryTranslations } = require('./lib/industry_translations');
+const { localizeAllHtmlLinks } = require('./lib/router');
+const {
+    industriesData,
+    renderHeaderDropdownHTML,
+    renderMobileAccordionHTML,
+    getLocalizedPath,
+    getLocalizedSlug
+} = require('./lib/industries_master');
 
-
-// ─── Extract nav + footer from index.html ───────────────────────────────────
+// Extract base nav & footer from index.html template
 const templatePath = path.join(__dirname, 'index.html');
 if (!fs.existsSync(templatePath)) {
     console.error('index.html not found!');
     process.exit(1);
 }
 
-const html = fs.readFileSync(templatePath, 'utf8');
-
-let navSplit = html.split('<!-- 2. Hero -->');
-if (navSplit.length < 2) {
-    navSplit = html.split('<header class="hero"');
-    if (navSplit.length >= 2) {
-        navSplit[1] = '<header class="hero"' + navSplit[1];
-    }
-}
-if (navSplit.length < 2) { console.error('Hero section not found in index.html'); process.exit(1); }
-const rawHeader = navSplit[0];
-const restPart  = navSplit[1];
-
-const footerSplit = restPart.split('<!-- Footer -->');
-if (footerSplit.length < 2) { console.error('<!-- Footer --> not found'); process.exit(1); }
-const rawFooter = '<!-- Footer -->' + footerSplit[1];
+const baseHtml = fs.readFileSync(templatePath, 'utf8');
 
 function getHeaderAndFooter(lang) {
     const isDefault = !lang || lang === 'en';
     const filePath = isDefault ? path.join(__dirname, 'index.html') : path.join(__dirname, lang, 'index.html');
-    if (!fs.existsSync(filePath)) return { header: rawHeader, footer: rawFooter };
+    const fileHtml = fs.existsSync(filePath) ? fs.readFileSync(filePath, 'utf8') : baseHtml;
 
-    const fileHtml = fs.readFileSync(filePath, 'utf8');
     let navSplit = fileHtml.split('<!-- 2. Hero -->');
     if (navSplit.length < 2) navSplit = fileHtml.split('<header class="hero"');
-    if (navSplit.length < 2) return { header: rawHeader, footer: rawFooter };
+    if (navSplit.length < 2) {
+        console.error('Hero section not found');
+        process.exit(1);
+    }
 
     const rawH = navSplit[0];
     const restP = navSplit[1];
     const footerSplit = restP.split('<!-- Footer -->');
-    const rawF = footerSplit.length >= 2 ? '<!-- Footer -->' + footerSplit[1] : rawFooter;
+    const rawF = footerSplit.length >= 2 ? '<!-- Footer -->' + footerSplit[1] : '</footer></body></html>';
 
     const targetLang = lang || 'en';
     let patchedH = rawH;
+
+    // Replace desktop header dropdown
+    const headerDropdownHtml = renderHeaderDropdownHTML(targetLang);
+    patchedH = patchedH.replace(/<div class="dropdown-menu">[\s\S]*?<\/div>/, `<div class="dropdown-menu">\n${headerDropdownHtml}\n</div>`);
+
+    // Replace mobile accordion
+    const mobileAccordionHtml = renderMobileAccordionHTML(targetLang);
+    patchedH = patchedH.replace(/<div class="mobile-industry-list" id="mobile-ind-list">[\s\S]*?<\/div>/, `<div class="mobile-industry-list" id="mobile-ind-list">\n${mobileAccordionHtml}\n</div>`);
 
     // Update language selector button label (EN -> NL / ES)
     patchedH = patchedH.replace(/<button class="lang-btn"[^>]*>[\s\S]*?<\/button>/, `
@@ -66,11 +66,6 @@ function getHeaderAndFooter(lang) {
     return { header: patchedH, footer: patchedF };
 }
 
-function localizeLinks(html, lang) {
-    return localizeAllHtmlLinks(html, lang || 'en');
-}
-
-// ─── Helpers ─────────────────────────────────────────────────────────────────
 function stars(n) {
     let s = '';
     for (let i = 1; i <= 5; i++) {
@@ -89,12 +84,15 @@ function renderBenefits(benefits) {
         </div>`).join('');
 }
 
-function renderReviews(examples, ui, currentLang) {
-    const isNl = currentLang === 'nl';
-    const isEs = currentLang === 'es';
+function renderReviews(examples, trans, lang) {
+    const isNl = lang === 'nl';
+    const isEs = lang === 'es';
     const responseLabel = isNl ? 'ReplyVera reactie' : isEs ? 'Respuesta de ReplyVera' : 'ReplyVera response';
-    const sensitiveTypeLabel = ui ? ui.sensitiveReviewType : 'Sensitive Review';
+    const defaultSensitiveType = isNl ? 'Gevoelige Beoordeling' : isEs ? 'Reseña Sensible' : 'Sensitive Review';
     const alertSubLabel = isNl ? 'Een manager moet dit controleren voordat het wordt gepubliceerd.' : isEs ? 'Un gerente debe revisar esto antes de publicar.' : 'A manager must review this before publishing.';
+    const autoPublishBlockedText = isNl ? 'Automatisch publiceren geblokkeerd' : isEs ? 'Publicación Automática Bloqueada' : 'Auto-Publishing Blocked';
+    const safeText = isNl ? 'Veilig om automatisch te publiceren' : isEs ? 'Seguro para Publicar Automáticamente' : 'Safe to Auto-Publish';
+    const approvalText = isNl ? 'Goedkeuring vereist' : isEs ? 'Requiere Aprobación' : 'Needs Approval';
 
     return examples.map(ex => {
         const starHtml = stars(ex.rating);
@@ -103,28 +101,27 @@ function renderReviews(examples, ui, currentLang) {
         <div class="review-card">
             <div class="review-card-top">
                 <div class="review-stars">${starHtml}</div>
-                <span class="review-type">${ex.type || sensitiveTypeLabel}</span>
+                <span class="review-type">${ex.type || defaultSensitiveType}</span>
             </div>
             <p class="review-quote">${ex.quote}</p>
             <div class="review-alert-box">
                 <div class="review-alert-title">
                     <i data-lucide="alert-triangle" style="width:13px;height:13px;"></i>
-                    ${ex.alertTitle || (ui ? ui.sensitiveDetected : 'Sensitive topic detected')}
+                    ${ex.alertTitle || (isNl ? 'Gevoelig onderwerp gedetecteerd' : isEs ? 'Tema sensible detectado' : 'Sensitive topic detected')}
                 </div>
                 <p class="review-alert-sub">${ex.alertText || alertSubLabel}</p>
             </div>
-            <span class="review-badge badge-blocked" style="align-self:flex-start;">${ui ? ui.autoPublishingBlocked : 'Auto-Publishing Blocked'}</span>
+            <span class="review-badge badge-blocked" style="align-self:flex-start;">${autoPublishBlockedText}</span>
         </div>`;
         }
         const badgeClass = ex.needsApproval ? 'badge-approval' : 'badge-auto';
-        const badgeLabel = ex.needsApproval ? (ui ? ui.needsApproval : 'Needs Approval') : (ui ? ui.safeToAutoPublish : 'Safe to Auto-Publish');
-        const defaultType = ex.needsApproval ? (ui ? ui.negativeReviewType : 'Negative Review') : (ui ? ui.positiveReviewType : 'Positive Review');
+        const badgeLabel = ex.needsApproval ? approvalText : safeText;
 
         return `
         <div class="review-card">
             <div class="review-card-top">
                 <div class="review-stars">${starHtml}</div>
-                <span class="review-type">${ex.type || defaultType}</span>
+                <span class="review-type">${ex.type || (ex.needsApproval ? (isNl ? 'Negatieve Beoordeling' : isEs ? 'Reseña Negativa' : 'Negative Review') : (isNl ? 'Positieve Beoordeling' : isEs ? 'Reseña Positiva' : 'Positive Review'))}</span>
             </div>
             <p class="review-quote">${ex.quote}</p>
             <div class="review-response-box">
@@ -151,35 +148,32 @@ function renderFAQ(items) {
         </div>`).join('');
 }
 
-function renderPricingSection(isAgency, ind, ui, lang) {
-    const currentLang = lang || 'en';
-    const isNl = currentLang === 'nl';
-    const isEs = currentLang === 'es';
+function renderPricingSection(isAgency, ind, trans, lang) {
+    const isNl = lang === 'nl';
+    const isEs = lang === 'es';
 
     const agencyTitle = isNl ? 'Eenvoudige Prijzen voor Marketingbureaus' : isEs ? 'Precios Simples para Agencias' : 'Pricing Built for Agencies';
-    const agencySub = isNl ? 'Beheer reviewreacties voor al uw klanten vanuit één centraal dashboard.' : isEs ? 'Gestiona respuestas de reseñas para todos tus clientes desde un panel central.' : 'Manage Google review responses for multiple clients from one dashboard, with separate brand voices, approval rules, and team access.';
+    const agencySub = isNl ? 'Beheer reviewreacties voor al uw klanten vanuit één centraal dashboard.' : isEs ? 'Gestiona respuestas de reseñas para todos tus clientes desde un panel central.' : 'Manage Google review responses for multiple clients from one dashboard.';
     const agencyCardTitle = 'Agency';
     const startingAt = isNl ? 'Vanaf $149' : isEs ? 'Desde $149' : 'Starting at $149';
     const perMonth = isNl ? 'per maand' : isEs ? 'por mes' : 'per month';
     const agencyTagline = isNl ? 'Voor bureaus die Google-reviewreacties beheren voor meerdere klantlocaties.' : isEs ? 'Para agencias que gestionan respuestas de reseñas de Google para múltiples clientes.' : 'For agencies managing Google review responses for multiple client locations.';
-    
+    const startAgency = isNl ? 'Start Bureau Proefperiode' : isEs ? 'Comenzar Prueba de Agencia' : 'Start Agency Trial';
+
     const feat1 = isNl ? '10 klantlocaties inbegrepen' : isEs ? '10 ubicaciones de clientes incluidas' : '10 client locations included';
     const feat2 = isNl ? 'Centraal multi-client dashboard' : isEs ? 'Panel central multi-cliente' : 'Central multi-client dashboard';
     const feat3 = isNl ? 'Eigen merkstem per klant' : isEs ? 'Voz de marca propia para cada cliente' : 'Separate brand voice for every client';
     const feat4 = isNl ? 'Toegang voor klantgoedkeuring' : isEs ? 'Acceso de aprobación para clientes' : 'Client approval access';
     const feat5 = isNl ? 'Toegang voor teamleden' : isEs ? 'Acceso para miembros del equipo' : 'Team member access';
     const feat6 = isNl ? 'Bureau-rapportage' : isEs ? 'Informes para agencias' : 'Agency reporting';
-    const extraLoc = isNl ? 'Aanvullende klantlocaties beschikbaar tegen maandelijkse vergoeding.' : isEs ? 'Ubicaciones adicionales disponibles por una cuota mensual.' : 'Additional client locations available for a monthly fee.';
-    const startAgency = isNl ? 'Start Bureau Proefperiode' : isEs ? 'Comenzar Prueba de Agencia' : 'Start Agency Trial';
 
     const needOwnTitle = isNl ? 'ReplyVera Nodig voor uw Eigen Bedrijf?' : isEs ? '¿Necesitas ReplyVera para tu Propio Negocio?' : 'Need ReplyVera for Your Own Business?';
-    const needOwnSub = isNl ? 'Starter, Autopilot en Multi-Locatie abonnementen zijn ook beschikbaar.' : isEs ? 'Los planes Starter, Autopilot y Multi-Ubicación también están disponibles.' : 'Starter, Autopilot, and Multi-Location plans are also available for individual businesses.';
+    const needOwnSub = isNl ? 'Starter, Autopilot en Multi-Locatie abonnementen zijn ook beschikbaar.' : isEs ? 'Los planes Starter, Autopilot y Multi-Ubicación también están disponibles.' : 'Starter, Autopilot, and Multi-Location plans are also available.';
     const viewBizPricing = isNl ? 'Bekijk Kleine-Bedrijven Prijzen' : isEs ? 'Ver Precios para Pequeñas Empresas' : 'View Small-Business Pricing';
 
     if (isAgency) {
         return `
-    ${ind.theme.divider === 'glow' ? '<div class="industry-divider-glow"></div>' : '<div class="industry-divider-line"></div>'}
-    <!-- Pricing -->
+    <div class="industry-divider-glow"></div>
     <section class="section section-dark" id="pricing">
         <div class="container">
             <div class="section-header">
@@ -200,15 +194,13 @@ function renderPricingSection(isAgency, ind, ui, lang) {
                         <li><i data-lucide="check" style="width:16px;height:16px;color:var(--accent);"></i> ${feat5}</li>
                         <li><i data-lucide="check" style="width:16px;height:16px;color:var(--accent);"></i> ${feat6}</li>
                     </ul>
-                    <p style="font-size:0.85rem;color:var(--text-muted);margin:24px 0 28px;text-align:center;">${extraLoc}</p>
-                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent" style="text-align:center;justify-content:center;width:100%;">${startAgency}</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent" style="text-align:center;justify-content:center;width:100%;margin-top:28px;">${startAgency}</a>
                 </div>
             </div>
-            
-            <div class="text-center" style="margin-top:80px; max-width:540px; margin-left:auto; margin-right:auto; padding-top:40px; border-top:1px solid var(--border);">
-                <h3 style="font-size:1.3rem; margin-bottom:12px; color:var(--text-primary);">${needOwnTitle}</h3>
-                <p style="font-size:0.95rem; color:var(--text-secondary); margin-bottom:24px;">${needOwnSub}</p>
-                <a href="/pricing.html" class="btn btn-secondary" style="font-size:0.9rem;">${viewBizPricing}</a>
+            <div class="text-center" style="margin-top:60px;">
+                <h3 style="font-size:1.2rem;margin-bottom:8px;">${needOwnTitle}</h3>
+                <p style="font-size:0.9rem;color:var(--text-secondary);margin-bottom:20px;">${needOwnSub}</p>
+                <a href="${isNl ? '/nl/pricing.html' : isEs ? '/es/pricing.html' : '/pricing.html'}" class="btn btn-secondary">${viewBizPricing}</a>
             </div>
         </div>
     </section>`;
@@ -217,17 +209,18 @@ function renderPricingSection(isAgency, ind, ui, lang) {
     const starterTagline = isNl ? 'U keurt elke reactie goed voordat deze wordt gepubliceerd.' : isEs ? 'Apruebas cada respuesta antes de que se publique.' : 'You approve every reply before it is published.';
     const autopilotTagline = isNl ? 'Veilige reacties worden automatisch gepubliceerd. Gevoelige reviews blijven onder uw goedkeuring.' : isEs ? 'Las respuestas seguras se publican automáticamente. Las reseñas sensibles requieren tu aprobación.' : 'Safe replies publish automatically. Sensitive reviews stay under your approval.';
     const multiTagline = isNl ? 'Beheer al uw locaties vanuit één account met regels op locatieniveau.' : isEs ? 'Administra todas tus sedes desde una sola cuenta con reglas por ubicación.' : 'Manage all your locations from one account with location-level rules.';
+    const starterBtn = isNl ? 'Start Gratis Proefperiode' : isEs ? 'Comenzar Prueba Gratuita' : 'Start Free Trial';
     const multiTitle = isNl ? 'Meerdere Locaties' : isEs ? 'Multi-Ubicación' : 'Multi-Location';
     const from79 = isNl ? 'Vanaf $79' : isEs ? 'Desde $79' : 'From $79';
+    const multiBtn = isNl ? 'Start Proefperiode Meerdere Locaties' : isEs ? 'Iniciar Prueba Multi-Ubicación' : 'Start Multi-Location Trial';
 
     return `
-    ${ind.theme.divider === 'glow' ? '<div class="industry-divider-glow"></div>' : '<div class="industry-divider-line"></div>'}
-    <!-- Pricing -->
+    <div class="industry-divider-glow"></div>
     <section class="section section-dark" id="pricing">
         <div class="container">
             <div class="section-header">
-                <h2>${ui.pricingTitle}</h2>
-                <p>${ui.pricingSub}</p>
+                <h2>${isNl ? 'Eenvoudige Prijzen voor Kleine Bedrijven' : isEs ? 'Precios Simples para Pequeñas Empresas' : 'Simple Pricing for Small Businesses'}</h2>
+                <p>${isNl ? 'Start gratis. Geen creditcard vereist. Annuleer op elk moment.' : isEs ? 'Comienza gratis. Sin tarjeta de crédito. Cancela en cualquier momento.' : 'Start free. No credit card required. Cancel anytime.'}</p>
             </div>
             <div class="pricing-grid">
                 <div class="pricing-card">
@@ -239,11 +232,8 @@ function renderPricingSection(isAgency, ind, ui, lang) {
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Eén locatie' : isEs ? 'Una ubicación' : 'One location'}</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Tot 30 reacties per maand' : isEs ? 'Hasta 30 respuestas por mes' : 'Up to 30 replies per month'}</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Handmatige goedkeuring voor alle reviews' : isEs ? 'Aprobación manual para todas las reseñas' : 'Manual approval for all reviews'}</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Aangepaste merktoon' : isEs ? 'Tono personalizado' : 'Custom tone'}</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Engels en Spaans' : isEs ? 'Inglés y Español' : 'English and Spanish'}</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Meldingen bij negatieve reviews' : isEs ? 'Alertas de reseñas negativas' : 'Negative-review alerts'}</li>
                     </ul>
-                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-secondary" style="text-align:center;justify-content:center;">${ui.startFreeTrial}</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-secondary" style="text-align:center;justify-content:center;">${starterBtn}</a>
                 </div>
                 <div class="pricing-card featured">
                     <div class="pricing-popular">${isNl ? 'Meest Populair' : isEs ? 'Más Popular' : 'Most Popular'}</div>
@@ -255,11 +245,8 @@ function renderPricingSection(isAgency, ind, ui, lang) {
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Eén locatie' : isEs ? 'Una ubicación' : 'One location'}</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Onbeperkt aantal reviewreacties*' : isEs ? 'Respuestas ilimitadas*' : 'Unlimited review responses*'}</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Automatisch publiceren van veilige reviews' : isEs ? 'Publicación automática de reseñas seguras' : 'Automatic publishing for safe reviews'}</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Detectie van gevoelige reviews' : isEs ? 'Detección de reseñas sensibles' : 'Sensitive-review detection'}</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Aangepaste merkstem' : isEs ? 'Voz de marca personalizada' : 'Custom brand voice'}</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Geschiedenis van reviews' : isEs ? 'Historial de reseñas' : 'Review history'}</li>
                     </ul>
-                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent" style="text-align:center;justify-content:center;">${ui.startFreeTrial}</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent" style="text-align:center;justify-content:center;">${starterBtn}</a>
                 </div>
                 <div class="pricing-card">
                     <div class="pricing-name">${multiTitle}</div>
@@ -269,26 +256,73 @@ function renderPricingSection(isAgency, ind, ui, lang) {
                     <ul class="pricing-features">
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Drie locaties inbegrepen' : isEs ? 'Tres ubicaciones incluidas' : 'Three locations included'}</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Centraal dashboard' : isEs ? 'Panel central' : 'Central dashboard'}</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Regels op locatieniveau' : isEs ? 'Reglas por ubicación' : 'Location-specific rules'}</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Teamtoegang' : isEs ? 'Acceso de equipo' : 'Team access'}</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Aanvullende locaties beschikbaar' : isEs ? 'Ubicaciones adicionales disponibles' : 'Additional locations available'}</li>
                     </ul>
-                    <a href="/pricing.html" class="btn btn-secondary" style="text-align:center;justify-content:center;">${isNl ? 'Start Proefperiode Meerdere Locaties' : isEs ? 'Iniciar Prueba Multi-Ubicación' : 'Start Multi-Location Trial'}</a>
+                    <a href="${isNl ? '/nl/pricing.html' : isEs ? '/es/pricing.html' : '/pricing.html'}" class="btn btn-secondary" style="text-align:center;justify-content:center;">${multiBtn}</a>
                 </div>
             </div>
-            <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:24px;">${isNl ? '14 dagen gratis proefperiode. Annuleer op elk moment.' : isEs ? 'Prueba gratuita de 14 días. Cancela en cualquier momento.' : '14-day free trial. Cancel anytime.'}</p>
         </div>
     </section>`;
 }
 
-// ─── Main render function ─────────────────────────────────────────────────────
+function renderRelatedIndustries(currentId, lang) {
+    const isNl = lang === 'nl';
+    const isEs = lang === 'es';
+    const sectionTitle = isNl ? 'Bekijk Andere Sectoren' : isEs ? 'Explora Otras Industrias' : 'Explore Other Industries';
+
+    const otherIndustries = industriesData.filter(ind => ind.id !== currentId).slice(0, 3);
+
+    const cardsHtml = otherIndustries.map(ind => {
+        const trans = ind.translations[lang] || ind.translations.en;
+        const localizedPath = getLocalizedPath(ind.id, lang);
+        return `
+        <a href="${localizedPath}" class="benefit-card" style="text-decoration:none;color:inherit;">
+            <div class="benefit-icon ${ind.iconBgClass}"><i data-lucide="${ind.icon}" style="width:20px;height:20px;"></i></div>
+            <div class="benefit-title">${trans.name}</div>
+            <p class="benefit-text">${trans.dropdownDesc}</p>
+        </a>`;
+    }).join('');
+
+    return `
+    <div class="industry-divider-glow"></div>
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>${sectionTitle}</h2>
+            </div>
+            <div class="benefits-grid">
+                ${cardsHtml}
+            </div>
+        </div>
+    </section>`;
+}
+
 function renderIndustryPage(ind, lang) {
-    const currentLang = lang || 'en';
-    const ui = uiTranslations[currentLang] || uiTranslations.en;
-    const indTrans = (industryTranslations[currentLang] && industryTranslations[currentLang][ind.slug]) ? industryTranslations[currentLang][ind.slug] : {};
-    const localizedInd = { ...ind, ...indTrans };
-    const indObj = localizedInd;
-    const isAgency = ind.slug === 'agencies';
+    const isNl = lang === 'nl';
+    const isEs = lang === 'es';
+    const trans = ind.translations[lang] || ind.translations.en;
+    const isAgency = ind.id === 'agencies';
+
+    const eyebrowText = isNl ? 'Google Review Automatisering' : isEs ? 'Automatización de Reseñas de Google' : 'Google Review Automation';
+    const ctaStart = isAgency ? (isNl ? 'Start Bureau Proefperiode' : isEs ? 'Comenzar Prueba de Agencia' : 'Start Agency Trial') : (isNl ? 'Start Uw Gratis Proefperiode' : isEs ? 'Comienza Tu Prueba Gratuita' : 'Start Your Free Trial');
+    const ctaHow = isNl ? 'Bekijk Hoe Het Werkt' : isEs ? 'Ver Cómo Funciona' : 'See How It Works';
+    const trustText = isNl ? 'Gemaakt voor Google Reviews · Abonnementen beginnen bij $29 per maand' : isEs ? 'Diseñado para Reseñas de Google · Planes desde $29 por mes' : 'Built for Google Reviews · Plans start at $29 per month';
+    const activeText = isNl ? 'Actief' : isEs ? 'Activo' : 'Active';
+    const recentReviewsText = isNl ? 'Recente Beoordelingen' : isEs ? 'Reseñas Recientes' : 'Recent Reviews';
+
+    const homeTitle = isNl ? 'Home' : isEs ? 'Inicio' : 'Home';
+    const indCategoryTitle = isNl ? 'Sectoren' : isEs ? 'Industrias' : 'Industries';
+    const homePath = isNl ? '/nl/' : isEs ? '/es/' : '/';
+    const indCategoryPath = isNl ? '/nl/#benefits' : isEs ? '/es/#benefits' : '/#benefits';
+
+    const breadcrumbsHtml = `
+    <div class="breadcrumbs" style="font-size:0.82rem;color:var(--text-muted);margin-bottom:20px;display:flex;gap:8px;align-items:center;">
+        <a href="${homePath}" style="color:var(--text-muted);text-decoration:none;">${homeTitle}</a>
+        <span>/</span>
+        <a href="${indCategoryPath}" style="color:var(--text-muted);text-decoration:none;">${indCategoryTitle}</a>
+        <span>/</span>
+        <span style="color:var(--industry-accent, var(--accent));font-weight:600;">${trans.name}</span>
+    </div>`;
+
     const themeStyles = `
     <style>
         :root {
@@ -297,30 +331,28 @@ function renderIndustryPage(ind, lang) {
             --industry-icon-bg: ${ind.theme.accent}15;
             --industry-accent-glow: ${ind.theme.accent}33;
         }
-    </style>
-    `;
-
+    </style>`;
 
     const heroSection = `
-    <!-- Hero -->
-    <header class="hero" style="padding:140px 0 80px;">
+    <header class="hero industry-hero" style="padding:130px 0 70px;">
         <div class="hero-glow-layer"></div>
         <div class="container">
+            ${breadcrumbsHtml}
             <div class="hero-inner">
                 <div class="hero-text">
                     <div class="eyebrow industry-eyebrow">
                         <i data-lucide="google" style="width:12px;height:12px;color:#DB4437;"></i>
-                        Google Review Automation
+                        ${eyebrowText}
                     </div>
-                    <h1 class="mb-6">${indObj.heroHeadline}</h1>
-                    <p class="lead mb-8">${indObj.heroDescription}</p>
+                    <h1 class="mb-6">${trans.heroHeadline}</h1>
+                    <p class="lead mb-8">${trans.heroDescription}</p>
                     <div class="hero-actions">
-                        <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">${isAgency ? (currentLang === 'nl' ? 'Start Bureau Proefperiode' : currentLang === 'es' ? 'Comenzar Prueba de Agencia' : 'Start Agency Trial') : ui.startYourFreeTrial}</a>
-                        <a href="/index.html#how-it-works" class="btn btn-secondary btn-lg">${ui.seeHowItWorks}</a>
+                        <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">${ctaStart}</a>
+                        <a href="${isNl ? '/nl/#how-it-works' : isEs ? '/es/#how-it-works' : '/#how-it-works'}" class="btn btn-secondary btn-lg">${ctaHow}</a>
                     </div>
                     <div class="hero-trust">
                         <i data-lucide="shield-check" style="width:13px;height:13px;color:var(--accent);"></i>
-                        ${ui.builtForGoogle} &nbsp;·&nbsp; ${isAgency ? ui.agencyPlans149 : ui.plansStart29}
+                        ${trustText}
                     </div>
                 </div>
                 <div class="mockup-card">
@@ -328,31 +360,31 @@ function renderIndustryPage(ind, lang) {
                         <div class="mockup-dots"><span></span><span></span><span></span></div>
                         <div class="mockup-url"><i data-lucide="lock" style="width:10px;height:10px;"></i> replyvera.com/dashboard</div>
                         <div style="font-size:0.7rem;font-weight:700;color:var(--industry-accent, var(--accent));display:flex;align-items:center;gap:5px;">
-                            <span style="width:6px;height:6px;background:var(--accent);border-radius:50%;display:inline-block;"></span>${ui.active}
+                            <span style="width:6px;height:6px;background:var(--accent);border-radius:50%;display:inline-block;"></span>${activeText}
                         </div>
                     </div>
-                    <div style="font-size:0.72rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px;">${ui.recentReviews}</div>
+                    <div style="font-size:0.72rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px;">${recentReviewsText}</div>
                     <div class="review-rows">
                         <div class="review-row-item">
                             <div class="review-row-meta">
                                 <div class="review-row-stars">${stars(5)}</div>
-                                <div class="review-row-text">"${ind.mockupPositive || 'Great service and friendly staff.'}"</div>
+                                <div class="review-row-text">"${trans.mockupPositive}"</div>
                             </div>
-                            <span class="review-badge badge-auto">${ui.safeToAutoPublish}</span>
+                            <span class="review-badge badge-auto">${isNl ? 'Veilig om automatisch te publiceren' : isEs ? 'Seguro para Publicar Automáticamente' : 'Safe to Auto-Publish'}</span>
                         </div>
                         <div class="review-row-item">
                             <div class="review-row-meta">
                                 <div class="review-row-stars">${stars(2)}</div>
-                                <div class="review-row-text">"${ind.mockupNegative || 'Service did not meet expectations.'}"</div>
+                                <div class="review-row-text">"${trans.mockupNegative}"</div>
                             </div>
-                            <span class="review-badge badge-approval">${ui.needsApproval}</span>
+                            <span class="review-badge badge-approval">${isNl ? 'Goedkeuring vereist' : isEs ? 'Requiere Aprobación' : 'Needs Approval'}</span>
                         </div>
                         <div class="review-row-item">
                             <div class="review-row-meta">
                                 <div class="review-row-stars">${stars(1)}</div>
-                                <div class="review-row-text">"${ind.mockupSensitive || 'Serious complaint requiring review.'}"</div>
+                                <div class="review-row-text">"${trans.mockupSensitive}"</div>
                             </div>
-                            <span class="review-badge badge-blocked">${ui.autoPublishingBlocked}</span>
+                            <span class="review-badge badge-blocked">${isNl ? 'Automatisch publiceren geblokkeerd' : isEs ? 'Publicación Automática Bloqueada' : 'Auto-Publishing Blocked'}</span>
                         </div>
                     </div>
                 </div>
@@ -361,86 +393,98 @@ function renderIndustryPage(ind, lang) {
     </header>`;
 
     const benefitsSection = `
-    ${ind.theme.divider === 'glow' ? '<div class=\"industry-divider-glow\"></div>' : '<div class=\"industry-divider-line\"></div>'}\n    <!-- Three Benefits -->
+    <div class="industry-divider-glow"></div>
     <section class="section section-light">
         <div class="container">
             <div class="section-header">
-                <h2>${ind.benefitsHeadline || 'Three Reasons to Choose ReplyVera'}</h2>
+                <h2>${trans.benefitsHeadline}</h2>
             </div>
             <div class="benefits-grid">
-                ${renderBenefits(ind.benefits)}
+                ${renderBenefits(trans.benefits)}
             </div>
         </div>
     </section>`;
 
+    const howItWorksTitle = isNl ? 'Koppel Google. Stel uw Regels in. Laat ReplyVera de Rest Doen.' : isEs ? 'Conecta Google. Establece tus Reglas. Deja que ReplyVera Haga el Resto.' : 'Connect Google. Set Your Rules. Let ReplyVera Handle the Rest.';
+    const step1Title = isNl ? 'Koppel Google Bedrijfsprofiel' : isEs ? 'Conecta tu Perfil de Empresa en Google' : 'Connect Google Business Profile';
+    const step1Text = isNl ? 'Koppel veilig één of meerdere bedrijfslocaties. Er worden geen wachtwoorden opgeslagen.' : isEs ? 'Conecta de forma segura una o más ubicaciones. No almacenamos contraseñas.' : 'Securely connect one or more business locations. No passwords stored.';
+    const step2Title = isNl ? 'Kies uw Toon en Goedkeuringsregels' : isEs ? 'Elige tu Tono y Reglas de Aprobación' : 'Choose Your Tone and Approval Rules';
+    const step3Title = isNl ? 'ReplyVera Verwerkt Nieuwe Reviews' : isEs ? 'ReplyVera Gestiona las Nuevas Reseñas' : 'ReplyVera Handles New Reviews';
+
     const howItWorksSection = `
-    ${ind.theme.divider === 'glow' ? '<div class=\"industry-divider-glow\"></div>' : '<div class=\"industry-divider-line\"></div>'}\n    <!-- How It Works -->
+    <div class="industry-divider-glow"></div>
     <section class="section section-dark" id="how-it-works">
         <div class="container">
             <div class="section-header">
-                <h2>${ui.howItWorksTitle}</h2>
+                <h2>${howItWorksTitle}</h2>
             </div>
             <div class="steps-grid">
                 <div class="step-card">
                     <div class="step-number">1</div>
-                    <div class="step-title">${ui.step1Title}</div>
-                    <p class="step-text">${ui.step1Text}</p>
+                    <div class="step-title">${step1Title}</div>
+                    <p class="step-text">${step1Text}</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">2</div>
-                    <div class="step-title">${ui.step2Title}</div>
-                    <p class="step-text">${ind.step2Text}</p>
+                    <div class="step-title">${step2Title}</div>
+                    <p class="step-text">${trans.step2Text}</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">3</div>
-                    <div class="step-title">${ui.step3Title}</div>
-                    <p class="step-text">${ind.step3Text}</p>
+                    <div class="step-title">${step3Title}</div>
+                    <p class="step-text">${trans.step3Text}</p>
                 </div>
             </div>
         </div>
     </section>`;
 
     const reviewsSection = `
-    ${ind.theme.divider === 'glow' ? '<div class=\"industry-divider-glow\"></div>' : '<div class=\"industry-divider-line\"></div>'}\n    <!-- Review Examples -->
+    <div class="industry-divider-glow"></div>
     <section class="section section-light">
         <div class="container">
             <div class="section-header">
-                <h2>${ind.reviewsHeadline || 'How ReplyVera Handles Your Reviews'}</h2>
-                <p>${ind.reviewsSubhead || 'See how different review types are handled based on your configuration.'}</p>
+                <h2>${trans.reviewsHeadline}</h2>
+                <p>${trans.reviewsSubhead}</p>
             </div>
             <div class="reviews-grid">
-                ${renderReviews(indObj.reviewExamples, ui, currentLang)}
+                ${renderReviews(trans.reviewExamples, trans, lang)}
             </div>
         </div>
     </section>`;
 
+    const sensitiveProtectionTitle = isNl ? 'Bescherming bij Gevoelige Reviews' : isEs ? 'Protección de Reseñas Sensibles' : 'Sensitive Review Protection';
+    const sensitiveIntro = isNl ? 'ReplyVera publiceert gevoelige feedback nooit automatisch. Wanneer een review overeenkomt met een beschermd onderwerp, wordt automatisch publiceren geblokkeerd.' : isEs ? 'ReplyVera nunca publica comentarios sensibles automáticamente. Cuando una reseña coincide con un tema protegido, la publicación se bloquea.' : 'ReplyVera never publishes sensitive feedback automatically. When a review matches a protected topic, auto-publishing is blocked.';
+    const monitoredTopicsLabel = isNl ? 'Gemonitorde onderwerpen:' : isEs ? 'Temas monitoreados:' : 'Monitored topics:';
+    const sensitiveDetectedTitle = isNl ? 'Gevoelig Onderwerp Gedeclareerd' : isEs ? 'Tema Sensible Detectado' : 'Sensitive Topic Detected';
+    const sensitiveBoxText = isNl ? 'Automatisch publiceren is geblokkeerd. Er is een concept voorbereid dat u eerst moet goedkeuren.' : isEs ? 'La publicación automática ha sido bloqueada. Se ha preparado un borrador para tu aprobación.' : 'Auto-publishing has been blocked. A draft has been prepared for your approval.';
+
     const sensitiveSection = `
-    ${ind.theme.divider === 'glow' ? '<div class=\"industry-divider-glow\"></div>' : '<div class=\"industry-divider-line\"></div>'}\n    <!-- ${ui.sensitiveProtection} -->
+    <div class="industry-divider-glow"></div>
     <section class="section section-dark">
         <div class="container">
             <div class="sensitive-inner">
                 <div>
                     <div class="eyebrow" style="margin-bottom:16px;">
                         <i data-lucide="shield-alert" style="width:12px;height:12px;"></i>
-                        ${ui.sensitiveProtection}
+                        ${sensitiveProtectionTitle}
                     </div>
-                    <h2 style="margin-bottom:12px;">${ind.sensitiveHeadline}</h2>
-                    <p style="margin-bottom:16px;">${ui.sensitiveIntroText}</p>
-                    <p style="font-size:0.82rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;">${ui.monitoredTopics}</p>
+                    <h2 style="margin-bottom:12px;">${trans.sensitiveHeadline}</h2>
+                    <p style="margin-bottom:16px;">${sensitiveIntro}</p>
+                    <p style="font-size:0.82rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;">${monitoredTopicsLabel}</p>
                     <div class="topic-tags">
-                        ${renderTopics(ind.sensitiveTopics)}
+                        ${renderTopics(trans.sensitiveTopics)}
                     </div>
                 </div>
                 <div>
                     <div class="sensitive-alert">
                         <div class="sensitive-alert-title">
                             <i data-lucide="alert-triangle" style="width:16px;height:16px;"></i>
-                            ${ui.sensitiveDetected}
+                            ${sensitiveDetectedTitle}
                         </div>
-                        <p class="sensitive-alert-text" style="margin-bottom:12px;">${ui.sensitiveBoxText}</p>
+                        <p class="sensitive-alert-text" style="margin-bottom:12px;">${sensitiveBoxText}</p>
                         <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                            <span class="review-badge badge-blocked">${ui.autoPublishingBlocked}</span>
-                            <span style="font-size:0.68rem;font-weight:700;padding:3px 9px;border-radius:4px;background:rgba(245,158,11,0.1);color:#FCD34D;border:1px solid rgba(245,158,11,0.2);">${ui.ownerNotified}</span>
+                            <span class="review-badge badge-blocked">${isNl ? 'Automatisch publiceren geblokkeerd' : isEs ? 'Publicación Automática Bloqueada' : 'Auto-Publishing Blocked'}</span>
+                            <span style="font-size:0.68rem;font-weight:700;padding:3px 9px;border-radius:4px;background:rgba(245,158,11,0.1);color:#FCD34D;border:1px solid rgba(245,158,11,0.2);">${isNl ? 'Eigenaar Gewaarschuwd' : isEs ? 'Propietario Notificado' : 'Owner Notified'}</span>
                         </div>
                     </div>
                 </div>
@@ -448,610 +492,109 @@ function renderIndustryPage(ind, lang) {
         </div>
     </section>`;
 
-    const pricingSection = renderPricingSection(isAgency, indObj, ui, currentLang);
+    const pricingSection = renderPricingSection(isAgency, ind, trans, lang);
 
+    const faqTitle = isNl ? 'Veelgestelde Vragen' : isEs ? 'Preguntas Frecuentes' : 'Frequently Asked Questions';
     const faqSection = `
-    ${ind.theme.divider === 'glow' ? '<div class=\"industry-divider-glow\"></div>' : '<div class=\"industry-divider-line\"></div>'}\n    <!-- FAQ -->
+    <div class="industry-divider-glow"></div>
     <section class="section section-light" id="faq">
         <div class="container" style="max-width:760px;">
             <div class="section-header">
-                <h2>${ui.faqTitle}</h2>
+                <h2>${faqTitle}</h2>
             </div>
             <div class="faq-list">
-                ${renderFAQ(ind.faqItems)}
+                ${renderFAQ(trans.faqItems)}
             </div>
         </div>
     </section>`;
 
+    const relatedSection = renderRelatedIndustries(ind.id, lang);
+
     const ctaSection = `
-    <!-- Final CTA -->
     <section class="section section-dark">
         <div class="container" style="max-width:700px;">
             <div class="cta-box">
-                <h2 class="mb-4">${ind.finalCtaHeadline}</h2>
-                <p class="lead mb-8">${ind.finalCtaDescription}</p>
+                <h2 class="mb-4">${trans.finalCtaHeadline}</h2>
+                <p class="lead mb-8">${trans.finalCtaDescription}</p>
                 <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
-                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">${ui.startFreeTrial}</a>
-                    <a href="/pricing.html" class="btn btn-secondary btn-lg">${ui.viewPricing}</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">${isNl ? 'Start Gratis Proefperiode' : isEs ? 'Comenzar Prueba Gratuita' : 'Start Free Trial'}</a>
+                    <a href="${isNl ? '/nl/pricing.html' : isEs ? '/es/pricing.html' : '/pricing.html'}" class="btn btn-secondary btn-lg">${isNl ? 'Bekijk Prijzen' : isEs ? 'Ver Precios' : 'View Pricing'}</a>
                 </div>
             </div>
         </div>
     </section>`;
 
-    return `${themeStyles}${heroSection}${benefitsSection}${howItWorksSection}${reviewsSection}${sensitiveSection}${pricingSection}${faqSection}${ctaSection}`;
+    return `${themeStyles}${heroSection}${benefitsSection}${howItWorksSection}${reviewsSection}${sensitiveSection}${pricingSection}${faqSection}${relatedSection}${ctaSection}`;
 }
 
-// ─── Industry data ────────────────────────────────────────────────────────────
-const industryPages = [
-    {
-        slug: 'restaurants',
-        demo: {"positive": {"review": "Great food and our server Marco was fantastic!", "sentiment": "Positive", "rating": 5, "topic": "Server praise", "employee": "Marco", "risk": "Low", "reply": "Thank you for this wonderful feedback! We are so glad to hear you enjoyed the food and that Marco took great care of you. We will be sure to pass along your compliments to him.", "decision": "Safe to Auto-Publish", "text": "This review matches your automatic publishing rules."}, "negative": {"review": "We waited 45 minutes for our table despite having a reservation.", "sentiment": "Negative", "rating": 2, "topic": "Long wait time", "employee": "None", "risk": "Medium", "reply": "We are sorry to hear that you had to wait so long for your table despite having a reservation. We try our best to honor reservation times and we are sharing this with our front-of-house team so we can improve.", "decision": "Needs Approval", "text": "Negative reviews require approval under your current rules."}, "sensitive": {"review": "I specifically mentioned my peanut allergy and still got a reaction.", "sentiment": "Negative", "rating": 1, "topic": "Allergy and food safety", "employee": "None", "risk": "High", "blocked": "Allergy", "decision": "Auto-Publishing Blocked", "text": "This review requires human review before any public response is created or published."}},
-        theme: { accent: '#F59E0B', motif: 'radial', divider: 'glow' },
-        metaTitle: 'Google Review Automation for Restaurants | ReplyVera',
-        metaDescription: 'ReplyVera automatically responds to restaurant Google reviews, recognizes standout staff, and escalates food-safety, allergy, and serious service complaints.',
-        heroHeadline: 'Every Restaurant Review Answered Automatically',
-        heroDescription: 'ReplyVera writes personalized Google review responses and keeps allergy, food-safety, and serious service complaints under manager control before anything is published.',
-        mockupPositive: 'Maria made our anniversary dinner wonderful.',
-        mockupNegative: 'The food was good but we waited almost an hour.',
-        mockupSensitive: 'I explained my allergy but the dish contained it.',
-        benefitsHeadline: 'Replies That Work as Hard as Your Floor Staff',
-        benefits: [
-            { icon: 'clock', title: 'Save Manager Time', text: 'Routine reviews are handled automatically so your managers can focus on running shifts, not writing replies.' },
-            { icon: 'award', title: 'Recognize Great Service', text: 'Servers, hosts, chefs, and managers mentioned in reviews are naturally included in the reply.' },
-            { icon: 'shield-alert', title: 'Protect the Brand', text: 'Allergy, illness, injury, and serious cleanliness complaints require manager approval before any response is published.' }
-        ],
-        step2Text: 'Set your preferred tone, your approval rules, and which staff roles to recognize. ReplyVera handles each review accordingly.',
-        step3Text: 'Routine reviews are answered. Food-safety and allergy reviews are blocked from automatic publishing under your configured approval rules.',
-        reviewsHeadline: 'From Anniversary Praise to Allergy Complaints',
-        reviewsSubhead: 'See how ReplyVera handles the full range of restaurant reviews.',
-        reviewExamples: [
-            {
-                rating: 5,
-                type: 'Positive Review',
-                quote: '"Maria made our anniversary dinner wonderful."',
-                reply: '"Thank you for celebrating with us. We\'re delighted that Maria helped make the evening special, and we\'ll be sure to share your kind words with her."',
-                needsApproval: false
-            },
-            {
-                rating: 3,
-                type: 'Wait-Time Complaint',
-                quote: '"The food was good, but we waited almost an hour."',
-                reply: '"Thank you for your honest feedback. We\'re glad you enjoyed the food, but we\'re sorry your wait was much longer than expected."',
-                needsApproval: true
-            },
-            {
-                rating: 1,
-                type: 'Sensitive Review',
-                quote: '"I explained my allergy, but the dish still contained the ingredient."',
-                isAlert: true,
-                alertTitle: 'Food-safety concern detected',
-                alertText: 'Auto-publishing blocked. Manager approval required before any response is published.'
-            }
-        ],
-        sensitiveHeadline: 'Some Restaurant Reviews Should Never Be Answered Automatically',
-        sensitiveTopics: ['Allergies', 'Food poisoning', 'Contamination', 'Injuries', 'Discrimination', 'Serious cleanliness complaints'],
-        faqItems: [
-            { q: 'Can ReplyVera recognize employee names in reviews?', a: 'Yes. ReplyVera identifies names mentioned in reviews and includes them naturally in the reply, helping you recognize standout staff.' },
-            { q: 'Are food-safety reviews blocked from auto-publishing?', a: 'Yes. Reviews containing allergy, illness, contamination, or similar keywords are immediately blocked from automatic publishing and routed to your approval inbox.' },
-            { q: 'Can ReplyVera manage multiple restaurant locations?', a: 'Yes. The Multi-Location plan lets you manage separate Google Business Profiles for each location from one central dashboard.' },
-            { q: 'Does ReplyVera respond in Spanish?', a: 'Yes. ReplyVera can draft responses in both English and Spanish based on your configuration.' },
-            { q: 'Which review platforms does ReplyVera support?', a: 'ReplyVera currently supports Google Reviews through Google Business Profile. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
-        ],
-        finalCtaHeadline: 'Stop Leaving Restaurant Reviews Unanswered',
-        finalCtaDescription: 'Let ReplyVera handle routine replies and protect your reputation while your team focuses on serving great food.'
-    },
-    {
-        slug: 'dentists',
-        demo: {"positive": {"review": "The hygienists here are incredibly gentle and kind.", "sentiment": "Positive", "rating": 5, "topic": "Staff praise", "employee": "None", "risk": "Low", "reply": "Thank you for your kind review! We are so happy to hear that our hygienists made your visit a gentle and comfortable experience.", "decision": "Safe to Auto-Publish", "text": "This review matches your automatic publishing rules."}, "negative": {"review": "I was charged $200 more than my original estimate.", "sentiment": "Negative", "rating": 2, "topic": "Unexpected billing", "employee": "None", "risk": "Medium", "reply": "We appreciate you bringing this to our attention. We apologize for any confusion regarding your treatment estimate and we would like to look into your billing details to clarify this.", "decision": "Needs Approval", "text": "Negative reviews require approval under your current rules."}, "sensitive": {"review": "The procedure caused severe nerve pain that hasn't gone away.", "sentiment": "Negative", "rating": 1, "topic": "Clinical pain concern", "employee": "None", "risk": "High", "blocked": "Pain/Injury", "decision": "Auto-Publishing Blocked", "text": "This review requires human review before any public response is created or published."}},
-        theme: { accent: '#3B82F6', motif: 'grid', divider: 'line' },
-        metaTitle: 'Google Review Automation for Dental Practices | ReplyVera',
-        metaDescription: 'ReplyVera writes professional, privacy-conscious Google review responses for dentists while escalating clinical, billing, and sensitive patient concerns.',
-        heroHeadline: 'Professional Google Review Responses for Dental Practices',
-        heroDescription: 'ReplyVera creates privacy-conscious review responses while keeping clinical, billing, and sensitive patient concerns under staff approval before anything is published.',
-        mockupPositive: 'Jessica made me feel comfortable throughout.',
-        mockupNegative: 'I received a bill I was not expecting.',
-        mockupSensitive: 'I had severe pain and no one returned my call.',
-        benefitsHeadline: 'Professional Replies That Protect Your Practice',
-        benefits: [
-            { icon: 'clock', title: 'Save Front-Desk Time', text: 'Routine positive reviews are handled consistently without requiring your front-desk team to write each response.' },
-            { icon: 'lock', title: 'Protect Patient Privacy', text: 'Responses are designed to avoid confirming patient status, treatment details, or any information that should remain private.' },
-            { icon: 'shield-alert', title: 'Escalate Clinical Concerns', text: 'Pain, injury, billing, and treatment complaints require approval before any response is published.' }
-        ],
-        step2Text: 'Set your practice tone and approval rules. ReplyVera identifies clinical, billing, and privacy-sensitive reviews and routes them for manual review.',
-        step3Text: 'Routine positive reviews go live after your configured delay. Clinical, privacy, and billing concerns are held for approval under your configured rules.',
-        reviewsHeadline: 'Professional Responses for Every Patient Experience',
-        reviewsSubhead: 'From positive feedback to clinical concerns, each review is handled appropriately.',
-        reviewExamples: [
-            {
-                rating: 5,
-                type: 'Positive Review',
-                quote: '"Jessica made me feel comfortable throughout the visit."',
-                reply: '"Thank you for your kind feedback. We\'re pleased to hear that Jessica and the team helped create a comfortable experience. We\'ll share your appreciation with them."',
-                needsApproval: false
-            },
-            {
-                rating: 2,
-                type: 'Billing Concern',
-                quote: '"I received a bill I was not expecting."',
-                reply: '"Thank you for sharing your concern. Please contact the office directly so the appropriate team member can review the details with you."',
-                needsApproval: true
-            },
-            {
-                rating: 1,
-                type: 'Sensitive Review',
-                quote: '"I had severe pain afterward and no one returned my call."',
-                isAlert: true,
-                alertTitle: 'Clinical concern detected',
-                alertText: 'Auto-publishing blocked. Staff approval required before any response is published.'
-            }
-        ],
-        sensitiveHeadline: 'Keep Clinical and Privacy-Sensitive Reviews Under Human Control',
-        sensitiveTopics: ['Pain', 'Injury', 'Treatment outcomes', 'Medication', 'Diagnosis', 'Insurance', 'Billing disputes', 'Privacy complaints'],
-        faqItems: [
-            { q: 'How does ReplyVera handle patient privacy?', a: 'Responses are designed to avoid confirming patient status or referencing any clinical details. Replies focus on general appreciation without disclosing private information.' },
-            { q: 'Are clinical and billing complaints blocked from auto-publishing?', a: 'Yes. Reviews mentioning pain, injury, billing disputes, or treatment outcomes are immediately held for approval and blocked from automatic publishing under your configured approval rules.' },
-            { q: 'Can ReplyVera recognize hygienists and staff mentioned by name?', a: 'Yes. When a reviewer mentions a specific staff member, ReplyVera includes them naturally in the response.' },
-            { q: 'Does ReplyVera support multiple practice locations?', a: 'Yes. The Multi-Location plan supports multiple Google Business Profiles with separate rules for each location.' },
-            { q: 'Which review platforms does ReplyVera support?', a: 'ReplyVera currently supports Google Reviews through Google Business Profile. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
-        ],
-        finalCtaHeadline: 'Respond Professionally Without Risking Patient Privacy',
-        finalCtaDescription: 'Let ReplyVera handle routine replies consistently while your team focuses on patient care.'
-    },
-    {
-        slug: 'agencies',
-        demo: {"positive": {"review": "The whole team loved the campaign design, fantastic job.", "sentiment": "Positive", "rating": 5, "topic": "Client praise", "employee": "None", "risk": "Low", "reply": "Thank you so much! We are thrilled to hear that your team loved the campaign design. It was a pleasure working on this project with you.", "decision": "Safe to Auto-Publish", "text": "This review matches your automatic publishing rules."}, "negative": {"review": "Communication has been slow since the contract was signed.", "sentiment": "Negative", "rating": 2, "topic": "Communication delay", "employee": "None", "risk": "Medium", "reply": "Thank you for your feedback. We apologize for the delay in communication and we are reviewing our account management process to ensure you get timely updates moving forward.", "decision": "Needs Approval", "text": "Negative reviews require approval under your current rules."}, "sensitive": {"review": "The campaign launched with the wrong budget and cost us thousands.", "sentiment": "Negative", "rating": 1, "topic": "Financial loss", "employee": "None", "risk": "High", "blocked": "Financial loss", "decision": "Auto-Publishing Blocked", "text": "This review requires human review before any public response is created or published."}},
-        theme: { accent: '#8B5CF6', motif: 'nodes', divider: 'glow' },
-        metaTitle: 'Google Review Management for Marketing Agencies | ReplyVera',
-        metaDescription: 'ReplyVera helps marketing agencies manage Google review replies for every client from one dashboard, with separate brand voices and approval rules.',
-        heroHeadline: 'Manage Every Client\'s Google Review Replies From One Dashboard',
-        heroDescription: 'ReplyVera helps agencies automate client review responses while preserving a separate brand voice, approval workflow, and account setup for every business.',
-        mockupPositive: 'Best dining experience we\'ve had in years.',
-        mockupNegative: 'Billing issue that was never resolved.',
-        mockupSensitive: 'Animal was injured while in their care.',
-        benefitsHeadline: 'Scale Your Agency\'s Review Management',
-        benefits: [
-            { icon: 'layout-dashboard', title: 'Manage More Clients', text: 'Handle multiple client locations from a single account without switching between logins or dashboards.' },
-            { icon: 'fingerprint', title: 'Protect Every Brand Voice', text: 'Each client uses its own tone configuration, business context, and approval rules.' },
-            { icon: 'zap', title: 'Reduce Manual Work', text: 'Routine reviews are handled automatically across all clients, reducing the time your team spends writing replies.' }
-        ],
-        step2Text: 'Configure separate tone profiles, approval rules, and sensitive topics for each client location. Each client operates independently.',
-        step3Text: 'Routine reviews are handled automatically per client settings. Sensitive feedback is held for your team or the client to approve before publishing.',
-        reviewsHeadline: 'Across Restaurants, Clinics, and Pet-Care Businesses',
-        reviewsSubhead: 'Each client review is handled with the right tone, rules, and protections for their industry.',
-        reviewExamples: [
-            {
-                rating: 5,
-                type: 'Restaurant Client',
-                quote: '"Best dining experience we\'ve had in years."',
-                reply: '"Thank you for your wonderful review. We\'re so glad you had a great experience, and we look forward to welcoming you back."',
-                needsApproval: false
-            },
-            {
-                rating: 2,
-                type: 'Dental Client',
-                quote: '"I was charged for a procedure I did not agree to."',
-                reply: '"Thank you for your feedback. We take billing concerns seriously. Please contact the practice directly so the appropriate team member can address this with you."',
-                needsApproval: true
-            },
-            {
-                rating: 1,
-                type: 'Pet-Care Client',
-                quote: '"My dog was injured while in their care."',
-                isAlert: true,
-                alertTitle: 'Animal safety concern detected',
-                alertText: 'Auto-publishing blocked. Client notified immediately for manual review.'
-            }
-        ],
-        sensitiveHeadline: 'Every Client\'s Sensitive Reviews Stay Under Control',
-        sensitiveTopics: ['Clinical complaints', 'Animal safety', 'Food-safety concerns', 'Child safety', 'Billing disputes', 'Injury claims'],
-        faqItems: [
-            { q: 'Can each client have their own tone and approval rules?', a: 'Yes. Each client location is configured independently with its own tone profile, brand voice, and approval settings.' },
-            { q: 'Can clients approve their own reviews?', a: 'Yes. You can grant client-level access so the business owner can review and approve sensitive responses themselves.' },
-            { q: 'How many client locations can I manage?', a: 'The Agency plan starts at $149 per month and includes 10 client locations. Additional client locations can be added for a monthly fee.' },
-            { q: 'Does ReplyVera support sensitive-review detection per industry?', a: 'Yes. Each client location can have its own sensitive-topic rules configured to match their specific industry.' },
-            { q: 'Which review platforms does ReplyVera support?', a: 'ReplyVera currently supports Google Reviews through Google Business Profile. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
-        ],
-        finalCtaHeadline: 'Turn Review Management Into a Scalable Agency Service',
-        finalCtaDescription: 'Add Google review automation to your agency\'s service offering without adding headcount.'
-    },
-    {
-        slug: 'martial-arts',
-        demo: {"positive": {"review": "Sensei John is an amazing instructor. My son loves his classes.", "sentiment": "Positive", "rating": 5, "topic": "Instructor praise", "employee": "Sensei John", "risk": "Low", "reply": "Thank you for your review! We are so glad to hear your son is enjoying classes and we will be sure to share your kind words with Sensei John.", "decision": "Safe to Auto-Publish", "text": "This review matches your automatic publishing rules."}, "negative": {"review": "I have been trying to cancel my membership for weeks with no reply.", "sentiment": "Negative", "rating": 2, "topic": "Membership cancellation", "employee": "None", "risk": "Medium", "reply": "Thank you for bringing this to our attention. We are sorry for the delay in processing your cancellation request and we will follow up with you directly to resolve this.", "decision": "Needs Approval", "text": "Negative reviews require approval under your current rules."}, "sensitive": {"review": "My child was bullied during class and the instructor did nothing.", "sentiment": "Negative", "rating": 1, "topic": "Child safety and bullying", "employee": "None", "risk": "High", "blocked": "Bullying", "decision": "Auto-Publishing Blocked", "text": "This review requires human review before any public response is created or published."}},
-        theme: { accent: '#DC2626', motif: 'diagonal', divider: 'line' },
-        metaTitle: 'Google Review Automation for Martial Arts Schools | ReplyVera',
-        metaDescription: 'ReplyVera handles routine parent and student reviews for martial arts schools while escalating safety, injury, bullying, and membership complaints.',
-        heroHeadline: 'Every Martial Arts Review Answered Automatically',
-        heroDescription: 'ReplyVera handles routine parent and student reviews while keeping safety, injury, bullying, and membership complaints under owner approval before anything goes live.',
-        mockupPositive: 'Sensei David changed my son\'s confidence.',
-        mockupNegative: 'I had trouble cancelling my membership.',
-        mockupSensitive: 'My child was hurt during a sparring session.',
-        benefitsHeadline: 'Spend More Time Teaching. Less Time Writing Replies.',
-        benefits: [
-            { icon: 'clock', title: 'Save Owner Time', text: 'Stop writing every review reply yourself. Routine responses are handled automatically so you can focus on instruction.' },
-            { icon: 'award', title: 'Recognize Great Instructors', text: 'When parents mention coaches and instructors by name, their recognition is reflected naturally in the reply.' },
-            { icon: 'shield-alert', title: 'Protect Students and the School', text: 'Safety incidents, membership disputes, and bullying concerns require owner review before any response is published.' }
-        ],
-        step2Text: 'Set your school\'s tone and approval rules. ReplyVera identifies safety, injury, and membership complaints and routes them to you before publishing.',
-        step3Text: 'Routine parent and student reviews are answered automatically. Safety and membership concerns are held for your approval and blocked from automatic publishing under your configured rules.',
-        reviewsHeadline: 'From Progress Praise to Safety Concerns',
-        reviewsSubhead: 'Each type of martial arts review is handled with the right level of care.',
-        reviewExamples: [
-            {
-                rating: 5,
-                type: 'Positive Review',
-                quote: '"Sensei David has completely changed my son\'s confidence."',
-                reply: '"Thank you for sharing this. We\'re so glad your son has grown through training, and we\'ll be sure to pass your kind words on to Sensei David."',
-                needsApproval: false
-            },
-            {
-                rating: 2,
-                type: 'Membership Complaint',
-                quote: '"I had trouble cancelling my membership and kept getting charged."',
-                reply: '"Thank you for letting us know. We\'re sorry for the difficulty you experienced. Please contact us directly so we can resolve this for you right away."',
-                needsApproval: true
-            },
-            {
-                rating: 1,
-                type: 'Sensitive Review',
-                quote: '"My child was injured during a sparring session and no one informed me."',
-                isAlert: true,
-                alertTitle: 'Child safety concern detected',
-                alertText: 'Auto-publishing blocked. Owner notified immediately for manual review.'
-            }
-        ],
-        sensitiveHeadline: 'Safety and Membership Disputes Require Your Approval',
-        sensitiveTopics: ['Injury', 'Child safety', 'Bullying', 'Discrimination', 'Staff conduct', 'Membership disputes'],
-        faqItems: [
-            { q: 'Can ReplyVera recognize instructor names in reviews?', a: 'Yes. When parents or students mention a coach or instructor by name, the reply naturally includes that recognition.' },
-            { q: 'Are injury and safety reviews blocked from auto-publishing?', a: 'Yes. Any review mentioning injury, child safety, bullying, or staff conduct is immediately held for owner approval.' },
-            { q: 'Can membership complaints be routed for approval?', a: 'Yes. Membership cancellation issues, billing disputes, and contract concerns are held for your review before any reply is published.' },
-            { q: 'Does ReplyVera support multiple school locations?', a: 'Yes. The Multi-Location plan lets you manage separate Google Business Profiles for each location from one account.' },
-            { q: 'Which review platforms does ReplyVera support?', a: 'ReplyVera currently supports Google Reviews through Google Business Profile. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
-        ],
-        finalCtaHeadline: 'Spend More Time Teaching and Less Time Writing Replies',
-        finalCtaDescription: 'Let ReplyVera handle routine reviews while you stay in full control of anything involving student safety or membership disputes.'
-    },
-    {
-        slug: 'childcare',
-        demo: {"positive": {"review": "Miss Emma is so wonderful with our toddler. Highly recommend.", "sentiment": "Positive", "rating": 5, "topic": "Teacher praise", "employee": "Miss Emma", "risk": "Low", "reply": "Thank you for your wonderful feedback! We are so happy to have your family with us, and we will definitely share your kind words with Miss Emma.", "decision": "Safe to Auto-Publish", "text": "This review matches your automatic publishing rules."}, "negative": {"review": "We were not informed that they were out of diapers until pickup.", "sentiment": "Negative", "rating": 2, "topic": "Communication complaint", "employee": "None", "risk": "Medium", "reply": "Thank you for your feedback. We apologize for not communicating this to you sooner during the day. We are reviewing our parent notification process to improve.", "decision": "Needs Approval", "text": "Negative reviews require approval under your current rules."}, "sensitive": {"review": "My son came home with a large scratch and no incident report.", "sentiment": "Negative", "rating": 1, "topic": "Injury and supervision", "employee": "None", "risk": "High", "blocked": "Injury", "decision": "Auto-Publishing Blocked", "text": "This review requires human review before any public response is created or published."}},
-        theme: { accent: '#14B8A6', motif: 'rounded', divider: 'glow' },
-        metaTitle: 'Google Review Automation for Childcare Centers | ReplyVera',
-        metaDescription: 'ReplyVera handles routine parent reviews for childcare centers and preschools while escalating concerns involving supervision, injury, allergies, and child privacy.',
-        heroHeadline: 'Every Childcare Review Answered With Care',
-        heroDescription: 'ReplyVera handles routine parent reviews while escalating concerns involving supervision, injuries, allergies, staff conduct, or child privacy before anything is published.',
-        mockupPositive: 'Miss Sarah goes above and beyond for every child.',
-        mockupNegative: 'Communication from the center has been inconsistent.',
-        mockupSensitive: 'My daughter had an allergic reaction and I wasn\'t notified.',
-        benefitsHeadline: 'Replies That Reflect the Care You Give Every Day',
-        benefits: [
-            { icon: 'clock', title: 'Save Director Time', text: 'Routine reply drafts are prepared automatically so directors and staff can focus on children, not review management.' },
-            { icon: 'heart', title: 'Recognize Great Teachers', text: 'When parents praise a specific teacher or staff member, that recognition is reflected naturally in the reply.' },
-            { icon: 'shield-alert', title: 'Protect Families and the Center', text: 'Safety and privacy concerns require director approval before any response is published.' }
-        ],
-        step2Text: 'Set your center\'s tone and approval rules. ReplyVera identifies safety, allergy, and privacy concerns and routes them for director review.',
-        step3Text: 'Routine parent feedback is handled consistently. Safety and privacy concerns are held for your approval and blocked from automatic publishing under your configured rules.',
-        reviewsHeadline: 'From Teacher Praise to Safety Concerns',
-        reviewsSubhead: 'Each type of childcare review is handled with the appropriate level of care and protection.',
-        reviewExamples: [
-            {
-                rating: 5,
-                type: 'Positive Review',
-                quote: '"Miss Sarah goes above and beyond for every child in her class."',
-                reply: '"Thank you for this wonderful feedback. We\'re so glad your child is thriving, and we\'ll make sure to share your kind words with Miss Sarah."',
-                needsApproval: false
-            },
-            {
-                rating: 2,
-                type: 'Communication Concern',
-                quote: '"Communication from the center has been inconsistent this month."',
-                reply: '"Thank you for bringing this to our attention. We take feedback seriously and would like to connect with you directly to understand how we can improve."',
-                needsApproval: true
-            },
-            {
-                rating: 1,
-                type: 'Sensitive Review',
-                quote: '"My daughter had an allergic reaction and I was not notified promptly."',
-                isAlert: true,
-                alertTitle: 'Child safety concern detected',
-                alertText: 'Auto-publishing blocked. Director notified immediately for manual review.'
-            }
-        ],
-        sensitiveHeadline: 'Child Safety and Privacy Reviews Always Require Approval',
-        sensitiveTopics: ['Injury', 'Supervision', 'Allergy', 'Medication', 'Abuse', 'Neglect', 'Privacy', 'Licensing'],
-        faqItems: [
-            { q: 'Are allergy and injury reviews blocked from auto-publishing?', a: 'Yes. Any review mentioning allergy, injury, supervision, medication, or child safety is immediately held for director approval and blocked from automatic publishing under your configured approval rules.' },
-            { q: 'Can ReplyVera recognize teacher names mentioned in reviews?', a: 'Yes. When a parent mentions a specific teacher or staff member, the reply includes that recognition naturally.' },
-            { q: 'How does ReplyVera handle child privacy?', a: 'Responses are designed to avoid referencing specific children, personal information, or details that should remain private.' },
-            { q: 'Does ReplyVera support multiple center locations?', a: 'Yes. The Multi-Location plan lets you manage separate profiles for each location from one account.' },
-            { q: 'Which review platforms does ReplyVera support?', a: 'ReplyVera currently supports Google Reviews through Google Business Profile. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
-        ],
-        finalCtaHeadline: 'Protect Your Reputation Without Overloading Center Directors',
-        finalCtaDescription: 'Let ReplyVera handle routine parent feedback while your team focuses on providing exceptional care every day.'
-    },
-    {
-        slug: 'tutoring',
-        demo: {"positive": {"review": "Mr. Davis helped my daughter finally understand algebra.", "sentiment": "Positive", "rating": 5, "topic": "Tutor praise", "employee": "Mr. Davis", "risk": "Low", "reply": "Thank you for this wonderful review! We are so proud of your daughter's progress in algebra, and we will be sure to pass your thanks to Mr. Davis.", "decision": "Safe to Auto-Publish", "text": "This review matches your automatic publishing rules."}, "negative": {"review": "The center changed our schedule three times without asking.", "sentiment": "Negative", "rating": 2, "topic": "Scheduling complaint", "employee": "None", "risk": "Medium", "reply": "We apologize for the inconvenience and frustration regarding your schedule. We strive to provide consistent session times and are looking into why these changes occurred.", "decision": "Needs Approval", "text": "Negative reviews require approval under your current rules."}, "sensitive": {"review": "They promised a 2-letter grade improvement but we saw no change.", "sentiment": "Negative", "rating": 1, "topic": "Academic guarantee concern", "employee": "None", "risk": "High", "blocked": "Academic Guarantee", "decision": "Auto-Publishing Blocked", "text": "This review requires human review before any public response is created or published."}},
-        theme: { accent: '#6366F1', motif: 'dots', divider: 'line' },
-        metaTitle: 'Google Review Automation for Tutoring Centers | ReplyVera',
-        metaDescription: 'ReplyVera writes professional Google review responses for tutoring centers while keeping refund, billing, academic-claim, and student-safety concerns under approval.',
-        heroHeadline: 'Turn Every Parent Review Into Trust',
-        heroDescription: 'ReplyVera writes professional Google review responses while keeping refund, billing, academic-claim, and student-safety concerns under approval before anything is published.',
-        mockupPositive: 'Mr. Chen helped my son go from failing to confident.',
-        mockupNegative: 'We didn\'t see the improvement we were promised.',
-        mockupSensitive: 'Requesting a refund for sessions that were cancelled.',
-        benefitsHeadline: 'Professional Replies That Build Parent Confidence',
-        benefits: [
-            { icon: 'clock', title: 'Save Administrative Time', text: 'Routine positive reviews are handled consistently without your admin team needing to write each one.' },
-            { icon: 'award', title: 'Recognize Great Tutors', text: 'When parents praise a specific tutor by name, that recognition is reflected naturally in the reply.' },
-            { icon: 'shield-alert', title: 'Avoid Risky Claims', text: 'Academic guarantees, refund requests, and student-safety concerns require approval before any response is published.' }
-        ],
-        step2Text: 'Set your center\'s tone and approval rules. ReplyVera identifies academic-claim, billing, and safety concerns and routes them for manual review.',
-        step3Text: 'Routine parent praise is answered automatically. Refund, billing, and academic-guarantee concerns are held for your approval and blocked from automatic publishing under your configured rules.',
-        reviewsHeadline: 'From Progress Praise to Billing Disputes',
-        reviewsSubhead: 'Each parent review is handled with the right level of professionalism and protection.',
-        reviewExamples: [
-            {
-                rating: 5,
-                type: 'Positive Review',
-                quote: '"Mr. Chen helped my son go from failing to confident in just a few weeks."',
-                reply: '"Thank you for this encouraging feedback. We\'re so glad to hear about your son\'s progress, and we\'ll be sure to share your kind words with Mr. Chen."',
-                needsApproval: false
-            },
-            {
-                rating: 2,
-                type: 'Progress Complaint',
-                quote: '"We did not see the improvement we were told to expect."',
-                reply: '"Thank you for sharing your concern. We\'d like to connect with you directly to understand your experience and discuss how we can best support your child\'s progress."',
-                needsApproval: true
-            },
-            {
-                rating: 1,
-                type: 'Sensitive Review',
-                quote: '"I am requesting a refund for sessions that were cancelled with no notice."',
-                isAlert: true,
-                alertTitle: 'Billing and refund concern detected',
-                alertText: 'Auto-publishing blocked. Administrative approval required before any response is published.'
-            }
-        ],
-        sensitiveHeadline: 'Billing, Refunds, and Academic Claims Require Your Review',
-        sensitiveTopics: ['Refund requests', 'Billing disputes', 'Academic guarantees', 'Student safety', 'Staff conduct', 'Cancelled sessions'],
-        faqItems: [
-            { q: 'Are refund and billing complaints blocked from auto-publishing?', a: 'Yes. Reviews mentioning refunds, billing disputes, or cancelled sessions are immediately held for administrative approval.' },
-            { q: 'Can ReplyVera recognize tutor names in reviews?', a: 'Yes. When a parent mentions a specific tutor, the reply includes that recognition naturally.' },
-            { q: 'How does ReplyVera handle academic-guarantee claims?', a: 'Any review making specific outcome claims or requesting compensation is routed for manual approval before any reply is drafted or published.' },
-            { q: 'Does ReplyVera support multiple tutoring center locations?', a: 'Yes. The Multi-Location plan lets you manage multiple Google Business Profiles from one account.' },
-            { q: 'Which review platforms does ReplyVera support?', a: 'ReplyVera currently supports Google Reviews through Google Business Profile. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
-        ],
-        finalCtaHeadline: 'Build Parent Trust Without Adding Administrative Work',
-        finalCtaDescription: 'Let ReplyVera handle routine replies while your team focuses on helping students succeed.'
-    },
-    {
-        slug: 'pet-care',
-        demo: {"positive": {"review": "The staff is always so excited to see our golden retriever.", "sentiment": "Positive", "rating": 5, "topic": "Staff praise", "employee": "None", "risk": "Low", "reply": "Thank you for your kind review! We truly love seeing your golden retriever and we appreciate you trusting us with their care.", "decision": "Safe to Auto-Publish", "text": "This review matches your automatic publishing rules."}, "negative": {"review": "Grooming took two hours longer than we were quoted.", "sentiment": "Negative", "rating": 2, "topic": "Grooming delay", "employee": "None", "risk": "Medium", "reply": "We are sorry that your pet's grooming took longer than expected today. We understand your time is valuable and we are working to improve our scheduling accuracy.", "decision": "Needs Approval", "text": "Negative reviews require approval under your current rules."}, "sensitive": {"review": "My dog came home with a cut near his ear that needed a vet.", "sentiment": "Negative", "rating": 1, "topic": "Animal injury concern", "employee": "None", "risk": "High", "blocked": "Injury", "decision": "Auto-Publishing Blocked", "text": "This review requires human review before any public response is created or published."}},
-        theme: { accent: '#22C55E', motif: 'paws', divider: 'glow' },
-        metaTitle: 'Google Review Automation for Pet Care Businesses | ReplyVera',
-        metaDescription: 'ReplyVera writes warm Google review responses for pet care businesses while immediately holding injury, illness, lost-pet, and animal-safety complaints for approval.',
-        heroHeadline: 'Every Pet-Care Review Answered Automatically',
-        heroDescription: 'ReplyVera writes warm Google review responses while immediately holding injury, illness, lost-pet, and animal-safety complaints for approval before they go live.',
-        mockupPositive: 'Luna always comes home happy and well-groomed.',
-        mockupNegative: 'Pickup took longer than the time we agreed on.',
-        mockupSensitive: 'My dog got injured while boarding here.',
-        benefitsHeadline: 'Replies That Reflect the Care You Give',
-        benefits: [
-            { icon: 'clock', title: 'Save Staff Time', text: 'Routine reviews are handled automatically, giving your team more time to focus on the animals in your care.' },
-            { icon: 'award', title: 'Recognize Great Care', text: 'Groomers, handlers, and staff members mentioned by name are recognized naturally in the reply.' },
-            { icon: 'shield-alert', title: 'Protect Pets and the Business', text: 'Injury, illness, lost-pet, and animal-safety complaints require approval before any response is published.' }
-        ],
-        step2Text: 'Set your business tone and approval rules. ReplyVera identifies animal-safety, injury, and missing-pet concerns and routes them for your review.',
-        step3Text: 'Routine positive reviews are answered automatically. Safety and injury concerns are held for your approval and blocked from automatic publishing under your configured rules.',
-        reviewsHeadline: 'From Happy Pets to Safety Complaints',
-        reviewsSubhead: 'Every type of pet-care review is handled with warmth and the right level of protection.',
-        reviewExamples: [
-            {
-                rating: 5,
-                type: 'Positive Review',
-                quote: '"Luna always comes home happy and beautifully groomed."',
-                reply: '"Thank you so much for this lovely review. We\'re so glad Luna loves her visits with us, and we look forward to seeing her again soon."',
-                needsApproval: false
-            },
-            {
-                rating: 3,
-                type: 'Delay Complaint',
-                quote: '"Pickup took longer than the time we agreed on."',
-                reply: '"Thank you for your feedback. We\'re sorry the timing wasn\'t what we had discussed. We\'ll review our scheduling to make sure this doesn\'t happen again."',
-                needsApproval: true
-            },
-            {
-                rating: 1,
-                type: 'Sensitive Review',
-                quote: '"My dog was injured while boarding here and I was not contacted."',
-                isAlert: true,
-                alertTitle: 'Animal safety concern detected',
-                alertText: 'Auto-publishing blocked. Owner notified immediately for manual review.'
-            }
-        ],
-        sensitiveHeadline: 'Animal Safety Concerns Require Manual Approval',
-        sensitiveTopics: ['Injury', 'Illness', 'Lost pet', 'Animal safety', 'Medication', 'Neglect', 'Staff conduct'],
-        faqItems: [
-            { q: 'Are animal injury or illness reviews blocked from auto-publishing?', a: 'Yes. Any review mentioning injury, illness, a missing pet, or animal safety is immediately held for owner approval and blocked from automatic publishing under your configured approval rules.' },
-            { q: 'Can ReplyVera recognize groomer and handler names in reviews?', a: 'Yes. When a customer mentions a specific team member, the reply includes that recognition naturally.' },
-            { q: 'Does ReplyVera support multiple pet-care locations?', a: 'Yes. The Multi-Location plan lets you manage separate Google Business Profiles for each location from one account.' },
-            { q: 'Can I set different approval rules for grooming vs. boarding reviews?', a: 'Yes. You can configure separate rules for different types of reviews and services within your account.' },
-            { q: 'Which review platforms does ReplyVera support?', a: 'ReplyVera currently supports Google Reviews through Google Business Profile. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
-        ],
-        finalCtaHeadline: 'Protect Your Reputation While You Care for Their Pets',
-        finalCtaDescription: 'Let ReplyVera handle routine replies so your team can focus on providing exceptional care every day.'
-    },
-    {
-        slug: 'car-washes',
-        demo: {"positive": {"review": "Quick, thorough, and the attendants are always super polite.", "sentiment": "Positive", "rating": 5, "topic": "Employee praise", "employee": "None", "risk": "Low", "reply": "Thank you for your 5-star review! We pride ourselves on providing a quick and thorough wash, and we are glad our team provided great service.", "decision": "Safe to Auto-Publish", "text": "This review matches your automatic publishing rules."}, "negative": {"review": "The vacuum on the far left was broken and took my tokens.", "sentiment": "Negative", "rating": 2, "topic": "Broken equipment", "employee": "None", "risk": "Medium", "reply": "Thank you for letting us know about the broken vacuum. We apologize for the inconvenience and the lost tokens, and we will get our maintenance team on it immediately.", "decision": "Needs Approval", "text": "Negative reviews require approval under your current rules."}, "sensitive": {"review": "The brushes completely scratched the paint on my new hood.", "sentiment": "Negative", "rating": 1, "topic": "Vehicle damage", "employee": "None", "risk": "High", "blocked": "Damage", "decision": "Auto-Publishing Blocked", "text": "This review requires human review before any public response is created or published."}},
-        theme: { accent: '#06B6D4', motif: 'waves', divider: 'line' },
-        metaTitle: 'Google Review Automation for Car Wash Operators | ReplyVera',
-        metaDescription: 'ReplyVera handles routine car wash reviews automatically while escalating vehicle-damage, billing, membership, and safety complaints for owner approval.',
-        heroHeadline: 'Every Car Wash Review Answered Automatically',
-        heroDescription: 'ReplyVera handles routine reviews while escalating vehicle-damage, billing, membership, and safety complaints before any response is published.',
-        mockupPositive: 'Best car wash in the area. Always spotless.',
-        mockupNegative: 'The equipment was broken and my car wasn\'t cleaned.',
-        mockupSensitive: 'My car was scratched during the wash.',
-        benefitsHeadline: 'Keep Every Location Responsive and Protected',
-        benefits: [
-            { icon: 'clock', title: 'Save Location Manager Time', text: 'Routine reviews are handled consistently without your location managers needing to write each reply.' },
-            { icon: 'award', title: 'Recognize Great Employees', text: 'When customers mention a specific team member, their recognition is naturally included in the reply.' },
-            { icon: 'shield-alert', title: 'Escalate High-Risk Complaints', text: 'Vehicle damage, billing disputes, and membership cancellation issues require approval before any response is published.' }
-        ],
-        step2Text: 'Set your tone and approval rules. ReplyVera identifies vehicle-damage, billing, and membership complaints and routes them for approval.',
-        step3Text: 'Routine reviews are answered automatically. Damage and billing complaints are held for your approval and blocked from automatic publishing under your configured rules.',
-        reviewsHeadline: 'From Happy Customers to Vehicle Damage Claims',
-        reviewsSubhead: 'Each car wash review is handled with the right level of care and business protection.',
-        reviewExamples: [
-            {
-                rating: 5,
-                type: 'Positive Review',
-                quote: '"Best car wash in the area. My car always comes out spotless."',
-                reply: '"Thank you for the great feedback! We\'re glad you keep coming back, and we look forward to seeing you again soon."',
-                needsApproval: false
-            },
-            {
-                rating: 2,
-                type: 'Equipment Complaint',
-                quote: '"The equipment was broken and my car was not fully cleaned."',
-                reply: '"Thank you for letting us know. We\'re sorry the equipment didn\'t perform as expected. Please contact us directly and we\'ll make this right."',
-                needsApproval: true
-            },
-            {
-                rating: 1,
-                type: 'Sensitive Review',
-                quote: '"My car was scratched during the wash and no one would help me."',
-                isAlert: true,
-                alertTitle: 'Vehicle damage complaint detected',
-                alertText: 'Auto-publishing blocked. Manager notified immediately for manual review.'
-            }
-        ],
-        sensitiveHeadline: 'Damage and Billing Complaints Require Owner Approval',
-        sensitiveTopics: ['Vehicle damage', 'Billing disputes', 'Membership cancellations', 'Safety concerns', 'Equipment failures', 'Theft claims'],
-        faqItems: [
-            { q: 'Are vehicle damage complaints blocked from auto-publishing?', a: 'Yes. Any review mentioning vehicle damage, scratches, or property concerns is immediately held for owner approval and blocked from automatic publishing under your configured approval rules.' },
-            { q: 'Can membership cancellation issues be routed for approval?', a: 'Yes. Membership billing and cancellation disputes are held for your review before any reply is published.' },
-            { q: 'Can ReplyVera manage multiple car wash locations?', a: 'Yes. The Multi-Location plan lets you manage separate Google Business Profiles for each location from one dashboard.' },
-            { q: 'Can ReplyVera recognize employee names in positive reviews?', a: 'Yes. When a customer mentions a team member by name, the reply includes that recognition naturally.' },
-            { q: 'Which review platforms does ReplyVera support?', a: 'ReplyVera currently supports Google Reviews through Google Business Profile. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
-        ],
-        finalCtaHeadline: 'Keep Every Car Wash Location Responsive',
-        finalCtaDescription: 'Let ReplyVera handle routine replies while your team manages the locations and protects the brand.'
-    },
-    {
-        slug: 'laundromats',
-        demo: {"positive": {"review": "Very clean facility and the owner is always helpful.", "sentiment": "Positive", "rating": 5, "topic": "Cleanliness and staff praise", "employee": "None", "risk": "Low", "reply": "Thank you for your fantastic review! We work hard to keep the facility clean and comfortable, and we are always happy to help.", "decision": "Safe to Auto-Publish", "text": "This review matches your automatic publishing rules."}, "negative": {"review": "Dryer #4 is still not heating up properly, wasting money.", "sentiment": "Negative", "rating": 2, "topic": "Broken machine", "employee": "None", "risk": "Medium", "reply": "Thank you for reporting this issue with Dryer #4. We apologize for the frustration and we have placed an out-of-order sign on it until our technician can fix the heating element.", "decision": "Needs Approval", "text": "Negative reviews require approval under your current rules."}, "sensitive": {"review": "Someone stole my basket of clothes when I stepped outside.", "sentiment": "Negative", "rating": 1, "topic": "Theft allegation", "employee": "None", "risk": "High", "blocked": "Theft", "decision": "Auto-Publishing Blocked", "text": "This review requires human review before any public response is created or published."}},
-        theme: { accent: '#2DD4BF', motif: 'bubbles', divider: 'glow' },
-        metaTitle: 'Google Review Automation for Laundromats | ReplyVera',
-        metaDescription: 'ReplyVera responds to routine laundromat reviews and alerts owners when customers report broken machines, refunds, missing items, cleanliness, or safety concerns.',
-        heroHeadline: 'Keep Every Laundry Review Clean and Professional',
-        heroDescription: 'ReplyVera responds to routine reviews and alerts owners when customers report broken machines, refunds, missing items, cleanliness, or safety concerns.',
-        mockupPositive: 'Always clean, always working. My go-to spot.',
-        mockupNegative: 'Two of the washers weren\'t working today.',
-        mockupSensitive: 'My clothes went missing and no one helped me.',
-        benefitsHeadline: 'Stay on Top of Every Location\'s Reviews',
-        benefits: [
-            { icon: 'clock', title: 'Save Owner Time', text: 'Routine reviews are answered consistently without requiring you to write each reply yourself.' },
-            { icon: 'map-pin', title: 'Spot Location Problems', text: 'Machine and cleanliness complaints are easy to identify so you can address issues before they affect your rating.' },
-            { icon: 'shield-alert', title: 'Protect Customer Trust', text: 'Missing-item and refund disputes require approval before any response is published.' }
-        ],
-        step2Text: 'Set your tone and approval rules. ReplyVera identifies machine, cleanliness, and missing-item complaints and routes them for your review.',
-        step3Text: 'Routine positive reviews are answered automatically. Refund, missing-item, and safety concerns are held for your approval before publishing.',
-        reviewsHeadline: 'From Loyal Regulars to Missing-Item Complaints',
-        reviewsSubhead: 'Each type of laundromat review is handled with the right response and the right protections.',
-        reviewExamples: [
-            {
-                rating: 5,
-                type: 'Positive Review',
-                quote: '"Always clean, always working. This is my go-to laundromat."',
-                reply: '"Thank you for the kind words! We work hard to keep things clean and running smoothly, and we really appreciate you sharing this."',
-                needsApproval: false
-            },
-            {
-                rating: 2,
-                type: 'Equipment Complaint',
-                quote: '"Two of the washers were not working when I arrived."',
-                reply: '"Thank you for letting us know. We\'re sorry for the inconvenience. We\'ll look into the machines right away and work to get them back in service as quickly as possible."',
-                needsApproval: true
-            },
-            {
-                rating: 1,
-                type: 'Sensitive Review',
-                quote: '"My clothes went missing and no one at the location was able to help me."',
-                isAlert: true,
-                alertTitle: 'Missing-item complaint detected',
-                alertText: 'Auto-publishing blocked. Owner notified immediately for manual review.'
-            }
-        ],
-        sensitiveHeadline: 'Missing Items and Refund Requests Require Your Approval',
-        sensitiveTopics: ['Missing items', 'Refund disputes', 'Safety concerns', 'Theft', 'Equipment damage', 'Health concerns'],
-        faqItems: [
-            { q: 'Are missing-item and refund complaints blocked from auto-publishing?', a: 'Yes. Any review mentioning missing clothing, theft, or refund requests is immediately held for owner approval and blocked from automatic publishing under your configured approval rules.' },
-            { q: 'Can I use ReplyVera to track which locations have the most machine complaints?', a: 'Reviews are organized by location, so you can quickly see patterns in machine or cleanliness complaints per site.' },
-            { q: 'Can ReplyVera manage multiple laundromat locations?', a: 'Yes. The Multi-Location plan lets you manage separate Google Business Profiles for each location from one account.' },
-            { q: 'Does ReplyVera respond in Spanish?', a: 'Yes. ReplyVera can draft responses in both English and Spanish based on your configuration.' },
-            { q: 'Which review platforms does ReplyVera support?', a: 'ReplyVera currently supports Google Reviews through Google Business Profile. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.' }
-        ],
-        finalCtaHeadline: 'Keep Every Location Clean, Responsive, and Trusted',
-        finalCtaDescription: 'Let ReplyVera handle routine replies so you can focus on keeping machines running and customers happy.'
-    }
-];
-
-// ─── Validate configs ─────────────────────────────────────────────────────────
-function validateConfig(ind) {
-    const required = ['slug','metaTitle','metaDescription','heroHeadline','heroDescription',
-        'benefits','step2Text','step3Text','reviewExamples','sensitiveHeadline',
-        'sensitiveTopics','faqItems','finalCtaHeadline','finalCtaDescription'];
-    const missing = required.filter(k => !ind[k]);
-    if (missing.length) {
-        console.error(`[${ind.slug || 'unknown'}] Missing fields: ${missing.join(', ')}`);
-        return false;
-    }
-    if (!Array.isArray(ind.benefits) || ind.benefits.length !== 3) {
-        console.error(`[${ind.slug}] benefits must be an array of exactly 3 items`);
-        return false;
-    }
-    if (!Array.isArray(ind.reviewExamples) || ind.reviewExamples.length !== 3) {
-        console.error(`[${ind.slug}] reviewExamples must be an array of exactly 3 items`);
-        return false;
-    }
-    return true;
-}
-
-let allValid = true;
-industryPages.forEach(ind => { if (!validateConfig(ind)) allValid = false; });
-if (!allValid) { console.error('Validation failed. Fix errors above before building.'); process.exit(1); }
-
-// ─── Build pages ──────────────────────────────────────────────────────────────
-industryPages.forEach(ind => {
-    ['', 'es', 'nl'].forEach(lang => {
-        const targetLang = lang || 'en';
-        const indTrans = (industryTranslations[targetLang] && industryTranslations[targetLang][ind.slug]) ? industryTranslations[targetLang][ind.slug] : {};
-        const metaTitle = indTrans.metaTitle || ind.metaTitle;
-        const metaDescription = indTrans.metaDescription || ind.metaDescription;
-
-        const bodyContent = renderIndustryPage(ind, targetLang);
-        const demoScript = `<script>window.REPLYVERA_DEMO_DATA = ${JSON.stringify(ind.demo)};</script>`;
+// ─── Build Pages Loop ─────────────────────────────────────────────────────────
+let pageCount = 0;
+industriesData.forEach(ind => {
+    ['en', 'es', 'nl'].forEach(lang => {
+        const trans = ind.translations[lang] || ind.translations.en;
+        const localizedSlug = getLocalizedSlug(ind.id, lang);
+        const localizedPath = getLocalizedPath(ind.id, lang);
+        const bodyContent = renderIndustryPage(ind, lang);
 
         const hf = getHeaderAndFooter(lang);
+        
+        // Construct canonical URL and hreflang links
+        const baseUrl = 'https://www.replyvera.com';
+        const canonicalUrl = `${baseUrl}${localizedPath}`;
+        const hreflangEn = `${baseUrl}${getLocalizedPath(ind.id, 'en')}`;
+        const hreflangNl = `${baseUrl}${getLocalizedPath(ind.id, 'nl')}`;
+        const hreflangEs = `${baseUrl}${getLocalizedPath(ind.id, 'es')}`;
+
+        const seoTags = `
+    <title>${trans.metaTitle}</title>
+    <meta name="description" content="${trans.metaDescription}">
+    <link rel="canonical" href="${canonicalUrl}">
+    <link rel="alternate" hreflang="en" href="${hreflangEn}">
+    <link rel="alternate" hreflang="nl" href="${hreflangNl}">
+    <link rel="alternate" hreflang="es" href="${hreflangEs}">
+    <meta property="og:title" content="${trans.metaTitle}">
+    <meta property="og:description" content="${trans.metaDescription}">
+    <meta property="og:url" content="${canonicalUrl}">
+    <meta property="og:locale" content="${lang === 'nl' ? 'nl_NL' : lang === 'es' ? 'es_ES' : 'en_US'}">`;
+
         let header = hf.header
-            .replace(/<html\s+lang=["'][^"']*["']/i, `<html lang="${targetLang}"`)
-            .replace(/<title>[^<]+<\/title>/, `<title>${metaTitle}</title>`)
-            .replace(/<meta name="description" content="[^"]+">/, `<meta name="description" content="${metaDescription}">`);
+            .replace(/<html\s+lang=["'][^"']*["']/i, `<html lang="${lang}"`)
+            .replace(/<title>[^<]+<\/title>/, seoTags)
+            .replace(/<meta name="description" content="[^"]+">/, '');
 
-        header = header.replace(`href="${lang ? '/' + lang : ''}/industries/${ind.slug}" class="dropdown-item"`, `href="${lang ? '/' + lang : ''}/industries/${ind.slug}" class="dropdown-item active"`);
-        header = header.replace(`href="${lang ? '/' + lang : ''}/industries/${ind.slug}" class="mobile-industry-item"`, `href="${lang ? '/' + lang : ''}/industries/${ind.slug}" class="mobile-industry-item active"`);
+        // Mark active item in dropdown
+        header = header.replace(`href="${localizedPath}" class="dropdown-item"`, `href="${localizedPath}" class="dropdown-item active"`);
+        header = header.replace(`href="${localizedPath}" class="mobile-industry-item"`, `href="${localizedPath}" class="mobile-industry-item active"`);
 
-        // Apply link localisation to the complete page (header + body + footer)
-        let fullPage = localizeLinks(header + '\n' + bodyContent + '\n' + hf.footer.replace('</body>', `${demoScript}\n</body>`), lang);
+        let fullPage = localizeAllHtmlLinks(header + '\n' + bodyContent + '\n' + hf.footer, lang);
 
-        const indDir = lang ? path.join(__dirname, lang, 'industries', ind.slug) : path.join(__dirname, 'industries', ind.slug);
-        if (!fs.existsSync(indDir)) fs.mkdirSync(indDir, { recursive: true });
+        // Save primary localized industry detail page
+        const primaryDir = lang === 'en' ?
+            path.join(__dirname, 'industries', localizedSlug) :
+            path.join(__dirname, lang, 'industries', localizedSlug);
 
-        fs.writeFileSync(path.join(indDir, 'index.html'), fullPage, 'utf8');
-        console.log(`✓ Built: ${lang ? lang + '/' : ''}industries/${ind.slug}/index.html`);
+        if (!fs.existsSync(primaryDir)) {
+            fs.mkdirSync(primaryDir, { recursive: true });
+        }
+        fs.writeFileSync(path.join(primaryDir, 'index.html'), fullPage, 'utf8');
+        pageCount++;
+        console.log(`✓ Built Primary Industry Page [${lang.toUpperCase()}]: ${lang === 'en' ? '' : lang + '/'}industries/${localizedSlug}/index.html`);
+
+        // Also build alias page for English slug if different (e.g., /nl/industries/dentists/index.html -> renders Dutch content!)
+        const enSlug = ind.slugs.en;
+        if (localizedSlug !== enSlug) {
+            const aliasDir = lang === 'en' ?
+                path.join(__dirname, 'industries', enSlug) :
+                path.join(__dirname, lang, 'industries', enSlug);
+
+            if (!fs.existsSync(aliasDir)) {
+                fs.mkdirSync(aliasDir, { recursive: true });
+            }
+            fs.writeFileSync(path.join(aliasDir, 'index.html'), fullPage, 'utf8');
+            pageCount++;
+            console.log(`  ✓ Built Alias Industry Page [${lang.toUpperCase()}]: ${lang === 'en' ? '' : lang + '/'}industries/${enSlug}/index.html`);
+        }
     });
 });
 
-console.log('\n✓ All 9 industry landing pages built successfully across all language targets.');
+console.log(`\n✓ All ${pageCount} industry detail pages & aliases built successfully across EN, NL, ES.`);

@@ -3,8 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google Review Automation for Dental Practices | ReplyVera</title>
-    <meta name="description" content="ReplyVera writes professional, privacy-conscious Google review responses for dentists while escalating clinical, billing, and sensitive patient concerns.">
+    
+    <title>Google Review Automation for Dentists & Clinics | ReplyVera</title>
+    
+    <link rel="canonical" href="https://www.replyvera.com/industries/dentists">
+    <link rel="alternate" hreflang="en" href="https://www.replyvera.com/industries/dentists">
+    <link rel="alternate" hreflang="nl" href="https://www.replyvera.com/nl/industries/tandartsen">
+    <link rel="alternate" hreflang="es" href="https://www.replyvera.com/es/industries/dentistas">
+    <meta property="og:title" content="Google Review Automation for Dentists & Clinics | ReplyVera">
+    <meta property="og:description" content="ReplyVera writes professional, privacy-conscious replies to Google reviews for dentists, escalating clinical and billing inquiries.">
+    <meta property="og:url" content="https://www.replyvera.com/industries/dentists">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="ReplyVera automatically responds to your Google reviews. Routine reviews are handled automatically. Negative and sensitive feedback stays under your control. Plans from $29 per month.">
     <link rel="stylesheet" href="/style.css?v=15">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,7 +69,7 @@
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
-            <a href="/index.html" class="nav-logo">
+            <a href="/" class="nav-logo">
                 <div class="nav-logo-icon">
                     <i class="fa-solid fa-reply"></i>
                 </div>
@@ -67,9 +77,9 @@
             </a>
 
             <div class="nav-links">
-                <a href="/index.html#product">Product</a>
-                <a href="/index.html#benefits">Features</a>
-                <a href="/index.html#how-it-works">How It Works</a>
+                <a href="/#product">Product</a>
+                <a href="/#benefits">Features</a>
+                <a href="/#how-it-works">How It Works</a>
                 <div class="nav-dropdown">
                     <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="menu" aria-controls="industries-menu">
                         Industries
@@ -134,8 +144,8 @@
                         </div>
                     </div>
                 </div>
-                <a href="/index.html#pricing">Pricing</a>
-                <a href="/index.html#faq">FAQ</a>
+                <a href="/#pricing">Pricing</a>
+                <a href="/#faq">FAQ</a>
             </div>
 
             <div class="nav-actions">
@@ -146,13 +156,13 @@
                         <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> EN
                     </button>
                     <div class="lang-menu">
-                        <a href="/index.html#" class="lang-item" onclick="changeLang('en', event)">English</a>
-                        <a href="/index.html#" class="lang-item" onclick="changeLang('es', event)">EspaÃ±ol</a>
-                        <a href="/index.html#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+                        <a href="/#" class="lang-item" onclick="changeLang('en', event)">English</a>
+                        <a href="/#" class="lang-item" onclick="changeLang('es', event)">EspaÃ±ol</a>
+                        <a href="/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
                     </div>
                 </div>
                 <a href="https://dashboard.replyvera.com/login" class="nav-login">Log In</a>
-                <a href="/index.html#pricing" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Start Free Trial</a>
+                <a href="/#pricing" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Start Free Trial</a>
                 <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
                         <line x1="3" y1="6" x2="21" y2="6"/>
@@ -167,9 +177,9 @@
     <!-- Mobile Navigation Panel -->
     <div class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
         <div class="mobile-nav-links">
-            <a href="/index.html#product" class="mobile-nav-link">Product</a>
-            <a href="/index.html#benefits" class="mobile-nav-link">Features</a>
-            <a href="/index.html#how-it-works" class="mobile-nav-link">How It Works</a>
+            <a href="/#product" class="mobile-nav-link">Product</a>
+            <a href="/#benefits" class="mobile-nav-link">Features</a>
+            <a href="/#how-it-works" class="mobile-nav-link">How It Works</a>
 
             <!-- Industries Accordion -->
             <button class="mobile-industry-toggle" id="mobile-ind-toggle" aria-expanded="false">
@@ -179,11 +189,136 @@
                 </span>
             </button>
             <div class="mobile-industry-list" id="mobile-ind-list">
-                <a href="/industries/restaurants" class="mobile-industry-item">
-                    <div class="mobile-ind-icon restaurant-icon"><i data-lucide="utensils" style="width:14px;height:14px;"></i></div>
+
+        <a href="/industries/dentists" class="mobile-industry-item active">
+            <div class="mobile-ind-icon dentist-icon"><i data-lucide="activity" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Dentists & Clinics</div>
+                <div class="mobile-ind-desc">Privacy-conscious replies for patient reviews.</div>
+            </div>
+        </a>
+        <a href="/industries/restaurants" class="mobile-industry-item">
+            <div class="mobile-ind-icon restaurant-icon"><i data-lucide="utensils" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Restaurants</div>
+                <div class="mobile-ind-desc">Automated replies with food-safety and allergy escalation.</div>
+            </div>
+        </a>
+        <a href="/industries/car-washes" class="mobile-industry-item">
+            <div class="mobile-ind-icon carwash-icon"><i data-lucide="car" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Car Wash Operators</div>
+                <div class="mobile-ind-desc">Track damage, billing, and service complaints.</div>
+            </div>
+        </a>
+        <a href="/industries/agencies" class="mobile-industry-item">
+            <div class="mobile-ind-icon agency-icon"><i data-lucide="briefcase" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Marketing Agencies</div>
+                <div class="mobile-ind-desc">Manage Google review replies for every client from one dashboard.</div>
+            </div>
+        </a>
+        <a href="/industries/pet-care" class="mobile-industry-item">
+            <div class="mobile-ind-icon petcare-icon"><i data-lucide="dog" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Pet Care</div>
+                <div class="mobile-ind-desc">Warm replies with animal-safety escalation.</div>
+            </div>
+        </a>
+        <a href="/industries/childcare" class="mobile-industry-item">
+            <div class="mobile-ind-icon childcare-icon"><i data-lucide="heart" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Childcare & Preschool</div>
+                <div class="mobile-ind-desc">Safety-aware responses for parent feedback.</div>
+            </div>
+        </a>
+        <a href="/industries/martial-arts" class="mobile-industry-item">
+            <div class="mobile-ind-icon martial-arts-icon"><i data-lucide="shield" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Martial Arts Schools</div>
+                <div class="mobile-ind-desc">Parent-friendly replies with safety controls.</div>
+            </div>
+        </a>
+        <a href="/industries/tutoring" class="mobile-industry-item">
+            <div class="mobile-ind-icon tutoring-icon"><i data-lucide="book-open" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Tutoring Centers</div>
+                <div class="mobile-ind-desc">Professional replies for parent and student reviews.</div>
+            </div>
+        </a>
+        <a href="/industries/laundromats" class="mobile-industry-item">
+            <div class="mobile-ind-icon laundromat-icon"><i data-lucide="wind" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Laundromats</div>
+                <div class="mobile-ind-desc">Monitor cleanliness, equipment, and refunds.</div>
+            </div>
+        </a>
+</div>
+            <div>
+                <div class="mobile-ind-name">Dentists & Clinics</div>
+                <div class="mobile-ind-desc">Privacy-conscious replies for patient reviews.</div>
+            </div>
+        </a>
+        <a href="/industries/restaurants" class="mobile-industry-item">
+            <div class="mobile-ind-icon restaurant-icon"><i data-lucide="utensils" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Restaurants</div>
+                <div class="mobile-ind-desc">Automated replies with food-safety and allergy escalation.</div>
+            </div>
+        </a>
+        <a href="/industries/car-washes" class="mobile-industry-item">
+            <div class="mobile-ind-icon carwash-icon"><i data-lucide="car" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Car Wash Operators</div>
+                <div class="mobile-ind-desc">Track damage, billing, and service complaints.</div>
+            </div>
+        </a>
+        <a href="/industries/agencies" class="mobile-industry-item">
+            <div class="mobile-ind-icon agency-icon"><i data-lucide="briefcase" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Marketing Agencies</div>
+                <div class="mobile-ind-desc">Manage Google review replies for every client from one dashboard.</div>
+            </div>
+        </a>
+        <a href="/industries/pet-care" class="mobile-industry-item">
+            <div class="mobile-ind-icon petcare-icon"><i data-lucide="dog" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Pet Care</div>
+                <div class="mobile-ind-desc">Warm replies with animal-safety escalation.</div>
+            </div>
+        </a>
+        <a href="/industries/childcare" class="mobile-industry-item">
+            <div class="mobile-ind-icon childcare-icon"><i data-lucide="heart" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Childcare & Preschool</div>
+                <div class="mobile-ind-desc">Safety-aware responses for parent feedback.</div>
+            </div>
+        </a>
+        <a href="/industries/martial-arts" class="mobile-industry-item">
+            <div class="mobile-ind-icon martial-arts-icon"><i data-lucide="shield" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Martial Arts Schools</div>
+                <div class="mobile-ind-desc">Parent-friendly replies with safety controls.</div>
+            </div>
+        </a>
+        <a href="/industries/tutoring" class="mobile-industry-item">
+            <div class="mobile-ind-icon tutoring-icon"><i data-lucide="book-open" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Tutoring Centers</div>
+                <div class="mobile-ind-desc">Professional replies for parent and student reviews.</div>
+            </div>
+        </a>
+        <a href="/industries/laundromats" class="mobile-industry-item">
+            <div class="mobile-ind-icon laundromat-icon"><i data-lucide="wind" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Laundromats</div>
+                <div class="mobile-ind-desc">Monitor cleanliness, equipment, and refunds.</div>
+            </div>
+        </a>
+</div>
                     <div><div class="mobile-ind-name">Restaurants</div><div class="dropdown-desc">Automated replies with food-safety and allergy escalation.</div></div>
                 </a>
-                <a href="/industries/dentists" class="mobile-industry-item active">
+                <a href="/industries/dentists" class="mobile-industry-item">
                     <div class="mobile-ind-icon dentist-icon"><i data-lucide="activity" style="width:14px;height:14px;"></i></div>
                     <div><div class="mobile-ind-name">Dentists &amp; Clinics</div><div class="dropdown-desc">Privacy-conscious replies for patient reviews.</div></div>
                 </a>
@@ -217,13 +352,13 @@
                 </a>
             </div>
 
-            <a href="/index.html#pricing" class="mobile-nav-link">Pricing</a>
-            <a href="/index.html#faq" class="mobile-nav-link">FAQ</a>
+            <a href="/#pricing" class="mobile-nav-link">Pricing</a>
+            <a href="/#faq" class="mobile-nav-link">FAQ</a>
                         <div class="mobile-lang-bar">
                 <span class="mobile-lang-label"><i class="fa-solid fa-globe"></i> Language:</span>
-                <a href="/index.html#" class="mobile-lang-opt active" onclick="changeLang('en', event)">EN</a>
-                <a href="/index.html#" class="mobile-lang-opt" onclick="changeLang('es', event)">ES</a>
-                <a href="/index.html#" class="mobile-lang-opt" onclick="changeLang('nl', event)">NL</a>
+                <a href="/#" class="mobile-lang-opt active" onclick="changeLang('en', event)">EN</a>
+                <a href="/#" class="mobile-lang-opt" onclick="changeLang('es', event)">ES</a>
+                <a href="/#" class="mobile-lang-opt" onclick="changeLang('nl', event)">NL</a>
             </div>
             <a href="https://dashboard.replyvera.com/login" class="mobile-nav-link">Log In</a>
         </div>
@@ -233,32 +368,38 @@
 
     <style>
         :root {
-            --industry-accent: #3B82F6;
-            --industry-accent-soft: #3B82F620;
-            --industry-icon-bg: #3B82F615;
-            --industry-accent-glow: #3B82F633;
+            --industry-accent: #0EA5E9;
+            --industry-accent-soft: #0EA5E920;
+            --industry-icon-bg: #0EA5E915;
+            --industry-accent-glow: #0EA5E933;
         }
     </style>
-    
-    <!-- Hero -->
-    <header class="hero" style="padding:140px 0 80px;">
+    <header class="hero industry-hero" style="padding:130px 0 70px;">
         <div class="hero-glow-layer"></div>
         <div class="container">
+            
+    <div class="breadcrumbs" style="font-size:0.82rem;color:var(--text-muted);margin-bottom:20px;display:flex;gap:8px;align-items:center;">
+        <a href="/" style="color:var(--text-muted);text-decoration:none;">Home</a>
+        <span>/</span>
+        <a href="/#benefits" style="color:var(--text-muted);text-decoration:none;">Industries</a>
+        <span>/</span>
+        <span style="color:var(--industry-accent, var(--accent));font-weight:600;">Dentists & Clinics</span>
+    </div>
             <div class="hero-inner">
                 <div class="hero-text">
                     <div class="eyebrow industry-eyebrow">
                         <i data-lucide="google" style="width:12px;height:12px;color:#DB4437;"></i>
                         Google Review Automation
                     </div>
-                    <h1 class="mb-6">Professional Google Review Responses for Dental Practices</h1>
-                    <p class="lead mb-8">ReplyVera creates privacy-conscious review responses while keeping clinical, billing, and sensitive patient concerns under staff approval before anything is published.</p>
+                    <h1 class="mb-6">Professional Google Review Replies for Dental Practices</h1>
+                    <p class="lead mb-8">ReplyVera creates privacy-conscious review responses while keeping clinical, billing, and sensitive patient feedback under staff approval.</p>
                     <div class="hero-actions">
                         <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">Start Your Free Trial</a>
-                        <a href="/index.html#how-it-works" class="btn btn-secondary btn-lg">See How It Works</a>
+                        <a href="/#how-it-works" class="btn btn-secondary btn-lg">See How It Works</a>
                     </div>
                     <div class="hero-trust">
                         <i data-lucide="shield-check" style="width:13px;height:13px;color:var(--accent);"></i>
-                        Built for Google Reviews &nbsp;·&nbsp; Plans start at $29 per month
+                        Built for Google Reviews · Plans start at $29 per month
                     </div>
                 </div>
                 <div class="mockup-card">
@@ -274,21 +415,21 @@
                         <div class="review-row-item">
                             <div class="review-row-meta">
                                 <div class="review-row-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i></div>
-                                <div class="review-row-text">"Jessica made me feel comfortable throughout."</div>
+                                <div class="review-row-text">"Jessica made me feel completely comfortable during my procedure."</div>
                             </div>
                             <span class="review-badge badge-auto">Safe to Auto-Publish</span>
                         </div>
                         <div class="review-row-item">
                             <div class="review-row-meta">
                                 <div class="review-row-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i></div>
-                                <div class="review-row-text">"I received a bill I was not expecting."</div>
+                                <div class="review-row-text">"I received a bill that was much higher than the initial estimate."</div>
                             </div>
                             <span class="review-badge badge-approval">Needs Approval</span>
                         </div>
                         <div class="review-row-item">
                             <div class="review-row-meta">
                                 <div class="review-row-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i></div>
-                                <div class="review-row-text">"I had severe pain and no one returned my call."</div>
+                                <div class="review-row-text">"I had severe pain after my root canal and no one returned my call."</div>
                             </div>
                             <span class="review-badge badge-blocked">Auto-Publishing Blocked</span>
                         </div>
@@ -297,8 +438,7 @@
             </div>
         </div>
     </header>
-    <div class="industry-divider-line"></div>
-    <!-- Three Benefits -->
+    <div class="industry-divider-glow"></div>
     <section class="section section-light">
         <div class="container">
             <div class="section-header">
@@ -308,24 +448,23 @@
                 
         <div class="benefit-card">
             <div class="benefit-icon"><i data-lucide="clock" style="width:20px;height:20px;"></i></div>
-            <div class="benefit-title">Save Front-Desk Time</div>
-            <p class="benefit-text">Routine positive reviews are handled consistently without requiring your front-desk team to write each response.</p>
+            <div class="benefit-title">Save Front-Desk Hours</div>
+            <p class="benefit-text">Routine 5-star reviews are handled automatically without taking time from your reception team.</p>
         </div>
         <div class="benefit-card">
             <div class="benefit-icon"><i data-lucide="lock" style="width:20px;height:20px;"></i></div>
             <div class="benefit-title">Protect Patient Privacy</div>
-            <p class="benefit-text">Responses are designed to avoid confirming patient status, treatment details, or any information that should remain private.</p>
+            <p class="benefit-text">Responses strictly avoid confirming patient identity or treatment details.</p>
         </div>
         <div class="benefit-card">
             <div class="benefit-icon"><i data-lucide="shield-alert" style="width:20px;height:20px;"></i></div>
-            <div class="benefit-title">Escalate Clinical Concerns</div>
-            <p class="benefit-text">Pain, injury, billing, and treatment complaints require approval before any response is published.</p>
+            <div class="benefit-title">Escalate Clinical Inquiries</div>
+            <p class="benefit-text">Reviews mentioning pain, complications, or billing require manual approval.</p>
         </div>
             </div>
         </div>
     </section>
-    <div class="industry-divider-line"></div>
-    <!-- How It Works -->
+    <div class="industry-divider-glow"></div>
     <section class="section section-dark" id="how-it-works">
         <div class="container">
             <div class="section-header">
@@ -335,28 +474,27 @@
                 <div class="step-card">
                     <div class="step-number">1</div>
                     <div class="step-title">Connect Google Business Profile</div>
-                    <p class="step-text">Securely connect one or more business locations. No passwords stored, and you can disconnect anytime.</p>
+                    <p class="step-text">Securely connect one or more business locations. No passwords stored.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">2</div>
                     <div class="step-title">Choose Your Tone and Approval Rules</div>
-                    <p class="step-text">Set your practice tone and approval rules. ReplyVera identifies clinical, billing, and privacy-sensitive reviews and routes them for manual review.</p>
+                    <p class="step-text">Set tone preferences, privacy safeguards, and notify team members for clinical alerts.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">3</div>
                     <div class="step-title">ReplyVera Handles New Reviews</div>
-                    <p class="step-text">Routine positive reviews go live after your configured delay. Clinical, privacy, and billing concerns are held for approval under your configured rules.</p>
+                    <p class="step-text">Safe reviews publish automatically. Clinical or billing complaints alert your practice manager.</p>
                 </div>
             </div>
         </div>
     </section>
-    <div class="industry-divider-line"></div>
-    <!-- Review Examples -->
+    <div class="industry-divider-glow"></div>
     <section class="section section-light">
         <div class="container">
             <div class="section-header">
                 <h2>Professional Responses for Every Patient Experience</h2>
-                <p>From positive feedback to clinical concerns, each review is handled appropriately.</p>
+                <p>See how ReplyVera handles dental practice reviews with care and discretion.</p>
             </div>
             <div class="reviews-grid">
                 
@@ -365,45 +503,44 @@
                 <div class="review-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i></div>
                 <span class="review-type">Positive Review</span>
             </div>
-            <p class="review-quote">"Jessica made me feel comfortable throughout the visit."</p>
+            <p class="review-quote">"Jessica made me feel completely comfortable during my procedure."</p>
             <div class="review-response-box">
                 <div class="review-response-label">ReplyVera response</div>
-                <p class="review-response-text">"Thank you for your kind feedback. We're pleased to hear that Jessica and the team helped create a comfortable experience. We'll share your appreciation with them."</p>
+                <p class="review-response-text">"Thank you so much for your kind words! We are glad our team provided a comfortable experience for you."</p>
             </div>
             <span class="review-badge badge-auto" style="align-self:flex-start;">Safe to Auto-Publish</span>
         </div>
         <div class="review-card">
             <div class="review-card-top">
                 <div class="review-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i></div>
-                <span class="review-type">Billing Concern</span>
+                <span class="review-type">Billing Inquiry</span>
             </div>
-            <p class="review-quote">"I received a bill I was not expecting."</p>
+            <p class="review-quote">"I received a bill that was much higher than the initial estimate."</p>
             <div class="review-response-box">
                 <div class="review-response-label">ReplyVera response</div>
-                <p class="review-response-text">"Thank you for sharing your concern. Please contact the office directly so the appropriate team member can review the details with you."</p>
+                <p class="review-response-text">"Thank you for bringing this to our attention. We will reach out to you directly to review your account details."</p>
             </div>
             <span class="review-badge badge-approval" style="align-self:flex-start;">Needs Approval</span>
         </div>
         <div class="review-card">
             <div class="review-card-top">
                 <div class="review-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i></div>
-                <span class="review-type">Sensitive Review</span>
+                <span class="review-type">Clinical Alert</span>
             </div>
-            <p class="review-quote">"I had severe pain afterward and no one returned my call."</p>
+            <p class="review-quote">"I had severe pain after my root canal and no one returned my call."</p>
             <div class="review-alert-box">
                 <div class="review-alert-title">
                     <i data-lucide="alert-triangle" style="width:13px;height:13px;"></i>
-                    Clinical concern detected
+                    Clinical complaint detected
                 </div>
-                <p class="review-alert-sub">Auto-publishing blocked. Staff approval required before any response is published.</p>
+                <p class="review-alert-sub">Auto-publishing blocked. Practice manager notified immediately.</p>
             </div>
             <span class="review-badge badge-blocked" style="align-self:flex-start;">Auto-Publishing Blocked</span>
         </div>
             </div>
         </div>
     </section>
-    <div class="industry-divider-line"></div>
-    <!-- Sensitive Review Protection -->
+    <div class="industry-divider-glow"></div>
     <section class="section section-dark">
         <div class="container">
             <div class="sensitive-inner">
@@ -412,11 +549,11 @@
                         <i data-lucide="shield-alert" style="width:12px;height:12px;"></i>
                         Sensitive Review Protection
                     </div>
-                    <h2 style="margin-bottom:12px;">Keep Clinical and Privacy-Sensitive Reviews Under Human Control</h2>
-                    <p style="margin-bottom:16px;">ReplyVera never publishes sensitive feedback automatically. When a review matches a protected topic, auto-publishing is blocked and you receive an immediate alert.</p>
+                    <h2 style="margin-bottom:12px;">Medical & Clinical Inquiries Require Staff Supervision</h2>
+                    <p style="margin-bottom:16px;">ReplyVera never publishes sensitive feedback automatically. When a review matches a protected topic, auto-publishing is blocked.</p>
                     <p style="font-size:0.82rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;">Monitored topics:</p>
                     <div class="topic-tags">
-                        <span class="topic-tag industry-tag">Pain</span><span class="topic-tag industry-tag">Injury</span><span class="topic-tag industry-tag">Treatment outcomes</span><span class="topic-tag industry-tag">Medication</span><span class="topic-tag industry-tag">Diagnosis</span><span class="topic-tag industry-tag">Insurance</span><span class="topic-tag industry-tag">Billing disputes</span><span class="topic-tag industry-tag">Privacy complaints</span>
+                        <span class="topic-tag industry-tag">Pain / Complications</span><span class="topic-tag industry-tag">Treatment Results</span><span class="topic-tag industry-tag">Billing & Insurance</span><span class="topic-tag industry-tag">Prescriptions</span><span class="topic-tag industry-tag">Confidential Info</span>
                     </div>
                 </div>
                 <div>
@@ -425,7 +562,7 @@
                             <i data-lucide="alert-triangle" style="width:16px;height:16px;"></i>
                             Sensitive Topic Detected
                         </div>
-                        <p class="sensitive-alert-text" style="margin-bottom:12px;">Auto-publishing has been blocked. A draft has been prepared but will not go live until you approve it.</p>
+                        <p class="sensitive-alert-text" style="margin-bottom:12px;">Auto-publishing has been blocked. A draft has been prepared for your approval.</p>
                         <div style="display:flex;gap:8px;flex-wrap:wrap;">
                             <span class="review-badge badge-blocked">Auto-Publishing Blocked</span>
                             <span style="font-size:0.68rem;font-weight:700;padding:3px 9px;border-radius:4px;background:rgba(245,158,11,0.1);color:#FCD34D;border:1px solid rgba(245,158,11,0.2);">Owner Notified</span>
@@ -435,8 +572,7 @@
             </div>
         </div>
     </section>
-    <div class="industry-divider-line"></div>
-    <!-- Pricing -->
+    <div class="industry-divider-glow"></div>
     <section class="section section-dark" id="pricing">
         <div class="container">
             <div class="section-header">
@@ -453,9 +589,6 @@
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> One location</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Up to 30 replies per month</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Manual approval for all reviews</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Custom tone</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> English and Spanish</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Negative-review alerts</li>
                     </ul>
                     <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-secondary" style="text-align:center;justify-content:center;">Start Free Trial</a>
                 </div>
@@ -469,9 +602,6 @@
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> One location</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Unlimited review responses*</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Automatic publishing for safe reviews</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Sensitive-review detection</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Custom brand voice</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Review history</li>
                     </ul>
                     <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent" style="text-align:center;justify-content:center;">Start Free Trial</a>
                 </div>
@@ -483,18 +613,13 @@
                     <ul class="pricing-features">
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Three locations included</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Central dashboard</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Location-specific rules</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Team access</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Additional locations available</li>
                     </ul>
                     <a href="/pricing.html" class="btn btn-secondary" style="text-align:center;justify-content:center;">Start Multi-Location Trial</a>
                 </div>
             </div>
-            <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:24px;">14-day free trial. Cancel anytime.</p>
         </div>
     </section>
-    <div class="industry-divider-line"></div>
-    <!-- FAQ -->
+    <div class="industry-divider-glow"></div>
     <section class="section section-light" id="faq">
         <div class="container" style="max-width:760px;">
             <div class="section-header">
@@ -507,45 +632,49 @@
                 <span>How does ReplyVera handle patient privacy?</span>
                 <div class="faq-icon-wrapper"><i data-lucide="plus" style="width:16px;height:16px;"></i></div>
             </button>
-            <div class="faq-answer">Responses are designed to avoid confirming patient status or referencing any clinical details. Replies focus on general appreciation without disclosing private information.</div>
+            <div class="faq-answer">Responses are drafted without confirming patient status or medical details.</div>
         </div>
         <div class="faq-item">
             <button class="faq-question">
-                <span>Are clinical and billing complaints blocked from auto-publishing?</span>
+                <span>Are clinical complaints blocked from auto-publishing?</span>
                 <div class="faq-icon-wrapper"><i data-lucide="plus" style="width:16px;height:16px;"></i></div>
             </button>
-            <div class="faq-answer">Yes. Reviews mentioning pain, injury, billing disputes, or treatment outcomes are immediately held for approval and blocked from automatic publishing under your configured approval rules.</div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question">
-                <span>Can ReplyVera recognize hygienists and staff mentioned by name?</span>
-                <div class="faq-icon-wrapper"><i data-lucide="plus" style="width:16px;height:16px;"></i></div>
-            </button>
-            <div class="faq-answer">Yes. When a reviewer mentions a specific staff member, ReplyVera includes them naturally in the response.</div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question">
-                <span>Does ReplyVera support multiple practice locations?</span>
-                <div class="faq-icon-wrapper"><i data-lucide="plus" style="width:16px;height:16px;"></i></div>
-            </button>
-            <div class="faq-answer">Yes. The Multi-Location plan supports multiple Google Business Profiles with separate rules for each location.</div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question">
-                <span>Which review platforms does ReplyVera support?</span>
-                <div class="faq-icon-wrapper"><i data-lucide="plus" style="width:16px;height:16px;"></i></div>
-            </button>
-            <div class="faq-answer">ReplyVera currently supports Google Reviews through Google Business Profile. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.</div>
+            <div class="faq-answer">Yes. Any review detailing medical issues or pain is routed to your manager.</div>
         </div>
             </div>
         </div>
     </section>
-    <!-- Final CTA -->
+    <div class="industry-divider-glow"></div>
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Explore Other Industries</h2>
+            </div>
+            <div class="benefits-grid">
+                
+        <a href="/industries/restaurants" class="benefit-card" style="text-decoration:none;color:inherit;">
+            <div class="benefit-icon restaurant-icon"><i data-lucide="utensils" style="width:20px;height:20px;"></i></div>
+            <div class="benefit-title">Restaurants</div>
+            <p class="benefit-text">Automated replies with food-safety and allergy escalation.</p>
+        </a>
+        <a href="/industries/car-washes" class="benefit-card" style="text-decoration:none;color:inherit;">
+            <div class="benefit-icon carwash-icon"><i data-lucide="car" style="width:20px;height:20px;"></i></div>
+            <div class="benefit-title">Car Wash Operators</div>
+            <p class="benefit-text">Track damage, billing, and service complaints.</p>
+        </a>
+        <a href="/industries/agencies" class="benefit-card" style="text-decoration:none;color:inherit;">
+            <div class="benefit-icon agency-icon"><i data-lucide="briefcase" style="width:20px;height:20px;"></i></div>
+            <div class="benefit-title">Marketing Agencies</div>
+            <p class="benefit-text">Manage Google review replies for every client from one dashboard.</p>
+        </a>
+            </div>
+        </div>
+    </section>
     <section class="section section-dark">
         <div class="container" style="max-width:700px;">
             <div class="cta-box">
-                <h2 class="mb-4">Respond Professionally Without Risking Patient Privacy</h2>
-                <p class="lead mb-8">Let ReplyVera handle routine replies consistently while your team focuses on patient care.</p>
+                <h2 class="mb-4">Protect Your Dental Practice Reputation</h2>
+                <p class="lead mb-8">Provide patients with professional replies and manage sensitive feedback effectively.</p>
                 <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
                     <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">Start Free Trial</a>
                     <a href="/pricing.html" class="btn btn-secondary btn-lg">View Pricing</a>
@@ -558,7 +687,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand-box">
-                    <a href="/index.html" class="nav-logo" style="margin-bottom:14px;">
+                    <a href="/" class="nav-logo" style="margin-bottom:14px;">
                         <div class="nav-logo-icon">
                             <i class="fa-solid fa-reply"></i>
                         </div>
@@ -571,8 +700,8 @@
                 <div class="footer-col">
                     <div class="footer-col-title">Product</div>
                     <ul class="footer-links">
-                        <li><a href="/index.html#product">Product</a></li>
-                        <li><a href="/index.html#how-it-works">How It Works</a></li>
+                        <li><a href="/#product">Product</a></li>
+                        <li><a href="/#how-it-works">How It Works</a></li>
                         <li><a href="/pricing.html">Pricing</a></li>
                     </ul>
                 </div>
@@ -586,9 +715,9 @@
                         <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> EN
                     </button>
                     <div class="lang-menu">
-                        <a href="/index.html#" class="lang-item" onclick="changeLang('en', event)">English</a>
-                        <a href="/index.html#" class="lang-item" onclick="changeLang('es', event)">EspaÃ±ol</a>
-                        <a href="/index.html#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+                        <a href="/#" class="lang-item" onclick="changeLang('en', event)">English</a>
+                        <a href="/#" class="lang-item" onclick="changeLang('es', event)">EspaÃ±ol</a>
+                        <a href="/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
                     </div>
                 </div>
                 <a h>Log In</a></li>
@@ -608,8 +737,8 @@
             <div class="footer-bottom">
                 <div>© 2026 ReplyVera. All rights reserved.</div>
                 <div class="social-links">
-                    <a href="/index.html#"><i data-lucide="twitter" style="width:17px;height:17px;"></i></a>
-                    <a href="/index.html#"><i data-lucide="linkedin" style="width:17px;height:17px;"></i></a>
+                    <a href="/#"><i data-lucide="twitter" style="width:17px;height:17px;"></i></a>
+                    <a href="/#"><i data-lucide="linkedin" style="width:17px;height:17px;"></i></a>
                 </div>
             </div>
         </div>
@@ -633,6 +762,5 @@
     <script defer src="/_vercel/insights/script.js"></script>
 
     <script src="/script.js"></script>
-<script>window.REPLYVERA_DEMO_DATA = {"positive":{"review":"The hygienists here are incredibly gentle and kind.","sentiment":"Positive","rating":5,"topic":"Staff praise","employee":"None","risk":"Low","reply":"Thank you for your kind review! We are so happy to hear that our hygienists made your visit a gentle and comfortable experience.","decision":"Safe to Auto-Publish","text":"This review matches your automatic publishing rules."},"negative":{"review":"I was charged $200 more than my original estimate.","sentiment":"Negative","rating":2,"topic":"Unexpected billing","employee":"None","risk":"Medium","reply":"We appreciate you bringing this to our attention. We apologize for any confusion regarding your treatment estimate and we would like to look into your billing details to clarify this.","decision":"Needs Approval","text":"Negative reviews require approval under your current rules."},"sensitive":{"review":"The procedure caused severe nerve pain that hasn't gone away.","sentiment":"Negative","rating":1,"topic":"Clinical pain concern","employee":"None","risk":"High","blocked":"Pain/Injury","decision":"Auto-Publishing Blocked","text":"This review requires human review before any public response is created or published."}};</script>
 </body>
 </html>

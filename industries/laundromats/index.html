@@ -3,8 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Google Review Automation for Laundromats | ReplyVera</title>
-    <meta name="description" content="ReplyVera responds to routine laundromat reviews and alerts owners when customers report broken machines, refunds, missing items, cleanliness, or safety concerns.">
+    
+    <link rel="canonical" href="https://www.replyvera.com/industries/laundromats">
+    <link rel="alternate" hreflang="en" href="https://www.replyvera.com/industries/laundromats">
+    <link rel="alternate" hreflang="nl" href="https://www.replyvera.com/nl/industries/wasserettes">
+    <link rel="alternate" hreflang="es" href="https://www.replyvera.com/es/industries/lavanderias">
+    <meta property="og:title" content="Google Review Automation for Laundromats | ReplyVera">
+    <meta property="og:description" content="Automatic Google review replies for laundromats with broken machine and refund escalation.">
+    <meta property="og:url" content="https://www.replyvera.com/industries/laundromats">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="ReplyVera automatically responds to your Google reviews. Routine reviews are handled automatically. Negative and sensitive feedback stays under your control. Plans from $29 per month.">
     <link rel="stylesheet" href="/style.css?v=15">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,7 +69,7 @@
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
-            <a href="/index.html" class="nav-logo">
+            <a href="/" class="nav-logo">
                 <div class="nav-logo-icon">
                     <i class="fa-solid fa-reply"></i>
                 </div>
@@ -67,9 +77,9 @@
             </a>
 
             <div class="nav-links">
-                <a href="/index.html#product">Product</a>
-                <a href="/index.html#benefits">Features</a>
-                <a href="/index.html#how-it-works">How It Works</a>
+                <a href="/#product">Product</a>
+                <a href="/#benefits">Features</a>
+                <a href="/#how-it-works">How It Works</a>
                 <div class="nav-dropdown">
                     <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="menu" aria-controls="industries-menu">
                         Industries
@@ -134,8 +144,8 @@
                         </div>
                     </div>
                 </div>
-                <a href="/index.html#pricing">Pricing</a>
-                <a href="/index.html#faq">FAQ</a>
+                <a href="/#pricing">Pricing</a>
+                <a href="/#faq">FAQ</a>
             </div>
 
             <div class="nav-actions">
@@ -146,13 +156,13 @@
                         <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> EN
                     </button>
                     <div class="lang-menu">
-                        <a href="/index.html#" class="lang-item" onclick="changeLang('en', event)">English</a>
-                        <a href="/index.html#" class="lang-item" onclick="changeLang('es', event)">EspaÃ±ol</a>
-                        <a href="/index.html#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+                        <a href="/#" class="lang-item" onclick="changeLang('en', event)">English</a>
+                        <a href="/#" class="lang-item" onclick="changeLang('es', event)">EspaÃ±ol</a>
+                        <a href="/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
                     </div>
                 </div>
                 <a href="https://dashboard.replyvera.com/login" class="nav-login">Log In</a>
-                <a href="/index.html#pricing" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Start Free Trial</a>
+                <a href="/#pricing" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Start Free Trial</a>
                 <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
                         <line x1="3" y1="6" x2="21" y2="6"/>
@@ -167,9 +177,9 @@
     <!-- Mobile Navigation Panel -->
     <div class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
         <div class="mobile-nav-links">
-            <a href="/index.html#product" class="mobile-nav-link">Product</a>
-            <a href="/index.html#benefits" class="mobile-nav-link">Features</a>
-            <a href="/index.html#how-it-works" class="mobile-nav-link">How It Works</a>
+            <a href="/#product" class="mobile-nav-link">Product</a>
+            <a href="/#benefits" class="mobile-nav-link">Features</a>
+            <a href="/#how-it-works" class="mobile-nav-link">How It Works</a>
 
             <!-- Industries Accordion -->
             <button class="mobile-industry-toggle" id="mobile-ind-toggle" aria-expanded="false">
@@ -179,8 +189,133 @@
                 </span>
             </button>
             <div class="mobile-industry-list" id="mobile-ind-list">
-                <a href="/industries/restaurants" class="mobile-industry-item">
-                    <div class="mobile-ind-icon restaurant-icon"><i data-lucide="utensils" style="width:14px;height:14px;"></i></div>
+
+        <a href="/industries/dentists" class="mobile-industry-item">
+            <div class="mobile-ind-icon dentist-icon"><i data-lucide="activity" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Dentists & Clinics</div>
+                <div class="mobile-ind-desc">Privacy-conscious replies for patient reviews.</div>
+            </div>
+        </a>
+        <a href="/industries/restaurants" class="mobile-industry-item">
+            <div class="mobile-ind-icon restaurant-icon"><i data-lucide="utensils" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Restaurants</div>
+                <div class="mobile-ind-desc">Automated replies with food-safety and allergy escalation.</div>
+            </div>
+        </a>
+        <a href="/industries/car-washes" class="mobile-industry-item">
+            <div class="mobile-ind-icon carwash-icon"><i data-lucide="car" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Car Wash Operators</div>
+                <div class="mobile-ind-desc">Track damage, billing, and service complaints.</div>
+            </div>
+        </a>
+        <a href="/industries/agencies" class="mobile-industry-item">
+            <div class="mobile-ind-icon agency-icon"><i data-lucide="briefcase" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Marketing Agencies</div>
+                <div class="mobile-ind-desc">Manage Google review replies for every client from one dashboard.</div>
+            </div>
+        </a>
+        <a href="/industries/pet-care" class="mobile-industry-item">
+            <div class="mobile-ind-icon petcare-icon"><i data-lucide="dog" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Pet Care</div>
+                <div class="mobile-ind-desc">Warm replies with animal-safety escalation.</div>
+            </div>
+        </a>
+        <a href="/industries/childcare" class="mobile-industry-item">
+            <div class="mobile-ind-icon childcare-icon"><i data-lucide="heart" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Childcare & Preschool</div>
+                <div class="mobile-ind-desc">Safety-aware responses for parent feedback.</div>
+            </div>
+        </a>
+        <a href="/industries/martial-arts" class="mobile-industry-item">
+            <div class="mobile-ind-icon martial-arts-icon"><i data-lucide="shield" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Martial Arts Schools</div>
+                <div class="mobile-ind-desc">Parent-friendly replies with safety controls.</div>
+            </div>
+        </a>
+        <a href="/industries/tutoring" class="mobile-industry-item">
+            <div class="mobile-ind-icon tutoring-icon"><i data-lucide="book-open" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Tutoring Centers</div>
+                <div class="mobile-ind-desc">Professional replies for parent and student reviews.</div>
+            </div>
+        </a>
+        <a href="/industries/laundromats" class="mobile-industry-item active">
+            <div class="mobile-ind-icon laundromat-icon"><i data-lucide="wind" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Laundromats</div>
+                <div class="mobile-ind-desc">Monitor cleanliness, equipment, and refunds.</div>
+            </div>
+        </a>
+</div>
+            <div>
+                <div class="mobile-ind-name">Dentists & Clinics</div>
+                <div class="mobile-ind-desc">Privacy-conscious replies for patient reviews.</div>
+            </div>
+        </a>
+        <a href="/industries/restaurants" class="mobile-industry-item">
+            <div class="mobile-ind-icon restaurant-icon"><i data-lucide="utensils" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Restaurants</div>
+                <div class="mobile-ind-desc">Automated replies with food-safety and allergy escalation.</div>
+            </div>
+        </a>
+        <a href="/industries/car-washes" class="mobile-industry-item">
+            <div class="mobile-ind-icon carwash-icon"><i data-lucide="car" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Car Wash Operators</div>
+                <div class="mobile-ind-desc">Track damage, billing, and service complaints.</div>
+            </div>
+        </a>
+        <a href="/industries/agencies" class="mobile-industry-item">
+            <div class="mobile-ind-icon agency-icon"><i data-lucide="briefcase" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Marketing Agencies</div>
+                <div class="mobile-ind-desc">Manage Google review replies for every client from one dashboard.</div>
+            </div>
+        </a>
+        <a href="/industries/pet-care" class="mobile-industry-item">
+            <div class="mobile-ind-icon petcare-icon"><i data-lucide="dog" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Pet Care</div>
+                <div class="mobile-ind-desc">Warm replies with animal-safety escalation.</div>
+            </div>
+        </a>
+        <a href="/industries/childcare" class="mobile-industry-item">
+            <div class="mobile-ind-icon childcare-icon"><i data-lucide="heart" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Childcare & Preschool</div>
+                <div class="mobile-ind-desc">Safety-aware responses for parent feedback.</div>
+            </div>
+        </a>
+        <a href="/industries/martial-arts" class="mobile-industry-item">
+            <div class="mobile-ind-icon martial-arts-icon"><i data-lucide="shield" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Martial Arts Schools</div>
+                <div class="mobile-ind-desc">Parent-friendly replies with safety controls.</div>
+            </div>
+        </a>
+        <a href="/industries/tutoring" class="mobile-industry-item">
+            <div class="mobile-ind-icon tutoring-icon"><i data-lucide="book-open" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Tutoring Centers</div>
+                <div class="mobile-ind-desc">Professional replies for parent and student reviews.</div>
+            </div>
+        </a>
+        <a href="/industries/laundromats" class="mobile-industry-item">
+            <div class="mobile-ind-icon laundromat-icon"><i data-lucide="wind" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Laundromats</div>
+                <div class="mobile-ind-desc">Monitor cleanliness, equipment, and refunds.</div>
+            </div>
+        </a>
+</div>
                     <div><div class="mobile-ind-name">Restaurants</div><div class="dropdown-desc">Automated replies with food-safety and allergy escalation.</div></div>
                 </a>
                 <a href="/industries/dentists" class="mobile-industry-item">
@@ -211,19 +346,19 @@
                     <div class="mobile-ind-icon carwash-icon"><i data-lucide="car" style="width:14px;height:14px;"></i></div>
                     <div><div class="mobile-ind-name">Car Wash Operators</div><div class="mobile-ind-desc">Vehicle damage and billing escalation</div></div>
                 </a>
-                <a href="/industries/laundromats" class="mobile-industry-item active">
+                <a href="/industries/laundromats" class="mobile-industry-item">
                     <div class="mobile-ind-icon laundromat-icon"><i data-lucide="wind" style="width:14px;height:14px;"></i></div>
                     <div><div class="mobile-ind-name">Laundromats</div><div class="dropdown-desc">Monitor cleanliness, equipment, and refunds.</div></div>
                 </a>
             </div>
 
-            <a href="/index.html#pricing" class="mobile-nav-link">Pricing</a>
-            <a href="/index.html#faq" class="mobile-nav-link">FAQ</a>
+            <a href="/#pricing" class="mobile-nav-link">Pricing</a>
+            <a href="/#faq" class="mobile-nav-link">FAQ</a>
                         <div class="mobile-lang-bar">
                 <span class="mobile-lang-label"><i class="fa-solid fa-globe"></i> Language:</span>
-                <a href="/index.html#" class="mobile-lang-opt active" onclick="changeLang('en', event)">EN</a>
-                <a href="/index.html#" class="mobile-lang-opt" onclick="changeLang('es', event)">ES</a>
-                <a href="/index.html#" class="mobile-lang-opt" onclick="changeLang('nl', event)">NL</a>
+                <a href="/#" class="mobile-lang-opt active" onclick="changeLang('en', event)">EN</a>
+                <a href="/#" class="mobile-lang-opt" onclick="changeLang('es', event)">ES</a>
+                <a href="/#" class="mobile-lang-opt" onclick="changeLang('nl', event)">NL</a>
             </div>
             <a href="https://dashboard.replyvera.com/login" class="mobile-nav-link">Log In</a>
         </div>
@@ -233,32 +368,38 @@
 
     <style>
         :root {
-            --industry-accent: #2DD4BF;
-            --industry-accent-soft: #2DD4BF20;
-            --industry-icon-bg: #2DD4BF15;
-            --industry-accent-glow: #2DD4BF33;
+            --industry-accent: #14B8A6;
+            --industry-accent-soft: #14B8A620;
+            --industry-icon-bg: #14B8A615;
+            --industry-accent-glow: #14B8A633;
         }
     </style>
-    
-    <!-- Hero -->
-    <header class="hero" style="padding:140px 0 80px;">
+    <header class="hero industry-hero" style="padding:130px 0 70px;">
         <div class="hero-glow-layer"></div>
         <div class="container">
+            
+    <div class="breadcrumbs" style="font-size:0.82rem;color:var(--text-muted);margin-bottom:20px;display:flex;gap:8px;align-items:center;">
+        <a href="/" style="color:var(--text-muted);text-decoration:none;">Home</a>
+        <span>/</span>
+        <a href="/#benefits" style="color:var(--text-muted);text-decoration:none;">Industries</a>
+        <span>/</span>
+        <span style="color:var(--industry-accent, var(--accent));font-weight:600;">Laundromats</span>
+    </div>
             <div class="hero-inner">
                 <div class="hero-text">
                     <div class="eyebrow industry-eyebrow">
                         <i data-lucide="google" style="width:12px;height:12px;color:#DB4437;"></i>
                         Google Review Automation
                     </div>
-                    <h1 class="mb-6">Keep Every Laundry Review Clean and Professional</h1>
-                    <p class="lead mb-8">ReplyVera responds to routine reviews and alerts owners when customers report broken machines, refunds, missing items, cleanliness, or safety concerns.</p>
+                    <h1 class="mb-6">Automatic Google Review Replies for Laundromats</h1>
+                    <p class="lead mb-8">ReplyVera answers routine laundromat reviews while routing complaints about broken washers, coin slots, or cleanliness to your manager.</p>
                     <div class="hero-actions">
                         <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">Start Your Free Trial</a>
-                        <a href="/index.html#how-it-works" class="btn btn-secondary btn-lg">See How It Works</a>
+                        <a href="/#how-it-works" class="btn btn-secondary btn-lg">See How It Works</a>
                     </div>
                     <div class="hero-trust">
                         <i data-lucide="shield-check" style="width:13px;height:13px;color:var(--accent);"></i>
-                        Built for Google Reviews &nbsp;·&nbsp; Plans start at $29 per month
+                        Built for Google Reviews · Plans start at $29 per month
                     </div>
                 </div>
                 <div class="mockup-card">
@@ -274,21 +415,21 @@
                         <div class="review-row-item">
                             <div class="review-row-meta">
                                 <div class="review-row-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i></div>
-                                <div class="review-row-text">"Always clean, always working. My go-to spot."</div>
+                                <div class="review-row-text">"Clean facility, fast dryers, and free Wi-Fi while waiting."</div>
                             </div>
                             <span class="review-badge badge-auto">Safe to Auto-Publish</span>
                         </div>
                         <div class="review-row-item">
                             <div class="review-row-meta">
                                 <div class="review-row-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i></div>
-                                <div class="review-row-text">"Two of the washers weren't working today."</div>
+                                <div class="review-row-text">"Dryer #4 did not heat up at all and wasted my coins."</div>
                             </div>
                             <span class="review-badge badge-approval">Needs Approval</span>
                         </div>
                         <div class="review-row-item">
                             <div class="review-row-meta">
                                 <div class="review-row-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i></div>
-                                <div class="review-row-text">"My clothes went missing and no one helped me."</div>
+                                <div class="review-row-text">"Washing machine ruined my white clothes and coin machine ate $20."</div>
                             </div>
                             <span class="review-badge badge-blocked">Auto-Publishing Blocked</span>
                         </div>
@@ -298,34 +439,32 @@
         </div>
     </header>
     <div class="industry-divider-glow"></div>
-    <!-- Three Benefits -->
     <section class="section section-light">
         <div class="container">
             <div class="section-header">
-                <h2>Stay on Top of Every Location's Reviews</h2>
+                <h2>Efficient Review Management for Your Laundromat</h2>
             </div>
             <div class="benefits-grid">
                 
         <div class="benefit-card">
-            <div class="benefit-icon"><i data-lucide="clock" style="width:20px;height:20px;"></i></div>
-            <div class="benefit-title">Save Owner Time</div>
-            <p class="benefit-text">Routine reviews are answered consistently without requiring you to write each reply yourself.</p>
+            <div class="benefit-icon"><i data-lucide="wind" style="width:20px;height:20px;"></i></div>
+            <div class="benefit-title">Automated Thank-Yous</div>
+            <p class="benefit-text">Instantly thank customers for praising clean machines and fast service.</p>
         </div>
         <div class="benefit-card">
-            <div class="benefit-icon"><i data-lucide="map-pin" style="width:20px;height:20px;"></i></div>
-            <div class="benefit-title">Spot Location Problems</div>
-            <p class="benefit-text">Machine and cleanliness complaints are easy to identify so you can address issues before they affect your rating.</p>
+            <div class="benefit-icon"><i data-lucide="wrench" style="width:20px;height:20px;"></i></div>
+            <div class="benefit-title">Machine Outage Reports</div>
+            <p class="benefit-text">Specific mentions of broken washers or dryers alert maintenance staff.</p>
         </div>
         <div class="benefit-card">
-            <div class="benefit-icon"><i data-lucide="shield-alert" style="width:20px;height:20px;"></i></div>
-            <div class="benefit-title">Protect Customer Trust</div>
-            <p class="benefit-text">Missing-item and refund disputes require approval before any response is published.</p>
+            <div class="benefit-icon"><i data-lucide="dollar-sign" style="width:20px;height:20px;"></i></div>
+            <div class="benefit-title">Refund & Coin Machine Filter</div>
+            <p class="benefit-text">Complaints about swallowed coins or refund requests route to owner.</p>
         </div>
             </div>
         </div>
     </section>
     <div class="industry-divider-glow"></div>
-    <!-- How It Works -->
     <section class="section section-dark" id="how-it-works">
         <div class="container">
             <div class="section-header">
@@ -335,28 +474,27 @@
                 <div class="step-card">
                     <div class="step-number">1</div>
                     <div class="step-title">Connect Google Business Profile</div>
-                    <p class="step-text">Securely connect one or more business locations. No passwords stored, and you can disconnect anytime.</p>
+                    <p class="step-text">Securely connect one or more business locations. No passwords stored.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">2</div>
                     <div class="step-title">Choose Your Tone and Approval Rules</div>
-                    <p class="step-text">Set your tone and approval rules. ReplyVera identifies machine, cleanliness, and missing-item complaints and routes them for your review.</p>
+                    <p class="step-text">Set clean facility tone, machine outage alerts, and coin refund escalation limits.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">3</div>
                     <div class="step-title">ReplyVera Handles New Reviews</div>
-                    <p class="step-text">Routine positive reviews are answered automatically. Refund, missing-item, and safety concerns are held for your approval before publishing.</p>
+                    <p class="step-text">Positive facility reviews publish automatically. Broken machine alerts notify maintenance.</p>
                 </div>
             </div>
         </div>
     </section>
     <div class="industry-divider-glow"></div>
-    <!-- Review Examples -->
     <section class="section section-light">
         <div class="container">
             <div class="section-header">
-                <h2>From Loyal Regulars to Missing-Item Complaints</h2>
-                <p>Each type of laundromat review is handled with the right response and the right protections.</p>
+                <h2>From Clean Clothes to Broken Equipment</h2>
+                <p>See how ReplyVera handles laundromat reviews.</p>
             </div>
             <div class="reviews-grid">
                 
@@ -365,37 +503,37 @@
                 <div class="review-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i></div>
                 <span class="review-type">Positive Review</span>
             </div>
-            <p class="review-quote">"Always clean, always working. This is my go-to laundromat."</p>
+            <p class="review-quote">"Clean facility, fast dryers, and free Wi-Fi while waiting."</p>
             <div class="review-response-box">
                 <div class="review-response-label">ReplyVera response</div>
-                <p class="review-response-text">"Thank you for the kind words! We work hard to keep things clean and running smoothly, and we really appreciate you sharing this."</p>
+                <p class="review-response-text">"Thank you for your great review! We are glad you enjoyed our clean machines and amenities!"</p>
             </div>
             <span class="review-badge badge-auto" style="align-self:flex-start;">Safe to Auto-Publish</span>
         </div>
         <div class="review-card">
             <div class="review-card-top">
                 <div class="review-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i></div>
-                <span class="review-type">Equipment Complaint</span>
+                <span class="review-type">Broken Machine Complaint</span>
             </div>
-            <p class="review-quote">"Two of the washers were not working when I arrived."</p>
+            <p class="review-quote">"Dryer #4 did not heat up at all and wasted my coins."</p>
             <div class="review-response-box">
                 <div class="review-response-label">ReplyVera response</div>
-                <p class="review-response-text">"Thank you for letting us know. We're sorry for the inconvenience. We'll look into the machines right away and work to get them back in service as quickly as possible."</p>
+                <p class="review-response-text">"We apologize for the trouble. We have notified our technician to service Dryer #4 immediately."</p>
             </div>
             <span class="review-badge badge-approval" style="align-self:flex-start;">Needs Approval</span>
         </div>
         <div class="review-card">
             <div class="review-card-top">
                 <div class="review-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i></div>
-                <span class="review-type">Sensitive Review</span>
+                <span class="review-type">Garment Damage / Refund Alert</span>
             </div>
-            <p class="review-quote">"My clothes went missing and no one at the location was able to help me."</p>
+            <p class="review-quote">"Washing machine ruined my white clothes and coin machine ate $20."</p>
             <div class="review-alert-box">
                 <div class="review-alert-title">
                     <i data-lucide="alert-triangle" style="width:13px;height:13px;"></i>
-                    Missing-item complaint detected
+                    Damage / Refund claim detected
                 </div>
-                <p class="review-alert-sub">Auto-publishing blocked. Owner notified immediately for manual review.</p>
+                <p class="review-alert-sub">Auto-publishing blocked. Owner notified immediately.</p>
             </div>
             <span class="review-badge badge-blocked" style="align-self:flex-start;">Auto-Publishing Blocked</span>
         </div>
@@ -403,7 +541,6 @@
         </div>
     </section>
     <div class="industry-divider-glow"></div>
-    <!-- Sensitive Review Protection -->
     <section class="section section-dark">
         <div class="container">
             <div class="sensitive-inner">
@@ -412,11 +549,11 @@
                         <i data-lucide="shield-alert" style="width:12px;height:12px;"></i>
                         Sensitive Review Protection
                     </div>
-                    <h2 style="margin-bottom:12px;">Missing Items and Refund Requests Require Your Approval</h2>
-                    <p style="margin-bottom:16px;">ReplyVera never publishes sensitive feedback automatically. When a review matches a protected topic, auto-publishing is blocked and you receive an immediate alert.</p>
+                    <h2 style="margin-bottom:12px;">Machine Outages & Damage Claims Resolved Fast</h2>
+                    <p style="margin-bottom:16px;">ReplyVera never publishes sensitive feedback automatically. When a review matches a protected topic, auto-publishing is blocked.</p>
                     <p style="font-size:0.82rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;">Monitored topics:</p>
                     <div class="topic-tags">
-                        <span class="topic-tag industry-tag">Missing items</span><span class="topic-tag industry-tag">Refund disputes</span><span class="topic-tag industry-tag">Safety concerns</span><span class="topic-tag industry-tag">Theft</span><span class="topic-tag industry-tag">Equipment damage</span><span class="topic-tag industry-tag">Health concerns</span>
+                        <span class="topic-tag industry-tag">Damaged Garments</span><span class="topic-tag industry-tag">Swallowed Coins / Refunds</span><span class="topic-tag industry-tag">Facility Cleanliness</span><span class="topic-tag industry-tag">Vandalism</span>
                     </div>
                 </div>
                 <div>
@@ -425,7 +562,7 @@
                             <i data-lucide="alert-triangle" style="width:16px;height:16px;"></i>
                             Sensitive Topic Detected
                         </div>
-                        <p class="sensitive-alert-text" style="margin-bottom:12px;">Auto-publishing has been blocked. A draft has been prepared but will not go live until you approve it.</p>
+                        <p class="sensitive-alert-text" style="margin-bottom:12px;">Auto-publishing has been blocked. A draft has been prepared for your approval.</p>
                         <div style="display:flex;gap:8px;flex-wrap:wrap;">
                             <span class="review-badge badge-blocked">Auto-Publishing Blocked</span>
                             <span style="font-size:0.68rem;font-weight:700;padding:3px 9px;border-radius:4px;background:rgba(245,158,11,0.1);color:#FCD34D;border:1px solid rgba(245,158,11,0.2);">Owner Notified</span>
@@ -436,7 +573,6 @@
         </div>
     </section>
     <div class="industry-divider-glow"></div>
-    <!-- Pricing -->
     <section class="section section-dark" id="pricing">
         <div class="container">
             <div class="section-header">
@@ -453,9 +589,6 @@
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> One location</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Up to 30 replies per month</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Manual approval for all reviews</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Custom tone</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> English and Spanish</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Negative-review alerts</li>
                     </ul>
                     <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-secondary" style="text-align:center;justify-content:center;">Start Free Trial</a>
                 </div>
@@ -469,9 +602,6 @@
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> One location</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Unlimited review responses*</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Automatic publishing for safe reviews</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Sensitive-review detection</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Custom brand voice</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Review history</li>
                     </ul>
                     <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent" style="text-align:center;justify-content:center;">Start Free Trial</a>
                 </div>
@@ -483,18 +613,13 @@
                     <ul class="pricing-features">
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Three locations included</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Central dashboard</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Location-specific rules</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Team access</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Additional locations available</li>
                     </ul>
                     <a href="/pricing.html" class="btn btn-secondary" style="text-align:center;justify-content:center;">Start Multi-Location Trial</a>
                 </div>
             </div>
-            <p style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin-top:24px;">14-day free trial. Cancel anytime.</p>
         </div>
     </section>
     <div class="industry-divider-glow"></div>
-    <!-- FAQ -->
     <section class="section section-light" id="faq">
         <div class="container" style="max-width:760px;">
             <div class="section-header">
@@ -504,48 +629,45 @@
                 
         <div class="faq-item">
             <button class="faq-question">
-                <span>Are missing-item and refund complaints blocked from auto-publishing?</span>
+                <span>Can ReplyVera report broken machine numbers?</span>
                 <div class="faq-icon-wrapper"><i data-lucide="plus" style="width:16px;height:16px;"></i></div>
             </button>
-            <div class="faq-answer">Yes. Any review mentioning missing clothing, theft, or refund requests is immediately held for owner approval and blocked from automatic publishing under your configured approval rules.</div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question">
-                <span>Can I use ReplyVera to track which locations have the most machine complaints?</span>
-                <div class="faq-icon-wrapper"><i data-lucide="plus" style="width:16px;height:16px;"></i></div>
-            </button>
-            <div class="faq-answer">Reviews are organized by location, so you can quickly see patterns in machine or cleanliness complaints per site.</div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question">
-                <span>Can ReplyVera manage multiple laundromat locations?</span>
-                <div class="faq-icon-wrapper"><i data-lucide="plus" style="width:16px;height:16px;"></i></div>
-            </button>
-            <div class="faq-answer">Yes. The Multi-Location plan lets you manage separate Google Business Profiles for each location from one account.</div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question">
-                <span>Does ReplyVera respond in Spanish?</span>
-                <div class="faq-icon-wrapper"><i data-lucide="plus" style="width:16px;height:16px;"></i></div>
-            </button>
-            <div class="faq-answer">Yes. ReplyVera can draft responses in both English and Spanish based on your configuration.</div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question">
-                <span>Which review platforms does ReplyVera support?</span>
-                <div class="faq-icon-wrapper"><i data-lucide="plus" style="width:16px;height:16px;"></i></div>
-            </button>
-            <div class="faq-answer">ReplyVera currently supports Google Reviews through Google Business Profile. Facebook, Trustpilot, Booking.com, and Tripadvisor are planned for future releases.</div>
+            <div class="faq-answer">Yes. If a review mentions a specific machine number, it is highlighted in your alert.</div>
         </div>
             </div>
         </div>
     </section>
-    <!-- Final CTA -->
+    <div class="industry-divider-glow"></div>
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Explore Other Industries</h2>
+            </div>
+            <div class="benefits-grid">
+                
+        <a href="/industries/dentists" class="benefit-card" style="text-decoration:none;color:inherit;">
+            <div class="benefit-icon dentist-icon"><i data-lucide="activity" style="width:20px;height:20px;"></i></div>
+            <div class="benefit-title">Dentists & Clinics</div>
+            <p class="benefit-text">Privacy-conscious replies for patient reviews.</p>
+        </a>
+        <a href="/industries/restaurants" class="benefit-card" style="text-decoration:none;color:inherit;">
+            <div class="benefit-icon restaurant-icon"><i data-lucide="utensils" style="width:20px;height:20px;"></i></div>
+            <div class="benefit-title">Restaurants</div>
+            <p class="benefit-text">Automated replies with food-safety and allergy escalation.</p>
+        </a>
+        <a href="/industries/car-washes" class="benefit-card" style="text-decoration:none;color:inherit;">
+            <div class="benefit-icon carwash-icon"><i data-lucide="car" style="width:20px;height:20px;"></i></div>
+            <div class="benefit-title">Car Wash Operators</div>
+            <p class="benefit-text">Track damage, billing, and service complaints.</p>
+        </a>
+            </div>
+        </div>
+    </section>
     <section class="section section-dark">
         <div class="container" style="max-width:700px;">
             <div class="cta-box">
-                <h2 class="mb-4">Keep Every Location Clean, Responsive, and Trusted</h2>
-                <p class="lead mb-8">Let ReplyVera handle routine replies so you can focus on keeping machines running and customers happy.</p>
+                <h2 class="mb-4">Keep Your Laundromat Reputation Spotless</h2>
+                <p class="lead mb-8">Let ReplyVera streamline your reviews while you maintain top-notch facilities.</p>
                 <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
                     <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">Start Free Trial</a>
                     <a href="/pricing.html" class="btn btn-secondary btn-lg">View Pricing</a>
@@ -558,7 +680,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand-box">
-                    <a href="/index.html" class="nav-logo" style="margin-bottom:14px;">
+                    <a href="/" class="nav-logo" style="margin-bottom:14px;">
                         <div class="nav-logo-icon">
                             <i class="fa-solid fa-reply"></i>
                         </div>
@@ -571,8 +693,8 @@
                 <div class="footer-col">
                     <div class="footer-col-title">Product</div>
                     <ul class="footer-links">
-                        <li><a href="/index.html#product">Product</a></li>
-                        <li><a href="/index.html#how-it-works">How It Works</a></li>
+                        <li><a href="/#product">Product</a></li>
+                        <li><a href="/#how-it-works">How It Works</a></li>
                         <li><a href="/pricing.html">Pricing</a></li>
                     </ul>
                 </div>
@@ -586,9 +708,9 @@
                         <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> EN
                     </button>
                     <div class="lang-menu">
-                        <a href="/index.html#" class="lang-item" onclick="changeLang('en', event)">English</a>
-                        <a href="/index.html#" class="lang-item" onclick="changeLang('es', event)">EspaÃ±ol</a>
-                        <a href="/index.html#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+                        <a href="/#" class="lang-item" onclick="changeLang('en', event)">English</a>
+                        <a href="/#" class="lang-item" onclick="changeLang('es', event)">EspaÃ±ol</a>
+                        <a href="/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
                     </div>
                 </div>
                 <a h>Log In</a></li>
@@ -608,8 +730,8 @@
             <div class="footer-bottom">
                 <div>© 2026 ReplyVera. All rights reserved.</div>
                 <div class="social-links">
-                    <a href="/index.html#"><i data-lucide="twitter" style="width:17px;height:17px;"></i></a>
-                    <a href="/index.html#"><i data-lucide="linkedin" style="width:17px;height:17px;"></i></a>
+                    <a href="/#"><i data-lucide="twitter" style="width:17px;height:17px;"></i></a>
+                    <a href="/#"><i data-lucide="linkedin" style="width:17px;height:17px;"></i></a>
                 </div>
             </div>
         </div>
@@ -633,6 +755,5 @@
     <script defer src="/_vercel/insights/script.js"></script>
 
     <script src="/script.js"></script>
-<script>window.REPLYVERA_DEMO_DATA = {"positive":{"review":"Very clean facility and the owner is always helpful.","sentiment":"Positive","rating":5,"topic":"Cleanliness and staff praise","employee":"None","risk":"Low","reply":"Thank you for your fantastic review! We work hard to keep the facility clean and comfortable, and we are always happy to help.","decision":"Safe to Auto-Publish","text":"This review matches your automatic publishing rules."},"negative":{"review":"Dryer #4 is still not heating up properly, wasting money.","sentiment":"Negative","rating":2,"topic":"Broken machine","employee":"None","risk":"Medium","reply":"Thank you for reporting this issue with Dryer #4. We apologize for the frustration and we have placed an out-of-order sign on it until our technician can fix the heating element.","decision":"Needs Approval","text":"Negative reviews require approval under your current rules."},"sensitive":{"review":"Someone stole my basket of clothes when I stepped outside.","sentiment":"Negative","rating":1,"topic":"Theft allegation","employee":"None","risk":"High","blocked":"Theft","decision":"Auto-Publishing Blocked","text":"This review requires human review before any public response is created or published."}};</script>
 </body>
 </html>
