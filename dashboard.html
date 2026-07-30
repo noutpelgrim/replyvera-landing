@@ -295,7 +295,7 @@
                     actionBtnHtml = `<button class="btn-action btn-secondary" onclick="triggerFollowUp('${lead.id}', 'day14')"><i data-lucide="rotate-cw" style="width:12px;"></i> Send Day 14 Final</button>`;
                 } else if (lead.status === 'FOLLOW_UP_FINAL') {
                     badgeHtml = `<span class="badge badge-final"><i data-lucide="shield-alert" style="width:10px;"></i> Final Sent (Day 14)</span>`;
-                    actionBtnHtml = `<button class="btn-action btn-secondary" onclick="openEmailModal('${lead.id}')"><i data-lucide="eye" style="width:12px;"></i> View Log</button>`;
+                    actionBtnHtml = `<button class="btn-action btn-secondary" onclick="openEmailModal('${lead.id}')"><i data-lucide="eye" style="width:12px;"></i> View Log</button> <button class="btn-action btn-secondary" style="background:rgba(239,68,68,0.15);color:#FCA5A5;" onclick="deleteSingleLead('${lead.id}', '${lead.business_name}')">🗑️</button>`;
                 } else if (lead.status === 'CONVERTED') {
                     badgeHtml = `<span class="badge badge-converted"><i data-lucide="sparkles" style="width:10px;"></i> Trial Active</span>`;
                     actionBtnHtml = `<button class="btn-action btn-secondary" onclick="openEmailModal('${lead.id}')"><i data-lucide="user-check" style="width:12px;"></i> Customer Info</button>`;
@@ -318,6 +318,22 @@
             });
 
             lucide.createIcons();
+        }
+
+        
+        async function deleteSingleLead(id, name) {
+            if (!confirm(`Are you sure you want to delete ${name} from your prospect list?`)) return;
+            try {
+                const res = await fetch(`https://replyvera-backend-production.up.railway.app/api/leads/${id}`, { method: 'DELETE' });
+                if (res.ok) {
+                    allLeads = allLeads.filter(l => l.id !== id);
+                    renderDashboard();
+                } else {
+                    alert('Failed to delete lead from database.');
+                }
+            } catch (e) {
+                console.error('Delete error:', e);
+            }
         }
 
         function filterLeads(status) {
