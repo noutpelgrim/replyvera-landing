@@ -308,7 +308,7 @@
                         <span class="biz-name">${lead.business_name}</span>
                         <span class="biz-meta"><i data-lucide="star" style="width:12px;color:#F59E0B;fill:#F59E0B;"></i> ${lead.rating || '4.8'} Rating &bull; ${lead.address || 'Google Maps'}</span>
                     </td>
-                    <td style="color:var(--text-secondary);font-weight:500;">${lead.email}</td>
+                    <td style="color:var(--text-secondary);font-weight:500;">${lead.email} <button onclick="editSingleLeadEmail('${lead.id}', '${lead.business_name}', '${lead.email}')" title="Edit email" style="background:transparent;border:none;color:#A78BFA;cursor:pointer;margin-left:6px;">✏️</button></td>
                     <td>${badgeHtml}</td>
                     <td style="color:var(--text-muted);font-size:0.85rem;">${lastContact}</td>
                     <td>${actionBtnHtml}</td>
@@ -321,6 +321,30 @@
         }
 
         
+        
+        async function editSingleLeadEmail(id, name, currentEmail) {
+            const newEmail = prompt(`Enter correct email address for ${name}:`, currentEmail || '');
+            if (!newEmail || newEmail.trim() === '' || newEmail.trim() === currentEmail) return;
+            const trimmed = newEmail.trim().toLowerCase();
+
+            try {
+                const res = await fetch(`https://replyvera-backend-production.up.railway.app/api/leads/${id}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: trimmed })
+                });
+                if (res.ok) {
+                    const lead = allLeads.find(l => l.id === id);
+                    if (lead) lead.email = trimmed;
+                    renderDashboard();
+                } else {
+                    alert('Failed to update email address in database.');
+                }
+            } catch (e) {
+                console.error('Edit email error:', e);
+            }
+        }
+
         async function deleteSingleLead(id, name) {
             if (!confirm(`Are you sure you want to delete ${name} from your prospect list?`)) return;
             try {
