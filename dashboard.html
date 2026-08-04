@@ -189,7 +189,7 @@
                         <th>Business Prospect</th>
                         <th>Contact Email</th>
                         <th>Status</th>
-                        <th>Last Contacted</th>
+                        <th>Last Contacted / Next Follow-up</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -301,7 +301,33 @@
                     actionBtnHtml = `<button class="btn-action btn-secondary" onclick="openEmailModal('${lead.id}')"><i data-lucide="user-check" style="width:12px;"></i> Customer Info</button>`;
                 }
 
-                const lastContact = lead.last_contacted_at ? new Date(lead.last_contacted_at).toLocaleString() : 'Not contacted';
+                let nextFollowUpText = '';
+                const sentTimestamp = lead.last_contacted_at || lead.updated_at || lead.created_at;
+                
+                if (lead.status === 'SENT') {
+                    const sentDate = sentTimestamp ? new Date(sentTimestamp) : new Date();
+                    const lastContactStr = sentTimestamp ? sentDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : 'Day 0 Sent';
+                    const day3Date = new Date(sentDate.getTime() + 3 * 24 * 60 * 60 * 1000);
+                    const day3Str = day3Date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    const isReady = new Date() >= day3Date;
+                    nextFollowUpText = `<div>${lastContactStr}</div><div style="font-size:0.78rem; color:${isReady ? '#34D399' : '#FBBF24'}; margin-top:3px; font-weight:600;">⏱️ Day 3 Bump: <strong>${day3Str}</strong> ${isReady ? '🔥 (Ready!)' : ''}</div>`;
+                } else if (lead.status === 'FOLLOW_UP_1') {
+                    const sentDate = sentTimestamp ? new Date(sentTimestamp) : new Date();
+                    const lastContactStr = sentTimestamp ? sentDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : 'Day 3 Sent';
+                    const day7Date = new Date(sentDate.getTime() + 4 * 24 * 60 * 60 * 1000);
+                    const day7Str = day7Date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    nextFollowUpText = `<div>${lastContactStr}</div><div style="font-size:0.78rem; color:#C084FC; margin-top:3px; font-weight:600;">⏱️ Day 7 Insight: <strong>${day7Str}</strong></div>`;
+                } else if (lead.status === 'FOLLOW_UP_2') {
+                    const sentDate = sentTimestamp ? new Date(sentTimestamp) : new Date();
+                    const lastContactStr = sentTimestamp ? sentDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : 'Day 7 Sent';
+                    const day14Date = new Date(sentDate.getTime() + 7 * 24 * 60 * 60 * 1000);
+                    const day14Str = day14Date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    nextFollowUpText = `<div>${lastContactStr}</div><div style="font-size:0.78rem; color:#F87171; margin-top:3px; font-weight:600;">⏱️ Day 14 Final: <strong>${day14Str}</strong></div>`;
+                } else if (lead.last_contacted_at) {
+                    nextFollowUpText = `<div>${new Date(lead.last_contacted_at).toLocaleString()}</div>`;
+                } else {
+                    nextFollowUpText = '<span style="color:var(--text-muted);">Not contacted</span>';
+                }
 
                 tr.innerHTML = `
                     <td>
@@ -310,7 +336,7 @@
                     </td>
                     <td style="color:var(--text-secondary);font-weight:500;">${lead.email} <button onclick="editSingleLeadEmail('${lead.id}', '${lead.business_name}', '${lead.email}')" title="Edit email" style="background:transparent;border:none;color:#A78BFA;cursor:pointer;margin-left:6px;">✏️</button></td>
                     <td>${badgeHtml}</td>
-                    <td style="color:var(--text-muted);font-size:0.85rem;">${lastContact}</td>
+                    <td style="font-size:0.85rem;">${nextFollowUpText}</td>
                     <td>${actionBtnHtml}</td>
                 `;
 
