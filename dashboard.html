@@ -426,14 +426,38 @@
             const lead = allLeads.find(l => l.id === id);
             if (!lead) return;
 
-            alert(`✉️ Dispatching ${step.toUpperCase()} email to ${lead.business_name} (${lead.email})...`);
+            try {
+                let endpoint = `https://replyvera-backend-production.up.railway.app/api/leads/${id}/followup`;
+                let payload = { step: step };
 
-            if (step === 'send') lead.status = 'SENT';
-            else if (step === 'day3') lead.status = 'FOLLOW_UP_1';
-            else if (step === 'day7') lead.status = 'FOLLOW_UP_2';
-            else if (step === 'day14') lead.status = 'FOLLOW_UP_FINAL';
+                if (step === 'send') {
+                    endpoint = `https://replyvera-backend-production.up.railway.app/api/leads/${id}/send`;
+                    payload = { draft: lead.outreach_draft };
+                }
 
-            lead.last_contacted_at = new Date().toISOString();
+                const res = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await res.json();
+
+                if (res.ok && data.success) {
+                    if (step === 'send') lead.status = 'SENT';
+                    else if (step === 'day3') lead.status = 'FOLLOW_UP_1';
+                    else if (step === 'day7') lead.status = 'FOLLOW_UP_2';
+                    else if (step === 'day14') lead.status = 'FOLLOW_UP_FINAL';
+
+                    lead.last_contacted_at = new Date().toISOString();
+                    alert(`✅ Email successfully dispatched to ${lead.business_name} (${lead.email}) via Resend!`);
+                } else {
+                    alert(`❌ Failed to send email: ${data.error || 'Unknown error'}`);
+                }
+            } catch (err) {
+                console.error('Error triggering follow-up:', err);
+                alert('❌ Error connecting to email backend service.');
+            }
             renderDashboard();
         }
 
@@ -454,6 +478,8 @@
             if (!confirm(`Found ${dueLeads.length} prospects with Day 3 Bump ready! Dispatch outreach follow-ups to all ${dueLeads.length} leads now?`)) return;
 
             let successCount = 0;
+            let errorCount = 0;
+
             for (const lead of dueLeads) {
                 try {
                     const res = await fetch(`https://replyvera-backend-production.up.railway.app/api/leads/${lead.id}/followup`, {
@@ -461,17 +487,22 @@
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ step: 'day3' })
                     });
-                    if (res.ok) {
+                    const data = await res.json();
+                    if (res.ok && data.success) {
                         lead.status = 'FOLLOW_UP_1';
                         lead.last_contacted_at = new Date().toISOString();
                         successCount++;
+                    } else {
+                        console.error(`Failed to send bump to ${lead.business_name}:`, data ? data.error : res.statusText);
+                        errorCount++;
                     }
                 } catch (e) {
                     console.error('Failed auto-dispatching follow-up:', e);
+                    errorCount++;
                 }
             }
 
-            alert(`🎉 Successfully dispatched ${successCount} Day 3 Bump emails!`);
+            alert(`🎉 Dispatch complete! Successfully sent ${successCount} Day 3 Bump emails via Resend!${errorCount > 0 ? ` (${errorCount} failed)` : ''}`);
             renderDashboard();
         }
     </script>
