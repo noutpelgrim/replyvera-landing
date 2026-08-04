@@ -175,9 +175,15 @@
                 <button class="tab-btn" onclick="filterLeads('CONVERTED')">Converted (<span id="cnt-conv">2</span>)</button>
             </div>
 
-            <div class="search-box">
-                <i data-lucide="search" style="width:16px;color:var(--text-muted);"></i>
-                <input type="text" id="search-input" placeholder="Search business or email..." oninput="searchLeads()">
+            <div style="display:flex; gap:12px; align-items:center;">
+                <button class="btn-action" id="btn-autodispatch" onclick="autoDispatchDueFollowUps()" style="background:linear-gradient(135deg, #10B981 0%, #059669 100%); font-weight:700; padding:9px 16px; box-shadow:0 4px 14px rgba(16,185,129,0.3);">
+                    <i data-lucide="zap" style="width:14px;"></i> Auto-Dispatch All Ready Bumps
+                </button>
+
+                <div class="search-box">
+                    <i data-lucide="search" style="width:16px;color:var(--text-muted);"></i>
+                    <input type="text" id="search-input" placeholder="Search business or email..." oninput="searchLeads()">
+                </div>
             </div>
         </div>
 
@@ -428,6 +434,44 @@
             else if (step === 'day14') lead.status = 'FOLLOW_UP_FINAL';
 
             lead.last_contacted_at = new Date().toISOString();
+            renderDashboard();
+        }
+
+        async function autoDispatchDueFollowUps() {
+            const dueLeads = allLeads.filter(lead => {
+                if (lead.status !== 'SENT') return false;
+                const sentTimestamp = lead.last_contacted_at || lead.updated_at || lead.created_at;
+                if (!sentTimestamp) return true;
+                const day3Date = new Date(new Date(sentTimestamp).getTime() + 3 * 24 * 60 * 60 * 1000);
+                return new Date() >= day3Date;
+            });
+
+            if (dueLeads.length === 0) {
+                alert('No Day 3 Bump follow-up emails are currently due.');
+                return;
+            }
+
+            if (!confirm(`Found ${dueLeads.length} prospects with Day 3 Bump ready! Dispatch outreach follow-ups to all ${dueLeads.length} leads now?`)) return;
+
+            let successCount = 0;
+            for (const lead of dueLeads) {
+                try {
+                    const res = await fetch(`https://replyvera-backend-production.up.railway.app/api/leads/${lead.id}/followup`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ step: 'day3' })
+                    });
+                    if (res.ok) {
+                        lead.status = 'FOLLOW_UP_1';
+                        lead.last_contacted_at = new Date().toISOString();
+                        successCount++;
+                    }
+                } catch (e) {
+                    console.error('Failed auto-dispatching follow-up:', e);
+                }
+            }
+
+            alert(`🎉 Successfully dispatched ${successCount} Day 3 Bump emails!`);
             renderDashboard();
         }
     </script>
