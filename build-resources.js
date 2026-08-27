@@ -181,7 +181,7 @@ function buildArticles() {
         const { header, footer } = getHeaderAndFooter(lang);
 
         const homeLabel = 'Home';
-        const resourcesLabel = lang === 'nl' ? 'Resources' : lang === 'es' ? 'Recursos' : 'Resources';
+        const resourcesLabel = lang === 'nl' ? 'Kennisbank' : lang === 'es' ? 'Recursos' : 'Resources';
         const byAuthorLabel = lang === 'nl' ? 'Door ReplyVera Team' : lang === 'es' ? 'Por el Equipo de ReplyVera' : 'By ReplyVera Team';
         const publishedLabel = lang === 'nl' ? 'Gepubliceerd' : lang === 'es' ? 'Publicado' : 'Published';
         const ctaTitle = lang === 'nl' ? 'Laat ReplyVera je reviewreacties afhandelen' : lang === 'es' ? 'Deja que ReplyVera gestione tus respuestas' : 'Let ReplyVera Handle Your Review Replies';
