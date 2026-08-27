@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="google-site-verification" content="ujWkouPYWYrM8SOHHKHiZEmkCRNYewAvXnDcadtF2Tk" />
+
+    <title>¿Deberías responder a todas las reseñas de Google? | ReplyVera</title>
+
+    <meta name="description" content="Descubre por qué responder al 100% de las reseñas de Google genera confianza en los clientes y mejora la reputación de tu empresa.">
+
+    <link rel="stylesheet" href="/style.css?v=15">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script src="/es/demo.js?v=3" defer></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+
+
+
+    <script>
+
+    function changeLang(lang, event) {
+
+        event.preventDefault();
+
+        localStorage.setItem('lang_redirected', 'true');
+
+        
+
+        let path = window.location.pathname;
+
+        
+
+        // Remove existing lang prefix if present
+
+        if (path.startsWith('/es/')) path = path.replace('/es/', '/');
+
+        if (path.startsWith('/nl/')) path = path.replace('/nl/', '/');
+
+        if (path === '/es' || path === '/nl') path = '/';
+
+        
+
+        let newPath = path;
+
+        if (lang === 'es') {
+
+            newPath = '/es' + (path === '/' ? '/' : path);
+
+        } else if (lang === 'nl') {
+
+            newPath = '/nl' + (path === '/' ? '/' : path);
+
+        }
+
+        
+
+        window.location.href = newPath + window.location.hash;
+
+    }
+
+    </script>
+
+    <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+
+    <link rel="canonical" href="https://replyvera.com/es/resources/should-you-respond-to-every-google-review" />
+    <link rel="alternate" hreflang="en" href="https://replyvera.com/resources/should-you-respond-to-every-google-review" />
+    <link rel="alternate" hreflang="es" href="https://replyvera.com/es/resources/should-you-respond-to-every-google-review" />
+    <link rel="alternate" hreflang="nl" href="https://replyvera.com/nl/resources/should-you-respond-to-every-google-review" />
+    <link rel="alternate" hreflang="x-default" href="https://replyvera.com/resources/should-you-respond-to-every-google-review" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="¿Deberías responder a todas las reseñas de Google? | ReplyVera" />
+    <meta property="og:description" content="Descubre por qué responder al 100% de las reseñas de Google genera confianza en los clientes y mejora la reputación de tu empresa." />
+    <meta property="og:url" content="https://replyvera.com/es/resources/should-you-respond-to-every-google-review" />
+    <meta property="og:site_name" content="ReplyVera" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="¿Deberías responder a todas las reseñas de Google? | ReplyVera" />
+    <meta name="twitter:description" content="Descubre por qué responder al 100% de las reseñas de Google genera confianza en los clientes y mejora la reputación de tu empresa." />
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "¿Deberías responder a todas las reseñas de Google?",
+  "description": "Descubre por qué responder al 100% de las reseñas de Google genera confianza en los clientes y mejora la reputación de tu empresa.",
+  "author": {
+    "@type": "Organization",
+    "name": "ReplyVera Team",
+    "url": "https://replyvera.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ReplyVera",
+    "url": "https://replyvera.com"
+  },
+  "datePublished": "2026-08-27",
+  "dateModified": "2026-08-27",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://replyvera.com/es/resources/should-you-respond-to-every-google-review"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://replyvera.com/es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Recursos",
+      "item": "https://replyvera.com/es/resources"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "¿Deberías responder a todas las reseñas de Google?",
+      "item": "https://replyvera.com/es/resources/should-you-respond-to-every-google-review"
+    }
+  ]
+}
+    </script>
+</head>
+
+
+
+<body>
+
+
+
+    <!-- Navbar -->
+
+    <nav class="navbar" id="navbar">
+
+        <div class="container nav-container">
+
+            <a href="/es/" class="nav-logo">
+
+                <div class="nav-logo-icon">
+
+                    <i class="fa-solid fa-reply"></i>
+
+                </div>
+
+                <span class="nav-logo-text">Responder<span>Vera</span></span>
+
+            </a>
+
+
+
+            <div class="nav-links">
+
+                <a href="/es/#product">Producto</a>
+
+                <a href="/es/#benefits">Características</a>
+
+                <a href="/es/#how-it-works">Cómo Funciona</a>
+
+                <div class="nav-dropdown">
+
+                    <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="menu" aria-controls="industries-menu">
+
+                        Industrias
+
+                        <span class="chevron-icon"><i data-lucide="chevron-down" style="width:12px;height:12px;"></i></span>
+
+                    </button>
+
+                    <div class="nav-dropdown-content" id="industries-menu" role="menu">
+
+                        <!-- NAV_DROPDOWN_GRID_START -->
+<div class="nav-dropdown-grid">
+
+        <a href="/es/industries/dentistas" class="dropdown-item">
+            <div class="dropdown-icon-wrapper dentist-icon"><i data-lucide="activity" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Dentistas y Clínicas</div>
+                <div class="dropdown-desc">Respuestas respetuosas de la privacidad para pacientes.</div>
+            </div>
+        </a>
+        <a href="/es/industries/restaurantes" class="dropdown-item">
+            <div class="dropdown-icon-wrapper restaurant-icon"><i data-lucide="utensils" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Restaurantes</div>
+                <div class="dropdown-desc">Respuestas automatizadas con escalado de alergias y seguridad alimentaria.</div>
+            </div>
+        </a>
+        <a href="/es/industries/autolavados" class="dropdown-item">
+            <div class="dropdown-icon-wrapper carwash-icon"><i data-lucide="car" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Operadores de Lavado de Autos</div>
+                <div class="dropdown-desc">Rastrea quejas de daños, facturación y servicio.</div>
+            </div>
+        </a>
+        <a href="/es/industries/agencias-de-marketing" class="dropdown-item">
+            <div class="dropdown-icon-wrapper agency-icon"><i data-lucide="briefcase" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Agencias de Marketing</div>
+                <div class="dropdown-desc">Gestiona respuestas de reseñas de Google para todos tus clientes.</div>
+            </div>
+        </a>
+        <a href="/es/industries/cuidado-de-mascotas" class="dropdown-item">
+            <div class="dropdown-icon-wrapper petcare-icon"><i data-lucide="dog" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Cuidado de Mascotas</div>
+                <div class="dropdown-desc">Respuestas cálidas con escalado de salud y seguridad animal.</div>
+            </div>
+        </a>
+        <a href="/es/industries/guarderias" class="dropdown-item">
+            <div class="dropdown-icon-wrapper childcare-icon"><i data-lucide="heart" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Guardería y Preescolar</div>
+                <div class="dropdown-desc">Respuestas cuidadosas para comentarios de padres.</div>
+            </div>
+        </a>
+        <a href="/es/industries/escuelas-de-artes-marciales" class="dropdown-item">
+            <div class="dropdown-icon-wrapper martial-arts-icon"><i data-lucide="shield" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Escuelas de Artes Marciales</div>
+                <div class="dropdown-desc">Respuestas adaptadas a familias con controles de seguridad.</div>
+            </div>
+        </a>
+        <a href="/es/industries/centros-de-tutoria" class="dropdown-item">
+            <div class="dropdown-icon-wrapper tutoring-icon"><i data-lucide="book-open" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Centros de Tutoría</div>
+                <div class="dropdown-desc">Respuestas profesionales para padres y estudiantes.</div>
+            </div>
+        </a>
+        <a href="/es/industries/lavanderias" class="dropdown-item">
+            <div class="dropdown-icon-wrapper laundromat-icon"><i data-lucide="wind" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Lavanderías</div>
+                <div class="dropdown-desc">Monitorea limpieza, equipos y reembolsos.</div>
+            </div>
+        </a>
+</div>
+<!-- NAV_DROPDOWN_GRID_END -->
+
+</div>
+
+</div>
+
+                <a href="/es/#pricing">Precios</a>
+
+                <a href="/es/resources">Recursos</a>
+
+                <a href="/es/#faq">Preguntas Frecuentes</a>
+
+            </div>
+
+
+
+            <div class="nav-actions">
+
+                <div class="lang-selector">
+
+                    
+                    <button class="lang-btn" aria-label="Select Language">
+                        <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> ES
+                    </button>
+
+                    <div class="lang-menu">
+
+                        <a href="/es/#" class="lang-item" onclick="changeLang('en', event)">English</a>
+
+                        <a href="/es/#" class="lang-item" onclick="changeLang('es', event)">Español</a>
+
+                        <a href="/es/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+
+                    </div>
+
+                </div>
+
+                <a href="https://dashboard.replyvera.com/login" class="nav-login">Iniciar Sesión</a>
+
+                <a href="/es/#pricing" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Comenzar Prueba Gratuita</a>
+
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+
+                    </svg>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- Mobile Navigation Panel -->
+
+    <div class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+
+        <div class="mobile-nav-links">
+
+            <a href="/es/#product" class="mobile-nav-link">Producto</a>
+
+            <a href="/es/#benefits" class="mobile-nav-link">Características</a>
+
+            <a href="/es/#how-it-works" class="mobile-nav-link">Cómo Funciona</a>
+
+
+
+            <!-- Industrias Accordion -->
+
+            <button class="mobile-industry-toggle" id="mobile-ind-toggle" aria-expanded="false">
+
+                Industries
+
+                <span class="mobile-industry-chevron">
+
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+
+                </span>
+
+            </button>
+
+            <!-- MOBILE_IND_LIST_START -->
+<div class="mobile-industry-list" id="mobile-ind-list">
+
+        <a href="/es/industries/dentistas" class="mobile-industry-item">
+            <div class="mobile-ind-icon dentist-icon"><i data-lucide="activity" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Dentistas y Clínicas</div>
+                <div class="mobile-ind-desc">Respuestas respetuosas de la privacidad para pacientes.</div>
+            </div>
+        </a>
+        <a href="/es/industries/restaurantes" class="mobile-industry-item">
+            <div class="mobile-ind-icon restaurant-icon"><i data-lucide="utensils" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Restaurantes</div>
+                <div class="mobile-ind-desc">Respuestas automatizadas con escalado de alergias y seguridad alimentaria.</div>
+            </div>
+        </a>
+        <a href="/es/industries/autolavados" class="mobile-industry-item">
+            <div class="mobile-ind-icon carwash-icon"><i data-lucide="car" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Operadores de Lavado de Autos</div>
+                <div class="mobile-ind-desc">Rastrea quejas de daños, facturación y servicio.</div>
+            </div>
+        </a>
+        <a href="/es/industries/agencias-de-marketing" class="mobile-industry-item">
+            <div class="mobile-ind-icon agency-icon"><i data-lucide="briefcase" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Agencias de Marketing</div>
+                <div class="mobile-ind-desc">Gestiona respuestas de reseñas de Google para todos tus clientes.</div>
+            </div>
+        </a>
+        <a href="/es/industries/cuidado-de-mascotas" class="mobile-industry-item">
+            <div class="mobile-ind-icon petcare-icon"><i data-lucide="dog" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Cuidado de Mascotas</div>
+                <div class="mobile-ind-desc">Respuestas cálidas con escalado de salud y seguridad animal.</div>
+            </div>
+        </a>
+        <a href="/es/industries/guarderias" class="mobile-industry-item">
+            <div class="mobile-ind-icon childcare-icon"><i data-lucide="heart" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Guardería y Preescolar</div>
+                <div class="mobile-ind-desc">Respuestas cuidadosas para comentarios de padres.</div>
+            </div>
+        </a>
+        <a href="/es/industries/escuelas-de-artes-marciales" class="mobile-industry-item">
+            <div class="mobile-ind-icon martial-arts-icon"><i data-lucide="shield" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Escuelas de Artes Marciales</div>
+                <div class="mobile-ind-desc">Respuestas adaptadas a familias con controles de seguridad.</div>
+            </div>
+        </a>
+        <a href="/es/industries/centros-de-tutoria" class="mobile-industry-item">
+            <div class="mobile-ind-icon tutoring-icon"><i data-lucide="book-open" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Centros de Tutoría</div>
+                <div class="mobile-ind-desc">Respuestas profesionales para padres y estudiantes.</div>
+            </div>
+        </a>
+        <a href="/es/industries/lavanderias" class="mobile-industry-item">
+            <div class="mobile-ind-icon laundromat-icon"><i data-lucide="wind" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Lavanderías</div>
+                <div class="mobile-ind-desc">Monitorea limpieza, equipos y reembolsos.</div>
+            </div>
+        </a>
+</div>
+<!-- MOBILE_IND_LIST_END -->
+
+<a href="/es/#pricing" class="mobile-nav-link">Precios</a>
+
+<a href="/es/resources" class="mobile-nav-link">Recursos</a>
+
+            <a href="/es/#faq" class="mobile-nav-link">Preguntas Frecuentes</a>
+
+                        <div class="mobile-lang-bar">
+
+                <span class="mobile-lang-label"><i class="fa-solid fa-globe"></i> Language:</span>
+
+                <a href="/es/#" class="mobile-lang-opt" onclick="changeLang('en', event)">EN</a>
+
+                <a href="/es/#" class="mobile-lang-opt active" onclick="changeLang('es', event)">ES</a>
+
+                <a href="/es/#" class="mobile-lang-opt" onclick="changeLang('nl', event)">NL</a>
+
+            </div>
+
+            <a href="https://dashboard.replyvera.com/login" class="mobile-nav-link">Iniciar Sesión</a>
+
+        </div>
+
+    </div>
+
+
+
+    
+
+        <article class="article-container">
+            <header class="article-header">
+                <nav class="article-breadcrumb" aria-label="Breadcrumb">
+                    <a href="/es/">Home</a>
+                    <span>/</span>
+                    <a href="/es/resources">Recursos</a>
+                    <span>/</span>
+                    <span style="color:var(--text-muted);">Estrategia de Reseñas</span>
+                </nav>
+                <h1 class="article-title">¿Deberías responder a todas las reseñas de Google?</h1>
+                <div class="article-author-bar">
+                    <span class="article-author">Por el Equipo de ReplyVera</span>
+                    <span>&bull;</span>
+                    <span>Publicado: 2026-08-27</span>
+                    <span>&bull;</span>
+                    <span style="display:inline-flex;align-items:center;gap:4px;">
+                        <i data-lucide="clock" style="width:14px;height:14px;"></i>
+                        5 min de lectura
+                    </span>
+                </div>
+            </header>
+
+            <div class="article-body">
+                
+                    <p><strong>Respuesta directa:</strong> Sí, las pequeñas empresas deben intentar responder al 100% de las reseñas de Google. Responder a las reseñas positivas hace que los clientes se sientan valorados, mientras que responder profesionalmente a las negativas demuestra responsabilidad.</p>
+
+                    <h2>El impacto de responder a todas las opiniones</h2>
+                    <p>Los clientes potenciales no solo miran la calificación promedio de estrellas; también leen cómo responde la gerencia a los comentarios anteriores.</p>
+
+                    <p>Descubre cómo las <a href="/es/resources/how-to-reply-to-google-reviews-automatically">respuestas automáticas a reseñas de Google</a> te ayudan a mantener una tasa del 100% sin esfuerzo.</p>
+                
+            </div>
+
+            <!-- Natural Call to Action Box -->
+            <div class="article-cta-box">
+                <div class="article-cta-title">Deja que ReplyVera gestione tus respuestas</div>
+                <p class="article-cta-desc">No vuelvas a perderte una reseña. Publica respuestas automáticas a reseñas de 5 estrellas y escala comentarios delicados a tu equipo.</p>
+                <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+                    <a href="/es/#pricing" class="btn btn-accent btn-lg">Comenzar Prueba Gratuita de 14 Días</a>
+                    <a href="/es/pricing.html" class="btn btn-secondary btn-lg">Comparar Planes y Precios</a>
+                </div>
+            </div>
+        </article>
+        
+<!-- Footer -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div class="footer-brand-box">
+
+                    <a href="/es/" class="nav-logo" style="margin-bottom:14px;">
+
+                        <div class="nav-logo-icon">
+
+                            <i class="fa-solid fa-reply"></i>
+
+                        </div>
+
+                        <span class="nav-logo-text" style="font-size:1.2rem;">Reply<span>Vera</span></span>
+
+                    </a>
+
+                    <p>Respuestas automatizadas de reseñas de Google para pequeñas empresas. Los planes comienzan en $29 por mes.</p>
+
+                    <p style="font-size:0.78rem;margin-top:8px;color:var(--text-muted);">Actualmente compatible con Reseñas de Google. Se planean plataformas adicionales.</p>
+
+                </div>
+
+
+
+                <div class="footer-col">
+
+                    <div class="footer-col-title">Producto</div>
+
+                    <ul class="footer-links">
+
+                        <li><a href="/es/#product">Producto</a></li>
+
+                        <li><a href="/es/#how-it-works">Cómo Funciona</a></li>
+
+                        <li><a href="/es/pricing.html">Precios</a></li>
+
+                    </ul>
+
+                </div>
+
+
+
+                <div class="footer-col">
+
+                    <div class="footer-col-title">Empresa</div>
+
+                    <ul class="footer-links">
+
+                        <li><a href="mailto:info@replyvera.com">Contact Us</a></li>
+
+                        <li><div class="lang-selector">
+
+                    <button class="lang-btn" aria-label="Select Language">
+
+                        <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> EN
+
+                    </button>
+
+                    <div class="lang-menu">
+
+                        <a href="/es/#" class="lang-item" onclick="changeLang('en', event)">English</a>
+
+                        <a href="/es/#" class="lang-item" onclick="changeLang('es', event)">Español</a>
+
+                        <a href="/es/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+
+                    </div>
+
+                </div>
+
+                <a h>Iniciar Sesión</a></li>
+
+                    </ul>
+
+                </div>
+
+
+
+                <div class="footer-col">
+
+                    <div class="footer-col-title">Legal</div>
+
+                    <ul class="footer-links">
+
+                        <li><a href="/es/terms.html">Términos de Servicio</a></li>
+
+                        <li><a href="/es/privacy.html">Política de Privacidad</a></li>
+
+                        <li><a href="/es/cookie.html">Política de Cookies</a></li>
+
+                    </ul>
+
+                </div>
+
+                <div class="footer-col">
+
+                    <div class="footer-col-title">Socios</div>
+
+                    <ul class="footer-links">
+
+                        <li>
+
+                            <a href="https://www.lodgevera.com" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;">
+
+                                <img src="/img/lodgevera-logo.svg" alt="Lodgevera" style="height:14px;width:auto;" />
+
+                                <span>Lodgevera.com</span>
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="footer-bottom">
+
+                <div>© 2026 ReplyVera. Todos los derechos reservados. &nbsp;&bull;&nbsp; Socio oficial de <a href="https://www.lodgevera.com" target="_blank" rel="noopener noreferrer" style="color:var(--text-secondary);text-decoration:underline;">Lodgevera.com</a></div>
+
+                <div class="social-links">
+
+                    <a href="/es/#"><i data-lucide="twitter" style="width:17px;height:17px;"></i></a>
+
+                    <a href="/es/#"><i data-lucide="linkedin" style="width:17px;height:17px;"></i></a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- Cookie Consent Banner -->
+
+    <div id="cookie-banner" class="cookie-banner" aria-hidden="true">
+
+        <div class="cookie-content">
+
+            <p>Usamos cookies para mejorar su experiencia y analizar el rendimiento del sitio. Al hacer clic en "Aceptar", acepta nuestro uso de cookies como se describe en nuestra <a href="/es/cookie.html">Política de Cookies</a>.</p>
+
+            <div class="cookie-buttons">
+
+                <button id="accept-cookies" class="btn btn-accent btn-sm" style="padding:6px 12px; font-size:0.78rem;">Aceptar</button>
+
+                <button id="decline-cookies" class="btn btn-secondary btn-sm" style="padding:6px 12px; font-size:0.78rem;">Rechazar</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Vercel Web Analytics -->
+
+    <script>
+
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+
+    </script>
+
+    <script defer src="/_vercel/insights/script.js"></script>
+
+
+
+    <script src="/script.js"></script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="google-site-verification" content="ujWkouPYWYrM8SOHHKHiZEmkCRNYewAvXnDcadtF2Tk" />
+
+    <title>Google Review Management Resources & Gidsen | ReplyVera</title>
+
+    <meta name="description" content="Ontdek gidsen, best practices en inzichten over geautomatiseerde Google-reviewreacties, reputatiebeheer en lokale SEO voor kleine bedrijven.">
+
+    <link rel="stylesheet" href="/style.css?v=15">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script src="/nl/demo.js?v=3" defer></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+
+
+
+    <script>
+
+    function changeLang(lang, event) {
+
+        event.preventDefault();
+
+        localStorage.setItem('lang_redirected', 'true');
+
+        
+
+        let path = window.location.pathname;
+
+        
+
+        // Remove existing lang prefix if present
+
+        if (path.startsWith('/es/')) path = path.replace('/es/', '/');
+
+        if (path.startsWith('/nl/')) path = path.replace('/nl/', '/');
+
+        if (path === '/es' || path === '/nl') path = '/';
+
+        
+
+        let newPath = path;
+
+        if (lang === 'es') {
+
+            newPath = '/es' + (path === '/' ? '/' : path);
+
+        } else if (lang === 'nl') {
+
+            newPath = '/nl' + (path === '/' ? '/' : path);
+
+        }
+
+        
+
+        window.location.href = newPath + window.location.hash;
+
+    }
+
+    </script>
+
+    <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+
+    <link rel="canonical" href="https://replyvera.com/nl/resources" />
+    <link rel="alternate" hreflang="en" href="https://replyvera.com/resources" />
+    <link rel="alternate" hreflang="es" href="https://replyvera.com/es/resources" />
+    <link rel="alternate" hreflang="nl" href="https://replyvera.com/nl/resources" />
+    <link rel="alternate" hreflang="x-default" href="https://replyvera.com/resources" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Google Review Management Resources & Gidsen | ReplyVera" />
+    <meta property="og:description" content="Ontdek gidsen, best practices en inzichten over geautomatiseerde Google-reviewreacties, reputatiebeheer en lokale SEO voor kleine bedrijven." />
+    <meta property="og:url" content="https://replyvera.com/nl/resources" />
+    <meta property="og:site_name" content="ReplyVera" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Google Review Management Resources & Gidsen | ReplyVera" />
+    <meta name="twitter:description" content="Ontdek gidsen, best practices en inzichten over geautomatiseerde Google-reviewreacties, reputatiebeheer en lokale SEO voor kleine bedrijven." />
+</head>
+
+
+
+<body>
+
+
+
+    <!-- Navbar -->
+
+    <nav class="navbar" id="navbar">
+
+        <div class="container nav-container">
+
+            <a href="/nl/" class="nav-logo">
+
+                <div class="nav-logo-icon">
+
+                    <i class="fa-solid fa-reply"></i>
+
+                </div>
+
+                <span class="nav-logo-text">Reply<span>Vera</span></span>
+
+            </a>
+
+
+
+            <div class="nav-links">
+
+                <a href="/nl/#product">Product</a>
+
+                <a href="/nl/#benefits">Functies</a>
+
+                <a href="/nl/#how-it-works">Hoe Het Werkt</a>
+
+                <div class="nav-dropdown">
+
+                    <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="menu" aria-controls="industries-menu">
+
+                        Sectoren
+
+                        <span class="chevron-icon"><i data-lucide="chevron-down" style="width:12px;height:12px;"></i></span>
+
+                    </button>
+
+                    <div class="nav-dropdown-content" id="industries-menu" role="menu">
+
+                        <!-- NAV_DROPDOWN_GRID_START -->
+<div class="nav-dropdown-grid">
+
+        <a href="/nl/industries/tandartsen" class="dropdown-item">
+            <div class="dropdown-icon-wrapper dentist-icon"><i data-lucide="activity" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Tandartsen & Klinieken</div>
+                <div class="dropdown-desc">Privacybewuste reacties op beoordelingen van patiënten.</div>
+            </div>
+        </a>
+        <a href="/nl/industries/restaurants" class="dropdown-item">
+            <div class="dropdown-icon-wrapper restaurant-icon"><i data-lucide="utensils" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Restaurants</div>
+                <div class="dropdown-desc">Geautomatiseerde reacties met escalatie van voedselveiligheid en allergieën.</div>
+            </div>
+        </a>
+        <a href="/nl/industries/autowasstraten" class="dropdown-item">
+            <div class="dropdown-icon-wrapper carwash-icon"><i data-lucide="car" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Autowasstraten</div>
+                <div class="dropdown-desc">Schade aan voertuigen en escalatie van facturering.</div>
+            </div>
+        </a>
+        <a href="/nl/industries/marketingbureaus" class="dropdown-item">
+            <div class="dropdown-icon-wrapper agency-icon"><i data-lucide="briefcase" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Marketingbureaus</div>
+                <div class="dropdown-desc">Beheer Google-reviewreacties voor al uw klanten vanuit één dashboard.</div>
+            </div>
+        </a>
+        <a href="/nl/industries/dierenverzorging" class="dropdown-item">
+            <div class="dropdown-icon-wrapper petcare-icon"><i data-lucide="dog" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Dierenverzorging</div>
+                <div class="dropdown-desc">Warme reacties met escalatie van diergezondheid en veiligheid.</div>
+            </div>
+        </a>
+        <a href="/nl/industries/kinderopvang" class="dropdown-item">
+            <div class="dropdown-icon-wrapper childcare-icon"><i data-lucide="heart" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Kinderopvang & Peuterspeelzalen</div>
+                <div class="dropdown-desc">Veiligheidsbewuste antwoorden op beoordelingen van ouders.</div>
+            </div>
+        </a>
+        <a href="/nl/industries/vechtsportscholen" class="dropdown-item">
+            <div class="dropdown-icon-wrapper martial-arts-icon"><i data-lucide="shield" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Vechtsportscholen</div>
+                <div class="dropdown-desc">Oudervriendelijke antwoorden met veiligheidscontrole.</div>
+            </div>
+        </a>
+        <a href="/nl/industries/bijlescentra" class="dropdown-item">
+            <div class="dropdown-icon-wrapper tutoring-icon"><i data-lucide="book-open" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Bijlescentra</div>
+                <div class="dropdown-desc">Professionele reacties voor reviews van ouders en studenten.</div>
+            </div>
+        </a>
+        <a href="/nl/industries/wasserettes" class="dropdown-item">
+            <div class="dropdown-icon-wrapper laundromat-icon"><i data-lucide="wind" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Wasserettes</div>
+                <div class="dropdown-desc">Moniteer hygiëne, apparatuur en geld-terug verzoeken.</div>
+            </div>
+        </a>
+</div>
+<!-- NAV_DROPDOWN_GRID_END -->
+
+</div>
+
+</div>
+
+                <a href="/nl/#pricing">Prijzen</a>
+
+                <a href="/nl/resources">Resources</a>
+
+                <a href="/nl/#faq">Veelgestelde Vragen</a>
+
+            </div>
+
+
+
+            <div class="nav-actions">
+
+                <div class="lang-selector">
+
+                    
+                    <button class="lang-btn" aria-label="Select Language">
+                        <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> NL
+                    </button>
+
+                    <div class="lang-menu">
+
+                        <a href="/nl/#" class="lang-item" onclick="changeLang('en', event)">English</a>
+
+                        <a href="/nl/#" class="lang-item" onclick="changeLang('es', event)">Español</a>
+
+                        <a href="/nl/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+
+                    </div>
+
+                </div>
+
+                <a href="https://dashboard.replyvera.com/login" class="nav-login">Inloggen</a>
+
+                <a href="/nl/#pricing" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Start Gratis Proefperiode</a>
+
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+
+                    </svg>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- Mobile Navigation Panel -->
+
+    <div class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+
+        <div class="mobile-nav-links">
+
+            <a href="/nl/#product" class="mobile-nav-link">Product</a>
+
+            <a href="/nl/#benefits" class="mobile-nav-link">Functies</a>
+
+            <a href="/nl/#how-it-works" class="mobile-nav-link">Hoe Het Werkt</a>
+
+
+
+            <!-- Sectoren Accordion -->
+
+            <button class="mobile-industry-toggle" id="mobile-ind-toggle" aria-expanded="false">
+
+                Industries
+
+                <span class="mobile-industry-chevron">
+
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+
+                </span>
+
+            </button>
+
+            <!-- MOBILE_IND_LIST_START -->
+<div class="mobile-industry-list" id="mobile-ind-list">
+
+        <a href="/nl/industries/tandartsen" class="mobile-industry-item">
+            <div class="mobile-ind-icon dentist-icon"><i data-lucide="activity" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Tandartsen & Klinieken</div>
+                <div class="mobile-ind-desc">Privacybewuste reacties op beoordelingen van patiënten.</div>
+            </div>
+        </a>
+        <a href="/nl/industries/restaurants" class="mobile-industry-item">
+            <div class="mobile-ind-icon restaurant-icon"><i data-lucide="utensils" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Restaurants</div>
+                <div class="mobile-ind-desc">Geautomatiseerde reacties met escalatie van voedselveiligheid en allergieën.</div>
+            </div>
+        </a>
+        <a href="/nl/industries/autowasstraten" class="mobile-industry-item">
+            <div class="mobile-ind-icon carwash-icon"><i data-lucide="car" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Autowasstraten</div>
+                <div class="mobile-ind-desc">Schade aan voertuigen en escalatie van facturering.</div>
+            </div>
+        </a>
+        <a href="/nl/industries/marketingbureaus" class="mobile-industry-item">
+            <div class="mobile-ind-icon agency-icon"><i data-lucide="briefcase" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Marketingbureaus</div>
+                <div class="mobile-ind-desc">Beheer Google-reviewreacties voor al uw klanten vanuit één dashboard.</div>
+            </div>
+        </a>
+        <a href="/nl/industries/dierenverzorging" class="mobile-industry-item">
+            <div class="mobile-ind-icon petcare-icon"><i data-lucide="dog" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Dierenverzorging</div>
+                <div class="mobile-ind-desc">Warme reacties met escalatie van diergezondheid en veiligheid.</div>
+            </div>
+        </a>
+        <a href="/nl/industries/kinderopvang" class="mobile-industry-item">
+            <div class="mobile-ind-icon childcare-icon"><i data-lucide="heart" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Kinderopvang & Peuterspeelzalen</div>
+                <div class="mobile-ind-desc">Veiligheidsbewuste antwoorden op beoordelingen van ouders.</div>
+            </div>
+        </a>
+        <a href="/nl/industries/vechtsportscholen" class="mobile-industry-item">
+            <div class="mobile-ind-icon martial-arts-icon"><i data-lucide="shield" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Vechtsportscholen</div>
+                <div class="mobile-ind-desc">Oudervriendelijke antwoorden met veiligheidscontrole.</div>
+            </div>
+        </a>
+        <a href="/nl/industries/bijlescentra" class="mobile-industry-item">
+            <div class="mobile-ind-icon tutoring-icon"><i data-lucide="book-open" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Bijlescentra</div>
+                <div class="mobile-ind-desc">Professionele reacties voor reviews van ouders en studenten.</div>
+            </div>
+        </a>
+        <a href="/nl/industries/wasserettes" class="mobile-industry-item">
+            <div class="mobile-ind-icon laundromat-icon"><i data-lucide="wind" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Wasserettes</div>
+                <div class="mobile-ind-desc">Moniteer hygiëne, apparatuur en geld-terug verzoeken.</div>
+            </div>
+        </a>
+</div>
+<!-- MOBILE_IND_LIST_END -->
+
+<a href="/nl/#pricing" class="mobile-nav-link">Prijzen</a>
+
+<a href="/nl/resources" class="mobile-nav-link">Resources</a>
+
+            <a href="/nl/#faq" class="mobile-nav-link">Veelgestelde Vragen</a>
+
+                        <div class="mobile-lang-bar">
+
+                <span class="mobile-lang-label"><i class="fa-solid fa-globe"></i> Language:</span>
+
+                <a href="/nl/#" class="mobile-lang-opt" onclick="changeLang('en', event)">EN</a>
+
+                <a href="/nl/#" class="mobile-lang-opt" onclick="changeLang('es', event)">ES</a>
+
+                <a href="/nl/#" class="mobile-lang-opt active" onclick="changeLang('nl', event)">NL</a>
+
+            </div>
+
+            <a href="https://dashboard.replyvera.com/login" class="mobile-nav-link">Inloggen</a>
+
+        </div>
+
+    </div>
+
+
+
+    
+
+    <!-- Resources Hero -->
+    <section class="resources-hero">
+        <div class="container">
+            <div class="eyebrow" style="justify-content: center; margin-bottom: 12px;">
+                <i data-lucide="book-open" style="width:14px;height:14px;color:var(--primary-light);"></i>
+                Kennisbank & Inzichten
+            </div>
+            <h1>Google Review Management Resources</h1>
+            <p>Praktische gidsen en strategieën om kleine bedrijven te helpen geautomatiseerde Google-reviewreacties professioneel en efficiënt af te handelen.</p>
+        </div>
+    </section>
+
+    <!-- Resources Cards Section -->
+    <section class="section" style="padding: 48px 0 80px;">
+        <div class="container">
+            <div class="resources-grid">
+                
+        <a href="/nl/resources/how-to-reply-to-google-reviews-automatically" class="resource-card">
+            <div>
+                <div class="resource-card-meta">
+                    <span class="resource-category">Automatisering</span>
+                    <span class="resource-read-time">
+                        <i data-lucide="clock" style="width:13px;height:13px;"></i>
+                        6 min leestijd
+                    </span>
+                </div>
+                <h3 class="resource-card-title">Hoe je automatisch op Google-reviews kunt reageren (Zonder risico's)</h3>
+                <p class="resource-card-desc">Het automatiseren van reviewreacties bespaart receptietijd en zorgt ervoor dat elke klant een snelle, persoonlijke reactie ontvangt.</p>
+            </div>
+            <div class="resource-card-link">
+                <span>Lees Gids</span>
+                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+            </div>
+        </a>
+        
+        <a href="/nl/resources/can-ai-respond-to-google-reviews" class="resource-card">
+            <div>
+                <div class="resource-card-meta">
+                    <span class="resource-category">AI & Reputatie</span>
+                    <span class="resource-read-time">
+                        <i data-lucide="clock" style="width:13px;height:13px;"></i>
+                        5 min leestijd
+                    </span>
+                </div>
+                <h3 class="resource-card-title">Kan AI reageren op Google-reviews? Wat kleine bedrijven moeten weten</h3>
+                <p class="resource-card-desc">AI kan reacties op Google-reviews schrijven, maar onbeheerde automatisering brengt risico's met zich mee. Combineer AI-snelheid met menselijke controle.</p>
+            </div>
+            <div class="resource-card-link">
+                <span>Lees Gids</span>
+                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+            </div>
+        </a>
+        
+        <a href="/nl/resources/should-you-respond-to-every-google-review" class="resource-card">
+            <div>
+                <div class="resource-card-meta">
+                    <span class="resource-category">Review Strategie</span>
+                    <span class="resource-read-time">
+                        <i data-lucide="clock" style="width:13px;height:13px;"></i>
+                        5 min leestijd
+                    </span>
+                </div>
+                <h3 class="resource-card-title">Moet je op elke Google-review reageren?</h3>
+                <p class="resource-card-desc">Reageren op elke review toont toewijding aan klanttevredenheid. Ontdek hoe reviewbeheer automatisering dit haalbaar maakt.</p>
+            </div>
+            <div class="resource-card-link">
+                <span>Lees Gids</span>
+                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+            </div>
+        </a>
+        
+        <a href="/nl/resources/respond-to-negative-google-reviews" class="resource-card">
+            <div>
+                <div class="resource-card-meta">
+                    <span class="resource-category">Reputatiebeheer</span>
+                    <span class="resource-read-time">
+                        <i data-lucide="clock" style="width:13px;height:13px;"></i>
+                        7 min leestijd
+                    </span>
+                </div>
+                <h3 class="resource-card-title">Hoe je professioneel reageert op negatieve Google-reviews</h3>
+                <p class="resource-card-desc">Negatieve reviews komen voor, maar door professioneel te reageren kun je een slechte ervaring omzetten in een blijk van uitstekende service.</p>
+            </div>
+            <div class="resource-card-link">
+                <span>Lees Gids</span>
+                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+            </div>
+        </a>
+        
+        <a href="/nl/resources/does-responding-to-google-reviews-help-seo" class="resource-card">
+            <div>
+                <div class="resource-card-meta">
+                    <span class="resource-category">Lokale SEO</span>
+                    <span class="resource-read-time">
+                        <i data-lucide="clock" style="width:13px;height:13px;"></i>
+                        6 min leestijd
+                    </span>
+                </div>
+                <h3 class="resource-card-title">Helpt het reageren op Google-reviews voor Lokale SEO?</h3>
+                <p class="resource-card-desc">Reageren op Google-reviews ondersteunt de lokale zichtbaarheid. Ontdek wat de officiële richtlijnen van Google hierover zeggen.</p>
+            </div>
+            <div class="resource-card-link">
+                <span>Lees Gids</span>
+                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+            </div>
+        </a>
+        
+        <a href="/nl/resources/automate-review-replies-without-sounding-robotic" class="resource-card">
+            <div>
+                <div class="resource-card-meta">
+                    <span class="resource-category">Merkidentiteit</span>
+                    <span class="resource-read-time">
+                        <i data-lucide="clock" style="width:13px;height:13px;"></i>
+                        6 min leestijd
+                    </span>
+                </div>
+                <h3 class="resource-card-title">Hoe je Google-reviewreacties automatiseert zonder robotachtig te klinken</h3>
+                <p class="resource-card-desc">Automatisering moet klantrelaties versterken. Ontdek hoe je AI-reviewreactiesoftware instelt volgens jouw eigen merkstijl.</p>
+            </div>
+            <div class="resource-card-link">
+                <span>Lees Gids</span>
+                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+            </div>
+        </a>
+        
+            </div>
+
+            <!-- Natural Call to Action -->
+            <div class="article-cta-box" style="margin-top: 64px;">
+                <div class="article-cta-title">Klaar om je Google-reviewreacties te automatiseren?</div>
+                <p class="article-cta-desc">Bespaar wekelijks uren met een responssnelheid van 100%. ReplyVera handelt routinereviews automatisch af en escaleert gevoelige feedback.</p>
+
+                <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+                    <a href="/nl/#pricing" class="btn btn-accent btn-lg">Start Gratis Proefperiode van 14 Dagen</a>
+                    <a href="/nl/pricing.html" class="btn btn-secondary btn-lg">Bekijk Tarieven & Pakketten</a>
+                </div>
+            </div>
+        </div>
+    </section>
+        
+<!-- Footer -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div class="footer-brand-box">
+
+                    <a href="/nl/" class="nav-logo" style="margin-bottom:14px;">
+
+                        <div class="nav-logo-icon">
+
+                            <i class="fa-solid fa-reply"></i>
+
+                        </div>
+
+                        <span class="nav-logo-text" style="font-size:1.2rem;">Reply<span>Vera</span></span>
+
+                    </a>
+
+                    <p>Geautomatiseerde reacties op Google-reviews voor kleine bedrijven. Abonnementen beginnen bij $29 per maand.</p>
+
+                    <p style="font-size:0.78rem;margin-top:8px;color:var(--text-muted);">Ondersteunt momenteel Google Reviews. Extra platforms staan in de planning.</p>
+
+                </div>
+
+
+
+                <div class="footer-col">
+
+                    <div class="footer-col-title">Product</div>
+
+                    <ul class="footer-links">
+
+                        <li><a href="/nl/#product">Product</a></li>
+
+                        <li><a href="/nl/#how-it-works">Hoe Het Werkt</a></li>
+
+                        <li><a href="/nl/pricing.html">Prijzen</a></li>
+
+                    </ul>
+
+                </div>
+
+
+
+                <div class="footer-col">
+
+                    <div class="footer-col-title">Bedrijf</div>
+
+                    <ul class="footer-links">
+
+                        <li><a href="mailto:info@replyvera.com">Neem contact met ons op</a></li>
+
+                        <li><div class="lang-selector">
+
+                    <button class="lang-btn" aria-label="Select Language">
+
+                        <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> EN
+
+                    </button>
+
+                    <div class="lang-menu">
+
+                        <a href="/nl/#" class="lang-item" onclick="changeLang('en', event)">English</a>
+
+                        <a href="/nl/#" class="lang-item" onclick="changeLang('es', event)">Español</a>
+
+                        <a href="/nl/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+
+                    </div>
+
+                </div>
+
+                <a h>Inloggen</a></li>
+
+                    </ul>
+
+                </div>
+
+
+
+                <div class="footer-col">
+
+                    <div class="footer-col-title">Juridisch</div>
+
+                    <ul class="footer-links">
+
+                        <li><a href="/nl/terms.html">Servicevoorwaarden</a></li>
+
+                        <li><a href="/nl/privacy.html">Privacybeleid</a></li>
+
+                        <li><a href="/nl/cookie.html">Cookiebeleid</a></li>
+
+                    </ul>
+
+                </div>
+
+                <div class="footer-col">
+
+                    <div class="footer-col-title">Partners</div>
+
+                    <ul class="footer-links">
+
+                        <li>
+
+                            <a href="https://www.lodgevera.com" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;">
+
+                                <img src="/img/lodgevera-logo.svg" alt="Lodgevera" style="height:14px;width:auto;" />
+
+                                <span>Lodgevera.com</span>
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="footer-bottom">
+
+                <div>© 2026 ReplyVera. Alle rechten voorbehouden. &nbsp;&bull;&nbsp; Trotse partner van <a href="https://www.lodgevera.com" target="_blank" rel="noopener noreferrer" style="color:var(--text-secondary);text-decoration:underline;">Lodgevera.com</a></div>
+
+                <div class="social-links">
+
+                    <a href="/nl/#"><i data-lucide="twitter" style="width:17px;height:17px;"></i></a>
+
+                    <a href="/nl/#"><i data-lucide="linkedin" style="width:17px;height:17px;"></i></a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- Cookie Consent Banner -->
+
+    <div id="cookie-banner" class="cookie-banner" aria-hidden="true">
+
+        <div class="cookie-content">
+
+            <p>We gebruiken cookies om uw ervaring te verbeteren en de prestaties van de site te analyseren. Door op "Accepteren" te klikken, gaat u akkoord met ons gebruik van cookies zoals beschreven in ons <a href="/nl/cookie.html">Cookiebeleid</a>.</p>
+
+            <div class="cookie-buttons">
+
+                <button id="accept-cookies" class="btn btn-accent btn-sm" style="padding:6px 12px; font-size:0.78rem;">Accepteren</button>
+
+                <button id="decline-cookies" class="btn btn-secondary btn-sm" style="padding:6px 12px; font-size:0.78rem;">Weigeren</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Vercel Web Analytics -->
+
+    <script>
+
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+
+    </script>
+
+    <script defer src="/_vercel/insights/script.js"></script>
+
+
+
+    <script src="/script.js"></script>
+
+</body>
+
+</html>
+
