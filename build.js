@@ -77,6 +77,70 @@ locales.forEach(lang => {
             html = html.replace(/src="\/demo\.js/g, `src="/${lang}/demo.js`);
         }
 
+        // Construct self-referencing canonical URL and hreflang links for host www.replyvera.com
+        const baseUrl = 'https://www.replyvera.com';
+        let relPath = file === 'index.html' ? (isDefault ? '/' : `/${lang}/`) : (isDefault ? `/${file}` : `/${lang}/${file}`);
+        const canonicalUrl = `${baseUrl}${relPath}`;
+
+        let enPath = file === 'index.html' ? '/' : `/${file}`;
+        let esPath = file === 'index.html' ? '/es/' : `/es/${file}`;
+        let nlPath = file === 'index.html' ? '/nl/' : `/nl/${file}`;
+
+        const hreflangTags = `
+    <link rel="canonical" href="${canonicalUrl}">
+    <link rel="alternate" hreflang="en" href="${baseUrl}${enPath}">
+    <link rel="alternate" hreflang="es" href="${baseUrl}${esPath}">
+    <link rel="alternate" hreflang="nl" href="${baseUrl}${nlPath}">
+    <link rel="alternate" hreflang="x-default" href="${baseUrl}${enPath}">
+    <meta property="og:url" content="${canonicalUrl}">
+    <meta property="og:site_name" content="ReplyVera">`;
+
+        // Inject structured data for homepage
+        let structuredData = '';
+        if (file === 'index.html') {
+            const orgSchema = {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "ReplyVera",
+                "url": baseUrl,
+                "logo": `${baseUrl}/img/lodgevera-logo.svg`
+            };
+
+            const websiteSchema = {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "ReplyVera",
+                "url": baseUrl
+            };
+
+            const softwareSchema = {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "ReplyVera",
+                "operatingSystem": "Web",
+                "applicationCategory": "BusinessApplication",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "29.00",
+                    "priceCurrency": "USD"
+                },
+                "description": "AI-powered Google review response software that automatically drafts and publishes personalized replies to existing Google reviews."
+            };
+
+            structuredData = `
+    <script type="application/ld+json">
+    ${JSON.stringify(orgSchema, null, 2)}
+    </script>
+    <script type="application/ld+json">
+    ${JSON.stringify(websiteSchema, null, 2)}
+    </script>
+    <script type="application/ld+json">
+    ${JSON.stringify(softwareSchema, null, 2)}
+    </script>`;
+        }
+
+        html = html.replace('</head>', `${hreflangTags}${structuredData}\n</head>`);
+
         // Add auto-redirect script only on the root english index file
         if (isDefault && file === 'index.html') {
             const redirectScript = `
@@ -95,9 +159,8 @@ locales.forEach(lang => {
                 }
             }
         })();
-    </script>
-</head>`;
-            html = html.replace('</head>', redirectScript);
+    </script>`;
+            html = html.replace('</head>', `${redirectScript}\n</head>`);
         }
 
         fs.writeFileSync(path.join(targetDir, file), html);

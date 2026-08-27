@@ -6,4 +6,4 @@ Allow: /es/resources/
 Allow: /nl/resources/
 Allow: /industries/
 
-Sitemap: https://replyvera.com/sitemap.xml
+Sitemap: https://www.replyvera.com/sitemap.xml

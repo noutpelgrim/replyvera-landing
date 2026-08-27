@@ -548,20 +548,71 @@ industriesData.forEach(ind => {
         const baseUrl = 'https://www.replyvera.com';
         const canonicalUrl = `${baseUrl}${localizedPath}`;
         const hreflangEn = `${baseUrl}${getLocalizedPath(ind.id, 'en')}`;
-        const hreflangNl = `${baseUrl}${getLocalizedPath(ind.id, 'nl')}`;
         const hreflangEs = `${baseUrl}${getLocalizedPath(ind.id, 'es')}`;
+        const hreflangNl = `${baseUrl}${getLocalizedPath(ind.id, 'nl')}`;
+
+        const homeTitle = lang === 'nl' ? 'Home' : lang === 'es' ? 'Inicio' : 'Home';
+        const indCategoryTitle = lang === 'nl' ? 'Sectoren' : lang === 'es' ? 'Industrias' : 'Industries';
+        const homePath = lang === 'nl' ? '/nl/' : lang === 'es' ? '/es/' : '/';
+        const indCategoryPath = lang === 'nl' ? '/nl/#benefits' : lang === 'es' ? '/es/#benefits' : '/#benefits';
+
+        const breadcrumbSchema = {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": homeTitle,
+                    "item": `${baseUrl}${homePath}`
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": indCategoryTitle,
+                    "item": `${baseUrl}${indCategoryPath}`
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": trans.name,
+                    "item": canonicalUrl
+                }
+            ]
+        };
+
+        const softwareSchema = {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "ReplyVera",
+            "operatingSystem": "Web",
+            "applicationCategory": "BusinessApplication",
+            "offers": {
+                "@type": "Offer",
+                "price": "29.00",
+                "priceCurrency": "USD"
+            },
+            "description": trans.metaDescription
+        };
 
         const seoTags = `
     <title>${trans.metaTitle}</title>
     <meta name="description" content="${trans.metaDescription}">
     <link rel="canonical" href="${canonicalUrl}">
     <link rel="alternate" hreflang="en" href="${hreflangEn}">
-    <link rel="alternate" hreflang="nl" href="${hreflangNl}">
     <link rel="alternate" hreflang="es" href="${hreflangEs}">
+    <link rel="alternate" hreflang="nl" href="${hreflangNl}">
+    <link rel="alternate" hreflang="x-default" href="${hreflangEn}">
     <meta property="og:title" content="${trans.metaTitle}">
     <meta property="og:description" content="${trans.metaDescription}">
     <meta property="og:url" content="${canonicalUrl}">
-    <meta property="og:locale" content="${lang === 'nl' ? 'nl_NL' : lang === 'es' ? 'es_ES' : 'en_US'}">`;
+    <meta property="og:locale" content="${lang === 'nl' ? 'nl_NL' : lang === 'es' ? 'es_ES' : 'en_US'}">
+    <script type="application/ld+json">
+    ${JSON.stringify(breadcrumbSchema, null, 2)}
+    </script>
+    <script type="application/ld+json">
+    ${JSON.stringify(softwareSchema, null, 2)}
+    </script>`;
 
         let header = hf.header
             .replace(/<html\s+lang=["'][^"']*["']/i, `<html lang="${lang}"`)

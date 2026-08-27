@@ -102,13 +102,13 @@ function buildResourcesIndex() {
             ? "Explora guías de expertos y estrategias sobre respuestas automáticas a reseñas de Google, gestión de reputación y SEO local."
             : "Explore expert guides, best practices, and actionable insights on automated Google review responses, reputation management, and local SEO for small businesses.";
 
-        const canonicalUrl = `https://replyvera.com${prefix}/resources`;
+        const canonicalUrl = `https://www.replyvera.com${prefix}/resources/`;
 
         const hreflangTags = `
-    <link rel="alternate" hreflang="en" href="https://replyvera.com/resources" />
-    <link rel="alternate" hreflang="es" href="https://replyvera.com/es/resources" />
-    <link rel="alternate" hreflang="nl" href="https://replyvera.com/nl/resources" />
-    <link rel="alternate" hreflang="x-default" href="https://replyvera.com/resources" />`;
+    <link rel="alternate" hreflang="en" href="https://www.replyvera.com/resources/" />
+    <link rel="alternate" hreflang="es" href="https://www.replyvera.com/es/resources/" />
+    <link rel="alternate" hreflang="nl" href="https://www.replyvera.com/nl/resources/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.replyvera.com/resources/" />`;
 
         let customHeader = header
             .replace(/<title>[\s\S]*?<\/title>/, `<title>${pageTitle}</title>`)
@@ -205,13 +205,13 @@ function buildArticles() {
             const readTime = a.readTime[lang] || a.readTime['en'];
 
             const pageTitle = `${trans.title} | ReplyVera`;
-            const canonicalUrl = `https://replyvera.com${prefix}/resources/${a.slug}`;
+            const canonicalUrl = `https://www.replyvera.com${prefix}/resources/${a.slug}/`;
 
             const hreflangTags = `
-    <link rel="alternate" hreflang="en" href="https://replyvera.com/resources/${a.slug}" />
-    <link rel="alternate" hreflang="es" href="https://replyvera.com/es/resources/${a.slug}" />
-    <link rel="alternate" hreflang="nl" href="https://replyvera.com/nl/resources/${a.slug}" />
-    <link rel="alternate" hreflang="x-default" href="https://replyvera.com/resources/${a.slug}" />`;
+    <link rel="alternate" hreflang="en" href="https://www.replyvera.com/resources/${a.slug}/" />
+    <link rel="alternate" hreflang="es" href="https://www.replyvera.com/es/resources/${a.slug}/" />
+    <link rel="alternate" hreflang="nl" href="https://www.replyvera.com/nl/resources/${a.slug}/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.replyvera.com/resources/${a.slug}/" />`;
 
             // Article Schema
             const articleSchema = {
@@ -222,12 +222,12 @@ function buildArticles() {
                 "author": {
                     "@type": "Organization",
                     "name": "ReplyVera Team",
-                    "url": "https://replyvera.com"
+                    "url": "https://www.replyvera.com"
                 },
                 "publisher": {
                     "@type": "Organization",
                     "name": "ReplyVera",
-                    "url": "https://replyvera.com"
+                    "url": "https://www.replyvera.com"
                 },
                 "datePublished": a.publishedDate,
                 "dateModified": a.modifiedDate,
@@ -246,13 +246,13 @@ function buildArticles() {
                         "@type": "ListItem",
                         "position": 1,
                         "name": homeLabel,
-                        "item": `https://replyvera.com${prefix}/`
+                        "item": `https://www.replyvera.com${prefix}/`
                     },
                     {
                         "@type": "ListItem",
                         "position": 2,
                         "name": resourcesLabel,
-                        "item": `https://replyvera.com${prefix}/resources`
+                        "item": `https://www.replyvera.com${prefix}/resources/`
                     },
                     {
                         "@type": "ListItem",
@@ -332,26 +332,28 @@ function buildArticles() {
 
 // 3. Build sitemap.xml
 function buildSitemap() {
+    const { getLocalizedPath: getIndPath } = require('./lib/industries_master');
+
     const staticUrls = [
-        'https://replyvera.com/',
-        'https://replyvera.com/es/',
-        'https://replyvera.com/nl/',
-        'https://replyvera.com/pricing.html',
-        'https://replyvera.com/es/pricing.html',
-        'https://replyvera.com/nl/pricing.html',
-        'https://replyvera.com/privacy.html',
-        'https://replyvera.com/terms.html',
-        'https://replyvera.com/cookie.html',
-        'https://replyvera.com/resources',
-        'https://replyvera.com/es/resources',
-        'https://replyvera.com/nl/resources'
+        'https://www.replyvera.com/',
+        'https://www.replyvera.com/es/',
+        'https://www.replyvera.com/nl/',
+        'https://www.replyvera.com/pricing.html',
+        'https://www.replyvera.com/es/pricing.html',
+        'https://www.replyvera.com/nl/pricing.html',
+        'https://www.replyvera.com/privacy.html',
+        'https://www.replyvera.com/terms.html',
+        'https://www.replyvera.com/cookie.html',
+        'https://www.replyvera.com/resources/',
+        'https://www.replyvera.com/es/resources/',
+        'https://www.replyvera.com/nl/resources/'
     ];
 
     const articleUrls = [];
     locales.forEach(lang => {
         const prefix = lang === 'en' ? '' : `/${lang}`;
         articles.forEach(a => {
-            articleUrls.push(`https://replyvera.com${prefix}/resources/${a.slug}`);
+            articleUrls.push(`https://www.replyvera.com${prefix}/resources/${a.slug}/`);
         });
     });
 
@@ -361,20 +363,20 @@ function buildSitemap() {
     ];
     const industryUrls = [];
     industrySlugs.forEach(s => {
-        industryUrls.push(`https://replyvera.com/industries/${s}`);
-        industryUrls.push(`https://replyvera.com/es/industries/${s}`);
-        industryUrls.push(`https://replyvera.com/nl/industries/${s}`);
+        industryUrls.push(`https://www.replyvera.com${getIndPath(s, 'en')}`);
+        industryUrls.push(`https://www.replyvera.com${getIndPath(s, 'es')}`);
+        industryUrls.push(`https://www.replyvera.com${getIndPath(s, 'nl')}`);
     });
 
-    const allUrls = [...staticUrls, ...articleUrls, ...industryUrls];
+    const allUrls = [...new Set([...staticUrls, ...articleUrls, ...industryUrls])];
 
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${allUrls.map(url => `  <url>
     <loc>${url}</loc>
     <lastmod>2026-08-27</lastmod>
-    <changefreq>${url.includes('/resources') ? 'weekly' : 'monthly'}</changefreq>
-    <priority>${url === 'https://replyvera.com/' ? '1.0' : url.includes('/resources') ? '0.8' : '0.7'}</priority>
+    <changefreq>${url.includes('/resources/') ? 'weekly' : 'monthly'}</changefreq>
+    <priority>${url === 'https://www.replyvera.com/' ? '1.0' : url.includes('/resources') ? '0.8' : '0.7'}</priority>
   </url>`).join('\n')}
 </urlset>`;
 
@@ -392,7 +394,7 @@ Allow: /es/resources/
 Allow: /nl/resources/
 Allow: /industries/
 
-Sitemap: https://replyvera.com/sitemap.xml
+Sitemap: https://www.replyvera.com/sitemap.xml
 `;
     fs.writeFileSync(path.join(__dirname, 'robots.txt'), robotsContent);
     console.log('✓ Generated robots.txt');
