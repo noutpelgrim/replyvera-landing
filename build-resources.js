@@ -99,7 +99,7 @@ function buildResourcesIndex() {
         }).join('');
 
         const pageTitle = lang === 'nl'
-            ? "Google Review Management Resources & Gidsen | ReplyVera"
+            ? "Gidsen voor Google-reviewbeheer | ReplyVera"
             : lang === 'es'
             ? "Recursos y Guías de Gestión de Reseñas de Google | ReplyVera"
             : "Google Review Management Resources & Guides | ReplyVera";
@@ -126,10 +126,12 @@ function buildResourcesIndex() {
     <meta property="og:title" content="${pageTitle}" />
     <meta property="og:description" content="${pageDesc}" />
     <meta property="og:url" content="${canonicalUrl}" />
+    <meta property="og:image" content="https://www.replyvera.com/img/replyvera_official_logo.png" />
     <meta property="og:site_name" content="ReplyVera" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${pageTitle}" />
     <meta name="twitter:description" content="${pageDesc}" />
+    <meta name="twitter:image" content="https://www.replyvera.com/img/replyvera_official_logo.png" />
 </head>`);
 
         const pageContent = `
@@ -278,10 +280,12 @@ function buildArticles() {
     <meta property="og:title" content="${pageTitle}" />
     <meta property="og:description" content="${trans.metaDescription}" />
     <meta property="og:url" content="${canonicalUrl}" />
+    <meta property="og:image" content="https://www.replyvera.com/img/replyvera_official_logo.png" />
     <meta property="og:site_name" content="ReplyVera" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${pageTitle}" />
     <meta name="twitter:description" content="${trans.metaDescription}" />
+    <meta name="twitter:image" content="https://www.replyvera.com/img/replyvera_official_logo.png" />
     <script type="application/ld+json">
     ${JSON.stringify(articleSchema, null, 2)}
     </script>
