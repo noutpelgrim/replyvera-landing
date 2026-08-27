@@ -1,0 +1,13 @@
+<svg viewBox="0 0 240 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Rounded Icon Container -->
+  <g transform="translate(4, 4)">
+    <rect width="40" height="40" rx="10" fill="#0C2033" stroke="#267C78" stroke-width="1.2" stroke-opacity="0.5"/>
+    <path d="M11 30V17C11 13.134 14.134 10 18 10C21.866 10 25 13.134 25 17V30" stroke="#F8F5EF" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M16 23L22 17L26 21L32 13.5" stroke="#267C78" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M27.5 13.5H32V18" stroke="#267C78" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <!-- Wordmark -->
+  <text x="56" y="27" font-family="Playfair Display, Georgia, serif" font-weight="700" font-size="22" fill="#F8F5EF" letter-spacing="-0.02em">Lodge<tspan font-family="Plus Jakarta Sans, sans-serif" font-weight="300" fill="#267C78" dx="0">vera</tspan></text>
+  <!-- Tagline -->
+  <text x="56" y="38" font-family="Plus Jakarta Sans, sans-serif" font-weight="700" font-size="7.5" fill="#E9DFCF" letter-spacing="0.08em" opacity="0.85">THE HOSPITALITY PROPERTY MARKETPLACE</text>
+</svg>
