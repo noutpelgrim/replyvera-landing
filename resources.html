@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="google-site-verification" content="ujWkouPYWYrM8SOHHKHiZEmkCRNYewAvXnDcadtF2Tk" />
+
+    <title>Google Review Management Resources & Guides | ReplyVera</title>
+
+    <meta name="description" content="Explore expert guides, best practices, and actionable insights on automated Google review responses, reputation management, and local SEO for small businesses.">
+
+    <link rel="stylesheet" href="/style.css?v=15">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script src="/demo.js?v=3" defer></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+
+
+
+    <script>
+
+    function changeLang(lang, event) {
+
+        event.preventDefault();
+
+        localStorage.setItem('lang_redirected', 'true');
+
+        
+
+        let path = window.location.pathname;
+
+        
+
+        // Remove existing lang prefix if present
+
+        if (path.startsWith('/es/')) path = path.replace('/es/', '/');
+
+        if (path.startsWith('/nl/')) path = path.replace('/nl/', '/');
+
+        if (path === '/es' || path === '/nl') path = '/';
+
+        
+
+        let newPath = path;
+
+        if (lang === 'es') {
+
+            newPath = '/es' + (path === '/' ? '/' : path);
+
+        } else if (lang === 'nl') {
+
+            newPath = '/nl' + (path === '/' ? '/' : path);
+
+        }
+
+        
+
+        window.location.href = newPath + window.location.hash;
+
+    }
+
+    </script>
+
+    <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+
+    <script>
+        (function() {
+            if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+                var lang = navigator.language || navigator.userLanguage;
+                if (lang) {
+                    if (lang.startsWith('es') && !localStorage.getItem('lang_redirected')) {
+                        localStorage.setItem('lang_redirected', 'true');
+                        window.location.href = '/es/';
+                    } else if (lang.startsWith('nl') && !localStorage.getItem('lang_redirected')) {
+                        localStorage.setItem('lang_redirected', 'true');
+                        window.location.href = '/nl/';
+                    }
+                }
+            }
+        })();
+    </script>
+
+    <link rel="canonical" href="https://replyvera.com/resources" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Google Review Management Resources & Guides | ReplyVera" />
+    <meta property="og:description" content="Explore expert guides, best practices, and actionable insights on automated Google review responses, reputation management, and local SEO for small businesses." />
+    <meta property="og:url" content="https://replyvera.com/resources" />
+    <meta property="og:site_name" content="ReplyVera" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Google Review Management Resources & Guides | ReplyVera" />
+    <meta name="twitter:description" content="Explore expert guides, best practices, and actionable insights on automated Google review responses, reputation management, and local SEO for small businesses." />
+</head>
+
+
+
+<body>
+
+
+
+    <!-- Navbar -->
+
+    <nav class="navbar" id="navbar">
+
+        <div class="container nav-container">
+
+            <a href="/" class="nav-logo">
+
+                <div class="nav-logo-icon">
+
+                    <i class="fa-solid fa-reply"></i>
+
+                </div>
+
+                <span class="nav-logo-text">Reply<span>Vera</span></span>
+
+            </a>
+
+
+
+            <div class="nav-links">
+
+                <a href="/#product">Product</a>
+
+                <a href="/#benefits">Features</a>
+
+                <a href="/#how-it-works">How It Works</a>
+
+                <div class="nav-dropdown">
+
+                    <button class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="menu" aria-controls="industries-menu">
+
+                        Industries
+
+                        <span class="chevron-icon"><i data-lucide="chevron-down" style="width:12px;height:12px;"></i></span>
+
+                    </button>
+
+                    <div class="nav-dropdown-content" id="industries-menu" role="menu">
+
+                        <!-- NAV_DROPDOWN_GRID_START -->
+<div class="nav-dropdown-grid">
+
+        <a href="/industries/dentists" class="dropdown-item">
+            <div class="dropdown-icon-wrapper dentist-icon"><i data-lucide="activity" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Dentists & Clinics</div>
+                <div class="dropdown-desc">Privacy-conscious replies for patient reviews.</div>
+            </div>
+        </a>
+        <a href="/industries/restaurants" class="dropdown-item">
+            <div class="dropdown-icon-wrapper restaurant-icon"><i data-lucide="utensils" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Restaurants</div>
+                <div class="dropdown-desc">Automated replies with food-safety and allergy escalation.</div>
+            </div>
+        </a>
+        <a href="/industries/car-washes" class="dropdown-item">
+            <div class="dropdown-icon-wrapper carwash-icon"><i data-lucide="car" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Car Wash Operators</div>
+                <div class="dropdown-desc">Track damage, billing, and service complaints.</div>
+            </div>
+        </a>
+        <a href="/industries/agencies" class="dropdown-item">
+            <div class="dropdown-icon-wrapper agency-icon"><i data-lucide="briefcase" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Marketing Agencies</div>
+                <div class="dropdown-desc">Manage Google review replies for every client from one dashboard.</div>
+            </div>
+        </a>
+        <a href="/industries/pet-care" class="dropdown-item">
+            <div class="dropdown-icon-wrapper petcare-icon"><i data-lucide="dog" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Pet Care</div>
+                <div class="dropdown-desc">Warm replies with animal-safety escalation.</div>
+            </div>
+        </a>
+        <a href="/industries/childcare" class="dropdown-item">
+            <div class="dropdown-icon-wrapper childcare-icon"><i data-lucide="heart" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Childcare & Preschool</div>
+                <div class="dropdown-desc">Safety-aware responses for parent feedback.</div>
+            </div>
+        </a>
+        <a href="/industries/martial-arts" class="dropdown-item">
+            <div class="dropdown-icon-wrapper martial-arts-icon"><i data-lucide="shield" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Martial Arts Schools</div>
+                <div class="dropdown-desc">Parent-friendly replies with safety controls.</div>
+            </div>
+        </a>
+        <a href="/industries/tutoring" class="dropdown-item">
+            <div class="dropdown-icon-wrapper tutoring-icon"><i data-lucide="book-open" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Tutoring Centers</div>
+                <div class="dropdown-desc">Professional replies for parent and student reviews.</div>
+            </div>
+        </a>
+        <a href="/industries/laundromats" class="dropdown-item">
+            <div class="dropdown-icon-wrapper laundromat-icon"><i data-lucide="wind" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Laundromats</div>
+                <div class="dropdown-desc">Monitor cleanliness, equipment, and refunds.</div>
+            </div>
+        </a>
+</div>
+<!-- NAV_DROPDOWN_GRID_END -->
+
+</div>
+
+</div>
+
+                <a href="/#pricing">Pricing</a>
+
+                <a href="/resources">Resources</a>
+
+                <a href="/#faq">FAQ</a>
+
+            </div>
+
+
+
+            <div class="nav-actions">
+
+                <div class="lang-selector">
+
+                    
+                    <button class="lang-btn" aria-label="Select Language">
+                        <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> EN
+                    </button>
+
+                    <div class="lang-menu">
+
+                        <a href="/#" class="lang-item" onclick="changeLang('en', event)">English</a>
+
+                        <a href="/#" class="lang-item" onclick="changeLang('es', event)">Español</a>
+
+                        <a href="/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+
+                    </div>
+
+                </div>
+
+                <a href="https://dashboard.replyvera.com/login" class="nav-login">Log In</a>
+
+                <a href="/#pricing" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Start Free Trial</a>
+
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+
+                    </svg>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- Mobile Navigation Panel -->
+
+    <div class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+
+        <div class="mobile-nav-links">
+
+            <a href="/#product" class="mobile-nav-link">Product</a>
+
+            <a href="/#benefits" class="mobile-nav-link">Features</a>
+
+            <a href="/#how-it-works" class="mobile-nav-link">How It Works</a>
+
+
+
+            <!-- Industries Accordion -->
+
+            <button class="mobile-industry-toggle" id="mobile-ind-toggle" aria-expanded="false">
+
+                Industries
+
+                <span class="mobile-industry-chevron">
+
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+
+                </span>
+
+            </button>
+
+            <!-- MOBILE_IND_LIST_START -->
+<div class="mobile-industry-list" id="mobile-ind-list">
+
+        <a href="/industries/dentists" class="mobile-industry-item">
+            <div class="mobile-ind-icon dentist-icon"><i data-lucide="activity" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Dentists & Clinics</div>
+                <div class="mobile-ind-desc">Privacy-conscious replies for patient reviews.</div>
+            </div>
+        </a>
+        <a href="/industries/restaurants" class="mobile-industry-item">
+            <div class="mobile-ind-icon restaurant-icon"><i data-lucide="utensils" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Restaurants</div>
+                <div class="mobile-ind-desc">Automated replies with food-safety and allergy escalation.</div>
+            </div>
+        </a>
+        <a href="/industries/car-washes" class="mobile-industry-item">
+            <div class="mobile-ind-icon carwash-icon"><i data-lucide="car" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Car Wash Operators</div>
+                <div class="mobile-ind-desc">Track damage, billing, and service complaints.</div>
+            </div>
+        </a>
+        <a href="/industries/agencies" class="mobile-industry-item">
+            <div class="mobile-ind-icon agency-icon"><i data-lucide="briefcase" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Marketing Agencies</div>
+                <div class="mobile-ind-desc">Manage Google review replies for every client from one dashboard.</div>
+            </div>
+        </a>
+        <a href="/industries/pet-care" class="mobile-industry-item">
+            <div class="mobile-ind-icon petcare-icon"><i data-lucide="dog" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Pet Care</div>
+                <div class="mobile-ind-desc">Warm replies with animal-safety escalation.</div>
+            </div>
+        </a>
+        <a href="/industries/childcare" class="mobile-industry-item">
+            <div class="mobile-ind-icon childcare-icon"><i data-lucide="heart" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Childcare & Preschool</div>
+                <div class="mobile-ind-desc">Safety-aware responses for parent feedback.</div>
+            </div>
+        </a>
+        <a href="/industries/martial-arts" class="mobile-industry-item">
+            <div class="mobile-ind-icon martial-arts-icon"><i data-lucide="shield" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Martial Arts Schools</div>
+                <div class="mobile-ind-desc">Parent-friendly replies with safety controls.</div>
+            </div>
+        </a>
+        <a href="/industries/tutoring" class="mobile-industry-item">
+            <div class="mobile-ind-icon tutoring-icon"><i data-lucide="book-open" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Tutoring Centers</div>
+                <div class="mobile-ind-desc">Professional replies for parent and student reviews.</div>
+            </div>
+        </a>
+        <a href="/industries/laundromats" class="mobile-industry-item">
+            <div class="mobile-ind-icon laundromat-icon"><i data-lucide="wind" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Laundromats</div>
+                <div class="mobile-ind-desc">Monitor cleanliness, equipment, and refunds.</div>
+            </div>
+        </a>
+</div>
+<!-- MOBILE_IND_LIST_END -->
+
+<a href="/#pricing" class="mobile-nav-link">Pricing</a>
+
+<a href="/resources" class="mobile-nav-link">Resources</a>
+
+            <a href="/#faq" class="mobile-nav-link">FAQ</a>
+
+                        <div class="mobile-lang-bar">
+
+                <span class="mobile-lang-label"><i class="fa-solid fa-globe"></i> Language:</span>
+
+                <a href="/#" class="mobile-lang-opt active" onclick="changeLang('en', event)">EN</a>
+
+                <a href="/#" class="mobile-lang-opt" onclick="changeLang('es', event)">ES</a>
+
+                <a href="/#" class="mobile-lang-opt" onclick="changeLang('nl', event)">NL</a>
+
+            </div>
+
+            <a href="https://dashboard.replyvera.com/login" class="mobile-nav-link">Log In</a>
+
+        </div>
+
+    </div>
+
+
+
+    
+
+    <!-- Resources Hero -->
+    <section class="resources-hero">
+        <div class="container">
+            <div class="eyebrow" style="justify-content: center; margin-bottom: 12px;">
+                <i data-lucide="book-open" style="width:14px;height:14px;color:var(--primary-light);"></i>
+                Knowledge Base & Insights
+            </div>
+            <h1>Google Review Management Resources</h1>
+            <p>Practical guides and proven strategies to help small business owners handle automated Google review responses professionally, personally, and efficiently.</p>
+        </div>
+    </section>
+
+    <!-- Resources Cards Section -->
+    <section class="section" style="padding: 48px 0 80px;">
+        <div class="container">
+            <div class="resources-grid">
+                
+        <a href="/resources/how-to-reply-to-google-reviews-automatically" class="resource-card">
+            <div>
+                <div class="resource-card-meta">
+                    <span class="resource-category">Automation</span>
+                    <span class="resource-read-time">
+                        <i data-lucide="clock" style="width:13px;height:13px;"></i>
+                        6 min read
+                    </span>
+                </div>
+                <h3 class="resource-card-title">How to Reply to Google Reviews Automatically (Without Risks)</h3>
+                <p class="resource-card-desc">Automating review responses saves front-desk hours while ensuring every customer receives a timely, personal reply. Here is how to set up automated Google review responses without risking brand reputation.</p>
+            </div>
+            <div class="resource-card-link">
+                <span>Read Guide</span>
+                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+            </div>
+        </a>
+    
+        <a href="/resources/can-ai-respond-to-google-reviews" class="resource-card">
+            <div>
+                <div class="resource-card-meta">
+                    <span class="resource-category">AI & Reputation</span>
+                    <span class="resource-read-time">
+                        <i data-lucide="clock" style="width:13px;height:13px;"></i>
+                        5 min read
+                    </span>
+                </div>
+                <h3 class="resource-card-title">Can AI Respond to Google Reviews? What Small Businesses Must Know</h3>
+                <p class="resource-card-desc">AI technology can draft and publish replies to Google reviews, but unmonitored automation carries risks. Learn how smart business owners combine AI efficiency with human oversight.</p>
+            </div>
+            <div class="resource-card-link">
+                <span>Read Guide</span>
+                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+            </div>
+        </a>
+    
+        <a href="/resources/should-you-respond-to-every-google-review" class="resource-card">
+            <div>
+                <div class="resource-card-meta">
+                    <span class="resource-category">Review Strategy</span>
+                    <span class="resource-read-time">
+                        <i data-lucide="clock" style="width:13px;height:13px;"></i>
+                        5 min read
+                    </span>
+                </div>
+                <h3 class="resource-card-title">Should You Respond to Every Google Review?</h3>
+                <p class="resource-card-desc">Replying to 100% of Google reviews demonstrates dedication to customer satisfaction. Discover why responding to positive and negative reviews matters and how automation makes it manageable.</p>
+            </div>
+            <div class="resource-card-link">
+                <span>Read Guide</span>
+                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+            </div>
+        </a>
+    
+        <a href="/resources/respond-to-negative-google-reviews" class="resource-card">
+            <div>
+                <div class="resource-card-meta">
+                    <span class="resource-category">Reputation Management</span>
+                    <span class="resource-read-time">
+                        <i data-lucide="clock" style="width:13px;height:13px;"></i>
+                        7 min read
+                    </span>
+                </div>
+                <h3 class="resource-card-title">How to Respond to Negative Google Reviews Professionally</h3>
+                <p class="resource-card-desc">Negative Google reviews are inevitable, but responding professionally can turn a poor experience into a reputation win. Learn effective strategies for responding to negative feedback.</p>
+            </div>
+            <div class="resource-card-link">
+                <span>Read Guide</span>
+                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+            </div>
+        </a>
+    
+        <a href="/resources/does-responding-to-google-reviews-help-seo" class="resource-card">
+            <div>
+                <div class="resource-card-meta">
+                    <span class="resource-category">Local SEO</span>
+                    <span class="resource-read-time">
+                        <i data-lucide="clock" style="width:13px;height:13px;"></i>
+                        6 min read
+                    </span>
+                </div>
+                <h3 class="resource-card-title">Does Responding to Google Reviews Help Local SEO?</h3>
+                <p class="resource-card-desc">Responding to Google reviews plays an active role in local search engagement. Learn how active review management impacts local SEO and profile performance.</p>
+            </div>
+            <div class="resource-card-link">
+                <span>Read Guide</span>
+                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+            </div>
+        </a>
+    
+        <a href="/resources/automate-review-replies-without-sounding-robotic" class="resource-card">
+            <div>
+                <div class="resource-card-meta">
+                    <span class="resource-category">Brand Voice</span>
+                    <span class="resource-read-time">
+                        <i data-lucide="clock" style="width:13px;height:13px;"></i>
+                        6 min read
+                    </span>
+                </div>
+                <h3 class="resource-card-title">How to Automate Google Review Replies Without Sounding Robotic</h3>
+                <p class="resource-card-desc">Automation should enhance customer relationships, not cheapen them. Learn how to configure AI review management software to maintain an authentic, warm human tone.</p>
+            </div>
+            <div class="resource-card-link">
+                <span>Read Guide</span>
+                <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+            </div>
+        </a>
+    
+            </div>
+
+            <!-- Natural Call to Action -->
+            <div class="article-cta-box" style="margin-top: 64px;">
+                <div class="article-cta-title">Ready to Automate Your Google Review Responses?</div>
+                <p class="article-cta-desc">Save hours each week while maintaining a 100% response rate. ReplyVera handles routine reviews automatically and escalates sensitive feedback to your team.</p>
+
+                <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+                    <a href="/#pricing" class="btn btn-accent btn-lg">Start Your 14-Day Free Trial</a>
+                    <a href="/pricing.html" class="btn btn-secondary btn-lg">View Pricing & Plans</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+<!-- Footer -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div class="footer-brand-box">
+
+                    <a href="/" class="nav-logo" style="margin-bottom:14px;">
+
+                        <div class="nav-logo-icon">
+
+                            <i class="fa-solid fa-reply"></i>
+
+                        </div>
+
+                        <span class="nav-logo-text" style="font-size:1.2rem;">Reply<span>Vera</span></span>
+
+                    </a>
+
+                    <p>Automated Google review responses for small businesses. Plans start at $29 per month.</p>
+
+                    <p style="font-size:0.78rem;margin-top:8px;color:var(--text-muted);">Currently supporting Google Reviews. Additional platforms are planned.</p>
+
+                </div>
+
+
+
+                <div class="footer-col">
+
+                    <div class="footer-col-title">Product</div>
+
+                    <ul class="footer-links">
+
+                        <li><a href="/#product">Product</a></li>
+
+                        <li><a href="/#how-it-works">How It Works</a></li>
+
+                        <li><a href="/pricing.html">Pricing</a></li>
+
+                    </ul>
+
+                </div>
+
+
+
+                <div class="footer-col">
+
+                    <div class="footer-col-title">Company</div>
+
+                    <ul class="footer-links">
+
+                        <li><a href="mailto:info@replyvera.com">Contact Us</a></li>
+
+                        <li><div class="lang-selector">
+
+                    <button class="lang-btn" aria-label="Select Language">
+
+                        <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> EN
+
+                    </button>
+
+                    <div class="lang-menu">
+
+                        <a href="/#" class="lang-item" onclick="changeLang('en', event)">English</a>
+
+                        <a href="/#" class="lang-item" onclick="changeLang('es', event)">Español</a>
+
+                        <a href="/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+
+                    </div>
+
+                </div>
+
+                <a h>Log In</a></li>
+
+                    </ul>
+
+                </div>
+
+
+
+                <div class="footer-col">
+
+                    <div class="footer-col-title">Legal</div>
+
+                    <ul class="footer-links">
+
+                        <li><a href="/terms.html">Terms of Service</a></li>
+
+                        <li><a href="/privacy.html">Privacy Policy</a></li>
+
+                        <li><a href="/cookie.html">Cookie Policy</a></li>
+
+                    </ul>
+
+                </div>
+
+                <div class="footer-col">
+
+                    <div class="footer-col-title">Partners</div>
+
+                    <ul class="footer-links">
+
+                        <li>
+
+                            <a href="https://www.lodgevera.com" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;">
+
+                                <img src="/img/lodgevera-logo.svg" alt="Lodgevera" style="height:14px;width:auto;" />
+
+                                <span>Lodgevera.com</span>
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="footer-bottom">
+
+                <div>© 2026 ReplyVera. All rights reserved. &nbsp;&bull;&nbsp; Proud partner of <a href="https://www.lodgevera.com" target="_blank" rel="noopener noreferrer" style="color:var(--text-secondary);text-decoration:underline;">Lodgevera.com</a></div>
+
+                <div class="social-links">
+
+                    <a href="/#"><i data-lucide="twitter" style="width:17px;height:17px;"></i></a>
+
+                    <a href="/#"><i data-lucide="linkedin" style="width:17px;height:17px;"></i></a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- Cookie Consent Banner -->
+
+    <div id="cookie-banner" class="cookie-banner" aria-hidden="true">
+
+        <div class="cookie-content">
+
+            <p>We use cookies to improve your experience and analyze site performance. By clicking "Accept", you agree to our use of cookies as outlined in our <a href="/cookie.html">Cookie Policy</a>.</p>
+
+            <div class="cookie-buttons">
+
+                <button id="accept-cookies" class="btn btn-accent btn-sm" style="padding:6px 12px; font-size:0.78rem;">Accept</button>
+
+                <button id="decline-cookies" class="btn btn-secondary btn-sm" style="padding:6px 12px; font-size:0.78rem;">Decline</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Vercel Web Analytics -->
+
+    <script>
+
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+
+    </script>
+
+    <script defer src="/_vercel/insights/script.js"></script>
+
+
+
+    <script src="/script.js"></script>
+
+</body>
+
+</html>
+

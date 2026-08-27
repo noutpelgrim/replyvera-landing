@@ -105,3 +105,10 @@ locales.forEach(lang => {
 });
 
 console.log("Build complete! Generated localized static HTML files with marker-based menu replacements.");
+
+// Automatically build resources & SEO sitemap
+try {
+    require('./build-resources');
+} catch (err) {
+    console.error('Error running build-resources:', err);
+}
