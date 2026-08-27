@@ -250,7 +250,9 @@ p { color: var(--text-secondary); line-height: 1.65; }
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
+    gap: 16px;
+    max-width: 1360px;
+    padding: 0 24px;
 }
 
 /* ─── Logo ─── */
@@ -262,6 +264,7 @@ p { color: var(--text-secondary); line-height: 1.65; }
     z-index: 100;
     position: relative;
     padding-bottom: 2px;
+    flex-shrink: 0;
 }
 
 .nav-logo::after {
@@ -301,10 +304,11 @@ p { color: var(--text-secondary); line-height: 1.65; }
 }
 
 .nav-logo-text {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
     font-weight: 800;
     color: #F0F0FF;
     letter-spacing: -0.02em;
+    white-space: nowrap;
 }
 
 .nav-logo-text span {
@@ -318,14 +322,15 @@ p { color: var(--text-secondary); line-height: 1.65; }
     gap: 2px;
     flex: 1;
     justify-content: center;
+    flex-wrap: nowrap;
 }
 
 .nav-links a {
     color: var(--text-body);
     text-decoration: none;
-    font-size: 0.875rem;
+    font-size: 0.82rem;
     font-weight: 500;
-    padding: 6px 11px;
+    padding: 5px 8px;
     border-radius: var(--radius-sm);
     white-space: nowrap;
     transition: color var(--transition-fast), background var(--transition-fast);
@@ -337,14 +342,16 @@ p { color: var(--text-secondary); line-height: 1.65; }
     align-items: center;
     gap: 10px;
     flex-shrink: 0;
+    white-space: nowrap;
 }
 
 .nav-login {
     color: var(--text-body);
     text-decoration: none;
-    font-size: 0.875rem;
+    font-size: 0.83rem;
     font-weight: 500;
     transition: color var(--transition-fast);
+    white-space: nowrap;
 }
 .nav-login:hover { color: var(--text-primary); }
 
@@ -1341,12 +1348,12 @@ footer  { border-top: 1px solid var(--border); padding: 44px 0 24px; }
     }
 }
 
-/* ─── Responsive: 1150px desktop nav transition ─── */
-@media (max-width: 1150px) {
-    /* Hide desktop nav, show mobile menu below 1150px to prevent horizontal overflow in translated versions */
-    .nav-links { display: none; }
-    .nav-actions .nav-login { display: none; }
-    .mobile-menu-btn { display: flex; }
+/* ─── Responsive: 1280px desktop nav transition ─── */
+@media (max-width: 1280px) {
+    /* Hide desktop nav, show mobile menu below 1280px to prevent horizontal overflow in translated versions */
+    .nav-links { display: none !important; }
+    .nav-actions .nav-login { display: none !important; }
+    .mobile-menu-btn { display: flex !important; }
     .mobile-nav { display: block; }
 }
 
