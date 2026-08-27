@@ -23,7 +23,15 @@ function getHeaderAndFooter(lang) {
     const footerSplit = restP.split('<!-- Footer -->');
     const rawF = footerSplit.length >= 2 ? '<!-- Footer -->' + footerSplit[1] : '</footer></body></html>';
 
-    let patchedH = localizeAllHtmlLinks(rawH, lang);
+    let cleanedH = rawH
+        .replace(/<link\s+rel=["']canonical["'][^>]*>/gi, '')
+        .replace(/<link\s+rel=["']alternate["']\s+hreflang[^>]*>/gi, '')
+        .replace(/<script\s+type=["']application\/ld\+json["']>[\s\S]*?<\/script>/gi, '')
+        .replace(/<meta\s+property=["']og:[^"']+["'][^>]*>/gi, '')
+        .replace(/<meta\s+name=["']twitter:[^"']+["'][^>]*>/gi, '')
+        .replace(/<meta\s+name=["']description["'][^>]*>/gi, '');
+
+    let patchedH = localizeAllHtmlLinks(cleanedH, lang);
     let patchedF = localizeAllHtmlLinks(rawF, lang);
 
     return { header: patchedH, footer: patchedF };
@@ -45,7 +53,7 @@ function buildResourcesIndex() {
 
         const readGuideLabel = lang === 'nl' ? 'Lees Gids' : lang === 'es' ? 'Leer Guía' : 'Read Guide';
         const eyebrowLabel = lang === 'nl' ? 'Kennisbank & Inzichten' : lang === 'es' ? 'Centro de Conocimiento' : 'Knowledge Base & Insights';
-        const h1Title = lang === 'nl' ? 'Google Review Management Resources' : lang === 'es' ? 'Recursos de Gestión de Reseñas de Google' : 'Google Review Management Resources';
+        const h1Title = lang === 'nl' ? 'Gidsen voor Google-reviewbeheer' : lang === 'es' ? 'Recursos de Gestión de Reseñas de Google' : 'Google Review Management Resources';
         const heroSub = lang === 'nl'
             ? 'Praktische gidsen en strategieën om kleine bedrijven te helpen geautomatiseerde Google-reviewreacties professioneel en efficiënt af te handelen.'
             : lang === 'es'
@@ -111,8 +119,7 @@ function buildResourcesIndex() {
     <link rel="alternate" hreflang="x-default" href="https://www.replyvera.com/resources/" />`;
 
         let customHeader = header
-            .replace(/<title>[\s\S]*?<\/title>/, `<title>${pageTitle}</title>`)
-            .replace(/<meta\s+name=["']description["'][\s\S]*?>/, `<meta name="description" content="${pageDesc}">`)
+            .replace(/<title>[\s\S]*?<\/title>/, `<title>${pageTitle}</title>\n    <meta name="description" content="${pageDesc}">`)
             .replace('</head>', `
     <link rel="canonical" href="${canonicalUrl}" />${hreflangTags}
     <meta property="og:type" content="website" />
@@ -264,8 +271,7 @@ function buildArticles() {
             };
 
             let customHeader = header
-                .replace(/<title>[\s\S]*?<\/title>/, `<title>${pageTitle}</title>`)
-                .replace(/<meta\s+name=["']description["'][\s\S]*?>/, `<meta name="description" content="${trans.metaDescription}">`)
+                .replace(/<title>[\s\S]*?<\/title>/, `<title>${pageTitle}</title>\n    <meta name="description" content="${trans.metaDescription}">`)
                 .replace('</head>', `
     <link rel="canonical" href="${canonicalUrl}" />${hreflangTags}
     <meta property="og:type" content="article" />

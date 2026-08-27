@@ -67,6 +67,16 @@ function getHeaderAndFooter(lang) {
     );
 
     patchedH = localizeAllHtmlLinks(patchedH, targetLang);
+
+    // Strip pre-existing homepage head tags that industry pages will replace
+    patchedH = patchedH
+        .replace(/<link\s+rel=["']canonical["'][^>]*>/gi, '')
+        .replace(/<link\s+rel=["']alternate["']\s+hreflang[^>]*>/gi, '')
+        .replace(/<script\s+type=["']application\/ld\+json["']>[\s\S]*?<\/script>/gi, '')
+        .replace(/<meta\s+property=["']og:[^"']+["'][^>]*>/gi, '')
+        .replace(/<meta\s+name=["']twitter:[^"']+["'][^>]*>/gi, '')
+        .replace(/<meta\s+name=["']description["'][^>]*>/gi, '');
+
     const patchedF = localizeAllHtmlLinks(rawF, targetLang);
 
     return { header: patchedH, footer: patchedF };
@@ -603,10 +613,16 @@ industriesData.forEach(ind => {
     <link rel="alternate" hreflang="es" href="${hreflangEs}">
     <link rel="alternate" hreflang="nl" href="${hreflangNl}">
     <link rel="alternate" hreflang="x-default" href="${hreflangEn}">
+    <meta property="og:type" content="website">
     <meta property="og:title" content="${trans.metaTitle}">
     <meta property="og:description" content="${trans.metaDescription}">
     <meta property="og:url" content="${canonicalUrl}">
-    <meta property="og:locale" content="${lang === 'nl' ? 'nl_NL' : lang === 'es' ? 'es_ES' : 'en_US'}">
+    <meta property="og:image" content="${baseUrl}/img/replyvera_official_logo.png">
+    <meta property="og:site_name" content="ReplyVera">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="${trans.metaTitle}">
+    <meta name="twitter:description" content="${trans.metaDescription}">
+    <meta name="twitter:image" content="${baseUrl}/img/replyvera_official_logo.png">
     <script type="application/ld+json">
     ${JSON.stringify(breadcrumbSchema, null, 2)}
     </script>
@@ -616,8 +632,7 @@ industriesData.forEach(ind => {
 
         let header = hf.header
             .replace(/<html\s+lang=["'][^"']*["']/i, `<html lang="${lang}"`)
-            .replace(/<title>[^<]+<\/title>/, seoTags)
-            .replace(/<meta name="description" content="[^"]+">/, '');
+            .replace(/<title>[^<]+<\/title>/, seoTags);
 
         // Mark active item in dropdown
         header = header.replace(`href="${localizedPath}" class="dropdown-item"`, `href="${localizedPath}" class="dropdown-item active"`);

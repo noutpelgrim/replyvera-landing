@@ -77,6 +77,15 @@ locales.forEach(lang => {
             html = html.replace(/src="\/demo\.js/g, `src="/${lang}/demo.js`);
         }
 
+        // Sanitize pre-existing dynamic head tags to prevent duplication
+        html = html
+            .replace(/<link\s+rel=["']canonical["'][^>]*>/gi, '')
+            .replace(/<link\s+rel=["']alternate["']\s+hreflang[^>]*>/gi, '')
+            .replace(/<script\s+type=["']application\/ld\+json["']>[\s\S]*?<\/script>/gi, '')
+            .replace(/<meta\s+property=["']og:[^"']+["'][^>]*>/gi, '')
+            .replace(/<meta\s+name=["']twitter:[^"']+["'][^>]*>/gi, '')
+            .replace(/<meta\s+name=["']description["'][^>]*>/gi, '');
+
         // Construct self-referencing canonical URL and hreflang links for host www.replyvera.com
         const baseUrl = 'https://www.replyvera.com';
         let relPath = file === 'index.html' ? (isDefault ? '/' : `/${lang}/`) : (isDefault ? `/${file}` : `/${lang}/${file}`);
@@ -91,19 +100,34 @@ locales.forEach(lang => {
     <link rel="alternate" hreflang="en" href="${baseUrl}${enPath}">
     <link rel="alternate" hreflang="es" href="${baseUrl}${esPath}">
     <link rel="alternate" hreflang="nl" href="${baseUrl}${nlPath}">
-    <link rel="alternate" hreflang="x-default" href="${baseUrl}${enPath}">
-    <meta property="og:url" content="${canonicalUrl}">
-    <meta property="og:site_name" content="ReplyVera">`;
+    <link rel="alternate" hreflang="x-default" href="${baseUrl}${enPath}">`;
 
-        // Inject structured data for homepage
+        // Inject structured data & social sharing metadata for homepage
         let structuredData = '';
+        let socialTags = '';
         if (file === 'index.html') {
+            const pageTitle = translations[lang]["index_replyvera_google_review_automa_9af3"] || "AI Google Review Response Software | ReplyVera";
+            const pageDesc = translations[lang]["index_meta_description"] || translations["en"]["index_meta_description"];
+            const imageUrl = `${baseUrl}/img/replyvera_official_logo.png`;
+
+            socialTags = `
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="${pageTitle}">
+    <meta property="og:description" content="${pageDesc}">
+    <meta property="og:url" content="${canonicalUrl}">
+    <meta property="og:image" content="${imageUrl}">
+    <meta property="og:site_name" content="ReplyVera">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="${pageTitle}">
+    <meta name="twitter:description" content="${pageDesc}">
+    <meta name="twitter:image" content="${imageUrl}">`;
+
             const orgSchema = {
                 "@context": "https://schema.org",
                 "@type": "Organization",
                 "name": "ReplyVera",
                 "url": baseUrl,
-                "logo": `${baseUrl}/img/lodgevera-logo.svg`
+                "logo": `${baseUrl}/img/replyvera_official_logo.png`
             };
 
             const websiteSchema = {
@@ -139,7 +163,40 @@ locales.forEach(lang => {
     </script>`;
         }
 
-        html = html.replace('</head>', `${hreflangTags}${structuredData}\n</head>`);
+        // Meta description mapping for static pages
+        const staticMetaDescs = {
+            'pricing.html': {
+                en: 'Simple, transparent pricing for ReplyVera. Automate your Google review responses starting at $29 per month with no contracts or hidden fees.',
+                es: 'Precios simples y transparentes para ReplyVera. Automatiza tus respuestas a reseñas de Google desde $29 al mes sin contratos.',
+                nl: 'Eenvoudige, transparante prijzen voor ReplyVera. Automatiseer je Google-reviewreacties vanaf $29 per maand zonder verborgen kosten.'
+            },
+            'privacy.html': {
+                en: 'Privacy Policy for ReplyVera. Learn how we handle your Google Business Profile data and protect customer information.',
+                es: 'Política de privacidad de ReplyVera. Conoce cómo manejamos tus datos de Google Bedrijfsprofiel y protegemos tu información.',
+                nl: 'Privacybeleid voor ReplyVera. Lees hoe wij omgaan met je gegevens van je Google Bedrijfsprofiel en klantinformatie beschermen.'
+            },
+            'terms.html': {
+                en: 'Terms of Service for ReplyVera. Review our service terms, automated review response guidelines, and billing policy.',
+                es: 'Términos del servicio de ReplyVera. Revisa nuestros términos de servicio y políticas de facturación.',
+                nl: 'Algemene voorwaarden voor ReplyVera. Bekijk onze servicevoorwaarden, richtlijnen en facturatiebeleid.'
+            },
+            'cookie.html': {
+                en: 'Cookie Policy for ReplyVera. Understand how we use essential cookies to maintain site security and performance.',
+                es: 'Política de cookies de ReplyVera. Descubre cómo usamos cookies esenciales para seguridad y rendimiento.',
+                nl: 'Cookiebeleid voor ReplyVera. Ontdek hoe wij essentiële cookies gebruiken voor beveiliging en prestaties.'
+            }
+        };
+
+        let metaDescTag = '';
+        if (file === 'index.html') {
+            metaDescTag = `<meta name="description" content="${translations[lang]["index_meta_description"] || translations["en"]["index_meta_description"]}">`;
+        } else if (staticMetaDescs[file]) {
+            metaDescTag = `<meta name="description" content="${staticMetaDescs[file][lang] || staticMetaDescs[file]['en']}">`;
+        }
+
+        html = html.replace(/<title>[\s\S]*?<\/title>/, (m) => `${m}\n    ${metaDescTag}`);
+
+        html = html.replace('</head>', `${hreflangTags}${socialTags}${structuredData}\n</head>`);
 
         // Add auto-redirect script only on the root english index file
         if (isDefault && file === 'index.html') {
