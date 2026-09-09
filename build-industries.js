@@ -543,7 +543,7 @@ function renderIndustryPage(ind, lang) {
     const tier3Cond = isNl ? '1 ster of ernstige triggers (veiligheid, letsel, hygiëne, juridische claims).' : isEs ? '1 estrella o alertas críticas (seguridad, lesiones, higiene, reclamos legales).' : '1 star or critical safety triggers (injuries, hygiene, legal threats).';
     const tier3Act = isNl ? 'Automatisch publiceren direct geblokkeerd. Directe notificatie naar eigenaar/manager.' : isEs ? 'Publicación automática bloqueada. Notificación de emergencia enviada al responsable.' : 'Auto-publishing blocked instantly. Urgent alert dispatched for human-only intervention.';
 
-    const proofDemoCta = isNl ? 'Test deze Safeguards in de Live Demo' : isEs ? 'Prueba estas Reglas en la Demo en Vivo' : 'Test These Safeguards in the Live Demo';
+    const proofDemoCta = isNl ? 'Test deze veiligheidsregels in de live demo' : isEs ? 'Prueba estas Reglas en la Demo en Vivo' : 'Test These Safeguards in the Live Demo';
     const triggerLabel = isNl ? 'Criterium:' : isEs ? 'Criterio:' : 'Trigger:';
     const actionLabel = isNl ? 'Actie:' : isEs ? 'Acción:' : 'Action:';
 

@@ -78,6 +78,16 @@ locales.forEach(lang => {
         // Inject real crawlable language switcher links (no JS, no # dummy URLs)
         html = replaceAllLangSelectors(html, lang, { en: enPath, es: esPath, nl: nlPath });
 
+        if (lang === 'es') {
+            html = html
+                .replace(/aria-label=["']Mobile navigation["']/g, 'aria-label="Navegación móvil"')
+                .replace(/aria-label=["']Open navigation menu["']/g, 'aria-label="Abrir menú de navegación"');
+        } else if (lang === 'nl') {
+            html = html
+                .replace(/aria-label=["']Mobile navigation["']/g, 'aria-label="Mobiele navigatie"')
+                .replace(/aria-label=["']Open navigation menu["']/g, 'aria-label="Navigatiemenu openen"');
+        }
+
         if (!isDefault) {
             // Rewrite demo.js path for localized pages if needed
             html = html.replace(/src="\/demo\.js/g, `src="/${lang}/demo.js`);
