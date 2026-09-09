@@ -309,14 +309,14 @@ function renderIndustryPage(ind, lang) {
     const ctaStart = isAgency
         ? (isNl ? 'Start Bureau Proefperiode' : isEs ? 'Comenzar Prueba de Agencia' : 'Start Agency Trial')
         : (isNl ? 'Start Uw 14-Dagen Gratis Proefperiode' : isEs ? 'Comienza Tu Prueba Gratuita de 14 Días' : 'Start Your 14-Day Free Trial');
-    const ctaDemo = isNl ? 'Probeer de Live Demo' : isEs ? 'Probar Demo en Vivo' : 'Try the Live Demo';
+    const ctaDemo = isNl ? 'Bekijk de live demo' : isEs ? 'Ver la demostración en vivo' : 'Try the Live Demo';
     const demoUrl = isNl ? '/nl/demo.html' : isEs ? '/es/demo.html' : '/demo.html';
 
     const reassuranceText = isNl
-        ? 'Koppel via Google Bedrijfsprofiel • Altijd opzegbaar'
+        ? 'Maakt verbinding met Google Bedrijfsprofiel • 14 dagen gratis proberen'
         : isEs
-        ? 'Conecta mediante Google Business Profile • Cancela en cualquier momento'
-        : 'Connect through Google Business Profile • Cancel anytime';
+        ? 'Se conecta con el Perfil de Empresa de Google • Prueba gratuita de 14 días'
+        : 'Connects to Google Business Profile • 14-Day Free Trial';
 
     const activeText = isNl ? 'Actief' : isEs ? 'Activo' : 'Active';
     const recentReviewsText = isNl ? 'Recente Google Beoordelingen' : isEs ? 'Reseñas Recientes de Google' : 'Recent Google Reviews';

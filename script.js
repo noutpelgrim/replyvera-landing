@@ -164,60 +164,123 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Language & Nav accessibility labels
+    const docLang = (document.documentElement.lang || 'en').toLowerCase();
+    const pageLang = docLang.startsWith('es') ? 'es' : docLang.startsWith('nl') ? 'nl' : 'en';
+
+    const langAriaLabels = {
+        en: 'Select language',
+        es: 'Seleccionar idioma',
+        nl: 'Taal selecteren'
+    };
+
+    const mobileNavAriaLabels = {
+        en: { open: 'Open navigation menu', close: 'Close navigation menu' },
+        es: { open: 'Abrir menú de navegación', close: 'Cerrar menú de navegación' },
+        nl: { open: 'Navigatiemenu openen', close: 'Navigatiemenu sluiten' }
+    };
+
     // --- Mobile Navigation ---
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileNav     = document.getElementById('mobile-nav');
 
     if (mobileMenuBtn && mobileNav) {
+        mobileMenuBtn.setAttribute('aria-controls', 'mobile-nav');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenuBtn.setAttribute('aria-label', mobileNavAriaLabels[pageLang].open);
+
+        const openMobileNav = () => {
+            mobileNav.classList.add('open');
+            mobileMenuBtn.setAttribute('aria-expanded', 'true');
+            mobileMenuBtn.setAttribute('aria-label', mobileNavAriaLabels[pageLang].close);
+            document.body.style.overflow = 'hidden';
+        };
+
+        const closeMobileNav = (restoreFocus = false) => {
+            mobileNav.classList.remove('open');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            mobileMenuBtn.setAttribute('aria-label', mobileNavAriaLabels[pageLang].open);
+            document.body.style.overflow = '';
+            if (restoreFocus) mobileMenuBtn.focus();
+        };
+
         mobileMenuBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            const isOpen = mobileNav.classList.contains('open');
-            mobileNav.classList.toggle('open', !isOpen);
-            mobileMenuBtn.setAttribute('aria-expanded', String(!isOpen));
-            mobileMenuBtn.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+            if (mobileNav.classList.contains('open')) {
+                closeMobileNav(false);
+            } else {
+                openMobileNav();
+            }
         });
 
         // Close mobile nav on outside click
         document.addEventListener('click', (e) => {
-            if (!mobileNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                mobileNav.classList.remove('open');
-                mobileMenuBtn.setAttribute('aria-expanded', 'false');
-                mobileMenuBtn.setAttribute('aria-label', 'Open navigation menu');
+            if (mobileNav.classList.contains('open') && !mobileNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                closeMobileNav(true);
             }
         });
 
         // Close mobile nav when a link inside it is clicked
         mobileNav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                mobileNav.classList.remove('open');
-                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                closeMobileNav(false);
             });
         });
     }
 
     // --- Language Selector Toggle ---
-    const langBtns = document.querySelectorAll('.lang-btn');
-    langBtns.forEach(btn => {
+    const langSelectors = document.querySelectorAll('.lang-selector');
+    langSelectors.forEach((selector, idx) => {
+        const btn = selector.querySelector('.lang-btn');
+        const menu = selector.querySelector('.lang-menu');
+        if (!btn || !menu) return;
+
+        const menuId = menu.id || `lang-menu-${idx + 1}`;
+        menu.id = menuId;
+        btn.setAttribute('aria-controls', menuId);
+        btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-label', langAriaLabels[pageLang]);
+
+        const openLangMenu = () => {
+            document.querySelectorAll('.lang-selector').forEach(s => {
+                const b = s.querySelector('.lang-btn');
+                const m = s.querySelector('.lang-menu');
+                if (b && m && m !== menu) {
+                    m.classList.remove('show');
+                    b.setAttribute('aria-expanded', 'false');
+                }
+            });
+            menu.classList.add('show');
+            btn.setAttribute('aria-expanded', 'true');
+        };
+
+        const closeLangMenu = (restoreFocus = false) => {
+            menu.classList.remove('show');
+            btn.setAttribute('aria-expanded', 'false');
+            if (restoreFocus) btn.focus();
+        };
+
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
-            const selector = btn.closest('.lang-selector');
-            const menu = selector.querySelector('.lang-menu');
-            
-            // Close other open language menus
-            document.querySelectorAll('.lang-menu.show').forEach(m => {
-                if (m !== menu) m.classList.remove('show');
-            });
-            
-            menu.classList.toggle('show');
+            if (menu.classList.contains('show')) {
+                closeLangMenu(false);
+            } else {
+                openLangMenu();
+            }
         });
     });
 
     // Close language menus on outside click
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.lang-selector')) {
-            document.querySelectorAll('.lang-menu.show').forEach(m => {
-                m.classList.remove('show');
+            document.querySelectorAll('.lang-selector').forEach(s => {
+                const b = s.querySelector('.lang-btn');
+                const m = s.querySelector('.lang-menu');
+                if (b && m && m.classList.contains('show')) {
+                    m.classList.remove('show');
+                    b.setAttribute('aria-expanded', 'false');
+                }
             });
         }
     });
@@ -243,11 +306,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 const b = w.querySelector('.nav-dropdown-btn');
                 if (b) b.setAttribute('aria-expanded', 'false');
             });
-            if (mobileNav) {
+            document.querySelectorAll('.lang-selector').forEach(s => {
+                const b = s.querySelector('.lang-btn');
+                const m = s.querySelector('.lang-menu');
+                if (b && m && m.classList.contains('show')) {
+                    m.classList.remove('show');
+                    b.setAttribute('aria-expanded', 'false');
+                    b.focus();
+                }
+            });
+            if (mobileNav && mobileNav.classList.contains('open')) {
                 mobileNav.classList.remove('open');
+                document.body.style.overflow = '';
                 if (mobileMenuBtn) {
                     mobileMenuBtn.setAttribute('aria-expanded', 'false');
-                    mobileMenuBtn.setAttribute('aria-label', 'Open navigation menu');
+                    mobileMenuBtn.setAttribute('aria-label', mobileNavAriaLabels[pageLang].open);
+                    mobileMenuBtn.focus();
                 }
             }
         }
@@ -611,17 +685,58 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    // --- FAQ Accordion Logic ---
+    // --- FAQ Accordion Logic with Full ARIA Accessibility ---
     const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
+    faqItems.forEach((item, index) => {
         const question = item.querySelector('.faq-question');
-        question.addEventListener('click', () => {
-            faqItems.forEach(otherItem => {
-                if (otherItem !== item && otherItem.classList.contains('active')) {
-                    otherItem.classList.remove('active');
+        const answer = item.querySelector('.faq-answer');
+        if (!question || !answer) return;
+
+        const qId = question.id || `faq-q-${index + 1}`;
+        const aId = answer.id || `faq-a-${index + 1}`;
+        question.id = qId;
+        answer.id = aId;
+
+        question.setAttribute('aria-controls', aId);
+        answer.setAttribute('aria-labelledby', qId);
+
+        const updateFaqState = (isOpen) => {
+            item.classList.toggle('active', isOpen);
+            question.setAttribute('aria-expanded', String(isOpen));
+            answer.setAttribute('aria-hidden', String(!isOpen));
+            if (isOpen) {
+                answer.removeAttribute('hidden');
+            } else {
+                answer.setAttribute('hidden', '');
+            }
+        };
+
+        // Initialize state
+        updateFaqState(item.classList.contains('active'));
+
+        const toggleFaq = (e) => {
+            e.preventDefault();
+            const currentlyActive = item.classList.contains('active');
+            faqItems.forEach(other => {
+                if (other !== item && other.classList.contains('active')) {
+                    const oQ = other.querySelector('.faq-question');
+                    const oA = other.querySelector('.faq-answer');
+                    other.classList.remove('active');
+                    if (oQ) oQ.setAttribute('aria-expanded', 'false');
+                    if (oA) {
+                        oA.setAttribute('aria-hidden', 'true');
+                        oA.setAttribute('hidden', '');
+                    }
                 }
             });
-            item.classList.toggle('active');
+            updateFaqState(!currentlyActive);
+        };
+
+        question.addEventListener('click', toggleFaq);
+        question.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                toggleFaq(e);
+            }
         });
     });
 
@@ -697,23 +812,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Cookie Consent Banner ---
     const cookieBanner = document.getElementById('cookie-banner');
+function loadVercelInsights() {
+    if (window.hasLoadedVercelInsights) return;
+    window.hasLoadedVercelInsights = true;
+    var s = document.createElement('script');
+    s.defer = true;
+    s.src = '/_vercel/insights/script.js';
+    document.head.appendChild(s);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const cookieBanner = document.getElementById('cookie-banner');
     const acceptBtn = document.getElementById('accept-cookies');
     const declineBtn = document.getElementById('decline-cookies');
 
-    if (cookieBanner && acceptBtn && declineBtn) {
-        const consent = localStorage.getItem('cookie-consent');
-        if (!consent) {
-            // Show banner after a short delay
-            setTimeout(() => {
-                cookieBanner.classList.add('show');
-                cookieBanner.setAttribute('aria-hidden', 'false');
-            }, 1000);
-        }
+    const consent = localStorage.getItem('cookie-consent');
+    if (consent === 'accepted') {
+        loadVercelInsights();
+    } else if (!consent && cookieBanner && acceptBtn && declineBtn) {
+        setTimeout(() => {
+            cookieBanner.classList.add('show');
+            cookieBanner.setAttribute('aria-hidden', 'false');
+        }, 1000);
+    }
 
+    if (cookieBanner && acceptBtn && declineBtn) {
         acceptBtn.addEventListener('click', () => {
             localStorage.setItem('cookie-consent', 'accepted');
             cookieBanner.classList.remove('show');
             cookieBanner.setAttribute('aria-hidden', 'true');
+            loadVercelInsights();
         });
 
         declineBtn.addEventListener('click', () => {
@@ -722,6 +850,17 @@ document.addEventListener('DOMContentLoaded', () => {
             cookieBanner.setAttribute('aria-hidden', 'true');
         });
     }
+
+    document.addEventListener('click', (e) => {
+        const settingsBtn = e.target.closest('.cookie-settings-btn, [data-open-cookie-settings], #open-cookie-settings');
+        if (settingsBtn) {
+            e.preventDefault();
+            if (cookieBanner) {
+                cookieBanner.classList.add('show');
+                cookieBanner.setAttribute('aria-hidden', 'false');
+            }
+        }
+    });
 
     // --- Vercel Analytics Event Tracking ---
     document.addEventListener('click', (e) => {
@@ -755,35 +894,6 @@ window.PADDLE_PRICES = {
     }
 };
 
-function setupPaddle() {
-    if (window.Paddle) {
-        try {
-            Paddle.Initialize({ 
-                token: 'live_717730a5b06d6e51817b4a48b9e',
-                eventCallback: function(data) {
-                    console.log('Paddle Event:', data);
-                }
-            });
-            console.log('✅ Paddle Live Initialized Successfully');
-        } catch (e) {
-            console.error('Paddle Initialization Error:', e);
-        }
-    } else {
-        var s = document.createElement('script');
-        s.src = 'https://cdn.paddle.com/paddle/v2/paddle.js';
-        s.onload = function() {
-            setupPaddle();
-        };
-        document.head.appendChild(s);
-    }
-}
-
-if (document.readyState === 'complete') {
-    setupPaddle();
-} else {
-    window.addEventListener('load', setupPaddle);
-}
-
 function openPaddleCheckout(tier, event) {
     if (event) {
         if (event.preventDefault) event.preventDefault();
@@ -791,33 +901,9 @@ function openPaddleCheckout(tier, event) {
     }
 
     var selectedTier = tier || 'autopilot';
-    var cycle = window.currentBillingCycle || 'monthly';
-    var priceId = (window.PADDLE_PRICES[cycle] && window.PADDLE_PRICES[cycle][selectedTier]) || 
-                    (window.PADDLE_PRICES['monthly'] && window.PADDLE_PRICES['monthly'][selectedTier]);
-
-    console.log('Checkout Triggered:', { tier: selectedTier, cycle: cycle, priceId: priceId, paddleExists: !!window.Paddle });
-
-    if (window.Paddle && priceId) {
-        try {
-            var htmlLang = document.documentElement.lang || 'en';
-            Paddle.Checkout.open({
-                items: [{ priceId: priceId, quantity: 1 }],
-                settings: {
-                    displayMode: 'overlay',
-                    theme: 'dark',
-                    locale: htmlLang
-                }
-            });
-            return false;
-        } catch (err) {
-            console.error('Paddle Checkout.open error:', err);
-            window.location.href = 'https://dashboard.replyvera.com/login?signup=true&tier=' + selectedTier;
-        }
-    } else {
-        window.location.href = 'https://dashboard.replyvera.com/login?signup=true&tier=' + selectedTier;
-    }
+    window.location.href = 'https://dashboard.replyvera.com/login?signup=true&tier=' + selectedTier;
     return false;
 }
 
 window.openPaddleCheckout = openPaddleCheckout;
-window.setupPaddle = setupPaddle;
+

@@ -59,6 +59,15 @@ const esIndex = fs.readFileSync(path.join(distDir, 'es', 'index.html'), 'utf-8')
 assert(!esIndex.includes('Language:'), 'ES index does not contain English "Language:" in switcher');
 assert(esIndex.includes('Idioma:'), 'ES index contains localized "Idioma:" in switcher');
 
+// Hero section translations
+assert(!esIndex.includes('Try the Live Demo'), 'ES index does not contain English "Try the Live Demo"');
+assert(esIndex.includes('Ver la demostración en vivo'), 'ES index contains localized "Ver la demostración en vivo"');
+assert(!esIndex.includes('Connects to Google Business Profile &bull; 14-Day Free Trial'), 'ES index does not contain English "Connects to Google Business Profile &bull; 14-Day Free Trial"');
+assert(esIndex.includes('Se conecta con el Perfil de Empresa de Google'), 'ES index contains localized "Se conecta con el Perfil de Empresa de Google"');
+
+// Cookie Settings footer link
+assert(esIndex.includes('Configuración de Cookies') || esIndex.includes('data-open-cookie-settings'), 'ES index contains Cookie Settings link in footer');
+
 // Comparison table
 assert(esIndex.includes('ChatGPT (Copia y Pega Manual)'), 'ES index ChatGPT comparison contains "ChatGPT (Copia y Pega Manual)"');
 assert(esIndex.includes('Publicación Automática de Reseñas Positivas'), 'ES index comparison contains "Publicación Automática de Reseñas Positivas"');
@@ -72,6 +81,7 @@ assert(esIndex.includes('Seguro para Publicación Automática'), 'ES index simul
 
 // Spanish Privacy & Legal
 const esPrivacy = fs.readFileSync(path.join(distDir, 'es', 'privacy.html'), 'utf-8');
+assert(!esPrivacy.includes('Google Bedrijfsprofiel'), 'ES privacy policy meta description/body contains zero Dutch "Google Bedrijfsprofiel"');
 const dutchWordsInEs = ['Bedrijfsnaam', 'KvK-nummer', 'BTW-nummer', 'Handelsnaam', 'overeenkomst', 'persoonsgegevens', 'verwerken'];
 const foundDutchInEs = dutchWordsInEs.filter(w => esPrivacy.includes(w));
 assert(foundDutchInEs.length === 0, `ES privacy policy contains zero Dutch words (found: ${foundDutchInEs.join(', ') || 'none'})`);
@@ -89,6 +99,11 @@ const nlIndex = fs.readFileSync(path.join(distDir, 'nl', 'index.html'), 'utf-8')
 // Language switcher label
 assert(!nlIndex.includes('Language:'), 'NL index does not contain English "Language:" in switcher');
 assert(nlIndex.includes('Taal:'), 'NL index contains localized "Taal:" in switcher');
+
+// Hero section translations
+assert(!nlIndex.includes('Try the Live Demo'), 'NL index does not contain English "Try the Live Demo"');
+assert(nlIndex.includes('Bekijk de live demo'), 'NL index contains localized "Bekijk de live demo"');
+assert(nlIndex.includes('Cookie-instellingen') || nlIndex.includes('data-open-cookie-settings'), 'NL index contains Cookie Settings link in footer');
 
 // Comparison table
 assert(nlIndex.includes('ChatGPT (Handmatig Kopiëren & Plakken)'), 'NL index ChatGPT comparison contains "ChatGPT (Handmatig Kopiëren & Plakken)"');

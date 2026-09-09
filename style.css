@@ -2124,11 +2124,11 @@ footer  { border-top: 1px solid var(--border); padding: 44px 0 24px; }
 
 @media (max-width: 900px) {
     .industry-hero {
-        padding: 96px 0 52px;
+        padding: 92px 0 44px;
     }
     .industry-hero-grid {
         grid-template-columns: 1fr;
-        gap: 36px;
+        gap: 32px;
     }
     .industry-hero-text {
         text-align: center;
@@ -2140,7 +2140,7 @@ footer  { border-top: 1px solid var(--border); padding: 44px 0 24px; }
     }
     .industry-hero-h1 {
         margin: 0 auto 16px;
-        font-size: clamp(2rem, 4.5vw, 2.6rem);
+        font-size: clamp(1.8rem, 4.2vw, 2.4rem);
     }
     .industry-hero-desc {
         margin: 0 auto 24px;
@@ -2151,9 +2151,30 @@ footer  { border-top: 1px solid var(--border); padding: 44px 0 24px; }
     .industry-hero-reassurance {
         justify-content: center;
     }
+    .industry-hero-visual {
+        width: 100%;
+        max-width: 100%;
+    }
     .safeguard-engine-grid {
         grid-template-columns: 1fr;
         gap: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .industry-hero {
+        padding: 84px 0 36px;
+    }
+    .industry-hero-ctas {
+        flex-direction: column;
+        width: 100%;
+    }
+    .industry-hero-ctas .btn {
+        width: 100%;
+        min-height: 44px;
+    }
+    .industry-breadcrumbs {
+        font-size: 0.72rem;
     }
 }
 

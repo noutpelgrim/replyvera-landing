@@ -73,8 +73,6 @@
     }
 
     </script>
-
-    <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 </head>
 
 
@@ -295,12 +293,12 @@
 
                     <div class="hero-actions">
                         <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">{{ index_start_free_trial_debd }}</a>
-                        <a href="demo.html" class="btn btn-secondary btn-lg">Try the Live Demo</a>
+                        <a href="demo.html" class="btn btn-secondary btn-lg">{{ index_try_live_demo }}</a>
                     </div>
 
                     <div class="hero-trust">
                         <i data-lucide="shield-check" style="width:14px;height:14px;color:var(--accent);"></i>
-                        Connects to Google Business Profile &bull; 14-Day Free Trial
+                        {{ index_connects_gbp_trial }}
                     </div>
 
                 </div>
@@ -1447,6 +1445,8 @@
 
                         <li><a href="cookie.html">{{ index_cookie_policy_26b3 }}</a></li>
 
+                        <li><a href="#" class="cookie-settings-btn" data-open-cookie-settings>{{ footer_cookie_settings }}</a></li>
+
                     </ul>
 
                 </div>
@@ -1496,10 +1496,6 @@
       {{ index_window_va_window_va_function_w_bd2c }}
 
     </script>
-
-    <script defer src="/_vercel/insights/script.js"></script>
-
-
 
     <script src="/script.js"></script>
 

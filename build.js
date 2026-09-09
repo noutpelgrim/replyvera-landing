@@ -169,7 +169,7 @@ locales.forEach(lang => {
             },
             'privacy.html': {
                 en: 'Privacy Policy for ReplyVera. Learn how we handle your Google Business Profile data and protect customer information.',
-                es: 'Política de privacidad de ReplyVera. Conoce cómo manejamos tus datos de Google Bedrijfsprofiel y protegemos tu información.',
+                es: 'Política de privacidad de ReplyVera. Conoce cómo gestionamos tus datos del Perfil de Empresa de Google y protegemos tu información.',
                 nl: 'Privacybeleid voor ReplyVera. Lees hoe wij omgaan met je gegevens van je Google Bedrijfsprofiel en klantinformatie beschermen.'
             },
             'terms.html': {
