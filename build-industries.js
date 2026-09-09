@@ -82,7 +82,7 @@ function renderBenefits(benefits) {
     return benefits.map(b => `
         <div class="benefit-card">
             <div class="benefit-icon"><i data-lucide="${b.icon}" style="width:20px;height:20px;"></i></div>
-            <div class="benefit-title">${b.title}</div>
+            <h3 class="benefit-title">${b.title}</h3>
             <p class="benefit-text">${b.text}</p>
         </div>`).join('');
 }
@@ -108,10 +108,10 @@ function renderReviews(examples, trans, lang) {
             </div>
             <p class="review-quote">${ex.quote}</p>
             <div class="review-alert-box">
-                <div class="review-alert-title">
+                <h3 class="review-alert-title">
                     <i data-lucide="alert-triangle" style="width:13px;height:13px;"></i>
                     ${ex.alertTitle || (isNl ? 'Gevoelig onderwerp gedetecteerd' : isEs ? 'Tema sensible detectado' : 'Sensitive topic detected')}
-                </div>
+                </h3>
                 <p class="review-alert-sub">${ex.alertText || alertSubLabel}</p>
             </div>
             <span class="review-badge badge-blocked" style="align-self:flex-start;">${autoPublishBlockedText}</span>
@@ -227,7 +227,7 @@ function renderPricingSection(isAgency, ind, trans, lang) {
             </div>
             <div class="pricing-grid">
                 <div class="pricing-card">
-                    <div class="pricing-name">Starter</div>
+                    <h3 class="pricing-name">Starter</h3>
                     <div class="pricing-price">$29</div>
                     <div class="pricing-period">${perMonth}</div>
                     <p class="pricing-tagline">${starterTagline}</p>
@@ -240,19 +240,19 @@ function renderPricingSection(isAgency, ind, trans, lang) {
                 </div>
                 <div class="pricing-card featured">
                     <div class="pricing-popular">${isNl ? 'Meest Populair' : isEs ? 'Más Popular' : 'Most Popular'}</div>
-                    <div class="pricing-name">Autopilot</div>
+                    <h3 class="pricing-name">Autopilot</h3>
                     <div class="pricing-price">$39</div>
                     <div class="pricing-period">${perMonth}</div>
                     <p class="pricing-tagline">${autopilotTagline}</p>
                     <ul class="pricing-features">
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Eén locatie' : isEs ? 'Una ubicación' : 'One location'}</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Onbeperkt aantal reviewreacties*' : isEs ? 'Respuestas ilimitadas*' : 'Unlimited review responses*'}</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Onbeperkte reviewreacties onder ons Fair Use-beleid' : isEs ? 'Respuestas ilimitadas bajo nuestra Política de Uso Razonable' : 'Unlimited review responses under our Fair Use Policy'}</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Automatisch publiceren van veilige reviews' : isEs ? 'Publicación automática de reseñas seguras' : 'Automatic publishing for safe reviews'}</li>
                     </ul>
                     <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent" style="text-align:center;justify-content:center;">${starterBtn}</a>
                 </div>
                 <div class="pricing-card">
-                    <div class="pricing-name">${multiTitle}</div>
+                    <h3 class="pricing-name">${multiTitle}</h3>
                     <div class="pricing-price" style="font-size:1.85rem;">${from79}</div>
                     <div class="pricing-period">${perMonth}</div>
                     <p class="pricing-tagline">${multiTagline}</p>
@@ -280,7 +280,7 @@ function renderRelatedIndustries(currentId, lang) {
         return `
         <a href="${localizedPath}" class="benefit-card" style="text-decoration:none;color:inherit;">
             <div class="benefit-icon ${ind.iconBgClass}"><i data-lucide="${ind.icon}" style="width:20px;height:20px;"></i></div>
-            <div class="benefit-title">${trans.name}</div>
+            <h3 class="benefit-title">${trans.name}</h3>
             <p class="benefit-text">${trans.dropdownDesc}</p>
         </a>`;
     }).join('');
@@ -424,17 +424,17 @@ function renderIndustryPage(ind, lang) {
             <div class="steps-grid">
                 <div class="step-card">
                     <div class="step-number">1</div>
-                    <div class="step-title">${step1Title}</div>
+                    <h3 class="step-title">${step1Title}</h3>
                     <p class="step-text">${step1Text}</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">2</div>
-                    <div class="step-title">${step2Title}</div>
+                    <h3 class="step-title">${step2Title}</h3>
                     <p class="step-text">${trans.step2Text}</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">3</div>
-                    <div class="step-title">${step3Title}</div>
+                    <h3 class="step-title">${step3Title}</h3>
                     <p class="step-text">${trans.step3Text}</p>
                 </div>
             </div>
@@ -480,7 +480,7 @@ function renderIndustryPage(ind, lang) {
                 </div>
                 <div>
                     <div class="sensitive-alert">
-                        <div class="sensitive-alert-title">
+                        <h3 class="sensitive-alert-title">
                             <i data-lucide="alert-triangle" style="width:16px;height:16px;"></i>
                             ${sensitiveDetectedTitle}
                         </div>

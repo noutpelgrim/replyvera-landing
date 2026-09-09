@@ -426,7 +426,7 @@
     </header>
 
     <!-- Interactive Workflow Simulator -->
-    <section class="section section-light" id="demo-preview" style="padding: 56px 0 64px;">
+    <section class="section section-light" id="live-demo" style="padding: 56px 0 64px;">
         <div class="container">
             <div class="section-header" style="max-width: 800px; margin: 0 auto 36px; text-align: center;">
                 <div class="eyebrow" style="justify-content: center; margin-bottom: 10px;">
@@ -581,7 +581,7 @@
 
                     <div class="benefit-icon"><i data-lucide="clock" style="width:20px;height:20px;"></i></div>
 
-                    <div class="benefit-title">{{ index_save_time_af73 }}</div>
+                    <h3 class="benefit-title">{{ index_save_time_af73 }}</h3>
 
                     <p class="benefit-text">{{ index_routine_google_review_response_a91e }}</p>
 
@@ -591,7 +591,7 @@
 
                     <div class="benefit-icon"><i data-lucide="message-circle" style="width:20px;height:20px;"></i></div>
 
-                    <div class="benefit-title">{{ index_sound_personal_c11f }}</div>
+                    <h3 class="benefit-title">{{ index_sound_personal_c11f }}</h3>
 
                     <p class="benefit-text">{{ index_every_reply_reflects_the_speci_6cca }}</p>
 
@@ -601,7 +601,7 @@
 
                     <div class="benefit-icon"><i data-lucide="shield-check" style="width:20px;height:20px;"></i></div>
 
-                    <div class="benefit-title">{{ index_stay_in_control_3179 }}</div>
+                    <h3 class="benefit-title">{{ index_stay_in_control_3179 }}</h3>
 
                     <p class="benefit-text">{{ index_negative_and_sensitive_reviews_1ada }}</p>
 
@@ -674,7 +674,7 @@
 
                     <div class="step-number">1</div>
 
-                    <div class="step-title">{{ index_introduce_vera_to_your_busines_7d52 }}</div>
+                    <h3 class="step-title">{{ index_introduce_vera_to_your_busines_7d52 }}</h3>
 
                     <p class="step-text">{{ index_securely_connect_your_google_b_fce7 }}</p>
 
@@ -684,7 +684,7 @@
 
                     <div class="step-number">2</div>
 
-                    <div class="step-title">{{ index_tell_vera_how_to_respond_cd75 }}</div>
+                    <h3 class="step-title">{{ index_tell_vera_how_to_respond_cd75 }}</h3>
 
                     <p class="step-text">{{ index_set_your_brand_s_tone_tell_ver_75a0 }}</p>
 
@@ -694,15 +694,17 @@
 
                     <div class="step-number">3</div>
 
-                    <div class="step-title">{{ index_vera_goes_to_work_fef7 }}</div>
+                    <h3 class="step-title">{{ index_vera_goes_to_work_fef7 }}</h3>
 
                     <p class="step-text">{{ index_vera_instantly_drafts_and_post_20b2 }}</p>
-</div>
-</div>
+
+                </div>
+
+            </div>
 
             <!-- Interactive Demo Buttons under How It Works -->
             <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:40px;">
-                <a href="#" onclick="openDemoModal(); return false;" class="btn btn-accent btn-lg" style="display:inline-flex;align-items:center;gap:8px;cursor:pointer;">
+                <a href="#live-demo" class="btn btn-accent btn-lg" style="display:inline-flex;align-items:center;gap:8px;cursor:pointer;">
                     <i data-lucide="play-circle" style="width:18px;height:18px;"></i>
                     {{ see_vera_in_action }}
                 </a>
@@ -710,10 +712,6 @@
                     <i data-lucide="sliders" style="width:18px;height:18px;"></i>
                     {{ try_full_simulator }}
                 </a>
-            </div>
-
-                </div>
-
             </div>
 
         </div>
@@ -741,7 +739,7 @@
                 <a href="/industries/hotels" class="industry-card">
                     <div class="industry-card-icon hotel-icon"><i data-lucide="hotel" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-                        <div class="industry-card-name">Hotels &amp; Hospitality</div>
+                        <h3 class="industry-card-name">Hotels &amp; Hospitality</h3>
                         <div class="dropdown-desc">Prompt guest replies with safety filters for hygiene and booking issues.</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
@@ -750,7 +748,7 @@
                 <a href="/industries/restaurants" class="industry-card">
                     <div class="industry-card-icon restaurant-icon"><i data-lucide="utensils" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-                        <div class="industry-card-name">{{ index_restaurants_386c }}</div>
+                        <h3 class="industry-card-name">{{ index_restaurants_386c }}</h3>
                         <div class="dropdown-desc">Automated replies with food-safety and allergy escalation.</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
@@ -759,7 +757,7 @@
                 <a href="/industries/auto-repair" class="industry-card">
                     <div class="industry-card-icon autorepair-icon"><i data-lucide="wrench" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-                        <div class="industry-card-name">Auto Repair &amp; Mechanics</div>
+                        <h3 class="industry-card-name">Auto Repair &amp; Mechanics</h3>
                         <div class="dropdown-desc">Automated replies for mechanic shops with mechanical safety escalation.</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
@@ -768,7 +766,7 @@
                 <a href="/industries/dentists" class="industry-card">
                     <div class="industry-card-icon dentist-icon"><i data-lucide="activity" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-                        <div class="industry-card-name">Dentists &amp; Clinics</div>
+                        <h3 class="industry-card-name">Dentists &amp; Clinics</h3>
                         <div class="dropdown-desc">Privacy-conscious replies for patient reviews.</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
@@ -777,7 +775,7 @@
                 <a href="/industries/salons-spas" class="industry-card">
                     <div class="industry-card-icon salon-icon"><i data-lucide="scissors" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-                        <div class="industry-card-name">Salons &amp; Spas</div>
+                        <h3 class="industry-card-name">Salons &amp; Spas</h3>
                         <div class="dropdown-desc">Personalized replies for stylists with allergy and chemical burn safeguards.</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
@@ -786,7 +784,7 @@
                 <a href="/industries/contractors" class="industry-card">
                     <div class="industry-card-icon contractor-icon"><i data-lucide="hammer" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-                        <div class="industry-card-name">Home Services &amp; Contractors</div>
+                        <h3 class="industry-card-name">Home Services &amp; Contractors</h3>
                         <div class="dropdown-desc">Automated replies for trades with water damage and code violation filters.</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
@@ -795,7 +793,7 @@
                 <a href="/industries/car-washes" class="industry-card">
                     <div class="industry-card-icon carwash-icon"><i data-lucide="car" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-                        <div class="industry-card-name">{{ index_car_wash_operators_0281 }}</div>
+                        <h3 class="industry-card-name">{{ index_car_wash_operators_0281 }}</h3>
                         <div class="dropdown-desc">Track damage, billing, and pass complaints.</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
@@ -804,7 +802,7 @@
                 <a href="/industries/agencies" class="industry-card">
                     <div class="industry-card-icon agency-icon"><i data-lucide="briefcase" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-                        <div class="industry-card-name">{{ index_marketing_agencies_9220 }}</div>
+                        <h3 class="industry-card-name">{{ index_marketing_agencies_9220 }}</h3>
                         <div class="dropdown-desc">Manage Google review replies for every client from one dashboard.</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
@@ -942,13 +940,13 @@
 
                     <div class="review-alert-box">
 
-                        <div class="review-alert-title">
+                        <h3 class="review-alert-title">
 
                             <i data-lucide="alert-triangle" style="width:14px;height:14px;"></i>
 
                             {{ index_sensitive_topic_detected_0ef6 }}
 
-                        </div>
+                        </h3>
 
                         <p class="review-alert-sub">{{ index_a_manager_must_review_this_bef_e6c5 }}</p>
 
@@ -1140,7 +1138,7 @@
 
                 <!-- {{ index_starter_ee60 }} -->
                 <div class="pricing-card">
-                    <div class="pricing-name">Starter</div>
+                    <h3 class="pricing-name">Starter</h3>
                     <div class="pricing-price">$29</div>
                     <div class="pricing-period">{{ index_per_month_8f28 }}</div>
                     <p class="pricing-tagline">{{ index_you_approve_every_reply_before_1b35 }}</p>
@@ -1158,7 +1156,7 @@
                 <!-- {{ index_autopilot_6ca1 }} -->
                 <div class="pricing-card featured">
                     <div class="pricing-popular">{{ index_most_popular_425e }}</div>
-                    <div class="pricing-name">Autopilot</div>
+                    <h3 class="pricing-name">Autopilot</h3>
                     <div class="pricing-price">{{ index__39_338f }}</div>
                     <div class="pricing-period">{{ index_per_month_8f28 }}</div>
                     <p class="pricing-tagline">{{ index_safe_replies_publish_automatic_65af }}</p>
@@ -1175,7 +1173,7 @@
 
                 <!-- {{ index_multi_location_627d }} -->
                 <div class="pricing-card">
-                    <div class="pricing-name">Multi-Location</div>
+                    <h3 class="pricing-name">Multi-Location</h3>
                     <div class="pricing-price" style="font-size:1.85rem;">{{ index_from_79_8283 }}</div>
                     <div class="pricing-period">{{ index_per_month_8f28 }}</div>
                     <p class="pricing-tagline">{{ index_manage_all_your_locations_from_37a1 }}</p>
@@ -1191,7 +1189,7 @@
 
                 <!-- {{ pricing_agency_75ec }} -->
                 <div class="pricing-card">
-                    <div class="pricing-name">{{ pricing_agency_75ec }}</div>
+                    <h3 class="pricing-name">{{ pricing_agency_75ec }}</h3>
                     <div class="pricing-price" style="font-size:1.85rem;"><span style="font-size:1.2rem;font-weight:600;margin-right:4px;">{{ pricing_from_5da6 }}</span>$149</div>
                     <div class="pricing-period">{{ index_per_month_8f28 }}</div>
                     <p class="pricing-tagline">{{ pricing_for_agencies_managing_google_r_7928 }}</p>

@@ -256,8 +256,14 @@ for (const file of allHtmlFiles) {
 assert(brokenScriptRefs.length === 0, `All local script tags resolve to existing files (broken: ${brokenScriptRefs.join(', ') || 'none'})`);
 
 // Test Suite 10: Interactive Simulator Component Verification
-console.log('\n🎮 [10/11] Verifying Interactive Review Simulator on Homepage...');
-assert(enIndexHtml.includes('id="demo-preview"') || enIndexHtml.includes('id="hero-simulator"') || enIndexHtml.includes('id="simulator-preview"'), 'Homepage contains interactive simulator element');
+console.log('\n🎮 [10/12] Verifying Interactive Review Simulator on Homepage & Multi-Language...');
+assert(enIndexHtml.includes('id="live-demo"'), 'Homepage contains interactive simulator element with id="live-demo"');
+assert(enIndexHtml.includes('href="#live-demo"'), 'Homepage "See Vera in Action" CTA links to #live-demo');
+let openModalFound = false;
+for (const file of allHtmlFiles) {
+    if (fs.readFileSync(file, 'utf8').includes('openDemoModal()')) openModalFound = true;
+}
+assert(!openModalFound, 'Zero occurrences of openDemoModal() call across all deployed HTML pages');
 assert(enIndexHtml.includes('simulator.js'), 'Homepage loads js/simulator.js');
 assert(!enIndexHtml.includes('/demo.js?v=3'), 'Homepage is decoupled from demo.js script tag');
 assert(enIndexHtml.includes('value="hotels"'), 'Simulator includes hotel scenario');
@@ -265,11 +271,17 @@ assert(enIndexHtml.includes('value="auto-repair"'), 'Simulator includes auto-rep
 assert(enIndexHtml.includes('value="medspas"'), 'Simulator includes medspa scenario');
 assert(enIndexHtml.includes('value="contractors"'), 'Simulator includes contractors scenario');
 
+const simJs = fs.readFileSync(path.join(distDir, 'js', 'simulator.js'), 'utf8');
+assert(simJs.includes('HOME_SIM_PRESETS_ES') && simJs.includes('HOME_SIM_PRESETS_NL'), 'Simulator script contains localized preset pools for ES and NL');
+assert(simJs.includes('getSimLang()'), 'Simulator script dynamically resolves language from document or URL');
+
 // Test Suite 11: Demo & Sitemap Integrity
-console.log('\n🗺️ [11/11] Verifying sitemap.xml & demo.html indexing...');
+console.log('\n🗺️ [11/12] Verifying sitemap.xml & demo.html indexing...');
 assert(fs.existsSync(path.join(distDir, 'sitemap.xml')), 'sitemap.xml exists in dist/');
 assert(fs.existsSync(path.join(distDir, 'robots.txt')), 'robots.txt exists in dist/');
 const sitemapContent = fs.readFileSync(path.join(distDir, 'sitemap.xml'), 'utf-8');
+const sitemapUrlCount = (sitemapContent.match(/<loc>/g) || []).length;
+assert(sitemapUrlCount === 81, `sitemap.xml contains exactly 81 canonical URLs (found: ${sitemapUrlCount})`);
 assert(sitemapContent.includes('https://www.replyvera.com/demo.html'), 'sitemap.xml includes https://www.replyvera.com/demo.html');
 assert(sitemapContent.includes('https://www.replyvera.com/pricing.html'), 'sitemap.xml includes https://www.replyvera.com/pricing.html');
 assert(sitemapContent.includes('https://www.replyvera.com/industries/hotels/'), 'sitemap.xml includes hotels industry');
@@ -280,6 +292,53 @@ assert(sitemapContent.includes('https://www.replyvera.com/resources/'), 'sitemap
 
 const demoHtml = fs.readFileSync(path.join(distDir, 'demo.html'), 'utf-8');
 assert(demoHtml.includes('rel="canonical" href="https://www.replyvera.com/demo.html"'), 'demo.html has canonical tag pointing to https://www.replyvera.com/demo.html');
+
+// Test Suite 12: Production Issue Fixes Verification (Headers, Placeholders, Fair Use, Headings, Touch Targets)
+console.log('\n🛡️ [12/12] Verifying Production Issue Fixes (CTA, Placeholders, Fair Use, Headings, Mobile)...');
+
+// 1. Pricing Page Header CTA does NOT link to #pricing
+const enPricingHtml = fs.readFileSync(path.join(distDir, 'pricing.html'), 'utf8');
+const esPricingHtml = fs.readFileSync(path.join(distDir, 'es', 'pricing.html'), 'utf8');
+const nlPricingHtml = fs.readFileSync(path.join(distDir, 'nl', 'pricing.html'), 'utf8');
+
+assert(enPricingHtml.includes('class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;"') && 
+       enPricingHtml.includes('href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-primary"'),
+       'EN Pricing page header CTA links directly to https://dashboard.replyvera.com/login?signup=true');
+assert(esPricingHtml.includes('href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-primary"'),
+       'ES Pricing page header CTA links directly to https://dashboard.replyvera.com/login?signup=true');
+assert(nlPricingHtml.includes('href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-primary"'),
+       'NL Pricing page header CTA links directly to https://dashboard.replyvera.com/login?signup=true');
+
+// 2. Zero public legal placeholders across all HTML files
+let legalPlaceholdersFound = [];
+for (const file of allHtmlFiles) {
+    const raw = fs.readFileSync(file, 'utf8');
+    if (raw.includes('[Company Legal Name]') || raw.includes('[Registered Address]') || 
+        raw.includes('[VAT ID]') || raw.includes('[Chamber of Commerce')) {
+        legalPlaceholdersFound.push(path.relative(distDir, file));
+    }
+}
+assert(legalPlaceholdersFound.length === 0, `Zero bracketed legal placeholders in any page (found in: ${legalPlaceholdersFound.join(', ') || 'none'})`);
+
+// 3. Central legal config exists and exports
+const legalConfig = require('../lib/legal_config');
+assert(legalConfig && legalConfig.merchantOfRecord && legalConfig.merchantOfRecord.name === 'Paddle.com Market Ltd', 'lib/legal_config.js exists with valid Paddle MoR details');
+
+// 4. Fair Use Policy wording
+assert(enPricingHtml.includes('Unlimited review responses under our Fair Use Policy'), 'EN pricing page includes "Unlimited review responses under our Fair Use Policy"');
+assert(esPricingHtml.includes('Respuestas ilimitadas bajo nuestra Política de Uso Razonable'), 'ES pricing page includes "Respuestas ilimitadas bajo nuestra Política de Uso Razonable"');
+assert(nlPricingHtml.includes('Onbeperkte reviewreacties onder ons Fair Use-beleid'), 'NL pricing page includes "Onbeperkte reviewreacties onder ons Fair Use-beleid"');
+
+// 5. Semantic heading structure (H3s present on homepage)
+assert(enIndexHtml.includes('<h3 class="step-title">'), 'Homepage uses <h3> for step titles');
+assert(enIndexHtml.includes('<h3 class="benefit-title">'), 'Homepage uses <h3> for benefit titles');
+assert(enIndexHtml.includes('<h3 class="pricing-name">'), 'Homepage uses <h3> for pricing plan names');
+
+// 6. CSS prefers-reduced-motion and touch targets
+const cssContent = fs.readFileSync(path.join(distDir, 'style.css'), 'utf8');
+assert(cssContent.includes('prefers-reduced-motion: reduce'), 'style.css contains prefers-reduced-motion media query');
+assert(cssContent.includes('.sim-scenario-btn') && cssContent.includes('min-height: 48px'), 'style.css ensures min 48px touch targets for simulator scenario buttons');
+assert(cssContent.includes('.mobile-nav-link') && cssContent.includes('min-height: 48px'), 'style.css ensures min 48px touch targets for mobile nav links');
 
 console.log('\n====================================================');
 console.log(`Test Results: ${passedTests} passed, ${failedTests} failed`);

@@ -2,9 +2,19 @@
  * ReplyVera Homepage Interactive Simulator
  * Pure vanilla JavaScript - no external dependencies.
  * Labeled clearly as simulation - does not publish to Google.
+ * Fully localized for English (en), Spanish (es), and Dutch (nl).
  */
 
-const HOME_SIM_PRESETS = {
+function getSimLang() {
+    try {
+        const htmlLang = (document.documentElement.lang || '').toLowerCase();
+        if (htmlLang.startsWith('es') || window.location.pathname.includes('/es/')) return 'es';
+        if (htmlLang.startsWith('nl') || window.location.pathname.includes('/nl/')) return 'nl';
+    } catch(e) {}
+    return 'en';
+}
+
+const HOME_SIM_PRESETS_EN = {
     'hotels': {
         'positive': {
             name: 'Robert Vance', avatar: 'RV', stars: 5,
@@ -49,134 +59,134 @@ const HOME_SIM_PRESETS = {
             decision: 'Needs Approval', decisionSub: 'Held for review because rating is under 4 stars.', decisionType: 'approval', status: 'Pending Host Manager Review'
         },
         'sensitive': {
-            name: 'Lisa Ray', avatar: 'LR', stars: 1,
-            quote: 'We got severe food poisoning after eating the seafood soup last night. Unacceptable hygiene!',
-            sentiment: 'Critical Food Safety', topic: 'Food Safety Emergency', employee: 'None', safety: 'BLOCKED',
-            tone: 'Owner Escalation',
-            reply: '[Auto-Publishing Blocked] Health & food safety trigger activated. Auto-publishing blocked to prevent unintended liability admission.',
-            decision: 'Auto-Publishing Blocked', decisionSub: 'Sensitive topic "Food Poisoning" detected. Escalated directly to owner.', decisionType: 'blocked', status: 'Escalated to Owner'
+            name: 'David Chen', avatar: 'DC', stars: 1,
+            quote: 'Specifically asked for peanut-free dish due to severe allergy. Sauce had peanut oil and I needed an EpiPen!',
+            sentiment: 'Severe Risk', topic: 'Allergen / Food Safety Emergency', employee: 'None', safety: 'BLOCKED',
+            tone: 'Urgent Management Hold',
+            reply: '[Auto-Publishing Blocked] Critical allergen incident detected. Alert dispatched directly to General Manager & Kitchen Director.',
+            decision: 'Auto-Publishing Blocked', decisionSub: 'Critical health hazard triggered automatic publishing suppression.', decisionType: 'blocked', status: 'Escalated to Owner & GM'
         }
     },
     'auto-repair': {
         'positive': {
-            name: 'David Hayes', avatar: 'DH', stars: 5,
-            quote: 'Mike diagnosed my brake problem in 10 minutes and had my truck back on the road the same afternoon. Honest pricing!',
-            sentiment: 'Positive', topic: 'Brake Service & Speed', employee: 'Mike', safety: 'Clear',
-            tone: 'Professional & Direct',
-            reply: 'Thank you David! We appreciate your trust in our shop. Mike will be glad to hear your feedback, and we look forward to keeping your truck running smoothly.',
-            decision: 'Safe to Auto-Publish', decisionSub: 'Positive repair compliment passed auto-publish criteria.', decisionType: 'auto', status: 'Auto-Published'
+            name: 'Carlos Mendez', avatar: 'CM', stars: 5,
+            quote: 'Honest diagnostic and reasonable pricing. Replaced my front brakes and had the car back before 3 PM. Excellent service!',
+            sentiment: 'Positive', topic: 'Brake Service & Timeliness', employee: 'Shop Team', safety: 'Clear',
+            tone: 'Professional & Appreciative',
+            reply: 'Thank you for the five-star review, Carlos! We are glad we could complete your brake service ahead of schedule and appreciate your trust in our garage.',
+            decision: 'Safe to Auto-Publish', decisionSub: 'Routine brake service compliment passed auto-publish criteria.', decisionType: 'auto', status: 'Auto-Published'
         },
         'negative': {
-            name: 'Carlos Ruiz', avatar: 'CR', stars: 3,
-            quote: 'Repairs were done well but the final invoice was $120 higher than the written estimate.',
-            sentiment: 'Billing Concern', topic: 'Estimate Variance', employee: 'None', safety: 'Flagged',
-            tone: 'Transparent & Respectful',
-            reply: 'Thank you for your review, Carlos. We apologize for the surprise regarding the estimate difference. Our service advisor will call you today to go through the itemized parts cost.',
-            decision: 'Needs Approval', decisionSub: 'Billing variance held for Service Advisor approval.', decisionType: 'approval', status: 'Pending Advisor Review'
+            name: 'Jennifer Wu', avatar: 'JW', stars: 3,
+            quote: 'The oil change was fine, but the quote for new rotors was $120 higher than another shop down the street.',
+            sentiment: 'Pricing Dispute', topic: 'Rotor Quote & Pricing', employee: 'None', safety: 'Flagged',
+            tone: 'Courteous & Explanatory',
+            reply: 'Thank you for your feedback, Jennifer. We appreciate you choosing us for your oil change and would welcome the opportunity to explain our OEM parts warranty on brake rotors.',
+            decision: 'Needs Approval', decisionSub: 'Pricing inquiry held for Service Advisor review.', decisionType: 'approval', status: 'Pending Advisor Review'
         },
         'sensitive': {
-            name: 'Jason Reed', avatar: 'JR', stars: 1,
-            quote: 'Lug nuts were left loose on the highway and the front wheel almost detached! Total mechanical negligence!',
-            sentiment: 'Safety Incident', topic: 'Mechanical Safety Claim', employee: 'None', safety: 'BLOCKED',
-            tone: 'Legal & Lead Tech Alert',
-            reply: '[Auto-Publishing Blocked] Critical road safety issue detected. Shop owner and lead technician notified immediately.',
-            decision: 'Auto-Publishing Blocked', decisionSub: 'Mechanical hazard flagged. Public reply held for owner review.', decisionType: 'blocked', status: 'Escalated to Shop Owner'
+            name: 'Kevin O\'Connor', avatar: 'KO', stars: 1,
+            quote: 'Lug nuts were left hand-tight on my wheel after tire rotation and flew off on the highway! Complete negligence!',
+            sentiment: 'Mechanical Hazard', topic: 'Loose Lug Nuts / Safety Hazard', employee: 'Technician', safety: 'BLOCKED',
+            tone: 'Immediate Shop Lead Escalation',
+            reply: '[Auto-Publishing Blocked] Mechanical safety incident detected. Notification sent immediately to Shop Foreman and Managing Director.',
+            decision: 'Auto-Publishing Blocked', decisionSub: 'Road safety hazard triggered emergency block.', decisionType: 'blocked', status: 'Escalated to Shop Foreman'
         }
     },
     'dentists': {
         'positive': {
-            name: 'Emily Watson', avatar: 'EW', stars: 5,
-            quote: 'Dr. Evans made my root canal painless and easy. The front desk team was also wonderful!',
-            sentiment: 'Positive', topic: 'Gentle Care', employee: 'Dr. Evans', safety: 'Clear',
-            tone: 'Professional & Reassuring',
-            reply: 'Thank you for your feedback, Emily! We are glad Dr. Evans and our team made your visit comfortable. We appreciate your trust in our dental practice.',
-            decision: 'Safe to Auto-Publish', decisionSub: 'HIPAA-compliant general praise auto-published.', decisionType: 'auto', status: 'Auto-Published'
+            name: 'Amanda Foster', avatar: 'AF', stars: 5,
+            quote: 'I have severe dental anxiety, but Dr. Chen and dental assistant Lisa were so gentle and patient during my root canal.',
+            sentiment: 'Positive', topic: 'Patient Care & Root Canal', employee: 'Dr. Chen & Lisa', safety: 'Clear',
+            tone: 'Compassionate & Professional',
+            reply: 'Thank you so much, Amanda! Ensuring patients feel calm and comfortable is our top priority, and Dr. Chen and Lisa will be delighted to read your review.',
+            decision: 'Safe to Auto-Publish', decisionSub: 'Routine positive patient praise passed safety rules.', decisionType: 'auto', status: 'Auto-Published'
         },
         'negative': {
-            name: 'Karen White', avatar: 'KW', stars: 2,
-            quote: 'Billing was confusing and they charged my dental insurance twice for standard X-rays.',
-            sentiment: 'Insurance Claim', topic: 'Billing Dispute', employee: 'None', safety: 'Flagged',
-            tone: 'Helpful & Compliant',
-            reply: 'Hello Karen, thank you for alerting us. We apologize for the billing confusion and would be happy to review your account details directly to resolve this.',
-            decision: 'Needs Approval', decisionSub: 'Insurance and billing complaints held for Office Manager.', decisionType: 'approval', status: 'Pending Office Manager'
+            name: 'Brian Miller', avatar: 'BM', stars: 3,
+            quote: 'Cleaning was thorough, but the front desk billed my insurance out-of-network without notifying me beforehand.',
+            sentiment: 'Billing Confusion', topic: 'Out-of-Network Insurance', employee: 'Front Desk', safety: 'Flagged',
+            tone: 'Helpful & Reassuring',
+            reply: 'Thank you for your feedback, Brian. We apologize for the miscommunication regarding your insurance coverage and our billing team is reviewing your claim today.',
+            decision: 'Needs Approval', decisionSub: 'Billing dispute held for Practice Manager sign-off.', decisionType: 'approval', status: 'Pending Practice Manager'
         },
         'sensitive': {
-            name: 'Robert King', avatar: 'RK', stars: 1,
-            quote: 'The procedure resulted in severe nerve damage and infection. Contacting my medical malpractice attorney!',
-            sentiment: 'Malpractice Claim', topic: 'Medical Liability', employee: 'None', safety: 'BLOCKED',
-            tone: 'Strict Clinical Hold',
-            reply: '[Auto-Publishing Blocked] Legal & medical liability keyword detected. Strict HIPAA escalation activated.',
-            decision: 'Auto-Publishing Blocked', decisionSub: 'Malpractice / injury trigger detected. No public response posted.', decisionType: 'blocked', status: 'Escalated to Practice Owner'
+            name: 'Rachel Scott', avatar: 'RS', stars: 1,
+            quote: 'Extraction caused severe nerve damage and temporary facial paralysis. Consulting a medical malpractice attorney.',
+            sentiment: 'Malpractice / Legal', topic: 'Nerve Damage & Legal Claim', employee: 'Surgeon', safety: 'BLOCKED',
+            tone: 'Strict Legal Hold',
+            reply: '[Auto-Publishing Blocked] Legal and medical liability claim detected. Automatic publishing withheld; incident escalated to Practice Owner & Counsel.',
+            decision: 'Auto-Publishing Blocked', decisionSub: 'Legal threat & clinical complication triggered auto-block.', decisionType: 'blocked', status: 'Escalated to Legal/Owner'
         }
     },
     'salons-spas': {
         'positive': {
-            name: 'Jessica Vance', avatar: 'JV', stars: 5,
-            quote: 'Sarah gave me the best balayage and haircut I have ever had. Truly talented colorist!',
-            sentiment: 'Positive', topic: 'Balayage & Styling', employee: 'Sarah', safety: 'Clear',
-            tone: 'Warm & Celebratory',
-            reply: 'Thank you so much Jessica! Sarah loved working with your hair and will be so happy to see your review. We look forward to seeing you at your next appointment!',
-            decision: 'Safe to Auto-Publish', decisionSub: 'Stylist compliment published on autopilot.', decisionType: 'auto', status: 'Auto-Published'
+            name: 'Chloe Bennett', avatar: 'CB', stars: 5,
+            quote: 'Maya worked magic on my balayage! Exact color match to the inspiration photos and no heat damage.',
+            sentiment: 'Positive', topic: 'Balayage & Color Match', employee: 'Maya', safety: 'Clear',
+            tone: 'Warm & Stylish',
+            reply: 'Thank you so much, Chloe! Maya will be thrilled to hear you love your balayage. We look forward to seeing you for your next refresh!',
+            decision: 'Safe to Auto-Publish', decisionSub: 'Stylist praise auto-published under positive feedback rule.', decisionType: 'auto', status: 'Auto-Published'
         },
         'negative': {
-            name: 'Amanda Bell', avatar: 'AB', stars: 3,
-            quote: 'Waited 30 minutes past my appointment time before anyone greeted me or washed my hair.',
-            sentiment: 'Wait Time', topic: 'Front Desk Hospitality', employee: 'None', safety: 'Flagged',
-            tone: 'Apologetic & Caring',
-            reply: 'Thank you for your feedback, Amanda. We apologize for the delay during your visit today and are adjusting our schedule buffers to ensure on-time appointments.',
-            decision: 'Needs Approval', decisionSub: 'Wait time feedback held for salon manager.', decisionType: 'approval', status: 'Pending Manager Review'
+            name: 'Jessica Taylor', avatar: 'JT', stars: 3,
+            quote: 'Haircut looks nice, but toner turned noticeably brassy after just two washes. Expected better longevity.',
+            sentiment: 'Technical Feedback', topic: 'Toner Longevity', employee: 'Stylist', safety: 'Flagged',
+            tone: 'Helpful & Accommodating',
+            reply: 'Thank you for sharing your thoughts, Jessica. We want you to love your color—please contact the salon so we can schedule a complimentary toner adjustment.',
+            decision: 'Needs Approval', decisionSub: 'Color longevity concern held for Salon Director review.', decisionType: 'approval', status: 'Pending Salon Director'
         },
         'sensitive': {
-            name: 'Chloe Ross', avatar: 'CR', stars: 1,
-            quote: 'Severe chemical burn on my scalp from the bleach treatment, had to visit urgent care for prescription cream!',
-            sentiment: 'Burn / Injury', topic: 'Chemical Treatment Burn', employee: 'None', safety: 'BLOCKED',
-            tone: 'Emergency Hold',
-            reply: '[Auto-Publishing Blocked] Chemical burn claim detected. Salon Director alerted immediately.',
-            decision: 'Auto-Publishing Blocked', decisionSub: 'Chemical injury claim detected. Auto-publishing disabled.', decisionType: 'blocked', status: 'Escalated to Salon Director'
+            name: 'Ashley Morgan', avatar: 'AM', stars: 1,
+            quote: 'Bleach was left on my scalp for 50 minutes without checking. Severe chemical burns and hair fell out in clumps!',
+            sentiment: 'Severe Injury', topic: 'Chemical Scalp Burn', employee: 'Colorist', safety: 'BLOCKED',
+            tone: 'Urgent Owner Hold',
+            reply: '[Auto-Publishing Blocked] Physical injury and chemical burn claim detected. Auto-response withheld and notification dispatched directly to Salon Owner.',
+            decision: 'Auto-Publishing Blocked', decisionSub: 'Chemical injury safety filter activated.', decisionType: 'blocked', status: 'Escalated to Salon Owner'
         }
     },
     'medspas': {
         'positive': {
-            name: 'Laura Palmer', avatar: 'LP', stars: 5,
-            quote: 'Dr. Lee and the laser team gave me incredible results. My skin looks completely refreshed and radiant!',
-            sentiment: 'Positive', topic: 'Aesthetic Results', employee: 'Dr. Lee', safety: 'Clear',
-            tone: 'Discreet & Professional',
-            reply: 'Thank you for your wonderful review, Laura! We are delighted to hear you had a great experience with Dr. Lee and our team. We look forward to welcoming you back!',
-            decision: 'Safe to Auto-Publish', decisionSub: 'HIPAA-conscious aesthetic compliment auto-published.', decisionType: 'auto', status: 'Auto-Published'
+            name: 'Elena Rostova', avatar: 'ER', stars: 5,
+            quote: 'Nurse practitioner Sarah explained the entire microneedling treatment clearly. Skin looks glowing 5 days later!',
+            sentiment: 'Positive', topic: 'Microneedling & Consultation', employee: 'Sarah (NP)', safety: 'Clear',
+            tone: 'Clinical & Warm',
+            reply: 'Thank you for trusting us with your skincare journey, Elena! Sarah and our entire clinic team are delighted with your glowing results.',
+            decision: 'Safe to Auto-Publish', decisionSub: 'Standard treatment compliment passed auto-publish rules.', decisionType: 'auto', status: 'Auto-Published'
         },
         'negative': {
-            name: 'Rachel Green', avatar: 'RG', stars: 3,
-            quote: 'Had to wait 45 minutes past my Botox appointment and felt rushed through consultation.',
-            sentiment: 'Schedule Delay', topic: 'Consultation Pacing', employee: 'None', safety: 'Flagged',
-            tone: 'Attentive & Reassuring',
-            reply: 'Thank you for your feedback, Rachel. We apologize for the delay and that your consultation felt rushed. Our clinic manager will reach out directly to ensure your questions are answered.',
-            decision: 'Needs Approval', decisionSub: 'Consultation feedback held for clinical coordinator.', decisionType: 'approval', status: 'Pending Coordinator Review'
+            name: 'Maria Santos', avatar: 'MS', stars: 3,
+            quote: 'Treatment was fine, but appointment started 35 minutes late and reception was disorganized.',
+            sentiment: 'Scheduling Delay', topic: 'Wait Time & Front Desk', employee: 'Reception', safety: 'Flagged',
+            tone: 'Polite & Accountable',
+            reply: 'Thank you for your feedback, Maria. We apologize for the delay during your appointment and are refining our scheduling intervals to respect your time.',
+            decision: 'Needs Approval', decisionSub: 'Clinic delay feedback held for Medical Director review.', decisionType: 'approval', status: 'Pending Clinic Director'
         },
         'sensitive': {
-            name: 'Diana Prince', avatar: 'DP', stars: 1,
-            quote: 'Severe chemical blistering and allergic swelling after the peel, had to visit urgent care!',
-            sentiment: 'Clinical Reaction', topic: 'Adverse Medical Event', employee: 'None', safety: 'BLOCKED',
-            tone: 'Clinical Hold',
-            reply: '[Auto-Publishing Blocked] Adverse clinical reaction detected. Medical Director and Practice Manager alerted immediately.',
-            decision: 'Auto-Publishing Blocked', decisionSub: 'Medical complication detected. Auto-response suppressed for patient safety.', decisionType: 'blocked', status: 'Escalated to Medical Director'
+            name: 'Danielle Vance', avatar: 'DV', stars: 1,
+            quote: 'Second-degree blistering and pigmentation scars after laser resurfacing. Medical malpractice inquiry opened!',
+            sentiment: 'Severe Medical Adverse Event', topic: 'Laser Scarring & Malpractice', employee: 'Laser Tech', safety: 'BLOCKED',
+            tone: 'Strict Clinical Legal Hold',
+            reply: '[Auto-Publishing Blocked] Medical adverse event detected. Public reply suppressed; incident escalated immediately to Medical Director & Legal Risk Lead.',
+            decision: 'Auto-Publishing Blocked', decisionSub: 'Clinical adverse event triggered emergency suppression.', decisionType: 'blocked', status: 'Escalated to Medical Director'
         }
     },
     'contractors': {
         'positive': {
-            name: 'Brian Taylor', avatar: 'BT', stars: 5,
-            quote: 'Tom and his crew replaced our roof in two days and left the yard spotless. Exceptional craftsmanship!',
-            sentiment: 'Positive', topic: 'Roof Replacement', employee: 'Tom', safety: 'Clear',
-            tone: 'Proud & Professional',
-            reply: 'Thank you Brian! Tom and our roofing crew take great pride in quality work and clean job sites. We appreciate your recommendation and business!',
-            decision: 'Safe to Auto-Publish', decisionSub: 'Trades praise passed safety criteria.', decisionType: 'auto', status: 'Auto-Published'
+            name: 'Greg Wilson', avatar: 'GW', stars: 5,
+            quote: 'Replaced our 2,400 sq ft roof in two days flat. Left the yard completely spotless with magnetic nail sweeps.',
+            sentiment: 'Positive', topic: 'Roofing Replacement & Clean-Up', employee: 'Crew', safety: 'Clear',
+            tone: 'Direct & Professional',
+            reply: 'Thank you for the five-star review, Greg! Our roofing crew takes great pride in efficient work and thorough yard clean-up. We appreciate your recommendation!',
+            decision: 'Safe to Auto-Publish', decisionSub: 'Job completion compliment passed auto-publish criteria.', decisionType: 'auto', status: 'Auto-Published'
         },
         'negative': {
-            name: 'Frank Miller', avatar: 'FM', stars: 3,
-            quote: 'Good plumbing work on the bathroom renovation, but scheduling was delayed by two weeks.',
-            sentiment: 'Project Timeline', topic: 'Schedule Delay', employee: 'None', safety: 'Flagged',
-            tone: 'Accountable',
-            reply: 'Thank you for sharing your feedback, Frank. We are glad you are happy with the plumbing craftsmanship, and we apologize for the schedule timeline delay.',
-            decision: 'Needs Approval', decisionSub: 'Timeline complaint held for Project Manager review.', decisionType: 'approval', status: 'Pending PM Review'
+            name: 'Lisa Ray', avatar: 'LR', stars: 3,
+            quote: 'Work was completed on time, but crew left several sharp roofing nails near our garage door tires.',
+            sentiment: 'Site Hygiene', topic: 'Nails & Clean-up Oversight', employee: 'Crew', safety: 'Flagged',
+            tone: 'Accountable & Action-Oriented',
+            reply: 'Thank you for letting us know, Lisa. We apologize for the leftover nails. A foreman will perform an additional magnetic sweep of your driveway today.',
+            decision: 'Needs Approval', decisionSub: 'Site safety oversight held for Project Manager sign-off.', decisionType: 'approval', status: 'Pending Project Manager'
         },
         'sensitive': {
             name: 'Gary Oldman', avatar: 'GO', stars: 1,
@@ -188,6 +198,378 @@ const HOME_SIM_PRESETS = {
         }
     }
 };
+
+const HOME_SIM_PRESETS_ES = {
+    'hotels': {
+        'positive': {
+            name: 'Roberto Vance', avatar: 'RV', stars: 5,
+            quote: 'El equipo de recepción nos mejoró la suite por nuestro aniversario y el desayuno fue excelente. ¡Hospitalidad impecable!',
+            sentiment: 'Positivo', topic: 'Recepción y Habitación', employee: 'Recepción', safety: 'Despejado',
+            tone: 'Hospitalario y Cálido',
+            reply: '¡Muchas gracias por celebrar su aniversario con nosotros, Roberto! Nos alegra saber que nuestro equipo hizo su estancia tan especial. Esperamos darle la bienvenida nuevamente.',
+            decision: 'Seguro para Auto-Publicar', decisionSub: 'Elogio rutinario pasó los criterios de auto-publicación.', decisionType: 'auto', status: 'Auto-Publicado'
+        },
+        'negative': {
+            name: 'Sara Connor', avatar: 'SC', stars: 3,
+            quote: 'El check-in tardó más de 30 minutos y el aire acondicionado de la habitación 204 hizo ruido toda la noche.',
+            sentiment: 'Constructivo / Retraso', topic: 'Check-in y Mantenimiento AC', employee: 'Ninguno', safety: 'Marcado',
+            tone: 'Atento y Disculpatorio',
+            reply: 'Gracias por sus comentarios, Sara. Lamentamos la demora en el check-in y el ruido del climatizador. Mantenimiento ya ha revisado la habitación 204.',
+            decision: 'Requiere Aprobación', decisionSub: 'Demora y queja de mantenimiento retenidas para aprobación del gerente.', decisionType: 'approval', status: 'Pendiente Revisión de Gerente'
+        },
+        'sensitive': {
+            name: 'Marcos Brody', avatar: 'MB', stars: 1,
+            quote: '¡Encontré chinches en la habitación 312 y el encargado nocturno se negó a devolvernos el dinero!',
+            sentiment: 'Incidente Crítico', topic: 'Plagas e Higiene', employee: 'Encargado Nocturno', safety: 'BLOQUEADO',
+            tone: 'Escalada a Dirección',
+            reply: '[Auto-Publicación Bloqueada] Reclamo delicado de plagas detectado. Reporte enviado inmediatamente al Director General.',
+            decision: 'Auto-Publicación Bloqueada', decisionSub: 'Filtro de salud e higiene activado. Publicación automática suprimida.', decisionType: 'blocked', status: 'Escalado a Dirección General'
+        }
+    },
+    'restaurants': {
+        'positive': {
+            name: 'Sofía Jenkins', avatar: 'SJ', stars: 5,
+            quote: '¡La lasaña estuvo increíble y nuestro camarero Alex fue super atento! La mejor cena italiana de la ciudad.',
+            sentiment: 'Positivo', topic: 'Comida y Personal', employee: 'Alex', safety: 'Despejado',
+            tone: 'Cálido y Agradecido',
+            reply: '¡Muchísimas gracias por tus amables palabras, Sofía! Nos emociona que disfrutaras de la lasaña y la atención de Alex. Le transmitiremos tu felicitación.',
+            decision: 'Seguro para Auto-Publicar', decisionSub: 'Regla: elogios de 4-5 estrellas se publican de inmediato.', decisionType: 'auto', status: 'Auto-Publicado'
+        },
+        'negative': {
+            name: 'Marcos Davis', avatar: 'MD', stars: 3,
+            quote: 'La comida estuvo buena pero esperamos 45 minutos por mesa a pesar de tener reserva confirmada.',
+            sentiment: 'Neutral / Retraso', topic: 'Tiempo de Espera', employee: 'Ninguno', safety: 'Marcado',
+            tone: 'Empático y Responsable',
+            reply: 'Gracias por compartir tu opinión, Marcos. Nos disculpamos sinceramente por la espera de 45 minutos. Estamos revisando la gestión de reservas para evitar esto.',
+            decision: 'Requiere Aprobación', decisionSub: 'Retenido para revisión al tener calificación inferior a 4 estrellas.', decisionType: 'approval', status: 'Pendiente Encargado de Sala'
+        },
+        'sensitive': {
+            name: 'David Chen', avatar: 'DC', stars: 1,
+            quote: 'Avisé de mi alergia severa a los frutos secos. La salsa contenía aceite de cacahuete y necesité inyección de adrenalina.',
+            sentiment: 'Riesgo Crítico', topic: 'Alérgenos y Seguridad Alimentaria', employee: 'Ninguno', safety: 'BLOQUEADO',
+            tone: 'Retención Urgente Gerencia',
+            reply: '[Auto-Publicación Bloqueada] Incidente crítico de alérgenos detectado. Notificación prioritaria enviada a Dirección y Jefe de Cocina.',
+            decision: 'Auto-Publicación Bloqueada', decisionSub: 'Riesgo sanitario grave bloqueó la respuesta automática.', decisionType: 'blocked', status: 'Escalado a Dueño y Dirección'
+        }
+    },
+    'auto-repair': {
+        'positive': {
+            name: 'Carlos Méndez', avatar: 'CM', stars: 5,
+            quote: 'Diagnóstico honesto y precio justo. Cambiaron las pastillas de freno y tuvieron el coche antes de las 15:00.',
+            sentiment: 'Positivo', topic: 'Frenos y Puntualidad', employee: 'Equipo Taller', safety: 'Despejado',
+            tone: 'Profesional y Cordial',
+            reply: '¡Muchas gracias por su reseña, Carlos! Nos alegra haber completado el cambio de frenos antes de lo previsto y agradecemos su confianza en nuestro taller.',
+            decision: 'Seguro para Auto-Publicar', decisionSub: 'Elogio de servicio rutinario cumple reglas de publicación.', decisionType: 'auto', status: 'Auto-Publicado'
+        },
+        'negative': {
+            name: 'Jennifer Wu', avatar: 'JW', stars: 3,
+            quote: 'El cambio de aceite bien, pero el presupuesto para los discos de freno era 120€ más caro que en otro taller cercano.',
+            sentiment: 'Discrepancia Precio', topic: 'Presupuesto de Discos', employee: 'Ninguno', safety: 'Marcado',
+            tone: 'Transparente y Explicativo',
+            reply: 'Gracias por su comentario, Jennifer. Agradecemos su visita para el cambio de aceite y nos gustaría explicarle la garantía de piezas originales que usamos.',
+            decision: 'Requiere Aprobación', decisionSub: 'Consulta de tarifas retenida para revisión del asesor técnico.', decisionType: 'approval', status: 'Pendiente Asesor Técnico'
+        },
+        'sensitive': {
+            name: 'Kevin O\'Connor', avatar: 'KO', stars: 1,
+            quote: 'Dejaron los tornillos de la rueda sueltos tras rotar neumáticos y saltaron en plena autopista. ¡Una negligencia total!',
+            sentiment: 'Riesgo Mecánico Severo', topic: 'Tornillos Sueltos / Seguridad Vial', employee: 'Mecánico', safety: 'BLOQUEADO',
+            tone: 'Escalada Inmediata a Jefe de Taller',
+            reply: '[Auto-Publicación Bloqueada] Incidente de seguridad mecánica detectado. Notificación enviada al Jefe de Taller.',
+            decision: 'Auto-Publicación Bloqueada', decisionSub: 'Peligro vial activó bloqueo de emergencia.', decisionType: 'blocked', status: 'Escalado a Jefe de Taller'
+        }
+    },
+    'dentists': {
+        'positive': {
+            name: 'Amanda Foster', avatar: 'AF', stars: 5,
+            quote: 'Tengo fobia al dentista, pero la Dra. Chen y Lisa fueron súper cariñosas y no sentí ningún dolor durante la endodoncia.',
+            sentiment: 'Positivo', topic: 'Endodoncia y Trato al Paciente', employee: 'Dra. Chen y Lisa', safety: 'Despejado',
+            tone: 'Compasivo y Cercano',
+            reply: '¡Muchísimas gracias, Amanda! Que nuestros pacientes se sientan tranquilos es nuestra prioridad. La Dra. Chen y Lisa estarán encantadas de leerte.',
+            decision: 'Seguro para Auto-Publicar', decisionSub: 'Elogio de paciente pasó los controles de seguridad.', decisionType: 'auto', status: 'Auto-Publicado'
+        },
+        'negative': {
+            name: 'Brian Miller', avatar: 'BM', stars: 3,
+            quote: 'La limpieza dental fue buena, pero en recepción me cobraron un extra sin avisar previamente de la cobertura del seguro.',
+            sentiment: 'Duda de Facturación', topic: 'Cobertura de Seguro Dental', employee: 'Recepción', safety: 'Marcado',
+            tone: 'Solícito y Aclaratorio',
+            reply: 'Gracias por tu reseña, Brian. Lamentamos cualquier malentendido con la cobertura de tu póliza y nuestro equipo de administración está revisando tu caso.',
+            decision: 'Requiere Aprobación', decisionSub: 'Retenido para validación por la dirección de la clínica.', decisionType: 'approval', status: 'Pendiente Dirección Clínica'
+        },
+        'sensitive': {
+            name: 'Raquel Scott', avatar: 'RS', stars: 1,
+            quote: 'La extracción causó daño nervioso severo y parálisis facial temporal. Estoy consultando con abogados especializados.',
+            sentiment: 'Legal / Mala Praxis', topic: 'Lesión Nerviosa y Acción Legal', employee: 'Cirujano', safety: 'BLOQUEADO',
+            tone: 'Retención Legal Estricta',
+            reply: '[Auto-Publicación Bloqueada] Reclamación legal y clínica detectada. Respuesta pública suprimida y escalada a Dirección y Asesoría Legal.',
+            decision: 'Auto-Publicación Bloqueada', decisionSub: 'Amenaza legal y complicación médica activaron bloqueo.', decisionType: 'blocked', status: 'Escalado a Dirección y Legal'
+        }
+    },
+    'salons-spas': {
+        'positive': {
+            name: 'Claudia Bennett', avatar: 'CB', stars: 5,
+            quote: '¡Maya hizo magia con mi balayage! El color quedó idéntico a las fotos de referencia y mi cabello súper brillante.',
+            sentiment: 'Positivo', topic: 'Balayage y Brillo', employee: 'Maya', safety: 'Despejado',
+            tone: 'Estiloso y Cálido',
+            reply: '¡Muchas gracias, Claudia! A Maya le encantará saber lo contenta que estás con tu balayage. ¡Te esperamos para tu próximo mantenimiento!',
+            decision: 'Seguro para Auto-Publicar', decisionSub: 'Elogio a estilista publicado bajo regla de feedback positivo.', decisionType: 'auto', status: 'Auto-Publicado'
+        },
+        'negative': {
+            name: 'Jésica Taylor', avatar: 'JT', stars: 3,
+            quote: 'El corte está bien, pero el matizador se volvió cobrizo tras solo dos lavados. Esperaba mayor duración.',
+            sentiment: 'Técnico Capilar', topic: 'Durabilidad del Matizador', employee: 'Estilista', safety: 'Marcado',
+            tone: 'Servicial y Conciliador',
+            reply: 'Gracias por comentárnoslo, Jésica. Queremos que tu tono quede perfecto; por favor contáctanos para agendar un retoque de matiz sin coste.',
+            decision: 'Requiere Aprobación', decisionSub: 'Inquietud de color retenida para la responsable del salón.', decisionType: 'approval', status: 'Pendiente Responsable Salón'
+        },
+        'sensitive': {
+            name: 'Andrea Morgan', avatar: 'AM', stars: 1,
+            quote: 'Me dejaron la decoloración 50 minutos sin vigilar. ¡Tengo quemaduras químicas en el cuero cabelludo y se me cae el pelo!',
+            sentiment: 'Lesión Severa', topic: 'Quemadura Química Capilar', employee: 'Colorista', safety: 'BLOQUEADO',
+            tone: 'Retención Urgente Dirección',
+            reply: '[Auto-Publicación Bloqueada] Queja de quemadura química detectada. Respuesta retenida y alerta enviada a la propietaria del salón.',
+            decision: 'Auto-Publicación Bloqueada', decisionSub: 'Filtro de quemaduras químicas y lesiones activado.', decisionType: 'blocked', status: 'Escalado a Dirección de Salón'
+        }
+    },
+    'medspas': {
+        'positive': {
+            name: 'Elena Rostova', avatar: 'ER', stars: 5,
+            quote: 'La enfermera Sarah me explicó todo el tratamiento de microneedling con detalle. ¡Mi piel luce radiante 5 días después!',
+            sentiment: 'Positivo', topic: 'Microneedling y Consulta', employee: 'Sarah', safety: 'Despejado',
+            tone: 'Clínico y Cálido',
+            reply: '¡Gracias por confiar en nosotros para cuidar tu piel, Elena! A Sarah y a todo el equipo clínico les encantará leer tus resultados.',
+            decision: 'Seguro para Auto-Publicar', decisionSub: 'Comentario rutinario de tratamiento aprobado automáticamente.', decisionType: 'auto', status: 'Auto-Publicado'
+        },
+        'negative': {
+            name: 'María Santos', avatar: 'MS', stars: 3,
+            quote: 'El tratamiento estuvo bien, pero la cita empezó con 35 minutos de retraso y en recepción había desorden.',
+            sentiment: 'Demora de Agenda', topic: 'Tiempo de Espera en Recepción', employee: 'Recepción', safety: 'Marcado',
+            tone: 'Atento y Responsable',
+            reply: 'Gracias por tu feedback, María. Te pedimos disculpas por el retraso en tu cita y estamos ajustando los intervalos para respetar tu tiempo.',
+            decision: 'Requiere Aprobación', decisionSub: 'Queja de retraso retenida para revisión de dirección.', decisionType: 'approval', status: 'Pendiente Dirección Médica'
+        },
+        'sensitive': {
+            name: 'Daniela Vance', avatar: 'DV', stars: 1,
+            quote: 'Ampollas de segundo grado y cicatrices oscuras tras el láser fraccionado. ¡Iniciando acciones legales por negligencia médica!',
+            sentiment: 'Efecto Adverso Médico Grave', topic: 'Cicatrices Láser y Mala Praxis', employee: 'Operadora Láser', safety: 'BLOQUEADO',
+            tone: 'Retención Médica Legal',
+            reply: '[Auto-Publicación Bloqueada] Evento médico adverso detectado. Respuesta pública cancelada; escalado directo a Director Médico y Legal.',
+            decision: 'Auto-Publicación Bloqueada', decisionSub: 'Complicación clínica grave activó supresión de emergencia.', decisionType: 'blocked', status: 'Escalado a Director Médico'
+        }
+    },
+    'contractors': {
+        'positive': {
+            name: 'Gregorio Wilson', avatar: 'GW', stars: 5,
+            quote: 'Cambiaron los 220 m² de tejado en dos días. Dejaron el jardín impecable pasando imanes para recoger todos los clavos.',
+            sentiment: 'Positivo', topic: 'Reparación de Tejado y Limpieza', employee: 'Cuadrilla', safety: 'Despejado',
+            tone: 'Profesional y Resolutivo',
+            reply: '¡Muchas gracias por su reseña, Gregorio! Nuestro equipo se esmera en trabajar rápido y dejar todo limpio. ¡Agradecemos su recomendación!',
+            decision: 'Seguro para Auto-Publicar', decisionSub: 'Felicitación de obra completada aprobada automáticamente.', decisionType: 'auto', status: 'Auto-Publicado'
+        },
+        'negative': {
+            name: 'Luisa Ray', avatar: 'LR', stars: 3,
+            quote: 'La obra terminó a tiempo, pero dejaron varios clavos del tejado tirados cerca de las ruedas de nuestro garaje.',
+            sentiment: 'Limpieza de Obra', topic: 'Clavos Abandonados en Parcela', employee: 'Cuadrilla', safety: 'Marcado',
+            tone: 'Responsable y Proactivo',
+            reply: 'Gracias por informarnos, Luisa. Le pedimos disculpas por ese descuido. Un encargado pasará hoy mismo a realizar un barrido magnético de su entrada.',
+            decision: 'Requiere Aprobación', decisionSub: 'Incidencia de seguridad en obra retenida para el jefe de proyecto.', decisionType: 'approval', status: 'Pendiente Jefe de Proyecto'
+        },
+        'sensitive': {
+            name: 'Tomás Harrison', avatar: 'TH', stars: 1,
+            quote: '¡Perforaron la tubería principal e inundaron el sótano terminado! Reclamación millonaria de daños estructurales.',
+            sentiment: 'Daño Estructural a Propiedad', topic: 'Inundación y Daño en Vivienda', employee: 'Ninguno', safety: 'BLOQUEADO',
+            tone: 'Retención de Seguros y Gerencia',
+            reply: '[Auto-Publicación Bloqueada] Reclamo grave de daños por agua detectado. Alerta enviada al contratista principal y a la aseguradora.',
+            decision: 'Auto-Publicación Bloqueada', decisionSub: 'Daño estructural activó bloqueo de seguridad.', decisionType: 'blocked', status: 'Escalado a Contratista Principal'
+        }
+    }
+};
+
+const HOME_SIM_PRESETS_NL = {
+    'hotels': {
+        'positive': {
+            name: 'Robert Vance', avatar: 'RV', stars: 5,
+            quote: 'Het receptieteam heeft onze suite kosteloos geüpgraded voor ons jubileum en het ontbijt was voortreffelijk. Fantastische gastvrijheid!',
+            sentiment: 'Positief', topic: 'Receptie & Suite', employee: 'Receptie', safety: 'Veilig',
+            tone: 'Gastvrij & Warm',
+            reply: 'Hartelijk dank dat u uw jubileum bij ons vierde, Robert! We zijn verheugd dat ons team uw verblijf speciaal heeft gemaakt en verwelkomen u graag snel weer.',
+            decision: 'Veilig voor Automatisch Publiceren', decisionSub: 'Standaard gastencompliment voldoet aan publicatiecriteria.', decisionType: 'auto', status: 'Automatisch Gepubliceerd'
+        },
+        'negative': {
+            name: 'Sara Connor', avatar: 'SC', stars: 3,
+            quote: 'Het inchecken duurde ruim 30 minuten en de airconditioning op kamer 204 maakte de hele nacht lawaai.',
+            sentiment: 'Constructief / Vertraging', topic: 'Inchecken & Airco-onderhoud', employee: 'Geen', safety: 'Gemarkeerd',
+            tone: 'Attent & Begripvol',
+            reply: 'Bedankt voor uw feedback, Sara. Onze excuses voor de wachttijd bij het inchecken en het geluid van de airco. Ons onderhoudsteam heeft kamer 204 direct gecontroleerd.',
+            decision: 'Vereist Goedkeuring', decisionSub: 'Wachttijd en onderhoudsklacht vastgehouden voor beoordeling manager.', decisionType: 'approval', status: 'In afwachting van manager'
+        },
+        'sensitive': {
+            name: 'Mark Brody', avatar: 'MB', stars: 1,
+            quote: 'Bedwantsen aangetroffen in kamer 312 en de nachtmanager weigerde ons te helpen of een terugbetaling te geven!',
+            sentiment: 'Kritiek Incident', topic: 'Ongedierte / Hygiëneklacht', employee: 'Nachtmanager', safety: 'GEBLOKKEERD',
+            tone: 'Directe Escalatie Directie',
+            reply: '[Automatisch Publiceren Geblokkeerd] Gevoelige hygiëneklacht gedetecteerd. Incidentrapport direct doorgestuurd naar de Algemeen Directeur.',
+            decision: 'Automatisch Publiceren Geblokkeerd', decisionSub: 'Gezondheids- en hygiënetrigger geactiveerd. Reactie onderdrukt.', decisionType: 'blocked', status: 'Geëscaleerd naar Directie'
+        }
+    },
+    'restaurants': {
+        'positive': {
+            name: 'Sanne Jenkins', avatar: 'SJ', stars: 5,
+            quote: 'De lasagne was verrukkelijk en onze ober Alex was ontzettend attent. Beste Italiaanse diner in de stad!',
+            sentiment: 'Positief', topic: 'Eten & Bediening', employee: 'Alex', safety: 'Veilig',
+            tone: 'Warm & Hartelijk',
+            reply: 'Hartelijk dank voor uw lovende woorden, Sanne! Fijn om te horen dat u genoot van de lasagne en Alex zijn service. We geven het compliment direct aan hem door!',
+            decision: 'Veilig voor Automatisch Publiceren', decisionSub: 'Regel: 4-5 sterren lof wordt direct gepubliceerd.', decisionType: 'auto', status: 'Automatisch Gepubliceerd'
+        },
+        'negative': {
+            name: 'Mark Davis', avatar: 'MD', stars: 3,
+            quote: 'Het eten was goed, maar we moesten 45 minuten wachten op onze tafel ondanks een bevestigde reservering.',
+            sentiment: 'Neutraal / Wachttijd', topic: 'Tafelreservering & Wachttijd', employee: 'Geen', safety: 'Gemarkeerd',
+            tone: 'Verontschuldigend & Oplossingsgericht',
+            reply: 'Bedankt voor uw feedback, Mark. Onze oprechte excuses voor de wachttijd van 45 minuten ondanks uw reservering. We herzien onze planning om dit te voorkomen.',
+            decision: 'Vereist Goedkeuring', decisionSub: 'Vastgehouden voor beoordeling omdat beoordeling lager is dan 4 sterren.', decisionType: 'approval', status: 'In afwachting van gastheer'
+        },
+        'sensitive': {
+            name: 'David Chen', avatar: 'DC', stars: 1,
+            quote: 'Expliciet gevraagd om pindavrij gerecht wegens ernstige allergie. De saus bevatte pindaolie, EpiPen was noodzakelijk!',
+            sentiment: 'Levensbedreigend Risico', topic: 'Allergie & Voedselveiligheid', employee: 'Geen', safety: 'GEBLOKKEERD',
+            tone: 'Uiterst Dringende Directie-stop',
+            reply: '[Automatisch Publiceren Geblokkeerd] Ernstig allergie-incident gedetecteerd. Melding met spoed naar eigenaar en keukenchef gestuurd.',
+            decision: 'Automatisch Publiceren Geblokkeerd', decisionSub: 'Gezondheidsrisico activeerde noodblokkade.', decisionType: 'blocked', status: 'Geëscaleerd naar Eigenaar'
+        }
+    },
+    'auto-repair': {
+        'positive': {
+            name: 'Carlos Mendez', avatar: 'CM', stars: 5,
+            quote: 'Eerlijke diagnose en scherpe prijzen. Remmen vervangen en de auto stond voor 15:00 alweer klaar. Topservice!',
+            sentiment: 'Positief', topic: 'Remservice & Tijdigheid', employee: 'Werkplaatsteam', safety: 'Veilig',
+            tone: 'Deskundig & Vriendelijk',
+            reply: 'Hartelijk dank voor de mooie recensie, Carlos! Fijn dat uw remservice snel en soepel is verlopen. Dank voor het vertrouwen in onze garage!',
+            decision: 'Veilig voor Automatisch Publiceren', decisionSub: 'Standaard compliment over remreparatie goedgekeurd.', decisionType: 'auto', status: 'Automatisch Gepubliceerd'
+        },
+        'negative': {
+            name: 'Jennifer Wu', avatar: 'JW', stars: 3,
+            quote: 'De olieverversing was prima, maar de prijsopgave voor nieuwe remschijven was €120 duurder dan bij de buurgarage.',
+            sentiment: 'Prijsverschil', topic: 'Offerte Remschijven', employee: 'Geen', safety: 'Gemarkeerd',
+            tone: 'Helder & Informerend',
+            reply: 'Dank voor uw feedback, Jennifer. Fijn dat de olieverversing naar wens was. We lichten graag toe waarom we uitsluitend werken met originele merkonderdelen en garantie.',
+            decision: 'Vereist Goedkeuring', decisionSub: 'Prijsvraag vastgehouden voor beoordeling werkplaatschef.', decisionType: 'approval', status: 'In afwachting van chef'
+        },
+        'sensitive': {
+            name: 'Kevin O\'Connor', avatar: 'KO', stars: 1,
+            quote: 'Wielbouten niet goed aangedraaid na bandenwissel; wiel kwam los op de snelweg! Levensgevaarlijke nalatigheid!',
+            sentiment: 'Mechanisch Veiligheidsrisico', topic: 'Losgeraakt Wiel / Verkeersveiligheid', employee: 'Monteur', safety: 'GEBLOKKEERD',
+            tone: 'Onmiddellijke Directie-escalatie',
+            reply: '[Automatisch Publiceren Geblokkeerd] Ernstig technisch veiligheidsincident. Spoedmelding verzonden naar werkplaatsleider en directie.',
+            decision: 'Automatisch Publiceren Geblokkeerd', decisionSub: 'Verkeersveiligheidstrigger activeerde blokkade.', decisionType: 'blocked', status: 'Geëscaleerd naar Werkplaatschef'
+        }
+    },
+    'dentists': {
+        'positive': {
+            name: 'Amanda Foster', avatar: 'AF', stars: 5,
+            quote: 'Ik heb enorme tandartsangst, maar tandarts Chen en assistente Lisa stelden me zo gerust tijdens de wortelkanaalbehandeling.',
+            sentiment: 'Positief', topic: 'Patiëntenzorg & Behandeling', employee: 'Dr. Chen & Lisa', safety: 'Veilig',
+            tone: 'Empathisch & Professioneel',
+            reply: 'Hartelijk dank Amanda! Patiënten geruststellen is onze topprioriteit. Dr. Chen en Lisa zullen uw fijne woorden met veel plezier lezen.',
+            decision: 'Veilig voor Automatisch Publiceren', decisionSub: 'Positieve patiëntervaring goedgekeurd.', decisionType: 'auto', status: 'Automatisch Gepubliceerd'
+        },
+        'negative': {
+            name: 'Brian Miller', avatar: 'BM', stars: 3,
+            quote: 'Gebitsreiniging was vakkundig, maar de balie rekende een code zonder vooraf te controleren of de verzekering dit dekt.',
+            sentiment: 'Declaratie-onduidelijkheid', topic: 'Zorgverzekering & Facturatie', employee: 'Balie', safety: 'Gemarkeerd',
+            tone: 'Ondersteunend & Verhelderend',
+            reply: 'Dank voor uw bericht, Brian. Onze excuses voor de verwarring over de vergoeding. Onze praktijkadministratie kijkt uw declaratie vandaag direct na.',
+            decision: 'Vereist Goedkeuring', decisionSub: 'Declaratievraag vastgehouden voor praktijkmanager.', decisionType: 'approval', status: 'In afwachting van praktijkmanager'
+        },
+        'sensitive': {
+            name: 'Rachel Scott', avatar: 'RS', stars: 1,
+            quote: 'Trekken van kies leidde tot zenuwbeschadiging en tijdelijke aangezichtsverlamming. Medisch tuchtcollege en letselschadejurist ingeschakeld.',
+            sentiment: 'Medische Aansprakelijkheid', topic: 'Zenuwletsel & Juridische Stappen', employee: 'Kaakchirurg', safety: 'GEBLOKKEERD',
+            tone: 'Juridische Directiestop',
+            reply: '[Automatisch Publiceren Geblokkeerd] Medische aansprakelijkheidsclaim gedetecteerd. Publicatie onderdrukt; geëscaleerd naar directie en jurist.',
+            decision: 'Automatisch Publiceren Geblokkeerd', decisionSub: 'Letselschadeclaim activeerde noodblokkade.', decisionType: 'blocked', status: 'Geëscaleerd naar Directie/Juridisch'
+        }
+    },
+    'salons-spas': {
+        'positive': {
+            name: 'Chantal Bennett', avatar: 'CB', stars: 5,
+            quote: 'Maya toverde mijn haar om met een prachtige balayage! Exact dezelfde tint als mijn voorbeeldfoto en geen beschadiging.',
+            sentiment: 'Positief', topic: 'Balayage & Kleurresultaat', employee: 'Maya', safety: 'Veilig',
+            tone: 'Stijlvol & Enthousiast',
+            reply: 'Super bedankt, Chantal! Maya zal het fantastisch vinden om te horen dat je zo blij bent met je balayage. Tot de volgende opfrisbeurt!',
+            decision: 'Veilig voor Automatisch Publiceren', decisionSub: 'Compliment voor stylist automatisch goedgekeurd.', decisionType: 'auto', status: 'Automatisch Gepubliceerd'
+        },
+        'negative': {
+            name: 'Jessica Taylor', avatar: 'JT', stars: 3,
+            quote: 'Kapsel zit mooi, maar de toner werd na twee wasbeurten al koperachtig. Ik verwachtte een langere houdbaarheid.',
+            sentiment: 'Technisch Kleuradvies', topic: 'Houdbaarheid Kleurtoner', employee: 'Stylist', safety: 'Gemarkeerd',
+            tone: 'Servicegericht & Uitnodigend',
+            reply: 'Dank voor je eerlijke review, Jessica. We willen dat je kleur perfect blijft. Neem gerust contact op, dan plannen we kosteloos een toner-opfrissing voor je in!',
+            decision: 'Vereist Goedkeuring', decisionSub: 'Kleurbehoud-feedback vastgehouden voor saloneigenaar.', decisionType: 'approval', status: 'In afwachting van saloneigenaar'
+        },
+        'sensitive': {
+            name: 'Ashley Morgan', avatar: 'AM', stars: 1,
+            quote: 'Blondeermiddel 50 minuten op hoofdhuid laten zitten zonder toezicht. Chemische brandwonden en haar valt met plukken uit!',
+            sentiment: 'Ernstig Letsel', topic: 'Chemische Brandwond Hoofdhuid', employee: 'Colorist', safety: 'GEBLOKKEERD',
+            tone: 'Directe Directie-stop',
+            reply: '[Automatisch Publiceren Geblokkeerd] Ernstige letselklacht gedetecteerd. Reactie onderdrukt en melding direct naar de eigenaresse verzonden.',
+            decision: 'Automatisch Publiceren Geblokkeerd', decisionSub: 'Veiligheidsfilter voor chemisch letsel geactiveerd.', decisionType: 'blocked', status: 'Geëscaleerd naar Eigenaresse'
+        }
+    },
+    'medspas': {
+        'positive': {
+            name: 'Elena Rostova', avatar: 'ER', stars: 5,
+            quote: 'Verpleegkundig specialist Sarah legde de microneedling-behandeling stap voor stap uit. Huid straalt enorm na 5 dagen!',
+            sentiment: 'Positief', topic: 'Microneedling & Intake', employee: 'Sarah', safety: 'Veilig',
+            tone: 'Klinisch & Warm',
+            reply: 'Dank voor uw vertrouwen in onze kliniek, Elena! Fijn om te horen dat uw huid straalt na de microneedling bij Sarah.',
+            decision: 'Veilig voor Automatisch Publiceren', decisionSub: 'Standaard behandelingscompliment automatisch goedgekeurd.', decisionType: 'auto', status: 'Automatisch Gepubliceerd'
+        },
+        'negative': {
+            name: 'Maria Santos', avatar: 'MS', stars: 3,
+            quote: 'Behandeling was goed, maar de afspraak liep 35 minuten uit en de receptie maakte een chaotische indruk.',
+            sentiment: 'Planningsvertraging', topic: 'Wachttijd & Receptie', employee: 'Receptie', safety: 'Gemarkeerd',
+            tone: 'Correct & Begripvol',
+            reply: 'Bedankt voor uw feedback, Maria. Onze excuses voor het uitlopen van uw afspraak. We hebben onze agendaplanning aangescherpt om uw tijd te respecteren.',
+            decision: 'Vereist Goedkeuring', decisionSub: 'Kliniekvertraging vastgehouden voor praktijkmanager.', decisionType: 'approval', status: 'In afwachting van praktijkmanager'
+        },
+        'sensitive': {
+            name: 'Danielle Vance', avatar: 'DV', stars: 1,
+            quote: 'Tweedegraads brandblaren en pigmentvlekken na laserbehandeling. Formele klacht wegens medische fout ingediend!',
+            sentiment: 'Ernstige Medische Complicatie', topic: 'Laserwonden & Aansprakelijkheid', employee: 'Lasertherapeut', safety: 'GEBLOKKEERD',
+            tone: 'Medisch-Juridische Blokkade',
+            reply: '[Automatisch Publiceren Geblokkeerd] Medisch incident gedetecteerd. Reactie onderdrukt; melding direct naar Medisch Directeur gestuurd.',
+            decision: 'Automatisch Publiceren Geblokkeerd', decisionSub: 'Medische complicatie activeerde noodblokkade.', decisionType: 'blocked', status: 'Geëscaleerd naar Medisch Directeur'
+        }
+    },
+    'contractors': {
+        'positive': {
+            name: 'Gert Wilson', avatar: 'GW', stars: 5,
+            quote: 'Nieuw dak van 220 m² in twee dagen gelegd. De tuin werd keurig achtergelaten na een magneetronde voor spijkers.',
+            sentiment: 'Positief', topic: 'Dakvervanging & Opruimronde', employee: 'Ploeg', safety: 'Veilig',
+            tone: 'Vakkundig & Direct',
+            reply: 'Hartelijk dank voor de uitstekende recensie, Gert! Onze dakdekkers zijn trots op snel en schoon werk. Dank voor uw aanbeveling!',
+            decision: 'Veilig voor Automatisch Publiceren', decisionSub: 'Opleveringscompliment voldoet aan publicatiecriteria.', decisionType: 'auto', status: 'Automatisch Gepubliceerd'
+        },
+        'negative': {
+            name: 'Lisa Ray', avatar: 'LR', stars: 3,
+            quote: 'Werkzaamheden op tijd klaar, maar de ploeg liet meerdere dakspijkers liggen vlak voor onze garagebanden.',
+            sentiment: 'Werfhygiëne', topic: 'Achtergebleven Spijkers op Oprit', employee: 'Ploeg', safety: 'Gemarkeerd',
+            tone: 'Oplossingsgericht & Zorgvuldig',
+            reply: 'Bedankt voor het melden, Lisa. Onze excuses voor de achtergebleven spijkers. Een voorman komt vandaag direct langs met een magneetrol om uw oprit schoon te maken.',
+            decision: 'Vereist Goedkeuring', decisionSub: 'Veiligheidsschoonmaak vastgehouden voor projectleider.', decisionType: 'approval', status: 'In afwachting van projectleider'
+        },
+        'sensitive': {
+            name: 'Tom Harrison', avatar: 'TH', stars: 1,
+            quote: 'Hoofdwaterleiding doorboord waardoor het afgewerkte souterrain volledig is ondergelopen! Enorme waterschadeclaim!',
+            sentiment: 'Structurele Schade', topic: 'Waterschade & Lekkage', employee: 'Geen', safety: 'GEBLOKKEERD',
+            tone: 'Verzekerings- en Directiestop',
+            reply: '[Automatisch Publiceren Geblokkeerd] Grote waterschadeclaim gedetecteerd. Hoofdaannemer en verzekeringsexpert direct op de hoogte gebracht.',
+            decision: 'Automatisch Publiceren Geblokkeerd', decisionSub: 'Materiële schade activeerde noodblokkade.', decisionType: 'blocked', status: 'Geëscaleerd naar Hoofdaannemer'
+        }
+    }
+};
+
+const HOME_SIM_PRESETS = HOME_SIM_PRESETS_EN;
 
 let currentSimScenario = 'positive';
 
@@ -213,7 +595,13 @@ function selectSimScenario(scen) {
 function runHomepageSimulation() {
     const sel = document.getElementById('homeSimIndustry');
     const ind = sel ? sel.value : 'restaurants';
-    const presets = HOME_SIM_PRESETS[ind] || HOME_SIM_PRESETS['restaurants'];
+    const lang = getSimLang();
+    
+    let presetsPool = HOME_SIM_PRESETS_EN;
+    if (lang === 'es') presetsPool = HOME_SIM_PRESETS_ES;
+    if (lang === 'nl') presetsPool = HOME_SIM_PRESETS_NL;
+
+    const presets = presetsPool[ind] || presetsPool['restaurants'] || HOME_SIM_PRESETS_EN['restaurants'];
     const data = presets[currentSimScenario] || presets['positive'];
 
     // Update DOM safely
@@ -244,11 +632,14 @@ function runHomepageSimulation() {
     if (topic) topic.textContent = data.topic;
     if (employee) {
         employee.textContent = data.employee;
-        employee.style.color = data.employee !== 'None' ? '#10B981' : '#64748B';
+        const isNone = data.employee === 'None' || data.employee === 'Ninguno' || data.employee === 'Geen';
+        employee.style.color = isNone ? '#64748B' : '#10B981';
     }
     if (safety) {
         safety.textContent = data.safety;
-        safety.style.color = data.safety === 'Clear' ? '#10B981' : (data.safety === 'BLOCKED' ? '#EF4444' : '#F59E0B');
+        const isClear = data.safety === 'Clear' || data.safety === 'Despejado' || data.safety === 'Veilig';
+        const isBlocked = data.safety === 'BLOCKED' || data.safety === 'BLOQUEADO' || data.safety === 'GEBLOKKEERD';
+        safety.style.color = isClear ? '#10B981' : (isBlocked ? '#EF4444' : '#F59E0B');
     }
     if (tone) tone.textContent = data.tone;
     if (responseText) responseText.textContent = data.reply;
