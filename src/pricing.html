@@ -24,7 +24,6 @@
 
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <script src="/demo.js" defer></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
 
@@ -369,7 +368,7 @@
 
                     </div>
 
-                    <a href="#" onclick="openPaddleCheckout('starter', event)" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">{{ pricing_start_free_trial_debd }}</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=starter" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">{{ pricing_start_free_trial_debd }}</a>
 
                 </div>
 
@@ -419,7 +418,7 @@
 
                     </div>
 
-                    <a href="#" onclick="openPaddleCheckout('autopilot', event)" class="btn btn-accent" style="width: 100%; text-align: center; justify-content: center;">{{ pricing_start_free_trial_debd }}</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent" style="width: 100%; text-align: center; justify-content: center;">{{ pricing_start_free_trial_debd }}</a>
 
                 </div>
 
@@ -469,7 +468,7 @@
 
                     </div>
 
-                    <a href="#" onclick="openPaddleCheckout('multi_location', event)" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">{{ pricing_start_multi_location_trial_a52d }}</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=multi_location" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">{{ pricing_start_multi_location_trial_a52d }}</a>
 
                 </div>
 
@@ -519,7 +518,7 @@
 
                     </div>
 
-                    <a href="#" onclick="openPaddleCheckout('agency', event)" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">{{ pricing_start_agency_trial_54e9 }}</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=agency" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">{{ pricing_start_agency_trial_54e9 }}</a>
 
                 </div>
 
@@ -879,7 +878,7 @@
 
             <h2 class="mb-6">{{ pricing_ready_to_automate_your_google_76fc }}</h2>
 
-            <a href="#" onclick="openPaddleCheckout('autopilot', event)" class="btn btn-accent" style="padding: 14px 28px; font-size:0.95rem;">{{ pricing_start_free_trial_debd }}</a>
+            <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent" style="padding: 14px 28px; font-size:0.95rem;">{{ pricing_start_free_trial_debd }}</a>
 
         </div>
 
@@ -941,86 +940,34 @@
 
                         <li><a href="mailto:info@replyvera.com">{{ pricing_contact_us_9cfc }}</a></li>
 
-                        <li><div class="lang-selector">
-
-                    <button class="lang-btn" aria-label="Select Language">
-
-                        <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
-
-                    </button>
-
-                    <div class="lang-menu">
-
-                        <a href="#" class="lang-item" onclick="changeLang('en', event)">English</a>
-
-                        <a href="#" class="lang-item" onclick="changeLang('es', event)">Español</a>
-
-                        <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
-
-                    </div>
-
-                </div>
-
-                <a h>{{ pricing_login_99de }}</a></li>
-
-                    </ul>
-
-                </div>
-
-                
-
-                <div class="footer-col">
-
-                    <div class="footer-col-title">{{ pricing_legal_a10a }}</div>
-
-                    <ul class="footer-links">
-
-                        <li><a href="/terms.html">{{ pricing_terms_of_service_3b6c }}</a></li>
-
-                        <li><a href="/privacy.html">{{ pricing_privacy_policy_fa2e }}</a></li>
-
-                        <li><a href="cookie.html">{{ pricing_cookie_policy_26b3 }}</a></li>
-
-                    </ul>
-
-                <div class="footer-col">
-
-                    <div class="footer-col-title">{{ footer_partners_title }}</div>
-
-                    <ul class="footer-links">
-
                         <li>
-
-                            <a href="https://www.lodgevera.com" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;">
-
-                                <img src="/img/lodgevera-logo.svg" alt="Lodgevera" style="height:14px;width:auto;" />
-
-                                <span>Lodgevera.com</span>
-
-                            </a>
-
+                            <div class="lang-selector">
+                                <button class="lang-btn" aria-label="Select Language">
+                                    <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
+                                </button>
+                                <div class="lang-menu">
+                                    <a href="/" class="lang-item" onclick="changeLang('en', event)">English</a>
+                                    <a href="/es/" class="lang-item" onclick="changeLang('es', event)">Español</a>
+                                    <a href="/nl/" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+                                </div>
+                            </div>
                         </li>
-
+                        <li><a href="https://dashboard.replyvera.com/login">{{ pricing_login_99de }}</a></li>
                     </ul>
-
                 </div>
 
+                <div class="footer-col">
+                    <div class="footer-col-title">{{ pricing_legal_a10a }}</div>
+                    <ul class="footer-links">
+                        <li><a href="/terms.html">{{ pricing_terms_of_service_3b6c }}</a></li>
+                        <li><a href="/privacy.html">{{ pricing_privacy_policy_fa2e }}</a></li>
+                        <li><a href="/cookie.html">{{ pricing_cookie_policy_26b3 }}</a></li>
+                    </ul>
+                </div>
             </div>
 
-
-
             <div class="footer-bottom">
-
-                <div>{{ index_2026_replyvera_all_rights_r_c9ec }} &nbsp;&bull;&nbsp; {{ footer_partner_mention }} <a href="https://www.lodgevera.com" target="_blank" rel="noopener noreferrer" style="color:var(--text-secondary);text-decoration:underline;">Lodgevera.com</a></div>
-
-                <div class="social-links">
-
-                    <a href="#"><i data-lucide="twitter" style="width:18px; height:18px;"></i></a>
-
-                    <a href="#"><i data-lucide="linkedin" style="width:18px; height:18px;"></i></a>
-
-                </div>
-
+                <div>{{ index_2026_replyvera_all_rights_r_c9ec }}</div>
             </div>
 
         </div>

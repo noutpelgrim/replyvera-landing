@@ -442,6 +442,18 @@ function keepAsDraftDemo() {
     }
 }
 
+function togglePause() {
+    isPaused = !isPaused;
+    const pauseBtn = document.getElementById('btn-pause');
+    if (pauseBtn) {
+        pauseBtn.textContent = isPaused ? 'Resume' : 'Pause';
+    }
+    if (isPaused) {
+        clearTimeout(demoTimer);
+    }
+}
+
+
 // Explicitly expose functions to window object for iOS Safari compatibility
 window.openDemoModal = openDemoModal;
 window.closeDemoModal = closeDemoModal;

@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { localizeAllHtmlLinks } = require('./lib/router');
+const { replaceAllLangSelectors } = require('./lib/lang_switcher');
 const { articles } = require('./lib/resources_master');
 
 const locales = ['en', 'es', 'nl'];
@@ -160,7 +161,7 @@ function buildResourcesIndex() {
                 <p class="article-cta-desc">${ctaDesc}</p>
 
                 <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-                    <a href="${prefix}/#pricing" class="btn btn-accent btn-lg">${ctaBtnText}</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">${ctaBtnText}</a>
                     <a href="${prefix}/pricing.html" class="btn btn-secondary btn-lg">${ctaBtnPricing}</a>
                 </div>
             </div>
@@ -168,7 +169,13 @@ function buildResourcesIndex() {
     </section>
         `;
 
-        const fullHtml = `${customHeader}\n${pageContent}\n${footer}`;
+        let fullHtml = `${customHeader}\n${pageContent}\n${footer}`;
+        const hubUrls = {
+            en: '/resources/',
+            es: '/es/resources/',
+            nl: '/nl/resources/'
+        };
+        fullHtml = replaceAllLangSelectors(fullHtml, lang, hubUrls);
         fs.writeFileSync(path.join(targetDir, 'index.html'), fullHtml);
 
         if (isDefault) {
@@ -326,14 +333,20 @@ function buildArticles() {
                 <div class="article-cta-title">${ctaTitle}</div>
                 <p class="article-cta-desc">${ctaDesc}</p>
                 <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-                    <a href="${prefix}/#pricing" class="btn btn-accent btn-lg">${ctaBtnText}</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">${ctaBtnText}</a>
                     <a href="${prefix}/pricing.html" class="btn btn-secondary btn-lg">${ctaBtnPricing}</a>
                 </div>
             </div>
         </article>
         `;
 
-            const fullHtml = `${customHeader}\n${pageContent}\n${footer}`;
+            let fullHtml = `${customHeader}\n${pageContent}\n${footer}`;
+            const artUrls = {
+                en: `/resources/${a.slug}/`,
+                es: `/es/resources/${a.slug}/`,
+                nl: `/nl/resources/${a.slug}/`
+            };
+            fullHtml = replaceAllLangSelectors(fullHtml, lang, artUrls);
             fs.writeFileSync(path.join(articleDir, 'index.html'), fullHtml);
             console.log(`✓ Built Article Page [${lang.toUpperCase()}]: ${prefix}/resources/${a.slug}/index.html`);
         });
@@ -342,18 +355,27 @@ function buildArticles() {
 
 // 3. Build sitemap.xml
 function buildSitemap() {
-    const { getLocalizedPath: getIndPath } = require('./lib/industries_master');
+    const { industriesData, getLocalizedPath: getIndPath } = require('./lib/industries_master');
 
     const staticUrls = [
         'https://www.replyvera.com/',
         'https://www.replyvera.com/es/',
         'https://www.replyvera.com/nl/',
+        'https://www.replyvera.com/demo.html',
+        'https://www.replyvera.com/es/demo.html',
+        'https://www.replyvera.com/nl/demo.html',
         'https://www.replyvera.com/pricing.html',
         'https://www.replyvera.com/es/pricing.html',
         'https://www.replyvera.com/nl/pricing.html',
-        'https://www.replyvera.com/privacy.html',
         'https://www.replyvera.com/terms.html',
+        'https://www.replyvera.com/es/terms.html',
+        'https://www.replyvera.com/nl/terms.html',
+        'https://www.replyvera.com/privacy.html',
+        'https://www.replyvera.com/es/privacy.html',
+        'https://www.replyvera.com/nl/privacy.html',
         'https://www.replyvera.com/cookie.html',
+        'https://www.replyvera.com/es/cookie.html',
+        'https://www.replyvera.com/nl/cookie.html',
         'https://www.replyvera.com/resources/',
         'https://www.replyvera.com/es/resources/',
         'https://www.replyvera.com/nl/resources/'
@@ -367,15 +389,11 @@ function buildSitemap() {
         });
     });
 
-    const industrySlugs = [
-        'dentists', 'restaurants', 'car-washes', 'agencies',
-        'pet-care', 'childcare', 'martial-arts', 'tutoring', 'laundromats'
-    ];
     const industryUrls = [];
-    industrySlugs.forEach(s => {
-        industryUrls.push(`https://www.replyvera.com${getIndPath(s, 'en')}`);
-        industryUrls.push(`https://www.replyvera.com${getIndPath(s, 'es')}`);
-        industryUrls.push(`https://www.replyvera.com${getIndPath(s, 'nl')}`);
+    industriesData.forEach(ind => {
+        industryUrls.push(`https://www.replyvera.com${getIndPath(ind.id, 'en')}`);
+        industryUrls.push(`https://www.replyvera.com${getIndPath(ind.id, 'es')}`);
+        industryUrls.push(`https://www.replyvera.com${getIndPath(ind.id, 'nl')}`);
     });
 
     const allUrls = [...new Set([...staticUrls, ...articleUrls, ...industryUrls])];

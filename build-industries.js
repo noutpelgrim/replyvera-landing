@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { localizeAllHtmlLinks } = require('./lib/router');
+const { replaceAllLangSelectors } = require('./lib/lang_switcher');
 const {
     industriesData,
     renderHeaderDropdownHTML,
@@ -50,20 +51,6 @@ function getHeaderAndFooter(lang) {
     patchedH = patchedH.replace(
         /<!-- MOBILE_IND_LIST_START -->[\s\S]*?<!-- MOBILE_IND_LIST_END -->/,
         `<!-- MOBILE_IND_LIST_START -->\n<div class="mobile-industry-list" id="mobile-ind-list">\n${mobileAccordionHtml}\n</div>\n<!-- MOBILE_IND_LIST_END -->`
-    );
-
-    // Update language selector button label (EN -> NL / ES)
-    patchedH = patchedH.replace(/<button class="lang-btn"[^>]*>[\s\S]*?<\/button>/, `
-                    <button class="lang-btn" aria-label="Select Language">
-                        <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> ${targetLang.toUpperCase()}
-                    </button>`);
-
-    // Update mobile language selector active state
-    patchedH = patchedH.replace(/class="mobile-lang-opt active"/g, 'class="mobile-lang-opt"');
-    const langUpper = targetLang.toUpperCase();
-    patchedH = patchedH.replace(
-        new RegExp(`class="mobile-lang-opt"\\s+onclick="changeLang\\('${targetLang}',\\s*event\\)">${langUpper}<\\/a>`),
-        `class="mobile-lang-opt active" onclick="changeLang('${targetLang}', event)">${langUpper}</a>`
     );
 
     patchedH = localizeAllHtmlLinks(patchedH, targetLang);
@@ -210,7 +197,7 @@ function renderPricingSection(isAgency, ind, trans, lang) {
                         <li><i data-lucide="check" style="width:16px;height:16px;color:var(--accent);"></i> ${feat5}</li>
                         <li><i data-lucide="check" style="width:16px;height:16px;color:var(--accent);"></i> ${feat6}</li>
                     </ul>
-                    <a href="#" onclick="openPaddleCheckout('agency', event)" class="btn btn-accent" style="text-align:center;justify-content:center;width:100%;margin-top:28px;">${startAgency}</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=agency" class="btn btn-accent" style="text-align:center;justify-content:center;width:100%;margin-top:28px;">${startAgency}</a>
                 </div>
             </div>
             <div class="text-center" style="margin-top:60px;">
@@ -236,7 +223,7 @@ function renderPricingSection(isAgency, ind, trans, lang) {
         <div class="container">
             <div class="section-header">
                 <h2>${isNl ? 'Eenvoudige Prijzen voor Kleine Bedrijven' : isEs ? 'Precios Simples para Pequeñas Empresas' : 'Simple Pricing for Small Businesses'}</h2>
-                <p>${isNl ? 'Start gratis. Geen creditcard vereist. Annuleer op elk moment.' : isEs ? 'Comienza gratis. Sin tarjeta de crédito. Cancela en cualquier momento.' : 'Start free. No credit card required. Cancel anytime.'}</p>
+                <p>${isNl ? 'Start met een gratis proefperiode van 14 dagen. Annuleer op elk moment.' : isEs ? 'Comienza con una prueba gratuita de 14 días. Cancela en cualquier momento.' : 'Start your 14-day free trial. Cancel anytime.'}</p>
             </div>
             <div class="pricing-grid">
                 <div class="pricing-card">
@@ -249,7 +236,7 @@ function renderPricingSection(isAgency, ind, trans, lang) {
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Tot 30 reacties per maand' : isEs ? 'Hasta 30 respuestas por mes' : 'Up to 30 replies per month'}</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Handmatige goedkeuring voor alle reviews' : isEs ? 'Aprobación manual para todas las reseñas' : 'Manual approval for all reviews'}</li>
                     </ul>
-                    <a href="#" onclick="openPaddleCheckout('starter', event)" class="btn btn-secondary" style="text-align:center;justify-content:center;">${starterBtn}</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=starter" class="btn btn-secondary" style="text-align:center;justify-content:center;">${starterBtn}</a>
                 </div>
                 <div class="pricing-card featured">
                     <div class="pricing-popular">${isNl ? 'Meest Populair' : isEs ? 'Más Popular' : 'Most Popular'}</div>
@@ -262,7 +249,7 @@ function renderPricingSection(isAgency, ind, trans, lang) {
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Onbeperkt aantal reviewreacties*' : isEs ? 'Respuestas ilimitadas*' : 'Unlimited review responses*'}</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Automatisch publiceren van veilige reviews' : isEs ? 'Publicación automática de reseñas seguras' : 'Automatic publishing for safe reviews'}</li>
                     </ul>
-                    <a href="#" onclick="openPaddleCheckout('autopilot', event)" class="btn btn-accent" style="text-align:center;justify-content:center;">${starterBtn}</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent" style="text-align:center;justify-content:center;">${starterBtn}</a>
                 </div>
                 <div class="pricing-card">
                     <div class="pricing-name">${multiTitle}</div>
@@ -273,7 +260,7 @@ function renderPricingSection(isAgency, ind, trans, lang) {
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Drie locaties inbegrepen' : isEs ? 'Tres ubicaciones incluidas' : 'Three locations included'}</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> ${isNl ? 'Centraal dashboard' : isEs ? 'Panel central' : 'Central dashboard'}</li>
                     </ul>
-                    <a href="${isNl ? '/nl/pricing.html' : isEs ? '/es/pricing.html' : '/pricing.html'}" class="btn btn-secondary" style="text-align:center;justify-content:center;">${multiBtn}</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=multi_location" class="btn btn-secondary" style="text-align:center;justify-content:center;">${multiBtn}</a>
                 </div>
             </div>
         </div>
@@ -363,7 +350,7 @@ function renderIndustryPage(ind, lang) {
                     <h1 class="mb-6">${trans.heroHeadline}</h1>
                     <p class="lead mb-8">${trans.heroDescription}</p>
                     <div class="hero-actions">
-                        <a href="#" onclick="openPaddleCheckout(isAgency ? 'agency' : 'autopilot', event)" class="btn btn-accent btn-lg">${ctaStart}</a>
+                        <a href="https://dashboard.replyvera.com/login?signup=true&tier=${isAgency ? 'agency' : 'autopilot'}" class="btn btn-accent btn-lg">${ctaStart}</a>
                         <a href="${isNl ? '/nl/#how-it-works' : isEs ? '/es/#how-it-works' : '/#how-it-works'}" class="btn btn-secondary btn-lg">${ctaHow}</a>
                     </div>
                     <div class="hero-trust">
@@ -533,7 +520,7 @@ function renderIndustryPage(ind, lang) {
                 <h2 class="mb-4">${trans.finalCtaHeadline}</h2>
                 <p class="lead mb-8">${trans.finalCtaDescription}</p>
                 <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
-                    <a href="#" onclick="openPaddleCheckout('autopilot', event)" class="btn btn-accent btn-lg">${isNl ? 'Start Gratis Proefperiode' : isEs ? 'Comenzar Prueba Gratuita' : 'Start Free Trial'}</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=${isAgency ? 'agency' : 'autopilot'}" class="btn btn-accent btn-lg">${isNl ? 'Start Gratis Proefperiode' : isEs ? 'Comenzar Prueba Gratuita' : 'Start Free Trial'}</a>
                     <a href="${isNl ? '/nl/pricing.html' : isEs ? '/es/pricing.html' : '/pricing.html'}" class="btn btn-secondary btn-lg">${isNl ? 'Bekijk Prijzen' : isEs ? 'Ver Precios' : 'View Pricing'}</a>
                 </div>
             </div>
@@ -639,6 +626,13 @@ industriesData.forEach(ind => {
         header = header.replace(`href="${localizedPath}" class="mobile-industry-item"`, `href="${localizedPath}" class="mobile-industry-item active"`);
 
         let fullPage = localizeAllHtmlLinks(header + '\n' + bodyContent + '\n' + hf.footer, lang);
+
+        const langUrls = {
+            en: getLocalizedPath(ind.id, 'en'),
+            es: getLocalizedPath(ind.id, 'es'),
+            nl: getLocalizedPath(ind.id, 'nl')
+        };
+        fullPage = replaceAllLangSelectors(fullPage, lang, langUrls);
 
         // Save primary localized industry detail page
         const primaryDir = lang === 'en' ?

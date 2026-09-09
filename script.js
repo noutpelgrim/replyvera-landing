@@ -6,6 +6,20 @@ window.changeLang = function(lang, event) {
     } catch (e) {}
 
     var industrySlugMap = {
+        'hotels': { en: 'hotels', nl: 'hotels', es: 'hoteles' },
+        'hoteles': { en: 'hotels', nl: 'hotels', es: 'hoteles' },
+
+        'auto-repair': { en: 'auto-repair', nl: 'autogarages', es: 'talleres-mecanicos' },
+        'autogarages': { en: 'auto-repair', nl: 'autogarages', es: 'talleres-mecanicos' },
+        'talleres-mecanicos': { en: 'auto-repair', nl: 'autogarages', es: 'talleres-mecanicos' },
+
+        'salons-spas': { en: 'salons-spas', nl: 'salons-spas', es: 'salones-spas' },
+        'salones-spas': { en: 'salons-spas', nl: 'salons-spas', es: 'salones-spas' },
+
+        'contractors': { en: 'contractors', nl: 'aannemers-installateurs', es: 'contratistas-reformas' },
+        'aannemers-installateurs': { en: 'contractors', nl: 'aannemers-installateurs', es: 'contratistas-reformas' },
+        'contratistas-reformas': { en: 'contractors', nl: 'aannemers-installateurs', es: 'contratistas-reformas' },
+
         'dentists': { en: 'dentists', nl: 'tandartsen', es: 'dentistas' },
         'tandartsen': { en: 'dentists', nl: 'tandartsen', es: 'dentistas' },
         'dentistas': { en: 'dentists', nl: 'tandartsen', es: 'dentistas' },

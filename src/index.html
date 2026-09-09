@@ -24,7 +24,7 @@
 
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <script src="/demo.js?v=3" defer></script>
+    <script src="/js/simulator.js" defer></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
 
@@ -169,7 +169,7 @@
 
                 <a href="https://dashboard.replyvera.com/login" class="nav-login">{{ index_log_in_3bbb }}</a>
 
-                <a href="#pricing" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">{{ index_start_free_trial_debd }}</a>
+                <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">{{ index_start_free_trial_debd }}</a>
 
                 <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
 
@@ -294,19 +294,13 @@
 
 
                     <div class="hero-actions">
-
-                        <a href="#" onclick="openPaddleCheckout('autopilot', event)" class="btn btn-accent btn-lg">{{ index_start_free_trial_debd }}</a>
-
-                        <a href="#how-it-works" class="btn btn-secondary btn-lg">{{ index_see_how_it_works_590a }}</a>
-
+                        <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">{{ index_start_free_trial_debd }}</a>
+                        <a href="demo.html" class="btn btn-secondary btn-lg">Try the Live Demo</a>
                     </div>
 
                     <div class="hero-trust">
-
-                        <i data-lucide="shield-check" style="width:13px;height:13px;color:var(--accent);"></i>
-
-                        {{ index_built_for_google_reviews_cance_4c12 }}
-
+                        <i data-lucide="shield-check" style="width:14px;height:14px;color:var(--accent);"></i>
+                        Connects to Google Business Profile &bull; 14-Day Free Trial
                     </div>
 
                 </div>
@@ -431,6 +425,142 @@
 
     </header>
 
+    <!-- Interactive Workflow Simulator -->
+    <section class="section section-light" id="demo-preview" style="padding: 56px 0 64px;">
+        <div class="container">
+            <div class="section-header" style="max-width: 800px; margin: 0 auto 36px; text-align: center;">
+                <div class="eyebrow" style="justify-content: center; margin-bottom: 10px;">
+                    <i data-lucide="sliders" style="width: 13px; height: 13px; color: var(--primary);"></i>
+                    Interactive Workflow Simulation
+                </div>
+                <h2>Test How ReplyVera Evaluates Real Reviews Before You Connect</h2>
+                <p>Select your industry and rating below to see how ReplyVera detects sentiment, enforces safety rules, and generates responses in real time. <em>(Interactive simulation &bull; no reviews are posted to Google).</em></p>
+            </div>
+
+            <div class="simulator-card" style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; box-shadow: 0 12px 36px rgba(0,0,0,0.05); overflow: hidden;">
+                <div style="display: grid; grid-template-columns: 1fr 1.6fr; min-height: 480px;">
+                    <!-- Controls Left -->
+                    <div style="background: #F8FAFC; padding: 28px; border-right: 1px solid #E2E8F0; display: flex; flex-direction: column; gap: 20px;">
+                        <div>
+                            <label for="homeSimIndustry" style="display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #64748B; margin-bottom: 8px;">
+                                1. Select Business Industry
+                            </label>
+                            <select id="homeSimIndustry" onchange="runHomepageSimulation()" style="width: 100%; padding: 10px 14px; background: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 8px; font-size: 0.92rem; color: #0F172A; font-family: inherit; cursor: pointer;">
+                                <option value="hotels">Hotels &amp; Hospitality</option>
+                                <option value="restaurants" selected>Restaurants &amp; Dining</option>
+                                <option value="auto-repair">Auto Repair &amp; Mechanics</option>
+                                <option value="dentists">Dentists &amp; Medical Clinics</option>
+                                <option value="salons-spas">Salons &amp; Spas</option>
+                                <option value="medspas">Medical Spas &amp; Aesthetics</option>
+                                <option value="contractors">Home Services &amp; Contractors</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <span style="display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #64748B; margin-bottom: 8px;">
+                                2. Select Review Scenario
+                            </span>
+                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                <button type="button" class="sim-scenario-btn active" id="sim-btn-positive" onclick="selectSimScenario('positive')" style="padding: 12px 14px; background: #FFFFFF; border: 1.5px solid var(--primary); border-radius: 8px; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.2s;">
+                                    <div>
+                                        <div style="font-weight: 700; font-size: 0.88rem; color: #0F172A;">5★ Routine Praise</div>
+                                        <div style="font-size: 0.75rem; color: #10B981; font-weight: 600;">Safe to Auto-Publish</div>
+                                    </div>
+                                    <span style="color: #F59E0B; font-size: 0.85rem;">★★★★★</span>
+                                </button>
+                                <button type="button" class="sim-scenario-btn" id="sim-btn-negative" onclick="selectSimScenario('negative')" style="padding: 12px 14px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.2s;">
+                                    <div>
+                                        <div style="font-weight: 700; font-size: 0.88rem; color: #0F172A;">3★ Constructive / Delay</div>
+                                        <div style="font-size: 0.75rem; color: #F59E0B; font-weight: 600;">Needs Approval</div>
+                                    </div>
+                                    <span style="color: #F59E0B; font-size: 0.85rem;">★★★☆☆</span>
+                                </button>
+                                <button type="button" class="sim-scenario-btn" id="sim-btn-sensitive" onclick="selectSimScenario('sensitive')" style="padding: 12px 14px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.2s;">
+                                    <div>
+                                        <div style="font-weight: 700; font-size: 0.88rem; color: #0F172A;">1★ Sensitive Incident</div>
+                                        <div style="font-size: 0.75rem; color: #EF4444; font-weight: 600;">Auto-Publishing Blocked</div>
+                                    </div>
+                                    <span style="color: #F59E0B; font-size: 0.85rem;">★☆☆☆☆</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: auto; padding-top: 14px; border-top: 1px solid #E2E8F0; font-size: 0.78rem; color: #64748B; line-height: 1.5;">
+                            <i data-lucide="shield-check" style="width: 14px; height: 14px; vertical-align: middle; color: var(--accent); margin-right: 4px;"></i>
+                            Strict Safety Guardrails: Routine 5-star praise is published within minutes. Negative feedback or liability keywords are held for your approval.
+                        </div>
+                    </div>
+
+                    <!-- Sandbox Display Right -->
+                    <div style="padding: 28px; display: flex; flex-direction: column; gap: 18px; background: #FFFFFF;">
+                        <!-- Review Card -->
+                        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 16px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <span style="width: 28px; height: 28px; border-radius: 50%; background: #E2E8F0; color: #0F172A; font-weight: 700; font-size: 0.75rem; display: flex; align-items: center; justify-content: center;" id="simReviewerAvatar">SJ</span>
+                                    <span style="font-weight: 700; font-size: 0.9rem; color: #0F172A;" id="simReviewerName">Sarah Jenkins</span>
+                                </div>
+                                <div style="color: #F59E0B; font-size: 0.85rem;" id="simDisplayStars">★★★★★</div>
+                            </div>
+                            <p style="font-size: 0.9rem; color: #475569; margin: 0; line-height: 1.5;" id="simReviewQuote">"The lasagna was incredible and our server Alex was super attentive. Best Italian dinner in town!"</p>
+                        </div>
+
+                        <!-- Analysis Row -->
+                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;">
+                            <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px;">
+                                <div style="font-size: 0.7rem; color: #64748B; font-weight: 600; text-transform: uppercase;">Sentiment</div>
+                                <div style="font-size: 0.85rem; font-weight: 700; color: #0F172A;" id="simSentiment">Positive</div>
+                            </div>
+                            <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px;">
+                                <div style="font-size: 0.7rem; color: #64748B; font-weight: 600; text-transform: uppercase;">Topic</div>
+                                <div style="font-size: 0.85rem; font-weight: 700; color: #0F172A;" id="simTopic">Food &amp; Staff</div>
+                            </div>
+                            <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px;">
+                                <div style="font-size: 0.7rem; color: #64748B; font-weight: 600; text-transform: uppercase;">Staff Mention</div>
+                                <div style="font-size: 0.85rem; font-weight: 700; color: #10B981;" id="simEmployee">Alex</div>
+                            </div>
+                            <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px;">
+                                <div style="font-size: 0.7rem; color: #64748B; font-weight: 600; text-transform: uppercase;">Safety Filter</div>
+                                <div style="font-size: 0.85rem; font-weight: 700; color: #10B981;" id="simSafety">Clear</div>
+                            </div>
+                        </div>
+
+                        <!-- Response Draft Box -->
+                        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 16px; flex: 1;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                                <div style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #64748B;">ReplyVera Generated Response</div>
+                                <span style="font-size: 0.75rem; color: #64748B;" id="simTone">Warm &amp; Welcoming</span>
+                            </div>
+                            <p style="font-size: 0.9rem; color: #0F172A; line-height: 1.55; margin: 0;" id="simResponseText">
+                                Thank you so much for the kind words, Sarah! We’re thrilled you loved the lasagna and enjoyed Alex’s service. We’ll pass along your praise to him!
+                            </p>
+                        </div>
+
+                        <!-- Decision & Outcome Bar -->
+                        <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-radius: 8px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25);" id="simDecisionBar">
+                            <div>
+                                <span class="review-badge badge-auto" id="simDecisionBadge">Safe to Auto-Publish</span>
+                                <span style="font-size: 0.82rem; color: #475569; margin-left: 8px;" id="simDecisionSub">Routine praise approved under your rules.</span>
+                            </div>
+                            <span style="font-size: 0.78rem; font-weight: 700; color: #10B981;" id="simPublishStatus">Auto-Published</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Simulator Action Buttons -->
+            <div style="display: flex; justify-content: center; align-items: center; gap: 14px; margin-top: 28px; flex-wrap: wrap;">
+                <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">
+                    {{ index_start_free_trial_debd }}
+                </a>
+                <a href="demo.html" class="btn btn-secondary btn-lg">
+                    Open Full Standalone Sandbox
+                </a>
+            </div>
+        </div>
+    </section>
+
+
 
 
     <!-- 3. Three Core Benefits -->
@@ -483,40 +613,7 @@
 
     </section>
 
-    <!-- 3.1 Partner Section -->
-    <section class="partner-section" id="partners">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 24px;">
-                <div class="eyebrow" style="justify-content: center;">
-                    <i data-lucide="handshake" style="width:14px;height:14px;color:#267C78;"></i>
-                    {{ index_partner_eyebrow }}
-                </div>
-                <h2 style="font-size:1.75rem; font-weight:700; color:var(--text-primary); margin-top:6px;">{{ index_partner_heading }}</h2>
-            </div>
-            <div class="partner-card">
-                <div class="partner-logo-wrapper">
-                    <a href="https://www.lodgevera.com" target="_blank" rel="noopener noreferrer">
-                        <img src="/img/lodgevera-logo.svg" alt="Lodgevera Logo" class="partner-logo-img">
-                    </a>
-                </div>
-                <div class="partner-info" style="flex:1; min-width:240px;">
-                    <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px; flex-wrap:wrap;">
-                        <span style="font-size:1.15rem; font-weight:700; color:var(--text-primary);">Lodgevera.com</span>
-                        <span class="partner-badge">{{ index_official_partner_badge }}</span>
-                    </div>
-                    <p style="font-size:0.92rem; color:var(--text-secondary); line-height:1.5; margin:0;">
-                        {{ index_lodgevera_partner_desc }}
-                    </p>
-                </div>
-                <div>
-                    <a href="https://www.lodgevera.com" target="_blank" rel="noopener noreferrer" class="partner-btn">
-                        <span>{{ index_visit_lodgevera }}</span>
-                        <i data-lucide="external-link" style="width:14px;height:14px;"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
 
 
@@ -641,148 +738,76 @@
 
             <div class="industry-grid">
 
-                <a href="/industries/restaurants" class="industry-card">
-
-                    <div class="industry-card-icon restaurant-icon"><i data-lucide="utensils" style="width:16px;height:16px;"></i></div>
-
+                <a href="/industries/hotels" class="industry-card">
+                    <div class="industry-card-icon hotel-icon"><i data-lucide="hotel" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-
-                        <div class="industry-card-name">{{ index_restaurants_386c }}</div>
-
-                        <div class="dropdown-desc">Automated replies with food-safety and allergy escalation.</div>
-
+                        <div class="industry-card-name">Hotels &amp; Hospitality</div>
+                        <div class="dropdown-desc">Prompt guest replies with safety filters for hygiene and booking issues.</div>
                     </div>
-
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
+                </a>
 
+                <a href="/industries/restaurants" class="industry-card">
+                    <div class="industry-card-icon restaurant-icon"><i data-lucide="utensils" style="width:16px;height:16px;"></i></div>
+                    <div class="industry-card-body">
+                        <div class="industry-card-name">{{ index_restaurants_386c }}</div>
+                        <div class="dropdown-desc">Automated replies with food-safety and allergy escalation.</div>
+                    </div>
+                    <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
+                </a>
+
+                <a href="/industries/auto-repair" class="industry-card">
+                    <div class="industry-card-icon autorepair-icon"><i data-lucide="wrench" style="width:16px;height:16px;"></i></div>
+                    <div class="industry-card-body">
+                        <div class="industry-card-name">Auto Repair &amp; Mechanics</div>
+                        <div class="dropdown-desc">Automated replies for mechanic shops with mechanical safety escalation.</div>
+                    </div>
+                    <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
 
                 <a href="/industries/dentists" class="industry-card">
-
                     <div class="industry-card-icon dentist-icon"><i data-lucide="activity" style="width:16px;height:16px;"></i></div>
-
                     <div class="industry-card-body">
-
                         <div class="industry-card-name">Dentists &amp; Clinics</div>
-
                         <div class="dropdown-desc">Privacy-conscious replies for patient reviews.</div>
-
                     </div>
-
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
-
                 </a>
 
-                <a href="/industries/agencies" class="industry-card">
-
-                    <div class="industry-card-icon agency-icon"><i data-lucide="briefcase" style="width:16px;height:16px;"></i></div>
-
+                <a href="/industries/salons-spas" class="industry-card">
+                    <div class="industry-card-icon salon-icon"><i data-lucide="scissors" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-
-                        <div class="industry-card-name">{{ index_marketing_agencies_9220 }}</div>
-
-                        <div class="dropdown-desc">Manage Google review replies for every client from one dashboard.</div>
-
+                        <div class="industry-card-name">Salons &amp; Spas</div>
+                        <div class="dropdown-desc">Personalized replies for stylists with allergy and chemical burn safeguards.</div>
                     </div>
-
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
-
                 </a>
 
-                <a href="/industries/martial-arts" class="industry-card">
-
-                    <div class="industry-card-icon martial-arts-icon"><i data-lucide="shield" style="width:16px;height:16px;"></i></div>
-
+                <a href="/industries/contractors" class="industry-card">
+                    <div class="industry-card-icon contractor-icon"><i data-lucide="hammer" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-
-                        <div class="industry-card-name">{{ index_martial_arts_schools_7e32 }}</div>
-
-                        <div class="dropdown-desc">Parent-friendly replies with safety controls.</div>
-
+                        <div class="industry-card-name">Home Services &amp; Contractors</div>
+                        <div class="dropdown-desc">Automated replies for trades with water damage and code violation filters.</div>
                     </div>
-
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
-
-                </a>
-
-                <a href="/industries/childcare" class="industry-card">
-
-                    <div class="industry-card-icon childcare-icon"><i data-lucide="heart" style="width:16px;height:16px;"></i></div>
-
-                    <div class="industry-card-body">
-
-                        <div class="industry-card-name">Childcare &amp; Preschool</div>
-
-                        <div class="dropdown-desc">Safety-aware responses for parent feedback.</div>
-
-                    </div>
-
-                    <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
-
-                </a>
-
-                <a href="/industries/tutoring" class="industry-card">
-
-                    <div class="industry-card-icon tutoring-icon"><i data-lucide="book-open" style="width:16px;height:16px;"></i></div>
-
-                    <div class="industry-card-body">
-
-                        <div class="industry-card-name">{{ index_tutoring_centers_9ad5 }}</div>
-
-                        <div class="dropdown-desc">Professional replies for parent and student reviews.</div>
-
-                    </div>
-
-                    <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
-
-                </a>
-
-                <a href="/industries/pet-care" class="industry-card">
-
-                    <div class="industry-card-icon petcare-icon"><i data-lucide="dog" style="width:16px;height:16px;"></i></div>
-
-                    <div class="industry-card-body">
-
-                        <div class="industry-card-name">{{ index_pet_care_ef83 }}</div>
-
-                        <div class="dropdown-desc">Warm replies with animal-safety escalation.</div>
-
-                    </div>
-
-                    <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
-
                 </a>
 
                 <a href="/industries/car-washes" class="industry-card">
-
                     <div class="industry-card-icon carwash-icon"><i data-lucide="car" style="width:16px;height:16px;"></i></div>
-
                     <div class="industry-card-body">
-
                         <div class="industry-card-name">{{ index_car_wash_operators_0281 }}</div>
-
-                        <div class="industry-card-desc">{{ index_vehicle_damage_and_billing_esc_5799 }}</div>
-
+                        <div class="dropdown-desc">Track damage, billing, and pass complaints.</div>
                     </div>
-
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
-
                 </a>
 
-                <a href="/industries/laundromats" class="industry-card">
-
-                    <div class="industry-card-icon laundromat-icon"><i data-lucide="wind" style="width:16px;height:16px;"></i></div>
-
+                <a href="/industries/agencies" class="industry-card">
+                    <div class="industry-card-icon agency-icon"><i data-lucide="briefcase" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-
-                        <div class="industry-card-name">{{ index_laundromats_caf3 }}</div>
-
-                        <div class="dropdown-desc">Monitor cleanliness, equipment, and refunds.</div>
-
+                        <div class="industry-card-name">{{ index_marketing_agencies_9220 }}</div>
+                        <div class="dropdown-desc">Manage Google review replies for every client from one dashboard.</div>
                     </div>
-
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
-
                 </a>
 
             </div>
@@ -1017,98 +1042,82 @@
 
 
 
-    <!-- Testimonials Section -->
-
-    <section class="section section-light" id="testimonials">
-
-        <div class="container">
-
-            <div class="section-header">
-
-                <h2>{{ index_what_business_owners_say_6be4 }}</h2>
-
-                <p>{{ index_see_how_small_businesses_use_r_c1f3 }}</p>
-
+        <!-- 7. Comparison: ReplyVera vs Manual ChatGPT vs Fully Manual -->
+    <section class="section section-light" id="comparison">
+        <div class="container" style="max-width:1040px;">
+            <div class="section-header" style="text-align:center;margin-bottom:32px;">
+                <div class="eyebrow" style="justify-content:center;margin-bottom:12px;">
+                    <i data-lucide="layers" style="width:14px;height:14px;color:var(--accent);"></i>
+                    Direct Automation vs. Manual Tooling
+                </div>
+                <h2>Why Not Just Copy and Paste into ChatGPT?</h2>
+                <p style="font-size:1.05rem;font-weight:600;color:var(--text-primary);max-width:700px;margin:0 auto 8px;">ChatGPT can help write a reply. ReplyVera manages the ongoing review workflow.</p>
+                <p style="font-size:0.92rem;color:var(--text-secondary);max-width:740px;margin:0 auto;">Drafting text is only a fraction of review management. The real challenge is monitoring Google daily, copying reviews back and forth, enforcing safety rules, and never letting negative feedback slip through unchecked.</p>
             </div>
 
-            <div class="benefits-grid">
-
-                <div class="benefit-card">
-
-                    <div style="display:flex; gap:2px; margin-bottom:12px;">
-
-                        <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:14px;height:14px;"></i>
-
-                        <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:14px;height:14px;"></i>
-
-                        <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:14px;height:14px;"></i>
-
-                        <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:14px;height:14px;"></i>
-
-                        <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:14px;height:14px;"></i>
-
-                    </div>
-
-                    <p class="benefit-text" style="font-style:italic; margin-bottom:16px;">{{ index__as_a_dentist_patient_privacy_e361 }}</p>
-
-                    <div style="font-weight:700; font-size:0.9rem; color:var(--text-primary);">{{ index_dr_amit_patel_5b04 }}</div>
-
-                    <div style="font-size:0.78rem; color:var(--text-muted);">{{ index_patel_dental_group_cfff }}</div>
-
-                </div>
-
-                <div class="benefit-card">
-
-                    <div style="display:flex; gap:2px; margin-bottom:12px;">
-
-                        <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:14px;height:14px;"></i>
-
-                        <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:14px;height:14px;"></i>
-
-                        <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:14px;height:14px;"></i>
-
-                        <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:14px;height:14px;"></i>
-
-                        <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:14px;height:14px;"></i>
-
-                    </div>
-
-                    <p class="benefit-text" style="font-style:italic; margin-bottom:16px;">{{ index__our_managers_spent_hours_ever_80c4 }}</p>
-
-                    <div style="font-weight:700; font-size:0.9rem; color:var(--text-primary);">{{ index_elena_rostova_3200 }}</div>
-
-                    <div style="font-size:0.78rem; color:var(--text-muted);">{{ index_the_bistro_group_00e2 }}</div>
-
-                </div>
-
-                <div class="benefit-card">
-
-                    <div style="display:flex; gap:2px; margin-bottom:12px;">
-
-                        <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:14px;height:14px;"></i>
-
-                        <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:14px;height:14px;"></i>
-
-                        <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:14px;height:14px;"></i>
-
-                        <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:14px;height:14px;"></i>
-
-                        <i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:14px;height:14px;"></i>
-
-                    </div>
-
-                    <p class="benefit-text" style="font-style:italic; margin-bottom:16px;">{{ index__with_3_locations_keeping_up_w_3ef2 }}</p>
-
-                    <div style="font-weight:700; font-size:0.9rem; color:var(--text-primary);">{{ index_marcus_vance_bba2 }}</div>
-
-                    <div style="font-size:0.78rem; color:var(--text-muted);">{{ index_vance_auto_wash_2490 }}</div>
-
-                </div>
-
+            <div class="comparison-table-wrapper" style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,0.04);overflow-x:auto;">
+                <table style="width:100%;border-collapse:collapse;text-align:left;font-size:0.88rem;min-width:680px;">
+                    <thead>
+                        <tr style="background:#F8FAFC;border-bottom:1px solid #E2E8F0;">
+                            <th style="padding:16px 20px;font-weight:700;color:#0F172A;width:28%;">Review Workflow Feature</th>
+                            <th style="padding:16px 20px;font-weight:700;color:#64748B;width:24%;">Fully Manual Replies</th>
+                            <th style="padding:16px 20px;font-weight:700;color:#64748B;width:24%;">ChatGPT (Manual Copy-Paste)</th>
+                            <th style="padding:16px 20px;font-weight:700;color:#1A73E8;width:24%;background:rgba(26,115,232,0.04);">ReplyVera Autopilot</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom:1px solid #E2E8F0;">
+                            <td style="padding:14px 20px;font-weight:600;color:#0F172A;">Google Business Profile Connection</td>
+                            <td style="padding:14px 20px;color:#64748B;">Manual login to Google required</td>
+                            <td style="padding:14px 20px;color:#64748B;">No connection (isolated chat window)</td>
+                            <td style="padding:14px 20px;color:#0F172A;font-weight:600;background:rgba(26,115,232,0.04);"><i data-lucide="check" style="width:14px;height:14px;color:#10B981;vertical-align:middle;margin-right:6px;"></i>Direct Google Business Profile sync</td>
+                        </tr>
+                        <tr style="border-bottom:1px solid #E2E8F0;">
+                            <td style="padding:14px 20px;font-weight:600;color:#0F172A;">Monitoring for New Reviews</td>
+                            <td style="padding:14px 20px;color:#64748B;">Requires daily manual checks</td>
+                            <td style="padding:14px 20px;color:#64748B;">None (you must notice reviews first)</td>
+                            <td style="padding:14px 20px;color:#0F172A;font-weight:600;background:rgba(26,115,232,0.04);"><i data-lucide="check" style="width:14px;height:14px;color:#10B981;vertical-align:middle;margin-right:6px;"></i>24/7 continuous background check</td>
+                        </tr>
+                        <tr style="border-bottom:1px solid #E2E8F0;">
+                            <td style="padding:14px 20px;font-weight:600;color:#0F172A;">Auto-Publish Routine Positive Reviews</td>
+                            <td style="padding:14px 20px;color:#64748B;">No (must write each reply)</td>
+                            <td style="padding:14px 20px;color:#64748B;">No (must generate &amp; paste each)</td>
+                            <td style="padding:14px 20px;color:#0F172A;font-weight:600;background:rgba(26,115,232,0.04);"><i data-lucide="check" style="width:14px;height:14px;color:#10B981;vertical-align:middle;margin-right:6px;"></i>Yes (eligible praise auto-published)</td>
+                        </tr>
+                        <tr style="border-bottom:1px solid #E2E8F0;">
+                            <td style="padding:14px 20px;font-weight:600;color:#0F172A;">Sensitive-Review Detection</td>
+                            <td style="padding:14px 20px;color:#64748B;">Dependent on staff judgment</td>
+                            <td style="padding:14px 20px;color:#64748B;">Only if manually prompted per review</td>
+                            <td style="padding:14px 20px;color:#0F172A;font-weight:600;background:rgba(26,115,232,0.04);"><i data-lucide="check" style="width:14px;height:14px;color:#10B981;vertical-align:middle;margin-right:6px;"></i>Automatic risk &amp; keyword flags</td>
+                        </tr>
+                        <tr style="border-bottom:1px solid #E2E8F0;">
+                            <td style="padding:14px 20px;font-weight:600;color:#0F172A;">Human Approval Workflow</td>
+                            <td style="padding:14px 20px;color:#64748B;">Ad-hoc / unmanaged</td>
+                            <td style="padding:14px 20px;color:#64748B;">Manual review in chat interface</td>
+                            <td style="padding:14px 20px;color:#0F172A;font-weight:600;background:rgba(26,115,232,0.04);"><i data-lucide="check" style="width:14px;height:14px;color:#10B981;vertical-align:middle;margin-right:6px;"></i>1-click approval for negative reviews</td>
+                        </tr>
+                        <tr style="border-bottom:1px solid #E2E8F0;">
+                            <td style="padding:14px 20px;font-weight:600;color:#0F172A;">Brand-Voice Consistency</td>
+                            <td style="padding:14px 20px;color:#64748B;">Varies by whoever responds</td>
+                            <td style="padding:14px 20px;color:#64748B;">Must re-prompt instructions each time</td>
+                            <td style="padding:14px 20px;color:#0F172A;font-weight:600;background:rgba(26,115,232,0.04);"><i data-lucide="check" style="width:14px;height:14px;color:#10B981;vertical-align:middle;margin-right:6px;"></i>Persistent business tone settings</td>
+                        </tr>
+                        <tr style="border-bottom:1px solid #E2E8F0;">
+                            <td style="padding:14px 20px;font-weight:600;color:#0F172A;">Manual Copying &amp; Pasting</td>
+                            <td style="padding:14px 20px;color:#DC2626;font-weight:600;">Full typing required</td>
+                            <td style="padding:14px 20px;color:#DC2626;font-weight:600;">Required for every single review</td>
+                            <td style="padding:14px 20px;color:#10B981;font-weight:700;background:rgba(26,115,232,0.04);"><i data-lucide="check" style="width:14px;height:14px;color:#10B981;vertical-align:middle;margin-right:6px;"></i>Zero copying and pasting</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:14px 20px;font-weight:600;color:#0F172A;">Continuous 24/7 Operation</td>
+                            <td style="padding:14px 20px;color:#64748B;">Stops when staff is busy or away</td>
+                            <td style="padding:14px 20px;color:#64748B;">Stops when owner is away</td>
+                            <td style="padding:14px 20px;color:#10B981;font-weight:700;background:rgba(26,115,232,0.04);"><i data-lucide="check" style="width:14px;height:14px;color:#10B981;vertical-align:middle;margin-right:6px;"></i>Operates continuously in background</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-
         </div>
-
     </section>
 
 
@@ -1129,109 +1138,73 @@
 
             <div class="pricing-grid">
 
-
-
                 <!-- {{ index_starter_ee60 }} -->
-
                 <div class="pricing-card">
-
                     <div class="pricing-name">Starter</div>
-
                     <div class="pricing-price">$29</div>
-
                     <div class="pricing-period">{{ index_per_month_8f28 }}</div>
-
                     <p class="pricing-tagline">{{ index_you_approve_every_reply_before_1b35 }}</p>
-
                     <ul class="pricing-features">
-
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> {{ index_one_location_2b83 }}</li>
-
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> {{ index_up_to_30_replies_per_month_53a8 }}</li>
-
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> {{ index_manual_approval_for_all_review_55e2 }}</li>
-
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> {{ index_custom_tone_a5d4 }}</li>
-
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> {{ index_english_and_spanish_dd48 }}</li>
-
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> {{ index_negative_review_alerts_5238 }}</li>
-
                     </ul>
-
-                    <a href="#" onclick="openPaddleCheckout('starter', event)" class="btn btn-secondary" style="text-align:center;justify-content:center;">{{ index_start_free_trial_debd }}</a>
-
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=starter" class="btn btn-secondary" style="text-align:center;justify-content:center;margin-top:auto;">{{ index_start_free_trial_debd }}</a>
                 </div>
-
-
 
                 <!-- {{ index_autopilot_6ca1 }} -->
-
                 <div class="pricing-card featured">
-
                     <div class="pricing-popular">{{ index_most_popular_425e }}</div>
-
                     <div class="pricing-name">Autopilot</div>
-
                     <div class="pricing-price">{{ index__39_338f }}</div>
-
                     <div class="pricing-period">{{ index_per_month_8f28 }}</div>
-
                     <p class="pricing-tagline">{{ index_safe_replies_publish_automatic_65af }}</p>
-
                     <ul class="pricing-features">
-
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> {{ index_one_location_2b83 }}</li>
-
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> {{ index_unlimited_review_responses_ee81 }}</li>
-
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> {{ index_automatic_publishing_for_safe_acd9 }}</li>
-
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> {{ index_sensitive_review_detection_198e }}</li>
-
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> {{ index_custom_brand_voice_3dbd }}</li>
-
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> {{ index_review_history_8827 }}</li>
-
                     </ul>
-
-                    <a href="#" onclick="openPaddleCheckout('autopilot', event)" class="btn btn-accent" style="text-align:center;justify-content:center;">{{ index_start_free_trial_debd }}</a>
-
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent" style="text-align:center;justify-content:center;margin-top:auto;">{{ index_start_free_trial_debd }}</a>
                 </div>
-
-
 
                 <!-- {{ index_multi_location_627d }} -->
-
                 <div class="pricing-card">
-
                     <div class="pricing-name">Multi-Location</div>
-
                     <div class="pricing-price" style="font-size:1.85rem;">{{ index_from_79_8283 }}</div>
-
                     <div class="pricing-period">{{ index_per_month_8f28 }}</div>
-
                     <p class="pricing-tagline">{{ index_manage_all_your_locations_from_37a1 }}</p>
-
                     <ul class="pricing-features">
-
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> {{ index_three_locations_included_6326 }}</li>
-
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> {{ index_central_dashboard_c0f6 }}</li>
-
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> {{ index_location_specific_rules_107e }}</li>
-
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> {{ index_team_access_ee4e }}</li>
-
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> {{ index_additional_locations_available_61fb }}</li>
-
                     </ul>
-
-                    <a href="pricing.html" class="btn btn-secondary" style="text-align:center;justify-content:center;">{{ index_start_multi_location_trial_a52d }}</a>
-
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=multi_location" class="btn btn-secondary" style="text-align:center;justify-content:center;margin-top:auto;">{{ index_start_multi_location_trial_a52d }}</a>
                 </div>
 
-
+                <!-- {{ pricing_agency_75ec }} -->
+                <div class="pricing-card">
+                    <div class="pricing-name">{{ pricing_agency_75ec }}</div>
+                    <div class="pricing-price" style="font-size:1.85rem;"><span style="font-size:1.2rem;font-weight:600;margin-right:4px;">{{ pricing_from_5da6 }}</span>$149</div>
+                    <div class="pricing-period">{{ index_per_month_8f28 }}</div>
+                    <p class="pricing-tagline">{{ pricing_for_agencies_managing_google_r_7928 }}</p>
+                    <ul class="pricing-features">
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> {{ pricing_10_client_locations_included_764d }}</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> {{ pricing_multi_client_dashboard_22cf }}</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> {{ pricing_separate_client_brand_voices_7aae }}</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> {{ pricing_client_approval_access_61b3 }}</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> {{ pricing_team_access_ee4e }}</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> {{ pricing_agency_reporting_4801 }}</li>
+                    </ul>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=agency" class="btn btn-secondary" style="text-align:center;justify-content:center;margin-top:auto;">{{ pricing_start_agency_trial_54e9 }}</a>
+                </div>
 
             </div>
 
@@ -1371,7 +1344,7 @@
 
                 <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
 
-                    <a href="#" onclick="openPaddleCheckout('autopilot', event)" class="btn btn-accent btn-lg">{{ index_start_free_trial_debd }}</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent btn-lg">{{ index_start_free_trial_debd }}</a>
 
                     <a href="#pricing" class="btn btn-secondary btn-lg">{{ index_view_pricing_ea51 }}</a>
 
@@ -1441,27 +1414,20 @@
 
                         <li><a href="mailto:info@replyvera.com">{{ index_contact_us_9cfc }}</a></li>
 
-                        <li><div class="lang-selector">
+                        <li>
+                            <div class="lang-selector">
+                                <button class="lang-btn" aria-label="Select Language">
+                                    <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
+                                </button>
+                                <div class="lang-menu">
+                                    <a href="/" class="lang-item" onclick="changeLang('en', event)">English</a>
+                                    <a href="/es/" class="lang-item" onclick="changeLang('es', event)">Español</a>
+                                    <a href="/nl/" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
+                                </div>
+                            </div>
+                        </li>
 
-                    <button class="lang-btn" aria-label="Select Language">
-
-                        <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> EN
-
-                    </button>
-
-                    <div class="lang-menu">
-
-                        <a href="#" class="lang-item" onclick="changeLang('en', event)">English</a>
-
-                        <a href="#" class="lang-item" onclick="changeLang('es', event)">Español</a>
-
-                        <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
-
-                    </div>
-
-                </div>
-
-                <a h>{{ index_log_in_3bbb }}</a></li>
+                        <li><a href="https://dashboard.replyvera.com/login">{{ index_log_in_3bbb }}</a></li>
 
                     </ul>
 
@@ -1483,26 +1449,6 @@
 
                     </ul>
 
-                <div class="footer-col">
-
-                    <div class="footer-col-title">{{ footer_partners_title }}</div>
-
-                    <ul class="footer-links">
-
-                        <li>
-
-                            <a href="https://www.lodgevera.com" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;">
-
-                                <img src="/img/lodgevera-logo.svg" alt="Lodgevera" style="height:14px;width:auto;" />
-
-                                <span>Lodgevera.com</span>
-
-                            </a>
-
-                        </li>
-
-                    </ul>
-
                 </div>
 
             </div>
@@ -1511,15 +1457,7 @@
 
             <div class="footer-bottom">
 
-                <div>{{ index_2026_replyvera_all_rights_r_c9ec }} &nbsp;&bull;&nbsp; {{ footer_partner_mention }} <a href="https://www.lodgevera.com" target="_blank" rel="noopener noreferrer" style="color:var(--text-secondary);text-decoration:underline;">Lodgevera.com</a></div>
-
-                <div class="social-links">
-
-                    <a href="#"><i data-lucide="twitter" style="width:17px;height:17px;"></i></a>
-
-                    <a href="#"><i data-lucide="linkedin" style="width:17px;height:17px;"></i></a>
-
-                </div>
+                <div>{{ index_2026_replyvera_all_rights_r_c9ec }}</div>
 
             </div>
 

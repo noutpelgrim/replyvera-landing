@@ -1,0 +1,18 @@
+{
+  "name": "replyvera-landing",
+  "version": "2.0.0",
+  "private": true,
+  "description": "ReplyVera — Automated Google Review Response Platform Marketing Website",
+  "scripts": {
+    "build": "node build-all.js",
+    "test": "node test/regression.js"
+  },
+  "keywords": [
+    "google-reviews",
+    "review-management",
+    "automation",
+    "saas"
+  ],
+  "author": "ReplyVera",
+  "license": "UNLICENSED"
+}

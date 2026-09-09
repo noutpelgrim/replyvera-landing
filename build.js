@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { localizeAllHtmlLinks } = require('./lib/router');
 const { renderHeaderDropdownHTML, renderMobileAccordionHTML } = require('./lib/industries_master');
+const { replaceAllLangSelectors } = require('./lib/lang_switcher');
 
 const srcDir = path.join(__dirname, 'src');
 const localesDir = path.join(__dirname, 'locales');
@@ -50,27 +51,25 @@ locales.forEach(lang => {
             `<!-- MOBILE_IND_LIST_START -->\n<div class="mobile-industry-list" id="mobile-ind-list">\n${mobileAccordionHtml}\n</div>\n<!-- MOBILE_IND_LIST_END -->`
         );
 
-        // Update header language button label (EN -> NL / ES)
-        html = html.replace(/<button class="lang-btn"[^>]*>[\s\S]*?<\/button>/, `
-                    <button class="lang-btn" aria-label="Select Language">
-                        <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> ${lang.toUpperCase()}
-                    </button>`);
-
-        // Update mobile language selector active state
-        html = html.replace(/class="mobile-lang-opt active"/g, 'class="mobile-lang-opt"');
-        const langUpper = lang.toUpperCase();
-        html = html.replace(
-            new RegExp(`class="mobile-lang-opt"\\s+onclick="changeLang\\('${lang}',\\s*event\\)">${langUpper}<\\/a>`),
-            `class="mobile-lang-opt active" onclick="changeLang('${lang}', event)">${langUpper}</a>`
-        );
-
         // Replace {{ key }} with the localized string
         html = html.replace(/\{\{\s*([a-zA-Z0-9_]+)\s*\}\}/g, (match, key) => {
             return translations[lang][key] || enTranslations[key] || match;
         });
 
+        // Construct self-referencing canonical URL and hreflang links for host www.replyvera.com
+        const baseUrl = 'https://www.replyvera.com';
+        let relPath = file === 'index.html' ? (isDefault ? '/' : `/${lang}/`) : (isDefault ? `/${file}` : `/${lang}/${file}`);
+        const canonicalUrl = `${baseUrl}${relPath}`;
+
+        let enPath = file === 'index.html' ? '/' : `/${file}`;
+        let esPath = file === 'index.html' ? '/es/' : `/es/${file}`;
+        let nlPath = file === 'index.html' ? '/nl/' : `/nl/${file}`;
+
         // Rewrite all internal links using centralized router
         html = localizeAllHtmlLinks(html, lang);
+
+        // Inject real crawlable language switcher links (no JS, no # dummy URLs)
+        html = replaceAllLangSelectors(html, lang, { en: enPath, es: esPath, nl: nlPath });
 
         if (!isDefault) {
             // Rewrite demo.js path for localized pages if needed
@@ -86,15 +85,6 @@ locales.forEach(lang => {
             .replace(/<meta\s+name=["']twitter:[^"']+["'][^>]*>/gi, '')
             .replace(/<meta\s+name=["']description["'][^>]*>/gi, '');
 
-        // Construct self-referencing canonical URL and hreflang links for host www.replyvera.com
-        const baseUrl = 'https://www.replyvera.com';
-        let relPath = file === 'index.html' ? (isDefault ? '/' : `/${lang}/`) : (isDefault ? `/${file}` : `/${lang}/${file}`);
-        const canonicalUrl = `${baseUrl}${relPath}`;
-
-        let enPath = file === 'index.html' ? '/' : `/${file}`;
-        let esPath = file === 'index.html' ? '/es/' : `/es/${file}`;
-        let nlPath = file === 'index.html' ? '/nl/' : `/nl/${file}`;
-
         const hreflangTags = `
     <link rel="canonical" href="${canonicalUrl}">
     <link rel="alternate" hreflang="en" href="${baseUrl}${enPath}">
@@ -106,7 +96,7 @@ locales.forEach(lang => {
         let structuredData = '';
         let socialTags = '';
         if (file === 'index.html') {
-            const pageTitle = translations[lang]["index_replyvera_google_review_automa_9af3"] || "AI Google Review Response Software | ReplyVera";
+            const pageTitle = translations[lang]["index_replyvera_google_review_automa_9af3"] || "Automated Google Review Responses | ReplyVera";
             const pageDesc = translations[lang]["index_meta_description"] || translations["en"]["index_meta_description"];
             const imageUrl = `${baseUrl}/img/replyvera_official_logo.png`;
 
@@ -197,29 +187,6 @@ locales.forEach(lang => {
         html = html.replace(/<title>[\s\S]*?<\/title>/, (m) => `${m}\n    ${metaDescTag}`);
 
         html = html.replace('</head>', `${hreflangTags}${socialTags}${structuredData}\n</head>`);
-
-        // Add auto-redirect script only on the root english index file
-        if (isDefault && file === 'index.html') {
-            const redirectScript = `
-    <script>
-        (function() {
-            if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
-                var lang = navigator.language || navigator.userLanguage;
-                if (lang) {
-                    if (lang.startsWith('es') && !localStorage.getItem('lang_redirected')) {
-                        localStorage.setItem('lang_redirected', 'true');
-                        window.location.href = '/es/';
-                    } else if (lang.startsWith('nl') && !localStorage.getItem('lang_redirected')) {
-                        localStorage.setItem('lang_redirected', 'true');
-                        window.location.href = '/nl/';
-                    }
-                }
-            }
-        })();
-    </script>`;
-            html = html.replace('</head>', `${redirectScript}\n</head>`);
-        }
-
         fs.writeFileSync(path.join(targetDir, file), html);
     });
 });

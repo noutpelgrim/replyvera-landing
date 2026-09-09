@@ -26,55 +26,13 @@
 
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <script src="/es/demo.js?v=3" defer></script>
+    <script src="/js/simulator.js" defer></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
 
 
 
-    <script>
-
-    function changeLang(lang, event) {
-
-        event.preventDefault();
-
-        localStorage.setItem('lang_redirected', 'true');
-
-        
-
-        let path = window.location.pathname;
-
-        
-
-        // Remove existing lang prefix if present
-
-        if (path.startsWith('/es/')) path = path.replace('/es/', '/');
-
-        if (path.startsWith('/nl/')) path = path.replace('/nl/', '/');
-
-        if (path === '/es' || path === '/nl') path = '/';
-
-        
-
-        let newPath = path;
-
-        if (lang === 'es') {
-
-            newPath = '/es' + (path === '/' ? '/' : path);
-
-        } else if (lang === 'nl') {
-
-            newPath = '/nl' + (path === '/' ? '/' : path);
-
-        }
-
-        
-
-        window.location.href = newPath + window.location.hash;
-
-    }
-
-    </script>
+    
 
     <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 
@@ -192,11 +150,11 @@
 
             <div class="nav-links">
 
-                <a href="/es/#product">Producto</a>
+                <a href="#product">Producto</a>
 
-                <a href="/es/#benefits">Características</a>
+                <a href="#benefits">Características</a>
 
-                <a href="/es/#how-it-works">Cómo Funciona</a>
+                <a href="#how-it-works">Cómo Funciona</a>
 
                 <div class="nav-dropdown">
 
@@ -213,11 +171,11 @@
                         <!-- NAV_DROPDOWN_GRID_START -->
 <div class="nav-dropdown-grid">
 
-        <a href="/es/industries/dentistas/" class="dropdown-item">
-            <div class="dropdown-icon-wrapper dentist-icon"><i data-lucide="activity" style="width:16px;height:16px;"></i></div>
+        <a href="/es/industries/hoteles/" class="dropdown-item">
+            <div class="dropdown-icon-wrapper hotel-icon"><i data-lucide="hotel" style="width:16px;height:16px;"></i></div>
             <div class="dropdown-text">
-                <div class="dropdown-title">Dentistas y Clínicas</div>
-                <div class="dropdown-desc">Respuestas respetuosas de la privacidad para pacientes.</div>
+                <div class="dropdown-title">Hoteles y Hospedaje</div>
+                <div class="dropdown-desc">Respuestas rápidas para huéspedes con filtros de seguridad para higiene y reservas.</div>
             </div>
         </a>
         <a href="/es/industries/restaurantes/" class="dropdown-item">
@@ -227,18 +185,46 @@
                 <div class="dropdown-desc">Respuestas automatizadas con escalado de alergias y seguridad alimentaria.</div>
             </div>
         </a>
+        <a href="/es/industries/talleres-mecanicos/" class="dropdown-item">
+            <div class="dropdown-icon-wrapper autorepair-icon"><i data-lucide="wrench" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Talleres Mecánicos</div>
+                <div class="dropdown-desc">Respuestas automáticas para talleres con filtro de seguridad y reclamos de piezas.</div>
+            </div>
+        </a>
+        <a href="/es/industries/dentistas/" class="dropdown-item">
+            <div class="dropdown-icon-wrapper dentist-icon"><i data-lucide="activity" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Dentistas y Clínicas</div>
+                <div class="dropdown-desc">Respuestas respetuosas de la privacidad para pacientes.</div>
+            </div>
+        </a>
+        <a href="/es/industries/salones-spas/" class="dropdown-item">
+            <div class="dropdown-icon-wrapper salon-icon"><i data-lucide="scissors" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Salones de Belleza y Spas</div>
+                <div class="dropdown-desc">Respuestas personalizadas para estilistas con salvaguardas para alergias y quemaduras.</div>
+            </div>
+        </a>
+        <a href="/es/industries/medspas/" class="dropdown-item">
+            <div class="dropdown-icon-wrapper medspa-icon"><i data-lucide="sparkles" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Spas Médicos y Clínicas Estéticas</div>
+                <div class="dropdown-desc">Respuestas conformes a privacidad con filtros para complicaciones y tratamientos.</div>
+            </div>
+        </a>
+        <a href="/es/industries/contratistas-reformas/" class="dropdown-item">
+            <div class="dropdown-icon-wrapper contractor-icon"><i data-lucide="hammer" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Contratistas y Reformas</div>
+                <div class="dropdown-desc">Respuestas automatizadas para reformas y construcción con filtro de daños y retrasos.</div>
+            </div>
+        </a>
         <a href="/es/industries/autolavados/" class="dropdown-item">
             <div class="dropdown-icon-wrapper carwash-icon"><i data-lucide="car" style="width:16px;height:16px;"></i></div>
             <div class="dropdown-text">
                 <div class="dropdown-title">Operadores de Lavado de Autos</div>
                 <div class="dropdown-desc">Rastrea quejas de daños, facturación y servicio.</div>
-            </div>
-        </a>
-        <a href="/es/industries/agencias-de-marketing/" class="dropdown-item">
-            <div class="dropdown-icon-wrapper agency-icon"><i data-lucide="briefcase" style="width:16px;height:16px;"></i></div>
-            <div class="dropdown-text">
-                <div class="dropdown-title">Agencias de Marketing</div>
-                <div class="dropdown-desc">Gestiona respuestas de reseñas de Google para todos tus clientes.</div>
             </div>
         </a>
         <a href="/es/industries/cuidado-de-mascotas/" class="dropdown-item">
@@ -276,6 +262,13 @@
                 <div class="dropdown-desc">Monitorea limpieza, equipos y reembolsos.</div>
             </div>
         </a>
+        <a href="/es/industries/agencias-de-marketing/" class="dropdown-item">
+            <div class="dropdown-icon-wrapper agency-icon"><i data-lucide="briefcase" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Agencias de Marketing</div>
+                <div class="dropdown-desc">Gestiona respuestas de reseñas de Google para todos tus clientes.</div>
+            </div>
+        </a>
 </div>
 <!-- NAV_DROPDOWN_GRID_END -->
 
@@ -283,11 +276,11 @@
 
 </div>
 
-                <a href="/es/#pricing">Precios</a>
+                <a href="#pricing">Precios</a>
 
                 <a href="/es/resources">Recursos</a>
 
-                <a href="/es/#faq">Preguntas Frecuentes</a>
+                <a href="#faq">Preguntas Frecuentes</a>
 
             </div>
 
@@ -296,27 +289,19 @@
             <div class="nav-actions">
 
                 <div class="lang-selector">
-
-                    
-                    <button class="lang-btn" aria-label="Select Language">
-                        <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> ES
-                    </button>
-
-                    <div class="lang-menu">
-
-                        <a href="/es/#" class="lang-item" onclick="changeLang('en', event)">English</a>
-
-                        <a href="/es/#" class="lang-item" onclick="changeLang('es', event)">Español</a>
-
-                        <a href="/es/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
-
-                    </div>
-
-                </div>
+                                <button class="lang-btn" aria-label="Select Language">
+                                    <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> ES
+                                </button>
+                                <div class="lang-menu">
+                                    <a href="/resources/automate-review-replies-without-sounding-robotic/" class="lang-item" data-no-localize>English</a>
+                                    <a href="/es/resources/automate-review-replies-without-sounding-robotic/" class="lang-item active" data-no-localize>Español</a>
+                                    <a href="/nl/resources/automate-review-replies-without-sounding-robotic/" class="lang-item" data-no-localize>Nederlands</a>
+                                </div>
+                            </div>
 
                 <a href="https://dashboard.replyvera.com/login" class="nav-login">Iniciar Sesión</a>
 
-                <a href="/es/#pricing" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Comenzar Prueba Gratuita</a>
+                <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Comenzar Prueba Gratuita</a>
 
                 <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
 
@@ -346,11 +331,11 @@
 
         <div class="mobile-nav-links">
 
-            <a href="/es/#product" class="mobile-nav-link">Producto</a>
+            <a href="#product" class="mobile-nav-link">Producto</a>
 
-            <a href="/es/#benefits" class="mobile-nav-link">Características</a>
+            <a href="#benefits" class="mobile-nav-link">Características</a>
 
-            <a href="/es/#how-it-works" class="mobile-nav-link">Cómo Funciona</a>
+            <a href="#how-it-works" class="mobile-nav-link">Cómo Funciona</a>
 
 
 
@@ -371,11 +356,11 @@
             <!-- MOBILE_IND_LIST_START -->
 <div class="mobile-industry-list" id="mobile-ind-list">
 
-        <a href="/es/industries/dentistas/" class="mobile-industry-item">
-            <div class="mobile-ind-icon dentist-icon"><i data-lucide="activity" style="width:14px;height:14px;"></i></div>
+        <a href="/es/industries/hoteles/" class="mobile-industry-item">
+            <div class="mobile-ind-icon hotel-icon"><i data-lucide="hotel" style="width:14px;height:14px;"></i></div>
             <div>
-                <div class="mobile-ind-name">Dentistas y Clínicas</div>
-                <div class="mobile-ind-desc">Respuestas respetuosas de la privacidad para pacientes.</div>
+                <div class="mobile-ind-name">Hoteles y Hospedaje</div>
+                <div class="mobile-ind-desc">Respuestas rápidas para huéspedes con filtros de seguridad para higiene y reservas.</div>
             </div>
         </a>
         <a href="/es/industries/restaurantes/" class="mobile-industry-item">
@@ -385,18 +370,46 @@
                 <div class="mobile-ind-desc">Respuestas automatizadas con escalado de alergias y seguridad alimentaria.</div>
             </div>
         </a>
+        <a href="/es/industries/talleres-mecanicos/" class="mobile-industry-item">
+            <div class="mobile-ind-icon autorepair-icon"><i data-lucide="wrench" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Talleres Mecánicos</div>
+                <div class="mobile-ind-desc">Respuestas automáticas para talleres con filtro de seguridad y reclamos de piezas.</div>
+            </div>
+        </a>
+        <a href="/es/industries/dentistas/" class="mobile-industry-item">
+            <div class="mobile-ind-icon dentist-icon"><i data-lucide="activity" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Dentistas y Clínicas</div>
+                <div class="mobile-ind-desc">Respuestas respetuosas de la privacidad para pacientes.</div>
+            </div>
+        </a>
+        <a href="/es/industries/salones-spas/" class="mobile-industry-item">
+            <div class="mobile-ind-icon salon-icon"><i data-lucide="scissors" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Salones de Belleza y Spas</div>
+                <div class="mobile-ind-desc">Respuestas personalizadas para estilistas con salvaguardas para alergias y quemaduras.</div>
+            </div>
+        </a>
+        <a href="/es/industries/medspas/" class="mobile-industry-item">
+            <div class="mobile-ind-icon medspa-icon"><i data-lucide="sparkles" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Spas Médicos y Clínicas Estéticas</div>
+                <div class="mobile-ind-desc">Respuestas conformes a privacidad con filtros para complicaciones y tratamientos.</div>
+            </div>
+        </a>
+        <a href="/es/industries/contratistas-reformas/" class="mobile-industry-item">
+            <div class="mobile-ind-icon contractor-icon"><i data-lucide="hammer" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Contratistas y Reformas</div>
+                <div class="mobile-ind-desc">Respuestas automatizadas para reformas y construcción con filtro de daños y retrasos.</div>
+            </div>
+        </a>
         <a href="/es/industries/autolavados/" class="mobile-industry-item">
             <div class="mobile-ind-icon carwash-icon"><i data-lucide="car" style="width:14px;height:14px;"></i></div>
             <div>
                 <div class="mobile-ind-name">Operadores de Lavado de Autos</div>
                 <div class="mobile-ind-desc">Rastrea quejas de daños, facturación y servicio.</div>
-            </div>
-        </a>
-        <a href="/es/industries/agencias-de-marketing/" class="mobile-industry-item">
-            <div class="mobile-ind-icon agency-icon"><i data-lucide="briefcase" style="width:14px;height:14px;"></i></div>
-            <div>
-                <div class="mobile-ind-name">Agencias de Marketing</div>
-                <div class="mobile-ind-desc">Gestiona respuestas de reseñas de Google para todos tus clientes.</div>
             </div>
         </a>
         <a href="/es/industries/cuidado-de-mascotas/" class="mobile-industry-item">
@@ -434,25 +447,27 @@
                 <div class="mobile-ind-desc">Monitorea limpieza, equipos y reembolsos.</div>
             </div>
         </a>
+        <a href="/es/industries/agencias-de-marketing/" class="mobile-industry-item">
+            <div class="mobile-ind-icon agency-icon"><i data-lucide="briefcase" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Agencias de Marketing</div>
+                <div class="mobile-ind-desc">Gestiona respuestas de reseñas de Google para todos tus clientes.</div>
+            </div>
+        </a>
 </div>
 <!-- MOBILE_IND_LIST_END -->
 
-<a href="/es/#pricing" class="mobile-nav-link">Precios</a>
+<a href="#pricing" class="mobile-nav-link">Precios</a>
 
 <a href="/es/resources" class="mobile-nav-link">Recursos</a>
 
-            <a href="/es/#faq" class="mobile-nav-link">Preguntas Frecuentes</a>
+            <a href="#faq" class="mobile-nav-link">Preguntas Frecuentes</a>
 
                         <div class="mobile-lang-bar">
-
                 <span class="mobile-lang-label"><i class="fa-solid fa-globe"></i> Language:</span>
-
-                <a href="/es/#" class="mobile-lang-opt" onclick="changeLang('en', event)">EN</a>
-
-                <a href="/es/#" class="mobile-lang-opt active" onclick="changeLang('es', event)">ES</a>
-
-                <a href="/es/#" class="mobile-lang-opt" onclick="changeLang('nl', event)">NL</a>
-
+                <a href="/resources/automate-review-replies-without-sounding-robotic/" class="mobile-lang-opt" data-no-localize>EN</a>
+                <a href="/es/resources/automate-review-replies-without-sounding-robotic/" class="mobile-lang-opt active" data-no-localize>ES</a>
+                <a href="/nl/resources/automate-review-replies-without-sounding-robotic/" class="mobile-lang-opt" data-no-localize>NL</a>
             </div>
 
             <a href="https://dashboard.replyvera.com/login" class="mobile-nav-link">Iniciar Sesión</a>
@@ -498,7 +513,7 @@
                 <div class="article-cta-title">Deja que ReplyVera gestione tus respuestas</div>
                 <p class="article-cta-desc">No vuelvas a perderte una reseña. Publica respuestas automáticas a reseñas de 5 estrellas y escala comentarios delicados a tu equipo.</p>
                 <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-                    <a href="/es/#pricing" class="btn btn-accent btn-lg">Comenzar Prueba Gratuita de 14 Días</a>
+                    <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-accent btn-lg">Comenzar Prueba Gratuita de 14 Días</a>
                     <a href="/es/pricing.html" class="btn btn-secondary btn-lg">Comparar Planes y Precios</a>
                 </div>
             </div>
@@ -560,27 +575,16 @@
 
                         <li><a href="mailto:info@replyvera.com">Contact Us</a></li>
 
-                        <li><div class="lang-selector">
+                        <li>
+                            <div class="mobile-lang-bar">
+                <span class="mobile-lang-label"><i class="fa-solid fa-globe"></i> Language:</span>
+                <a href="/" class="mobile-lang-opt" data-no-localize>EN</a>
+                <a href="/es/" class="mobile-lang-opt active" data-no-localize>ES</a>
+                <a href="/nl/" class="mobile-lang-opt" data-no-localize>NL</a>
+            </div>
+                        </li>
 
-                    <button class="lang-btn" aria-label="Select Language">
-
-                        <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> EN
-
-                    </button>
-
-                    <div class="lang-menu">
-
-                        <a href="/es/#" class="lang-item" onclick="changeLang('en', event)">English</a>
-
-                        <a href="/es/#" class="lang-item" onclick="changeLang('es', event)">Español</a>
-
-                        <a href="/es/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
-
-                    </div>
-
-                </div>
-
-                <a h>Iniciar Sesión</a></li>
+                        <li><a href="https://dashboard.replyvera.com/login">Iniciar Sesión</a></li>
 
                     </ul>
 
@@ -602,26 +606,6 @@
 
                     </ul>
 
-                <div class="footer-col">
-
-                    <div class="footer-col-title">Socios</div>
-
-                    <ul class="footer-links">
-
-                        <li>
-
-                            <a href="https://www.lodgevera.com" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;">
-
-                                <img src="/img/lodgevera-logo.svg" alt="Lodgevera" style="height:14px;width:auto;" />
-
-                                <span>Lodgevera.com</span>
-
-                            </a>
-
-                        </li>
-
-                    </ul>
-
                 </div>
 
             </div>
@@ -630,15 +614,7 @@
 
             <div class="footer-bottom">
 
-                <div>© 2026 ReplyVera. Todos los derechos reservados. &nbsp;&bull;&nbsp; Socio oficial de <a href="https://www.lodgevera.com" target="_blank" rel="noopener noreferrer" style="color:var(--text-secondary);text-decoration:underline;">Lodgevera.com</a></div>
-
-                <div class="social-links">
-
-                    <a href="/es/#"><i data-lucide="twitter" style="width:17px;height:17px;"></i></a>
-
-                    <a href="/es/#"><i data-lucide="linkedin" style="width:17px;height:17px;"></i></a>
-
-                </div>
+                <div>© 2026 ReplyVera. Todos los derechos reservados.</div>
 
             </div>
 

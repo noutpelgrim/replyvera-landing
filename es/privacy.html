@@ -48,49 +48,7 @@
 
 
 
-    <script>
-
-    function changeLang(lang, event) {
-
-        event.preventDefault();
-
-        localStorage.setItem('lang_redirected', 'true');
-
-        
-
-        let path = window.location.pathname;
-
-        
-
-        // Remove existing lang prefix if present
-
-        if (path.startsWith('/es/')) path = path.replace('/es/', '/');
-
-        if (path.startsWith('/nl/')) path = path.replace('/nl/', '/');
-
-        if (path === '/es' || path === '/nl') path = '/';
-
-        
-
-        let newPath = path;
-
-        if (lang === 'es') {
-
-            newPath = '/es' + (path === '/' ? '/' : path);
-
-        } else if (lang === 'nl') {
-
-            newPath = '/nl' + (path === '/' ? '/' : path);
-
-        }
-
-        
-
-        window.location.href = newPath + window.location.hash;
-
-    }
-
-    </script>
+    
 
     <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 
@@ -148,11 +106,11 @@
                         <!-- NAV_DROPDOWN_GRID_START -->
 <div class="nav-dropdown-grid">
 
-        <a href="/es/industries/dentistas/" class="dropdown-item">
-            <div class="dropdown-icon-wrapper dentist-icon"><i data-lucide="activity" style="width:16px;height:16px;"></i></div>
+        <a href="/es/industries/hoteles/" class="dropdown-item">
+            <div class="dropdown-icon-wrapper hotel-icon"><i data-lucide="hotel" style="width:16px;height:16px;"></i></div>
             <div class="dropdown-text">
-                <div class="dropdown-title">Dentistas y Clínicas</div>
-                <div class="dropdown-desc">Respuestas respetuosas de la privacidad para pacientes.</div>
+                <div class="dropdown-title">Hoteles y Hospedaje</div>
+                <div class="dropdown-desc">Respuestas rápidas para huéspedes con filtros de seguridad para higiene y reservas.</div>
             </div>
         </a>
         <a href="/es/industries/restaurantes/" class="dropdown-item">
@@ -162,18 +120,46 @@
                 <div class="dropdown-desc">Respuestas automatizadas con escalado de alergias y seguridad alimentaria.</div>
             </div>
         </a>
+        <a href="/es/industries/talleres-mecanicos/" class="dropdown-item">
+            <div class="dropdown-icon-wrapper autorepair-icon"><i data-lucide="wrench" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Talleres Mecánicos</div>
+                <div class="dropdown-desc">Respuestas automáticas para talleres con filtro de seguridad y reclamos de piezas.</div>
+            </div>
+        </a>
+        <a href="/es/industries/dentistas/" class="dropdown-item">
+            <div class="dropdown-icon-wrapper dentist-icon"><i data-lucide="activity" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Dentistas y Clínicas</div>
+                <div class="dropdown-desc">Respuestas respetuosas de la privacidad para pacientes.</div>
+            </div>
+        </a>
+        <a href="/es/industries/salones-spas/" class="dropdown-item">
+            <div class="dropdown-icon-wrapper salon-icon"><i data-lucide="scissors" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Salones de Belleza y Spas</div>
+                <div class="dropdown-desc">Respuestas personalizadas para estilistas con salvaguardas para alergias y quemaduras.</div>
+            </div>
+        </a>
+        <a href="/es/industries/medspas/" class="dropdown-item">
+            <div class="dropdown-icon-wrapper medspa-icon"><i data-lucide="sparkles" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Spas Médicos y Clínicas Estéticas</div>
+                <div class="dropdown-desc">Respuestas conformes a privacidad con filtros para complicaciones y tratamientos.</div>
+            </div>
+        </a>
+        <a href="/es/industries/contratistas-reformas/" class="dropdown-item">
+            <div class="dropdown-icon-wrapper contractor-icon"><i data-lucide="hammer" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Contratistas y Reformas</div>
+                <div class="dropdown-desc">Respuestas automatizadas para reformas y construcción con filtro de daños y retrasos.</div>
+            </div>
+        </a>
         <a href="/es/industries/autolavados/" class="dropdown-item">
             <div class="dropdown-icon-wrapper carwash-icon"><i data-lucide="car" style="width:16px;height:16px;"></i></div>
             <div class="dropdown-text">
                 <div class="dropdown-title">Operadores de Lavado de Autos</div>
                 <div class="dropdown-desc">Rastrea quejas de daños, facturación y servicio.</div>
-            </div>
-        </a>
-        <a href="/es/industries/agencias-de-marketing/" class="dropdown-item">
-            <div class="dropdown-icon-wrapper agency-icon"><i data-lucide="briefcase" style="width:16px;height:16px;"></i></div>
-            <div class="dropdown-text">
-                <div class="dropdown-title">Agencias de Marketing</div>
-                <div class="dropdown-desc">Gestiona respuestas de reseñas de Google para todos tus clientes.</div>
             </div>
         </a>
         <a href="/es/industries/cuidado-de-mascotas/" class="dropdown-item">
@@ -211,6 +197,13 @@
                 <div class="dropdown-desc">Monitorea limpieza, equipos y reembolsos.</div>
             </div>
         </a>
+        <a href="/es/industries/agencias-de-marketing/" class="dropdown-item">
+            <div class="dropdown-icon-wrapper agency-icon"><i data-lucide="briefcase" style="width:16px;height:16px;"></i></div>
+            <div class="dropdown-text">
+                <div class="dropdown-title">Agencias de Marketing</div>
+                <div class="dropdown-desc">Gestiona respuestas de reseñas de Google para todos tus clientes.</div>
+            </div>
+        </a>
 </div>
 <!-- NAV_DROPDOWN_GRID_END -->
 
@@ -231,23 +224,15 @@
             <div class="nav-actions">
 
                 <div class="lang-selector">
-
-                    
-                    <button class="lang-btn" aria-label="Select Language">
-                        <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> ES
-                    </button>
-
-                    <div class="lang-menu">
-
-                        <a href="/es/#" class="lang-item" onclick="changeLang('en', event)">English</a>
-
-                        <a href="/es/#" class="lang-item" onclick="changeLang('es', event)">Español</a>
-
-                        <a href="/es/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
-
-                    </div>
-
-                </div>
+                                <button class="lang-btn" aria-label="Select Language">
+                                    <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> ES
+                                </button>
+                                <div class="lang-menu">
+                                    <a href="/privacy.html" class="lang-item" data-no-localize>English</a>
+                                    <a href="/es/privacy.html" class="lang-item active" data-no-localize>Español</a>
+                                    <a href="/nl/privacy.html" class="lang-item" data-no-localize>Nederlands</a>
+                                </div>
+                            </div>
 
                 <a href="https://dashboard.replyvera.com/login" class="nav-login">Iniciar Sesión</a>
 
@@ -306,11 +291,11 @@
             <!-- MOBILE_IND_LIST_START -->
 <div class="mobile-industry-list" id="mobile-ind-list">
 
-        <a href="/es/industries/dentistas/" class="mobile-industry-item">
-            <div class="mobile-ind-icon dentist-icon"><i data-lucide="activity" style="width:14px;height:14px;"></i></div>
+        <a href="/es/industries/hoteles/" class="mobile-industry-item">
+            <div class="mobile-ind-icon hotel-icon"><i data-lucide="hotel" style="width:14px;height:14px;"></i></div>
             <div>
-                <div class="mobile-ind-name">Dentistas y Clínicas</div>
-                <div class="mobile-ind-desc">Respuestas respetuosas de la privacidad para pacientes.</div>
+                <div class="mobile-ind-name">Hoteles y Hospedaje</div>
+                <div class="mobile-ind-desc">Respuestas rápidas para huéspedes con filtros de seguridad para higiene y reservas.</div>
             </div>
         </a>
         <a href="/es/industries/restaurantes/" class="mobile-industry-item">
@@ -320,18 +305,46 @@
                 <div class="mobile-ind-desc">Respuestas automatizadas con escalado de alergias y seguridad alimentaria.</div>
             </div>
         </a>
+        <a href="/es/industries/talleres-mecanicos/" class="mobile-industry-item">
+            <div class="mobile-ind-icon autorepair-icon"><i data-lucide="wrench" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Talleres Mecánicos</div>
+                <div class="mobile-ind-desc">Respuestas automáticas para talleres con filtro de seguridad y reclamos de piezas.</div>
+            </div>
+        </a>
+        <a href="/es/industries/dentistas/" class="mobile-industry-item">
+            <div class="mobile-ind-icon dentist-icon"><i data-lucide="activity" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Dentistas y Clínicas</div>
+                <div class="mobile-ind-desc">Respuestas respetuosas de la privacidad para pacientes.</div>
+            </div>
+        </a>
+        <a href="/es/industries/salones-spas/" class="mobile-industry-item">
+            <div class="mobile-ind-icon salon-icon"><i data-lucide="scissors" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Salones de Belleza y Spas</div>
+                <div class="mobile-ind-desc">Respuestas personalizadas para estilistas con salvaguardas para alergias y quemaduras.</div>
+            </div>
+        </a>
+        <a href="/es/industries/medspas/" class="mobile-industry-item">
+            <div class="mobile-ind-icon medspa-icon"><i data-lucide="sparkles" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Spas Médicos y Clínicas Estéticas</div>
+                <div class="mobile-ind-desc">Respuestas conformes a privacidad con filtros para complicaciones y tratamientos.</div>
+            </div>
+        </a>
+        <a href="/es/industries/contratistas-reformas/" class="mobile-industry-item">
+            <div class="mobile-ind-icon contractor-icon"><i data-lucide="hammer" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Contratistas y Reformas</div>
+                <div class="mobile-ind-desc">Respuestas automatizadas para reformas y construcción con filtro de daños y retrasos.</div>
+            </div>
+        </a>
         <a href="/es/industries/autolavados/" class="mobile-industry-item">
             <div class="mobile-ind-icon carwash-icon"><i data-lucide="car" style="width:14px;height:14px;"></i></div>
             <div>
                 <div class="mobile-ind-name">Operadores de Lavado de Autos</div>
                 <div class="mobile-ind-desc">Rastrea quejas de daños, facturación y servicio.</div>
-            </div>
-        </a>
-        <a href="/es/industries/agencias-de-marketing/" class="mobile-industry-item">
-            <div class="mobile-ind-icon agency-icon"><i data-lucide="briefcase" style="width:14px;height:14px;"></i></div>
-            <div>
-                <div class="mobile-ind-name">Agencias de Marketing</div>
-                <div class="mobile-ind-desc">Gestiona respuestas de reseñas de Google para todos tus clientes.</div>
             </div>
         </a>
         <a href="/es/industries/cuidado-de-mascotas/" class="mobile-industry-item">
@@ -369,6 +382,13 @@
                 <div class="mobile-ind-desc">Monitorea limpieza, equipos y reembolsos.</div>
             </div>
         </a>
+        <a href="/es/industries/agencias-de-marketing/" class="mobile-industry-item">
+            <div class="mobile-ind-icon agency-icon"><i data-lucide="briefcase" style="width:14px;height:14px;"></i></div>
+            <div>
+                <div class="mobile-ind-name">Agencias de Marketing</div>
+                <div class="mobile-ind-desc">Gestiona respuestas de reseñas de Google para todos tus clientes.</div>
+            </div>
+        </a>
 </div>
 <!-- MOBILE_IND_LIST_END -->
 
@@ -378,25 +398,12 @@
 
             <a href="/es/#faq" class="mobile-nav-link">Preguntas Frecuentes</a>
 
-            <div class="lang-selector">
-
-                    <button class="lang-btn" aria-label="Select Language">
-
-                        <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
-
-                    </button>
-
-                    <div class="lang-menu">
-
-                        <a href="/es/#" class="lang-item" onclick="changeLang('en', event)">English</a>
-
-                        <a href="/es/#" class="lang-item" onclick="changeLang('es', event)">Español</a>
-
-                        <a href="/es/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
-
-                    </div>
-
-                </div>
+            <div class="mobile-lang-bar">
+                <span class="mobile-lang-label"><i class="fa-solid fa-globe"></i> Language:</span>
+                <a href="/privacy.html" class="mobile-lang-opt" data-no-localize>EN</a>
+                <a href="/es/privacy.html" class="mobile-lang-opt active" data-no-localize>ES</a>
+                <a href="/nl/privacy.html" class="mobile-lang-opt" data-no-localize>NL</a>
+            </div>
 
                 <a href="https://dashboard.replyvera.com/login" class="mobile-nav-link">Iniciar Sesión</a>
 
@@ -420,29 +427,29 @@
 
 
 
-                <p>Bij ReplyVera hechten we waarde aan uw privacy en het vertrouwen dat u in ons stelt om uw online reputatie te beheren. Dit Privacybeleid legt uit hoe we uw informatie verzamelen, gebruiken en beschermen wanneer u onze service gebruikt.</p>
+                <p>En ReplyVera, valoramos su privacidad y la confianza que deposita en nosotros para gestionar su reputación en línea. Esta Política de Privacidad explica cómo recopilamos, usamos y protegemos su información cuando utiliza nuestro servicio.</p>
 
 
 
                 <h2>1. Informatie die we verzamelen</h2>
 
-                <p>We verzamelen informatie om een betere service te bieden aan al onze gebruikers. Dit omvat:</p>
+                <p>Recopilamos información para brindar un mejor servicio a todos nuestros usuarios. Esto incluye:</p>
 
                 <ul>
 
                     <li><strong>Accountinformatie:</strong> Wanneer u zich aanmeldt, verzamelen we uw e-mailadres en basale profielinformatie via Google OAuth.</li>
 
-                    <li><strong>Google Bedrijfsprofielgegevens:</strong> Om onze kernservice uit te voeren, vragen we toegang tot uw Google Bedrijfsprofiel. Dit omvat de inhoud van reviews, namen van reviewers en locatiegegevens.</li>
+                    <li><strong>Datos del Perfil de Empresa de Google:</strong> Para operar nuestro servicio principal, solicitamos acceso a su Perfil de Empresa de Google. Esto incluye el contenido de las reseñas, los nombres de los revisores y los datos de ubicación.</li>
 
-                    <li><strong>Gebruiksgegevens:</strong> We kunnen informatie verzamelen over hoe u met ons dashboard communiceert om onze gebruikersinterface en AI-prestaties te verbeteren.</li>
+                    <li><strong>Datos de Uso:</strong> Podemos recopilar información sobre cómo interactúa con nuestro panel de control para mejorar nuestra interfaz de usuario y el rendimiento de la IA.</li>
 
                 </ul>
 
 
 
-                <h2>2. Hoe we informatie gebruiken</h2>
+                <h2>2. Cómo Usamos la Información</h2>
 
-                <p>We gebruiken de gegevens die we verzamelen voor de volgende doeleinden:</p>
+                <p>Utilizamos los datos que recopilamos para los siguientes fines:</p>
 
                 <ul>
 
@@ -452,17 +459,17 @@
 
                     <li>Om met u te communiceren over uw account en service-updates.</li>
 
-                    <li>Om onze AI-algoritmen te verbeteren voor nauwkeuriger en nuttiger reacties.</li>
+                    <li>Para mejorar nuestros algoritmos de IA y ofrecer respuestas más precisas y útiles.</li>
 
                 </ul>
 
 
 
-                <h2>3. Beperkt gebruik van Google-gebruikersgegevens</h2>
+                <h2>3. Uso Limitado de Datos de Usuarios de Google</h2>
 
-                <p>Het gebruik en de overdracht van ReplyVera naar enige andere app van informatie die is ontvangen van Google API's zal voldoen aan het <a href="https://developers.google.com/terms/api-services-user-data-policy#additional_requirements_for_specific_api_scopes">Beleid voor Gebruikersgegevens van Google API-services</a>, inclusief de vereisten voor Beperkt Gebruik.</p>
+                <p>El uso y la transferencia por parte de ReplyVera a cualquier otra aplicación de la información recibida de las API de Google se ajustarán a la <a href="https://developers.google.com/terms/api-services-user-data-policy#additional_requirements_for_specific_api_scopes">Política de Datos de Usuario de los Servicios de la API de Google</a>, incluidos los requisitos de Uso Limitado.</p>
 
-                <p>We gebruiken uw Google-gegevens niet voor het weergeven van advertenties en we verkopen uw gegevens niet aan derden.</p>
+                <p>No utilizamos sus datos de Google para mostrar anuncios y no vendemos sus datos a terceros.</p>
 
 
 
@@ -481,6 +488,15 @@
                 <h2>6. Contáctenos</h2>
 
                 <p>Als u vragen heeft over dit Privacybeleid, neem dan contact met ons op via <a href="mailto:info@replyvera.com">info@replyvera.com</a>.</p>
+
+                <div class="legal-entity-box" style="margin-top:20px;padding:18px 22px;background:rgba(255,255,255,0.03);border:1px solid var(--border-color, rgba(255,255,255,0.08));border-radius:8px;font-size:0.9rem;line-height:1.6;">
+                    <p style="margin:0 0 8px;"><strong>Company Information &amp; Data Controller:</strong></p>
+                    <p style="margin:0 0 4px;"><strong>Entity Name:</strong> [Company Legal Name]</p>
+                    <p style="margin:0 0 4px;"><strong>Registered Address:</strong> [Registered Address]</p>
+                    <p style="margin:0 0 4px;"><strong>Registration Number / KvK:</strong> [Chamber of Commerce / Registration Number]</p>
+                    <p style="margin:0 0 4px;"><strong>VAT Identification:</strong> [VAT ID]</p>
+                    <p style="margin:0;"><strong>Merchant of Record &amp; Billing Data Processor:</strong> Paddle.com Market Ltd (Judd House, 18-29 Mora Street, London EC1V 8BT, UK)</p>
+                </div>
 
             </div>
 
@@ -546,86 +562,34 @@
 
                         <li><a href="mailto:info@replyvera.com">Contact Us</a></li>
 
-                        <li><div class="lang-selector">
-
-                    <button class="lang-btn" aria-label="Select Language">
-
-                        <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> EN
-
-                    </button>
-
-                    <div class="lang-menu">
-
-                        <a href="/es/#" class="lang-item" onclick="changeLang('en', event)">English</a>
-
-                        <a href="/es/#" class="lang-item" onclick="changeLang('es', event)">Español</a>
-
-                        <a href="/es/#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
-
-                    </div>
-
-                </div>
-
-                <a h>Iniciar Sesión</a></li>
-
-                    </ul>
-
-                </div>
-
-
-
-                <div class="footer-col">
-
-                    <div class="footer-col-title">Legal</div>
-
-                    <ul class="footer-links">
-
-                        <li><a href="/es/terms.html">Términos de Servicio</a></li>
-
-                        <li><a href="/es/privacy.html">Política de Privacidad</a></li>
-
-                        <li><a href="/es/cookie.html">Política de Cookies</a></li>
-
-                    </ul>
-
-                <div class="footer-col">
-
-                    <div class="footer-col-title">Socios</div>
-
-                    <ul class="footer-links">
-
                         <li>
-
-                            <a href="https://www.lodgevera.com" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;">
-
-                                <img src="/img/lodgevera-logo.svg" alt="Lodgevera" style="height:14px;width:auto;" />
-
-                                <span>Lodgevera.com</span>
-
-                            </a>
-
+                            <div class="lang-selector">
+                                <button class="lang-btn" aria-label="Select Language">
+                                    <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> ES
+                                </button>
+                                <div class="lang-menu">
+                                    <a href="/privacy.html" class="lang-item" data-no-localize>English</a>
+                                    <a href="/es/privacy.html" class="lang-item active" data-no-localize>Español</a>
+                                    <a href="/nl/privacy.html" class="lang-item" data-no-localize>Nederlands</a>
+                                </div>
+                            </div>
                         </li>
-
+                        <li><a href="https://dashboard.replyvera.com/login">Iniciar Sesión</a></li>
                     </ul>
-
                 </div>
 
+                <div class="footer-col">
+                    <div class="footer-col-title">Legal</div>
+                    <ul class="footer-links">
+                        <li><a href="/es/terms.html">Términos de Servicio</a></li>
+                        <li><a href="/es/privacy.html">Política de Privacidad</a></li>
+                        <li><a href="/es/cookie.html">Política de Cookies</a></li>
+                    </ul>
+                </div>
             </div>
 
-
-
             <div class="footer-bottom">
-
-                <div>© 2026 ReplyVera. Todos los derechos reservados. &nbsp;&bull;&nbsp; Socio oficial de <a href="https://www.lodgevera.com" target="_blank" rel="noopener noreferrer" style="color:var(--text-secondary);text-decoration:underline;">Lodgevera.com</a></div>
-
-                <div class="social-links">
-
-                    <a href="/es/#"><i data-lucide="twitter" style="width:17px;height:17px;"></i></a>
-
-                    <a href="/es/#"><i data-lucide="linkedin" style="width:17px;height:17px;"></i></a>
-
-                </div>
-
+                <div>© 2026 ReplyVera. Todos los derechos reservados.</div>
             </div>
 
         </div>

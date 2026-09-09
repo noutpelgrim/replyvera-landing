@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demostración Interactiva – ReplyVera Automatización de Reseñas de Google</title>
     <meta name="description" content="Pruebe la demostración interactiva de IA de ReplyVera. Vea cómo Vera gestiona las reseñas de 5 estrellas automáticamente mientras protege las reseñas negativas o sensibles.">
+    <link rel="canonical" href="https://www.replyvera.com/es/demo.html">
+    <link rel="alternate" hreflang="en" href="https://www.replyvera.com/demo.html">
+    <link rel="alternate" hreflang="es" href="https://www.replyvera.com/es/demo.html">
+    <link rel="alternate" hreflang="nl" href="https://www.replyvera.com/nl/demo.html">
+    <link rel="alternate" hreflang="x-default" href="https://www.replyvera.com/demo.html">
     <link rel="stylesheet" href="/style.css?v=16">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,25 +17,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
 
-    <script>
-    function changeLang(lang, event) {
-        event.preventDefault();
-        localStorage.setItem('lang_redirected', 'true');
-        
-        let path = window.location.pathname;
-        if (path.startsWith('/es/')) path = path.replace('/es/', '/');
-        if (path.startsWith('/nl/')) path = path.replace('/nl/', '/');
-        if (path === '/es' || path === '/nl') path = '/';
-        
-        let newPath = path;
-        if (lang === 'es') {
-            newPath = '/es' + (path === '/' ? '/' : path);
-        } else if (lang === 'nl') {
-            newPath = '/nl' + (path === '/' ? '/' : path);
-        }
-        window.location.href = newPath + window.location.hash;
-    }
-    </script>
+    
 </head>
 <body>
 
@@ -82,15 +69,15 @@
 
             <div class="nav-actions">
                 <div class="lang-selector">
-                    <button class="lang-btn" aria-label="Seleccionar Idioma">
-                        <i class="fa-solid fa-globe" style="font-size:16px; margin-right:6px;"></i> ES
-                    </button>
-                    <div class="lang-menu">
-                        <a href="#" class="lang-item" onclick="changeLang('en', event)">English</a>
-                        <a href="#" class="lang-item" onclick="changeLang('es', event)">Español</a>
-                        <a href="#" class="lang-item" onclick="changeLang('nl', event)">Nederlands</a>
-                    </div>
-                </div>
+                                <button class="lang-btn" aria-label="Select Language">
+                                    <i data-lucide="globe" style="width:16px;height:16px;margin-right:6px;"></i> ES
+                                </button>
+                                <div class="lang-menu">
+                                    <a href="/demo.html" class="lang-item" data-no-localize>English</a>
+                                    <a href="/es/demo.html" class="lang-item active" data-no-localize>Español</a>
+                                    <a href="/nl/demo.html" class="lang-item" data-no-localize>Nederlands</a>
+                                </div>
+                            </div>
                 <a href="https://dashboard.replyvera.com/login" class="nav-login">Iniciar Sesión</a>
                 <a href="https://dashboard.replyvera.com/login?signup=true" class="btn btn-primary" style="padding:9px 20px;font-size:0.88rem;">Prueba Gratis</a>
             </div>
