@@ -473,70 +473,85 @@
 
     <style>
         :root {
-            --industry-accent: #F59E0B;
-            --industry-accent-soft: #F59E0B20;
-            --industry-icon-bg: #F59E0B15;
-            --industry-accent-glow: #F59E0B33;
+            --industry-accent: #16A34A;
+            --industry-accent-soft: #16A34A18;
+            --industry-icon-bg: #16A34A12;
+            --industry-accent-glow: #16A34A25;
         }
     </style>
-    <header class="hero industry-hero" style="padding:130px 0 70px;">
-        <div class="hero-glow-layer"></div>
-        <div class="container">
-            
-    <div class="breadcrumbs" style="font-size:0.82rem;color:var(--text-muted);margin-bottom:20px;display:flex;gap:8px;align-items:center;">
-        <a href="/es/" style="color:var(--text-muted);text-decoration:none;">Inicio</a>
-        <span>/</span>
-        <a href="/es/#benefits" style="color:var(--text-muted);text-decoration:none;">Industrias</a>
-        <span>/</span>
-        <span style="color:var(--industry-accent, var(--accent));font-weight:600;">Cuidado de Mascotas</span>
-    </div>
-            <div class="hero-inner">
-                <div class="hero-text">
-                    <div class="eyebrow industry-eyebrow">
-                        <i data-lucide="google" style="width:12px;height:12px;color:#DB4437;"></i>
-                        Automatización de Reseñas de Google
+    <header class="hero industry-hero">
+        <div class="industry-hero-glow"></div>
+        <div class="container industry-hero-container">
+            <div class="industry-hero-grid">
+                <div class="industry-hero-text">
+                    
+    <nav class="breadcrumbs industry-breadcrumbs" aria-label="Breadcrumb">
+        <a href="/es/">Inicio</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="/es/#benefits">Industrias</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="breadcrumb-current">Cuidado de Mascotas</span>
+    </nav>
+                    <div class="industry-eyebrow-pill" style="color:var(--industry-accent); border-color:var(--industry-accent-soft); background:var(--industry-icon-bg);">
+                        <i data-lucide="shield-check" style="width:13px;height:13px;color:var(--industry-accent);"></i>
+                        <span>Automatización de Reseñas de Google</span>
                     </div>
-                    <h1 class="mb-6">Respuestas Cálidas para Veterinarias y Peluquerías Caninas</h1>
-                    <p class="lead mb-8">ReplyVera redacta respuestas afectuosas para centros de mascotas y escala inmediatamente dudas médicas o de salud.</p>
-                    <div class="hero-actions">
-                        <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent btn-lg">Comienza Tu Prueba Gratuita</a>
-                        <a href="/es/#how-it-works" class="btn btn-secondary btn-lg">Ver Cómo Funciona</a>
+                    <h1 class="industry-hero-h1">Respuestas Cálidas para Veterinarias y Peluquerías Caninas</h1>
+                    <p class="industry-hero-desc">ReplyVera redacta respuestas afectuosas para centros de mascotas y escala inmediatamente dudas médicas o de salud.</p>
+                    <div class="industry-hero-ctas">
+                        <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent btn-lg industry-btn-primary">Comienza Tu Prueba Gratuita de 14 Días</a>
+                        <a href="/es/demo.html" class="btn btn-secondary btn-lg industry-btn-secondary">Probar Demo en Vivo</a>
                     </div>
-                    <div class="hero-trust">
-                        <i data-lucide="shield-check" style="width:13px;height:13px;color:var(--accent);"></i>
-                        Diseñado para Reseñas de Google · Planes desde $29 por mes
+                    <div class="industry-hero-reassurance">
+                        <i data-lucide="check-circle" style="width:14px;height:14px;color:#10B981;"></i>
+                        <span>Conecta mediante Google Business Profile • Cancela en cualquier momento</span>
                     </div>
                 </div>
-                <div class="mockup-card">
-                    <div class="mockup-header">
-                        <div class="mockup-dots"><span></span><span></span><span></span></div>
-                        <div class="mockup-url"><i data-lucide="lock" style="width:10px;height:10px;"></i> replyvera.com/dashboard</div>
-                        <div style="font-size:0.7rem;font-weight:700;color:var(--industry-accent, var(--accent));display:flex;align-items:center;gap:5px;">
-                            <span style="width:6px;height:6px;background:var(--accent);border-radius:50%;display:inline-block;"></span>Activo
-                        </div>
-                    </div>
-                    <div style="font-size:0.72rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px;">Reseñas Recientes</div>
-                    <div class="review-rows">
-                        <div class="review-row-item">
-                            <div class="review-row-meta">
-                                <div class="review-row-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i></div>
-                                <div class="review-row-text">"Trataron a nuestro perro Max con mucho cariño durante el baño."</div>
+                <div class="industry-hero-visual">
+                    <div class="industry-mockup-card">
+                        <div class="industry-mockup-bar">
+                            <div class="mockup-dots"><span></span><span></span><span></span></div>
+                            <div class="industry-mockup-badge">
+                                <i data-lucide="shield" style="width:11px;height:11px;"></i>
+                                <span>replyvera.com • Product Preview</span>
                             </div>
-                            <span class="review-badge badge-auto">Seguro para Publicar Automáticamente</span>
-                        </div>
-                        <div class="review-row-item">
-                            <div class="review-row-meta">
-                                <div class="review-row-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i></div>
-                                <div class="review-row-text">"El tiempo de espera en la clínica fue demasiado largo."</div>
+                            <div class="industry-mockup-status">
+                                <span class="status-indicator"></span>
+                                <span>Activo</span>
                             </div>
-                            <span class="review-badge badge-approval">Requiere Aprobación</span>
                         </div>
-                        <div class="review-row-item">
-                            <div class="review-row-meta">
-                                <div class="review-row-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i></div>
-                                <div class="review-row-text">"Mi gato volvió lastimado de su estancia en la guardería."</div>
+                        <div class="industry-mockup-header-text">
+                            <span>Reseñas Recientes de Google</span>
+                            <span class="industry-mockup-meta">Google Business Profile Sync</span>
+                        </div>
+                        <div class="industry-review-rows">
+                            <div class="industry-review-row">
+                                <div class="industry-review-main">
+                                    <div class="industry-review-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i></div>
+                                    <div class="industry-review-quote">"Trataron a nuestro perro Max con mucho cariño durante el baño."</div>
+                                </div>
+                                <div class="industry-badge-col">
+                                    <span class="review-badge badge-auto">Seguro para Publicar Automáticamente</span>
+                                </div>
                             </div>
-                            <span class="review-badge badge-blocked">Publicación Automática Bloqueada</span>
+                            <div class="industry-review-row">
+                                <div class="industry-review-main">
+                                    <div class="industry-review-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i></div>
+                                    <div class="industry-review-quote">"El tiempo de espera en la clínica fue demasiado largo."</div>
+                                </div>
+                                <div class="industry-badge-col">
+                                    <span class="review-badge badge-approval">Requiere Aprobación</span>
+                                </div>
+                            </div>
+                            <div class="industry-review-row">
+                                <div class="industry-review-main">
+                                    <div class="industry-review-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i></div>
+                                    <div class="industry-review-quote">"Mi gato volvió lastimado de su estancia en la guardería."</div>
+                                </div>
+                                <div class="industry-badge-col">
+                                    <span class="review-badge badge-blocked">Publicación Automática Bloqueada</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -544,9 +559,9 @@
         </div>
     </header>
     <div class="industry-divider-glow"></div>
-    <section class="section section-light">
-        <div class="container">
-            <div class="section-header">
+    <section class="section section-light" id="benefits">
+        <div class="container industry-content-container">
+            <div class="section-header text-center">
                 <h2>Comunicación Afectuosa para Amantes de los Animales</h2>
             </div>
             <div class="benefits-grid">
@@ -571,15 +586,15 @@
     </section>
     <div class="industry-divider-glow"></div>
     <section class="section section-dark" id="how-it-works">
-        <div class="container">
-            <div class="section-header">
+        <div class="container industry-content-container">
+            <div class="section-header text-center">
                 <h2>Conecta Google. Establece tus Reglas. Deja que ReplyVera Haga el Resto.</h2>
             </div>
             <div class="steps-grid">
                 <div class="step-card">
                     <div class="step-number">1</div>
                     <h3 class="step-title">Conecta tu Perfil de Empresa en Google</h3>
-                    <p class="step-text">Conecta de forma segura una o más ubicaciones. No almacenamos contraseñas.</p>
+                    <p class="step-text">Conecta de forma segura una o más sedes a través de Google OAuth. No almacenamos contraseñas.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">2</div>
@@ -595,9 +610,9 @@
         </div>
     </section>
     <div class="industry-divider-glow"></div>
-    <section class="section section-light">
-        <div class="container">
-            <div class="section-header">
+    <section class="section section-light" id="scenarios">
+        <div class="container industry-content-container">
+            <div class="section-header text-center">
                 <h2>Desde Mascotas Felices hasta Preocupaciones de Dueños</h2>
                 <p>Mira cómo ReplyVera responde a reseñas en el sector veterinario y canino.</p>
             </div>
@@ -646,12 +661,12 @@
         </div>
     </section>
     <div class="industry-divider-glow"></div>
-    <section class="section section-dark">
-        <div class="container">
+    <section class="section section-dark" id="safety">
+        <div class="container industry-content-container">
             <div class="sensitive-inner">
                 <div>
                     <div class="eyebrow" style="margin-bottom:16px;">
-                        <i data-lucide="shield-alert" style="width:12px;height:12px;"></i>
+                        <i data-lucide="shield-alert" style="width:12px;height:12px;color:#EF4444;"></i>
                         Protección de Reseñas Sensibles
                     </div>
                     <h2 style="margin-bottom:12px;">La salud de las mascotas es siempre prioritaria</h2>
@@ -664,16 +679,60 @@
                 <div>
                     <div class="sensitive-alert">
                         <h3 class="sensitive-alert-title">
-                            <i data-lucide="alert-triangle" style="width:16px;height:16px;"></i>
+                            <i data-lucide="alert-triangle" style="width:16px;height:16px;color:#EF4444;"></i>
                             Tema Sensible Detectado
-                        </div>
+                        </h3>
                         <p class="sensitive-alert-text" style="margin-bottom:12px;">La publicación automática ha sido bloqueada. Se ha preparado un borrador para tu aprobación.</p>
                         <div style="display:flex;gap:8px;flex-wrap:wrap;">
                             <span class="review-badge badge-blocked">Publicación Automática Bloqueada</span>
-                            <span style="font-size:0.68rem;font-weight:700;padding:3px 9px;border-radius:4px;background:rgba(245,158,11,0.1);color:#FCD34D;border:1px solid rgba(245,158,11,0.2);">Propietario Notificado</span>
+                            <span style="font-size:0.68rem;font-weight:700;padding:3px 9px;border-radius:4px;background:rgba(245,158,11,0.1);color:#D97706;border:1px solid rgba(245,158,11,0.25);">Propietario Notificado</span>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+    <div class="industry-divider-glow"></div>
+    <section class="section section-light" id="product-proof">
+        <div class="container industry-content-container">
+            <div class="section-header text-center">
+                <h2>Los Tres Niveles de Seguridad en Acción</h2>
+                <p>Cada reseña entrante de Google pasa por tres filtros de seguridad estrictos antes de publicarse.</p>
+            </div>
+            <div class="safeguard-engine-grid">
+                <div class="safeguard-card">
+                    <div class="safeguard-card-top">
+                        <div class="safeguard-icon-wrap icon-auto"><i data-lucide="check-circle" style="width:20px;height:20px;"></i></div>
+                        <span class="review-badge badge-auto">Seguro para Publicar Automáticamente</span>
+                    </div>
+                    <h3 class="safeguard-title">1. Seguro para Publicar</h3>
+                    <p class="safeguard-condition"><strong>Trigger:</strong> Elogios rutinarios de 4–5 estrellas sin términos sensibles ni quejas.</p>
+                    <div class="safeguard-outcome"><strong>Action:</strong> Respuesta personalizada redactada y publicada directamente en Google en minutos.</div>
+                </div>
+                <div class="safeguard-card">
+                    <div class="safeguard-card-top">
+                        <div class="safeguard-icon-wrap icon-approval"><i data-lucide="clock" style="width:20px;height:20px;"></i></div>
+                        <span class="review-badge badge-approval">Requiere Aprobación</span>
+                    </div>
+                    <h3 class="safeguard-title">2. Requiere Aprobación</h3>
+                    <p class="safeguard-condition"><strong>Trigger:</strong> Comentarios mixtos de 2–3 estrellas, retrasos o dudas de facturación.</p>
+                    <div class="safeguard-outcome"><strong>Action:</strong> Retenida en el panel privado. Borrador listo para aprobación humana con 1 clic.</div>
+                </div>
+                <div class="safeguard-card">
+                    <div class="safeguard-card-top">
+                        <div class="safeguard-icon-wrap icon-blocked"><i data-lucide="alert-octagon" style="width:20px;height:20px;"></i></div>
+                        <span class="review-badge badge-blocked">Publicación Automática Bloqueada</span>
+                    </div>
+                    <h3 class="safeguard-title">3. Publicación Bloqueada</h3>
+                    <p class="safeguard-condition"><strong>Trigger:</strong> 1 estrella o alertas críticas (seguridad, lesiones, higiene, reclamos legales).</p>
+                    <div class="safeguard-outcome"><strong>Action:</strong> Publicación automática bloqueada. Notificación de emergencia enviada al responsable.</div>
+                </div>
+            </div>
+            <div style="text-align:center;margin-top:36px;">
+                <a href="/es/demo.html" class="btn btn-secondary btn-lg" style="display:inline-flex;align-items:center;gap:8px;">
+                    <i data-lucide="sliders" style="width:16px;height:16px;"></i>
+                    Prueba estas Reglas en la Demo en Vivo
+                </a>
             </div>
         </div>
     </section>
@@ -726,8 +785,8 @@
     </section>
     <div class="industry-divider-glow"></div>
     <section class="section section-light" id="faq">
-        <div class="container" style="max-width:760px;">
-            <div class="section-header">
+        <div class="container industry-content-container" style="max-width:760px;">
+            <div class="section-header text-center">
                 <h2>Preguntas Frecuentes</h2>
             </div>
             <div class="faq-list">
@@ -769,7 +828,7 @@
         </div>
     </section>
     <section class="section section-dark">
-        <div class="container" style="max-width:700px;">
+        <div class="container industry-content-container" style="max-width:700px;">
             <div class="cta-box">
                 <h2 class="mb-4">Muestra tu Pasión por el Cuidado Animal</h2>
                 <p class="lead mb-8">Responde a tus clientes con empatía y protege la confianza de los dueños de mascotas.</p>

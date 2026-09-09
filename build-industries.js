@@ -306,88 +306,116 @@ function renderIndustryPage(ind, lang) {
     const isAgency = ind.id === 'agencies';
 
     const eyebrowText = isNl ? 'Google Review Automatisering' : isEs ? 'Automatización de Reseñas de Google' : 'Google Review Automation';
-    const ctaStart = isAgency ? (isNl ? 'Start Bureau Proefperiode' : isEs ? 'Comenzar Prueba de Agencia' : 'Start Agency Trial') : (isNl ? 'Start Uw Gratis Proefperiode' : isEs ? 'Comienza Tu Prueba Gratuita' : 'Start Your Free Trial');
-    const ctaHow = isNl ? 'Bekijk Hoe Het Werkt' : isEs ? 'Ver Cómo Funciona' : 'See How It Works';
-    const trustText = isNl ? 'Gemaakt voor Google Reviews · Abonnementen beginnen bij $29 per maand' : isEs ? 'Diseñado para Reseñas de Google · Planes desde $29 por mes' : 'Built for Google Reviews · Plans start at $29 per month';
+    const ctaStart = isAgency
+        ? (isNl ? 'Start Bureau Proefperiode' : isEs ? 'Comenzar Prueba de Agencia' : 'Start Agency Trial')
+        : (isNl ? 'Start Uw 14-Dagen Gratis Proefperiode' : isEs ? 'Comienza Tu Prueba Gratuita de 14 Días' : 'Start Your 14-Day Free Trial');
+    const ctaDemo = isNl ? 'Probeer de Live Demo' : isEs ? 'Probar Demo en Vivo' : 'Try the Live Demo';
+    const demoUrl = isNl ? '/nl/demo.html' : isEs ? '/es/demo.html' : '/demo.html';
+
+    const reassuranceText = isNl
+        ? 'Koppel via Google Bedrijfsprofiel • Altijd opzegbaar'
+        : isEs
+        ? 'Conecta mediante Google Business Profile • Cancela en cualquier momento'
+        : 'Connect through Google Business Profile • Cancel anytime';
+
     const activeText = isNl ? 'Actief' : isEs ? 'Activo' : 'Active';
-    const recentReviewsText = isNl ? 'Recente Beoordelingen' : isEs ? 'Reseñas Recientes' : 'Recent Reviews';
+    const recentReviewsText = isNl ? 'Recente Google Beoordelingen' : isEs ? 'Reseñas Recientes de Google' : 'Recent Google Reviews';
 
     const homeTitle = isNl ? 'Home' : isEs ? 'Inicio' : 'Home';
     const indCategoryTitle = isNl ? 'Sectoren' : isEs ? 'Industrias' : 'Industries';
     const homePath = isNl ? '/nl/' : isEs ? '/es/' : '/';
     const indCategoryPath = isNl ? '/nl/#benefits' : isEs ? '/es/#benefits' : '/#benefits';
 
+    const safeBadgeText = isNl ? 'Veilig om automatisch te publiceren' : isEs ? 'Seguro para Publicar Automáticamente' : 'Safe to Auto-Publish';
+    const approvalBadgeText = isNl ? 'Goedkeuring vereist' : isEs ? 'Requiere Aprobación' : 'Needs Approval';
+    const blockedBadgeText = isNl ? 'Automatisch publiceren geblokkeerd' : isEs ? 'Publicación Automática Bloqueada' : 'Auto-Publishing Blocked';
+
     const breadcrumbsHtml = `
-    <div class="breadcrumbs" style="font-size:0.82rem;color:var(--text-muted);margin-bottom:20px;display:flex;gap:8px;align-items:center;">
-        <a href="${homePath}" style="color:var(--text-muted);text-decoration:none;">${homeTitle}</a>
-        <span>/</span>
-        <a href="${indCategoryPath}" style="color:var(--text-muted);text-decoration:none;">${indCategoryTitle}</a>
-        <span>/</span>
-        <span style="color:var(--industry-accent, var(--accent));font-weight:600;">${trans.name}</span>
-    </div>`;
+    <nav class="breadcrumbs industry-breadcrumbs" aria-label="Breadcrumb">
+        <a href="${homePath}">${homeTitle}</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="${indCategoryPath}">${indCategoryTitle}</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="breadcrumb-current">${trans.name}</span>
+    </nav>`;
 
     const themeStyles = `
     <style>
         :root {
             --industry-accent: ${ind.theme.accent};
-            --industry-accent-soft: ${ind.theme.accent}20;
-            --industry-icon-bg: ${ind.theme.accent}15;
-            --industry-accent-glow: ${ind.theme.accent}33;
+            --industry-accent-soft: ${ind.theme.accent}18;
+            --industry-icon-bg: ${ind.theme.accent}12;
+            --industry-accent-glow: ${ind.theme.accent}25;
         }
     </style>`;
 
     const heroSection = `
-    <header class="hero industry-hero" style="padding:130px 0 70px;">
-        <div class="hero-glow-layer"></div>
-        <div class="container">
-            ${breadcrumbsHtml}
-            <div class="hero-inner">
-                <div class="hero-text">
-                    <div class="eyebrow industry-eyebrow">
-                        <i data-lucide="google" style="width:12px;height:12px;color:#DB4437;"></i>
-                        ${eyebrowText}
+    <header class="hero industry-hero">
+        <div class="industry-hero-glow"></div>
+        <div class="container industry-hero-container">
+            <div class="industry-hero-grid">
+                <div class="industry-hero-text">
+                    ${breadcrumbsHtml}
+                    <div class="industry-eyebrow-pill" style="color:var(--industry-accent); border-color:var(--industry-accent-soft); background:var(--industry-icon-bg);">
+                        <i data-lucide="shield-check" style="width:13px;height:13px;color:var(--industry-accent);"></i>
+                        <span>${eyebrowText}</span>
                     </div>
-                    <h1 class="mb-6">${trans.heroHeadline}</h1>
-                    <p class="lead mb-8">${trans.heroDescription}</p>
-                    <div class="hero-actions">
-                        <a href="https://dashboard.replyvera.com/login?signup=true&tier=${isAgency ? 'agency' : 'autopilot'}" class="btn btn-accent btn-lg">${ctaStart}</a>
-                        <a href="${isNl ? '/nl/#how-it-works' : isEs ? '/es/#how-it-works' : '/#how-it-works'}" class="btn btn-secondary btn-lg">${ctaHow}</a>
+                    <h1 class="industry-hero-h1">${trans.heroHeadline}</h1>
+                    <p class="industry-hero-desc">${trans.heroDescription}</p>
+                    <div class="industry-hero-ctas">
+                        <a href="https://dashboard.replyvera.com/login?signup=true&tier=${isAgency ? 'agency' : 'autopilot'}" class="btn btn-accent btn-lg industry-btn-primary">${ctaStart}</a>
+                        <a href="${demoUrl}" class="btn btn-secondary btn-lg industry-btn-secondary">${ctaDemo}</a>
                     </div>
-                    <div class="hero-trust">
-                        <i data-lucide="shield-check" style="width:13px;height:13px;color:var(--accent);"></i>
-                        ${trustText}
+                    <div class="industry-hero-reassurance">
+                        <i data-lucide="check-circle" style="width:14px;height:14px;color:#10B981;"></i>
+                        <span>${reassuranceText}</span>
                     </div>
                 </div>
-                <div class="mockup-card">
-                    <div class="mockup-header">
-                        <div class="mockup-dots"><span></span><span></span><span></span></div>
-                        <div class="mockup-url"><i data-lucide="lock" style="width:10px;height:10px;"></i> replyvera.com/dashboard</div>
-                        <div style="font-size:0.7rem;font-weight:700;color:var(--industry-accent, var(--accent));display:flex;align-items:center;gap:5px;">
-                            <span style="width:6px;height:6px;background:var(--accent);border-radius:50%;display:inline-block;"></span>${activeText}
-                        </div>
-                    </div>
-                    <div style="font-size:0.72rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px;">${recentReviewsText}</div>
-                    <div class="review-rows">
-                        <div class="review-row-item">
-                            <div class="review-row-meta">
-                                <div class="review-row-stars">${stars(5)}</div>
-                                <div class="review-row-text">"${trans.mockupPositive}"</div>
+                <div class="industry-hero-visual">
+                    <div class="industry-mockup-card">
+                        <div class="industry-mockup-bar">
+                            <div class="mockup-dots"><span></span><span></span><span></span></div>
+                            <div class="industry-mockup-badge">
+                                <i data-lucide="shield" style="width:11px;height:11px;"></i>
+                                <span>replyvera.com • Product Preview</span>
                             </div>
-                            <span class="review-badge badge-auto">${isNl ? 'Veilig om automatisch te publiceren' : isEs ? 'Seguro para Publicar Automáticamente' : 'Safe to Auto-Publish'}</span>
-                        </div>
-                        <div class="review-row-item">
-                            <div class="review-row-meta">
-                                <div class="review-row-stars">${stars(2)}</div>
-                                <div class="review-row-text">"${trans.mockupNegative}"</div>
+                            <div class="industry-mockup-status">
+                                <span class="status-indicator"></span>
+                                <span>${activeText}</span>
                             </div>
-                            <span class="review-badge badge-approval">${isNl ? 'Goedkeuring vereist' : isEs ? 'Requiere Aprobación' : 'Needs Approval'}</span>
                         </div>
-                        <div class="review-row-item">
-                            <div class="review-row-meta">
-                                <div class="review-row-stars">${stars(1)}</div>
-                                <div class="review-row-text">"${trans.mockupSensitive}"</div>
+                        <div class="industry-mockup-header-text">
+                            <span>${recentReviewsText}</span>
+                            <span class="industry-mockup-meta">Google Business Profile Sync</span>
+                        </div>
+                        <div class="industry-review-rows">
+                            <div class="industry-review-row">
+                                <div class="industry-review-main">
+                                    <div class="industry-review-stars">${stars(5)}</div>
+                                    <div class="industry-review-quote">"${trans.mockupPositive}"</div>
+                                </div>
+                                <div class="industry-badge-col">
+                                    <span class="review-badge badge-auto">${safeBadgeText}</span>
+                                </div>
                             </div>
-                            <span class="review-badge badge-blocked">${isNl ? 'Automatisch publiceren geblokkeerd' : isEs ? 'Publicación Automática Bloqueada' : 'Auto-Publishing Blocked'}</span>
+                            <div class="industry-review-row">
+                                <div class="industry-review-main">
+                                    <div class="industry-review-stars">${stars(2)}</div>
+                                    <div class="industry-review-quote">"${trans.mockupNegative}"</div>
+                                </div>
+                                <div class="industry-badge-col">
+                                    <span class="review-badge badge-approval">${approvalBadgeText}</span>
+                                </div>
+                            </div>
+                            <div class="industry-review-row">
+                                <div class="industry-review-main">
+                                    <div class="industry-review-stars">${stars(1)}</div>
+                                    <div class="industry-review-quote">"${trans.mockupSensitive}"</div>
+                                </div>
+                                <div class="industry-badge-col">
+                                    <span class="review-badge badge-blocked">${blockedBadgeText}</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -397,9 +425,9 @@ function renderIndustryPage(ind, lang) {
 
     const benefitsSection = `
     <div class="industry-divider-glow"></div>
-    <section class="section section-light">
-        <div class="container">
-            <div class="section-header">
+    <section class="section section-light" id="benefits">
+        <div class="container industry-content-container">
+            <div class="section-header text-center">
                 <h2>${trans.benefitsHeadline}</h2>
             </div>
             <div class="benefits-grid">
@@ -410,15 +438,15 @@ function renderIndustryPage(ind, lang) {
 
     const howItWorksTitle = isNl ? 'Koppel Google. Stel uw Regels in. Laat ReplyVera de Rest Doen.' : isEs ? 'Conecta Google. Establece tus Reglas. Deja que ReplyVera Haga el Resto.' : 'Connect Google. Set Your Rules. Let ReplyVera Handle the Rest.';
     const step1Title = isNl ? 'Koppel Google Bedrijfsprofiel' : isEs ? 'Conecta tu Perfil de Empresa en Google' : 'Connect Google Business Profile';
-    const step1Text = isNl ? 'Koppel veilig één of meerdere bedrijfslocaties. Er worden geen wachtwoorden opgeslagen.' : isEs ? 'Conecta de forma segura una o más ubicaciones. No almacenamos contraseñas.' : 'Securely connect one or more business locations. No passwords stored.';
+    const step1Text = isNl ? 'Koppel veilig één of meerdere bedrijfslocaties via Google OAuth. Geen wachtwoorden vereist.' : isEs ? 'Conecta de forma segura una o más sedes a través de Google OAuth. No almacenamos contraseñas.' : 'Securely connect one or more business locations via Google OAuth. No passwords stored.';
     const step2Title = isNl ? 'Kies uw Toon en Goedkeuringsregels' : isEs ? 'Elige tu Tono y Reglas de Aprobación' : 'Choose Your Tone and Approval Rules';
     const step3Title = isNl ? 'ReplyVera Verwerkt Nieuwe Reviews' : isEs ? 'ReplyVera Gestiona las Nuevas Reseñas' : 'ReplyVera Handles New Reviews';
 
     const howItWorksSection = `
     <div class="industry-divider-glow"></div>
     <section class="section section-dark" id="how-it-works">
-        <div class="container">
-            <div class="section-header">
+        <div class="container industry-content-container">
+            <div class="section-header text-center">
                 <h2>${howItWorksTitle}</h2>
             </div>
             <div class="steps-grid">
@@ -443,9 +471,9 @@ function renderIndustryPage(ind, lang) {
 
     const reviewsSection = `
     <div class="industry-divider-glow"></div>
-    <section class="section section-light">
-        <div class="container">
-            <div class="section-header">
+    <section class="section section-light" id="scenarios">
+        <div class="container industry-content-container">
+            <div class="section-header text-center">
                 <h2>${trans.reviewsHeadline}</h2>
                 <p>${trans.reviewsSubhead}</p>
             </div>
@@ -458,17 +486,18 @@ function renderIndustryPage(ind, lang) {
     const sensitiveProtectionTitle = isNl ? 'Bescherming bij Gevoelige Reviews' : isEs ? 'Protección de Reseñas Sensibles' : 'Sensitive Review Protection';
     const sensitiveIntro = isNl ? 'ReplyVera publiceert gevoelige feedback nooit automatisch. Wanneer een review overeenkomt met een beschermd onderwerp, wordt automatisch publiceren geblokkeerd.' : isEs ? 'ReplyVera nunca publica comentarios sensibles automáticamente. Cuando una reseña coincide con un tema protegido, la publicación se bloquea.' : 'ReplyVera never publishes sensitive feedback automatically. When a review matches a protected topic, auto-publishing is blocked.';
     const monitoredTopicsLabel = isNl ? 'Gemonitorde onderwerpen:' : isEs ? 'Temas monitoreados:' : 'Monitored topics:';
-    const sensitiveDetectedTitle = isNl ? 'Gevoelig Onderwerp Gedeclareerd' : isEs ? 'Tema Sensible Detectado' : 'Sensitive Topic Detected';
+    const sensitiveDetectedTitle = isNl ? 'Gevoelig Onderwerp Gedetecteerd' : isEs ? 'Tema Sensible Detectado' : 'Sensitive Topic Detected';
     const sensitiveBoxText = isNl ? 'Automatisch publiceren is geblokkeerd. Er is een concept voorbereid dat u eerst moet goedkeuren.' : isEs ? 'La publicación automática ha sido bloqueada. Se ha preparado un borrador para tu aprobación.' : 'Auto-publishing has been blocked. A draft has been prepared for your approval.';
+    const ownerNotifiedText = isNl ? 'Eigenaar Gewaarschuwd' : isEs ? 'Propietario Notificado' : 'Owner Notified';
 
     const sensitiveSection = `
     <div class="industry-divider-glow"></div>
-    <section class="section section-dark">
-        <div class="container">
+    <section class="section section-dark" id="safety">
+        <div class="container industry-content-container">
             <div class="sensitive-inner">
                 <div>
                     <div class="eyebrow" style="margin-bottom:16px;">
-                        <i data-lucide="shield-alert" style="width:12px;height:12px;"></i>
+                        <i data-lucide="shield-alert" style="width:12px;height:12px;color:#EF4444;"></i>
                         ${sensitiveProtectionTitle}
                     </div>
                     <h2 style="margin-bottom:12px;">${trans.sensitiveHeadline}</h2>
@@ -481,16 +510,80 @@ function renderIndustryPage(ind, lang) {
                 <div>
                     <div class="sensitive-alert">
                         <h3 class="sensitive-alert-title">
-                            <i data-lucide="alert-triangle" style="width:16px;height:16px;"></i>
+                            <i data-lucide="alert-triangle" style="width:16px;height:16px;color:#EF4444;"></i>
                             ${sensitiveDetectedTitle}
-                        </div>
+                        </h3>
                         <p class="sensitive-alert-text" style="margin-bottom:12px;">${sensitiveBoxText}</p>
                         <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                            <span class="review-badge badge-blocked">${isNl ? 'Automatisch publiceren geblokkeerd' : isEs ? 'Publicación Automática Bloqueada' : 'Auto-Publishing Blocked'}</span>
-                            <span style="font-size:0.68rem;font-weight:700;padding:3px 9px;border-radius:4px;background:rgba(245,158,11,0.1);color:#FCD34D;border:1px solid rgba(245,158,11,0.2);">${isNl ? 'Eigenaar Gewaarschuwd' : isEs ? 'Propietario Notificado' : 'Owner Notified'}</span>
+                            <span class="review-badge badge-blocked">${blockedBadgeText}</span>
+                            <span style="font-size:0.68rem;font-weight:700;padding:3px 9px;border-radius:4px;background:rgba(245,158,11,0.1);color:#D97706;border:1px solid rgba(245,158,11,0.25);">${ownerNotifiedText}</span>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>`;
+
+    // ─── Section 7: Interactive or Visual Product Proof ───
+    const proofTitle = isNl ? 'De Drie Beveiligingsniveaus in Actie' : isEs ? 'Los Tres Niveles de Seguridad en Acción' : 'The Three-Tier Safeguard Engine';
+    const proofSub = isNl ? 'Elke binnenkomende Google-review doorloopt drie strikte controles voordat er iets wordt gepubliceerd.' : isEs ? 'Cada reseña entrante de Google pasa por tres filtros de seguridad estrictos antes de publicarse.' : 'Every incoming Google review passes through three strict filters before anything is published.';
+    
+    const tier1Title = isNl ? '1. Veilig om te Publiceren' : isEs ? '1. Seguro para Publicar' : '1. Safe to Auto-Publish';
+    const tier1Cond = isNl ? '4–5 sterren routinematige lof zonder risicotermen of klachten.' : isEs ? 'Elogios rutinarios de 4–5 estrellas sin términos sensibles ni quejas.' : '4–5 star routine positive praise without sensitive terms or disputes.';
+    const tier1Act = isNl ? 'Gepersonaliseerde reactie binnen minuten direct naar Google gepubliceerd.' : isEs ? 'Respuesta personalizada redactada y publicada directamente en Google en minutos.' : 'Personalized response drafted and published directly to Google within minutes.';
+
+    const tier2Title = isNl ? '2. Goedkeuring Vereist' : isEs ? '2. Requiere Aprobación' : '2. Needs Approval';
+    const tier2Cond = isNl ? '2–3 sterren gemengde feedback, vertragingen of prijsvragen.' : isEs ? 'Comentarios mixtos de 2–3 estrellas, retrasos o dudas de facturación.' : '2–3 star mixed feedback, service delays, or pricing concerns.';
+    const tier2Act = isNl ? 'Vastgehouden in privédashboard. Concept klaargezet voor snelle 1-klik goedkeuring.' : isEs ? 'Retenida en el panel privado. Borrador listo para aprobación humana con 1 clic.' : 'Held in private queue. AI draft prepared for fast 1-click human approval.';
+
+    const tier3Title = isNl ? '3. Publicatie Geblokkeerd' : isEs ? '3. Publicación Bloqueada' : '3. Auto-Publishing Blocked';
+    const tier3Cond = isNl ? '1 ster of ernstige triggers (veiligheid, letsel, hygiëne, juridische claims).' : isEs ? '1 estrella o alertas críticas (seguridad, lesiones, higiene, reclamos legales).' : '1 star or critical safety triggers (injuries, hygiene, legal threats).';
+    const tier3Act = isNl ? 'Automatisch publiceren direct geblokkeerd. Directe notificatie naar eigenaar/manager.' : isEs ? 'Publicación automática bloqueada. Notificación de emergencia enviada al responsable.' : 'Auto-publishing blocked instantly. Urgent alert dispatched for human-only intervention.';
+
+    const proofDemoCta = isNl ? 'Test deze Safeguards in de Live Demo' : isEs ? 'Prueba estas Reglas en la Demo en Vivo' : 'Test These Safeguards in the Live Demo';
+
+    const productProofSection = `
+    <div class="industry-divider-glow"></div>
+    <section class="section section-light" id="product-proof">
+        <div class="container industry-content-container">
+            <div class="section-header text-center">
+                <h2>${proofTitle}</h2>
+                <p>${proofSub}</p>
+            </div>
+            <div class="safeguard-engine-grid">
+                <div class="safeguard-card">
+                    <div class="safeguard-card-top">
+                        <div class="safeguard-icon-wrap icon-auto"><i data-lucide="check-circle" style="width:20px;height:20px;"></i></div>
+                        <span class="review-badge badge-auto">${safeBadgeText}</span>
+                    </div>
+                    <h3 class="safeguard-title">${tier1Title}</h3>
+                    <p class="safeguard-condition"><strong>Trigger:</strong> ${tier1Cond}</p>
+                    <div class="safeguard-outcome"><strong>Action:</strong> ${tier1Act}</div>
+                </div>
+                <div class="safeguard-card">
+                    <div class="safeguard-card-top">
+                        <div class="safeguard-icon-wrap icon-approval"><i data-lucide="clock" style="width:20px;height:20px;"></i></div>
+                        <span class="review-badge badge-approval">${approvalBadgeText}</span>
+                    </div>
+                    <h3 class="safeguard-title">${tier2Title}</h3>
+                    <p class="safeguard-condition"><strong>Trigger:</strong> ${tier2Cond}</p>
+                    <div class="safeguard-outcome"><strong>Action:</strong> ${tier2Act}</div>
+                </div>
+                <div class="safeguard-card">
+                    <div class="safeguard-card-top">
+                        <div class="safeguard-icon-wrap icon-blocked"><i data-lucide="alert-octagon" style="width:20px;height:20px;"></i></div>
+                        <span class="review-badge badge-blocked">${blockedBadgeText}</span>
+                    </div>
+                    <h3 class="safeguard-title">${tier3Title}</h3>
+                    <p class="safeguard-condition"><strong>Trigger:</strong> ${tier3Cond}</p>
+                    <div class="safeguard-outcome"><strong>Action:</strong> ${tier3Act}</div>
+                </div>
+            </div>
+            <div style="text-align:center;margin-top:36px;">
+                <a href="${demoUrl}" class="btn btn-secondary btn-lg" style="display:inline-flex;align-items:center;gap:8px;">
+                    <i data-lucide="sliders" style="width:16px;height:16px;"></i>
+                    ${proofDemoCta}
+                </a>
             </div>
         </div>
     </section>`;
@@ -501,8 +594,8 @@ function renderIndustryPage(ind, lang) {
     const faqSection = `
     <div class="industry-divider-glow"></div>
     <section class="section section-light" id="faq">
-        <div class="container" style="max-width:760px;">
-            <div class="section-header">
+        <div class="container industry-content-container" style="max-width:760px;">
+            <div class="section-header text-center">
                 <h2>${faqTitle}</h2>
             </div>
             <div class="faq-list">
@@ -515,7 +608,7 @@ function renderIndustryPage(ind, lang) {
 
     const ctaSection = `
     <section class="section section-dark">
-        <div class="container" style="max-width:700px;">
+        <div class="container industry-content-container" style="max-width:700px;">
             <div class="cta-box">
                 <h2 class="mb-4">${trans.finalCtaHeadline}</h2>
                 <p class="lead mb-8">${trans.finalCtaDescription}</p>
@@ -527,7 +620,7 @@ function renderIndustryPage(ind, lang) {
         </div>
     </section>`;
 
-    return `${themeStyles}${heroSection}${benefitsSection}${howItWorksSection}${reviewsSection}${sensitiveSection}${pricingSection}${faqSection}${relatedSection}${ctaSection}`;
+    return `${themeStyles}${heroSection}${benefitsSection}${howItWorksSection}${reviewsSection}${sensitiveSection}${productProofSection}${pricingSection}${faqSection}${relatedSection}${ctaSection}`;
 }
 
 // ─── Build Pages Loop ─────────────────────────────────────────────────────────

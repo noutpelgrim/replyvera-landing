@@ -253,18 +253,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
+    // Smooth scrolling for anchor links with reduced-motion and history hash support
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', event => {
+            const selector = link.getAttribute('href');
+            if (!selector || selector === '#') return;
+
+            let target;
+            try {
+                target = document.querySelector(selector);
+            } catch (err) {
+                return;
+            }
+            if (!target) return;
+
+            event.preventDefault();
+
+            target.scrollIntoView({
+                behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+                    ? 'auto'
+                    : 'smooth',
+                block: 'start'
+            });
+
+            if (history.replaceState) {
+                history.replaceState(null, '', selector);
+            } else {
+                window.location.hash = selector;
             }
         });
     });

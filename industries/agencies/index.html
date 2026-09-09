@@ -473,70 +473,85 @@
 
     <style>
         :root {
-            --industry-accent: #8B5CF6;
-            --industry-accent-soft: #8B5CF620;
-            --industry-icon-bg: #8B5CF615;
-            --industry-accent-glow: #8B5CF633;
+            --industry-accent: #4F46E5;
+            --industry-accent-soft: #4F46E518;
+            --industry-icon-bg: #4F46E512;
+            --industry-accent-glow: #4F46E525;
         }
     </style>
-    <header class="hero industry-hero" style="padding:130px 0 70px;">
-        <div class="hero-glow-layer"></div>
-        <div class="container">
-            
-    <div class="breadcrumbs" style="font-size:0.82rem;color:var(--text-muted);margin-bottom:20px;display:flex;gap:8px;align-items:center;">
-        <a href="/" style="color:var(--text-muted);text-decoration:none;">Home</a>
-        <span>/</span>
-        <a href="/#benefits" style="color:var(--text-muted);text-decoration:none;">Industries</a>
-        <span>/</span>
-        <span style="color:var(--industry-accent, var(--accent));font-weight:600;">Marketing Agencies</span>
-    </div>
-            <div class="hero-inner">
-                <div class="hero-text">
-                    <div class="eyebrow industry-eyebrow">
-                        <i data-lucide="google" style="width:12px;height:12px;color:#DB4437;"></i>
-                        Google Review Automation
+    <header class="hero industry-hero">
+        <div class="industry-hero-glow"></div>
+        <div class="container industry-hero-container">
+            <div class="industry-hero-grid">
+                <div class="industry-hero-text">
+                    
+    <nav class="breadcrumbs industry-breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="/#benefits">Industries</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="breadcrumb-current">Marketing Agencies</span>
+    </nav>
+                    <div class="industry-eyebrow-pill" style="color:var(--industry-accent); border-color:var(--industry-accent-soft); background:var(--industry-icon-bg);">
+                        <i data-lucide="shield-check" style="width:13px;height:13px;color:var(--industry-accent);"></i>
+                        <span>Google Review Automation</span>
                     </div>
-                    <h1 class="mb-6">Scalable Review Automation for Marketing Agencies</h1>
-                    <p class="lead mb-8">Manage Google review responses across all client accounts from one dashboard. Define client-specific rules and deliver high-value reporting.</p>
-                    <div class="hero-actions">
-                        <a href="https://dashboard.replyvera.com/login?signup=true&tier=agency" class="btn btn-accent btn-lg">Start Agency Trial</a>
-                        <a href="/#how-it-works" class="btn btn-secondary btn-lg">See How It Works</a>
+                    <h1 class="industry-hero-h1">Scalable Review Automation for Marketing Agencies</h1>
+                    <p class="industry-hero-desc">Manage Google review responses across all client accounts from one dashboard. Define client-specific rules and deliver high-value reporting.</p>
+                    <div class="industry-hero-ctas">
+                        <a href="https://dashboard.replyvera.com/login?signup=true&tier=agency" class="btn btn-accent btn-lg industry-btn-primary">Start Agency Trial</a>
+                        <a href="/demo.html" class="btn btn-secondary btn-lg industry-btn-secondary">Try the Live Demo</a>
                     </div>
-                    <div class="hero-trust">
-                        <i data-lucide="shield-check" style="width:13px;height:13px;color:var(--accent);"></i>
-                        Built for Google Reviews · Plans start at $29 per month
+                    <div class="industry-hero-reassurance">
+                        <i data-lucide="check-circle" style="width:14px;height:14px;color:#10B981;"></i>
+                        <span>Connect through Google Business Profile • Cancel anytime</span>
                     </div>
                 </div>
-                <div class="mockup-card">
-                    <div class="mockup-header">
-                        <div class="mockup-dots"><span></span><span></span><span></span></div>
-                        <div class="mockup-url"><i data-lucide="lock" style="width:10px;height:10px;"></i> replyvera.com/dashboard</div>
-                        <div style="font-size:0.7rem;font-weight:700;color:var(--industry-accent, var(--accent));display:flex;align-items:center;gap:5px;">
-                            <span style="width:6px;height:6px;background:var(--accent);border-radius:50%;display:inline-block;"></span>Active
-                        </div>
-                    </div>
-                    <div style="font-size:0.72rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px;">Recent Reviews</div>
-                    <div class="review-rows">
-                        <div class="review-row-item">
-                            <div class="review-row-meta">
-                                <div class="review-row-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i></div>
-                                <div class="review-row-text">"Great client support and lightning fast responses."</div>
+                <div class="industry-hero-visual">
+                    <div class="industry-mockup-card">
+                        <div class="industry-mockup-bar">
+                            <div class="mockup-dots"><span></span><span></span><span></span></div>
+                            <div class="industry-mockup-badge">
+                                <i data-lucide="shield" style="width:11px;height:11px;"></i>
+                                <span>replyvera.com • Product Preview</span>
                             </div>
-                            <span class="review-badge badge-auto">Safe to Auto-Publish</span>
-                        </div>
-                        <div class="review-row-item">
-                            <div class="review-row-meta">
-                                <div class="review-row-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i></div>
-                                <div class="review-row-text">"Our appointment was canceled at the last minute."</div>
+                            <div class="industry-mockup-status">
+                                <span class="status-indicator"></span>
+                                <span>Active</span>
                             </div>
-                            <span class="review-badge badge-approval">Needs Approval</span>
                         </div>
-                        <div class="review-row-item">
-                            <div class="review-row-meta">
-                                <div class="review-row-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i></div>
-                                <div class="review-row-text">"Unprofessional interaction with upper management."</div>
+                        <div class="industry-mockup-header-text">
+                            <span>Recent Google Reviews</span>
+                            <span class="industry-mockup-meta">Google Business Profile Sync</span>
+                        </div>
+                        <div class="industry-review-rows">
+                            <div class="industry-review-row">
+                                <div class="industry-review-main">
+                                    <div class="industry-review-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i></div>
+                                    <div class="industry-review-quote">"Great client support and lightning fast responses."</div>
+                                </div>
+                                <div class="industry-badge-col">
+                                    <span class="review-badge badge-auto">Safe to Auto-Publish</span>
+                                </div>
                             </div>
-                            <span class="review-badge badge-blocked">Auto-Publishing Blocked</span>
+                            <div class="industry-review-row">
+                                <div class="industry-review-main">
+                                    <div class="industry-review-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i></div>
+                                    <div class="industry-review-quote">"Our appointment was canceled at the last minute."</div>
+                                </div>
+                                <div class="industry-badge-col">
+                                    <span class="review-badge badge-approval">Needs Approval</span>
+                                </div>
+                            </div>
+                            <div class="industry-review-row">
+                                <div class="industry-review-main">
+                                    <div class="industry-review-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i></div>
+                                    <div class="industry-review-quote">"Unprofessional interaction with upper management."</div>
+                                </div>
+                                <div class="industry-badge-col">
+                                    <span class="review-badge badge-blocked">Auto-Publishing Blocked</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -544,9 +559,9 @@
         </div>
     </header>
     <div class="industry-divider-glow"></div>
-    <section class="section section-light">
-        <div class="container">
-            <div class="section-header">
+    <section class="section section-light" id="benefits">
+        <div class="container industry-content-container">
+            <div class="section-header text-center">
                 <h2>Scalable Review Management for Client Accounts</h2>
             </div>
             <div class="benefits-grid">
@@ -571,15 +586,15 @@
     </section>
     <div class="industry-divider-glow"></div>
     <section class="section section-dark" id="how-it-works">
-        <div class="container">
-            <div class="section-header">
+        <div class="container industry-content-container">
+            <div class="section-header text-center">
                 <h2>Connect Google. Set Your Rules. Let ReplyVera Handle the Rest.</h2>
             </div>
             <div class="steps-grid">
                 <div class="step-card">
                     <div class="step-number">1</div>
                     <h3 class="step-title">Connect Google Business Profile</h3>
-                    <p class="step-text">Securely connect one or more business locations. No passwords stored.</p>
+                    <p class="step-text">Securely connect one or more business locations via Google OAuth. No passwords stored.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">2</div>
@@ -595,9 +610,9 @@
         </div>
     </section>
     <div class="industry-divider-glow"></div>
-    <section class="section section-light">
-        <div class="container">
-            <div class="section-header">
+    <section class="section section-light" id="scenarios">
+        <div class="container industry-content-container">
+            <div class="section-header text-center">
                 <h2>Automated Client Management in Practice</h2>
                 <p>See how ReplyVera helps agencies scale review responses across multiple accounts.</p>
             </div>
@@ -646,12 +661,12 @@
         </div>
     </section>
     <div class="industry-divider-glow"></div>
-    <section class="section section-dark">
-        <div class="container">
+    <section class="section section-dark" id="safety">
+        <div class="container industry-content-container">
             <div class="sensitive-inner">
                 <div>
                     <div class="eyebrow" style="margin-bottom:16px;">
-                        <i data-lucide="shield-alert" style="width:12px;height:12px;"></i>
+                        <i data-lucide="shield-alert" style="width:12px;height:12px;color:#EF4444;"></i>
                         Sensitive Review Protection
                     </div>
                     <h2 style="margin-bottom:12px;">Agency-Level Brand Safeguards</h2>
@@ -664,16 +679,60 @@
                 <div>
                     <div class="sensitive-alert">
                         <h3 class="sensitive-alert-title">
-                            <i data-lucide="alert-triangle" style="width:16px;height:16px;"></i>
+                            <i data-lucide="alert-triangle" style="width:16px;height:16px;color:#EF4444;"></i>
                             Sensitive Topic Detected
-                        </div>
+                        </h3>
                         <p class="sensitive-alert-text" style="margin-bottom:12px;">Auto-publishing has been blocked. A draft has been prepared for your approval.</p>
                         <div style="display:flex;gap:8px;flex-wrap:wrap;">
                             <span class="review-badge badge-blocked">Auto-Publishing Blocked</span>
-                            <span style="font-size:0.68rem;font-weight:700;padding:3px 9px;border-radius:4px;background:rgba(245,158,11,0.1);color:#FCD34D;border:1px solid rgba(245,158,11,0.2);">Owner Notified</span>
+                            <span style="font-size:0.68rem;font-weight:700;padding:3px 9px;border-radius:4px;background:rgba(245,158,11,0.1);color:#D97706;border:1px solid rgba(245,158,11,0.25);">Owner Notified</span>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+    <div class="industry-divider-glow"></div>
+    <section class="section section-light" id="product-proof">
+        <div class="container industry-content-container">
+            <div class="section-header text-center">
+                <h2>The Three-Tier Safeguard Engine</h2>
+                <p>Every incoming Google review passes through three strict filters before anything is published.</p>
+            </div>
+            <div class="safeguard-engine-grid">
+                <div class="safeguard-card">
+                    <div class="safeguard-card-top">
+                        <div class="safeguard-icon-wrap icon-auto"><i data-lucide="check-circle" style="width:20px;height:20px;"></i></div>
+                        <span class="review-badge badge-auto">Safe to Auto-Publish</span>
+                    </div>
+                    <h3 class="safeguard-title">1. Safe to Auto-Publish</h3>
+                    <p class="safeguard-condition"><strong>Trigger:</strong> 4–5 star routine positive praise without sensitive terms or disputes.</p>
+                    <div class="safeguard-outcome"><strong>Action:</strong> Personalized response drafted and published directly to Google within minutes.</div>
+                </div>
+                <div class="safeguard-card">
+                    <div class="safeguard-card-top">
+                        <div class="safeguard-icon-wrap icon-approval"><i data-lucide="clock" style="width:20px;height:20px;"></i></div>
+                        <span class="review-badge badge-approval">Needs Approval</span>
+                    </div>
+                    <h3 class="safeguard-title">2. Needs Approval</h3>
+                    <p class="safeguard-condition"><strong>Trigger:</strong> 2–3 star mixed feedback, service delays, or pricing concerns.</p>
+                    <div class="safeguard-outcome"><strong>Action:</strong> Held in private queue. AI draft prepared for fast 1-click human approval.</div>
+                </div>
+                <div class="safeguard-card">
+                    <div class="safeguard-card-top">
+                        <div class="safeguard-icon-wrap icon-blocked"><i data-lucide="alert-octagon" style="width:20px;height:20px;"></i></div>
+                        <span class="review-badge badge-blocked">Auto-Publishing Blocked</span>
+                    </div>
+                    <h3 class="safeguard-title">3. Auto-Publishing Blocked</h3>
+                    <p class="safeguard-condition"><strong>Trigger:</strong> 1 star or critical safety triggers (injuries, hygiene, legal threats).</p>
+                    <div class="safeguard-outcome"><strong>Action:</strong> Auto-publishing blocked instantly. Urgent alert dispatched for human-only intervention.</div>
+                </div>
+            </div>
+            <div style="text-align:center;margin-top:36px;">
+                <a href="/demo.html" class="btn btn-secondary btn-lg" style="display:inline-flex;align-items:center;gap:8px;">
+                    <i data-lucide="sliders" style="width:16px;height:16px;"></i>
+                    Test These Safeguards in the Live Demo
+                </a>
             </div>
         </div>
     </section>
@@ -710,8 +769,8 @@
     </section>
     <div class="industry-divider-glow"></div>
     <section class="section section-light" id="faq">
-        <div class="container" style="max-width:760px;">
-            <div class="section-header">
+        <div class="container industry-content-container" style="max-width:760px;">
+            <div class="section-header text-center">
                 <h2>Frequently Asked Questions</h2>
             </div>
             <div class="faq-list">
@@ -760,7 +819,7 @@
         </div>
     </section>
     <section class="section section-dark">
-        <div class="container" style="max-width:700px;">
+        <div class="container industry-content-container" style="max-width:700px;">
             <div class="cta-box">
                 <h2 class="mb-4">Scale Your Agency with Review Automation</h2>
                 <p class="lead mb-8">Start an agency trial today and streamline reputation management across all client locations.</p>

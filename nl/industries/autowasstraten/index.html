@@ -473,70 +473,85 @@
 
     <style>
         :root {
-            --industry-accent: #06B6D4;
-            --industry-accent-soft: #06B6D420;
-            --industry-icon-bg: #06B6D415;
-            --industry-accent-glow: #06B6D433;
+            --industry-accent: #0D9488;
+            --industry-accent-soft: #0D948818;
+            --industry-icon-bg: #0D948812;
+            --industry-accent-glow: #0D948825;
         }
     </style>
-    <header class="hero industry-hero" style="padding:130px 0 70px;">
-        <div class="hero-glow-layer"></div>
-        <div class="container">
-            
-    <div class="breadcrumbs" style="font-size:0.82rem;color:var(--text-muted);margin-bottom:20px;display:flex;gap:8px;align-items:center;">
-        <a href="/nl/" style="color:var(--text-muted);text-decoration:none;">Home</a>
-        <span>/</span>
-        <a href="/nl/#benefits" style="color:var(--text-muted);text-decoration:none;">Sectoren</a>
-        <span>/</span>
-        <span style="color:var(--industry-accent, var(--accent));font-weight:600;">Autowasstraten</span>
-    </div>
-            <div class="hero-inner">
-                <div class="hero-text">
-                    <div class="eyebrow industry-eyebrow">
-                        <i data-lucide="google" style="width:12px;height:12px;color:#DB4437;"></i>
-                        Google Review Automatisering
+    <header class="hero industry-hero">
+        <div class="industry-hero-glow"></div>
+        <div class="container industry-hero-container">
+            <div class="industry-hero-grid">
+                <div class="industry-hero-text">
+                    
+    <nav class="breadcrumbs industry-breadcrumbs" aria-label="Breadcrumb">
+        <a href="/nl/">Home</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="/nl/#benefits">Sectoren</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="breadcrumb-current">Autowasstraten</span>
+    </nav>
+                    <div class="industry-eyebrow-pill" style="color:var(--industry-accent); border-color:var(--industry-accent-soft); background:var(--industry-icon-bg);">
+                        <i data-lucide="shield-check" style="width:13px;height:13px;color:var(--industry-accent);"></i>
+                        <span>Google Review Automatisering</span>
                     </div>
-                    <h1 class="mb-6">Elke Review voor uw Autowasstraat Automatisch Beantwoord</h1>
-                    <p class="lead mb-8">ReplyVera behandelt routinematige reviews en escaleert klachten over voertuigschade, facturering, lidmaatschap en veiligheid voordat er een antwoord wordt gepubliceerd.</p>
-                    <div class="hero-actions">
-                        <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent btn-lg">Start Uw Gratis Proefperiode</a>
-                        <a href="/nl/#how-it-works" class="btn btn-secondary btn-lg">Bekijk Hoe Het Werkt</a>
+                    <h1 class="industry-hero-h1">Elke Review voor uw Autowasstraat Automatisch Beantwoord</h1>
+                    <p class="industry-hero-desc">ReplyVera behandelt routinematige reviews en escaleert klachten over voertuigschade, facturering, lidmaatschap en veiligheid voordat er een antwoord wordt gepubliceerd.</p>
+                    <div class="industry-hero-ctas">
+                        <a href="https://dashboard.replyvera.com/login?signup=true&tier=autopilot" class="btn btn-accent btn-lg industry-btn-primary">Start Uw 14-Dagen Gratis Proefperiode</a>
+                        <a href="/nl/demo.html" class="btn btn-secondary btn-lg industry-btn-secondary">Probeer de Live Demo</a>
                     </div>
-                    <div class="hero-trust">
-                        <i data-lucide="shield-check" style="width:13px;height:13px;color:var(--accent);"></i>
-                        Gemaakt voor Google Reviews · Abonnementen beginnen bij $29 per maand
+                    <div class="industry-hero-reassurance">
+                        <i data-lucide="check-circle" style="width:14px;height:14px;color:#10B981;"></i>
+                        <span>Koppel via Google Bedrijfsprofiel • Altijd opzegbaar</span>
                     </div>
                 </div>
-                <div class="mockup-card">
-                    <div class="mockup-header">
-                        <div class="mockup-dots"><span></span><span></span><span></span></div>
-                        <div class="mockup-url"><i data-lucide="lock" style="width:10px;height:10px;"></i> replyvera.com/dashboard</div>
-                        <div style="font-size:0.7rem;font-weight:700;color:var(--industry-accent, var(--accent));display:flex;align-items:center;gap:5px;">
-                            <span style="width:6px;height:6px;background:var(--accent);border-radius:50%;display:inline-block;"></span>Actief
-                        </div>
-                    </div>
-                    <div style="font-size:0.72rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px;">Recente Beoordelingen</div>
-                    <div class="review-rows">
-                        <div class="review-row-item">
-                            <div class="review-row-meta">
-                                <div class="review-row-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i></div>
-                                <div class="review-row-text">"Beste autowasstraat in de buurt. Altijd vlekkeloos schoon."</div>
+                <div class="industry-hero-visual">
+                    <div class="industry-mockup-card">
+                        <div class="industry-mockup-bar">
+                            <div class="mockup-dots"><span></span><span></span><span></span></div>
+                            <div class="industry-mockup-badge">
+                                <i data-lucide="shield" style="width:11px;height:11px;"></i>
+                                <span>replyvera.com • Product Preview</span>
                             </div>
-                            <span class="review-badge badge-auto">Veilig om automatisch te publiceren</span>
-                        </div>
-                        <div class="review-row-item">
-                            <div class="review-row-meta">
-                                <div class="review-row-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i></div>
-                                <div class="review-row-text">"De apparatuur was kapot en mijn auto werd niet goed schoon."</div>
+                            <div class="industry-mockup-status">
+                                <span class="status-indicator"></span>
+                                <span>Actief</span>
                             </div>
-                            <span class="review-badge badge-approval">Goedkeuring vereist</span>
                         </div>
-                        <div class="review-row-item">
-                            <div class="review-row-meta">
-                                <div class="review-row-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i></div>
-                                <div class="review-row-text">"Mijn zijspiegel werd afgebroken tijdens het wassen."</div>
+                        <div class="industry-mockup-header-text">
+                            <span>Recente Google Beoordelingen</span>
+                            <span class="industry-mockup-meta">Google Business Profile Sync</span>
+                        </div>
+                        <div class="industry-review-rows">
+                            <div class="industry-review-row">
+                                <div class="industry-review-main">
+                                    <div class="industry-review-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i></div>
+                                    <div class="industry-review-quote">"Beste autowasstraat in de buurt. Altijd vlekkeloos schoon."</div>
+                                </div>
+                                <div class="industry-badge-col">
+                                    <span class="review-badge badge-auto">Veilig om automatisch te publiceren</span>
+                                </div>
                             </div>
-                            <span class="review-badge badge-blocked">Automatisch publiceren geblokkeerd</span>
+                            <div class="industry-review-row">
+                                <div class="industry-review-main">
+                                    <div class="industry-review-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i></div>
+                                    <div class="industry-review-quote">"De apparatuur was kapot en mijn auto werd niet goed schoon."</div>
+                                </div>
+                                <div class="industry-badge-col">
+                                    <span class="review-badge badge-approval">Goedkeuring vereist</span>
+                                </div>
+                            </div>
+                            <div class="industry-review-row">
+                                <div class="industry-review-main">
+                                    <div class="industry-review-stars"><i data-lucide="star" style="fill:#F59E0B;color:#F59E0B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i><i data-lucide="star" style="fill:none;color:#64748B;width:12px;height:12px;"></i></div>
+                                    <div class="industry-review-quote">"Mijn zijspiegel werd afgebroken tijdens het wassen."</div>
+                                </div>
+                                <div class="industry-badge-col">
+                                    <span class="review-badge badge-blocked">Automatisch publiceren geblokkeerd</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -544,9 +559,9 @@
         </div>
     </header>
     <div class="industry-divider-glow"></div>
-    <section class="section section-light">
-        <div class="container">
-            <div class="section-header">
+    <section class="section section-light" id="benefits">
+        <div class="container industry-content-container">
+            <div class="section-header text-center">
                 <h2>Reacties die net zo hard werken als uw apparatuur</h2>
             </div>
             <div class="benefits-grid">
@@ -571,15 +586,15 @@
     </section>
     <div class="industry-divider-glow"></div>
     <section class="section section-dark" id="how-it-works">
-        <div class="container">
-            <div class="section-header">
+        <div class="container industry-content-container">
+            <div class="section-header text-center">
                 <h2>Koppel Google. Stel uw Regels in. Laat ReplyVera de Rest Doen.</h2>
             </div>
             <div class="steps-grid">
                 <div class="step-card">
                     <div class="step-number">1</div>
                     <h3 class="step-title">Koppel Google Bedrijfsprofiel</h3>
-                    <p class="step-text">Koppel veilig één of meerdere bedrijfslocaties. Er worden geen wachtwoorden opgeslagen.</p>
+                    <p class="step-text">Koppel veilig één of meerdere bedrijfslocaties via Google OAuth. Geen wachtwoorden vereist.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">2</div>
@@ -595,9 +610,9 @@
         </div>
     </section>
     <div class="industry-divider-glow"></div>
-    <section class="section section-light">
-        <div class="container">
-            <div class="section-header">
+    <section class="section section-light" id="scenarios">
+        <div class="container industry-content-container">
+            <div class="section-header text-center">
                 <h2>Van Schoonmaakcomplimenten tot Schadeclaims</h2>
                 <p>Zie hoe ReplyVera alle soorten autowasstraat-reviews afhandelt.</p>
             </div>
@@ -646,12 +661,12 @@
         </div>
     </section>
     <div class="industry-divider-glow"></div>
-    <section class="section section-dark">
-        <div class="container">
+    <section class="section section-dark" id="safety">
+        <div class="container industry-content-container">
             <div class="sensitive-inner">
                 <div>
                     <div class="eyebrow" style="margin-bottom:16px;">
-                        <i data-lucide="shield-alert" style="width:12px;height:12px;"></i>
+                        <i data-lucide="shield-alert" style="width:12px;height:12px;color:#EF4444;"></i>
                         Bescherming bij Gevoelige Reviews
                     </div>
                     <h2 style="margin-bottom:12px;">Schadeclaims mogen nooit automatisch worden beantwoord</h2>
@@ -664,16 +679,60 @@
                 <div>
                     <div class="sensitive-alert">
                         <h3 class="sensitive-alert-title">
-                            <i data-lucide="alert-triangle" style="width:16px;height:16px;"></i>
-                            Gevoelig Onderwerp Gedeclareerd
-                        </div>
+                            <i data-lucide="alert-triangle" style="width:16px;height:16px;color:#EF4444;"></i>
+                            Gevoelig Onderwerp Gedetecteerd
+                        </h3>
                         <p class="sensitive-alert-text" style="margin-bottom:12px;">Automatisch publiceren is geblokkeerd. Er is een concept voorbereid dat u eerst moet goedkeuren.</p>
                         <div style="display:flex;gap:8px;flex-wrap:wrap;">
                             <span class="review-badge badge-blocked">Automatisch publiceren geblokkeerd</span>
-                            <span style="font-size:0.68rem;font-weight:700;padding:3px 9px;border-radius:4px;background:rgba(245,158,11,0.1);color:#FCD34D;border:1px solid rgba(245,158,11,0.2);">Eigenaar Gewaarschuwd</span>
+                            <span style="font-size:0.68rem;font-weight:700;padding:3px 9px;border-radius:4px;background:rgba(245,158,11,0.1);color:#D97706;border:1px solid rgba(245,158,11,0.25);">Eigenaar Gewaarschuwd</span>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+    <div class="industry-divider-glow"></div>
+    <section class="section section-light" id="product-proof">
+        <div class="container industry-content-container">
+            <div class="section-header text-center">
+                <h2>De Drie Beveiligingsniveaus in Actie</h2>
+                <p>Elke binnenkomende Google-review doorloopt drie strikte controles voordat er iets wordt gepubliceerd.</p>
+            </div>
+            <div class="safeguard-engine-grid">
+                <div class="safeguard-card">
+                    <div class="safeguard-card-top">
+                        <div class="safeguard-icon-wrap icon-auto"><i data-lucide="check-circle" style="width:20px;height:20px;"></i></div>
+                        <span class="review-badge badge-auto">Veilig om automatisch te publiceren</span>
+                    </div>
+                    <h3 class="safeguard-title">1. Veilig om te Publiceren</h3>
+                    <p class="safeguard-condition"><strong>Trigger:</strong> 4–5 sterren routinematige lof zonder risicotermen of klachten.</p>
+                    <div class="safeguard-outcome"><strong>Action:</strong> Gepersonaliseerde reactie binnen minuten direct naar Google gepubliceerd.</div>
+                </div>
+                <div class="safeguard-card">
+                    <div class="safeguard-card-top">
+                        <div class="safeguard-icon-wrap icon-approval"><i data-lucide="clock" style="width:20px;height:20px;"></i></div>
+                        <span class="review-badge badge-approval">Goedkeuring vereist</span>
+                    </div>
+                    <h3 class="safeguard-title">2. Goedkeuring Vereist</h3>
+                    <p class="safeguard-condition"><strong>Trigger:</strong> 2–3 sterren gemengde feedback, vertragingen of prijsvragen.</p>
+                    <div class="safeguard-outcome"><strong>Action:</strong> Vastgehouden in privédashboard. Concept klaargezet voor snelle 1-klik goedkeuring.</div>
+                </div>
+                <div class="safeguard-card">
+                    <div class="safeguard-card-top">
+                        <div class="safeguard-icon-wrap icon-blocked"><i data-lucide="alert-octagon" style="width:20px;height:20px;"></i></div>
+                        <span class="review-badge badge-blocked">Automatisch publiceren geblokkeerd</span>
+                    </div>
+                    <h3 class="safeguard-title">3. Publicatie Geblokkeerd</h3>
+                    <p class="safeguard-condition"><strong>Trigger:</strong> 1 ster of ernstige triggers (veiligheid, letsel, hygiëne, juridische claims).</p>
+                    <div class="safeguard-outcome"><strong>Action:</strong> Automatisch publiceren direct geblokkeerd. Directe notificatie naar eigenaar/manager.</div>
+                </div>
+            </div>
+            <div style="text-align:center;margin-top:36px;">
+                <a href="/nl/demo.html" class="btn btn-secondary btn-lg" style="display:inline-flex;align-items:center;gap:8px;">
+                    <i data-lucide="sliders" style="width:16px;height:16px;"></i>
+                    Test deze Safeguards in de Live Demo
+                </a>
             </div>
         </div>
     </section>
@@ -726,8 +785,8 @@
     </section>
     <div class="industry-divider-glow"></div>
     <section class="section section-light" id="faq">
-        <div class="container" style="max-width:760px;">
-            <div class="section-header">
+        <div class="container industry-content-container" style="max-width:760px;">
+            <div class="section-header text-center">
                 <h2>Veelgestelde Vragen</h2>
             </div>
             <div class="faq-list">
@@ -776,7 +835,7 @@
         </div>
     </section>
     <section class="section section-dark">
-        <div class="container" style="max-width:700px;">
+        <div class="container industry-content-container" style="max-width:700px;">
             <div class="cta-box">
                 <h2 class="mb-4">Stop met het laten liggen van Autowasstraat Reviews</h2>
                 <p class="lead mb-8">Laat ReplyVera routinematige reacties afhandelen en bescherm uw reputatie terwijl uw team zorgt voor schone auto's.</p>

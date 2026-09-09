@@ -340,6 +340,50 @@ assert(cssContent.includes('prefers-reduced-motion: reduce'), 'style.css contain
 assert(cssContent.includes('.sim-scenario-btn') && cssContent.includes('min-height: 48px'), 'style.css ensures min 48px touch targets for simulator scenario buttons');
 assert(cssContent.includes('.mobile-nav-link') && cssContent.includes('min-height: 48px'), 'style.css ensures min 48px touch targets for mobile nav links');
 
+// Test Suite 13: Industry Redesign & Production Technical Repairs
+console.log('\n🎨 [13/13] Verifying Industry Redesign, Safeguard Engine & Technical Fixes...');
+
+// 1. Anchor scrolling in script.js
+const scriptContent = fs.readFileSync(path.join(distDir, 'script.js'), 'utf8');
+assert(scriptContent.includes('prefers-reduced-motion: reduce'), 'script.js checks prefers-reduced-motion for smooth scrolling');
+assert(scriptContent.includes('history.replaceState'), 'script.js updates browser history state during hash scrolling');
+assert(cssContent.includes('#live-demo') && cssContent.includes('scroll-margin-top: 84px'), 'style.css sets scroll-margin-top on #live-demo');
+
+// 2. Mobile touch targets (>= 44px)
+assert(cssContent.includes('.footer-col a') && cssContent.includes('min-height: 44px'), 'style.css enforces >= 44px touch targets on footer links');
+assert(cssContent.includes('.home-sim-select') && cssContent.includes('min-height: 44px'), 'style.css enforces >= 44px touch targets on form controls and selects');
+
+// 3. Industry template architecture: Hero grid & text width
+assert(cssContent.includes('.industry-hero-grid') && cssContent.includes('minmax(0, 46%) minmax(0, 54%)'), 'style.css defines balanced desktop hero grid (46% text, 54% mockup)');
+assert(cssContent.includes('.industry-hero-text') && cssContent.includes('max-width: 660px'), 'style.css ensures industry hero text column is spacious (max-width: 660px)');
+assert(cssContent.includes('.industry-hero') && cssContent.includes('padding: 104px 0 64px'), 'style.css has 104px top padding to cleanly clear fixed navbar');
+
+// 4. Section 7 Safeguard Engine presence across all primary industry pages
+const industryPages = allHtmlFiles.filter(f => f.includes('industries') && f.endsWith('index.html'));
+assert(industryPages.length >= 42, `Found ${industryPages.length} industry HTML pages in dist/`);
+
+let missingSafeguard = [];
+let missingBreadcrumbAria = [];
+let missingAboveFoldCta = [];
+
+for (const ip of industryPages) {
+    const html = fs.readFileSync(ip, 'utf8');
+    const rel = path.relative(distDir, ip);
+    if (!html.includes('id="product-proof"') || !html.includes('safeguard-engine-grid')) {
+        missingSafeguard.push(rel);
+    }
+    if (!html.includes('aria-label="Breadcrumb"')) {
+        missingBreadcrumbAria.push(rel);
+    }
+    if (!html.includes('btn-accent') || !html.includes('dashboard.replyvera.com/login?signup=true')) {
+        missingAboveFoldCta.push(rel);
+    }
+}
+assert(missingSafeguard.length === 0, `All industry pages contain Section 7 Safeguard Engine (missing: ${missingSafeguard.join(', ') || 'none'})`);
+assert(missingBreadcrumbAria.length === 0, `All industry pages have accessible aria-label="Breadcrumb" (missing: ${missingBreadcrumbAria.join(', ') || 'none'})`);
+assert(missingAboveFoldCta.length === 0, `All industry pages have verified trial signup CTA (missing: ${missingAboveFoldCta.join(', ') || 'none'})`);
+
+
 console.log('\n====================================================');
 console.log(`Test Results: ${passedTests} passed, ${failedTests} failed`);
 if (failureDetails.length > 0) {
