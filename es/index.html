@@ -426,7 +426,7 @@
             <a href="#faq" class="mobile-nav-link">Preguntas Frecuentes</a>
 
                         <div class="mobile-lang-bar">
-                <span class="mobile-lang-label"><i class="fa-solid fa-globe"></i> Language:</span>
+                <span class="mobile-lang-label"><i class="fa-solid fa-globe"></i> Idioma:</span>
                 <a href="/" class="mobile-lang-opt" data-no-localize>EN</a>
                 <a href="/es/" class="mobile-lang-opt active" data-no-localize>ES</a>
                 <a href="/nl/" class="mobile-lang-opt" data-no-localize>NL</a>
@@ -616,10 +616,10 @@
             <div class="section-header" style="max-width: 800px; margin: 0 auto 36px; text-align: center;">
                 <div class="eyebrow" style="justify-content: center; margin-bottom: 10px;">
                     <i data-lucide="sliders" style="width: 13px; height: 13px; color: var(--primary);"></i>
-                    Interactive Workflow Simulation
+                    Simulación Interactiva del Flujo de Trabajo
                 </div>
-                <h2>Test How ReplyVera Evaluates Real Reviews Before You Connect</h2>
-                <p>Select your industry and rating below to see how ReplyVera detects sentiment, enforces safety rules, and generates responses in real time. <em>(Interactive simulation &bull; no reviews are posted to Google).</em></p>
+                <h2>Pruebe cómo evalúa ReplyVera reseñas reales antes de conectar</h2>
+                <p>Seleccione su sector y calificación para ver cómo ReplyVera detecta el sentimiento, aplica reglas de seguridad y genera respuestas en tiempo real. <em>(Simulación interactiva • no se publican reseñas en Google).</em></p>
             </div>
 
             <div class="simulator-card" style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; box-shadow: 0 12px 36px rgba(0,0,0,0.05); overflow: hidden;">
@@ -628,42 +628,42 @@
                     <div style="background: #F8FAFC; padding: 28px; border-right: 1px solid #E2E8F0; display: flex; flex-direction: column; gap: 20px;">
                         <div>
                             <label for="homeSimIndustry" style="display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #64748B; margin-bottom: 8px;">
-                                1. Select Business Industry
+                                1. Seleccione el Sector Comercial
                             </label>
                             <select id="homeSimIndustry" onchange="runHomepageSimulation()" style="width: 100%; padding: 10px 14px; background: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 8px; font-size: 0.92rem; color: #0F172A; font-family: inherit; cursor: pointer;">
-                                <option value="hotels">Hotels &amp; Hospitality</option>
-                                <option value="restaurants" selected>Restaurants &amp; Dining</option>
-                                <option value="auto-repair">Auto Repair &amp; Mechanics</option>
-                                <option value="dentists">Dentists &amp; Medical Clinics</option>
-                                <option value="salons-spas">Salons &amp; Spas</option>
-                                <option value="medspas">Medical Spas &amp; Aesthetics</option>
-                                <option value="contractors">Home Services &amp; Contractors</option>
+                                <option value="hotels">Hoteles y Hospedaje</option>
+                                <option value="restaurants" selected>Restaurantes</option>
+                                <option value="auto-repair">Talleres Mecánicos</option>
+                                <option value="dentists">Dentistas y Clínicas</option>
+                                <option value="salons-spas">Salones de Belleza y Spas</option>
+                                <option value="medspas">Spas Médicos y Estética</option>
+                                <option value="contractors">Contratistas y Servicios del Hogar</option>
                             </select>
                         </div>
 
                         <div>
                             <span style="display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #64748B; margin-bottom: 8px;">
-                                2. Select Review Scenario
+                                2. Seleccione el Escenario de Reseña
                             </span>
                             <div style="display: flex; flex-direction: column; gap: 8px;">
                                 <button type="button" class="sim-scenario-btn active" id="sim-btn-positive" onclick="selectSimScenario('positive')" style="padding: 12px 14px; background: #FFFFFF; border: 1.5px solid var(--primary); border-radius: 8px; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.2s;">
                                     <div>
-                                        <div style="font-weight: 700; font-size: 0.88rem; color: #0F172A;">5★ Routine Praise</div>
-                                        <div style="font-size: 0.75rem; color: #10B981; font-weight: 600;">Safe to Auto-Publish</div>
+                                        <div style="font-weight: 700; font-size: 0.88rem; color: #0F172A;">5★ Elogio Rutinario</div>
+                                        <div style="font-size: 0.75rem; color: #10B981; font-weight: 600;">Seguro para Publicar</div>
                                     </div>
                                     <span style="color: #F59E0B; font-size: 0.85rem;">★★★★★</span>
                                 </button>
                                 <button type="button" class="sim-scenario-btn" id="sim-btn-negative" onclick="selectSimScenario('negative')" style="padding: 12px 14px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.2s;">
                                     <div>
-                                        <div style="font-weight: 700; font-size: 0.88rem; color: #0F172A;">3★ Constructive / Delay</div>
-                                        <div style="font-size: 0.75rem; color: #F59E0B; font-weight: 600;">Needs Approval</div>
+                                        <div style="font-weight: 700; font-size: 0.88rem; color: #0F172A;">3★ Constructiva / Retraso</div>
+                                        <div style="font-size: 0.75rem; color: #F59E0B; font-weight: 600;">Requiere Aprobación</div>
                                     </div>
                                     <span style="color: #F59E0B; font-size: 0.85rem;">★★★☆☆</span>
                                 </button>
                                 <button type="button" class="sim-scenario-btn" id="sim-btn-sensitive" onclick="selectSimScenario('sensitive')" style="padding: 12px 14px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.2s;">
                                     <div>
-                                        <div style="font-weight: 700; font-size: 0.88rem; color: #0F172A;">1★ Sensitive Incident</div>
-                                        <div style="font-size: 0.75rem; color: #EF4444; font-weight: 600;">Auto-Publishing Blocked</div>
+                                        <div style="font-weight: 700; font-size: 0.88rem; color: #0F172A;">1★ Incidente Delicado</div>
+                                        <div style="font-size: 0.75rem; color: #EF4444; font-weight: 600;">Publicación Bloqueada</div>
                                     </div>
                                     <span style="color: #F59E0B; font-size: 0.85rem;">★☆☆☆☆</span>
                                 </button>
@@ -672,7 +672,7 @@
 
                         <div style="margin-top: auto; padding-top: 14px; border-top: 1px solid #E2E8F0; font-size: 0.78rem; color: #64748B; line-height: 1.5;">
                             <i data-lucide="shield-check" style="width: 14px; height: 14px; vertical-align: middle; color: var(--accent); margin-right: 4px;"></i>
-                            Strict Safety Guardrails: Routine 5-star praise is published within minutes. Negative feedback or liability keywords are held for your approval.
+                            Salvaguardas estrictas: los elogios rutinarios de 5 estrellas se publican en minutos. Los comentarios negativos o delicados se retienen para su aprobación.
                         </div>
                     </div>
 
@@ -687,47 +687,47 @@
                                 </div>
                                 <div style="color: #F59E0B; font-size: 0.85rem;" id="simDisplayStars">★★★★★</div>
                             </div>
-                            <p style="font-size: 0.9rem; color: #475569; margin: 0; line-height: 1.5;" id="simReviewQuote">"The lasagna was incredible and our server Alex was super attentive. Best Italian dinner in town!"</p>
+                            <p style="font-size: 0.9rem; color: #475569; margin: 0; line-height: 1.5;" id="simReviewQuote">"La lasaña estuvo increíble y nuestro camarero Alex fue súper atento. ¡La mejor cena italiana de la ciudad!"</p>
                         </div>
 
                         <!-- Analysis Row -->
                         <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;">
                             <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px;">
-                                <div style="font-size: 0.7rem; color: #64748B; font-weight: 600; text-transform: uppercase;">Sentiment</div>
-                                <div style="font-size: 0.85rem; font-weight: 700; color: #0F172A;" id="simSentiment">Positive</div>
+                                <div style="font-size: 0.7rem; color: #64748B; font-weight: 600; text-transform: uppercase;">Sentimiento</div>
+                                <div style="font-size: 0.85rem; font-weight: 700; color: #0F172A;" id="simSentiment">Positivo</div>
                             </div>
                             <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px;">
-                                <div style="font-size: 0.7rem; color: #64748B; font-weight: 600; text-transform: uppercase;">Topic</div>
-                                <div style="font-size: 0.85rem; font-weight: 700; color: #0F172A;" id="simTopic">Food &amp; Staff</div>
+                                <div style="font-size: 0.7rem; color: #64748B; font-weight: 600; text-transform: uppercase;">Tema</div>
+                                <div style="font-size: 0.85rem; font-weight: 700; color: #0F172A;" id="simTopic">Comida y Personal</div>
                             </div>
                             <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px;">
-                                <div style="font-size: 0.7rem; color: #64748B; font-weight: 600; text-transform: uppercase;">Staff Mention</div>
+                                <div style="font-size: 0.7rem; color: #64748B; font-weight: 600; text-transform: uppercase;">Mención de Personal</div>
                                 <div style="font-size: 0.85rem; font-weight: 700; color: #10B981;" id="simEmployee">Alex</div>
                             </div>
                             <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px;">
-                                <div style="font-size: 0.7rem; color: #64748B; font-weight: 600; text-transform: uppercase;">Safety Filter</div>
-                                <div style="font-size: 0.85rem; font-weight: 700; color: #10B981;" id="simSafety">Clear</div>
+                                <div style="font-size: 0.7rem; color: #64748B; font-weight: 600; text-transform: uppercase;">Filtro de Seguridad</div>
+                                <div style="font-size: 0.85rem; font-weight: 700; color: #10B981;" id="simSafety">Aprobado</div>
                             </div>
                         </div>
 
                         <!-- Response Draft Box -->
                         <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 16px; flex: 1;">
                             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                                <div style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #64748B;">ReplyVera Generated Response</div>
-                                <span style="font-size: 0.75rem; color: #64748B;" id="simTone">Warm &amp; Welcoming</span>
+                                <div style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #64748B;">Respuesta Generada por ReplyVera</div>
+                                <span style="font-size: 0.75rem; color: #64748B;" id="simTone">Cálido y Acogedor</span>
                             </div>
                             <p style="font-size: 0.9rem; color: #0F172A; line-height: 1.55; margin: 0;" id="simResponseText">
-                                Thank you so much for the kind words, Sarah! We’re thrilled you loved the lasagna and enjoyed Alex’s service. We’ll pass along your praise to him!
+                                ¡Muchas gracias por sus amables palabras, Sarah! Nos alegra mucho que le haya encantado la lasaña y disfrutara de la atención de Alex. ¡Le transmitiremos sus felicitaciones!
                             </p>
                         </div>
 
                         <!-- Decision & Outcome Bar -->
                         <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-radius: 8px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25);" id="simDecisionBar">
                             <div>
-                                <span class="review-badge badge-auto" id="simDecisionBadge">Safe to Auto-Publish</span>
-                                <span style="font-size: 0.82rem; color: #475569; margin-left: 8px;" id="simDecisionSub">Routine praise approved under your rules.</span>
+                                <span class="review-badge badge-auto" id="simDecisionBadge">Seguro para Publicar</span>
+                                <span style="font-size: 0.82rem; color: #475569; margin-left: 8px;" id="simDecisionSub">Coincide con su regla: elogios de 4-5 estrellas se publican automáticamente.</span>
                             </div>
-                            <span style="font-size: 0.78rem; font-weight: 700; color: #10B981;" id="simPublishStatus">Auto-Published</span>
+                            <span style="font-size: 0.78rem; font-weight: 700; color: #10B981;" id="simPublishStatus">Publicado Automáticamente</span>
                         </div>
                     </div>
                 </div>
@@ -739,7 +739,7 @@
                     Comenzar Prueba Gratuita
                 </a>
                 <a href="/es/demo.html" class="btn btn-secondary btn-lg">
-                    Open Full Standalone Sandbox
+                    Abrir Sandbox Completo
                 </a>
             </div>
         </div>
@@ -919,13 +919,14 @@
 
             </div>
 
-            <div class="industry-grid">
+            <!-- HOMEPAGE_INDUSTRY_GRID_START -->
+<div class="industry-grid">
 
                 <a href="/es/industries/hoteles/" class="industry-card">
                     <div class="industry-card-icon hotel-icon"><i data-lucide="hotel" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-                        <h3 class="industry-card-name">Hotels &amp; Hospitality</h3>
-                        <div class="dropdown-desc">Prompt guest replies with safety filters for hygiene and booking issues.</div>
+                        <h3 class="industry-card-name">Hoteles y Hospedaje</h3>
+                        <div class="dropdown-desc">Respuestas rápidas para huéspedes con filtros de seguridad para higiene y reservas.</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
@@ -934,7 +935,7 @@
                     <div class="industry-card-icon restaurant-icon"><i data-lucide="utensils" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
                         <h3 class="industry-card-name">Restaurantes</h3>
-                        <div class="dropdown-desc">Automated replies with food-safety and allergy escalation.</div>
+                        <div class="dropdown-desc">Respuestas automatizadas con escalado de alergias y seguridad alimentaria.</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
@@ -942,8 +943,8 @@
                 <a href="/es/industries/talleres-mecanicos/" class="industry-card">
                     <div class="industry-card-icon autorepair-icon"><i data-lucide="wrench" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-                        <h3 class="industry-card-name">Auto Repair &amp; Mechanics</h3>
-                        <div class="dropdown-desc">Automated replies for mechanic shops with mechanical safety escalation.</div>
+                        <h3 class="industry-card-name">Talleres Mecánicos</h3>
+                        <div class="dropdown-desc">Respuestas automáticas para talleres con filtro de seguridad y reclamos de piezas.</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
@@ -951,8 +952,8 @@
                 <a href="/es/industries/dentistas/" class="industry-card">
                     <div class="industry-card-icon dentist-icon"><i data-lucide="activity" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-                        <h3 class="industry-card-name">Dentists &amp; Clinics</h3>
-                        <div class="dropdown-desc">Privacy-conscious replies for patient reviews.</div>
+                        <h3 class="industry-card-name">Dentistas y Clínicas</h3>
+                        <div class="dropdown-desc">Respuestas respetuosas de la privacidad para pacientes.</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
@@ -960,8 +961,8 @@
                 <a href="/es/industries/salones-spas/" class="industry-card">
                     <div class="industry-card-icon salon-icon"><i data-lucide="scissors" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-                        <h3 class="industry-card-name">Salons &amp; Spas</h3>
-                        <div class="dropdown-desc">Personalized replies for stylists with allergy and chemical burn safeguards.</div>
+                        <h3 class="industry-card-name">Salones de Belleza y Spas</h3>
+                        <div class="dropdown-desc">Respuestas personalizadas para estilistas con salvaguardas para alergias y quemaduras.</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
@@ -969,8 +970,8 @@
                 <a href="/es/industries/contratistas-reformas/" class="industry-card">
                     <div class="industry-card-icon contractor-icon"><i data-lucide="hammer" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
-                        <h3 class="industry-card-name">Home Services &amp; Contractors</h3>
-                        <div class="dropdown-desc">Automated replies for trades with water damage and code violation filters.</div>
+                        <h3 class="industry-card-name">Contratistas y Reformas</h3>
+                        <div class="dropdown-desc">Respuestas automatizadas para reformas y construcción con filtro de daños y retrasos.</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
@@ -979,7 +980,7 @@
                     <div class="industry-card-icon carwash-icon"><i data-lucide="car" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
                         <h3 class="industry-card-name">Operadores de Lavado de Autos</h3>
-                        <div class="dropdown-desc">Track damage, billing, and pass complaints.</div>
+                        <div class="dropdown-desc">Rastrea quejas de daños, facturación y servicio.</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
@@ -988,12 +989,12 @@
                     <div class="industry-card-icon agency-icon"><i data-lucide="briefcase" style="width:16px;height:16px;"></i></div>
                     <div class="industry-card-body">
                         <h3 class="industry-card-name">Agencias de Marketing</h3>
-                        <div class="dropdown-desc">Manage Google review replies for every client from one dashboard.</div>
+                        <div class="dropdown-desc">Gestiona respuestas de reseñas de Google para todos tus clientes.</div>
                     </div>
                     <i data-lucide="arrow-right" class="industry-card-arrow" style="width:15px;height:15px;"></i>
                 </a>
-
-            </div>
+</div>
+<!-- HOMEPAGE_INDUSTRY_GRID_END -->
 
         </div>
 
@@ -1231,71 +1232,71 @@
             <div class="section-header" style="text-align:center;margin-bottom:32px;">
                 <div class="eyebrow" style="justify-content:center;margin-bottom:12px;">
                     <i data-lucide="layers" style="width:14px;height:14px;color:var(--accent);"></i>
-                    Direct Automation vs. Manual Tooling
+                    Automatización Directa vs. Herramientas Manuales
                 </div>
-                <h2>Why Not Just Copy and Paste into ChatGPT?</h2>
-                <p style="font-size:1.05rem;font-weight:600;color:var(--text-primary);max-width:700px;margin:0 auto 8px;">ChatGPT can help write a reply. ReplyVera manages the ongoing review workflow.</p>
-                <p style="font-size:0.92rem;color:var(--text-secondary);max-width:740px;margin:0 auto;">Drafting text is only a fraction of review management. The real challenge is monitoring Google daily, copying reviews back and forth, enforcing safety rules, and never letting negative feedback slip through unchecked.</p>
+                <h2>¿Por qué no simplemente copiar y pegar en ChatGPT?</h2>
+                <p style="font-size:1.05rem;font-weight:600;color:var(--text-primary);max-width:700px;margin:0 auto 8px;">ChatGPT puede ayudar a redactar una respuesta. ReplyVera gestiona todo el flujo continuo de reseñas.</p>
+                <p style="font-size:0.92rem;color:var(--text-secondary);max-width:740px;margin:0 auto;">Redactar el texto es solo una pequeña parte de la gestión de reseñas. El verdadero reto es supervisar Google a diario, copiar reseñas de un lado a otro, aplicar reglas de seguridad y nunca dejar pasar comentarios negativos sin revisar.</p>
             </div>
 
             <div class="comparison-table-wrapper" style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,0.04);overflow-x:auto;">
                 <table style="width:100%;border-collapse:collapse;text-align:left;font-size:0.88rem;min-width:680px;">
                     <thead>
                         <tr style="background:#F8FAFC;border-bottom:1px solid #E2E8F0;">
-                            <th style="padding:16px 20px;font-weight:700;color:#0F172A;width:28%;">Review Workflow Feature</th>
-                            <th style="padding:16px 20px;font-weight:700;color:#64748B;width:24%;">Fully Manual Replies</th>
-                            <th style="padding:16px 20px;font-weight:700;color:#64748B;width:24%;">ChatGPT (Manual Copy-Paste)</th>
+                            <th style="padding:16px 20px;font-weight:700;color:#0F172A;width:28%;">Función del Flujo de Reseñas</th>
+                            <th style="padding:16px 20px;font-weight:700;color:#64748B;width:24%;">Respuestas Totalmente Manuales</th>
+                            <th style="padding:16px 20px;font-weight:700;color:#64748B;width:24%;">ChatGPT (Copia y Pega Manual)</th>
                             <th style="padding:16px 20px;font-weight:700;color:#1A73E8;width:24%;background:rgba(26,115,232,0.04);">ReplyVera Autopilot</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr style="border-bottom:1px solid #E2E8F0;">
-                            <td style="padding:14px 20px;font-weight:600;color:#0F172A;">Google Business Profile Connection</td>
-                            <td style="padding:14px 20px;color:#64748B;">Manual login to Google required</td>
-                            <td style="padding:14px 20px;color:#64748B;">No connection (isolated chat window)</td>
-                            <td style="padding:14px 20px;color:#0F172A;font-weight:600;background:rgba(26,115,232,0.04);"><i data-lucide="check" style="width:14px;height:14px;color:#10B981;vertical-align:middle;margin-right:6px;"></i>Direct Google Business Profile sync</td>
+                            <td style="padding:14px 20px;font-weight:600;color:#0F172A;">Conexión con Perfil de Empresa en Google</td>
+                            <td style="padding:14px 20px;color:#64748B;">Requiere iniciar sesión manualmente en Google</td>
+                            <td style="padding:14px 20px;color:#64748B;">Sin conexión (ventana de chat aislada)</td>
+                            <td style="padding:14px 20px;color:#0F172A;font-weight:600;background:rgba(26,115,232,0.04);"><i data-lucide="check" style="width:14px;height:14px;color:#10B981;vertical-align:middle;margin-right:6px;"></i>Sincronización directa con Perfil de Empresa en Google</td>
                         </tr>
                         <tr style="border-bottom:1px solid #E2E8F0;">
-                            <td style="padding:14px 20px;font-weight:600;color:#0F172A;">Monitoring for New Reviews</td>
-                            <td style="padding:14px 20px;color:#64748B;">Requires daily manual checks</td>
-                            <td style="padding:14px 20px;color:#64748B;">None (you must notice reviews first)</td>
-                            <td style="padding:14px 20px;color:#0F172A;font-weight:600;background:rgba(26,115,232,0.04);"><i data-lucide="check" style="width:14px;height:14px;color:#10B981;vertical-align:middle;margin-right:6px;"></i>24/7 continuous background check</td>
+                            <td style="padding:14px 20px;font-weight:600;color:#0F172A;">Supervisión de Nuevas Reseñas</td>
+                            <td style="padding:14px 20px;color:#64748B;">Requiere revisiones manuales diarias</td>
+                            <td style="padding:14px 20px;color:#64748B;">Ninguna (debe notar las reseñas primero)</td>
+                            <td style="padding:14px 20px;color:#0F172A;font-weight:600;background:rgba(26,115,232,0.04);"><i data-lucide="check" style="width:14px;height:14px;color:#10B981;vertical-align:middle;margin-right:6px;"></i>Monitoreo continuo en segundo plano 24/7</td>
                         </tr>
                         <tr style="border-bottom:1px solid #E2E8F0;">
-                            <td style="padding:14px 20px;font-weight:600;color:#0F172A;">Auto-Publish Routine Positive Reviews</td>
-                            <td style="padding:14px 20px;color:#64748B;">No (must write each reply)</td>
-                            <td style="padding:14px 20px;color:#64748B;">No (must generate &amp; paste each)</td>
-                            <td style="padding:14px 20px;color:#0F172A;font-weight:600;background:rgba(26,115,232,0.04);"><i data-lucide="check" style="width:14px;height:14px;color:#10B981;vertical-align:middle;margin-right:6px;"></i>Yes (eligible praise auto-published)</td>
+                            <td style="padding:14px 20px;font-weight:600;color:#0F172A;">Publicación Automática de Reseñas Positivas</td>
+                            <td style="padding:14px 20px;color:#64748B;">No (debe redactar cada respuesta)</td>
+                            <td style="padding:14px 20px;color:#64748B;">No (debe generar y pegar cada una)</td>
+                            <td style="padding:14px 20px;color:#0F172A;font-weight:600;background:rgba(26,115,232,0.04);"><i data-lucide="check" style="width:14px;height:14px;color:#10B981;vertical-align:middle;margin-right:6px;"></i>Sí (elogios elegibles se publican automáticamente)</td>
                         </tr>
                         <tr style="border-bottom:1px solid #E2E8F0;">
-                            <td style="padding:14px 20px;font-weight:600;color:#0F172A;">Sensitive-Review Detection</td>
-                            <td style="padding:14px 20px;color:#64748B;">Dependent on staff judgment</td>
-                            <td style="padding:14px 20px;color:#64748B;">Only if manually prompted per review</td>
-                            <td style="padding:14px 20px;color:#0F172A;font-weight:600;background:rgba(26,115,232,0.04);"><i data-lucide="check" style="width:14px;height:14px;color:#10B981;vertical-align:middle;margin-right:6px;"></i>Automatic risk &amp; keyword flags</td>
+                            <td style="padding:14px 20px;font-weight:600;color:#0F172A;">Detección de Reseñas Sensibles</td>
+                            <td style="padding:14px 20px;color:#64748B;">Depende del criterio del personal</td>
+                            <td style="padding:14px 20px;color:#64748B;">Solo si se le indica manualmente en cada reseña</td>
+                            <td style="padding:14px 20px;color:#0F172A;font-weight:600;background:rgba(26,115,232,0.04);"><i data-lucide="check" style="width:14px;height:14px;color:#10B981;vertical-align:middle;margin-right:6px;"></i>Detección automática de riesgos y palabras clave</td>
                         </tr>
                         <tr style="border-bottom:1px solid #E2E8F0;">
-                            <td style="padding:14px 20px;font-weight:600;color:#0F172A;">Human Approval Workflow</td>
-                            <td style="padding:14px 20px;color:#64748B;">Ad-hoc / unmanaged</td>
-                            <td style="padding:14px 20px;color:#64748B;">Manual review in chat interface</td>
-                            <td style="padding:14px 20px;color:#0F172A;font-weight:600;background:rgba(26,115,232,0.04);"><i data-lucide="check" style="width:14px;height:14px;color:#10B981;vertical-align:middle;margin-right:6px;"></i>1-click approval for negative reviews</td>
+                            <td style="padding:14px 20px;font-weight:600;color:#0F172A;">Flujo de Aprobación Humana</td>
+                            <td style="padding:14px 20px;color:#64748B;">Improvisado / sin control</td>
+                            <td style="padding:14px 20px;color:#64748B;">Revisión manual en la interfaz de chat</td>
+                            <td style="padding:14px 20px;color:#0F172A;font-weight:600;background:rgba(26,115,232,0.04);"><i data-lucide="check" style="width:14px;height:14px;color:#10B981;vertical-align:middle;margin-right:6px;"></i>Aprobación en 1 clic para reseñas negativas</td>
                         </tr>
                         <tr style="border-bottom:1px solid #E2E8F0;">
-                            <td style="padding:14px 20px;font-weight:600;color:#0F172A;">Brand-Voice Consistency</td>
-                            <td style="padding:14px 20px;color:#64748B;">Varies by whoever responds</td>
-                            <td style="padding:14px 20px;color:#64748B;">Must re-prompt instructions each time</td>
-                            <td style="padding:14px 20px;color:#0F172A;font-weight:600;background:rgba(26,115,232,0.04);"><i data-lucide="check" style="width:14px;height:14px;color:#10B981;vertical-align:middle;margin-right:6px;"></i>Persistent business tone settings</td>
+                            <td style="padding:14px 20px;font-weight:600;color:#0F172A;">Consistencia en la Voz de Marca</td>
+                            <td style="padding:14px 20px;color:#64748B;">Varía según quién responda</td>
+                            <td style="padding:14px 20px;color:#64748B;">Debe reescribir instrucciones cada vez</td>
+                            <td style="padding:14px 20px;color:#0F172A;font-weight:600;background:rgba(26,115,232,0.04);"><i data-lucide="check" style="width:14px;height:14px;color:#10B981;vertical-align:middle;margin-right:6px;"></i>Ajustes persistentes del tono comercial</td>
                         </tr>
                         <tr style="border-bottom:1px solid #E2E8F0;">
-                            <td style="padding:14px 20px;font-weight:600;color:#0F172A;">Manual Copying &amp; Pasting</td>
-                            <td style="padding:14px 20px;color:#DC2626;font-weight:600;">Full typing required</td>
-                            <td style="padding:14px 20px;color:#DC2626;font-weight:600;">Required for every single review</td>
-                            <td style="padding:14px 20px;color:#10B981;font-weight:700;background:rgba(26,115,232,0.04);"><i data-lucide="check" style="width:14px;height:14px;color:#10B981;vertical-align:middle;margin-right:6px;"></i>Zero copying and pasting</td>
+                            <td style="padding:14px 20px;font-weight:600;color:#0F172A;">Copiar y Pegar Manualmente</td>
+                            <td style="padding:14px 20px;color:#DC2626;font-weight:600;">Requiere escribir todo el texto</td>
+                            <td style="padding:14px 20px;color:#DC2626;font-weight:600;">Requerido para cada reseña individual</td>
+                            <td style="padding:14px 20px;color:#10B981;font-weight:700;background:rgba(26,115,232,0.04);"><i data-lucide="check" style="width:14px;height:14px;color:#10B981;vertical-align:middle;margin-right:6px;"></i>Cero copias y pegados</td>
                         </tr>
                         <tr>
-                            <td style="padding:14px 20px;font-weight:600;color:#0F172A;">Continuous 24/7 Operation</td>
-                            <td style="padding:14px 20px;color:#64748B;">Stops when staff is busy or away</td>
-                            <td style="padding:14px 20px;color:#64748B;">Stops when owner is away</td>
-                            <td style="padding:14px 20px;color:#10B981;font-weight:700;background:rgba(26,115,232,0.04);"><i data-lucide="check" style="width:14px;height:14px;color:#10B981;vertical-align:middle;margin-right:6px;"></i>Operates continuously in background</td>
+                            <td style="padding:14px 20px;font-weight:600;color:#0F172A;">Operación Continua 24/7</td>
+                            <td style="padding:14px 20px;color:#64748B;">Se detiene cuando el equipo está ocupado o ausente</td>
+                            <td style="padding:14px 20px;color:#64748B;">Se detiene cuando el propietario está ausente</td>
+                            <td style="padding:14px 20px;color:#10B981;font-weight:700;background:rgba(26,115,232,0.04);"><i data-lucide="check" style="width:14px;height:14px;color:#10B981;vertical-align:middle;margin-right:6px;"></i>Opera continuamente en segundo plano</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1332,7 +1333,7 @@
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Hasta 30 respuestas por mes</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Aprobación manual para todas las reseñas</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Tono personalizado</li>
-                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Inglés y Español</li>
+                        <li><i data-lucide="check" style="width:14px;height:14px;"></i> Soporte en inglés, español y neerlandés</li>
                         <li><i data-lucide="check" style="width:14px;height:14px;"></i> Alertas de reseñas negativas</li>
                     </ul>
                     <a href="https://dashboard.replyvera.com/login?signup=true&tier=starter" class="btn btn-secondary" style="text-align:center;justify-content:center;margin-top:auto;">Comenzar Prueba Gratuita</a>
@@ -1599,7 +1600,7 @@
 
                         <li>
                             <div class="mobile-lang-bar">
-                <span class="mobile-lang-label"><i class="fa-solid fa-globe"></i> Language:</span>
+                <span class="mobile-lang-label"><i class="fa-solid fa-globe"></i> Idioma:</span>
                 <a href="/" class="mobile-lang-opt" data-no-localize>EN</a>
                 <a href="/es/" class="mobile-lang-opt active" data-no-localize>ES</a>
                 <a href="/nl/" class="mobile-lang-opt" data-no-localize>NL</a>

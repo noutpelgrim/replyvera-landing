@@ -496,9 +496,12 @@
                             </div>
                         </div>
 
-                        <button id="publishActionBtn" class="btn btn-accent btn-sm" onclick="triggerSimulatedPublish()">
-                            Publish to Google Now
-                        </button>
+                        <div style="text-align:right;">
+                            <button id="publishActionBtn" class="btn btn-accent btn-sm" onclick="triggerSimulatedPublish()">
+                                Simulate Publishing
+                            </button>
+                            <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">(Simulation only &bull; no live posts to Google)</div>
+                        </div>
                     </div>
                 </div>
 
@@ -579,9 +582,9 @@
                 'sensitive': { name: 'Lisa Ray', avatar: 'LR', stars: 1, text: 'We got terrible food poisoning after eating the seafood soup last night. Unacceptable safety conditions!', sentiment: 'Critical', topic: 'Food Safety Emergency', employee: 'None', risk: 'High Risk (Blocked)', riskType: 'chip-danger', tone: 'Escalated to Management', response: '[AI Generation Paused] Flagged for Food Safety Escalation. Immediate owner notification sent.', decision: 'Auto-Publishing Blocked', decisionSub: 'Sensitive topic "Food Poisoning" detected. Escalated directly to owner.', decisionType: 'danger' }
             },
             'dentist': {
-                'positive': { name: 'David Miller', avatar: 'DM', stars: 5, text: 'Dr. Evans made my root canal painless and easy. The front desk team was also wonderful!', sentiment: 'Positive', topic: 'Patient Care', employee: 'Dr. Evans', risk: 'Low Risk', riskType: 'chip-positive', tone: 'Professional & Reassuring', response: 'Thank you for your feedback, David! We’re glad Dr. Evans made your procedure comfortable. We appreciate your trust in our clinic.', decision: 'Safe to Auto-Publish', decisionSub: 'HIPAA-compliant general response rules passed.', decisionType: 'positive' },
+                'positive': { name: 'David Miller', avatar: 'DM', stars: 5, text: 'Dr. Evans made my root canal painless and easy. The front desk team was also wonderful!', sentiment: 'Positive', topic: 'Patient Care', employee: 'Dr. Evans', risk: 'Low Risk', riskType: 'chip-positive', tone: 'Professional & Reassuring', response: 'Thank you for your feedback, David! We’re glad Dr. Evans made your procedure comfortable. We appreciate your trust in our clinic.', decision: 'Safe to Auto-Publish', decisionSub: 'Patient privacy safeguards passed.', decisionType: 'positive' },
                 'negative': { name: 'Karen White', avatar: 'KW', stars: 2, text: 'Billing was confusing and they charged me twice for X-rays.', sentiment: 'Negative', topic: 'Billing Claim', employee: 'None', risk: 'Medium Risk', riskType: 'chip-warning', tone: 'Professional & Direct', response: 'Hello Karen, thank you for alerting us. We apologize for the billing confusion and would love to review your account immediately to issue a correction.', decision: 'Needs Approval', decisionSub: 'Billing complaints require staff verification before posting.', decisionType: 'warning' },
-                'sensitive': { name: 'Robert King', avatar: 'RK', stars: 1, text: 'The procedure resulted in severe nerve damage and infection. Medical malpractice!', sentiment: 'Critical', topic: 'Medical Incident', employee: 'None', risk: 'High Risk (Blocked)', riskType: 'chip-danger', tone: 'Escalated to Practice Owner', response: '[AI Generation Paused] Flagged for Medical Liability. Auto-response suppressed.', decision: 'Auto-Publishing Blocked', decisionSub: 'Trigger word "malpractice/injury" detected. Strict HIPAA escalation activated.', decisionType: 'danger' }
+                'sensitive': { name: 'Robert King', avatar: 'RK', stars: 1, text: 'The procedure resulted in severe nerve damage and infection. Medical malpractice!', sentiment: 'Critical', topic: 'Medical Incident', employee: 'None', risk: 'High Risk (Blocked)', riskType: 'chip-danger', tone: 'Escalated to Practice Owner', response: '[AI Generation Paused] Flagged for Medical Liability. Auto-response suppressed.', decision: 'Auto-Publishing Blocked', decisionSub: 'Trigger word "malpractice/injury" detected. Strict patient privacy escalation activated.', decisionType: 'danger' }
             },
             'agency': {
                 'positive': { name: 'Emily Thorne', avatar: 'ET', stars: 5, text: 'ReplyVera helped us scale local review management for 35 client locations seamlessly. Sarah delivered outstanding results!', sentiment: 'Positive', topic: 'Client ROI & Scaling', employee: 'Sarah', risk: 'Low Risk', riskType: 'chip-positive', tone: 'Professional B2B', response: 'Thank you Emily! We are thrilled to partner with your agency and help scale your local SEO results. We appreciate your partnership!', decision: 'Safe to Auto-Publish', decisionSub: 'Standard B2B testimonial auto-published.', decisionType: 'positive' },
@@ -873,7 +876,7 @@
         }
 
         function triggerSimulatedPublish() {
-            alert('Demo Mode: In the live app, this response would post directly to your Google Business Profile page instantly!');
+            alert('Simulation Only: This sandbox demonstrates how ReplyVera evaluates responses. No reviews or replies are sent to Google.');
         }
 
         // Initialize icons

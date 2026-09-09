@@ -349,6 +349,9 @@ function renderIndustryPage(ind, lang) {
         }
     </style>`;
 
+    const productPreviewLabel = isNl ? 'replyvera.com • Productvoorbeeld' : isEs ? 'replyvera.com • Vista Previa' : 'replyvera.com • Product Preview';
+    const gbpSyncText = isNl ? 'Google Bedrijfsprofiel Synchronisatie' : isEs ? 'Sincronización con Perfil de Google' : 'Google Business Profile Sync';
+
     const heroSection = `
     <header class="hero industry-hero">
         <div class="industry-hero-glow"></div>
@@ -377,7 +380,7 @@ function renderIndustryPage(ind, lang) {
                             <div class="mockup-dots"><span></span><span></span><span></span></div>
                             <div class="industry-mockup-badge">
                                 <i data-lucide="shield" style="width:11px;height:11px;"></i>
-                                <span>replyvera.com • Product Preview</span>
+                                <span>${productPreviewLabel}</span>
                             </div>
                             <div class="industry-mockup-status">
                                 <span class="status-indicator"></span>
@@ -386,7 +389,7 @@ function renderIndustryPage(ind, lang) {
                         </div>
                         <div class="industry-mockup-header-text">
                             <span>${recentReviewsText}</span>
-                            <span class="industry-mockup-meta">Google Business Profile Sync</span>
+                            <span class="industry-mockup-meta">${gbpSyncText}</span>
                         </div>
                         <div class="industry-review-rows">
                             <div class="industry-review-row">
@@ -541,6 +544,8 @@ function renderIndustryPage(ind, lang) {
     const tier3Act = isNl ? 'Automatisch publiceren direct geblokkeerd. Directe notificatie naar eigenaar/manager.' : isEs ? 'Publicación automática bloqueada. Notificación de emergencia enviada al responsable.' : 'Auto-publishing blocked instantly. Urgent alert dispatched for human-only intervention.';
 
     const proofDemoCta = isNl ? 'Test deze Safeguards in de Live Demo' : isEs ? 'Prueba estas Reglas en la Demo en Vivo' : 'Test These Safeguards in the Live Demo';
+    const triggerLabel = isNl ? 'Criterium:' : isEs ? 'Criterio:' : 'Trigger:';
+    const actionLabel = isNl ? 'Actie:' : isEs ? 'Acción:' : 'Action:';
 
     const productProofSection = `
     <div class="industry-divider-glow"></div>
@@ -557,8 +562,8 @@ function renderIndustryPage(ind, lang) {
                         <span class="review-badge badge-auto">${safeBadgeText}</span>
                     </div>
                     <h3 class="safeguard-title">${tier1Title}</h3>
-                    <p class="safeguard-condition"><strong>Trigger:</strong> ${tier1Cond}</p>
-                    <div class="safeguard-outcome"><strong>Action:</strong> ${tier1Act}</div>
+                    <p class="safeguard-condition"><strong>${triggerLabel}</strong> ${tier1Cond}</p>
+                    <div class="safeguard-outcome"><strong>${actionLabel}</strong> ${tier1Act}</div>
                 </div>
                 <div class="safeguard-card">
                     <div class="safeguard-card-top">
@@ -566,8 +571,8 @@ function renderIndustryPage(ind, lang) {
                         <span class="review-badge badge-approval">${approvalBadgeText}</span>
                     </div>
                     <h3 class="safeguard-title">${tier2Title}</h3>
-                    <p class="safeguard-condition"><strong>Trigger:</strong> ${tier2Cond}</p>
-                    <div class="safeguard-outcome"><strong>Action:</strong> ${tier2Act}</div>
+                    <p class="safeguard-condition"><strong>${triggerLabel}</strong> ${tier2Cond}</p>
+                    <div class="safeguard-outcome"><strong>${actionLabel}</strong> ${tier2Act}</div>
                 </div>
                 <div class="safeguard-card">
                     <div class="safeguard-card-top">
@@ -575,8 +580,8 @@ function renderIndustryPage(ind, lang) {
                         <span class="review-badge badge-blocked">${blockedBadgeText}</span>
                     </div>
                     <h3 class="safeguard-title">${tier3Title}</h3>
-                    <p class="safeguard-condition"><strong>Trigger:</strong> ${tier3Cond}</p>
-                    <div class="safeguard-outcome"><strong>Action:</strong> ${tier3Act}</div>
+                    <p class="safeguard-condition"><strong>${triggerLabel}</strong> ${tier3Cond}</p>
+                    <div class="safeguard-outcome"><strong>${actionLabel}</strong> ${tier3Act}</div>
                 </div>
             </div>
             <div style="text-align:center;margin-top:36px;">

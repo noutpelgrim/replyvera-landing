@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { localizeAllHtmlLinks } = require('./lib/router');
-const { renderHeaderDropdownHTML, renderMobileAccordionHTML } = require('./lib/industries_master');
+const { renderHeaderDropdownHTML, renderMobileAccordionHTML, renderHomepageIndustryGridHTML } = require('./lib/industries_master');
 const { replaceAllLangSelectors } = require('./lib/lang_switcher');
 
 const srcDir = path.join(__dirname, 'src');
@@ -49,6 +49,13 @@ locales.forEach(lang => {
         html = html.replace(
             /<!-- MOBILE_IND_LIST_START -->[\s\S]*?<!-- MOBILE_IND_LIST_END -->/,
             `<!-- MOBILE_IND_LIST_START -->\n<div class="mobile-industry-list" id="mobile-ind-list">\n${mobileAccordionHtml}\n</div>\n<!-- MOBILE_IND_LIST_END -->`
+        );
+
+        // Replace homepage industry grid with dynamically generated localized industry cards
+        const homepageIndustryGridHtml = renderHomepageIndustryGridHTML(lang);
+        html = html.replace(
+            /<!-- HOMEPAGE_INDUSTRY_GRID_START -->[\s\S]*?<!-- HOMEPAGE_INDUSTRY_GRID_END -->/,
+            `<!-- HOMEPAGE_INDUSTRY_GRID_START -->\n<div class="industry-grid">\n${homepageIndustryGridHtml}\n</div>\n<!-- HOMEPAGE_INDUSTRY_GRID_END -->`
         );
 
         // Replace {{ key }} with the localized string

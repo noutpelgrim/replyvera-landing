@@ -381,7 +381,7 @@
             <a href="#faq" class="mobile-nav-link">Preguntas Frecuentes</a>
 
             <div class="mobile-lang-bar">
-                <span class="mobile-lang-label"><i class="fa-solid fa-globe"></i> Language:</span>
+                <span class="mobile-lang-label"><i class="fa-solid fa-globe"></i> Idioma:</span>
                 <a href="/pricing.html" class="mobile-lang-opt" data-no-localize>EN</a>
                 <a href="/es/pricing.html" class="mobile-lang-opt active" data-no-localize>ES</a>
                 <a href="/nl/pricing.html" class="mobile-lang-opt" data-no-localize>NL</a>
@@ -478,7 +478,7 @@
 
                                 <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$29" data-annual="$290">$29</span>
 
-                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ mes" data-annual="billed annually">/ mes</span>
+                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ mes" data-annual="/ año (2 meses gratis)">/ mes</span>
 
                             </div>
 
@@ -496,7 +496,7 @@
 
                             <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Tono personalizado</li>
 
-                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Inglés y Español</li>
+                            <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Soporte en inglés, español y neerlandés</li>
 
                             <li><i data-lucide="check" style="color:var(--accent); width:16px; height:16px;"></i> Alertas de reseñas negativas</li>
 
@@ -528,7 +528,7 @@
 
                                 <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$39" data-annual="$390">$39</span>
 
-                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ mes" data-annual="billed annually">/ mes</span>
+                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ mes" data-annual="/ año (2 meses gratis)">/ mes</span>
 
                             </div>
 
@@ -576,9 +576,9 @@
 
                             <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
 
-                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$79" data-annual="$790"><span style="font-size:1.2rem;font-weight:600;margin-right:4px;">Desde</span>$79</span>
+                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$79" data-annual="$790" data-has-prefix="true"><span class="price-prefix" style="font-size:1.2rem;font-weight:600;margin-right:6px;">Desde</span>$79</span>
 
-                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ month" data-annual="billed annually">/ month</span>
+                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ mes" data-annual="/ año (2 meses gratis)">/ mes</span>
 
                             </div>
 
@@ -626,9 +626,9 @@
 
                             <div style="display:flex; align-items:baseline; margin-bottom: 4px;">
 
-                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$149" data-annual="$1490"><span style="font-size:1.2rem;font-weight:600;margin-right:4px;">Desde</span>$149</span>
+                                <span style="font-size: 2.2rem; font-weight: 800; color: #FFF;" class="price-val" data-monthly="$149" data-annual="$1,490" data-has-prefix="true"><span class="price-prefix" style="font-size:1.2rem;font-weight:600;margin-right:6px;">Desde</span>$149</span>
 
-                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ month" data-annual="billed annually">/ month</span>
+                                <span style="color: var(--text-secondary-current); font-size: 0.9rem; margin-left: 4px;" class="price-period" data-monthly="/ mes" data-annual="/ año (2 meses gratis)">/ mes</span>
 
                             </div>
 
@@ -804,7 +804,7 @@
 
                             <tr>
 
-                                <td>Inglés y Español</td>
+                                <td>Soporte en inglés, español y neerlandés</td>
 
                                 <td>Incluido</td>
 
@@ -1159,65 +1159,38 @@
         function setBilling(mode) {
 
             const btnMonthly = document.getElementById('btn-monthly');
-
             const btnAnnual = document.getElementById('btn-annual');
-
             const priceVals = document.querySelectorAll('.price-val');
-
             const pricePeriods = document.querySelectorAll('.price-period');
-
+            const pricePrefix = 'Desde';
             
-
             if (mode === 'annual') {
-
                 btnAnnual.classList.add('active');
-
                 btnMonthly.classList.remove('active');
-
                 priceVals.forEach(el => {
-
-                    let val = el.getAttribute('data-annual');
-
-                    if(val === '$790' || val === '$1490') {
-
-                        el.innerHTML = '<span style="font-size:1.2rem;font-weight:600;margin-right:4px;">From</span>' + val;
-
+                    const val = el.getAttribute('data-annual');
+                    const hasPrefix = el.getAttribute('data-has-prefix') === 'true';
+                    if (hasPrefix) {
+                        el.innerHTML = `<span class="price-prefix" style="font-size:1.2rem;font-weight:600;margin-right:6px;">${pricePrefix}</span>` + val;
                     } else {
-
                         el.textContent = val;
-
                     }
-
                 });
-
                 pricePeriods.forEach(el => el.textContent = el.getAttribute('data-annual'));
-
             } else {
-
                 btnMonthly.classList.add('active');
-
                 btnAnnual.classList.remove('active');
-
                 priceVals.forEach(el => {
-
-                    let val = el.getAttribute('data-monthly');
-
-                    if(val === '$79' || val === '$149') {
-
-                        el.innerHTML = '<span style="font-size:1.2rem;font-weight:600;margin-right:4px;">From</span>' + val;
-
+                    const val = el.getAttribute('data-monthly');
+                    const hasPrefix = el.getAttribute('data-has-prefix') === 'true';
+                    if (hasPrefix) {
+                        el.innerHTML = `<span class="price-prefix" style="font-size:1.2rem;font-weight:600;margin-right:6px;">${pricePrefix}</span>` + val;
                     } else {
-
                         el.textContent = val;
-
                     }
-
                 });
-
                 pricePeriods.forEach(el => el.textContent = el.getAttribute('data-monthly'));
-
             }
-
         }
 
 

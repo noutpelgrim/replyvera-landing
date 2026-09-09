@@ -88,10 +88,10 @@ const DEMO_MODAL_HTML = `
                     <i data-lucide="alert-triangle" style="width:24px;height:24px;"></i>
                     <div class="demo-outcome-title">Escalado al gerente</div>
                     <div class="demo-outcome-actions">
-                        Suggested actions:<br>
-                        • Review the complaint<br>
-                        • Contact the customer privately<br>
-                        • Create a response manually
+                        Acciones sugeridas:<br>
+                        • Revisar la reclamación<br>
+                        • Contactar al cliente en privado<br>
+                        • Redactar una respuesta manualmente
                     </div>
                 </div>
             </div>

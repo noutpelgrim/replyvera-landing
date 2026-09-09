@@ -88,10 +88,10 @@ const DEMO_MODAL_HTML = `
                     <i data-lucide="alert-triangle" style="width:24px;height:24px;"></i>
                     <div class="demo-outcome-title">Geëscaleerd naar manager</div>
                     <div class="demo-outcome-actions">
-                        Suggested actions:<br>
-                        • Review the complaint<br>
-                        • Contact the customer privately<br>
-                        • Create a response manually
+                        Aanbevolen acties:<br>
+                        • Beoordeel de klacht<br>
+                        • Neem privé contact op met de klant<br>
+                        • Stel handmatig een reactie op
                     </div>
                 </div>
             </div>
