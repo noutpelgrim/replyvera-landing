@@ -2872,6 +2872,12 @@ footer  { border-top: 1px solid var(--border); padding: 44px 0 24px; }
     padding-bottom: 20px;
     text-align: center;
 }
+.demo-page-hero h1 {
+    color: #0F172A !important;
+}
+.demo-page-hero p {
+    color: #475569 !important;
+}
 .demo-sandbox-wrapper {
     max-width: 1140px;
     margin: 40px auto 40px;
