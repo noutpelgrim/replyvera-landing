@@ -86,6 +86,15 @@ window.changeLang = function(lang, event) {
     window.location.href = newPath + (window.location.hash || '');
 };
 
+window.loadVercelInsights = function loadVercelInsights() {
+    if (window.hasLoadedVercelInsights) return;
+    window.hasLoadedVercelInsights = true;
+    var s = document.createElement('script');
+    s.defer = true;
+    s.src = '/_vercel/insights/script.js';
+    document.head.appendChild(s);
+};
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize Lucide Icons
@@ -325,6 +334,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         }
+    });
+
+    // --- FAQ Accordions Accessibility ---
+    const faqDetails = document.querySelectorAll('.faq-accordion details');
+    faqDetails.forEach((details, idx) => {
+        const summary = details.querySelector('summary');
+        const content = details.querySelector('.faq-content');
+        if (!summary || !content) return;
+
+        const questionId = summary.id || `faq-q-${idx + 1}`;
+        const answerId = content.id || `faq-a-${idx + 1}`;
+
+        summary.id = questionId;
+        content.id = answerId;
+
+        summary.setAttribute('aria-expanded', details.open ? 'true' : 'false');
+        summary.setAttribute('aria-controls', answerId);
+
+        content.setAttribute('aria-labelledby', questionId);
+        content.setAttribute('aria-hidden', details.open ? 'false' : 'true');
+
+        details.addEventListener('toggle', () => {
+            const isOpen = details.open;
+            summary.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            content.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+        });
     });
 
     // Smooth scrolling for anchor links with reduced-motion and history hash support
@@ -740,6 +775,60 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- Pricing Toggle (Monthly/Annual) & Comparison Table ---
+    const btnMonthly = document.getElementById('btn-monthly');
+    const btnAnnual = document.getElementById('btn-annual');
+    const priceVals = document.querySelectorAll('.price-val');
+    const pricePeriods = document.querySelectorAll('.price-period');
+
+    function setBillingMode(mode) {
+        window.currentBillingCycle = mode;
+        if (btnAnnual && btnMonthly) {
+            if (mode === 'annual') {
+                btnAnnual.classList.add('active');
+                btnMonthly.classList.remove('active');
+            } else {
+                btnMonthly.classList.add('active');
+                btnAnnual.classList.remove('active');
+            }
+        }
+        priceVals.forEach(el => {
+            const val = el.getAttribute(`data-${mode}`);
+            const hasPrefix = el.getAttribute('data-has-prefix') === 'true';
+            const prefixEl = el.querySelector('.price-prefix');
+            if (val) {
+                if (hasPrefix && prefixEl) {
+                    prefixEl.nextSibling ? (prefixEl.nextSibling.nodeValue = val) : (el.innerHTML = prefixEl.outerHTML + val);
+                } else {
+                    el.textContent = val;
+                }
+            }
+        });
+        pricePeriods.forEach(el => {
+            const periodVal = el.getAttribute(`data-${mode}`);
+            if (periodVal) el.textContent = periodVal;
+        });
+    }
+
+    if (btnMonthly) btnMonthly.addEventListener('click', () => setBillingMode('monthly'));
+    if (btnAnnual) btnAnnual.addEventListener('click', () => setBillingMode('annual'));
+
+    const compareBtn = document.getElementById('compare-toggle');
+    const compareContainer = document.getElementById('comparison-container');
+    if (compareBtn && compareContainer) {
+        compareBtn.setAttribute('aria-expanded', 'false');
+        compareBtn.setAttribute('aria-controls', 'comparison-container');
+        compareBtn.addEventListener('click', () => {
+            const isExpanded = compareBtn.getAttribute('aria-expanded') === 'true';
+            compareBtn.setAttribute('aria-expanded', !isExpanded);
+            if (!isExpanded) {
+                compareContainer.classList.add('expanded');
+            } else {
+                compareContainer.classList.remove('expanded');
+            }
+        });
+    }
+
     // --- Sticky Navbar Logic ---
     const navbar = document.getElementById('navbar');
     if (navbar) {
@@ -810,45 +899,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Cookie Consent Banner ---
-    const cookieBanner = document.getElementById('cookie-banner');
-function loadVercelInsights() {
-    if (window.hasLoadedVercelInsights) return;
-    window.hasLoadedVercelInsights = true;
-    var s = document.createElement('script');
-    s.defer = true;
-    s.src = '/_vercel/insights/script.js';
-    document.head.appendChild(s);
-}
-
-document.addEventListener('DOMContentLoaded', () => {
+    // --- Cookie Consent Banner & Settings ---
     const cookieBanner = document.getElementById('cookie-banner');
     const acceptBtn = document.getElementById('accept-cookies');
     const declineBtn = document.getElementById('decline-cookies');
 
     const consent = localStorage.getItem('cookie-consent');
     if (consent === 'accepted') {
-        loadVercelInsights();
-    } else if (!consent && cookieBanner && acceptBtn && declineBtn) {
+        window.loadVercelInsights();
+    } else if (!consent && cookieBanner) {
         setTimeout(() => {
             cookieBanner.classList.add('show');
             cookieBanner.setAttribute('aria-hidden', 'false');
         }, 1000);
     }
 
-    if (cookieBanner && acceptBtn && declineBtn) {
-        acceptBtn.addEventListener('click', () => {
-            localStorage.setItem('cookie-consent', 'accepted');
-            cookieBanner.classList.remove('show');
-            cookieBanner.setAttribute('aria-hidden', 'true');
-            loadVercelInsights();
-        });
+    if (cookieBanner) {
+        if (acceptBtn) {
+            acceptBtn.addEventListener('click', () => {
+                localStorage.setItem('cookie-consent', 'accepted');
+                cookieBanner.classList.remove('show');
+                cookieBanner.setAttribute('aria-hidden', 'true');
+                window.loadVercelInsights();
+            });
+        }
 
-        declineBtn.addEventListener('click', () => {
-            localStorage.setItem('cookie-consent', 'declined');
-            cookieBanner.classList.remove('show');
-            cookieBanner.setAttribute('aria-hidden', 'true');
-        });
+        if (declineBtn) {
+            declineBtn.addEventListener('click', () => {
+                localStorage.setItem('cookie-consent', 'declined');
+                cookieBanner.classList.remove('show');
+                cookieBanner.setAttribute('aria-hidden', 'true');
+            });
+        }
     }
 
     document.addEventListener('click', (e) => {
