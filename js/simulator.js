@@ -668,7 +668,15 @@ function runHomepageSimulation() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('homeSimIndustry')) {
+    const indSelect = document.getElementById('homeSimIndustry');
+    if (indSelect) {
+        indSelect.addEventListener('change', runHomepageSimulation);
         runHomepageSimulation();
     }
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.sim-scenario-btn, [data-sim-scenario]');
+        if (!btn) return;
+        const scenario = btn.dataset.simScenario || (btn.id ? btn.id.replace('sim-btn-', '') : null);
+        if (scenario) selectSimScenario(scenario);
+    });
 });

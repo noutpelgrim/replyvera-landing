@@ -15,6 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="/js/demo-sandbox.js" defer></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
 
     
@@ -111,7 +112,7 @@
                     <div class="control-group-title">
                         <i data-lucide="building-2" style="width:14px;height:14px;"></i> Seleccionar Sector
                     </div>
-                    <select id="industrySelect" class="industry-select" onchange="handleIndustryChange()">
+                    <select id="industrySelect" class="industry-select">
                         <option value="restaurant">🍽️ Restaurantes y Hostelería</option>
                         <option value="dentist">🦷 Clínica Dental</option>
                         <option value="agency">💼 Agencia de Marketing</option>
@@ -128,15 +129,15 @@
                         <i data-lucide="sparkles" style="width:14px;height:14px;"></i> Probar Casos de Ejemplo
                     </div>
                     <div class="preset-buttons">
-                        <button class="preset-btn active" id="btn-preset-positive" onclick="loadPreset('positive')">
+                        <button class="preset-btn active" id="btn-preset-positive" data-preset="positive">
                             <span>Reseña de 5 Estrellas</span>
                             <div class="stars-row">★★★★★</div>
                         </button>
-                        <button class="preset-btn" id="btn-preset-negative" onclick="loadPreset('negative')">
+                        <button class="preset-btn" id="btn-preset-negative" data-preset="negative">
                             <span>Queja de Servicio (3★)</span>
                             <div class="stars-row">★★★☆☆</div>
                         </button>
-                        <button class="preset-btn" id="btn-preset-sensitive" onclick="loadPreset('sensitive')">
+                        <button class="preset-btn" id="btn-preset-sensitive" data-preset="sensitive">
                             <span>Incidente Sensible (1★)</span>
                             <div class="stars-row">★☆☆☆☆</div>
                         </button>
@@ -152,15 +153,15 @@
                     <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;">
                         <span style="font-size:0.78rem;color:var(--text-muted);">Estrellas:</span>
                         <div class="star-rating-picker">
-                            <button class="star-pick-btn" onclick="setCustomStars(1)">1★</button>
-                            <button class="star-pick-btn" onclick="setCustomStars(2)">2★</button>
-                            <button class="star-pick-btn" onclick="setCustomStars(3)">3★</button>
-                            <button class="star-pick-btn" onclick="setCustomStars(4)">4★</button>
-                            <button class="star-pick-btn selected" id="star-5-btn" onclick="setCustomStars(5)">5★</button>
+                            <button class="star-pick-btn" data-stars="1">1★</button>
+                            <button class="star-pick-btn" data-stars="2">2★</button>
+                            <button class="star-pick-btn" data-stars="3">3★</button>
+                            <button class="star-pick-btn" data-stars="4">4★</button>
+                            <button class="star-pick-btn selected" id="star-5-btn" data-stars="5">5★</button>
                         </div>
                     </div>
 
-                    <button class="btn btn-primary" style="width:100%;margin-top:16px;padding:12px;font-size:0.9rem;justify-content:center;" onclick="runCustomAnalysis()">
+                    <button class="btn btn-primary" style="width:100%;margin-top:16px;padding:12px;font-size:0.9rem;justify-content:center;" data-action="custom-analysis">
                         <i data-lucide="play" style="width:14px;height:14px;margin-right:6px;"></i> Simular Análisis de Vera
                     </button>
                 </div>
@@ -259,7 +260,7 @@
                         </div>
 
                         <div style="text-align:right;">
-                            <button id="publishActionBtn" class="btn btn-accent btn-sm" onclick="alert('Modo Simulación: Esta prueba demuestra cómo evalúa ReplyVera. No se publica en Google.')">
+                            <button id="publishActionBtn" class="btn btn-accent btn-sm" data-action="simulated-publish">
                                 Simular Publicación
                             </button>
                             <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">(Solo simulación &bull; sin publicaciones en Google)</div>
@@ -339,312 +340,9 @@
         </div>
     </footer>
 
-    <script>
-        const INDUSTRY_PRESETS = {
-            'restaurant': {
-                'positive': { name: 'Carlos Mendoza', avatar: 'CM', stars: 5, text: '¡La comida estuvo increíble y nuestro camarero Alejandro fue super atento!', sentiment: 'Positivo', topic: 'Comida y Atención', employee: 'Alejandro', risk: 'Riesgo Bajo', riskType: 'chip-positive', tone: 'Cálido y Profesional', response: '¡Muchas gracias por su reseña, Carlos! Nos alegra mucho saber que disfrutó de la comida y que Alejandro le brindó una excelente atención.', decision: 'Seguro para Publicación Automática', decisionSub: 'Reseña de 5 estrellas aprobada automáticamente.', decisionType: 'positive' },
-                'negative': { name: 'Marcos Díaz', avatar: 'MD', stars: 3, text: 'La comida estuvo bien pero esperamos 45 minutos por una mesa aun con reserva.', sentiment: 'Neutral / Negativo', topic: 'Tiempo de Espera', employee: 'Ninguno', risk: 'Riesgo Medio', riskType: 'chip-warning', tone: 'Empático y Atento', response: 'Gracias por sus comentarios, Marcos. Pedimos disculpas sinceramente por los 45 minutos de espera a pesar de su reserva.', decision: 'Requiere Aprobación', decisionSub: 'Retenido para revisión por ser menor a 4 estrellas.', decisionType: 'warning' },
-                'sensitive': { name: 'Laura Reyes', avatar: 'LR', stars: 1, text: 'Tuvimos una intoxicación grave tras comer la sopa de mariscos anoche.', sentiment: 'Crítico', topic: 'Seguridad Alimentaria', employee: 'Ninguno', risk: 'Riesgo Alto (Bloqueado)', riskType: 'chip-danger', tone: 'Escalado a Gerencia', response: '[Generación Pausada] Detectada palabra clave de seguridad alimentaria. Notificación enviada al propietario.', decision: 'Publicación Bloqueada', decisionSub: 'Tema sensible detectado. Escalado directamente al propietario.', decisionType: 'danger' }
-            },
-            'dentist': {
-                'positive': { name: 'David Millán', avatar: 'DM', stars: 5, text: 'El Dr. Evans hizo que mi tratamiento fuera rápido y sin dolor. ¡Excelente equipo!', sentiment: 'Positivo', topic: 'Atención al Paciente', employee: 'Dr. Evans', risk: 'Riesgo Bajo', riskType: 'chip-positive', tone: 'Profesional', response: '¡Muchas gracias David! Nos alegra que su tratamiento haya sido cómodo. Agradecemos su confianza.', decision: 'Seguro para Publicación Automática', decisionSub: 'Reglas de privacidad pasadas correctamente.', decisionType: 'positive' },
-                'negative': { name: 'Karla Blanco', avatar: 'KB', stars: 2, text: 'La facturación fue confusa y me cobraron dos veces por la radiografía.', sentiment: 'Negativo', topic: 'Reclamación de Facturación', employee: 'Ninguno', risk: 'Riesgo Medio', riskType: 'chip-warning', tone: 'Directo y Atento', response: 'Hola Karla, disculpe la confusión con su facturación. Revisaremos su cuenta de inmediato.', decision: 'Requiere Aprobación', decisionSub: 'Reclamaciones de pago requieren verificación previa.', decisionType: 'warning' },
-                'sensitive': { name: 'Roberto Rey', avatar: 'RR', stars: 1, text: 'El procedimiento causó una infección grave. ¡Negligencia médica!', sentiment: 'Crítico', topic: 'Incidente Médico', employee: 'Ninguno', risk: 'Riesgo Alto (Bloqueado)', riskType: 'chip-danger', tone: 'Escalado al Director', response: '[Generación Pausada] Alerta médica activada.', decision: 'Publicación Bloqueada', decisionSub: 'Término de responsabilidad detectado.', decisionType: 'danger' }
-            },
-            'agency': {
-                'positive': { name: 'Emilia Torres', avatar: 'ET', stars: 5, text: 'ReplyVera nos ayudó a escalar la gestión de reseñas locales para 35 clientes. ¡Sara entregó excelentes resultados!', sentiment: 'Positivo', topic: 'ROI de Cliente', employee: 'Sara', risk: 'Riesgo Bajo', riskType: 'chip-positive', tone: 'Profesional B2B', response: '¡Gracias Emilia! Estamos encantados de colaborar con su agencia y potenciar su SEO local.', decision: 'Seguro para Publicación Automática', decisionSub: 'Testimonio B2B publicado automáticamente.', decisionType: 'positive' },
-                'negative': { name: 'Javier Rivas', avatar: 'JR', stars: 3, text: 'Buena estrategia pero las llamadas mensuales de reportes suelen retrasarse.', sentiment: 'Neutral / Negativo', topic: 'Puntualidad en Reportes', employee: 'Ninguno', risk: 'Riesgo Medio', riskType: 'chip-warning', tone: 'Responsable y Atento', response: 'Gracias por los comentarios, Javier. Pedimos disculpas por los retrasos en las llamadas de reporte.', decision: 'Requiere Aprobación', decisionSub: 'Enviado a revisión del Gerente de Cuenta.', decisionType: 'warning' },
-                'sensitive': { name: 'Víctor Vega', avatar: 'VV', stars: 1, text: '¡Su equipo filtró nuestro plan de lanzamiento confidencial a la competencia! ¡Violación de NDA!', sentiment: 'Crítico', topic: 'Brecha Legal / NDA', employee: 'Ninguno', risk: 'Riesgo Alto (Bloqueado)', riskType: 'chip-danger', tone: 'Escalado a Asesoría Legal', response: '[Generación Pausada] Detectada palabra clave de brecha legal. Escalado a dirección.', decision: 'Publicación Bloqueada', decisionSub: 'Riesgo legal crítico detectado.', decisionType: 'danger' }
-            },
-            'martial-arts': {
-                'positive': { name: 'Marcos Brody', avatar: 'MB', stars: 5, text: '¡El Entrenador Marcus es increíble con los niños! Mi hijo de 8 años ha ganado mucha confianza y disciplina en karate.', sentiment: 'Positivo', topic: 'Disciplina Infantil y Entrenamiento', employee: 'Entrenador Marcus', risk: 'Riesgo Bajo', riskType: 'chip-positive', tone: 'Motivador y Cálido', response: '¡Muchas gracias! Estamos muy orgullosos del progreso de su hijo. ¡Al Entrenador Marcus le encanta enseñar a nuestros pequeños alumnos!', decision: 'Seguro para Publicación Automática', decisionSub: 'Reseña positiva de padres aprobada automáticamente.', decisionType: 'positive' },
-                'negative': { name: 'Daniel Parra', avatar: 'DP', stars: 3, text: 'Excelentes clases pero la sala de espera para padres se llena demasiado y hace calor en hora punta.', sentiment: 'Neutral / Negativo', topic: 'Instalaciones y Comodidad', employee: 'Ninguno', risk: 'Riesgo Medio', riskType: 'chip-warning', tone: 'Atento y Respetuoso', response: '¡Gracias por su comentario, Daniel! Estamos revisando mejoras en la ventilación y asientos de la recepción.', decision: 'Requiere Aprobación', decisionSub: 'Comentario sobre instalaciones retenido para el Director del Dojo.', decisionType: 'warning' },
-                'sensitive': { name: 'Raquel Hernández', avatar: 'RH', stars: 1, text: '¡Mi hijo se esguinzó la muñeca durante el combate hoy porque no había supervisión de un instructor en el tapiz!', sentiment: 'Crítico', topic: 'Seguridad del Estudiante y Lesión', employee: 'Ninguno', risk: 'Riesgo Alto (Bloqueado)', riskType: 'chip-danger', tone: 'Escalado al Sensei Principal', response: '[Generación Pausada] Detectada palabra clave de seguridad en combate y lesión. Notificación urgente enviada al Sensei Principal.', decision: 'Publicación Bloqueada', decisionSub: 'Riesgo de lesión escolar bloqueado para revisión urgente.', decisionType: 'danger' }
-            },
-            'childcare': {
-                'positive': { name: 'Jessica Vargas', avatar: 'JV', stars: 5, text: '¡La Maestra Clara es un ángel! A nuestro pequeño le encanta ir al preescolar cada mañana y aprende muchísimo.', sentiment: 'Positivo', topic: 'Educación Infantil', employee: 'Maestra Clara', risk: 'Riesgo Bajo', riskType: 'chip-positive', tone: 'Cálido y Cariñoso', response: '¡Muchas gracias Jessica! Nos encanta tener a su hijo con nosotros y a la Maestra Clara le alegrará leer sus palabras.', decision: 'Seguro para Publicación Automática', decisionSub: 'Elogio de padres publicado automáticamente.', decisionType: 'positive' },
-                'negative': { name: 'Bernardo Silva', avatar: 'BS', stars: 3, text: 'Me encantan los profesores pero el estacionamiento a la hora de entrega es caótico.', sentiment: 'Neutral / Negativo', topic: 'Logística de Entrega', employee: 'Ninguno', risk: 'Riesgo Medio', riskType: 'chip-warning', tone: 'Comprensivo', response: '¡Gracias Bernardo! Agradecemos su paciencia y estamos coordinando con el personal para mejorar el tráfico.', decision: 'Requiere Aprobación', decisionSub: 'Observación logística retenida para Dirección.', decisionType: 'warning' },
-                'sensitive': { name: 'Amanda Colmenares', avatar: 'AC', stars: 1, text: '¡Recogí a mi hija con un moretón profundo no explicado en el brazo y sin informe de incidente!', sentiment: 'Crítico', topic: 'Incidente de Seguridad Infantil', employee: 'Ninguno', risk: 'Riesgo Alto (Bloqueado)', riskType: 'chip-danger', tone: 'Escalado a Dirección General', response: '[Generación Pausada] Alerta de lesión infantil no explicada activada. Notificación de emergencia enviada.', decision: 'Publicación Bloqueada', decisionSub: 'Escalado de seguridad infantil activado inmediatamente.', decisionType: 'danger' }
-            },
-            'pet-care': {
-                'positive': { name: 'Claudia Benítez', avatar: 'CB', stars: 5, text: '¡Acalaron a mi golden retriever Max con mucho cuidado! Salió oliendo increíble y nada estresado.', sentiment: 'Positivo', topic: 'Peluquería Canina', employee: 'Max (Mascota)', risk: 'Riesgo Bajo', riskType: 'chip-positive', tone: 'Cálido', response: '¡Gracias Claudia! Max se portó de maravilla. ¡Esperamos volver a verle pronto!', decision: 'Seguro para Publicación Automática', decisionSub: 'Reseña de peluquería aprobada automáticamente.', decisionType: 'positive' },
-                'negative': { name: 'Diego Suárez', avatar: 'DS', stars: 3, text: 'Buen corte para mi caniche pero la recogida se retrasó más de una hora sobre lo acordado.', sentiment: 'Neutral / Negativo', topic: 'Retraso en Recogida', employee: 'Ninguno', risk: 'Riesgo Medio', riskType: 'chip-warning', tone: 'Empático', response: 'Gracias por su comentario, Diego. Disculpe el retraso en la entrega de hoy; ajustaremos los horarios de servicio.', decision: 'Requiere Aprobación', decisionSub: 'Queja de tiempo retenida para revisión.', decisionType: 'warning' },
-                'sensitive': { name: 'María Rosa', avatar: 'MR', stars: 1, text: '¡Mi perro volvió a casa sangrando por un corte en la uña y un rasguño en la barriga!', sentiment: 'Crítico', topic: 'Lesión Mascota / Corte', employee: 'Ninguno', risk: 'Riesgo Alto (Bloqueado)', riskType: 'chip-danger', tone: 'Escalado a Jefe de Peluquería', response: '[Generación Pausada] Palabra clave de lesión animal detectada. Alerta enviada al Jefe de Peluquería.', decision: 'Publicación Bloqueada', decisionSub: 'Reclamación de lesión animal bloqueada.', decisionType: 'danger' }
-            },
-            'car-wash': {
-                'positive': { name: 'Tomás Higueras', avatar: 'TH', stars: 5, text: '¡El mejor lavado de la ciudad! Mi coche brilla como si fuera nuevo.', sentiment: 'Positivo', topic: 'Calidad de Lavado', employee: 'Ninguno', risk: 'Riesgo Bajo', riskType: 'chip-positive', tone: 'Entusiasta', response: '¡Gracias por la excelente reseña de 5 estrellas, Tomás! Nos alegra que su coche brille.', decision: 'Seguro para Publicación Automática', decisionSub: 'Reseña positiva aprobada automáticamente.', decisionType: 'positive' },
-                'negative': { name: 'Cristian Vance', avatar: 'CV', stars: 2, text: 'Aspiradoras con poca succión y la mitad fuera de servicio.', sentiment: 'Negativo', topic: 'Mantenimiento de Equipos', employee: 'Ninguno', risk: 'Riesgo Medio', riskType: 'chip-warning', tone: 'Atento', response: 'Gracias por avisarnos, Cristian. Disculpe los problemas con las aspiradoras; hoy mismo las revisamos.', decision: 'Requiere Aprobación', decisionSub: 'Queja de equipos retenida para revisión.', decisionType: 'warning' },
-                'sensitive': { name: 'Amanda B.', avatar: 'AB', stars: 1, text: '¡Los cepillos laterales rayaron el capó nuevo de mi coche y abollaron el espejo!', sentiment: 'Crítico', topic: 'Daño a Vehículo', employee: 'Ninguno', risk: 'Riesgo Alto (Bloqueado)', riskType: 'chip-danger', tone: 'Escalado a Gestión de Daños', response: '[Generación Pausada] Activada alerta de daños a propiedad.', decision: 'Publicación Bloqueada', decisionSub: 'Reclamación de daños bloqueada para evitar admisión de responsabilidad.', decisionType: 'danger' }
-            },
-            'laundromat': {
-                'positive': { name: 'Carlos Rivera', avatar: 'CR', stars: 5, text: '¡Instalaciones súper limpias! Las lavadoras grandes funcionan genial y las mesas están desinfectadas.', sentiment: 'Positivo', topic: 'Limpieza y Máquinas', employee: 'Ninguno', risk: 'Riesgo Bajo', riskType: 'chip-positive', tone: 'Agradecido', response: '¡Muchas gracias Carlos! Nos esforzamos por mantener unas instalaciones impecables para nuestros clientes.', decision: 'Seguro para Publicación Automática', decisionSub: 'Elogio de limpieza publicado automáticamente.', decisionType: 'positive' },
-                'negative': { name: 'Sandra Leal', avatar: 'SL', stars: 3, text: 'La lavadora #8 se tragó mis monedas sin arrancar y la máquina de cambio estaba vacía.', sentiment: 'Neutral / Negativo', topic: 'Monedero y Reembolso', employee: 'Ninguno', risk: 'Riesgo Medio', riskType: 'chip-warning', tone: 'Directo y Atento', response: 'Hola Sandra, ¡disculpas por el fallo técnico! Póngase en contacto con nuestro encargado para su reembolso.', decision: 'Requiere Aprobación', decisionSub: 'Solicitud de reembolso retenida para el encargado.', decisionType: 'warning' },
-                'sensitive': { name: 'Kevin Durán', avatar: 'KD', stars: 1, text: '¡Alguien robó mi cesta de ropa mientras no miraba y la gerencia se negó a revisar las cámaras!', sentiment: 'Crítico', topic: 'Robo / Incidente de Seguridad', employee: 'Ninguno', risk: 'Riesgo Alto (Bloqueado)', riskType: 'chip-danger', tone: 'Escalado a Seguridad', response: '[Generación Pausada] Palabra clave de robo e inseguridad detectada. Enviado a dirección de seguridad.', decision: 'Publicación Bloqueada', decisionSub: 'Informe de robo retenido para revisión de seguridad.', decisionType: 'danger' }
-            }
-        };
+    
 
-        let selectedStars = 5;
-        let currentPreset = 'positive';
-
-        function getActiveIndustry() {
-            return document.getElementById('industrySelect').value;
-        }
-
-        function updateStarPickerUI(s) {
-            document.querySelectorAll('.star-pick-btn').forEach((btn, idx) => {
-                if (idx + 1 === s) btn.classList.add('selected');
-                else btn.classList.remove('selected');
-            });
-        }
-
-        function loadPreset(presetKey) {
-            currentPreset = presetKey;
-            document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
-            const activeBtn = document.getElementById(`btn-preset-${presetKey}`);
-            if (activeBtn) activeBtn.classList.add('active');
-
-            const ind = getActiveIndustry();
-            const data = (INDUSTRY_PRESETS[ind] && INDUSTRY_PRESETS[ind][presetKey]) ? INDUSTRY_PRESETS[ind][presetKey] : INDUSTRY_PRESETS['restaurant'][presetKey];
-
-            if (data && data.stars) {
-                selectedStars = data.stars;
-                updateStarPickerUI(selectedStars);
-            }
-
-            updateCanvas(data);
-        }
-
-        function handleIndustryChange() { loadPreset(currentPreset); }
-
-        function setCustomStars(s) {
-            selectedStars = s;
-            updateStarPickerUI(s);
-
-            const inputEl = document.getElementById('customReviewText');
-            const text = inputEl ? inputEl.value.trim() : '';
-            if (text) {
-                runCustomAnalysis();
-            } else {
-                let starsHtml = '';
-                for(let i=1; i<=5; i++) {
-                    starsHtml += i <= selectedStars ? '★' : '☆';
-                }
-                const displayEl = document.getElementById('displayStars');
-                if (displayEl) displayEl.textContent = starsHtml;
-            }
-        }
-
-        function runCustomAnalysis() {
-            const inputEl = document.getElementById('customReviewText');
-            const text = inputEl ? inputEl.value.trim() : '';
-            if (!text) { alert('¡Por favor escriba texto antes de simular!'); return; }
-
-            document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
-
-            let lower = text.toLowerCase();
-
-            // 1. Smart Employee Extraction (Supports Mary, Raul, Señor, Don, Dr, Coach, etc.)
-            let employee = 'Ninguno';
-            const titleMatch = text.match(/(?:senor|señor|sr\.|sr|don|doña|dr\.|dr|doctor|doctora|profesor|profe|coach|chef|mr\.|mr|mrs\.|ms\.|camarero|con|por|atendido por)\s+([A-ZÀ-ÿ][a-zà-ÿ]+)/i);
-            if (titleMatch && titleMatch[1]) {
-                const cand = titleMatch[1];
-                const stopwords = ['el', 'la', 'los', 'las', 'muy', 'clinico', 'clinica', 'restaurant', 'comida', 'servicio', 'mal', 'bueno'];
-                if (!stopwords.includes(cand.toLowerCase())) {
-                    employee = cand.charAt(0).toUpperCase() + cand.slice(1);
-                    if (employee.toLowerCase() === 'raul') employee = 'Raúl';
-                }
-            }
-            if (employee === 'Ninguno') {
-                const commonNames = ['mary', 'maria', 'raul', 'raúl', 'hank', 'alejandro', 'sara', 'marcos', 'clara', 'david', 'carlos', 'juan', 'laura', 'diego', 'roberto', 'karla'];
-                for (let n of commonNames) {
-                    if (lower.includes(n)) {
-                        employee = (n === 'raul' || n === 'raúl') ? 'Raúl' : (n.charAt(0).toUpperCase() + n.slice(1));
-                        break;
-                    }
-                }
-            }
-            if (employee === 'Ninguno') {
-                const words = text.split(/\s+/);
-                for (let i = 0; i < words.length; i++) {
-                    let clean = words[i].replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ]/g, '');
-                    if (clean.length >= 3 && /^[A-ZÁÉÍÓÚÑ]/.test(clean)) {
-                        const ignoreList = ['The', 'Google', 'Clinic', 'Clinica', 'Clinico', 'Restaurant', 'Service', 'Food', 'Senor', 'Señor', 'Doctor', 'Coach', 'Chef', 'Good', 'Great', 'Bad', 'Poor', 'Best', 'Very', 'Mijn', 'Onze', 'Deze', 'Het', 'Een', 'Beste', 'Hartelijk', 'Bedankt', 'Muchas', 'Gracias', 'Excelente', 'Bueno', 'Buena', 'Hola'];
-                        if (!ignoreList.includes(clean)) {
-                            employee = clean.charAt(0).toUpperCase() + clean.slice(1);
-                            break;
-                        }
-                    }
-                }
-            }
-
-            // 2. Risk & Safety Check
-            let isSensitive = lower.includes('lesion') || lower.includes('intoxicacion') || lower.includes('abogado') || lower.includes('demandar') || lower.includes('robo') || lower.includes('infeccion');
-
-            // 3. Sentiment & Praise vs Complaint
-            let hasPraise = lower.includes('bueno') || lower.includes('buen') || lower.includes('buena') || lower.includes('bien') || lower.includes('excelente') || lower.includes('perfecto') || lower.includes('increible') || lower.includes('gran') || lower.includes('me encanto') || lower.includes('muy bien') || lower.includes('amable');
-            let hasComplaint = lower.includes('malo') || lower.includes('mal') || lower.includes('lento') || lower.includes('frio') || lower.includes('espera') || lower.includes('no fue bueno') || lower.includes('no me gusto') || lower.includes('pobre') || lower.includes('sucio') || lower.includes('caro') || lower.includes('costoso') || lower.includes('precio') || lower.includes('factura');
-
-            let sentiment = 'Positivo';
-            if (isSensitive) {
-                sentiment = 'Crítico';
-            } else if (selectedStars <= 2) {
-                sentiment = 'Negativo';
-            } else if (selectedStars === 3 || (hasPraise && hasComplaint)) {
-                sentiment = 'Mixto / Neutral';
-            } else if (hasComplaint) {
-                sentiment = 'Negativo';
-            } else {
-                sentiment = 'Positivo';
-            }
-
-            // 4. Topic Detection
-            let topic = 'Experiencia General';
-            if (lower.includes('precio') || lower.includes('caro') || lower.includes('costoso') || lower.includes('factura') || lower.includes('cobro')) {
-                topic = (employee !== 'Ninguno') ? `Atención (${employee}) y Precios` : 'Precios y Tarifas';
-            } else if (lower.includes('comida') || lower.includes('plato') || lower.includes('sopa') || lower.includes('sabor')) {
-                topic = (employee !== 'Ninguno') ? 'Elogio de Atención y Comida' : 'Calidad de la Comida';
-            } else if (lower.includes('espera') || lower.includes('mesa') || lower.includes('reserva') || lower.includes('cola')) {
-                topic = 'Tiempo de Espera';
-            } else if (lower.includes('limpio') || lower.includes('sucio') || lower.includes('lavado')) {
-                topic = 'Instalaciones y Limpieza';
-            } else if (employee !== 'Ninguno') {
-                topic = `Atención del Personal (${employee})`;
-            }
-
-            // 5. Intelligent AI Response Draft
-            let responseText = '';
-            let tone = 'Cálido y Profesional';
-
-            if (isSensitive) {
-                tone = 'Escalado a Gerencia';
-                responseText = '[Generación Pausada] Detectadas palabras clave sensibles. Respuesta automática retenida y enviada al propietario.';
-            } else if (hasPraise && hasComplaint) {
-                tone = 'Empático y Equilibrado';
-                if (employee !== 'Ninguno') {
-                    if (lower.includes('precio') || lower.includes('caro') || lower.includes('costoso')) {
-                        responseText = `¡Muchas gracias por su reseña! Nos alegra saber que ${employee} le brindó una atención muy amable, pero tomamos nota de su comentario sobre los precios. Nos esforzamos por mantener tarifas justas y competitivas.`;
-                    } else {
-                        responseText = `¡Muchas gracias por tomarse el tiempo de dejarnos su reseña! Nos alegra saber que ${employee} le brindó una excelente atención, pero lamentamos sinceramente que algunos aspectos no hayan cumplido sus expectativas. Compartimos su opinión con el equipo.`;
-                    }
-                } else {
-                    responseText = `¡Gracias por su comentario! Nos alegra que haya disfrutado de parte de su visita, pero nos disculpamos por los aspectos que no cumplieron con sus expectativas. Estamos trabajando con el equipo para corregirlo.`;
-                }
-            } else if (sentiment === 'Positivo') {
-                tone = 'Cálido y Agradecido';
-                if (employee !== 'Ninguno') {
-                    responseText = `¡Muchas gracias por su reseña! Nos encanta saber que ${employee} le atendió tan bien y que disfrutó de su experiencia. ¡Le transmitiremos sus amables palabras a ${employee}!`;
-                } else {
-                    responseText = `¡Muchas gracias por su excelente reseña! Nos alegra enormemente que haya tenido una gran experiencia y esperamos volver a verle muy pronto.`;
-                }
-            } else {
-                tone = 'Empático y Profesional';
-                if (employee !== 'Ninguno') {
-                    responseText = `Gracias por notificarnos sobre su experiencia. Lamentamos que su visita no haya sido ideal. Hablaremos con ${employee} y nuestro equipo para asegurar que mejoremos nuestro servicio.`;
-                } else {
-                    responseText = `Muchas gracias por sus comentarios honestos. Le pedimos disculpas sinceras por los inconvenientes y estamos revisándolo con gerencia para evitar que vuelva a ocurrir.`;
-                }
-            }
-
-            let isNegative = sentiment === 'Negativo' || sentiment === 'Mixto / Neutral' || isSensitive;
-
-            let data = {
-                name: 'Reseña Personalizada',
-                avatar: 'RP',
-                stars: selectedStars,
-                text: text,
-                sentiment: sentiment,
-                topic: topic,
-                employee: employee,
-                risk: isSensitive ? 'Riesgo Alto (Bloqueado)' : (isNegative ? 'Riesgo Medio' : 'Riesgo Bajo'),
-                riskType: isSensitive ? 'chip-danger' : (isNegative ? 'chip-warning' : 'chip-positive'),
-                tone: tone,
-                response: responseText,
-                decision: isSensitive ? 'Publicación Bloqueada' : (isNegative ? 'Requiere Aprobación' : 'Seguro para Publicación Automática'),
-                decisionSub: isSensitive ? 'Tema sensible detectado. Retenido para revisión humana.' : (isNegative ? 'Contiene una queja o calificación negativa. Retenido para aprobación.' : 'Cumple las reglas para publicación automática.'),
-                decisionType: isSensitive ? 'danger' : (isNegative ? 'warning' : 'positive')
-            };
-
-            updateCanvas(data);
-        }
-
-        function updateCanvas(data) {
-            if (!document.getElementById('reviewerName')) return;
-            document.getElementById('reviewerName').textContent = data.name;
-            document.getElementById('reviewerAvatar').textContent = data.avatar;
-            document.getElementById('displayReviewText').textContent = `"${data.text}"`;
-            
-            let starsHtml = '';
-            for(let i=1; i<=5; i++) starsHtml += i <= data.stars ? '★' : '☆';
-            document.getElementById('displayStars').textContent = starsHtml;
-
-            document.getElementById('valSentiment').textContent = data.sentiment;
-            document.getElementById('valTopic').textContent = data.topic;
-            document.getElementById('valEmployee').textContent = data.employee;
-            document.getElementById('valSafety').textContent = data.riskType === 'chip-danger' ? 'Flagged' : 'Clear';
-
-            const riskChip = document.getElementById('riskChip');
-            if (riskChip) {
-                riskChip.className = `tag-chip ${data.riskType}`;
-                riskChip.innerHTML = `<i data-lucide="${data.riskType === 'chip-danger' ? 'alert-triangle' : (data.riskType === 'chip-warning' ? 'alert-circle' : 'shield-check')}" style="width:12px;height:12px;"></i> ${data.risk}`;
-            }
-
-            document.getElementById('valTone').textContent = data.tone;
-            document.getElementById('aiResponseText').textContent = data.response;
-
-            const banner = document.getElementById('decisionBanner');
-            const iconBox = document.getElementById('decisionIcon');
-            const btn = document.getElementById('publishActionBtn');
-
-            if (banner && iconBox && btn) {
-                document.getElementById('decisionTitle').textContent = data.decision;
-                document.getElementById('decisionSub').textContent = data.decisionSub;
-
-                if (data.decisionType === 'positive') {
-                    banner.style.background = 'rgba(0, 201, 167, 0.08)';
-                    banner.style.borderColor = 'rgba(0, 201, 167, 0.3)';
-                    iconBox.style.background = 'rgba(0, 201, 167, 0.2)';
-                    iconBox.style.color = '#00C9A7';
-                    iconBox.innerHTML = `<i data-lucide="check-circle-2" style="width:22px;height:22px;"></i>`;
-                    btn.style.display = 'inline-flex';
-                    btn.className = 'btn btn-accent btn-sm';
-                    btn.textContent = 'Publicado en Google';
-                } else if (data.decisionType === 'warning') {
-                    banner.style.background = 'rgba(245, 158, 11, 0.08)';
-                    banner.style.borderColor = 'rgba(245, 158, 11, 0.3)';
-                    iconBox.style.background = 'rgba(245, 158, 11, 0.2)';
-                    iconBox.style.color = '#F59E0B';
-                    iconBox.innerHTML = `<i data-lucide="clock" style="width:22px;height:22px;"></i>`;
-                    btn.style.display = 'inline-flex';
-                    btn.className = 'btn btn-secondary btn-sm';
-                    btn.textContent = 'Aprobar y Publicar';
-                } else {
-                    banner.style.background = 'rgba(239, 68, 68, 0.08)';
-                    banner.style.borderColor = 'rgba(239, 68, 68, 0.3)';
-                    iconBox.style.background = 'rgba(239, 68, 68, 0.2)';
-                    iconBox.style.color = '#EF4444';
-                    iconBox.innerHTML = `<i data-lucide="shield-alert" style="width:22px;height:22px;"></i>`;
-                    btn.style.display = 'inline-flex';
-                    btn.className = 'btn btn-secondary btn-sm';
-                    btn.style.borderColor = 'rgba(239, 68, 68, 0.4)';
-                    btn.textContent = 'Revisar Escalado';
-                }
-            }
-
-            if (window.lucide) if (typeof lucide !== "undefined" && lucide.createIcons) { lucide.createIcons(); }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            if (window.lucide) if (typeof lucide !== "undefined" && lucide.createIcons) { lucide.createIcons(); }
-            loadPreset('positive');
-        });
-    </script>
-
-    <script>
-        if (typeof loadPreset !== 'undefined') window.loadPreset = loadPreset;
-        if (typeof selectStar !== 'undefined') window.selectStar = selectStar;
-        if (typeof runCustomReview !== 'undefined') window.runCustomReview = runCustomReview;
-        if (typeof triggerSimulatedPublish !== 'undefined') window.triggerSimulatedPublish = triggerSimulatedPublish;
-    </script>
+    
     
 </body>
 </html>

@@ -29,49 +29,7 @@
 
 
 
-    <script>
 
-    function changeLang(lang, event) {
-
-        event.preventDefault();
-
-        localStorage.setItem('lang_redirected', 'true');
-
-        
-
-        let path = window.location.pathname;
-
-        
-
-        // Remove existing lang prefix if present
-
-        if (path.startsWith('/es/')) path = path.replace('/es/', '/');
-
-        if (path.startsWith('/nl/')) path = path.replace('/nl/', '/');
-
-        if (path === '/es' || path === '/nl') path = '/';
-
-        
-
-        let newPath = path;
-
-        if (lang === 'es') {
-
-            newPath = '/es' + (path === '/' ? '/' : path);
-
-        } else if (lang === 'nl') {
-
-            newPath = '/nl' + (path === '/' ? '/' : path);
-
-        }
-
-        
-
-        window.location.href = newPath + window.location.hash;
-
-    }
-
-    </script>
 </head>
 
 
@@ -301,9 +259,9 @@
 
             <div class="pricing-billing-toggle">
 
-                <button class="pricing-billing-btn active" id="btn-monthly" onclick="setBilling('monthly')">{{ pricing_monthly_9030 }}</button>
+                <button class="pricing-billing-btn active" id="btn-monthly">{{ pricing_monthly_9030 }}</button>
 
-                <button class="pricing-billing-btn" id="btn-annual" onclick="setBilling('annual')">{{ pricing_annual_c4c6 }} <span class="pricing-annual-badge">{{ pricing_save_2_months_05b1 }}</span></button>
+                <button class="pricing-billing-btn" id="btn-annual">{{ pricing_annual_c4c6 }} <span class="pricing-annual-badge">{{ pricing_save_2_months_05b1 }}</span></button>
 
             </div>
 
@@ -1000,96 +958,7 @@
 
 
 
-    <!-- Vercel Web Analytics -->
-
-    <script>
-
-      {{ pricing_window_va_window_va_function_w_bd2c }}
-
-    </script>
-
     <script src="/script.js"></script>
-
-
-
-    <script>
-
-        // Billing Toggle Logic
-
-        function setBilling(mode) {
-
-            const btnMonthly = document.getElementById('btn-monthly');
-            const btnAnnual = document.getElementById('btn-annual');
-            const priceVals = document.querySelectorAll('.price-val');
-            const pricePeriods = document.querySelectorAll('.price-period');
-            const pricePrefix = '{{ pricing_from_5da6 }}';
-            
-            if (mode === 'annual') {
-                btnAnnual.classList.add('active');
-                btnMonthly.classList.remove('active');
-                priceVals.forEach(el => {
-                    const val = el.getAttribute('data-annual');
-                    const hasPrefix = el.getAttribute('data-has-prefix') === 'true';
-                    if (hasPrefix) {
-                        el.innerHTML = `<span class="price-prefix" style="font-size:1.2rem;font-weight:600;margin-right:6px;">${pricePrefix}</span>` + val;
-                    } else {
-                        el.textContent = val;
-                    }
-                });
-                pricePeriods.forEach(el => el.textContent = el.getAttribute('data-annual'));
-            } else {
-                btnMonthly.classList.add('active');
-                btnAnnual.classList.remove('active');
-                priceVals.forEach(el => {
-                    const val = el.getAttribute('data-monthly');
-                    const hasPrefix = el.getAttribute('data-has-prefix') === 'true';
-                    if (hasPrefix) {
-                        el.innerHTML = `<span class="price-prefix" style="font-size:1.2rem;font-weight:600;margin-right:6px;">${pricePrefix}</span>` + val;
-                    } else {
-                        el.textContent = val;
-                    }
-                });
-                pricePeriods.forEach(el => el.textContent = el.getAttribute('data-monthly'));
-            }
-        }
-
-
-
-        // Compare Toggle Logic
-
-        document.addEventListener('DOMContentLoaded', () => {
-
-            const compareBtn = document.getElementById('compare-toggle');
-
-            const compareContainer = document.getElementById('comparison-container');
-
-            
-
-            if(compareBtn && compareContainer) {
-
-                compareBtn.addEventListener('click', () => {
-
-                    const isExpanded = compareBtn.getAttribute('aria-expanded') === 'true';
-
-                    compareBtn.setAttribute('aria-expanded', !isExpanded);
-
-                    if (!isExpanded) {
-
-                        compareContainer.classList.add('expanded');
-
-                    } else {
-
-                        compareContainer.classList.remove('expanded');
-
-                    }
-
-                });
-
-            }
-
-        });
-
-    </script>
 
 </body>
 

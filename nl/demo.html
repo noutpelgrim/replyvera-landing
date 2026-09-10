@@ -15,6 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="/js/demo-sandbox.js" defer></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
 
     
@@ -105,7 +106,7 @@
                     <div class="control-group-title">
                         <i data-lucide="building-2" style="width:14px;height:14px;"></i> Selecteer Branche
                     </div>
-                    <select id="industrySelect" class="industry-select" onchange="handleIndustryChange()">
+                    <select id="industrySelect" class="industry-select">
                         <option value="restaurant">🍽️ Restaurant &amp; Horeca</option>
                         <option value="dentist">🦷 Tandarts &amp; Praktijk</option>
                         <option value="agency">💼 Marketingbureau</option>
@@ -122,15 +123,15 @@
                         <i data-lucide="sparkles" style="width:14px;height:14px;"></i> Test Voorbeeldscenario's
                     </div>
                     <div class="preset-buttons">
-                        <button class="preset-btn active" id="btn-preset-positive" onclick="loadPreset('positive')">
+                        <button class="preset-btn active" id="btn-preset-positive" data-preset="positive">
                             <span>5-Sterren Review</span>
                             <div class="stars-row">★★★★★</div>
                         </button>
-                        <button class="preset-btn" id="btn-preset-negative" onclick="loadPreset('negative')">
+                        <button class="preset-btn" id="btn-preset-negative" data-preset="negative">
                             <span>3-Sterren Klacht</span>
                             <div class="stars-row">★★★☆☆</div>
                         </button>
-                        <button class="preset-btn" id="btn-preset-sensitive" onclick="loadPreset('sensitive')">
+                        <button class="preset-btn" id="btn-preset-sensitive" data-preset="sensitive">
                             <span>1-Ster Gevoelig Incident</span>
                             <div class="stars-row">★☆☆☆☆</div>
                         </button>
@@ -146,15 +147,15 @@
                     <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;">
                         <span style="font-size:0.78rem;color:var(--text-muted);">Sterren:</span>
                         <div class="star-rating-picker">
-                            <button class="star-pick-btn" onclick="setCustomStars(1)">1★</button>
-                            <button class="star-pick-btn" onclick="setCustomStars(2)">2★</button>
-                            <button class="star-pick-btn" onclick="setCustomStars(3)">3★</button>
-                            <button class="star-pick-btn" onclick="setCustomStars(4)">4★</button>
-                            <button class="star-pick-btn selected" id="star-5-btn" onclick="setCustomStars(5)">5★</button>
+                            <button class="star-pick-btn" data-stars="1">1★</button>
+                            <button class="star-pick-btn" data-stars="2">2★</button>
+                            <button class="star-pick-btn" data-stars="3">3★</button>
+                            <button class="star-pick-btn" data-stars="4">4★</button>
+                            <button class="star-pick-btn selected" id="star-5-btn" data-stars="5">5★</button>
                         </div>
                     </div>
 
-                    <button class="btn btn-primary" style="width:100%;margin-top:16px;padding:12px;font-size:0.9rem;justify-content:center;" onclick="runCustomAnalysis()">
+                    <button class="btn btn-primary" style="width:100%;margin-top:16px;padding:12px;font-size:0.9rem;justify-content:center;" data-action="custom-analysis">
                         <i data-lucide="play" style="width:14px;height:14px;margin-right:6px;"></i> Simuleer Vera Analyse
                     </button>
                 </div>
@@ -253,7 +254,7 @@
                         </div>
 
                         <div style="text-align:right;">
-                            <button id="publishActionBtn" class="btn btn-accent btn-sm" onclick="alert('Simulatiemodus: Deze interactieve demo toont hoe ReplyVera reacties evalueert. Geen reacties geplaatst op Google.')">
+                            <button id="publishActionBtn" class="btn btn-accent btn-sm" data-action="simulated-publish">
                                 Publicatie Simuleren
                             </button>
                             <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">(Uitsluitend simulatie &bull; geen live plaatsing op Google)</div>
@@ -333,310 +334,9 @@
         </div>
     </footer>
 
-    <script>
-        const INDUSTRY_PRESETS = {
-            'restaurant': {
-                'positive': { name: 'Jan de Vries', avatar: 'JV', stars: 5, text: 'Geweldige service en erg lekker gegeten. Bedank Sanne voor de fantastische hulp!', sentiment: 'Positief', topic: 'Service & Eten', employee: 'Sanne', risk: 'Laag Risico', riskType: 'chip-positive', tone: 'Vriendelijk & Professioneel', response: 'Hartelijk dank voor je fantastische review, Jan! Fijn om te horen dat je tevreden bent. We geven het compliment door aan Sanne!', decision: 'Veilig voor Automatische Publicatie', decisionSub: '5-sterren review automatisch goedgekeurd.', decisionType: 'positive' },
-                'negative': { name: 'Marc de Boer', avatar: 'MB', stars: 3, text: 'Eten was prima maar we moesten 45 minuten wachten op onze tafel ondanks reservering.', sentiment: 'Neutraal / Negatief', topic: 'Wachttijd', employee: 'Geen', risk: 'Middelgroot Risico', riskType: 'chip-warning', tone: 'Empathisch & Excuserend', response: 'Hartelijk dank voor je feedback, Marc. Excuus voor de lange wachttijd ondanks de reservering.', decision: 'Goedkeuring Vereist', decisionSub: 'Vastgehouden voor beoordeling omdat de score lager is dan 4 sterren.', decisionType: 'warning' },
-                'sensitive': { name: 'Lisa Bakker', avatar: 'LB', stars: 1, text: 'We zijn ernstig ziek geworden na het eten van de vissoep gisteravond.', sentiment: 'Kritiek', topic: 'Voedselveiligheid', employee: 'Geen', risk: 'Hoog Risico (Gefilterd)', riskType: 'chip-danger', tone: 'Geëscaleerd naar Eigenaar', response: '[AI Generatie Gepauzeerd] Signaal voor voedselveiligheid gedetecteerd. Melding gestuurd naar de eigenaar.', decision: 'Publicatie Gegarandeerd Geblokkeerd', decisionSub: 'Gevoelig onderwerp gedetecteerd.', decisionType: 'danger' }
-            },
-            'dentist': {
-                'positive': { name: 'David Mulder', avatar: 'DM', stars: 5, text: 'Dr. Evans hielp mij erg deskundig en pijnloos. Fijne praktijk!', sentiment: 'Positief', topic: 'Patiëntenzorg', employee: 'Dr. Evans', risk: 'Laag Risico', riskType: 'chip-positive', tone: 'Professioneel', response: 'Hartelijk dank David! Fijn dat de behandeling prettig is verlopen. Wij waarderen je vertrouwen in onze praktijk.', decision: 'Veilig voor Automatische Publicatie', decisionSub: 'Privacyregels succesvol doorlopen.', decisionType: 'positive' },
-                'negative': { name: 'Karin de Jong', avatar: 'KJ', stars: 2, text: 'Facturatie was erg verwarrend en er werd dubbel gerekend voor foto’s.', sentiment: 'Negatief', topic: 'Facturatieklacht', employee: 'Geen', risk: 'Middelgroot Risico', riskType: 'chip-warning', tone: 'Direct & Correct', response: 'Beste Karin, excuses voor de verwarring op de factuur. Wij kijken dit direct voor je na.', decision: 'Goedkeuring Vereist', decisionSub: 'Facturatieklachten vereisen controle door praktijkmanager.', decisionType: 'warning' },
-                'sensitive': { name: 'Robert King', avatar: 'RK', stars: 1, text: 'De ingreep leidde tot ernstige zenuwschade en infectie. Medische fout!', sentiment: 'Kritiek', topic: 'Medisch Incident', employee: 'Geen', risk: 'Hoog Risico (Gefilterd)', riskType: 'chip-danger', tone: 'Geëscaleerd naar Praktijkhouder', response: '[AI Generatie Gepauzeerd] Medische aansprakelijkheid gedetecteerd.', decision: 'Publicatie Geblokkeerd', decisionSub: 'Medisch risico direct geëscaleerd.', decisionType: 'danger' }
-            },
-            'agency': {
-                'positive': { name: 'Evelien Terpstra', avatar: 'ET', stars: 5, text: 'ReplyVera heeft ons geholpen reviewbeheer op te schalen voor 35 klantlocaties. Sarah levert geweldige resultaten!', sentiment: 'Positief', topic: 'Klant ROI & Schaalbaarheid', employee: 'Sarah', risk: 'Laag Risico', riskType: 'chip-positive', tone: 'Zakelijk & Professioneel', response: 'Bedankt Evelien! Geweldig om samen te werken en jullie lokale vindbaarheid te vergroten.', decision: 'Veilig voor Automatische Publicatie', decisionSub: 'Zakelijke testimonial automatisch geplaatst.', decisionType: 'positive' },
-                'negative': { name: 'Jeroen Rood', avatar: 'JR', stars: 3, text: 'Goede strategie, maar maandelijke rapportagegesprekken lopen helaas regelmatig uit.', sentiment: 'Neutraal / Negatief', topic: 'Tijdigheid Rapportage', employee: 'Geen', risk: 'Middelgroot Risico', riskType: 'chip-warning', tone: 'Verantwoordelijk', response: 'Bedankt voor de feedback Jeroen. Excuus voor de vertraging; we verbeteren de planning.', decision: 'Goedkeuring Vereist', decisionSub: 'Ter beoordeling voorgelegd aan Accountmanager.', decisionType: 'warning' },
-                'sensitive': { name: 'Victor Veen', avatar: 'VV', stars: 1, text: 'Jullie team heeft ons vertrouwelijke Q4 lanceringplan gelekt naar een concurrent! Schending geheimhouding!', sentiment: 'Kritiek', topic: 'Juridisch / NDA Schending', employee: 'Geen', risk: 'Hoog Risico (Gefilterd)', riskType: 'chip-danger', tone: 'Geëscaleerd naar Directie', response: '[AI Generatie Gepauzeerd] Juridisch trefwoord gedetecteerd.', decision: 'Publicatie Geblokkeerd', decisionSub: 'Kritiek juridisch risico gedetecteerd.', decisionType: 'danger' }
-            },
-            'martial-arts': {
-                'positive': { name: 'Marco Brody', avatar: 'MB', stars: 5, text: 'Trainer Marcus is geweldig met de kinderen! Mijn 8-jarige zoon heeft zoveel zelfvertrouwen en discipline gekregen sinds hij op karate zit.', sentiment: 'Positief', topic: 'Jeugd Discipline & Training', employee: 'Trainer Marcus', risk: 'Laag Risico', riskType: 'chip-positive', tone: 'Enthousiast & Warm', response: 'Hartelijk dank! We zijn ontzettend trots op de vooruitgang van je zoon. Trainer Marcus geeft met heel veel passie les aan onze jeugdleden!', decision: 'Veilig voor Automatische Publicatie', decisionSub: 'Positieve review van ouder automatisch gepubliceerd.', decisionType: 'positive' },
-                'negative': { name: 'Daniel Post', avatar: 'DP', stars: 3, text: 'Fijne lessen, maar de wachtruimte voor ouders is tijdens de avondspits erg druk en warm.', sentiment: 'Neutraal / Negatief', topic: 'Accommodatie & Comfort', employee: 'Geen', risk: 'Middelgroot Risico', riskType: 'chip-warning', tone: 'Attent & Respectvol', response: 'Bedankt voor de tip Daniel! We kijken momenteel naar uitbreiding van zitplekken en verbetering van de ventilatie in de ontvangstruimte.', decision: 'Goedkeuring Vereist', decisionSub: 'Feedback over accommodatie vastgehouden voor de Dojo Manager.', decisionType: 'warning' },
-                'sensitive': { name: 'Rachel van Herk', avatar: 'RH', stars: 1, text: 'Mijn zoon heeft vandaag zijn pols verrekt tijdens het sparren omdat er geen trainer op de mat stond!', sentiment: 'Kritiek', topic: 'Veiligheid & Blessure', employee: 'Geen', risk: 'Hoog Risico (Gefilterd)', riskType: 'chip-danger', tone: 'Geëscaleerd naar Hoofdtrainer', response: '[AI Generatie Gepauzeerd] Signaal voor blessure en matveiligheid gedetecteerd. Directe melding gestuurd naar de Hoofdtrainer.', decision: 'Publicatie Geblokkeerd', decisionSub: 'Veiligheidsincident op de mat geblokkeerd voor spoedbeoordeling.', decisionType: 'danger' }
-            },
-            'childcare': {
-                'positive': { name: 'Jessica Visser', avatar: 'JV', stars: 5, text: 'Juf Clara is een engel! Onze peuter gaat elke ochtend met een glimlach naar de opvang en leert erg veel.', sentiment: 'Positief', topic: 'Vroegkinderlijke Educatie', employee: 'Juf Clara', risk: 'Laag Risico', riskType: 'chip-positive', tone: 'Warm & Liefdevol', response: 'Dank je wel Jessica! Wat fijn dat jullie peuter het zo naar de zin heeft. We geven de complimenten door aan Juf Clara!', decision: 'Veilig voor Automatische Publicatie', decisionSub: 'Oudercompliment automatisch gepubliceerd.', decisionType: 'positive' },
-                'negative': { name: 'Berend Scholten', avatar: 'BS', stars: 3, text: 'Geweldige leidsters, maar het parkeren tijdens de ochtendoverdracht is erg chaotisch.', sentiment: 'Neutraal / Negatief', topic: 'Logistiek Overdracht', employee: 'Geen', risk: 'Middelgroot Risico', riskType: 'chip-warning', tone: 'Begripvol', response: 'Bedankt Berend! We waarderen je geduld en stemmen af met het team om het halen en brengen beter te stroomlijnen.', decision: 'Goedkeuring Vereist', decisionSub: 'Logistieke opmerking vastgehouden voor de Locatiemanager.', decisionType: 'warning' },
-                'sensitive': { name: 'Amanda Kool', avatar: 'AK', stars: 1, text: 'Mijn dochter opgehaald met een onverklaarde diepe bloeduitstorting op haar arm zonder incidentenverslag!', sentiment: 'Kritiek', topic: 'Veiligheid Kind', employee: 'Geen', risk: 'Hoog Risico (Gefilterd)', riskType: 'chip-danger', tone: 'Geëscaleerd naar Locatiemanager', response: '[AI Generatie Gepauzeerd] Melding onverklaard letsel gedetecteerd. Spoedmelding gestuurd naar de directie.', decision: 'Publicatie Geblokkeerd', decisionSub: 'Veiligheidsescalatie kind direct geactiveerd.', decisionType: 'danger' }
-            },
-            'pet-care': {
-                'positive': { name: 'Chantal Bos', avatar: 'CB', stars: 5, text: 'Ze hebben mijn golden retriever Max zo liefdevol getrimd! Hij rook heerlijk en was totaal niet gestresst.', sentiment: 'Positief', topic: 'Dierenverzorging', employee: 'Max (Hond)', risk: 'Laag Risico', riskType: 'chip-positive', tone: 'Warm & Diervriendelijk', response: 'Dank je wel Chantal! Max was een heerlijke hond om mee te werken. We zien hem graag weer terug!', decision: 'Veilig voor Automatische Publicatie', decisionSub: 'Trimreview automatisch gepubliceerd.', decisionType: 'positive' },
-                'negative': { name: 'Dirk Schipper', avatar: 'DS', stars: 3, text: 'Mooi geknipt maar het ophalen liep ruim een uur uit ten opzichte van de afgesproken tijd.', sentiment: 'Neutraal / Negatief', topic: 'Ophaaltijd', employee: 'Geen', risk: 'Middelgroot Risico', riskType: 'chip-warning', tone: 'Excuserend', response: 'Bedankt voor de feedback Dirk. Excuses voor het uitlopen van de tijd; we passen onze planning aan.', decision: 'Goedkeuring Vereist', decisionSub: 'Tijdklacht vastgehouden voor de bedrijfsleider.', decisionType: 'warning' },
-                'sensitive': { name: 'Meike Roos', avatar: 'MR', stars: 1, text: 'Mijn hond kwam thuis met een bloedende nagel en een snijwond op zijn buik door de tondeuse!', sentiment: 'Kritiek', topic: 'Letsel Huisdier', employee: 'Geen', risk: 'Hoog Risico (Gefilterd)', riskType: 'chip-danger', tone: 'Geëscaleerd naar Hoofd Trimsalon', response: '[AI Generatie Gepauzeerd] Letsel huisdier gedetecteerd. Melding gestuurd naar Hoofd Trimsalon.', decision: 'Publicatie Geblokkeerd', decisionSub: 'Letselclaim geblokkeerd voor beoordeling.', decisionType: 'danger' }
-            },
-            'car-wash': {
-                'positive': { name: 'Tom Higgins', avatar: 'TH', stars: 5, text: 'Beste wasstraat van de stad! Mijn auto glimt weer als nieuw.', sentiment: 'Positief', topic: 'Waskwaliteit', employee: 'Geen', risk: 'Laag Risico', riskType: 'chip-positive', tone: 'Enthousiast', response: 'Bedankt voor de super review Tom! Fijn dat je auto weer glimt. Tot de volgende keer!', decision: 'Veilig voor Automatische Publicatie', decisionSub: 'Positieve review automatisch gepubliceerd.', decisionType: 'positive' },
-                'negative': { name: 'Chris Vance', avatar: 'CV', stars: 2, text: 'De stofzuigers hadden nauwelijks zuigkracht en de helft was buiten gebruik.', sentiment: 'Negatief', topic: 'Apparatuur Onderhoud', employee: 'Geen', risk: 'Middelgroot Risico', riskType: 'chip-warning', tone: 'Oplossingsgericht', response: 'Bedankt voor het melden Chris. Excuses voor het ongemak; ons serviceteam kijkt de zuigers vandaag na.', decision: 'Goedkeuring Vereist', decisionSub: 'Apparatuurklacht vastgehouden voor beheerder.', decisionType: 'warning' },
-                'sensitive': { name: 'Amanda B.', avatar: 'AB', stars: 1, text: 'De borstels hebben de motorkap van mijn nieuwe auto gekrast en een spiegel ingedeukt!', sentiment: 'Kritiek', topic: 'Schadeclaim Voertuig', employee: 'Geen', risk: 'Hoog Risico (Gefilterd)', riskType: 'chip-danger', tone: 'Geëscaleerd naar Schadeafdeling', response: '[AI Generatie Gepauzeerd] Schadeclaim geactiveerd.', decision: 'Publicatie Geblokkeerd', decisionSub: 'Schadeclaim geblokkeerd voor interne afhandeling.', decisionType: 'danger' }
-            },
-            'laundromat': {
-                'positive': { name: 'Karel de Ridder', avatar: 'KR', stars: 5, text: 'Super schone wassalon! Grote machines werken uitstekend en vouwtafels zijn altijd netjes.', sentiment: 'Positief', topic: 'Hygiëne & Apparatuur', employee: 'Geen', risk: 'Laag Risico', riskType: 'chip-positive', tone: 'Waarderend', response: 'Dank je wel Karel! Wij doen ons best om de wasserette schoon en optimaal werkend te houden.', decision: 'Veilig voor Automatische Publicatie', decisionSub: 'Hygiënereview automatisch gepubliceerd.', decisionType: 'positive' },
-                'negative': { name: 'Sanne Lemmens', avatar: 'SL', stars: 3, text: 'Wasmachine #8 slikte mijn geld in zonder te starten en de wisselautomaat was leeg.', sentiment: 'Neutraal / Negatief', topic: 'Muntinworp & Terugbetaling', employee: 'Geen', risk: 'Middelgroot Risico', riskType: 'chip-warning', tone: 'Oplossingsgericht', response: 'Beste Sanne, excuses voor het ongemak! Neem even contact met ons op voor een vergoeding.', decision: 'Goedkeuring Vereist', decisionSub: 'Verzoek om terugbetaling voorgelegd aan beheerder.', decisionType: 'warning' },
-                'sensitive': { name: 'Kevin Drossaert', avatar: 'KD', stars: 1, text: 'Iemand heeft mijn wasmand gestolen toen ik wegliep en het beheer weigerde de camerabeelden te bekijken!', sentiment: 'Kritiek', topic: 'Diefstal / Beveiliging', employee: 'Geen', risk: 'Hoog Risico (Gefilterd)', riskType: 'chip-danger', tone: 'Geëscaleerd naar Beveiliging', response: '[AI Generatie Gepauzeerd] Diefstalmelding gedetecteerd.', decision: 'Publicatie Geblokkeerd', decisionSub: 'Diefstal incident geëscaleerd naar beveiliging.', decisionType: 'danger' }
-            }
-        };
+    
 
-        let selectedStars = 5;
-        let currentPreset = 'positive';
-
-        function getActiefIndustry() { return document.getElementById('industrySelect').value; }
-
-        function updateStarPickerUI(s) {
-            document.querySelectorAll('.star-pick-btn').forEach((btn, idx) => {
-                if (idx + 1 === s) btn.classList.add('selected');
-                else btn.classList.remove('selected');
-            });
-        }
-
-        function loadPreset(presetKey) {
-            currentPreset = presetKey;
-            document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
-            const activeBtn = document.getElementById(`btn-preset-${presetKey}`);
-            if (activeBtn) activeBtn.classList.add('active');
-
-            const ind = getActiefIndustry();
-            const data = (INDUSTRY_PRESETS[ind] && INDUSTRY_PRESETS[ind][presetKey]) ? INDUSTRY_PRESETS[ind][presetKey] : INDUSTRY_PRESETS['restaurant'][presetKey];
-
-            if (data && data.stars) {
-                selectedStars = data.stars;
-                updateStarPickerUI(selectedStars);
-            }
-
-            updateCanvas(data);
-        }
-
-        function handleIndustryChange() { loadPreset(currentPreset); }
-
-        function setCustomStars(s) {
-            selectedStars = s;
-            updateStarPickerUI(s);
-
-            const inputEl = document.getElementById('customReviewText');
-            const text = inputEl ? inputEl.value.trim() : '';
-            if (text) {
-                runCustomAnalysis();
-            } else {
-                let starsHtml = '';
-                for(let i=1; i<=5; i++) {
-                    starsHtml += i <= selectedStars ? '★' : '☆';
-                }
-                const displayEl = document.getElementById('displayStars');
-                if (displayEl) displayEl.textContent = starsHtml;
-            }
-        }
-
-        function runCustomAnalysis() {
-            const inputEl = document.getElementById('customReviewText');
-            const text = inputEl ? inputEl.value.trim() : '';
-            if (!text) { alert('Typ eerst een review in het tekstveld!'); return; }
-
-            document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
-
-            let lower = text.toLowerCase();
-
-            // 1. Smart Universal Employee Extraction (Supports Mary, Raul, Sanne, Hank, etc.)
-            let employee = 'Geen';
-            const titleMatch = text.match(/(?:met|door|bediend door|medewerker|trainer|dr\.|dr|doctor|juf|geholpen door|senor|señor|meneer|dhr\.)\s+([A-ZÀ-ÿ][a-zà-ÿ]+)/i);
-            if (titleMatch && titleMatch[1]) {
-                const cand = titleMatch[1];
-                const stopwords = ['het', 'de', 'een', 'erg', 'goed', 'slecht', 'praktijk', 'kliniek', 'restaurant'];
-                if (!stopwords.includes(cand.toLowerCase())) {
-                    employee = cand.charAt(0).toUpperCase() + cand.slice(1);
-                    if (employee.toLowerCase() === 'raul') employee = 'Raúl';
-                }
-            }
-            if (employee === 'Geen') {
-                const commonNames = ['mary', 'maria', 'raul', 'raúl', 'hank', 'sanne', 'marcus', 'clara', 'david', 'jan', 'marc', 'lisa', 'karel', 'derek', 'jessica', 'sophie', 'emma', 'eva', 'anne', 'esmee', 'lotte'];
-                for (let n of commonNames) {
-                    if (lower.includes(n)) {
-                        employee = (n === 'raul' || n === 'raúl') ? 'Raúl' : (n.charAt(0).toUpperCase() + n.slice(1));
-                        break;
-                    }
-                }
-            }
-            if (employee === 'Geen') {
-                const words = text.split(/\s+/);
-                for (let i = 0; i < words.length; i++) {
-                    let clean = words[i].replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ]/g, '');
-                    if (clean.length >= 3 && /^[A-ZÁÉÍÓÚÑ]/.test(clean)) {
-                        const ignoreList = ['The', 'Google', 'Clinic', 'Clinica', 'Clinico', 'Restaurant', 'Service', 'Food', 'Senor', 'Señor', 'Doctor', 'Coach', 'Chef', 'Good', 'Great', 'Bad', 'Poor', 'Best', 'Very', 'Mijn', 'Onze', 'Deze', 'Het', 'Een', 'Beste', 'Hartelijk', 'Bedankt', 'Muchas', 'Gracias', 'Excelente', 'Bueno', 'Buena', 'Hola'];
-                        if (!ignoreList.includes(clean)) {
-                            employee = clean.charAt(0).toUpperCase() + clean.slice(1);
-                            break;
-                        }
-                    }
-                }
-            }
-
-            // 2. Risk & Safety Check
-            let isSensitive = lower.includes('ziek') || lower.includes('letsel') || lower.includes('advocaat') || lower.includes('schade') || lower.includes('diefstal') || lower.includes('gestolen') || lower.includes('bloed');
-
-            // 3. Sentiment & Praise vs Complaint (Supports price/prijs/duur/prijzig complaints)
-            let hasPraise = lower.includes('goed') || lower.includes('geweldig') || lower.includes('perfect') || lower.includes('uitstekend') || lower.includes('heerlijk') || lower.includes('fijn') || lower.includes('super') || lower.includes('vriendelijk') || lower.includes('aardig');
-            let hasComplaint = lower.includes('slecht') || lower.includes('niet goed') || lower.includes('traag') || lower.includes('koud') || lower.includes('wachten') || lower.includes('chaotisch') || lower.includes('vies') || lower.includes('duur') || lower.includes('prijs') || lower.includes('prijzig') || lower.includes('kosten') || lower.includes('te duur');
-
-            let sentiment = 'Positief';
-            if (isSensitive) {
-                sentiment = 'Kritiek';
-            } else if (selectedStars <= 2) {
-                sentiment = 'Negatief';
-            } else if (selectedStars === 3 || (hasPraise && hasComplaint)) {
-                sentiment = 'Gemengd / Neutraal';
-            } else if (hasComplaint) {
-                sentiment = 'Negatief';
-            } else {
-                sentiment = 'Positief';
-            }
-
-            // 4. Topic Detection (Dutch Pricing, Wait Time, Service)
-            let topic = 'Algemene Ervaring';
-            if (lower.includes('prijs') || lower.includes('duur') || lower.includes('prijzig') || lower.includes('kosten') || lower.includes('tarief')) {
-                topic = (employee !== 'Geen') ? `Service (${employee}) & Prijs` : 'Prijs & Tarieven';
-            } else if (lower.includes('eten') || lower.includes('maaltijd') || lower.includes('soep') || lower.includes('smaak')) {
-                topic = (employee !== 'Geen') ? 'Service & Eten' : 'Kwaliteit van Eten';
-            } else if (lower.includes('wachten') || lower.includes('tafel') || lower.includes('reservering') || lower.includes('rij')) {
-                topic = 'Wachttijd & Service';
-            } else if (lower.includes('schoon') || lower.includes('vies') || lower.includes('wasstraat')) {
-                topic = 'Hygiëne & Accommodatie';
-            } else if (employee !== 'Geen') {
-                topic = `Klantenservice (${employee})`;
-            }
-
-            // 5. Intelligent AI Response Draft Generator
-            let responseText = '';
-            let tone = 'Vriendelijk & Professioneel';
-
-            if (isSensitive) {
-                tone = 'Geëscaleerd naar Beheerder';
-                responseText = '[AI Generatie Gepauzeerd] Gevoelig trefwoord gedetecteerd. Automatische reactie tegengehouden en doorgestuurd naar beheerder.';
-            } else if (hasPraise && hasComplaint) {
-                tone = 'Empathisch & Gebalanceerd';
-                if (employee !== 'Geen') {
-                    if (lower.includes('prijs') || lower.includes('duur') || lower.includes('prijzig')) {
-                        responseText = `Hartelijk dank voor je review! Fijn om te horen dat ${employee} zo vriendelijk was, maar jammer dat je de prijs aan de hoge kant vond. We waarderen je eerlijke feedback!`;
-                    } else {
-                        responseText = `Hartelijk dank voor je review! Fijn om te horen dat ${employee} geweldige service heeft verleend, maar onze oprechte excuses dat niet alles naar wens was. We bespreken je feedback intern.`;
-                    }
-                } else {
-                    responseText = `Bedankt voor je feedback! Fijn dat een deel van het bezoek prettig was, maar excuses voor de punten die beter konden. We werken hier direct aan!`;
-                }
-            } else if (sentiment === 'Positief') {
-                tone = 'Enthousiast & Waarderend';
-                if (employee !== 'Geen') {
-                    responseText = `Hartelijk dank voor de mooie review! Geweldig dat ${employee} je zo goed heeft geholpen. We geven het compliment direct door aan ${employee}!`;
-                } else {
-                    responseText = `Hartelijk dank voor de geweldige review! Fijn dat je een fantastische ervaring hebt gehad en graag tot een volgende keer!`;
-                }
-            } else {
-                tone = 'Excuserend & Professioneel';
-                if (employee !== 'Geen') {
-                    responseText = `Bedankt dat je dit bij ons meldt. Excuses dat het bezoek niet naar wens was. We bespreken dit met ${employee} en ons team om onze service te verbeteren.`;
-                } else {
-                    responseText = `Hartelijk dank voor je eerlijke feedback. Oprechte excuses voor deze ervaring; we nemen dit op met ons management om herhaling te voorkomen.`;
-                }
-            }
-
-            let isNegative = sentiment === 'Negatief' || sentiment === 'Gemengd / Neutraal' || isSensitive;
-
-            let data = {
-                name: 'Aangepaste Review',
-                avatar: 'AR',
-                stars: selectedStars,
-                text: text,
-                sentiment: sentiment,
-                topic: topic,
-                employee: employee,
-                risk: isSensitive ? 'Hoog Risico (Gefilterd)' : (isNegative ? 'Middelgroot Risico' : 'Laag Risico'),
-                riskType: isSensitive ? 'chip-danger' : (isNegative ? 'chip-warning' : 'chip-positive'),
-                tone: tone,
-                response: responseText,
-                decision: isSensitive ? 'Publicatie Geblokkeerd' : (isNegative ? 'Goedkeuring Vereist' : 'Veilig voor Automatische Publicatie'),
-                decisionSub: isSensitive ? 'Gevoelig onderwerp gedetecteerd. Vastgehouden voor handmatige controle.' : (isNegative ? 'Bevat een klacht of gemengde beoordeling. Vastgehouden voor goedkeuring.' : 'Voldoet aan de regels voor automatische publicatie.'),
-                decisionType: isSensitive ? 'danger' : (isNegative ? 'warning' : 'positive')
-            };
-
-            updateCanvas(data);
-        }
-
-        function updateCanvas(data) {
-            if (!document.getElementById('reviewerName')) return;
-            document.getElementById('reviewerName').textContent = data.name;
-            document.getElementById('reviewerAvatar').textContent = data.avatar;
-            document.getElementById('displayReviewText').textContent = `"${data.text}"`;
-            
-            let starsHtml = '';
-            for(let i=1; i<=5; i++) starsHtml += i <= data.stars ? '★' : '☆';
-            document.getElementById('displayStars').textContent = starsHtml;
-
-            document.getElementById('valSentiment').textContent = data.sentiment;
-            document.getElementById('valTopic').textContent = data.topic;
-            document.getElementById('valEmployee').textContent = data.employee;
-            document.getElementById('valSafety').textContent = data.riskType === 'chip-danger' ? 'Flagged' : 'Clear';
-
-            const riskChip = document.getElementById('riskChip');
-            if (riskChip) {
-                riskChip.className = `tag-chip ${data.riskType}`;
-                riskChip.innerHTML = `<i data-lucide="${data.riskType === 'chip-danger' ? 'alert-triangle' : (data.riskType === 'chip-warning' ? 'alert-circle' : 'shield-check')}" style="width:12px;height:12px;"></i> ${data.risk}`;
-            }
-
-            document.getElementById('valTone').textContent = data.tone;
-            document.getElementById('aiResponseText').textContent = data.response;
-
-            const banner = document.getElementById('decisionBanner');
-            const iconBox = document.getElementById('decisionIcon');
-            const btn = document.getElementById('publishActionBtn');
-
-            if (banner && iconBox && btn) {
-                document.getElementById('decisionTitle').textContent = data.decision;
-                document.getElementById('decisionSub').textContent = data.decisionSub;
-
-                if (data.decisionType === 'positive') {
-                    banner.style.background = 'rgba(0, 201, 167, 0.08)';
-                    banner.style.borderColor = 'rgba(0, 201, 167, 0.3)';
-                    iconBox.style.background = 'rgba(0, 201, 167, 0.2)';
-                    iconBox.style.color = '#00C9A7';
-                    iconBox.innerHTML = `<i data-lucide="check-circle-2" style="width:22px;height:22px;"></i>`;
-                    btn.style.display = 'inline-flex';
-                    btn.className = 'btn btn-accent btn-sm';
-                    btn.textContent = 'Gepubliceerd op Google';
-                } else if (data.decisionType === 'warning') {
-                    banner.style.background = 'rgba(245, 158, 11, 0.08)';
-                    banner.style.borderColor = 'rgba(245, 158, 11, 0.3)';
-                    iconBox.style.background = 'rgba(245, 158, 11, 0.2)';
-                    iconBox.style.color = '#F59E0B';
-                    iconBox.innerHTML = `<i data-lucide="clock" style="width:22px;height:22px;"></i>`;
-                    btn.style.display = 'inline-flex';
-                    btn.className = 'btn btn-secondary btn-sm';
-                    btn.textContent = 'Goedkeuren en Publiceren';
-                } else {
-                    banner.style.background = 'rgba(239, 68, 68, 0.08)';
-                    banner.style.borderColor = 'rgba(239, 68, 68, 0.3)';
-                    iconBox.style.background = 'rgba(239, 68, 68, 0.2)';
-                    iconBox.style.color = '#EF4444';
-                    iconBox.innerHTML = `<i data-lucide="shield-alert" style="width:22px;height:22px;"></i>`;
-                    btn.style.display = 'inline-flex';
-                    btn.className = 'btn btn-secondary btn-sm';
-                    btn.style.borderColor = 'rgba(239, 68, 68, 0.4)';
-                    btn.textContent = 'Escalatie Controleren';
-                }
-            }
-
-            if (window.lucide) if (typeof lucide !== "undefined" && lucide.createIcons) { lucide.createIcons(); }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            if (window.lucide) if (typeof lucide !== "undefined" && lucide.createIcons) { lucide.createIcons(); }
-            loadPreset('positive');
-        });
-    </script>
-
-    <script>
-        if (typeof loadPreset !== 'undefined') window.loadPreset = loadPreset;
-        if (typeof selectStar !== 'undefined') window.selectStar = selectStar;
-        if (typeof runCustomReview !== 'undefined') window.runCustomReview = runCustomReview;
-        if (typeof triggerSimulatedPublish !== 'undefined') window.triggerSimulatedPublish = triggerSimulatedPublish;
-    </script>
+    
     
 </body>
 </html>

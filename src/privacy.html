@@ -47,49 +47,7 @@
 
 
 
-    <script>
 
-    function changeLang(lang, event) {
-
-        event.preventDefault();
-
-        localStorage.setItem('lang_redirected', 'true');
-
-        
-
-        let path = window.location.pathname;
-
-        
-
-        // Remove existing lang prefix if present
-
-        if (path.startsWith('/es/')) path = path.replace('/es/', '/');
-
-        if (path.startsWith('/nl/')) path = path.replace('/nl/', '/');
-
-        if (path === '/es' || path === '/nl') path = '/';
-
-        
-
-        let newPath = path;
-
-        if (lang === 'es') {
-
-            newPath = '/es' + (path === '/' ? '/' : path);
-
-        } else if (lang === 'nl') {
-
-            newPath = '/nl' + (path === '/' ? '/' : path);
-
-        }
-
-        
-
-        window.location.href = newPath + window.location.hash;
-
-    }
-
-    </script>
 </head>
 
 
@@ -481,14 +439,6 @@
     </div>
 
 
-
-    <!-- Vercel Web Analytics -->
-
-    <script>
-
-      {{ privacy_window_va_window_va_function_w_bd2c }}
-
-    </script>
 
     <script src="/script.js"></script>
 

@@ -30,7 +30,7 @@
 
 
 
-    
+
 
     <link rel="canonical" href="https://www.replyvera.com/nl/pricing.html">
     <link rel="alternate" hreflang="en" href="https://www.replyvera.com/pricing.html">
@@ -436,9 +436,9 @@
 
             <div class="pricing-billing-toggle">
 
-                <button class="pricing-billing-btn active" id="btn-monthly" onclick="setBilling('monthly')">Maandelijks</button>
+                <button class="pricing-billing-btn active" id="btn-monthly">Maandelijks</button>
 
-                <button class="pricing-billing-btn" id="btn-annual" onclick="setBilling('annual')">Jaarlijks <span class="pricing-annual-badge">Bespaar 2 Maanden</span></button>
+                <button class="pricing-billing-btn" id="btn-annual">Jaarlijks <span class="pricing-annual-badge">Bespaar 2 Maanden</span></button>
 
             </div>
 
@@ -1135,96 +1135,7 @@
 
 
 
-    <!-- Vercel Web Analytics -->
-
-    <script>
-
-      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-
-    </script>
-
     <script src="/script.js"></script>
-
-
-
-    <script>
-
-        // Billing Toggle Logic
-
-        function setBilling(mode) {
-
-            const btnMonthly = document.getElementById('btn-monthly');
-            const btnAnnual = document.getElementById('btn-annual');
-            const priceVals = document.querySelectorAll('.price-val');
-            const pricePeriods = document.querySelectorAll('.price-period');
-            const pricePrefix = 'Vanaf';
-            
-            if (mode === 'annual') {
-                btnAnnual.classList.add('active');
-                btnMonthly.classList.remove('active');
-                priceVals.forEach(el => {
-                    const val = el.getAttribute('data-annual');
-                    const hasPrefix = el.getAttribute('data-has-prefix') === 'true';
-                    if (hasPrefix) {
-                        el.innerHTML = `<span class="price-prefix" style="font-size:1.2rem;font-weight:600;margin-right:6px;">${pricePrefix}</span>` + val;
-                    } else {
-                        el.textContent = val;
-                    }
-                });
-                pricePeriods.forEach(el => el.textContent = el.getAttribute('data-annual'));
-            } else {
-                btnMonthly.classList.add('active');
-                btnAnnual.classList.remove('active');
-                priceVals.forEach(el => {
-                    const val = el.getAttribute('data-monthly');
-                    const hasPrefix = el.getAttribute('data-has-prefix') === 'true';
-                    if (hasPrefix) {
-                        el.innerHTML = `<span class="price-prefix" style="font-size:1.2rem;font-weight:600;margin-right:6px;">${pricePrefix}</span>` + val;
-                    } else {
-                        el.textContent = val;
-                    }
-                });
-                pricePeriods.forEach(el => el.textContent = el.getAttribute('data-monthly'));
-            }
-        }
-
-
-
-        // Compare Toggle Logic
-
-        document.addEventListener('DOMContentLoaded', () => {
-
-            const compareBtn = document.getElementById('compare-toggle');
-
-            const compareContainer = document.getElementById('comparison-container');
-
-            
-
-            if(compareBtn && compareContainer) {
-
-                compareBtn.addEventListener('click', () => {
-
-                    const isExpanded = compareBtn.getAttribute('aria-expanded') === 'true';
-
-                    compareBtn.setAttribute('aria-expanded', !isExpanded);
-
-                    if (!isExpanded) {
-
-                        compareContainer.classList.add('expanded');
-
-                    } else {
-
-                        compareContainer.classList.remove('expanded');
-
-                    }
-
-                });
-
-            }
-
-        });
-
-    </script>
 
 </body>
 

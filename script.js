@@ -1,3 +1,5 @@
+window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+
 window.changeLang = function(lang, event) {
     if (event && event.preventDefault) event.preventDefault();
     try {
@@ -926,9 +928,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (declineBtn) {
             declineBtn.addEventListener('click', () => {
+                const wasAccepted = localStorage.getItem('cookie-consent') === 'accepted' || window.hasLoadedVercelInsights === true;
                 localStorage.setItem('cookie-consent', 'declined');
                 cookieBanner.classList.remove('show');
                 cookieBanner.setAttribute('aria-hidden', 'true');
+
+                // Stop tracking immediately
+                window.va = function() {};
+                window.vaq = [];
+                window.hasLoadedVercelInsights = false;
+                document.querySelectorAll('script[src*="insights/script.js"]').forEach(el => el.remove());
+
+                // If consent was previously accepted, reload once to ensure analytics JS is completely unloaded
+                if (wasAccepted) {
+                    window.location.reload();
+                }
             });
         }
     }
@@ -948,7 +962,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', (e) => {
         const link = e.target.closest('a');
         if (link && link.href && link.href.includes('dashboard.replyvera.com')) {
-            if (typeof window.va === 'function') {
+            if (localStorage.getItem('cookie-consent') === 'accepted' && typeof window.va === 'function') {
                 const action = link.href.includes('signup=true') ? 'signup_click' : 'login_click';
                 window.va('track', action, {
                     text: link.textContent.trim(),

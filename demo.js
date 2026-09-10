@@ -1,8 +1,8 @@
 const DEMO_MODAL_HTML = `
 <div id="rv-demo-modal" class="rv-demo-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="demo-modal-title">
-    <div class="rv-demo-backdrop" onclick="closeDemoModal()"></div>
+    <div class="rv-demo-backdrop" data-action="close-modal"></div>
     <div class="rv-demo-container">
-        <button class="rv-demo-close" onclick="closeDemoModal()" aria-label="Close Demo">
+        <button class="rv-demo-close" data-action="close-modal" aria-label="Close Demo">
             <i data-lucide="x"></i>
         </button>
         <div class="rv-demo-header">
@@ -10,9 +10,9 @@ const DEMO_MODAL_HTML = `
             <p style="color:var(--text-secondary);font-size:0.95rem;max-width:500px;margin:0 auto 20px;">Watch a new Google review arrive, get analyzed, and move through Vera's approval rules.</p>
             
             <div class="rv-demo-tabs" role="tablist">
-                <button class="rv-demo-tab active" role="tab" aria-selected="true" onclick="switchScenario('positive')">Positive Review</button>
-                <button class="rv-demo-tab" role="tab" aria-selected="false" onclick="switchScenario('negative')">Negative Review</button>
-                <button class="rv-demo-tab" role="tab" aria-selected="false" onclick="switchScenario('sensitive')">Sensitive Review</button>
+                <button class="rv-demo-tab active" role="tab" aria-selected="true" data-scenario="positive">Positive Review</button>
+                <button class="rv-demo-tab" role="tab" aria-selected="false" data-scenario="negative">Negative Review</button>
+                <button class="rv-demo-tab" role="tab" aria-selected="false" data-scenario="sensitive">Sensitive Review</button>
             </div>
         </div>
         
@@ -75,9 +75,9 @@ const DEMO_MODAL_HTML = `
                 
                 <div id="outcome-negative" style="display:none;" class="demo-outcome-box">
                     <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
-                        <button class="btn btn-accent btn-sm" onclick="approveAndPublish()">Approve and Publish</button>
-                        <button class="btn btn-secondary btn-sm" onclick="editResponseDemo()">Edit Response</button>
-                        <button class="btn btn-secondary btn-sm" onclick="keepAsDraftDemo()">Keep as Draft</button>
+                        <button class="btn btn-accent btn-sm" data-action="approve-publish">Approve and Publish</button>
+                        <button class="btn btn-secondary btn-sm" data-action="edit-response">Edit Response</button>
+                        <button class="btn btn-secondary btn-sm" data-action="keep-draft">Keep as Draft</button>
                     </div>
                     <div id="outcome-negative-success" style="display:none;align-items:center;gap:8px;color:#10b981;font-weight:600;">
                         <i data-lucide="check-circle-2" style="width:18px;height:18px;"></i> <span id="outcome-status-text">Response approved and published to Google!</span>
@@ -99,9 +99,9 @@ const DEMO_MODAL_HTML = `
         </div>
         
         <div class="rv-demo-controls">
-            <button id="btn-run-demo" class="btn btn-primary" onclick="runDemoSequence()">Run Demo</button>
-            <button id="btn-skip" class="btn btn-secondary" onclick="skipAnimations()" style="display:none;">Skip to Result</button>
-            <button id="btn-pause" class="btn btn-secondary" onclick="togglePause()" style="display:none;">Pause</button>
+            <button id="btn-run-demo" class="btn btn-primary" data-action="run-demo">Run Demo</button>
+            <button id="btn-skip" class="btn btn-secondary" data-action="skip-anim" style="display:none;">Skip to Result</button>
+            <button id="btn-pause" class="btn btn-secondary" data-action="toggle-pause" style="display:none;">Pause</button>
         </div>
         
         <div id="demo-cta-panel" class="demo-cta-panel" style="display:none;">
@@ -161,6 +161,23 @@ function ensureDemoModalInjected() {
     if (!modal && document.body) {
         document.body.insertAdjacentHTML('beforeend', DEMO_MODAL_HTML);
         modal = document.getElementById('rv-demo-modal');
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                const target = e.target.closest('[data-action], [data-scenario]');
+                if (!target) return;
+                const action = target.getAttribute('data-action');
+                const scenario = target.getAttribute('data-scenario');
+                if (action === 'close-modal') closeDemoModal();
+                else if (scenario) switchScenario(scenario);
+                else if (action === 'approve-publish') approveAndPublish();
+                else if (action === 'edit-response') editResponseDemo();
+                else if (action === 'keep-draft') keepAsDraftDemo();
+                else if (action === 'run-demo') runDemoSequence();
+                else if (action === 'skip-anim') skipAnimations();
+                else if (action === 'toggle-pause') togglePause();
+                else if (action === 'save-edit') saveEditedResponseDemo();
+            });
+        }
         if (window.lucide && window.lucide.createIcons) {
             window.lucide.createIcons();
         }
@@ -233,14 +250,15 @@ function switchScenario(scenario) {
     currentScenario = scenario;
     
     // Update tabs
-    document.querySelectorAll('.rv-demo-tab').forEach(t => t.setAttribute('aria-selected', 'false'));
-    document.querySelectorAll('.rv-demo-tab').forEach(t => t.classList.remove('active'));
-    const targetTab = document.querySelector(`.rv-demo-tab[onclick="switchScenario('${scenario}')"]`);
+    document.querySelectorAll('.rv-demo-tab').forEach(t => {
+        t.setAttribute('aria-selected', 'false');
+        t.classList.remove('active');
+    });
+    const targetTab = document.querySelector(`.rv-demo-tab[data-scenario="${scenario}"]`);
     if (targetTab) {
         targetTab.classList.add('active');
         targetTab.setAttribute('aria-selected', 'true');
     }
-    document.querySelector(`.rv-demo-tab[onclick="switchScenario('${scenario}')"]`).setAttribute('aria-selected', 'true');
     
     const data = getDemoData();
     
@@ -407,7 +425,7 @@ function editResponseDemo() {
     const currentText = rBox.textContent || rBox.innerText;
     rBox.innerHTML = `
         <textarea id="demo-edit-input" style="width:100%;height:70px;background:#161628;color:#FFF;border:1px solid var(--primary);border-radius:6px;padding:8px;font-family:inherit;font-size:0.85rem;outline:none;">${currentText.trim()}</textarea>
-        <button onclick="saveEditedResponseDemo()" class="btn btn-accent btn-sm" style="margin-top:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Save Edits</button>
+        <button data-action="save-edit" class="btn btn-accent btn-sm" style="margin-top:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;">Save Edits</button>
     `;
     const input = document.getElementById('demo-edit-input');
     if (input) input.focus();
