@@ -108,22 +108,29 @@
 
             let lower = text.toLowerCase();
             
-            // 1. Smart Employee Extraction (Supports Mary, Raul, Señor, Don, Dr, Coach, etc.)
+            // 1. Smart Employee Extraction (Supports Jason, Mary, Raul, Host, Server, Doctor, etc.)
             let employee = 'None';
-            const empMatch = text.match(/(?:with|by|server|coach|dr\.|dr|doctor|trainer|attendant|employee|staff|senor|señor|sr\.|sr|mr\.|mr|mrs\.|ms\.)\s+([A-ZÀ-ÿ][a-zà-ÿ]+)/i);
+            const empMatch = text.match(/(?:with|by|server|host|hostess|waiter|waitress|bartender|manager|receptionist|driver|guide|coach|dr\.|dr|doctor|trainer|attendant|employee|staff|senor|señor|sr\.|sr|mr\.|mr|mrs\.|ms\.)\s+([a-zA-ZÀ-ÿ]+)/i);
             if (empMatch && empMatch[1]) {
                 const cand = empMatch[1];
-                const stopwords = ['the', 'a', 'an', 'my', 'our', 'very', 'good', 'bad', 'clinic', 'restaurant', 'food', 'service'];
+                const stopwords = ['the', 'a', 'an', 'my', 'our', 'very', 'good', 'bad', 'clinic', 'restaurant', 'food', 'service', 'great', 'awesome', 'nice', 'friendly'];
                 if (!stopwords.includes(cand.toLowerCase())) {
-                    employee = cand.charAt(0).toUpperCase() + cand.slice(1);
+                    employee = cand.charAt(0).toUpperCase() + cand.slice(1).toLowerCase();
                     if (employee.toLowerCase() === 'raul') employee = 'Raúl';
                 }
             }
             if (employee === 'None') {
-                const commonNames = ['mary', 'maria', 'raul', 'raúl', 'hank', 'alex', 'sarah', 'marcus', 'clara', 'jessica', 'david', 'max', 'john', 'mike', 'sam', 'emily', 'anna', 'carlos', 'juan', 'rachel', 'derek'];
+                const commonNames = [
+                    'jason', 'alex', 'sarah', 'mary', 'maria', 'raul', 'raúl', 'hank', 'marcus', 'clara', 'jessica', 
+                    'david', 'max', 'john', 'mike', 'sam', 'emily', 'anna', 'carlos', 'juan', 'rachel', 'derek', 'lisa',
+                    'tom', 'chris', 'kevin', 'steve', 'mark', 'brian', 'laura', 'nicole', 'amanda', 'hannah', 'danny',
+                    'peter', 'paul', 'james', 'robert', 'william', 'richard', 'thomas', 'charles', 'daniel', 'matthew',
+                    'anthony', 'steven', 'andrew', 'joshua', 'ryan', 'jacob', 'eric', 'jonathan', 'adam', 'nathan', 'ethan'
+                ];
                 for (let n of commonNames) {
-                    if (lower.includes(n)) {
-                        employee = (n === 'raul' || n === 'raúl') ? 'Raúl' : (n.charAt(0).toUpperCase() + n.slice(1));
+                    const regex = new RegExp(`\\b${n}\\b`, 'i');
+                    if (regex.test(text)) {
+                        employee = (n === 'raul' || n === 'raúl') ? 'Raúl' : (n.charAt(0).toUpperCase() + n.slice(1).toLowerCase());
                         break;
                     }
                 }
@@ -135,7 +142,7 @@
                     if (clean.length >= 3 && /^[A-ZÁÉÍÓÚÑ]/.test(clean)) {
                         const ignoreList = ['The', 'Google', 'Clinic', 'Clinica', 'Clinico', 'Restaurant', 'Service', 'Food', 'Senor', 'Señor', 'Doctor', 'Coach', 'Chef', 'Good', 'Great', 'Bad', 'Poor', 'Best', 'Very', 'Mijn', 'Onze', 'Deze', 'Het', 'Een', 'Beste', 'Hartelijk', 'Bedankt', 'Muchas', 'Gracias', 'Excelente', 'Bueno', 'Buena', 'Hola'];
                         if (!ignoreList.includes(clean)) {
-                            employee = clean.charAt(0).toUpperCase() + clean.slice(1);
+                            employee = clean.charAt(0).toUpperCase() + clean.slice(1).toLowerCase();
                             break;
                         }
                     }
