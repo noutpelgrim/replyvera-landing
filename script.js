@@ -412,7 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.disabled = true;
 
                 // Send to Node.js backend waitlist API
-                fetch('https://replyvera-backend.onrender.com/api/leads/waitlist', {
+                fetch('https://replyvera-backend-production.up.railway.app/api/leads/waitlist', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -458,7 +458,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.innerHTML = 'Processing...';
 
                 // Send to Node.js backend waitlist API
-                fetch('https://replyvera-backend.onrender.com/api/leads/waitlist', {
+                fetch('https://replyvera-backend-production.up.railway.app/api/leads/waitlist', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -516,7 +516,7 @@ document.addEventListener('DOMContentLoaded', () => {
             outputContainer.style.display = 'none';
 
             try {
-                const response = await fetch('https://replyvera-backend.onrender.com/api/settings/preview', {
+                const response = await fetch('https://replyvera-backend-production.up.railway.app/api/settings/preview', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -877,7 +877,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.innerHTML = 'Submitting...';
                 
                 // Submit to waitlist/leads backend API with platform details
-                fetch('https://replyvera-backend.onrender.com/api/leads/waitlist', {
+                fetch('https://replyvera-backend-production.up.railway.app/api/leads/waitlist', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
