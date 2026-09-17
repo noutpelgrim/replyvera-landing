@@ -53,7 +53,7 @@ function copyRecursive(src, dest) {
     } else {
         // Safety: Do not copy sensitive files
         const basename = path.basename(src);
-        if (basename === 'dashboard.html' || basename.endsWith('.py') || basename.endsWith('.zip') || basename === 'search_results.txt') {
+        if (basename.endsWith('.py') || basename.endsWith('.zip') || basename === 'search_results.txt') {
             return;
         }
         fs.copyFileSync(src, dest);
@@ -61,13 +61,21 @@ function copyRecursive(src, dest) {
 }
 
 // Copy root HTML files
-const rootHtmlFiles = ['index.html', 'pricing.html', 'terms.html', 'privacy.html', 'cookie.html', 'demo.html'];
+const rootHtmlFiles = ['index.html', 'pricing.html', 'terms.html', 'privacy.html', 'cookie.html', 'demo.html', 'dashboard.html'];
 rootHtmlFiles.forEach(file => {
     const srcPath = path.join(rootDir, file);
     if (fs.existsSync(srcPath)) {
         fs.copyFileSync(srcPath, path.join(distDir, file));
     }
 });
+
+// Also create /dashboard/index.html for trailingSlash compatibility
+const dashSrc = path.join(rootDir, 'dashboard.html');
+if (fs.existsSync(dashSrc)) {
+    const dashDir = path.join(distDir, 'dashboard');
+    if (!fs.existsSync(dashDir)) fs.mkdirSync(dashDir, { recursive: true });
+    fs.copyFileSync(dashSrc, path.join(dashDir, 'index.html'));
+}
 
 // Copy SEO and asset files
 const staticFiles = ['sitemap.xml', 'robots.txt', 'style.css', 'script.js', 'demo.js'];
